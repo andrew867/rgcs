@@ -24,7 +24,7 @@ dev = ["pytest>=7.4", "hypothesis>=6.90", "pytest-qt>=4.2"]
 include = ["rgcs_core*", "rgcs_desktop*", "rscs_core*"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration"]
+testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial"]
 pythonpath = ["."]
 markers = [
     "slow: long-running tests (dataset regeneration)",

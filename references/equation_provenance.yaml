@@ -1,0 +1,221 @@
+# Equation-level provenance ledger — RGCS v3 / RSCS 1.0 (Agent 02, Task 4)
+#
+# Every reusable equation/method extracted from the source PDFs, with exact
+# location (page + the paper's own equation number where printed), original
+# physical domain, the mathematical adaptation permitted, the interpretation
+# transfer that is FORBIDDEN, and the target RSCS operator/coordinate it feeds.
+#
+# Rules (orchestrator integration + Quality Gates 2,4):
+#   - Locations verified against the extracted page text on 2026-07-14.
+#   - An equation may enter an RSCS document only after it also receives a
+#     registry ID (RSCS-O.* / RSCS-C.*), canonical units, a dimensional
+#     check, and a machine test. Those IDs are assigned by Agents 03/06;
+#     this ledger only fixes provenance and the allow/forbid boundary.
+#   - "target_rscs" names the intended home operator/coordinate; it is a
+#     reservation, not yet an implemented equation.
+schema_version: 1
+equations:
+
+  # ---- SRC-3-01  Sohn, Orsel & Bahl (arXiv:2104.04803v2) ----
+  - prov_id: EP-01-01
+    source_id: SRC-3-01
+    location: {page: 13, eq: "S1"}
+    name: "Two-mode coupled equations of motion (WGR + waveguide), driven"
+    printed_form: "d/dt (a1,a2)^T = M (a1,a2)^T + (sqrt(kex1), sqrt(kex2))^T s_in e^{-i w_l t}; M diagonal = -i w_j - k_j/2, off-diagonal = i (Gph/2) e^{±i Ω t}"
+    domain: "lithium-niobate whispering-gallery optomechanics; TE00/TE10 optical modes coupled by an acoustic phonon"
+    reusable_math: "driven two-mode complex dynamics with anti-Hermitian off-diagonal coupling and modal decay k_j; time-dependent (parametric) coupling e^{±iΩt}"
+    allowed_adaptation: "structural template for a driven two-mode RGCS resonator pair; maps onto the frozen anti-Hermitian coupling convention K = i·2πg (QA-D-04). Substitutions: a_j -> RGCS complex modal amplitudes; Gph -> RGCS coupling magnitude; κ_j -> γ_n damping."
+    forbidden_transfer: "no claim that quartz hosts acousto-optic ATS, WGR modes, or the reported 39 dB isolation; device numbers stay with the paper"
+    target_rscs: "RSCS coupling operator (two-mode); consistency-tested against rgcs_core.coupled_modes (RGCS-M.23-24,46)"
+  - prov_id: EP-01-02
+    source_id: SRC-3-01
+    location: {page: 14, eq: "S4"}
+    name: "Autler-Townes dressed-state splitting of the cavity susceptibility"
+    printed_form: "a2,0 = [ (sqrt(kex2)/2)/(k/2 - i(Δ + Gph/2)) + (sqrt(kex2)/2)/(k/2 - i(Δ - Gph/2)) ] s_in ; peaks split by Gph"
+    domain: "same; degenerate/matched-loss limit κ1=κ2=κ, δ=0"
+    reusable_math: "two-Lorentzian split response; strong-coupling threshold Gph >> κ (main text: Gph > sqrt(κ1κ2)); |split| = Gph (Rabi frequency)"
+    allowed_adaptation: "template for RGCS avoided-crossing / strong-coupling threshold and linewidth relations; parallels RGCS-M.24-27 (hybrid eigenfrequencies, mixing angle, linewidth, strong-coupling ratio)"
+    forbidden_transfer: "the physical splitting is optical; not evidence for a quartz acoustic ATS effect"
+    target_rscs: "RSCS observation-layer lineshape; ties to RGCS-M.24/M.27"
+  - prov_id: EP-01-03
+    source_id: SRC-3-01
+    location: {page: 15, eq: "S6"}
+    name: "Critical-coupling transmission zero"
+    printed_form: "s_out,0 = s_in (1 - kex2/(k2/2 - iΔ)); transmission vanishes at Δ=0 when κ2/2 = κex2, i.e. κint2 = κex2"
+    domain: "non-phase-matched direction, Gph=0"
+    reusable_math: "critical-coupling condition (intrinsic loss = external coupling); insertion-loss/isolation contrast metric"
+    allowed_adaptation: "definition of critical coupling for RGCS drive/readout coupling budgets"
+    forbidden_transfer: "device insertion-loss/contrast values are the paper's"
+    target_rscs: "RSCS observation: coupling/insertion-loss metric"
+
+  # ---- SRC-3-02  Cheng et al. (arXiv:2403.10628v1) ----
+  - prov_id: EP-02-01
+    source_id: SRC-3-02
+    location: {page: 10, eq: "S.1, S.2"}
+    name: "Acousto-optic phase-matching condition and phase mismatch"
+    printed_form: "k+(w0) + q(Ω) = k-(w0+Ω) (S.1); Δq_pm(ω) = (n_g,+ - n_g,-)/c · (ω - ω0) (S.2)"
+    domain: "integrated acousto-optic frequency-shifting beam splitter; symmetric(+)/antisymmetric(-) waveguide supermodes"
+    reusable_math: "momentum/phase matching between two modes via a coupling wave of wavevector q; mismatch linear in detuning through group-index difference; response ∝ sinc^2(Δq_pm La/2)"
+    allowed_adaptation: "phase/momentum-matching bookkeeping for RGCS mode-conversion drive design; group-index-difference -> RGCS group-delay balancing variable"
+    forbidden_transfer: "no claim quartz realizes THz-bandwidth optical isolation or CMOS-photonic beam splitters"
+    target_rscs: "RSCS coupling/propagation: phase-matching predicate + mismatch coordinate"
+  - prov_id: EP-02-02
+    source_id: SRC-3-02
+    location: {page: 12, eq: "S.5, S.6"}
+    name: "AOM-section transfer matrix (parity basis)"
+    printed_form: "t_a^f(φ_RF) 2x2 with r(ω)e^{iφr} ≡ cos(βLa) + i(Δq_pm/2β) sin(βLa), μ(ω)e^{iφ_RF} ≡ (g b / sqrt(v1 v2)) sin(βLa), r^2+μ^2=1; β = sqrt((Δq_pm/2)^2 + |bg|^2/(v+ v-))"
+    domain: "same; transfer matrix in the {|+>,|->} symmetric/antisymmetric basis"
+    reusable_math: "unitary 2x2 transfer matrix; RF phase φ_RF as a controllable coupling phase; conserved r^2+μ^2=1"
+    allowed_adaptation: "transfer-matrix formalism and parity (symmetric/antisymmetric) basis for RGCS multi-section couplers; drive-phase control variable"
+    forbidden_transfer: "acoustic field b, group velocities v±, and device geometry stay optical-domain"
+    target_rscs: "RSCS transforms: cascadable transfer-matrix operator; parity basis in RSCS modes"
+  - prov_id: EP-02-03
+    source_id: SRC-3-02
+    location: {page: 12, eq: "S.7, S.8"}
+    name: "Delay-region matrix and forward/backward interference (group-delay balancing)"
+    printed_form: "t_delay = diag(e^{i k_{d,+} L_{d,+}}, e^{i k_{d,-} L_{d,-}}); cascade t_a^f(φRF2)·t_delay·t_a^f(φRF1) gives direction-dependent output; fringe period set by group-delay difference"
+    domain: "same; nonreciprocal multimode interferometer"
+    reusable_math: "cascaded transfer matrices; group-delay/dispersion balancing to widen the reciprocity-breaking bandwidth; direction dependence via RF phase ordering"
+    allowed_adaptation: "group-delay balancing as an RGCS design objective; directionality from asymmetric drive-phase sequence"
+    forbidden_transfer: "no import of nonreciprocity/isolation as an intrinsic quartz property"
+    target_rscs: "RSCS propagation: group-delay coordinate + nonreciprocal cascade operator"
+
+  # ---- SRC-3-03  Lapointe, Coia & Vallee (preprint) ----
+  - prov_id: EP-03-01
+    source_id: SRC-3-03
+    location: {page: 1, eq: "n/a (text/Methods)"}
+    name: "Alternating spiral-helix filament laser-writing path"
+    printed_form: "waveguide cladding written along an alternating spiral-helix beam-focus trajectory (Methods, p.1 abstract + fabrication section)"
+    domain: "femtosecond-laser writing of latched BIG (bismuth iron garnet) waveguides"
+    reusable_math: "parameterization of a spiral-helix writing trajectory; fabrication path-history as a state variable affecting the written structure"
+    allowed_adaptation: "geometric spiral-helix path parameterization for RGCS CAD/fabrication (links RGCS-M.30-37 spiral geometry); process-history as an explicit provenance coordinate"
+    forbidden_transfer: "latched-magnetization / Faraday-rotation physics is BIG-specific; NOT a quartz effect. Preprint (not peer-reviewed) -- SRC weight."
+    target_rscs: "RSCS provenance/state_preparation: fabrication-path coordinate; feeds rgcs_core.geometry.spiral"
+  - prov_id: EP-03-02
+    source_id: SRC-3-03
+    location: {page: 1, eq: "n/a (text)"}
+    name: "Crossed-polarizer Faraday isolator assembly (45-degree offset)"
+    printed_form: "BIG Faraday-rotator waveguide between two polarizers offset by 45 degrees forms an isolator"
+    domain: "bulk/integrated magneto-optic isolation"
+    reusable_math: "45-degree polarization-basis geometry; figure-of-merit (deg/dB) bookkeeping"
+    allowed_adaptation: "comparison architecture only; the 45-degree basis geometry as a reference for RGCS directional-coupling discussion"
+    forbidden_transfer: "no quartz Faraday rotation claim; figures of merit are the paper's"
+    target_rscs: "RSCS: comparison reference (documentation), not an implemented operator"
+
+  # ---- SRC-3-04  Wang et al. (10.1038/s41377-024-01692-y) ----
+  - prov_id: EP-04-01
+    source_id: SRC-3-04
+    location: {page: 2, eq: "1"}
+    name: "Anti-symmetric (gyrotropic) susceptibility tensor"
+    printed_form: "(Dx,Dy) ∝ [[χxx, iχxy],[-iχxy, χyy]] (Ex,Ey); χxy ≠ 0 => non-reciprocal (anti-symmetric under time reversal)"
+    domain: "atomic (Rb) optical medium; circular birefringence/dichroism"
+    reusable_math: "anti-symmetric off-diagonal coupling tensor as the algebraic signature of nonreciprocity/time-reversal breaking"
+    allowed_adaptation: "algebraic form of an anti-Hermitian/anti-symmetric coupling as an RGCS nonreciprocity indicator (consistent with the frozen K = i·2πg convention)"
+    forbidden_transfer: "the medium is atomic vapor; no claim quartz has a self-induced χxy"
+    target_rscs: "RSCS coupling: nonreciprocity (anti-symmetric coupling) predicate"
+  - prov_id: EP-04-02
+    source_id: SRC-3-04
+    location: {page: 2, eq: "2"}
+    name: "Nonlinear (signal-induced) non-reciprocal susceptibility expansion"
+    printed_form: "χxy = χ^(1)_xy (B·e_z) + χ^(3)_xy (E×E*)·e_z + ...  ; the χ^(3) term depends on the field's local spin E×E*"
+    domain: "same; third-order optical nonlinearity"
+    reusable_math: "expansion of a coupling coefficient in a bias term plus a state-dependent (self-induced) term proportional to field spin E×E*"
+    allowed_adaptation: "template for a state-dependent RGCS coupling: coupling = bias + f(drive state). Circular-polarization/spin state E×E* -> RGCS state-preparation coordinate."
+    forbidden_transfer: "no import of the physical claim that a signal self-induces nonreciprocity in quartz"
+    target_rscs: "RSCS state_preparation + coupling: state-dependent coupling coordinate"
+  - prov_id: EP-04-03
+    source_id: SRC-3-04
+    location: {page: 2, eq: "text after (2)"}
+    name: "Nonreciprocal transmittance, phase, and isolation"
+    printed_form: "counter-propagating power transmittance = e^{-4k Im(χxy) L}; nonreciprocal phase φ = 2k Re(χxy) L"
+    domain: "same"
+    reusable_math: "Beer-law isolation from Im(coupling); reciprocity-breaking phase from Re(coupling); both linear in interaction length L"
+    allowed_adaptation: "isolation/nonreciprocal-phase metrics as functions of a complex coupling and path length"
+    forbidden_transfer: "atomic-vapor performance stays the paper's"
+    target_rscs: "RSCS observation: isolation + nonreciprocal-phase metrics"
+
+  # ---- SRC-3-05  Zhang, Zhan, Gong & Niu (10.1038/s42005-023-01141-z) ----
+  - prov_id: EP-05-01
+    source_id: SRC-3-05
+    location: {page: 2, eq: "text/Fig.1e"}
+    name: "Velocity-selective optical pumping (Doppler) coordinate"
+    printed_form: "pumping empties the ground-state population of atoms with velocity v = -Δp/k (Δp = pump detuning, k = wave vector); forward signal interacts with velocity class v = Δp/k"
+    domain: "hot-atom V-type level scheme; Doppler-selected velocity classes"
+    reusable_math: "internal-state population indexed by a velocity/detuning class coordinate v = Δp/k; direction selectivity via which class is addressed"
+    allowed_adaptation: "abstract 'internal-state population over a selection coordinate' as an RGCS state-preparation/occupancy model; the selection variable is a candidate RSCS coordinate"
+    forbidden_transfer: "no claim quartz has Doppler-selected atomic populations; single-photon/quantum regime not imported"
+    target_rscs: "RSCS state_preparation + modes: population-over-selection-coordinate"
+  - prov_id: EP-05-02
+    source_id: SRC-3-05
+    location: {page: 3, eq: "text; Methods g^(2)"}
+    name: "Insertion loss / isolation and single-photon fidelity metrics"
+    printed_form: "IL = -10 log(Tf) = 0.6 dB, isolation = -10 log(Tb) = 30.3 dB; second-order correlation g^(2)(τ) and ratio R = g^(2)_{s,as}/sqrt(g^(2)_{s,s} g^(2)_{as,as}) for fidelity/noise"
+    domain: "quantum optics; single-photon isolation"
+    reusable_math: "log-ratio insertion-loss/isolation definitions; correlation-based signal-fidelity/noise measurement principle"
+    allowed_adaptation: "measurement-layer definitions for RGCS isolation and signal-fidelity/noise (the *principle* of a normalized correlation figure of merit)"
+    forbidden_transfer: "g^(2) single-photon statistics are quantum-optical; not claimed for classical quartz acoustics"
+    target_rscs: "RSCS observation: isolation + fidelity/noise metrics"
+
+  # ---- SRC-3-06  Chao, Yam, Vivien & Dagens (10.1038/s41598-025-08507-z) ----
+  - prov_id: EP-06-01
+    source_id: SRC-3-06
+    location: {page: 2, eq: "1-2"}
+    name: "Nonreciprocal propagation-constant shift (TMOKE)"
+    printed_form: "β_f = β + δβ, β_b = β - δβ (perturbation, eq.1-2); forward/backward constants differ by 2δβ"
+    domain: "TMOKE coupled-waveguide magneto-optics"
+    reusable_math: "direction-dependent propagation constant via a signed perturbation δβ; 2δβ nonreciprocal split"
+    allowed_adaptation: "signed directional perturbation of a propagation constant as an RGCS nonreciprocity parameter"
+    forbidden_transfer: "the perturbation is magneto-optic (Kerr); no quartz analogue asserted"
+    target_rscs: "RSCS propagation: directional propagation-constant coordinate"
+  - prov_id: EP-06-02
+    source_id: SRC-3-06
+    location: {page: 2, eq: "3"}
+    name: "Even/odd supermode decomposition of a coupled system"
+    printed_form: "E(x,y,z) = ã_e E_e e^{-iβe z} + ã_o E_o e^{-iβo z}; E_{e,o} = a_{e,o} E^(1) + b_{e,o} E^(2)"
+    domain: "two evanescently coupled waveguides"
+    reusable_math: "supermode (even/odd parity) basis for two coupled modes; amplitudes as normalized column vectors"
+    allowed_adaptation: "parity (even/odd) supermode basis for RGCS coupled resonators; parallels RGCS-M.23-25 two-mode eigenbasis"
+    forbidden_transfer: "waveguide-specific field profiles are the paper's"
+    target_rscs: "RSCS modes: parity supermode basis"
+  - prov_id: EP-06-03
+    source_id: SRC-3-06
+    location: {page: 3, eq: "8 (beating length)"}
+    name: "Modal beating length and transfer-matrix cascade"
+    printed_form: "L_beat = 2π/|βe - βo| (ψ = βe - βo); forward/backward field via T-matrices (eq.10-13), matrix entries swapped on reversal => nonreciprocity"
+    domain: "same"
+    reusable_math: "beating length from supermode propagation-constant difference; nonreciprocity from row/column swap of the transfer matrix under reversal"
+    allowed_adaptation: "beating-length relation and the 'swap-on-reversal' transfer-matrix signature for RGCS directional couplers"
+    forbidden_transfer: "device isolation performance is the paper's"
+    target_rscs: "RSCS transforms/propagation: beating-length coordinate + nonreciprocal cascade"
+
+  # ---- SRC-3-07 / SRC-3-08  Arisaka NHT/HAL (SRC class) ----
+  - prov_id: EP-07-01
+    source_id: SRC-3-07
+    location: {page: 6, eq: "unnumbered (holographic plane waves)"}
+    name: "NHT space-to-phase (holographic plane-wave) representation"
+    printed_form: "Ψ_i(r,t) = A cos(k_i·r - ωt + φ); a set of oriented plane waves encodes spatial position in the PHASE of a traveling wave (space -> time/phase conversion)"
+    domain: "theoretical neuroscience proposal (brainwave encoding of space); NOT peer-reviewed physics"
+    reusable_math: "representation mapping a spatial coordinate to the phase of an oriented traveling wave; a set of direction unit vectors {k_i} as a coordinate frame"
+    allowed_adaptation: "as SRC-labelled candidate language ONLY: a 'space-to-phase' coordinate and an oriented-plane-wave basis as a HYPOTHESIS to be defined and tested, never presumed. Must be translated into explicit RSCS candidate variables with units and a test."
+    forbidden_transfer: "NO consciousness/brain/memory conclusion may be imported into any RGCS physical claim; NHT is not evidence for anything about quartz"
+    target_rscs: "RSCS memory (candidate coordinate, HYP); Agent 04 memory bridge"
+  - prov_id: EP-07-02
+    source_id: SRC-3-07
+    location: {page: 1, eq: "concept (HAL)"}
+    name: "Holographic Ring Attractor Lattice (HAL) memory-lattice coordinate"
+    printed_form: "ring-attractor lattice storing phase-encoded positions; abstract as a lattice of phase/orientation states (space-to-time conversion, theta/alpha carrier)"
+    domain: "theoretical neuroscience proposal (SRC class)"
+    reusable_math: "a lattice of ring-attractor (periodic/phase) states as a memory-occupancy structure indexed by orientation and carrier phase"
+    allowed_adaptation: "SRC-labelled candidate 'memory lattice' occupancy coordinate for the Agent 04 Hydrogenuine memory bridge; strictly HYP, with an explicit observable/failure condition before any use"
+    forbidden_transfer: "no brain-memory mechanism asserted as physically realized in quartz or any RGCS device"
+    target_rscs: "RSCS memory (candidate lattice coordinate, HYP)"
+  - prov_id: EP-08-01
+    source_id: SRC-3-08
+    location: {page: 1, eq: "concept (scaling/rotation)"}
+    name: "Scaling/rotation multidimensional transformations (vision)"
+    printed_form: "proposed egocentric<->allocentric transforms including scaling and rotation across polar/log-polar frames (Part III)"
+    domain: "theoretical neuroscience proposal (SRC class)"
+    reusable_math: "scale + rotation as composable frame transforms; log-polar coordinate option"
+    allowed_adaptation: "SRC-labelled reference for RSCS transforms/reference-frame handling (scale-rotation eigenstructure parallels RGCS-M.32); documentation-level only"
+    forbidden_transfer: "no visual-perception conclusion imported into RGCS physics"
+    target_rscs: "RSCS transforms: scale-rotation reference (documentation)"

@@ -23,11 +23,21 @@ SHA256 for every file is recorded in `references/source_registry.yaml`.
 v2's 18 verified input sources remain listed in
 `archive/v2.0.0/release/PROVENANCE.json` and are inherited by reference.
 
-## Outstanding (Agent 02, Tasks 4–7)
+## Agent 02 completion (Tasks 4–7)
 
-- Equation/method-level provenance rows (page/equation/figure, allowable
-  adaptation, target RSCS operator) for each reusable-math item.
-- Explicit extraction of the 13 mandated concepts (nonlinear
-  susceptibility … NHT space-to-phase, HAL lattice).
-- `docs/ADAPTATION_MATRIX.md` and `docs/EXCLUSION_MATRIX.md`.
-- Frozen notation ledger (gate for Agents 03–08 parallel start).
+All complete (2026-07-14):
+
+- **Task 4 — equation provenance:** `references/equation_provenance.yaml`
+  (19 equations across all 8 substantive sources; page + printed eq.
+  number, domain, allowed adaptation, forbidden transfer, target RSCS
+  operator).
+- **Task 5 — concept extraction:** `docs/CONCEPT_EXTRACTION.md` (all 13
+  mandated concepts mapped to source, provenance ID, and RSCS target).
+- **Task 6 — SRC preservation:** NHT/HAL (SRC-3-07/08/09) recorded as
+  SRC/HYP with contradictions/limits preserved (see EXCLUSION_MATRIX and
+  the HYP quarantine in the notation ledger).
+- **Task 7 — matrices:** `docs/ADAPTATION_MATRIX.md` (substitution maps)
+  and `docs/EXCLUSION_MATRIX.md` (forbidden transfers), paired 1:1.
+- **Gate — frozen notation:** `docs/RSCS_NOTATION_LEDGER.md`
+  (`RSCS-C.1–14` coordinates, `RSCS-O.1–13` operators; extends the v2
+  authority without redefining any symbol). **GATE FOR AGENTS 03–08: OPEN.**
