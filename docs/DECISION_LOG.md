@@ -1,0 +1,11 @@
+# Decision Log — RGCS v3 / RSCS 1.0 programme
+
+Append-only. Format: ID, date, decision, rationale, alternatives, scope.
+
+| ID | Date | Decision | Rationale / alternatives | Scope |
+|---|---|---|---|---|
+| D3-001 | 2026-07-14 | **Phase 0 naming freeze:** math framework "RSCS 1.0"; software/system "RGCS 3.0.0"; repository remains this git repo (branch `main`), package name `rgcs-v3`. New-code namespaces: `rscs_core` (framework), `RSCS-O.*`/`RSCS-C.*` registry IDs. | Pack default names accepted; a separate `rgcs-v3` repo was the alternative, but the v2 tree is already here and git tag `v2.0.0` + `archive/v2.0.0/` satisfy the baseline-freeze requirement without splitting history. | All code, docs, manuscripts, schemas, citations, release artifacts. Frozen hereafter. |
+| D3-002 | 2026-07-14 | v2.0.0 baseline frozen as commit `f9fd2c2` / tag `v2.0.0`; v2 release artifacts moved (not copied) to `archive/v2.0.0/release/`. | Single source of truth; avoids the duplicate-tree condition Agent 01 must prevent. | archive/v2.0.0 immutable. |
+| D3-003 | 2026-07-14 | v2 test suite discrepancies on Windows/Py3.13 (4 of 227) classified as environment drift + v2 Windows portability defects (V2-WIN-01, V2-PKG-01); v2 code NOT patched. Fixes scheduled for v3 (MIG-CODE-07). | Freeze rule outweighs green-suite aesthetics; defects documented in V2_BASELINE_AUDIT.md. | rgcs_desktop, packaging. |
+| D3-004 | 2026-07-14 | `pyproject.toml` updated to `rgcs-v3` 3.0.0a1 with `pyyaml` declared (fixes V2-PKG-01 for v3 builds); `.gitattributes` added (`* text=auto`) to stop LF/CRLF churn. | v2 pyproject preserved in tag; declaring a dependency the code already imports is a packaging correction, not a behaviour change. | Build/packaging only. |
+| D3-005 | 2026-07-14 | v3 skeleton created per `output_contracts/EXPECTED_TREE.md`: `rscs_core/` (10 subpackages), `manuscripts/` (4), `embedded/`, `references/`, `tests/adversarial/`, `release/` (empty, v3-reserved), CHANGELOG.md. Deviations: v2 `manuscript/` retained until Agent 09 migrates it (then archived); `docs/` continues in place rather than being recreated. | Deviations recorded here and to be echoed in ARCHITECTURE.md / RELEASE_CHECKLIST.md per contract. | Repo layout. |

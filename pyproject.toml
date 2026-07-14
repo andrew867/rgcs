@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "rgcs-v2"
-version = "2.0.0"
-description = "RGCS v2 computational core (rgcs_core): deterministic, typed, tested library for resonant-geometry crystal studies."
+name = "rgcs-v3"
+version = "3.0.0a1"
+description = "RGCS v3 / RSCS 1.0: typed resonant-coordinate framework (rscs_core) plus the deterministic, tested RGCS crystal-application core (rgcs_core)."
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Andrew Green", email = "me@andrewgreen.ca" }]
@@ -13,6 +13,7 @@ dependencies = [
     "numpy>=1.26",
     "scipy>=1.11",
     "pydantic>=2.5",
+    "pyyaml>=6.0",
 ]
 
 [project.optional-dependencies]
@@ -20,7 +21,7 @@ desktop = ["PySide6>=6.6", "pyqtgraph>=0.13"]
 dev = ["pytest>=7.4", "hypothesis>=6.90", "pytest-qt>=4.2"]
 
 [tool.setuptools.packages.find]
-include = ["rgcs_core*", "rgcs_desktop*"]
+include = ["rgcs_core*", "rgcs_desktop*", "rscs_core*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration"]

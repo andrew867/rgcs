@@ -1,0 +1,31 @@
+# Changelog
+
+All notable changes to RGCS / RSCS. Semantic versioning; the frozen
+v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
+
+## [Unreleased] — 3.0.0 programme (RSCS 1.0)
+
+### Added
+- Agent 01: `docs/V2_BASELINE_AUDIT.md` (baseline reproduced: 232/232
+  archive files identical, 10/10 release checksums verified, 223/227
+  tests pass on Windows with all 4 discrepancies explained).
+- Agent 01: `docs/V2_TO_V3_MIGRATION_MAP.md` (all 61 equations and 14
+  hypotheses dispositioned; registry/versioning rules for v3).
+- Programme control documents: `DECISION_LOG.md`, `CLAIM_REGISTER.md`,
+  `SOURCE_REGISTER.md`, `ASSUMPTIONS.md`, `NEGATIVE_RESULTS.md`
+  (v2's `INCONSISTENCY_REGISTER.md` and `TRACEABILITY_MATRIX.md`
+  continue as living registers).
+- v3 skeleton per `EXPECTED_TREE`: `rscs_core/` (10 subpackages),
+  `manuscripts/` (4 works), `embedded/`, `references/`,
+  `tests/adversarial/`, `experiments/protocols|notebooks`.
+- `.gitattributes` line-ending normalization.
+
+### Changed
+- `pyproject.toml`: project renamed `rgcs-v3` 3.0.0a1 (D3-001); missing
+  `pyyaml` dependency declared (fixes V2-PKG-01 for v3 builds).
+- v2 release artifacts moved unchanged to `archive/v2.0.0/release/`;
+  top-level `release/` reserved for v3 outputs.
+
+## [2.0.0] — 2026-07-14
+
+Frozen baseline. See `archive/v2.0.0/release/RELEASE_NOTES.md`.
