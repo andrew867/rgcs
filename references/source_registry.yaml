@@ -1,0 +1,116 @@
+# Machine-readable source registry — RGCS v3 / RSCS 1.0 (Agent 02)
+# Metadata verified against page 1 of each PDF on 2026-07-14.
+# Rule: no fabricated fields. Fields not present on page 1 (or in the PDF's
+# own imprint block) are omitted, never guessed. `forbidden_transfer` names
+# conclusions that may not be imported into quartz/consciousness/cosmology/
+# memory claims by analogy alone.
+schema_version: 1
+sources:
+  - source_id: SRC-3-01
+    title: "Electrically driven linear optical isolation through phonon mediated Autler-Townes splitting"
+    authors: ["Donggyu B. Sohn", "Ogulcan E. Orsel", "Gaurav Bahl"]
+    year: 2021
+    ids: {arxiv: "2104.04803v2"}
+    file: "internal-docs/plans-v3/reference_documents/2104.04803v2.pdf"
+    sha256: "601816949fb70a03ee0a8cef232f9e8faeae48a372c068495f7d54840d16e681"
+    pages: 25
+    domain: "integrated photonics; acousto-optic isolation (lithium niobate)"
+    reusable_math: "Autler-Townes splitting, strong-coupling threshold, phase/momentum matching, mode overlap, critical coupling, insertion-loss/isolation metrics"
+    forbidden_transfer: "device isolation performance and material conclusions; any claim that quartz exhibits these effects"
+    status: verified-p1
+  - source_id: SRC-3-02
+    title: "A Terahertz Bandwidth Nonmagnetic Isolator"
+    authors: ["Haotian Cheng", "Yishu Zhou", "Freek Ruesink", "Margaret Pavlovich", "Shai Gertler", "Andrew L. Starbuck", "Andrew J. Leenheer", "Andrew T. Pomerene", "Douglas C. Trotter", "Christina Dallo", "Matthew Boady", "Katherine M. Musick", "Michael Gehl", "Ashok Kodigala", "Matt Eichenfield", "Anthony L. Lentine", "Nils T. Otterstrom", "Peter T. Rakich"]
+    year: 2024
+    ids: {arxiv: "2403.10628v1"}
+    file: "internal-docs/plans-v3/reference_documents/2403.10628v1.pdf"
+    sha256: "82798bd3fca0da7025106d43b518ee9577a73bcdced834ff560c7e9b01c28a20"
+    pages: 18
+    domain: "integrated photonics; acousto-optic frequency-shifting beam splitters, nonreciprocal multimode interferometer"
+    reusable_math: "symmetric/antisymmetric mode parity, phonon-mediated intermodal conversion, dispersion/group-delay balancing, transfer-matrix interferometry"
+    forbidden_transfer: "CMOS/device performance claims; direction-of-isolation physics as a quartz property"
+    status: verified-p1
+  - source_id: SRC-3-03
+    title: "Integrated Magnetless Passive Broadband Faraday Isolator"
+    authors: ["Jerome Lapointe", "Cedrik Coia", "Real Vallee"]
+    year: 2023
+    ids: {doi: "10.21203/rs.3.rs-3157765/v1", note: "Research Square preprint, posted 2023-07-25"}
+    file: "internal-docs/plans-v3/reference_documents/Integrated_Magnetless_Passive_Broadband_Faraday_Is.pdf"
+    sha256: "afbeb1311a04bf6ceb25611367c2c5edd1599d850adef90ac5738ee3f9f62772"
+    pages: 11
+    domain: "latched magneto-optic garnet (BIG), femtosecond-written waveguides"
+    reusable_math: "fabrication path dependence, spiral-helix writing trajectory parameterization, material/process-history state variables"
+    forbidden_transfer: "latched-magnetization physics as a quartz property; preprint conclusions treated as peer-reviewed"
+    status: verified-p1
+  - source_id: SRC-3-04
+    title: "Self-induced optical non-reciprocity"
+    authors: ["Zhu-Bo Wang", "Yan-Lei Zhang", "Xin-Xin Hu", "Guang-Jie Chen", "Ming Li", "Peng-Fei Yang", "Xu-Bo Zou", "Peng-Fei Zhang", "Chun-Hua Dong", "Gang Li", "Tian-Cai Zhang", "Guang-Can Guo", "Chang-Ling Zou"]
+    year: 2025
+    ids: {doi: "10.1038/s41377-024-01692-y", journal: "Light: Science & Applications 14:23"}
+    file: "internal-docs/plans-v3/reference_documents/s41377-024-01692-y.pdf"
+    sha256: "90cd40d1fa3d6d2bcc88a5190b4471efd1525c802786438955c3b08a71529042"
+    pages: 9
+    domain: "atomic (rubidium) cavity optics; nonlinear state-dependent susceptibility"
+    reusable_math: "nonlinear state-dependent susceptibility, circular polarization/spin state preparation, cavity-enhanced coupling"
+    forbidden_transfer: "atomic-vapor conclusions as crystal/quartz effects"
+    status: verified-p1
+  - source_id: SRC-3-05
+    title: "Noiseless single-photon isolator at room temperature"
+    authors: ["Shicheng Zhang", "Yifan Zhan", "Shangqing Gong", "Yueping Niu"]
+    year: 2023
+    ids: {doi: "10.1038/s42005-023-01141-z", journal: "Communications Physics"}
+    file: "internal-docs/plans-v3/reference_documents/s42005-023-01141-z.pdf"
+    sha256: "7a2b9641c6249b2d28a2b0b5303f013b8330e7d9e38c6737471f11dd61fd75ce"
+    pages: 6
+    domain: "hot-atom quantum optics; V-type level scheme"
+    reusable_math: "velocity-class/internal-state population coordinates, signal-fidelity and quantum-noise measurement principles"
+    forbidden_transfer: "single-photon/quantum-regime results as classical crystal acoustics"
+    status: verified-p1
+  - source_id: SRC-3-06
+    title: "Integrated TE optical isolator based on magneto-optical perturbation in coupled waveguides"
+    authors: ["Kimhong Chao", "Vy Yam", "Laurent Vivien", "Beatrice Dagens"]
+    year: 2025
+    ids: {doi: "10.1038/s41598-025-08507-z", journal: "Scientific Reports"}
+    file: "internal-docs/plans-v3/reference_documents/s41598-025-08507-z.pdf"
+    sha256: "3ae35c6a3f316c30d2f36caf6c84b387d342054b033233e5b97c1dcb72b7717a"
+    pages: 11
+    domain: "TMOKE coupled-waveguide photonics"
+    reusable_math: "forward/backward propagation constants, even/odd supermodes, modal beating length, transfer matrices, pi phase shift"
+    forbidden_transfer: "magneto-optic Kerr conclusions as quartz elastodynamics"
+    status: verified-p1
+  - source_id: SRC-3-07
+    title: "Grand Unified Theory of Mind and Brain, Part II: Neural Holographic Tomography (NHT) and Holographic Ring Attractor Lattice (HAL)"
+    authors: ["Katsushi Arisaka"]
+    year: 2022
+    ids: {note: "V1 manuscript dated 2022-03-05; UCLA Physics & Astronomy / ECE"}
+    file: "internal-docs/plans-v3/reference_documents/arisaka_gut-2_nht_and_hal_3-5-2022_v1(1).pdf"
+    sha256: "7046070d4497605a6e9c9c4500662b3a5c3f68bbf9584696a69ce9c096dd99b2"
+    pages: 53
+    domain: "theoretical neuroscience proposal (SRC class; not peer-reviewed physics)"
+    reusable_math: "space-to-time/phase conversion representation, ring-attractor lattice coordinates as candidate memory-state variables"
+    forbidden_transfer: "any consciousness/brain conclusion into quartz or RGCS physical claims; NHT/HAL treated as SRC hypothesis language only"
+    status: verified-p1
+  - source_id: SRC-3-08
+    title: "Grand Unified Theory of Mind and Brain, Part III: Holographic Visual Perception of 3D Space and Shapes"
+    authors: ["Katsushi Arisaka", "Aaron Blaisdell"]
+    year: 2022
+    ids: {note: "V1 manuscript dated 2022-03-05; UCLA"}
+    file: "internal-docs/plans-v3/reference_documents/arisaka_gut-3_vision_3-5-2022_v1(1).pdf"
+    sha256: "a5aa64b67a3fc354fb34435fa50cc2b93f5a167b7797d969f013b691ba6c3ff5"
+    pages: 84
+    domain: "theoretical neuroscience proposal (SRC class)"
+    reusable_math: "scaling/rotation multidimensional transformation candidates"
+    forbidden_transfer: "same as SRC-3-07"
+    status: verified-p1
+  - source_id: SRC-3-09
+    title: "UCLA Physics Colloquium presentation, 2023-05-25"
+    authors: ["Katsushi Arisaka"]
+    year: 2023
+    ids: {note: "slide deck, 93 pages"}
+    file: "internal-docs/plans-v3/reference_documents/Arisaka Colloquium 5-25-2023 Final.pdf"
+    sha256: "4c80cf580dcb50e82b8205ab94551e657889608012d00da92bc7dbcb09df7c64"
+    pages: 93
+    domain: "presentation context for SRC-3-07/08 (SRC class)"
+    reusable_math: "none directly; context only"
+    forbidden_transfer: "same as SRC-3-07"
+    status: verified-p1
