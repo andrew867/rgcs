@@ -1,0 +1,76 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "RGCS v2: Resonant Geometry Computational System"
+version: 2.0.0
+date-released: "2026-07-14"
+license: MIT
+authors:
+  - family-names: Green
+    given-names: Andrew
+    email: me@andrewgreen.ca
+abstract: >-
+  Deterministic, typed, tested Python library (rgcs_core, equations
+  RGCS-M.1..M.61), desktop research workbench (rgcs_desktop), experiment
+  schemas/templates, and a fully generated manuscript for studying
+  acoustic/mechanical resonance and phase coherence in engineered quartz
+  geometries. All scientific statements are classified as Established,
+  Derived, Hypothesis, or Source claim; all 14 project hypotheses are
+  pre-registered with observables, controls, failure conditions, and
+  uncertainty statements, and none has been experimentally confirmed.
+keywords:
+  - resonance
+  - quartz
+  - coherence
+  - coupled modes
+  - reproducible research
+references:
+  - type: article
+    title: "Naturally resonant dark matter from extra dimensions"
+    authors:
+      - family-names: Lee
+        given-names: Taegyu
+      - family-names: Tsai
+        given-names: Yu-Dai
+    journal: "Physical Review D"
+    volume: 114
+    year: 2026
+    doi: 10.1103/tsq1-bhsz
+  - type: article
+    title: "Quantum Damping of Cosmological Shear"
+    authors:
+      - family-names: Gan
+        given-names: Wen-Cong
+      - family-names: Graef
+        given-names: Leila L.
+      - family-names: Ramos
+        given-names: Rudnei O.
+      - family-names: Vicente
+        given-names: Gustavo S.
+      - family-names: Wang
+        given-names: Anzhong
+    year: 2025
+    url: https://arxiv.org/abs/2510.14021
+  - type: article
+    title: "Emergence of phase coherence in a magnon Bose–Einstein condensate"
+    authors:
+      - family-names: Koster
+        given-names: Malte
+      - family-names: Schweizer
+        given-names: Matthias R.
+      - family-names: Noack
+        given-names: Timo
+      - family-names: Vasyuchka
+        given-names: Vitaliy I.
+      - family-names: Bozhko
+        given-names: Dmytro A.
+      - family-names: Hillebrands
+        given-names: Burkard
+      - family-names: Weiler
+        given-names: Mathias
+      - family-names: Serga
+        given-names: Alexander A.
+      - family-names: von Freymann
+        given-names: Georg
+    journal: "Nature Physics"
+    year: 2026
+    doi: 10.1038/s41567-026-03373-6

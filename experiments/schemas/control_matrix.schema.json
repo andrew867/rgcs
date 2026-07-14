@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/control_matrix.schema.json",
+  "title": "RGCS control matrix",
+  "description": "Declares the control set for one protocol branch and tracks completion. Binding gate: instrument-only and no-specimen controls must be complete (status done) BEFORE any coherence or enhancement claim on that branch (KOS-13; Agent 03 handoff).",
+  "type": "object",
+  "required": ["branch", "protocol_version", "controls"],
+  "additionalProperties": false,
+  "properties": {
+    "branch": {
+      "type": "string",
+      "enum": ["modal_survey", "electrode_pulse", "sound_key", "opposed_coil", "human_loading", "spiral_cone", "water", "spatial_mapping"]
+    },
+    "protocol_version": { "type": "string" },
+    "controls": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["control_id", "role", "description", "required_before_claim", "gate"],
+        "additionalProperties": false,
+        "properties": {
+          "control_id": { "type": "string", "pattern": "^CTL-[A-Za-z0-9_.-]+$" },
+          "role": {
+            "type": "string",
+            "enum": [
+              "negative_instrument_only",
+              "negative_no_specimen",
+              "negative_dummy_load",
+              "negative_off_frequency",
+              "negative_matched_specimen",
+              "sham",
+              "positive_injection",
+              "positive_known_resonator",
+              "randomization",
+              "sensor_swap",
+              "sensor_reposition",
+              "operator_replication",
+              "blinding",
+              "other"
+            ]
+          },
+          "description": { "type": "string" },
+          "required_before_claim": { "type": "boolean", "description": "True = a claim on this branch is non-compliant until this control is done." },
+          "gate": { "type": "string", "enum": ["pre_campaign", "per_session", "per_run", "per_specimen"] },
+          "matched_variables": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "What the control matches (e.g. 'SPL_at_specimen', 'mass', 'thickness', 'delivered_energy')."
+          },
+          "status": { "type": "string", "enum": ["planned", "in_progress", "done", "failed"] },
+          "run_ids": { "type": "array", "items": { "type": "string" } },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "notes": { "type": "string" }
+  }
+}

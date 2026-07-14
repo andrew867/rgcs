@@ -1,0 +1,47 @@
+{
+  "acquisition_id": "ACQ-COIL-IQ-001",
+  "sample_rate_hz": 65536,
+  "duration_s": 2.0,
+  "n_samples": 131072,
+  "single_shot": true,
+  "n_runs": 120,
+  "post_drive": {
+    "drive_off_time_s": 0.368,
+    "post_drive_ratio": 4.43
+  },
+  "iq": {
+    "enabled": true,
+    "lo_frequency_hz": 4096,
+    "lo_derivation": "same TCXO/divider chain as drive carrier",
+    "demodulation": "lock_in",
+    "shared_reference": true,
+    "reference_source": "house 10 MHz reference"
+  },
+  "channels": [
+    {
+      "channel_id": "CH1",
+      "sensor_type": "contact_mic",
+      "units": "V",
+      "position_xyz_mm": [77.0, 18.0, 0.0],
+      "axis_x_mm": 77.0,
+      "aperture_mm": 6.0,
+      "calibration_ref": "CAL-CM-2026-06-30",
+      "sensor_mass_g": 1.2
+    },
+    {
+      "channel_id": "CH2",
+      "sensor_type": "current_shunt",
+      "units": "V",
+      "position_xyz_mm": [0.0, -40.0, 0.0],
+      "calibration_ref": "CAL-SHUNT-0R1-2026-06-30"
+    }
+  ],
+  "anti_alias_filter": { "type": "8th-order Butterworth", "cutoff_hz": 25000 },
+  "instrument_chain": [
+    "contact mic -> charge amp (shielded) -> AA filter -> ADC",
+    "coil shunt 0.1 ohm -> differential probe -> ADC",
+    "all clocks locked to 10 MHz house reference"
+  ],
+  "artifact_register_ref": "campaigns/2026-07/artifact_register.md",
+  "notes": "Example instance for acquisition.schema.json."
+}

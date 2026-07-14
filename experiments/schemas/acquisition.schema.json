@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/acquisition.schema.json",
+  "title": "RGCS acquisition configuration",
+  "description": "Sampling, channel, and I/Q configuration for one run. Binding rules (DYNAMIC_COHERENCE_SPEC.md section 3): single-shot capture (no cross-run averaging before coherence analysis); acquisition extends >= 2.5x past drive-off for coherence claims; sensor aperture and positions are first-class metadata (spatial low-pass, KOS-11); n_runs >= 100 for ensemble phase statistics.",
+  "type": "object",
+  "required": ["acquisition_id", "sample_rate_hz", "duration_s", "single_shot", "n_runs", "channels"],
+  "additionalProperties": false,
+  "properties": {
+    "acquisition_id": { "type": "string", "pattern": "^ACQ-[A-Za-z0-9_.-]+$" },
+    "sample_rate_hz": { "type": "number", "exclusiveMinimum": 0 },
+    "duration_s": { "type": "number", "exclusiveMinimum": 0 },
+    "n_samples": { "type": "integer", "minimum": 1 },
+    "single_shot": {
+      "type": "boolean",
+      "description": "True = each run stored individually with no averaging across excitation cycles. Required true for coherence/phase analysis."
+    },
+    "n_runs": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Repeated independent runs in this configuration. >= 100 required before ensemble-phase (Rayleigh) claims; KOS used 1000."
+    },
+    "post_drive": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "drive_off_time_s": { "type": "number", "minimum": 0 },
+        "post_drive_ratio": {
+          "type": "number",
+          "minimum": 0,
+          "description": "(duration_s - drive_off_time_s)/drive_off_time_s. Must be >= 2.5 for any coherence claim (KOS-12 rule); values below 2.5 restrict the run to amplitude-only analysis."
+        }
+      }
+    },
+    "iq": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "lo_frequency_hz": { "type": "number", "exclusiveMinimum": 0 },
+        "lo_derivation": { "type": "string", "description": "How the LO derives from the shared reference." },
+        "demodulation": { "type": "string", "enum": ["hardware_iq_mixer", "lock_in", "digital_hilbert", "digital_heterodyne"] },
+        "shared_reference": { "type": "boolean", "description": "Must be true (and match drive_config.reference_clock.shared) for phase claims." },
+        "reference_source": { "type": "string" }
+      }
+    },
+    "channels": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["channel_id", "sensor_type", "units"],
+        "additionalProperties": false,
+        "properties": {
+          "channel_id": { "type": "string" },
+          "sensor_type": {
+            "type": "string",
+            "enum": ["contact_mic", "accelerometer", "laser_vibrometer", "microphone", "hydrophone", "hall_probe", "tmr_probe", "charge_amplifier", "current_shunt", "voltage_probe", "temperature", "ph", "conductivity", "uv_vis", "mass_balance", "force", "other"]
+          },
+          "units": { "type": "string", "description": "Observable unit X declared per campaign (NOTATION_AND_UNITS.md 2.8), e.g. 'm/s', 'V', 'Pa', 'g'." },
+          "position_xyz_mm": {
+            "type": "array", "items": { "type": "number" }, "minItems": 3, "maxItems": 3,
+            "description": "Sensor position in the bench frame; REQUIRED metadata for spatial-mapping and parity analysis. x follows the female-apex frame for on-axis sensors."
+          },
+          "axis_x_mm": { "type": "number", "description": "On-axis coordinate (female-apex frame) for axial-scan channels." },
+          "aperture_mm": { "type": "number", "exclusiveMinimum": 0, "description": "Sensor contact/sensing aperture; acts as a spatial low-pass filter on mode shapes (KOS-11; golden case (g))." },
+          "orientation_note": { "type": "string" },
+          "calibration_ref": { "type": "string", "description": "Calibration record ID / file." },
+          "sensor_mass_g": { "type": "number", "minimum": 0, "description": "Contact-sensor added mass - itself a loading artifact to check." }
+        }
+      }
+    },
+    "anti_alias_filter": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": { "type": "string" },
+        "cutoff_hz": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "instrument_chain": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Ordered parts list of the detection chain (KOS-05 discipline)."
+    },
+    "artifact_register_ref": {
+      "type": "string",
+      "description": "Path to the campaign's known-instrument-artifact register (KOS-14). Required before Stage-III-type claims."
+    },
+    "notes": { "type": "string" }
+  }
+}

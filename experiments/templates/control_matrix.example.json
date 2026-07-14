@@ -1,0 +1,49 @@
+{
+  "branch": "opposed_coil",
+  "protocol_version": "1.0.0",
+  "controls": [
+    {
+      "control_id": "CTL-COIL-INSTR",
+      "role": "negative_instrument_only",
+      "description": "Full acquisition chain, drive electronics powered, coil disconnected at driver output; characterizes instrument coherence baseline b_w and phase drift.",
+      "required_before_claim": true,
+      "gate": "per_session",
+      "status": "planned"
+    },
+    {
+      "control_id": "CTL-COIL-NOXTL",
+      "role": "negative_no_specimen",
+      "description": "Coils energized at identical settings with no crystal present; isolates drive pickup (JH-033 artifact class).",
+      "required_before_claim": true,
+      "gate": "per_session",
+      "matched_variables": ["voltage_v", "pulse_width_us", "envelope_family"],
+      "status": "planned"
+    },
+    {
+      "control_id": "CTL-COIL-DUMMY",
+      "role": "negative_dummy_load",
+      "description": "Resistor dummy load replacing coil pair; separates switching transients from field effects.",
+      "required_before_claim": true,
+      "gate": "per_session",
+      "matched_variables": ["delivered_energy"],
+      "status": "planned"
+    },
+    {
+      "control_id": "CTL-COIL-INJ",
+      "role": "positive_injection",
+      "description": "Known weak tone injected at sensor input to establish the coherence detection limit (KOS-10 test consequence; H-14 prerequisite).",
+      "required_before_claim": true,
+      "gate": "pre_campaign",
+      "status": "planned"
+    },
+    {
+      "control_id": "CTL-COIL-RAND",
+      "role": "randomization",
+      "description": "Active/no-specimen/dummy run order drawn from a seeded RNG before each session.",
+      "required_before_claim": true,
+      "gate": "per_session",
+      "status": "planned"
+    }
+  ],
+  "notes": "Example instance for control_matrix.schema.json; the full per-branch matrix lives in experiments/controls/CONTROL_MATRIX.md + control_matrix.example.json."
+}

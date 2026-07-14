@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/specimen.schema.json",
+  "title": "RGCS specimen record",
+  "description": "One physical specimen (crystal, spiral cone, matched control resonator, water vessel, fixture, or dummy load). Field names carry unit suffixes per docs/NOTATION_AND_UNITS.md policy 0.3. Classification of embedded values follows docs/SCIENTIFIC_CLASSIFICATION_POLICY.md; source-claim dimensions (e.g. 51.843 deg) must be flagged in provenance.classification_note.",
+  "type": "object",
+  "required": ["specimen_id", "specimen_type", "material", "provenance"],
+  "additionalProperties": false,
+  "properties": {
+    "specimen_id": {
+      "type": "string",
+      "pattern": "^SP-[A-Za-z0-9_.-]+$",
+      "description": "Stable unique identifier, e.g. SP-Q154-001."
+    },
+    "specimen_type": {
+      "type": "string",
+      "enum": ["quartz_crystal", "spiral_cone_resonator", "control_resonator", "water_vessel", "fixture", "dummy_load", "other"]
+    },
+    "material": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "description": "e.g. alpha-quartz, copper, PLA, borosilicate" },
+        "density_g_cm3": { "type": "number", "exclusiveMinimum": 0, "description": "Handbook or measured density; alpha-quartz default 2.65 (Established, citation required per D-19)." },
+        "density_source": { "type": "string", "description": "Citation or 'measured'." },
+        "purity_note": { "type": "string" }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "description": "Faceted-crystal geometry per NOTATION_AND_UNITS.md 2.1. Required for quartz_crystal specimens.",
+      "additionalProperties": false,
+      "properties": {
+        "length_mm": { "type": "number", "exclusiveMinimum": 0, "description": "Total length L, female (wide) apex to male (narrow) apex." },
+        "diameter_wide_mm": { "type": "number", "exclusiveMinimum": 0 },
+        "diameter_narrow_mm": { "type": "number", "exclusiveMinimum": 0 },
+        "diameter_mode": { "type": "string", "enum": ["across_vertices", "across_flats"] },
+        "facet_count": { "type": "integer", "minimum": 3 },
+        "angle_female_deg": { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 180 },
+        "angle_male_deg": { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 180 },
+        "angle_mode": { "type": "string", "enum": ["face_slope", "axis_to_face", "apex_included"] },
+        "cap_height_female_mm": { "type": "number", "minimum": 0 },
+        "cap_height_male_mm": { "type": "number", "minimum": 0 },
+        "measurement_uncertainty_mm": { "type": "number", "minimum": 0 },
+        "cad_file": { "type": "string" },
+        "cad_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "spiral": {
+      "type": "object",
+      "description": "Spiral-cone resonator parameters per NOTATION_AND_UNITS.md 2.5 (only for spiral_cone_resonator and its matched controls).",
+      "additionalProperties": false,
+      "properties": {
+        "growth_ratio_q": { "type": "number", "exclusiveMinimum": 1 },
+        "turns_T": { "type": "number", "exclusiveMinimum": 0 },
+        "outer_radius_R0_mm": { "type": "number", "exclusiveMinimum": 0 },
+        "cone_height_H_mm": { "type": "number", "exclusiveMinimum": 0 },
+        "cone_exponent_pz": { "type": "number", "exclusiveMinimum": 0 },
+        "path_length_3d_mm": { "type": "number", "exclusiveMinimum": 0, "description": "Converged numeric ell_3D (RGCS-M.35)." },
+        "compact_radius_prior_mm": { "type": "number", "exclusiveMinimum": 0, "description": "R_chi^(s) = ell_3D/(2 pi T) (Hypothesis, RGCS-M.36)." },
+        "matched_control_shape": { "type": "string", "enum": ["disk", "plain_cone", "archimedean_spiral", "flat_log_spiral", "none"], "description": "For control_resonator specimens: which matched-control shape this is (RG-08)." }
+      }
+    },
+    "ladder": {
+      "type": "object",
+      "description": "Design-target ladder placement. f0 = 4096 Hz is a Source claim (RG-01); the target itself carries no truth value.",
+      "additionalProperties": false,
+      "properties": {
+        "target_harmonic_N": { "type": "integer", "minimum": 1 },
+        "target_length_mm": { "type": "number", "exclusiveMinimum": 0 },
+        "base_frequency_f0_hz": { "type": "number", "exclusiveMinimum": 0 },
+        "length_shortfall_ratio": { "type": "number", "exclusiveMinimum": 0, "description": "k_tilde_H = L_actual/L_target (Hypothesis proxy, RGCS-M.44)." }
+      }
+    },
+    "mass_measured_g": { "type": "number", "exclusiveMinimum": 0 },
+    "mass_predicted_g": { "type": "number", "exclusiveMinimum": 0, "description": "From geometry + density (RGCS-M.6); disagreement with mass_measured_g is an intake artifact check." },
+    "orientation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "crystallographic_axis_known": { "type": "boolean", "description": "If false, u_v = 0.05 relative wave-speed uncertainty applies (RGCS-M.10)." },
+        "axis_note": { "type": "string" }
+      }
+    },
+    "water": {
+      "type": "object",
+      "description": "Water-branch vessel contents (only for water_vessel).",
+      "additionalProperties": false,
+      "properties": {
+        "volume_ml": { "type": "number", "exclusiveMinimum": 0 },
+        "solute": { "type": "string" },
+        "solute_concentration_note": { "type": "string" },
+        "vessel_material": { "type": "string" },
+        "sealed": { "type": "boolean" }
+      }
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "defects": { "type": "array", "items": { "type": "string" } },
+        "photos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["file", "sha256"],
+            "additionalProperties": false,
+            "properties": {
+              "file": { "type": "string" },
+              "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+            }
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["origin"],
+      "additionalProperties": false,
+      "properties": {
+        "origin": { "type": "string", "description": "Vendor, fabricator, or corpus reference." },
+        "received_date": { "type": "string", "format": "date" },
+        "classification_note": { "type": "string", "description": "Which embedded values are Source claims (e.g. angles 51.843/60 deg) vs measured." }
+      }
+    },
+    "notes": { "type": "string" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "specimen_type": { "const": "quartz_crystal" } } },
+      "then": { "required": ["specimen_id", "specimen_type", "material", "provenance", "geometry", "mass_measured_g"] }
+    },
+    {
+      "if": { "properties": { "specimen_type": { "const": "water_vessel" } } },
+      "then": { "required": ["specimen_id", "specimen_type", "material", "provenance", "water"] }
+    }
+  ]
+}

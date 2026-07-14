@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/environment.schema.json",
+  "title": "RGCS environment record",
+  "description": "Environmental state during one run. Temperature enters the correction ledger (delta_T, RGCS-M.45); ambient acoustics and EMI are artifact channels.",
+  "type": "object",
+  "required": ["bench_id", "timestamp_start", "temperature_c_start"],
+  "additionalProperties": false,
+  "properties": {
+    "bench_id": { "type": "string" },
+    "fixture_id": { "type": "string", "description": "Mount/fixture identity; fixture resonances are a registered artifact source." },
+    "timestamp_start": { "type": "string", "format": "date-time" },
+    "timestamp_end": { "type": "string", "format": "date-time" },
+    "temperature_c_start": { "type": "number" },
+    "temperature_c_end": { "type": "number" },
+    "specimen_temperature_c": { "type": "number", "description": "If measured separately (coil/electrode heating check; stop condition > 5-10 C rise)." },
+    "humidity_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+    "pressure_hpa": { "type": "number", "exclusiveMinimum": 0 },
+    "ambient_acoustic_dba": { "type": "number", "description": "Background SPL at specimen position before drive." },
+    "mains_frequency_hz": { "type": "number", "description": "Nominal mains (50/60 Hz) - hum/harmonic artifact bookkeeping." },
+    "emi_survey_note": { "type": "string", "description": "Nearby switching supplies, radios, etc." },
+    "vibration_background_note": { "type": "string" },
+    "instrument_phase_drift_deg": { "type": "number", "minimum": 0, "description": "Measured instrument phase-drift budget for the session (KOS-13 gate; required before H-13 claims)." },
+    "water_baseline": {
+      "type": "object",
+      "description": "Water-branch pre-run baselines.",
+      "additionalProperties": false,
+      "properties": {
+        "ph": { "type": "number" },
+        "conductivity_us_cm": { "type": "number", "minimum": 0 },
+        "water_temperature_c": { "type": "number" },
+        "mass_g": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "notes": { "type": "string" }
+  }
+}

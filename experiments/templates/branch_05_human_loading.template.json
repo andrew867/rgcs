@@ -1,0 +1,172 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-HUM-TEMPLATE",
+  "session_id": "SES-TEMPLATE",
+  "protocol_branch": "human_loading",
+  "protocol_version": "1.0.0",
+  "hypothesis_ids": [
+    "H-08",
+    "H-08b"
+  ],
+  "timestamp": "2026-07-14T00:00:00Z",
+  "operator_id": "OP-01",
+  "control_role": "active",
+  "randomization": {
+    "seed": 20260714,
+    "scheme": "condition order drawn from seeded RNG before session",
+    "blinded": true,
+    "blind_code": "COND-X"
+  },
+  "specimen": {
+    "specimen_id": "SP-Q154-001",
+    "specimen_type": "quartz_crystal",
+    "material": {
+      "name": "alpha-quartz",
+      "density_g_cm3": 2.65,
+      "density_source": "handbook (pin per D-19)"
+    },
+    "geometry": {
+      "length_mm": 154.1,
+      "diameter_wide_mm": 34.0,
+      "diameter_narrow_mm": 25.0,
+      "diameter_mode": "across_vertices",
+      "facet_count": 6,
+      "angle_female_deg": 51.843,
+      "angle_male_deg": 60.0,
+      "angle_mode": "face_slope",
+      "measurement_uncertainty_mm": 0.05
+    },
+    "ladder": {
+      "target_harmonic_N": 5,
+      "target_length_mm": 154.052734375,
+      "base_frequency_f0_hz": 4096
+    },
+    "mass_measured_g": 153.2,
+    "orientation": {
+      "crystallographic_axis_known": false,
+      "axis_note": "u_v = 0.05 applies (RGCS-M.10)"
+    },
+    "provenance": {
+      "origin": "TEMPLATE - replace with real specimen record",
+      "classification_note": "angles and f0 = 4096 Hz are Source claims (RG-01, RG-16)"
+    }
+  },
+  "environment": {
+    "bench_id": "BENCH-A",
+    "fixture_id": "FIX-VBLOCK-03",
+    "timestamp_start": "2026-07-14T00:00:00Z",
+    "temperature_c_start": 21.0,
+    "humidity_pct": 45,
+    "ambient_acoustic_dba": 38.0,
+    "instrument_phase_drift_deg": 0.0,
+    "notes": "TEMPLATE - fill measured values; phase-drift budget required before phase claims (KOS-13)."
+  },
+  "provenance": {
+    "software": {
+      "acquisition": "FILL",
+      "rgcs_core": "FILL"
+    },
+    "git_commit": "FILL",
+    "synthetic": false
+  },
+  "classification_note": "All preset drive values are Source claims (RG-12/RG-13/RG-14); this template asserts no result.",
+  "notes": "TEMPLATE for docs/EXPERIMENT_PROTOCOL.md branch - copy, fill measured values, recompute sha256 hashes.",
+  "drive_config": {
+    "drive_id": "DRV-HUM-TAP",
+    "branch": "human_loading",
+    "drive_type": "impulse_tap",
+    "placement": {
+      "drive_x_mm": 40.0,
+      "note": "tap excitation only; NO electrode/coil drive during human contact"
+    },
+    "timing": {
+      "session_duration_s": 0.05,
+      "drive_off_time_s": 0.005
+    },
+    "reference_clock": {
+      "shared": true,
+      "source": "ADC trigger from tap force channel"
+    },
+    "source_claim_refs": [
+      "RG-10"
+    ]
+  },
+  "acquisition": {
+    "acquisition_id": "ACQ-HUM-TEMPLATE",
+    "sample_rate_hz": 131072,
+    "duration_s": 0.5,
+    "n_samples": 65536,
+    "single_shot": true,
+    "n_runs": 20,
+    "post_drive": {
+      "drive_off_time_s": 0.005,
+      "post_drive_ratio": 99.0
+    },
+    "channels": [
+      {
+        "channel_id": "CH1",
+        "sensor_type": "contact_mic",
+        "units": "V",
+        "position_xyz_mm": [
+          120.0,
+          18.0,
+          0.0
+        ],
+        "calibration_ref": "CAL-TEMPLATE",
+        "aperture_mm": 6.0
+      },
+      {
+        "channel_id": "CH2",
+        "sensor_type": "force",
+        "units": "N",
+        "position_xyz_mm": [
+          40.0,
+          -20.0,
+          0.0
+        ],
+        "calibration_ref": "CAL-TEMPLATE"
+      }
+    ],
+    "artifact_register_ref": "campaigns/TEMPLATE/artifact_register.md"
+  },
+  "human_loading": {
+    "ethics_review_ref": "ETHICS-TEMPLATE (hard gate: run excluded without it)",
+    "no_energized_contact_confirmed": true,
+    "participant_code": "P-01",
+    "contact_protocol_id": "CONTACT-PROTO-1.0 (defined grip area, force band, hand position)",
+    "glove_condition": "bare_hand"
+  },
+  "timeseries": [
+    {
+      "file": "data/RUN-HUM-TEMPLATE_shot000.csv",
+      "format": "csv",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "channel_ids": [
+        "CH1",
+        "CH2"
+      ],
+      "run_index": 0,
+      "sample_rate_hz": 131072,
+      "t0_s": 0.0,
+      "n_rows": 65536,
+      "columns": [
+        {
+          "name": "t_s",
+          "units": "s",
+          "description": "time"
+        },
+        {
+          "name": "mic_v",
+          "units": "V",
+          "description": "contact mic"
+        },
+        {
+          "name": "force_n",
+          "units": "N",
+          "description": "tap force"
+        }
+      ],
+      "notes": "TEMPLATE placeholder - sha256 must be the real file hash."
+    }
+  ]
+}

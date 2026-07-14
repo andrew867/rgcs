@@ -1,0 +1,16 @@
+{
+  "file": "data/RUN-COIL-0001_shot000_iq.csv",
+  "format": "csv",
+  "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "channel_ids": ["CH1"],
+  "run_index": 0,
+  "sample_rate_hz": 65536,
+  "t0_s": 0.0,
+  "n_rows": 131072,
+  "columns": [
+    { "name": "t_s", "units": "s", "description": "time from acquisition start" },
+    { "name": "z_i_v", "units": "V", "channel_id": "CH1", "description": "in-phase component z_I" },
+    { "name": "z_q_v", "units": "V", "channel_id": "CH1", "description": "quadrature component z_Q" }
+  ],
+  "notes": "Example instance for timeseries_channel.schema.json."
+}

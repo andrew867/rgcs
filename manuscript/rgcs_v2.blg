@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: rgcs_v2.aux
+The style file: unsrtnat.bst
+Database file #1: references.bib
+Warning--entry type for "rgcscore2026" isn't style-file defined
+--line 238 of file references.bib
+Warning--entry type for "greenscad2026" isn't style-file defined
+--line 245 of file references.bib
+Warning--entry type for "greenspiralscad2026" isn't style-file defined
+--line 253 of file references.bib
+Warning--empty year in vogelcorpus
+Warning--empty year in wardquartz
+You've used 28 entries,
+            2481 wiz_defined-function locations,
+            707 strings with 9393 characters,
+and the built_in function-call counts, 9497 in all, are:
+= -- 778
+> -- 468
+< -- 21
++ -- 197
+- -- 138
+* -- 663
+:= -- 1530
+add.period$ -- 89
+call.type$ -- 28
+change.case$ -- 53
+chr.to.int$ -- 25
+cite$ -- 30
+duplicate$ -- 471
+empty$ -- 915
+format.name$ -- 176
+if$ -- 1998
+int.to.chr$ -- 4
+int.to.str$ -- 29
+missing$ -- 19
+newline$ -- 153
+num.names$ -- 84
+pop$ -- 277
+preamble$ -- 1
+purify$ -- 28
+quote$ -- 0
+skip$ -- 296
+stack$ -- 0
+substring$ -- 336
+swap$ -- 60
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 187
+warning$ -- 2
+while$ -- 77
+width$ -- 0
+write$ -- 363
+(There were 5 warnings)

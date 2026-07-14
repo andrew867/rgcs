@@ -1,0 +1,707 @@
+# RGCS v2 — Model Registry (machine-readable)
+# Author: Sub-Agent 02 (Mathematical Foundations)
+# Date: 2026-07-14
+# Contract: every model/equation implemented in rgcs_core MUST reference an id here.
+# Fields: id, name, equation (plain-text), inputs [{symbol, unit, type}], outputs,
+#         classification (Established|Derived|Hypothesis|Source claim), source,
+#         module_target (rgcs_core module), assumptions [A-xx], hypothesis [H-xx], notes.
+# Units: "-" means dimensionless. "X" means declared campaign observable unit.
+
+schema_version: 1
+project: RGCS-v2
+notation_authority: docs/NOTATION_AND_UNITS.md
+
+models:
+  - id: RGCS-M.1
+    name: polygon_area_across_vertices
+    equation: "A = (N_f/8) * D^2 * sin(2*pi/N_f)"
+    inputs:
+      - {symbol: D, unit: mm, type: float}
+      - {symbol: N_f, unit: "-", type: int}
+    outputs: [{symbol: A, unit: mm^2, type: float}]
+    classification: Established
+    source: RG-04
+    module_target: rgcs_core.geometry
+  - id: RGCS-M.2
+    name: polygon_area_across_flats
+    equation: "A = N_f * (D/2)^2 * tan(pi/N_f)"
+    inputs:
+      - {symbol: D, unit: mm, type: float}
+      - {symbol: N_f, unit: "-", type: int}
+    outputs: [{symbol: A, unit: mm^2, type: float}]
+    classification: Established
+    source: RG-04
+    module_target: rgcs_core.geometry
+  - id: RGCS-M.3
+    name: apothem
+    equation: "r_a = (D/2)*cos(pi/N_f) (across_vertices); r_a = D/2 (across_flats)"
+    inputs:
+      - {symbol: D, unit: mm, type: float}
+      - {symbol: N_f, unit: "-", type: int}
+      - {symbol: diameter_mode, unit: "-", type: enum}
+    outputs: [{symbol: r_a, unit: mm, type: float}]
+    classification: Established
+    source: RG-04
+    module_target: rgcs_core.geometry
+  - id: RGCS-M.4
+    name: cap_height
+    equation: "h = r_a*tan(alpha) | r_a/tan(alpha) | r_a/tan(alpha/2) per angle_mode"
+    inputs:
+      - {symbol: r_a, unit: mm, type: float}
+      - {symbol: alpha, unit: deg, type: float}
+      - {symbol: angle_mode, unit: "-", type: enum}
+    outputs: [{symbol: h, unit: mm, type: float}]
+    classification: Established
+    source: RG-04; angle values 51.843/60 are Source claim (RG-16)
+    module_target: rgcs_core.geometry
+    assumptions: [A-20]
+  - id: RGCS-M.5
+    name: crystal_volume
+    equation: "V = (h_s/3)*(A_w + A_n + sqrt(A_w*A_n)) + A_w*h_f/3 + A_n*h_m/3"
+    inputs:
+      - {symbol: h_s, unit: mm, type: float}
+      - {symbol: h_f, unit: mm, type: float}
+      - {symbol: h_m, unit: mm, type: float}
+      - {symbol: A_w, unit: mm^2, type: float}
+      - {symbol: A_n, unit: mm^2, type: float}
+    outputs: [{symbol: V, unit: cm^3, type: float}]
+    classification: Established
+    source: RG-04
+    module_target: rgcs_core.geometry
+    assumptions: [A-20]
+  - id: RGCS-M.6
+    name: crystal_mass
+    equation: "m = rho * V"
+    inputs:
+      - {symbol: rho, unit: g/cm^3, type: float}
+      - {symbol: V, unit: cm^3, type: float}
+    outputs: [{symbol: m, unit: g, type: float}]
+    classification: Established
+    source: RG-04
+    module_target: rgcs_core.geometry
+    assumptions: [A-19]
+  - id: RGCS-M.7
+    name: density_inverse_sizing
+    equation: "solve rho*V(s_D*D_w, s_D*D_n; L) = m_star for s_D (Newton, bisection fallback)"
+    inputs:
+      - {symbol: m_star, unit: g, type: float}
+      - {symbol: L, unit: mm, type: float}
+      - {symbol: D_w, unit: mm, type: float}
+      - {symbol: D_n, unit: mm, type: float}
+      - {symbol: rho, unit: g/cm^3, type: float}
+    outputs: [{symbol: s_D, unit: "-", type: float}]
+    classification: Derived
+    source: v1.8 workbook lineage
+    module_target: rgcs_core.geometry
+    assumptions: [A-19, A-20]
+    notes: "unique root; convergence |dm|/m* < 1e-10"
+  - id: RGCS-M.8
+    name: axial_half_wave
+    equation: "f_ax = v_L / (2*L_m); L_m = L/1000"
+    inputs:
+      - {symbol: v_L, unit: m/s, type: UncertainValue}
+      - {symbol: L, unit: mm, type: float}
+    outputs: [{symbol: f_ax, unit: Hz, type: UncertainValue}]
+    classification: Derived
+    source: RG-01 (formula Established; applicability Hypothesis H-01a)
+    module_target: rgcs_core.ladder
+    assumptions: [A-01, A-02]
+    hypothesis: [H-01a]
+  - id: RGCS-M.9
+    name: ladder_length
+    equation: "L_N = v_L / (2*N*f_0) * 1000"
+    inputs:
+      - {symbol: v_L, unit: m/s, type: UncertainValue}
+      - {symbol: N, unit: "-", type: int}
+      - {symbol: f_0, unit: Hz, type: float}
+    outputs: [{symbol: L_N, unit: mm, type: UncertainValue}]
+    classification: Derived
+    source: RG-01; f_0=4096 is Source claim
+    module_target: rgcs_core.ladder
+    assumptions: [A-01, A-02]
+  - id: RGCS-M.10
+    name: wave_speed_uncertainty_model
+    equation: "v_L = vbar_L*(1+delta_v); sd(delta_v)=u_v; default vbar_L=6310, u_v=0.05"
+    inputs:
+      - {symbol: vbar_L, unit: m/s, type: float}
+      - {symbol: u_v, unit: "-", type: float}
+    outputs: [{symbol: v_L, unit: m/s, type: UncertainValue}]
+    classification: Derived
+    source: D-05 resolution; 6310 pending citation (D-19a)
+    module_target: rgcs_core.material
+    assumptions: [A-02]
+  - id: RGCS-M.11
+    name: ladder_uncertainty_propagation
+    equation: "u(f_ax)/f_ax = u_v; u(L_N)/L_N = u_v"
+    inputs: [{symbol: u_v, unit: "-", type: float}]
+    outputs: [{symbol: u_f_rel, unit: "-", type: float}]
+    classification: Derived
+    source: RGCS-M.10
+    module_target: rgcs_core.ladder
+  - id: RGCS-M.12
+    name: harmonic_classification_set_valued
+    equation: "N_eff = f_ax/f_0; class set from interval intersection with [(N-1/2)f_0,(N+1/2)f_0]"
+    inputs:
+      - {symbol: f_ax, unit: Hz, type: UncertainValue}
+      - {symbol: f_0, unit: Hz, type: float}
+    outputs:
+      - {symbol: N_eff, unit: "-", type: float}
+      - {symbol: class_set, unit: "-", type: "list[int]"}
+    classification: Derived
+    source: D-05 resolution
+    module_target: rgcs_core.ladder
+  - id: RGCS-M.13
+    name: compact_mode_spectrum
+    equation: "f_n^2 = f_b^2 + (n*v_chi/(2*pi*R_chi_m))^2; R_chi_m = R_chi/1000"
+    inputs:
+      - {symbol: f_b, unit: Hz, type: float}
+      - {symbol: v_chi, unit: m/s, type: UncertainValue}
+      - {symbol: R_chi, unit: mm, type: float}
+      - {symbol: n, unit: "-", type: int}
+      - {symbol: P, unit: "-", type: enum}
+      - {symbol: include_zero_mode, unit: "-", type: bool}
+    outputs: [{symbol: f_n, unit: Hz, type: UncertainValue}]
+    classification: Hypothesis
+    source: RG-05; adapted from LT Eqs. (9)-(10) [LT-08/09]; substitution m->f, 1/R->v_chi/(2*pi*R_chi)
+    module_target: rgcs_core.compact
+    assumptions: [A-06, A-15]
+    hypothesis: [H-01]
+    notes: "golden: n=1, fb=0, v=6310, R=100mm -> 10042.6769091 Hz (G-06)"
+  - id: RGCS-M.14
+    name: compact_spectral_slope
+    equation: "kappa_chi = v_chi/(2*pi*R_chi_m)"
+    inputs:
+      - {symbol: v_chi, unit: m/s, type: UncertainValue}
+      - {symbol: R_chi, unit: mm, type: float}
+    outputs: [{symbol: kappa_chi, unit: Hz, type: UncertainValue}]
+    classification: Derived
+    source: identifiability analysis (Module 14)
+    module_target: rgcs_core.compact
+    notes: "only kappa_chi is identifiable from spacing; report kappa_chi, not (v_chi,R_chi)"
+  - id: RGCS-M.15
+    name: compact_spectrum_uncertainty
+    equation: "u(f_n)^2 = (f_b/f_n)^2 u(f_b)^2 + (n*kappa_chi/f_n)^2 u(n*kappa_chi)^2"
+    inputs:
+      - {symbol: f_b, unit: Hz, type: float}
+      - {symbol: kappa_chi, unit: Hz, type: UncertainValue}
+    outputs: [{symbol: u_f_n, unit: Hz, type: float}]
+    classification: Derived
+    source: first-order propagation
+    module_target: rgcs_core.compact
+  - id: RGCS-M.16
+    name: parity_mode_families
+    equation: "P-: u_n ~ sin(n*chi/2), n odd; P+: u_n ~ cos(n*chi/2), n even (incl. 0 per flag)"
+    inputs:
+      - {symbol: P, unit: "-", type: enum}
+      - {symbol: n_max, unit: "-", type: int}
+      - {symbol: include_zero_mode, unit: "-", type: bool}
+    outputs: [{symbol: index_set, unit: "-", type: "list[int]"}]
+    classification: Established (index sets) / Hypothesis (physical relevance H-03)
+    source: LT Table I + Eqs. (1)-(2) [LT-02/03/04]
+    module_target: rgcs_core.compact
+    assumptions: [A-08, A-15]
+    hypothesis: [H-03, H-04]
+  - id: RGCS-M.17
+    name: zero_mode_rule
+    equation: "odd: never n=0; even: n=0 member f=f_b iff include_zero_mode; f_b=0 => n=0 excluded"
+    inputs: [{symbol: include_zero_mode, unit: "-", type: bool}]
+    outputs: [{symbol: spectrum_metadata, unit: "-", type: dict}]
+    classification: Derived
+    source: D-14 resolution; LT-04 zero-flux template
+    module_target: rgcs_core.compact
+    hypothesis: [H-04]
+  - id: RGCS-M.18
+    name: resonance_offset
+    equation: "eps_R_f = (f_m^2 - (p*f_x)^2)/(p*f_x)^2"
+    inputs:
+      - {symbol: f_m, unit: Hz, type: float}
+      - {symbol: f_x, unit: Hz, type: float}
+      - {symbol: p, unit: "-", type: float}
+    outputs: [{symbol: eps_R_f, unit: "-", type: float}]
+    classification: Derived
+    source: RG-06; sign convention LT Eq. (13) [LT-15]
+    module_target: rgcs_core.resonance
+    hypothesis: [H-02]
+  - id: RGCS-M.19
+    name: offset_detuning_identity
+    equation: "eps_R_f = (1+d_lin)^2 - 1; d_lin = f_m/(p*f_x) - 1"
+    inputs: [{symbol: d_lin, unit: "-", type: float}]
+    outputs: [{symbol: eps_R_f, unit: "-", type: float}]
+    classification: Established
+    source: algebra
+    module_target: rgcs_core.resonance
+  - id: RGCS-M.20
+    name: q_derived_resonance_classes
+    equation: "eps_Q = 1/Q_eff; bins WITHIN<=1, NEAR<=5, MODERATE<=50, FAR>50 (x eps_Q)"
+    inputs:
+      - {symbol: eps_R_f, unit: "-", type: float}
+      - {symbol: Q_eff, unit: "-", type: float}
+    outputs: [{symbol: resonance_class, unit: "-", type: str}]
+    classification: Derived
+    source: D-06 resolution; replaces LT-window bins (LT-12 relegated to source summary)
+    module_target: rgcs_core.resonance
+    notes: "class string must ship with u(eps_R) (policy 3.4)"
+  - id: RGCS-M.21
+    name: sweep_span_heuristic
+    equation: "span = max(10 Hz, 4*|f_m - p*f_x|, 6*max(Gamma_m, Gamma_x))"
+    inputs:
+      - {symbol: f_m, unit: Hz, type: float}
+      - {symbol: f_x, unit: Hz, type: float}
+      - {symbol: Gamma_m, unit: Hz, type: float}
+      - {symbol: Gamma_x, unit: Hz, type: float}
+    outputs: [{symbol: span, unit: Hz, type: float}]
+    classification: Derived
+    source: D-06 resolution (engineering heuristic - not evidence)
+    module_target: rgcs_core.resonance
+  - id: RGCS-M.22
+    name: corrected_offset_with_uncertainty
+    equation: "f_corr = f0*(1+sum(delta_k)) signed; u(eps_R) ~ 2*sqrt((u(f_m)/f_m)^2+(u(f_x)/f_x)^2) near 0"
+    inputs:
+      - {symbol: delta_k, unit: "-", type: "dict[str,float]"}
+      - {symbol: u_f_m, unit: Hz, type: float}
+      - {symbol: u_f_x, unit: Hz, type: float}
+    outputs:
+      - {symbol: eps_R_corr, unit: "-", type: float}
+      - {symbol: u_eps_R, unit: "-", type: float}
+    classification: Derived
+    source: LT-Delta2; LT Eqs. (11)-(13) template [LT-13/14/15]
+    module_target: rgcs_core.resonance
+    assumptions: [A-10]
+  - id: RGCS-M.23
+    name: two_mode_matrix
+    equation: "H = [[f_A, g],[g, f_B]]"
+    inputs:
+      - {symbol: f_A, unit: Hz, type: float}
+      - {symbol: f_B, unit: Hz, type: float}
+      - {symbol: g, unit: Hz, type: float}
+    outputs: [{symbol: H, unit: Hz, type: ndarray}]
+    classification: Established
+    source: RG-07
+    module_target: rgcs_core.coupled
+  - id: RGCS-M.24
+    name: hybrid_eigenfrequencies
+    equation: "f_pm = (f_A+f_B)/2 +- sqrt(((f_A-f_B)/2)^2 + g^2)"
+    inputs:
+      - {symbol: f_A, unit: Hz, type: float}
+      - {symbol: f_B, unit: Hz, type: float}
+      - {symbol: g, unit: Hz, type: float}
+    outputs: [{symbol: f_pm, unit: Hz, type: "tuple[float,float]"}]
+    classification: Established
+    source: RG-07; golden G-08 (1000,1000,10 -> 990/1010)
+    module_target: rgcs_core.coupled
+    assumptions: [A-04]
+  - id: RGCS-M.25
+    name: mixing_angle
+    equation: "theta_mix = 0.5*atan2(2g, f_A - f_B)"
+    inputs:
+      - {symbol: f_A, unit: Hz, type: float}
+      - {symbol: f_B, unit: Hz, type: float}
+      - {symbol: g, unit: Hz, type: float}
+    outputs: [{symbol: theta_mix, unit: rad, type: float}]
+    classification: Established
+    source: RG-07
+    module_target: rgcs_core.coupled
+  - id: RGCS-M.26
+    name: linewidth_fwhm
+    equation: "Gamma_n = f_n/Q_n"
+    inputs:
+      - {symbol: f_n, unit: Hz, type: float}
+      - {symbol: Q_n, unit: "-", type: float}
+    outputs: [{symbol: Gamma_n, unit: Hz, type: float}]
+    classification: Established
+    source: RG-07 (FWHM convention stated per D-19c)
+    module_target: rgcs_core.coupled
+  - id: RGCS-M.27
+    name: strong_coupling_ratio
+    equation: "R_g = 2g/(Gamma_A + Gamma_B)"
+    inputs:
+      - {symbol: g, unit: Hz, type: float}
+      - {symbol: Gamma_A, unit: Hz, type: float}
+      - {symbol: Gamma_B, unit: Hz, type: float}
+    outputs: [{symbol: R_g, unit: "-", type: float}]
+    classification: Established
+    source: standard criterion (citation required, D-19c)
+    module_target: rgcs_core.coupled
+  - id: RGCS-M.28
+    name: n_mode_eigenproblem
+    equation: "H_nm = f_n*delta_nm + g_nm (sym); eigh -> hybrid frequencies + shapes"
+    inputs:
+      - {symbol: f_n, unit: Hz, type: ndarray}
+      - {symbol: g_nm, unit: Hz, type: ndarray}
+    outputs:
+      - {symbol: f_hyb, unit: Hz, type: ndarray}
+      - {symbol: u_k, unit: "-", type: ndarray}
+    classification: Established
+    source: linear algebra; fitted g_nm are Derived
+    module_target: rgcs_core.coupled
+    assumptions: [A-04]
+  - id: RGCS-M.29
+    name: coupling_geometry_scaling
+    equation: "g(R1)/g(R2) = sqrt(R2/R1) at fixed transducer/mode pair"
+    inputs:
+      - {symbol: g_R1, unit: Hz, type: float}
+      - {symbol: g_R2, unit: Hz, type: float}
+      - {symbol: R1, unit: mm, type: float}
+      - {symbol: R2, unit: mm, type: float}
+    outputs: [{symbol: scaling_ratio_test, unit: "-", type: float}]
+    classification: Hypothesis
+    source: analogue of LT Eq. (6) [LT-06]
+    module_target: rgcs_core.coupled
+    hypothesis: [H-05]
+  - id: RGCS-M.30
+    name: spiral_4d_path
+    equation: "X(theta) = [R0 e^{-a theta} cos, R0 e^{-a theta} sin, H(1-(r/R0)^{p_z}), chi0 + Omega_s theta]"
+    inputs:
+      - {symbol: R_0, unit: mm, type: float}
+      - {symbol: a, unit: "-", type: float}
+      - {symbol: H, unit: mm, type: float}
+      - {symbol: p_z, unit: "-", type: float}
+      - {symbol: Omega_s, unit: "-", type: float}
+      - {symbol: T, unit: "-", type: float}
+    outputs: [{symbol: X_theta, unit: "mm,mm,mm,rad", type: "dict[str,ndarray]"}]
+    classification: Established (geometry) / Hypothesis (relevance H-06)
+    source: RG-08
+    module_target: rgcs_core.spiral
+  - id: RGCS-M.31
+    name: spiral_pitch_parameter
+    equation: "a = ln(q)/(2*pi)"
+    inputs: [{symbol: q, unit: "-", type: float}]
+    outputs: [{symbol: a, unit: "-", type: float}]
+    classification: Established
+    source: RG-08; golden G-10 (q=e -> 0.15915494309)
+    module_target: rgcs_core.spiral
+  - id: RGCS-M.32
+    name: scale_rotation_eigenvalue
+    equation: "lambda_s = -a + i"
+    inputs: [{symbol: a, unit: "-", type: float}]
+    outputs: [{symbol: lambda_s, unit: "-", type: complex}]
+    classification: Established
+    source: RG-08
+    module_target: rgcs_core.spiral
+  - id: RGCS-M.33
+    name: curvature_invariant
+    equation: "r_kappa = 1/sqrt(1+a^2)"
+    inputs: [{symbol: a, unit: "-", type: float}]
+    outputs: [{symbol: r_kappa, unit: "-", type: float}]
+    classification: Established
+    source: RG-08; golden G-10 (0.98757049215)
+    module_target: rgcs_core.spiral
+  - id: RGCS-M.34
+    name: planar_arc_length_exact
+    equation: "l_pl = R0*sqrt(1+a^2)/a*(1 - e^{-2*pi*a*T})"
+    inputs:
+      - {symbol: R_0, unit: mm, type: float}
+      - {symbol: a, unit: "-", type: float}
+      - {symbol: T, unit: "-", type: float}
+    outputs: [{symbol: l_pl, unit: mm, type: float}]
+    classification: Established
+    source: RG-08
+    module_target: rgcs_core.spiral
+  - id: RGCS-M.35
+    name: numeric_3d_path_length_authoritative
+    equation: "l_3D = converged polyline length of 3D projection; refine until rel. change < 1e-6"
+    inputs: [{symbol: X_theta, unit: mm, type: "dict[str,ndarray]"}]
+    outputs: [{symbol: l_3D, unit: mm, type: float}]
+    classification: Derived
+    source: D-09 resolution; closed-form-x-correction RETIRED as definition
+    module_target: rgcs_core.spiral
+  - id: RGCS-M.36
+    name: spiral_compact_radius_prior
+    equation: "R_chi_s = l_3D/(2*pi*T)"
+    inputs:
+      - {symbol: l_3D, unit: mm, type: float}
+      - {symbol: T, unit: "-", type: float}
+    outputs: [{symbol: R_chi_s, unit: mm, type: float}]
+    classification: Hypothesis
+    source: RG-09 (mean-per-turn averaging assumption A-07)
+    module_target: rgcs_core.spiral
+    assumptions: [A-07]
+    hypothesis: [H-06a]
+  - id: RGCS-M.37
+    name: per_turn_compact_radius
+    equation: "R_chi_k = l_k/(2*pi), l_k = per-turn 3D length"
+    inputs: [{symbol: l_k, unit: mm, type: ndarray}]
+    outputs: [{symbol: R_chi_k, unit: mm, type: ndarray}]
+    classification: Hypothesis
+    source: RG-09 alternative definition; model-compared per M.60
+    module_target: rgcs_core.spiral
+    hypothesis: [H-06a]
+  - id: RGCS-M.38
+    name: metric_center
+    equation: "x_m = L/2"
+    inputs: [{symbol: L, unit: mm, type: float}]
+    outputs: [{symbol: x_m, unit: mm, type: float}]
+    classification: Established
+    source: RG-11
+    module_target: rgcs_core.node
+  - id: RGCS-M.39
+    name: geometry_node_prior_shaft_midpoint
+    equation: "x_g = (L + h_f - h_m)/2  [frame: from female/wide apex]"
+    inputs:
+      - {symbol: L, unit: mm, type: float}
+      - {symbol: h_f, unit: mm, type: float}
+      - {symbol: h_m, unit: mm, type: float}
+    outputs: [{symbol: x_g, unit: mm, type: float}]
+    classification: Derived
+    source: D-01 resolution; WB5 Sheet 13 value = L - x_g (male frame); core.py geometry_balance_node_mm DELETED
+    module_target: rgcs_core.node
+    assumptions: [A-01, A-20]
+    hypothesis: [H-07]
+    notes: "default N=5 geometry -> 78.3277 mm; L - x_g = 75.7250 mm reproduces WB5"
+  - id: RGCS-M.40
+    name: node_precedence_and_fraction
+    equation: "x_star = x_hat_e if measured else x_g; c_g = x_star/L; JSON null (never NaN)"
+    inputs:
+      - {symbol: x_hat_e, unit: mm, type: "float|None"}
+      - {symbol: x_g, unit: mm, type: float}
+      - {symbol: L, unit: mm, type: float}
+    outputs:
+      - {symbol: x_star, unit: mm, type: float}
+      - {symbol: c_g, unit: "-", type: float}
+    classification: Derived
+    source: RG-11; D-03 serialization rule
+    module_target: rgcs_core.node
+  - id: RGCS-M.41
+    name: node_alignment_factor
+    equation: "xi = (x_d - x_star)/sigma_x; N_x = exp(-xi^2)"
+    inputs:
+      - {symbol: x_d, unit: mm, type: float}
+      - {symbol: x_star, unit: mm, type: float}
+      - {symbol: sigma_x, unit: mm, type: float}
+    outputs: [{symbol: N_x, unit: "-", type: float}]
+    classification: Derived
+    source: RG-11/RG-18 (engineering heuristic - not evidence)
+    module_target: rgcs_core.node
+  - id: RGCS-M.42
+    name: loading_factor_measured
+    equation: "k_H = f_loaded/f_free"
+    inputs:
+      - {symbol: f_loaded, unit: Hz, type: float}
+      - {symbol: f_free, unit: Hz, type: float}
+    outputs: [{symbol: k_H, unit: "-", type: float}]
+    classification: Established
+    source: RG-10
+    module_target: rgcs_core.loading
+  - id: RGCS-M.43
+    name: added_modal_mass
+    equation: "DeltaM_H = eta*m*(1/k_H^2 - 1)"
+    inputs:
+      - {symbol: k_H, unit: "-", type: float}
+      - {symbol: m, unit: g, type: float}
+      - {symbol: eta, unit: "-", type: float}
+    outputs: [{symbol: DeltaM_H, unit: g, type: float}]
+    classification: Derived (conditioned on Hypothesis H-08)
+    source: RG-10; golden G-09
+    module_target: rgcs_core.loading
+    assumptions: [A-09]
+    hypothesis: [H-08]
+  - id: RGCS-M.44
+    name: length_shortfall_proxy
+    equation: "ktilde_H = L_actual/L_target (DISTINCT from k_H)"
+    inputs:
+      - {symbol: L_actual, unit: mm, type: float}
+      - {symbol: L_target, unit: mm, type: float}
+    outputs: [{symbol: ktilde_H, unit: "-", type: float}]
+    classification: Hypothesis
+    source: D-10 resolution
+    module_target: rgcs_core.loading
+    hypothesis: [H-08b]
+  - id: RGCS-M.45
+    name: signed_correction_ledger
+    equation: "f_meas = f_pred*(1 + sum signed delta_k) + eps_ns"
+    inputs:
+      - {symbol: f_pred, unit: Hz, type: float}
+      - {symbol: delta_k, unit: "-", type: "dict[str,float]"}
+    outputs: [{symbol: f_meas, unit: Hz, type: float}]
+    classification: Derived
+    source: "LT-Delta2 template (LT Eqs. 11-12: signed corrections)"
+    module_target: rgcs_core.corrections
+    assumptions: [A-10, A-14]
+  - id: RGCS-M.46
+    name: complex_modal_dynamics
+    equation: "dz_n/dt = (G_n - gamma_n + i*omega_n)*z_n - sum_m beta_nm*|z_m|^2*z_n + sum_m K_nm*z_m"
+    inputs:
+      - {symbol: z_n, unit: X, type: "ndarray[complex128]"}
+      - {symbol: G_n, unit: 1/s, type: float}
+      - {symbol: gamma_n, unit: 1/s, type: float}
+      - {symbol: omega_n, unit: rad/s, type: float}
+      - {symbol: beta_nm, unit: "1/(s*X^2)", type: ndarray}
+      - {symbol: K_nm, unit: 1/s, type: ndarray}
+    outputs: [{symbol: dz_dt, unit: X/s, type: "ndarray[complex128]"}]
+    classification: Hypothesis
+    source: Module 10; envelope/phase-reduction structure Established; applicability H-09
+    module_target: rgcs_core.dynamics
+    assumptions: [A-03, A-05, A-16, A-17]
+    hypothesis: [H-09]
+    notes: "integrate complex form (avoids 1/A singularity of the polar phase eq.); K_nm = pi*g_nm consistency check vs M.28"
+  - id: RGCS-M.47
+    name: amplitude_equation_polar
+    equation: "dA_n/dt = (G_n-gamma_n)A_n - sum beta_nm A_m^2 A_n + sum K_nm A_m cos(phi_m - phi_n)"
+    inputs: [{symbol: A_n, unit: X, type: float}, {symbol: phi_n, unit: rad, type: float}]
+    outputs: [{symbol: dA_dt, unit: X/s, type: float}]
+    classification: Hypothesis
+    source: polar decomposition of RGCS-M.46
+    module_target: rgcs_core.dynamics
+    hypothesis: [H-09]
+  - id: RGCS-M.48
+    name: phase_equation_polar
+    equation: "dphi_n/dt = omega_n + sum K_nm (A_m/A_n) sin(phi_m - phi_n)"
+    inputs: [{symbol: A_n, unit: X, type: float}, {symbol: phi_n, unit: rad, type: float}]
+    outputs: [{symbol: dphi_dt, unit: rad/s, type: float}]
+    classification: Hypothesis
+    source: polar decomposition of RGCS-M.46
+    module_target: rgcs_core.dynamics
+    hypothesis: [H-09]
+  - id: RGCS-M.49
+    name: damping_from_q
+    equation: "gamma_n = omega_n/(2*Q_n)"
+    inputs:
+      - {symbol: omega_n, unit: rad/s, type: float}
+      - {symbol: Q_n, unit: "-", type: float}
+    outputs: [{symbol: gamma_n, unit: 1/s, type: float}]
+    classification: Established
+    source: standard resonator theory
+    module_target: rgcs_core.dynamics
+  - id: RGCS-M.50
+    name: dynamic_compact_phase
+    equation: "chi(t) = (chi_0 + Omega_s*theta(t)) mod 2pi; driven: chi = 2*pi*f_d*t mod 2pi vs shared reference"
+    inputs:
+      - {symbol: chi_0, unit: rad, type: float}
+      - {symbol: Omega_s, unit: "-", type: float}
+      - {symbol: f_d, unit: Hz, type: float}
+    outputs: [{symbol: chi, unit: rad, type: float}]
+    classification: Derived
+    source: RG-08; KOS-05 phase-reference requirement (A-21)
+    module_target: rgcs_core.dynamics
+    assumptions: [A-21]
+  - id: RGCS-M.51
+    name: per_axis_phase_rates
+    equation: "Omega_j = d(unwrap(phi_j))/dt; Omega_jk = Omega_j - Omega_k"
+    inputs: [{symbol: phi_j, unit: rad, type: ndarray}]
+    outputs: [{symbol: Omega_j, unit: rad/s, type: ndarray}]
+    classification: Derived
+    source: Module 11
+    module_target: rgcs_core.anisotropy
+    assumptions: [A-12]
+  - id: RGCS-M.52
+    name: phase_rate_shear_scalar
+    equation: "sigma_phi2 = (1/3)*(Omega_12^2 + Omega_23^2 + Omega_31^2)"
+    inputs: [{symbol: Omega_j, unit: rad/s, type: ndarray}]
+    outputs: [{symbol: sigma_phi2, unit: "1/s^2", type: float}]
+    classification: Derived (definition Established)
+    source: exact adaptation of GAN Eq. (2) [GAN-05]; substitution H_i -> Omega_j
+    module_target: rgcs_core.anisotropy
+    notes: "golden G-15: equal rates -> 0; permutation invariant; common-rate invariant"
+  - id: RGCS-M.53
+    name: circular_variance_anisotropy_tensor
+    equation: "Sigma_phi_jk = 1 - |mean_w exp(i(phi_j - phi_k))|, j != k; diag = 0"
+    inputs:
+      - {symbol: phi_j, unit: rad, type: ndarray}
+      - {symbol: w, unit: s, type: float}
+    outputs: [{symbol: Sigma_phi, unit: "-", type: "ndarray(3,3)"}]
+    classification: Derived (Established circular statistics)
+    source: Module 11; KOS-06 ensemble methodology
+    module_target: rgcs_core.anisotropy
+    assumptions: [A-11, A-12]
+  - id: RGCS-M.54
+    name: anisotropy_relaxation_model_set
+    equation: "M_exp: Sigma = S0 e^{-t/tau_c}; M_0: const; M_pl: S0(1+t/t0)^{-alpha}; M_se: stretched"
+    inputs:
+      - {symbol: Sigma_phi_bar, unit: "-", type: ndarray}
+      - {symbol: t, unit: s, type: ndarray}
+    outputs:
+      - {symbol: tau_c, unit: s, type: float}
+      - {symbol: model_selection, unit: "-", type: dict}
+    classification: Hypothesis (model to TEST, not presume)
+    source: form cited to GAN Eq. (6) [GAN-09]; coefficient 2.498 m_Pl NEVER imported; null = GAN-07 conservation
+    module_target: rgcs_core.anisotropy
+    hypothesis: [H-10, H-11]
+  - id: RGCS-M.55
+    name: analytic_signal
+    equation: "z(t) = z_I(t) + i*z_Q(t) (I/Q capture or Hilbert transform, declared)"
+    inputs: [{symbol: z_I, unit: X, type: ndarray}, {symbol: z_Q, unit: X, type: ndarray}]
+    outputs: [{symbol: z, unit: X, type: "ndarray[complex128]"}]
+    classification: Established
+    source: KOS-05 measurement architecture
+    module_target: rgcs_core.coherence
+    assumptions: [A-21]
+  - id: RGCS-M.56
+    name: autocorrelation_coherence
+    equation: "C_w(t) = N_w * integral |windowed autocorrelation|; tone -> 1, noise -> b_w"
+    inputs:
+      - {symbol: z, unit: X, type: "ndarray[complex128]"}
+      - {symbol: w, unit: s, type: float}
+    outputs: [{symbol: C_w, unit: "-", type: ndarray}]
+    classification: Established (definition)
+    source: exact adaptation of KOS Methods equation [KOS-07]
+    module_target: rgcs_core.coherence
+    assumptions: [A-11, A-18]
+    hypothesis: [H-12, H-13, H-14]
+    notes: "golden G-17: pure tone -> 1.0; b_w measured per pipeline; window sensitivity analysis mandatory; amplitude and coherence ALWAYS reported separately (KOS-03)"
+  - id: RGCS-M.57
+    name: control_subtracted_gain
+    equation: "G_c = max(0, (Ybar_cfg - Ybar_ctl)/Ybar_ctl); d_c = (Ybar_cfg - Ybar_ctl)/s_pooled"
+    inputs:
+      - {symbol: Ybar_cfg, unit: X, type: float}
+      - {symbol: Ybar_ctl, unit: X, type: float}
+      - {symbol: s_pooled, unit: X, type: float}
+    outputs:
+      - {symbol: G_c, unit: "-", type: float}
+      - {symbol: d_c, unit: "-", type: float}
+    classification: Established (statistics)
+    source: RG-18/RG-19; KOS-13 control logic
+    module_target: rgcs_core.metrics
+    assumptions: [A-22]
+  - id: RGCS-M.58
+    name: engineering_merit_score
+    equation: "S = |Lambda|^2 * D_f * P_phi * N_x * G_c; D_f = 1/(1+(2 Q_eff Delta_f)^2); P_phi = cos^2(pi r_phi)"
+    inputs:
+      - {symbol: Lambda, unit: "-", type: float}
+      - {symbol: Q_eff, unit: "-", type: float}
+      - {symbol: Delta_f, unit: "-", type: float}
+      - {symbol: r_phi, unit: cycles, type: float}
+      - {symbol: N_x, unit: "-", type: float}
+      - {symbol: G_c, unit: "-", type: float}
+    outputs: [{symbol: S, unit: "-", type: float}]
+    classification: Derived (engineering heuristic - never evidence)
+    source: RG-18; D-19d (harmonic-mean Q_eff = declared modeling choice)
+    module_target: rgcs_core.metrics
+    assumptions: [A-21]
+  - id: RGCS-M.59
+    name: measurement_model_likelihood
+    equation: "f_obs = f_model(Theta)*(1+sum delta_k) + eps_ns; -2lnL = sum[(res/s)^2 + ln(2 pi s^2)]"
+    inputs:
+      - {symbol: f_obs, unit: Hz, type: ndarray}
+      - {symbol: Theta, unit: mixed, type: dict}
+      - {symbol: s_i, unit: Hz, type: ndarray}
+    outputs:
+      - {symbol: Theta_hat, unit: mixed, type: dict}
+      - {symbol: cov_Theta, unit: mixed, type: ndarray}
+    classification: Established
+    source: standard statistics
+    module_target: rgcs_core.stats
+    assumptions: [A-13]
+  - id: RGCS-M.60
+    name: model_comparison_and_nulls
+    equation: "AIC = 2k - 2lnL; BIC = k ln n - 2lnL; pre-registered comparisons incl. scrambled-label null"
+    inputs:
+      - {symbol: lnL_hat, unit: "-", type: float}
+      - {symbol: k, unit: "-", type: int}
+      - {symbol: n, unit: "-", type: int}
+    outputs: [{symbol: model_ranking, unit: "-", type: dict}]
+    classification: Established
+    source: standard statistics; RG-19 failure conditions; D-22 scrambling null
+    module_target: rgcs_core.stats
+  - id: RGCS-M.61
+    name: rayleigh_uniformity_test
+    equation: "Rbar = |mean exp(i phi_shot)|; Z_R = n_s*Rbar^2; p ~ exp(-Z_R)(1+(2Z_R-Z_R^2)/(4 n_s))"
+    inputs:
+      - {symbol: phi_shot, unit: rad, type: ndarray}
+      - {symbol: n_s, unit: "-", type: int}
+    outputs:
+      - {symbol: Z_R, unit: "-", type: float}
+      - {symbol: p_value, unit: "-", type: float}
+    classification: Established
+    source: circular statistics; KOS-06 spontaneity control
+    module_target: rgcs_core.stats
+    hypothesis: [H-13]

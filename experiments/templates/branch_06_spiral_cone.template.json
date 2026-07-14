@@ -1,0 +1,183 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-SPIRAL-TEMPLATE",
+  "session_id": "SES-TEMPLATE",
+  "protocol_branch": "spiral_cone",
+  "protocol_version": "1.0.0",
+  "hypothesis_ids": [
+    "H-05",
+    "H-06",
+    "H-06a"
+  ],
+  "timestamp": "2026-07-14T00:00:00Z",
+  "operator_id": "OP-01",
+  "control_role": "active",
+  "randomization": {
+    "seed": 20260714,
+    "scheme": "condition order drawn from seeded RNG before session",
+    "blinded": true,
+    "blind_code": "COND-X"
+  },
+  "specimen": {
+    "specimen_id": "SP-SPIRAL-001",
+    "specimen_type": "spiral_cone_resonator",
+    "material": {
+      "name": "copper",
+      "density_g_cm3": 8.96,
+      "density_source": "handbook"
+    },
+    "spiral": {
+      "growth_ratio_q": 2.718281828459045,
+      "turns_T": 4,
+      "outer_radius_R0_mm": 60,
+      "cone_height_H_mm": 80,
+      "cone_exponent_pz": 1.5,
+      "path_length_3d_mm": 395.0,
+      "compact_radius_prior_mm": 15.72
+    },
+    "mass_measured_g": 210.0,
+    "provenance": {
+      "origin": "TEMPLATE - fabrication record",
+      "classification_note": "q = e, 4 turns are design choices (RG-08); spiral relevance is Hypothesis H-06. Fill path_length_3d_mm from converged polyline (RGCS-M.35). path_length_3d_mm/compact_radius_prior_mm here are PLACEHOLDERS - recompute from the converged 3D polyline for the as-built part."
+    }
+  },
+  "environment": {
+    "bench_id": "BENCH-A",
+    "fixture_id": "FIX-VBLOCK-03",
+    "timestamp_start": "2026-07-14T00:00:00Z",
+    "temperature_c_start": 21.0,
+    "humidity_pct": 45,
+    "ambient_acoustic_dba": 38.0,
+    "instrument_phase_drift_deg": 0.0,
+    "notes": "TEMPLATE - fill measured values; phase-drift budget required before phase claims (KOS-13)."
+  },
+  "provenance": {
+    "software": {
+      "acquisition": "FILL",
+      "rgcs_core": "FILL"
+    },
+    "git_commit": "FILL",
+    "synthetic": false
+  },
+  "classification_note": "All preset drive values are Source claims (RG-12/RG-13/RG-14); this template asserts no result.",
+  "notes": "TEMPLATE for docs/EXPERIMENT_PROTOCOL.md branch - copy, fill measured values, recompute sha256 hashes.",
+  "secondary_specimens": [
+    {
+      "specimen_id": "SP-CTRL-DISK-001",
+      "specimen_type": "control_resonator",
+      "material": {
+        "name": "copper",
+        "density_g_cm3": 8.96
+      },
+      "spiral": {
+        "matched_control_shape": "disk"
+      },
+      "provenance": {
+        "origin": "TEMPLATE",
+        "classification_note": "mass/material/thickness-matched control (RG-08); one manifest per control specimen in real campaigns"
+      }
+    }
+  ],
+  "drive_config": {
+    "drive_id": "DRV-SPIRAL-SWEEP",
+    "branch": "spiral_cone",
+    "drive_type": "swept_sine",
+    "sweep": {
+      "start_hz": 200,
+      "stop_hz": 20000,
+      "sweep_rate_hz_per_s": 200,
+      "order": "randomized"
+    },
+    "placement": {
+      "drive_x_mm": 0.0,
+      "note": "contact transducer at cone base; identical mounting jig across shapes"
+    },
+    "timing": {
+      "session_duration_s": 99,
+      "drive_off_time_s": 99
+    },
+    "reference_clock": {
+      "shared": true,
+      "source": "house 10 MHz reference"
+    },
+    "source_claim_refs": [
+      "RG-08",
+      "JH spiral 'one-pointed spiral' claim"
+    ]
+  },
+  "acquisition": {
+    "acquisition_id": "ACQ-SPIRAL-TEMPLATE",
+    "sample_rate_hz": 65536,
+    "duration_s": 100,
+    "n_samples": 6553600,
+    "single_shot": true,
+    "n_runs": 10,
+    "post_drive": {
+      "drive_off_time_s": 99,
+      "post_drive_ratio": 0.01
+    },
+    "channels": [
+      {
+        "channel_id": "CH1",
+        "sensor_type": "accelerometer",
+        "units": "m/s2",
+        "position_xyz_mm": [
+          0.0,
+          0.0,
+          80.0
+        ],
+        "calibration_ref": "CAL-TEMPLATE",
+        "aperture_mm": 8.0,
+        "orientation_note": "cusp/apex response point",
+        "sensor_mass_g": 0.8
+      },
+      {
+        "channel_id": "CH2",
+        "sensor_type": "accelerometer",
+        "units": "m/s2",
+        "position_xyz_mm": [
+          60.0,
+          0.0,
+          0.0
+        ],
+        "calibration_ref": "CAL-TEMPLATE",
+        "aperture_mm": 8.0,
+        "sensor_mass_g": 0.8
+      }
+    ],
+    "artifact_register_ref": "campaigns/TEMPLATE/artifact_register.md"
+  },
+  "timeseries": [
+    {
+      "file": "data/RUN-SPIRAL-TEMPLATE_sweep.csv",
+      "format": "csv",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "channel_ids": [
+        "CH1",
+        "CH2"
+      ],
+      "run_index": 0,
+      "sample_rate_hz": 65536,
+      "t0_s": 0.0,
+      "n_rows": 6553600,
+      "columns": [
+        {
+          "name": "t_s",
+          "units": "s",
+          "description": "time"
+        },
+        {
+          "name": "accel_apex_m_s2",
+          "units": "m/s2",
+          "description": "apex"
+        },
+        {
+          "name": "accel_rim_m_s2",
+          "units": "m/s2",
+          "description": "rim"
+        }
+      ],
+      "notes": "TEMPLATE placeholder - sha256 must be the real file hash."
+    }
+  ]
+}

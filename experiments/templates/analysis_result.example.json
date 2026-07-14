@@ -1,0 +1,54 @@
+{
+  "result_id": "RES-COIL-COH-0001",
+  "run_ids": ["RUN-COIL-0001"],
+  "control_run_ids": ["RUN-COIL-NOXTL-0001", "RUN-COIL-INSTR-0001"],
+  "protocol_branch": "opposed_coil",
+  "hypothesis_ids": ["H-12", "H-14"],
+  "metric_ids": ["COH-M5", "COH-M4", "COH-M14"],
+  "prereg_ref": "docs/STATISTICAL_ANALYSIS_PLAN.md section 5, family F4",
+  "blinded_analysis": true,
+  "amplitude_report": {
+    "value": 0.0042,
+    "units": "V",
+    "noise_floor": 0.0011,
+    "snr_db": 11.6,
+    "description": "post-drive-off band amplitude at 4096 Hz +/- 50 Hz, mean over runs"
+  },
+  "coherence_report": {
+    "c_w": 0.31,
+    "window_w_s": 0.05,
+    "baseline_b_w": 0.083,
+    "n_window_samples": 3277,
+    "sample_rate_hz": 65536,
+    "hop_s": 0.0125,
+    "control_subtracted": true
+  },
+  "rayleigh": {
+    "n_s": 120,
+    "z_r": 1.9,
+    "p_value": 0.15,
+    "mean_resultant_length": 0.126,
+    "interpretation": "consistent_with_uniform"
+  },
+  "decay_model_comparison": {
+    "target": "coherence_trace",
+    "models": [
+      { "model": "exponential", "aic": -412.3, "bic": -406.1, "n_points": 88, "params": { "a": 0.29, "tau_s": 0.41 } },
+      { "model": "power_law", "aic": -401.7, "bic": -392.4, "n_points": 88, "params": { "a": 0.30, "t0_s": 0.2, "p": 1.4 } },
+      { "model": "damped_oscillatory", "aic": -399.0, "bic": -386.6, "n_points": 88, "params": { "a": 0.28, "tau_s": 0.45, "f_hz": 2.0, "c": 0.01 } },
+      { "model": "no_change", "aic": -350.2, "bic": -347.1, "n_points": 88, "params": { "c": 0.18 } }
+    ],
+    "winner": "exponential",
+    "delta_aic_runner_up": 10.6,
+    "tau_c_s": 0.41
+  },
+  "classification": "Hypothesis",
+  "evidential_status": "testing",
+  "analysis_software": {
+    "rgcs_core": "0.0.0-example",
+    "numpy": "2.4.4",
+    "git_commit": "EXAMPLE"
+  },
+  "multiple_comparison_note": "Family F4 (opposed-coil coherence set), Benjamini-Hochberg at q = 0.05 across 6 pre-registered comparisons.",
+  "notes": "ILLUSTRATIVE VALUES ONLY - example instance for analysis_result.schema.json. Not data."
+}

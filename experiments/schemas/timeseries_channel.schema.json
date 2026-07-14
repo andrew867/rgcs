@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/timeseries_channel.schema.json",
+  "title": "RGCS time-series file descriptor",
+  "description": "Describes one stored time-series data file (CSV or Parquet) and binds it to a run by sha256. CSV convention: UTF-8, one header row, column names with unit suffixes, no comment lines; time column 't_s' is seconds from acquisition start.",
+  "type": "object",
+  "required": ["file", "format", "sha256", "channel_ids", "sample_rate_hz", "columns"],
+  "additionalProperties": false,
+  "properties": {
+    "file": { "type": "string", "description": "Path relative to the run manifest." },
+    "format": { "type": "string", "enum": ["csv", "parquet"] },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$", "description": "SHA-256 of the file bytes; the provenance anchor." },
+    "channel_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Which acquisition channels this file carries (must exist in acquisition.channels)."
+    },
+    "run_index": { "type": "integer", "minimum": 0, "description": "0-based shot index within the n_runs ensemble; omit for single-file-per-run layouts." },
+    "sample_rate_hz": { "type": "number", "exclusiveMinimum": 0 },
+    "t0_s": { "type": "number", "description": "Time of first sample relative to the run trigger (default 0)." },
+    "n_rows": { "type": "integer", "minimum": 1 },
+    "columns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "units"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "description": "Unit-suffixed identifier, e.g. 't_s', 'z_i_v', 'z_q_v', 'accel_m_s2'." },
+          "units": { "type": "string" },
+          "channel_id": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "compression": { "type": "string" },
+    "notes": { "type": "string" }
+  }
+}

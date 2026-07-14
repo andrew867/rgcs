@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/analysis_result.schema.json",
+  "title": "RGCS analysis result",
+  "description": "One analysis output over one or more runs. Binding reporting contract (COHERENCE_METRICS.md): coherence is reported as the triplet (C_w, w, baseline b_w) and ALWAYS alongside an amplitude report - a bare coherence number is non-compliant (enforced via dependentRequired). Vocabulary: 'spatial phase anisotropy' / 'directional coherence disagreement'; the term 'quantum shear' is forbidden in all fields.",
+  "type": "object",
+  "required": ["result_id", "run_ids", "protocol_branch", "hypothesis_ids", "metric_ids", "classification", "evidential_status", "analysis_software"],
+  "additionalProperties": false,
+  "dependentRequired": {
+    "coherence_report": ["amplitude_report"],
+    "rayleigh": ["coherence_report"],
+    "threshold": ["coherence_report"]
+  },
+  "properties": {
+    "result_id": { "type": "string", "pattern": "^RES-[A-Za-z0-9_.-]+$" },
+    "run_ids": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^RUN-[A-Za-z0-9_.-]+$" } },
+    "control_run_ids": { "type": "array", "items": { "type": "string" }, "description": "Control runs subtracted/compared; required for any G_c/d_c or Stage-III-type claim." },
+    "protocol_branch": {
+      "type": "string",
+      "enum": ["modal_survey", "electrode_pulse", "sound_key", "opposed_coil", "human_loading", "spiral_cone", "water", "spatial_mapping"]
+    },
+    "hypothesis_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "metric_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^COH-M([1-9]|1[0-4])$|^[A-Z].*" },
+      "description": "COHERENCE_METRICS.md metric IDs (COH-M1..COH-M14) or named estimators from STATISTICAL_ANALYSIS_PLAN.md."
+    },
+    "prereg_ref": { "type": "string", "description": "Pointer to the pre-registered analysis section; absent = exploratory, must be labeled so." },
+    "blinded_analysis": { "type": "boolean" },
+    "amplitude_report": {
+      "type": "object",
+      "required": ["value", "units"],
+      "additionalProperties": false,
+      "properties": {
+        "value": { "type": "number" },
+        "units": { "type": "string" },
+        "noise_floor": { "type": "number" },
+        "snr_db": { "type": "number" },
+        "description": { "type": "string" }
+      }
+    },
+    "coherence_report": {
+      "type": "object",
+      "required": ["c_w", "window_w_s", "baseline_b_w", "n_window_samples", "sample_rate_hz"],
+      "additionalProperties": false,
+      "properties": {
+        "c_w": { "type": "number", "minimum": 0, "maximum": 1, "description": "Autocorrelation coherence (COH-M5); scalar summary (e.g. plateau or window value)." },
+        "window_w_s": { "type": "number", "exclusiveMinimum": 0 },
+        "baseline_b_w": { "type": "number", "minimum": 0, "maximum": 1, "description": "Measured/derived noise baseline for this window (window-dependent; ~(2*sqrt(pi)/3)/sqrt(N_w) for white noise)." },
+        "n_window_samples": { "type": "integer", "minimum": 2 },
+        "sample_rate_hz": { "type": "number", "exclusiveMinimum": 0 },
+        "hop_s": { "type": "number", "exclusiveMinimum": 0 },
+        "control_subtracted": { "type": "boolean" },
+        "trace_file": { "type": "string", "description": "Optional file with the full C_w(t) trace." },
+        "trace_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "rayleigh": {
+      "type": "object",
+      "required": ["n_s", "z_r", "p_value"],
+      "additionalProperties": false,
+      "properties": {
+        "n_s": { "type": "integer", "minimum": 2, "description": "Number of shots; >= 100 required for claims." },
+        "z_r": { "type": "number", "minimum": 0 },
+        "p_value": { "type": "number", "minimum": 0, "maximum": 1 },
+        "mean_resultant_length": { "type": "number", "minimum": 0, "maximum": 1 },
+        "interpretation": { "type": "string", "enum": ["consistent_with_uniform", "drive_imprinted", "inconclusive"], "description": "p < alpha with high per-run coherence => drive-imprinted; Stage-III vocabulary blocked (COH-M4)." }
+      }
+    },
+    "decay_model_comparison": {
+      "type": "object",
+      "description": "COH-M14 over the pre-registered four-model set; all four rows must be present.",
+      "required": ["models", "winner", "delta_aic_runner_up"],
+      "additionalProperties": false,
+      "properties": {
+        "target": { "type": "string", "enum": ["coherence_trace", "amplitude_envelope", "sigma_phi2_trace", "sigma_bar_phi_trace"] },
+        "models": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "required": ["model", "aic", "bic", "n_points"],
+            "additionalProperties": false,
+            "properties": {
+              "model": { "type": "string", "enum": ["exponential", "power_law", "damped_oscillatory", "no_change"] },
+              "aic": { "type": "number" },
+              "bic": { "type": "number" },
+              "n_points": { "type": "integer", "minimum": 1 },
+              "params": { "type": "object", "additionalProperties": { "type": "number" } }
+            }
+          }
+        },
+        "winner": { "type": "string", "enum": ["exponential", "power_law", "damped_oscillatory", "no_change", "tie"] },
+        "delta_aic_runner_up": { "type": "number", "minimum": 0, "description": "Winner beats runner-up by this; < 2 is a tie, >= 4 required against the no-change null for H-10 support." },
+        "tau_c_s": { "type": "number", "exclusiveMinimum": 0, "description": "Fitted relaxation time if exponential wins; a bench parameter, never imported from GAN." }
+      }
+    },
+    "spatial_phase_anisotropy": {
+      "type": "object",
+      "description": "COH-M13 outputs. Naming is mandatory: 'spatial phase anisotropy' / 'directional coherence disagreement'.",
+      "additionalProperties": false,
+      "properties": {
+        "sigma_phi2_s2": { "type": "number", "minimum": 0, "description": "Phase-rate shear scalar sigma_phi^2 (rad^2/s^2), RGCS-M.52." },
+        "sigma_bar_phi": { "type": "number", "minimum": 0, "maximum": 1, "description": "Scalar reduction of the circular-variance tensor (RGCS-M.53)." },
+        "n_channels": { "type": "integer", "minimum": 2 },
+        "tensor_file": { "type": "string" },
+        "tensor_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "window_w_s": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "threshold": {
+      "type": "object",
+      "description": "COH-M12 output. Apparatus-specific by definition; NEVER compare to the KOS 21 dBm number.",
+      "required": ["estimate", "ci_low", "ci_high", "n_boot", "control_parameter"],
+      "additionalProperties": false,
+      "properties": {
+        "control_parameter": { "type": "string", "description": "e.g. 'coil pulse voltage_v', 'speaker SPL dBA'." },
+        "estimate": { "type": "number" },
+        "ci_low": { "type": "number" },
+        "ci_high": { "type": "number" },
+        "n_boot": { "type": "integer", "minimum": 500 },
+        "reproduced_across_days": { "type": "boolean", "description": "KOS-09 rule: a threshold not reproducible across days is not a threshold." }
+      }
+    },
+    "effect": {
+      "type": "object",
+      "description": "Control-subtracted effect estimates (RGCS-M.57), estimation-first.",
+      "additionalProperties": false,
+      "properties": {
+        "g_c": { "type": "number", "minimum": 0, "description": "Control-subtracted fractional gain, clipped at 0." },
+        "d_c": { "type": "number", "description": "Standardized effect size." },
+        "ci_low": { "type": "number" },
+        "ci_high": { "type": "number" },
+        "ci_level": { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1 },
+        "n_boot": { "type": "integer", "minimum": 500 }
+      }
+    },
+    "fit": {
+      "type": "object",
+      "description": "Generic model-fit container (e.g. compact-spectrum fit for H-01, kappa_chi, f_b; loading fits for H-08).",
+      "additionalProperties": false,
+      "properties": {
+        "model_name": { "type": "string" },
+        "params": { "type": "object", "additionalProperties": { "type": "number" } },
+        "param_uncertainties": { "type": "object", "additionalProperties": { "type": "number" } },
+        "held_out_rms": { "type": "number", "minimum": 0 },
+        "comparison_models": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["model_name", "aic"],
+            "additionalProperties": false,
+            "properties": {
+              "model_name": { "type": "string" },
+              "aic": { "type": "number" },
+              "bic": { "type": "number" },
+              "held_out_rms": { "type": "number", "minimum": 0 }
+            }
+          }
+        },
+        "scrambled_label_null_p": { "type": "number", "minimum": 0, "maximum": 1, "description": "Look-elsewhere control (RGCS-M.60 item 4)." }
+      }
+    },
+    "classification": {
+      "type": "string",
+      "enum": ["Established", "Derived", "Hypothesis", "Source claim"],
+      "description": "Per SCIENTIFIC_CLASSIFICATION_POLICY.md; hybrid labels forbidden."
+    },
+    "evidential_status": {
+      "type": "string",
+      "enum": ["untested", "testing", "supported", "refuted", "ambiguous"]
+    },
+    "analysis_software": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "Name -> version map, plus git commit of analysis code."
+    },
+    "multiple_comparison_note": { "type": "string", "description": "Which pre-registered family this result belongs to and the correction applied (STATISTICAL_ANALYSIS_PLAN.md section 6)." },
+    "notes": { "type": "string" }
+  }
+}

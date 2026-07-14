@@ -1,0 +1,11 @@
+internal-docs/
+_to_delete/
+__pycache__/
+*.pyc
+build/
+dist/
+*.egg-info/
+release/linux/
+.pytest_cache/
+.venv/
+.hypothesis/

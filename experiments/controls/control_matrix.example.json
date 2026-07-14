@@ -1,0 +1,464 @@
+[
+  {
+    "branch": "modal_survey",
+    "protocol_version": "1.0.0",
+    "controls": [
+      {
+        "control_id": "CTL-MOD-INSTR",
+        "role": "negative_instrument_only",
+        "description": "Sensors mounted on fixture, no specimen, tap on fixture: fixture/mount resonance spectrum register.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-MOD-GLASS",
+        "role": "negative_matched_specimen",
+        "description": "Glass or 3D-printed dummy of matched external geometry: separates geometry-generic modes from quartz-specific ones.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned",
+        "matched_variables": [
+          "length_mm",
+          "diameter_wide_mm",
+          "facet_count"
+        ]
+      },
+      {
+        "control_id": "CTL-MOD-MOUNT",
+        "role": "sensor_reposition",
+        "description": "Alternate mount + alternate sensor stations: peaks that move with the mount or sensor are artifacts.",
+        "required_before_claim": true,
+        "gate": "per_specimen",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-MOD-SCRAMBLE",
+        "role": "randomization",
+        "description": "Scrambled mode-index null for compact-spectrum fits (RGCS-M.60 item 4); analysis-side control, registered here.",
+        "required_before_claim": true,
+        "gate": "pre_campaign",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-MOD-OPER",
+        "role": "operator_replication",
+        "description": "Second operator repeats the tap protocol on >= 3 specimens.",
+        "required_before_claim": false,
+        "gate": "pre_campaign",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "branch": "electrode_pulse",
+    "protocol_version": "1.0.0",
+    "controls": [
+      {
+        "control_id": "CTL-ELE-INSTR",
+        "role": "negative_instrument_only",
+        "description": "Full chain, pulser into shielded dummy RC load, no electrodes: instrument coherence baseline b_w and phase drift.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-ELE-DUMMY",
+        "role": "negative_dummy_load",
+        "description": "Dummy electrodes on a glass blank at identical geometry: direct electrical pickup path (WB2 planner artifact).",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned",
+        "matched_variables": [
+          "rate_hz",
+          "voltage_v",
+          "placement"
+        ]
+      },
+      {
+        "control_id": "CTL-ELE-RATE",
+        "role": "randomization",
+        "description": "19.8 / 20 / 21 Hz pulse-rate randomized and blinded across runs (WB3 recommended control): tests whether '20 Hz' is special beyond a generic pulse train.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-ELE-SHAM",
+        "role": "sham",
+        "description": "Electrodes mounted, pulser triggered with output relay open (0 V): full procedure, no drive.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-ELE-INJ",
+        "role": "positive_injection",
+        "description": "Known weak mechanical tone injected via a small transducer: detection-limit for coherence re-analysis (H-14).",
+        "required_before_claim": true,
+        "gate": "pre_campaign",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-ELE-NOXTL",
+        "role": "negative_no_specimen",
+        "description": "Electrode jig energized with no crystal: pickup floor.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "branch": "sound_key",
+    "protocol_version": "1.0.0",
+    "controls": [
+      {
+        "control_id": "CTL-SND-SPKONLY",
+        "role": "negative_no_specimen",
+        "description": "Speaker at identical drive, specimen removed (sensor on empty mount): acoustic leakage floor.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-SND-OFFREQ",
+        "role": "negative_off_frequency",
+        "description": "Matched-SPL off-key frequencies (pre-registered: key +/- 10% and geometric midpoints between keys): is 1496/644/587 special or is any tone equivalent?",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned",
+        "matched_variables": [
+          "spl_at_specimen_dba",
+          "macrocycle_timing"
+        ]
+      },
+      {
+        "control_id": "CTL-SND-SPL",
+        "role": "randomization",
+        "description": "Key vs off-key conditions randomized and SPL-matched at the specimen position (reference mic).",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-SND-SHAM",
+        "role": "sham",
+        "description": "Full macrocycle timing with speaker amplifier muted.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-SND-INJ",
+        "role": "positive_injection",
+        "description": "Known weak tone at sensor: coherence detection limit.",
+        "required_before_claim": true,
+        "gate": "pre_campaign",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "branch": "opposed_coil",
+    "protocol_version": "1.0.0",
+    "controls": [
+      {
+        "control_id": "CTL-COIL-INSTR",
+        "role": "negative_instrument_only",
+        "description": "Drive electronics powered, coil disconnected: instrument baseline b_w, IQ artifact register (KOS-14).",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-COIL-NOXTL",
+        "role": "negative_no_specimen",
+        "description": "Coils energized, no crystal: drive-pickup floor (JH-033 attributed 101 mm signals to pickup).",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned",
+        "matched_variables": [
+          "voltage_v",
+          "pulse_width_us",
+          "envelope_family"
+        ]
+      },
+      {
+        "control_id": "CTL-COIL-DUMMY",
+        "role": "negative_dummy_load",
+        "description": "Resistor dummy load replacing coils: switching transients without field.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned",
+        "matched_variables": [
+          "delivered_energy"
+        ]
+      },
+      {
+        "control_id": "CTL-COIL-ROT",
+        "role": "sensor_reposition",
+        "description": "Rotated-coil / current-normalized runs: distinguishes field-orientation effects from geometry-fixed pickup (WB3 P0 priority).",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-COIL-INJ",
+        "role": "positive_injection",
+        "description": "Known weak tone injection: coherence detection limit (H-14 gate).",
+        "required_before_claim": true,
+        "gate": "pre_campaign",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-COIL-RAND",
+        "role": "randomization",
+        "description": "Active/no-crystal/dummy order from seeded RNG; analyst blinded to condition codes.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "branch": "human_loading",
+    "protocol_version": "1.0.0",
+    "controls": [
+      {
+        "control_id": "CTL-HUM-FIX",
+        "role": "negative_dummy_load",
+        "description": "Fixture-only loading at matched contact area and force: separates fixture compliance from hand effects.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned",
+        "matched_variables": [
+          "contact_area",
+          "grip_force_band"
+        ]
+      },
+      {
+        "control_id": "CTL-HUM-SURR",
+        "role": "negative_matched_specimen",
+        "description": "Surrogate load (gel/saline phantom of hand-scale mass and compliance) at the same contact protocol.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned",
+        "matched_variables": [
+          "added_mass_g",
+          "contact_area"
+        ]
+      },
+      {
+        "control_id": "CTL-HUM-GLOVE",
+        "role": "randomization",
+        "description": "Bare hand vs nitrile glove vs surrogate randomized within session: contact-interface variable.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-HUM-OPER",
+        "role": "operator_replication",
+        "description": "Multiple participants and repeat visits: k_H repeatability across people is the H-08 observable, not a nuisance.",
+        "required_before_claim": true,
+        "gate": "pre_campaign",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-HUM-ETH",
+        "role": "other",
+        "description": "Ethics-review sign-off on file BEFORE any participant contact; non-clinical, no health claims, no energized contact.",
+        "required_before_claim": true,
+        "gate": "pre_campaign",
+        "status": "planned",
+        "notes": "Hard gate: runs without human_loading.ethics_review_ref are excluded by schema."
+      }
+    ]
+  },
+  {
+    "branch": "spiral_cone",
+    "protocol_version": "1.0.0",
+    "controls": [
+      {
+        "control_id": "CTL-SPI-DISK",
+        "role": "negative_matched_specimen",
+        "description": "Mass-, material-, thickness-matched disk (RG-08).",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned",
+        "matched_variables": [
+          "mass_g",
+          "material",
+          "thickness_mm"
+        ]
+      },
+      {
+        "control_id": "CTL-SPI-CONE",
+        "role": "negative_matched_specimen",
+        "description": "Matched plain cone.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned",
+        "matched_variables": [
+          "mass_g",
+          "material",
+          "thickness_mm",
+          "height_mm"
+        ]
+      },
+      {
+        "control_id": "CTL-SPI-ARCH",
+        "role": "negative_matched_specimen",
+        "description": "Matched Archimedean spiral cone (same turns, linear pitch).",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned",
+        "matched_variables": [
+          "mass_g",
+          "material",
+          "thickness_mm",
+          "turns"
+        ]
+      },
+      {
+        "control_id": "CTL-SPI-FLAT",
+        "role": "negative_matched_specimen",
+        "description": "Matched flat log spiral (no cone height).",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned",
+        "matched_variables": [
+          "mass_g",
+          "material",
+          "thickness_mm",
+          "turns",
+          "growth_ratio_q"
+        ]
+      },
+      {
+        "control_id": "CTL-SPI-MOUNT",
+        "role": "sensor_reposition",
+        "description": "Identical jig, remount repeatability runs on every shape: mounting variance must be smaller than shape differences.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-SPI-BLIND",
+        "role": "blinding",
+        "description": "Shapes coded; sweep analysis run blind to shape identity until the pre-registered estimator is computed.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "branch": "water",
+    "protocol_version": "1.0.0",
+    "controls": [
+      {
+        "control_id": "CTL-WAT-SHAM",
+        "role": "sham",
+        "description": "Identical vessels, speaker muted, full 10 min protocol: handling/ambient baseline.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-WAT-HEAT",
+        "role": "negative_dummy_load",
+        "description": "Thermal control: vessel heated to match measured drive-induced temperature rise without sound.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned",
+        "matched_variables": [
+          "delta_temperature_c"
+        ]
+      },
+      {
+        "control_id": "CTL-WAT-US",
+        "role": "negative_off_frequency",
+        "description": "Ultrasonic-cleaner exposure at matched acoustic power: cavitation/degassing comparator (WB3 water controls).",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-WAT-EVAP",
+        "role": "negative_no_specimen",
+        "description": "Open/sealed vessel pairs: evaporation accounting for mass/conductivity changes.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-WAT-RAND",
+        "role": "randomization",
+        "description": "Vessels prepared identically, assigned to condition by seeded RNG, labels blinded until chemistry readouts are recorded.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-WAT-NOXTL",
+        "role": "negative_matched_specimen",
+        "description": "Crystal-absent runs at identical sound field: does any effect need the crystal at all?",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned",
+        "matched_variables": [
+          "spl_at_specimen_dba",
+          "exposure_s"
+        ]
+      }
+    ]
+  },
+  {
+    "branch": "spatial_mapping",
+    "protocol_version": "1.0.0",
+    "controls": [
+      {
+        "control_id": "CTL-MAP-SWAP",
+        "role": "sensor_swap",
+        "description": "Physical sensor swap between stations: channel-specific gain/phase errors masquerading as anisotropy (H-03 failure condition).",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-MAP-REPOS",
+        "role": "sensor_reposition",
+        "description": "Repeat map with all sensors shifted by ~1/4 of the shortest expected mode wavelength: aperture/spatial-aliasing check (KOS-11).",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-MAP-COMMON",
+        "role": "positive_injection",
+        "description": "Common signal injected to all channels simultaneously: sigma_phi^2 must read ~0 (golden case (g) small-contrast leg).",
+        "required_before_claim": true,
+        "gate": "pre_campaign",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-MAP-INSTR",
+        "role": "negative_instrument_only",
+        "description": "All channels on a rigid dummy bar: inter-channel phase budget.",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      },
+      {
+        "control_id": "CTL-MAP-SCRAMBLE",
+        "role": "randomization",
+        "description": "Channel-label scrambling null for parity-family assignments (H-03).",
+        "required_before_claim": true,
+        "gate": "per_session",
+        "status": "planned"
+      }
+    ]
+  }
+]

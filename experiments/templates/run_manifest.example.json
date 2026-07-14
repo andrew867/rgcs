@@ -1,0 +1,280 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-COIL-TEMPLATE",
+  "session_id": "SES-TEMPLATE",
+  "protocol_branch": "opposed_coil",
+  "protocol_version": "1.0.0",
+  "hypothesis_ids": [
+    "H-09",
+    "H-10",
+    "H-11",
+    "H-12",
+    "H-13",
+    "H-14"
+  ],
+  "timestamp": "2026-07-14T00:00:00Z",
+  "operator_id": "OP-01",
+  "control_role": "active",
+  "randomization": {
+    "seed": 20260714,
+    "scheme": "condition order drawn from seeded RNG before session",
+    "blinded": true,
+    "blind_code": "COND-X"
+  },
+  "specimen": {
+    "specimen_id": "SP-Q154-001",
+    "specimen_type": "quartz_crystal",
+    "material": {
+      "name": "alpha-quartz",
+      "density_g_cm3": 2.65,
+      "density_source": "handbook (pin per D-19)"
+    },
+    "geometry": {
+      "length_mm": 154.1,
+      "diameter_wide_mm": 34.0,
+      "diameter_narrow_mm": 25.0,
+      "diameter_mode": "across_vertices",
+      "facet_count": 6,
+      "angle_female_deg": 51.843,
+      "angle_male_deg": 60.0,
+      "angle_mode": "face_slope",
+      "measurement_uncertainty_mm": 0.05
+    },
+    "ladder": {
+      "target_harmonic_N": 5,
+      "target_length_mm": 154.052734375,
+      "base_frequency_f0_hz": 4096
+    },
+    "mass_measured_g": 153.2,
+    "orientation": {
+      "crystallographic_axis_known": false,
+      "axis_note": "u_v = 0.05 applies (RGCS-M.10)"
+    },
+    "provenance": {
+      "origin": "TEMPLATE - replace with real specimen record",
+      "classification_note": "angles and f0 = 4096 Hz are Source claims (RG-01, RG-16)"
+    }
+  },
+  "environment": {
+    "bench_id": "BENCH-A",
+    "fixture_id": "FIX-VBLOCK-03",
+    "timestamp_start": "2026-07-14T00:00:00Z",
+    "temperature_c_start": 21.0,
+    "humidity_pct": 45,
+    "ambient_acoustic_dba": 38.0,
+    "instrument_phase_drift_deg": 0.0,
+    "notes": "TEMPLATE - fill measured values; phase-drift budget required before phase claims (KOS-13)."
+  },
+  "provenance": {
+    "software": {
+      "acquisition": "FILL",
+      "rgcs_core": "FILL"
+    },
+    "git_commit": "FILL",
+    "synthetic": false
+  },
+  "classification_note": "All preset drive values are Source claims (RG-12/RG-13/RG-14); this template asserts no result.",
+  "notes": "TEMPLATE for docs/EXPERIMENT_PROTOCOL.md branch - copy, fill measured values, recompute sha256 hashes.",
+  "drive_config": {
+    "drive_id": "DRV-COIL-4096-STD-001",
+    "branch": "opposed_coil",
+    "drive_type": "opposed_coil_pulse",
+    "carrier": {
+      "frequency_hz": 4096,
+      "waveform": "square",
+      "phase_between_outputs_deg": 180,
+      "clock_source": "32.768 kHz TCXO / 8, locked to house 10 MHz reference"
+    },
+    "pulse": {
+      "width_us": 1.3,
+      "voltage_v": 60,
+      "peak_current_a": 3,
+      "rise_time_us": 1.3,
+      "decay_time_us": 30,
+      "shape": "complementary non-overlap"
+    },
+    "envelope": {
+      "family": "standard_46_46_184",
+      "on_ms": 46,
+      "spacing_ms": 46,
+      "final_pause_ms": 184,
+      "bursts_per_group": 4,
+      "exact_total_cycles": 2261,
+      "exact_allocation": "754 ON + 754 spacing + 753 pause"
+    },
+    "coil": {
+      "turns_copper": 40,
+      "turns_silver": 40,
+      "wire_diameter_mm": 0.33,
+      "wire_spacing_mm": 0.66,
+      "inferred_inductance_uh": 26,
+      "stored_energy_per_pulse_uj": 117,
+      "topology": "opposed copper/silver coils, complementary non-overlap half-bridge"
+    },
+    "placement": {
+      "drive_x_mm": 77.0,
+      "note": "coil pair centered on shaft midpoint prior x_g"
+    },
+    "energy": {
+      "estimated_delivered_energy_j": 0.00027,
+      "estimation_method": "0.5*L*I^2 per pulse x exact ON cycles per macrocycle (resistance neglected - Derived proxy, RG-14)",
+      "matched_energy_group_id": "MEG-2026-07-A"
+    },
+    "drive_level_index": 3,
+    "timing": {
+      "session_duration_s": 0.552,
+      "drive_off_time_s": 0.368
+    },
+    "reference_clock": {
+      "shared": true,
+      "source": "house 10 MHz reference",
+      "generator_phase_priming_note": "generator primed to constant phase offset at each trigger (KOS-13)"
+    },
+    "source_claim_refs": [
+      "RG-12",
+      "RG-14",
+      "JH-026 pp.130-134",
+      "G-12",
+      "G-13"
+    ],
+    "notes": "TEMPLATE - 60 V/1.3 us/3 A is the 101 mm source point (Source claim); sweep drive_level_index over the pre-registered voltage ladder."
+  },
+  "acquisition": {
+    "acquisition_id": "ACQ-COIL-TEMPLATE",
+    "sample_rate_hz": 65536,
+    "duration_s": 2.0,
+    "n_samples": 131072,
+    "single_shot": true,
+    "n_runs": 120,
+    "post_drive": {
+      "drive_off_time_s": 0.368,
+      "post_drive_ratio": 4.435
+    },
+    "channels": [
+      {
+        "channel_id": "CH1",
+        "sensor_type": "contact_mic",
+        "units": "V",
+        "position_xyz_mm": [
+          77.0,
+          18.0,
+          0.0
+        ],
+        "calibration_ref": "CAL-TEMPLATE",
+        "aperture_mm": 6.0
+      },
+      {
+        "channel_id": "CH2",
+        "sensor_type": "current_shunt",
+        "units": "V",
+        "position_xyz_mm": [
+          0.0,
+          -40.0,
+          0.0
+        ],
+        "calibration_ref": "CAL-TEMPLATE"
+      },
+      {
+        "channel_id": "CH3",
+        "sensor_type": "hall_probe",
+        "units": "V",
+        "position_xyz_mm": [
+          77.0,
+          30.0,
+          0.0
+        ],
+        "calibration_ref": "CAL-TEMPLATE",
+        "aperture_mm": 3.0
+      },
+      {
+        "channel_id": "CH4",
+        "sensor_type": "charge_amplifier",
+        "units": "V",
+        "position_xyz_mm": [
+          154.0,
+          0.0,
+          20.0
+        ],
+        "calibration_ref": "CAL-TEMPLATE"
+      }
+    ],
+    "artifact_register_ref": "campaigns/TEMPLATE/artifact_register.md",
+    "iq": {
+      "enabled": true,
+      "lo_frequency_hz": 4096,
+      "lo_derivation": "drive TCXO chain / house 10 MHz",
+      "demodulation": "lock_in",
+      "shared_reference": true,
+      "reference_source": "house 10 MHz reference"
+    }
+  },
+  "timeseries": [
+    {
+      "file": "data/RUN-COIL-TEMPLATE_shot000_iq.csv",
+      "format": "csv",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "channel_ids": [
+        "CH1"
+      ],
+      "run_index": 0,
+      "sample_rate_hz": 65536,
+      "t0_s": 0.0,
+      "n_rows": 131072,
+      "columns": [
+        {
+          "name": "t_s",
+          "units": "s",
+          "description": "time"
+        },
+        {
+          "name": "z_i_v",
+          "units": "V",
+          "description": "in-phase"
+        },
+        {
+          "name": "z_q_v",
+          "units": "V",
+          "description": "quadrature"
+        }
+      ],
+      "notes": "TEMPLATE placeholder - sha256 must be the real file hash."
+    },
+    {
+      "file": "data/RUN-COIL-TEMPLATE_shot000_aux.csv",
+      "format": "csv",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "channel_ids": [
+        "CH2",
+        "CH3",
+        "CH4"
+      ],
+      "run_index": 0,
+      "sample_rate_hz": 65536,
+      "t0_s": 0.0,
+      "n_rows": 131072,
+      "columns": [
+        {
+          "name": "t_s",
+          "units": "s",
+          "description": "time"
+        },
+        {
+          "name": "shunt_v",
+          "units": "V",
+          "description": "coil current"
+        },
+        {
+          "name": "hall_v",
+          "units": "V",
+          "description": "B field"
+        },
+        {
+          "name": "charge_v",
+          "units": "V",
+          "description": "charge amp"
+        }
+      ],
+      "notes": "TEMPLATE placeholder - sha256 must be the real file hash."
+    }
+  ]
+}

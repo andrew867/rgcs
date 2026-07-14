@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/run_manifest.schema.json",
+  "title": "RGCS run manifest",
+  "description": "The single provenance anchor for one experimental run (or one shot ensemble acquired under identical settings). Embeds specimen, drive, acquisition, and environment records and lists every data file with sha256. A run without a valid manifest does not exist for analysis purposes.",
+  "type": "object",
+  "required": ["schema_version", "run_id", "protocol_branch", "protocol_version", "hypothesis_ids", "timestamp", "operator_id", "control_role", "specimen", "drive_config", "acquisition", "environment", "timeseries", "provenance"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "string", "description": "Version of this schema set, e.g. '1.0.0'." },
+    "run_id": { "type": "string", "pattern": "^RUN-[A-Za-z0-9_.-]+$" },
+    "session_id": { "type": "string", "description": "Groups runs sharing one calibration/phase-drift budget." },
+    "protocol_branch": {
+      "type": "string",
+      "enum": ["modal_survey", "electrode_pulse", "sound_key", "opposed_coil", "human_loading", "spiral_cone", "water", "spatial_mapping"]
+    },
+    "protocol_version": { "type": "string", "description": "Version of docs/EXPERIMENT_PROTOCOL.md section used." },
+    "hypothesis_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^(H-[0-9]{2}[a-z]?|DC-H[0-9]|EXPLORATORY)$" },
+      "description": "ROADMAP_TO_FALSIFICATION.md IDs this run feeds; 'EXPLORATORY' for pre-registered estimation-only branches (water)."
+    },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "operator_id": { "type": "string", "description": "Pseudonymous operator code; needed for operator-replication controls (H-08)." },
+    "control_role": {
+      "type": "string",
+      "enum": ["active", "instrument_only", "no_specimen", "dummy_load", "sham", "matched_control", "off_frequency", "positive_injection"],
+      "description": "What this run IS in the control matrix. 'active' = specimen + real drive."
+    },
+    "randomization": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "seed": { "type": "integer" },
+        "scheme": { "type": "string", "description": "e.g. 'condition order drawn from seeded RNG before session'." },
+        "blinded": { "type": "boolean", "description": "True = analyst-facing labels are coded until unblinding (see STATISTICAL_ANALYSIS_PLAN.md section 7)." },
+        "blind_code": { "type": "string", "description": "Coded label shown to the analyst while blinded." }
+      }
+    },
+    "specimen": { "$ref": "specimen.schema.json" },
+    "secondary_specimens": {
+      "type": "array",
+      "items": { "$ref": "specimen.schema.json" },
+      "description": "e.g. water vessel alongside a crystal, or fixture records."
+    },
+    "drive_config": { "$ref": "drive_config.schema.json" },
+    "acquisition": { "$ref": "acquisition.schema.json" },
+    "environment": { "$ref": "environment.schema.json" },
+    "human_loading": {
+      "type": "object",
+      "description": "Only for human_loading branch. Non-clinical volunteer procedure; ethics review sign-off recorded here is a hard gate.",
+      "additionalProperties": false,
+      "required": ["ethics_review_ref", "no_energized_contact_confirmed"],
+      "properties": {
+        "ethics_review_ref": { "type": "string", "description": "Reference to the ethics/IRB-equivalent approval or documented exemption. Runs without it are excluded." },
+        "no_energized_contact_confirmed": { "type": "boolean", "description": "Must be true: no electrode/coil drive energized during human contact." },
+        "participant_code": { "type": "string", "description": "Pseudonymous; no personal data in manifests." },
+        "contact_protocol_id": { "type": "string", "description": "Defined grip/contact-area/force protocol version." },
+        "glove_condition": { "type": "string", "enum": ["bare_hand", "nitrile_glove", "surrogate_load", "fixture_only"] }
+      }
+    },
+    "timeseries": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "timeseries_channel.schema.json" }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["software"],
+      "additionalProperties": false,
+      "properties": {
+        "software": {
+          "type": "object",
+          "description": "Name -> version map of acquisition/generation software.",
+          "additionalProperties": { "type": "string" }
+        },
+        "git_commit": { "type": "string" },
+        "generator_script": { "type": "string", "description": "For synthetic data: the seeded script that produced the files." },
+        "generator_seed": { "type": "integer" },
+        "synthetic": { "type": "boolean", "description": "True = simulated data (never enters evidential claims; used for pipeline tests)." },
+        "calibration_refs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "exclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "excluded": { "type": "boolean" },
+        "reason": { "type": "string", "description": "Must cite a pre-registered exclusion criterion from EXPERIMENT_PROTOCOL.md; post-hoc reasons are non-compliant." },
+        "decided_while_blinded": { "type": "boolean" }
+      }
+    },
+    "classification_note": { "type": "string", "description": "Reminder of which configuration values are Source claims." },
+    "notes": { "type": "string" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "protocol_branch": { "const": "human_loading" } }, "required": ["protocol_branch"] },
+      "then": { "required": ["human_loading"] }
+    }
+  ]
+}

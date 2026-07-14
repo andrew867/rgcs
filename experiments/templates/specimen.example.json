@@ -1,0 +1,48 @@
+{
+  "specimen_id": "SP-Q154-001",
+  "specimen_type": "quartz_crystal",
+  "material": {
+    "name": "alpha-quartz",
+    "density_g_cm3": 2.65,
+    "density_source": "CRC Handbook (citation to be pinned per D-19)",
+    "purity_note": "natural, minor inclusions near male tip"
+  },
+  "geometry": {
+    "length_mm": 154.1,
+    "diameter_wide_mm": 34.0,
+    "diameter_narrow_mm": 25.0,
+    "diameter_mode": "across_vertices",
+    "facet_count": 6,
+    "angle_female_deg": 51.843,
+    "angle_male_deg": 60.0,
+    "angle_mode": "face_slope",
+    "measurement_uncertainty_mm": 0.05
+  },
+  "ladder": {
+    "target_harmonic_N": 5,
+    "target_length_mm": 154.052734375,
+    "base_frequency_f0_hz": 4096,
+    "length_shortfall_ratio": 1.000307
+  },
+  "mass_measured_g": 153.2,
+  "mass_predicted_g": 154.0,
+  "orientation": {
+    "crystallographic_axis_known": false,
+    "axis_note": "orientation unmeasured; u_v = 0.05 applies (RGCS-M.10)"
+  },
+  "condition": {
+    "defects": ["small chip on facet 3, 12 mm from female apex"],
+    "photos": [
+      {
+        "file": "photos/SP-Q154-001_intake.jpg",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ]
+  },
+  "provenance": {
+    "origin": "example intake record - replace with vendor/fabricator",
+    "received_date": "2026-07-01",
+    "classification_note": "Angles 51.843/60 deg and f0 = 4096 Hz are Source claims (RG-01, RG-16); dimensions and mass are measured (Established)."
+  },
+  "notes": "Example instance for specimen.schema.json."
+}

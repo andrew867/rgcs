@@ -1,0 +1,194 @@
+\begin{thebibliography}{28}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Lee and Tsai(2026)]{leetsai2026}
+Taegyu Lee and Yu-Dai Tsai.
+\newblock Naturally resonant dark matter from extra dimensions.
+\newblock \emph{Physical Review D}, 114:\penalty0 L011701, 2026.
+\newblock \doi{10.1103/tsq1-bhsz}.
+
+\bibitem[Gan et~al.(2025)Gan, Graef, Ramos, Vicente, and Wang]{gan2025}
+Wen-Cong Gan, Leila~L. Graef, Rudnei~O. Ramos, Gustavo~S. Vicente, and Anzhong
+  Wang.
+\newblock Quantum damping of cosmological shear, 2025.
+\newblock URL \url{https://arxiv.org/abs/2510.14021}.
+
+\bibitem[Koster et~al.(2026)Koster, Schweizer, Noack, Vasyuchka, Bozhko,
+  Hillebrands, Weiler, Serga, and von Freymann]{koster2026}
+Malte Koster, Matthias~R. Schweizer, Timo Noack, Vitaliy~I. Vasyuchka,
+  Dmytro~A. Bozhko, Burkard Hillebrands, Mathias Weiler, Alexander~A. Serga,
+  and Georg von Freymann.
+\newblock Emergence of phase coherence in a magnon {Bose–Einstein}
+  condensate.
+\newblock \emph{Nature Physics}, 2026.
+\newblock \doi{10.1038/s41567-026-03373-6}.
+\newblock Phase-referenced single-shot I/Q detection; 1,000-shot phase
+  ensembles; autocorrelation coherence metric (Methods); data at Zenodo
+  10.5281/zenodo.20135543.
+
+\bibitem[Green(2026{\natexlab{a}})]{rgcscore2026}
+Andrew Green.
+\newblock rgcs\_core: Rgcs v2 computational core, version 2.0.0,
+  2026{\natexlab{a}}.
+\newblock Deterministic, typed, tested Python library implementing equations
+  RGCS-M.0--M.61; 227 automated tests including golden-value, property-based,
+  regression, integration, and UI suites.
+
+\bibitem[Green(2026{\natexlab{b}})]{greenv18}
+Andrew Green.
+\newblock Proposed vogel-cut crystal design method and computational model,
+  v1.8, 2026{\natexlab{b}}.
+\newblock Predecessor manuscript and source bundle superseded by the present
+  work.
+
+\bibitem[{Archival compilation}(2023--2025)]{jenhanlog}
+{Archival compilation}.
+\newblock Jen han communications log, 2023--2025.
+\newblock User-supplied, non-peer-reviewed archival document (257 pp.). All
+  operating points cited from it are Source claims, preserved with page
+  provenance, not validated physics.
+
+\bibitem[{Vogel research archive}()]{vogelcorpus}
+{Vogel research archive}.
+\newblock Marcel vogel archival materials on quartz resonance transfer, faceted
+  crystal geometry, and water-structuring apparatus.
+\newblock User-supplied archival compilation; claims preserved with provenance
+  and mapped to testable observables, not endorsed.
+
+\bibitem[Ward()]{wardquartz}
+Roger~W. Ward.
+\newblock The constants of alpha quartz.
+\newblock URL
+  \url{https://ieee-uffc.org/frequency-control/educational-resources/review-papers/constants-alpha-quartz}.
+\newblock Review compilation of alpha-quartz material constants.
+
+\bibitem[Bechmann(1958)]{bechmann1958}
+Rudolf Bechmann.
+\newblock Elastic and piezoelectric constants of alpha-quartz.
+\newblock \emph{Physical Review}, 110\penalty0 (5):\penalty0 1060--1061, 1958.
+\newblock \doi{10.1103/PhysRev.110.1060}.
+
+\bibitem[Vig(1997)]{vig1997}
+John~R. Vig.
+\newblock Introduction to quartz frequency standards.
+\newblock Technical Report CECOM-TR-97-3, U.S. Army Communications-Electronics
+  Command, 1997.
+
+\bibitem[Hund(1930)]{hund1930}
+August Hund.
+\newblock New piezo oscillations with quartz cylinders.
+\newblock \emph{Bureau of Standards Journal of Research}, 4:\penalty0 383--400,
+  1930.
+
+\bibitem[Novotny(2010)]{novotny2010}
+Lukas Novotny.
+\newblock Strong coupling, energy splitting, and level crossings: A classical
+  perspective.
+\newblock \emph{American Journal of Physics}, 78\penalty0 (11):\penalty0
+  1199--1202, 2010.
+\newblock \doi{10.1119/1.3471177}.
+
+\bibitem[Aspelmeyer et~al.(2014)Aspelmeyer, Kippenberg, and
+  Marquardt]{aspelmeyer2014}
+Markus Aspelmeyer, Tobias~J. Kippenberg, and Florian Marquardt.
+\newblock Cavity optomechanics.
+\newblock \emph{Reviews of Modern Physics}, 86:\penalty0 1391--1452, 2014.
+\newblock \doi{10.1103/RevModPhys.86.1391}.
+
+\bibitem[Sogn and Simpson(1952)]{sogn1952}
+Leland~T. Sogn and Philip~A. Simpson.
+\newblock Loading of quartz oscillator plates.
+\newblock \emph{Journal of Research of the National Bureau of Standards},
+  49\penalty0 (5):\penalty0 325--332, 1952.
+
+\bibitem[Efron(1979)]{efron1979}
+Bradley Efron.
+\newblock Bootstrap methods: another look at the jackknife.
+\newblock \emph{The Annals of Statistics}, 7\penalty0 (1):\penalty0 1--26,
+  1979.
+
+\bibitem[Guckenheimer and Holmes(1983)]{guckenheimer1983}
+John Guckenheimer and Philip Holmes.
+\newblock \emph{Nonlinear Oscillations, Dynamical Systems, and Bifurcations of
+  Vector Fields}.
+\newblock Springer, 1983.
+
+\bibitem[Pikovsky et~al.(2001)Pikovsky, Rosenblum, and Kurths]{pikovsky2001}
+Arkady Pikovsky, Michael Rosenblum, and J{\"u}rgen Kurths.
+\newblock \emph{Synchronization: A Universal Concept in Nonlinear Sciences}.
+\newblock Cambridge University Press, 2001.
+
+\bibitem[Mardia and Jupp(2000)]{mardia2000}
+Kanti~V. Mardia and Peter~E. Jupp.
+\newblock \emph{Directional Statistics}.
+\newblock Wiley, 2000.
+
+\bibitem[Gabor(1946)]{gabor1946}
+Dennis Gabor.
+\newblock Theory of communication.
+\newblock \emph{Journal of the Institution of Electrical Engineers},
+  93:\penalty0 429--457, 1946.
+
+\bibitem[Akaike(1974)]{akaike1974}
+Hirotugu Akaike.
+\newblock A new look at the statistical model identification.
+\newblock \emph{IEEE Transactions on Automatic Control}, 19\penalty0
+  (6):\penalty0 716--723, 1974.
+
+\bibitem[Schwarz(1978)]{schwarz1978}
+Gideon Schwarz.
+\newblock Estimating the dimension of a model.
+\newblock \emph{The Annals of Statistics}, 6\penalty0 (2):\penalty0 461--464,
+  1978.
+
+\bibitem[Benjamini and Hochberg(1995)]{benjamini1995}
+Yoav Benjamini and Yosef Hochberg.
+\newblock Controlling the false discovery rate: a practical and powerful
+  approach to multiple testing.
+\newblock \emph{Journal of the Royal Statistical Society: Series B},
+  57\penalty0 (1):\penalty0 289--300, 1995.
+
+\bibitem[Xie et~al.(2022)Xie, Bai, and Li]{xie2022}
+Mingyu Xie, Wenshuo Bai, and Faxin Li.
+\newblock Elastic, piezoelectric coefficients, and internal frictions of a
+  single alpha-quartz crystal determined by partial-electrode electromechanical
+  impedance spectroscopy, 2022.
+
+\bibitem[Hu et~al.(2025)Hu, Gupta, Repicky, Hatridge, and Purdy]{hu2025}
+Yang Hu, Angad Gupta, Jacob Repicky, Michael Hatridge, and Thomas~P. Purdy.
+\newblock Quartz phononic crystal resonators for hybrid acoustic quantum
+  memories, 2025.
+
+\bibitem[Emser et~al.(2024)Emser, Metzger, Rose, and Lehnert]{emser2024}
+Alec~L. Emser, Cyril Metzger, Brendon~C. Rose, and Konrad~W. Lehnert.
+\newblock Thin-film quartz for high-coherence piezoelectric phononic crystal
+  resonators, 2024.
+
+\bibitem[Luo et~al.(2026)Luo, Diamandi, Li, Bi, Mason, Yoon, Guo, Tang, Walker,
+  Ahn, Behunin, and Rakich]{luo2026}
+Yizhi Luo, Hilel~Hagai Diamandi, Hanshi Li, Runjiang Bi, David Mason, Taekwan
+  Yoon, Xinghan Guo, Hanlin Tang, Frederick~J. Walker, Charles~H. Ahn, Ryan~O.
+  Behunin, and Peter~T. Rakich.
+\newblock Millisecond coherence times in gigahertz-frequency mechanical
+  oscillators.
+\newblock \emph{Nature Physics}, 2026.
+\newblock \doi{10.1038/s41567-026-03314-3}.
+
+\bibitem[Green(2026{\natexlab{c}})]{greenscad2026}
+Andrew Green.
+\newblock Vogel parametric crystal models: Openscad customizer generator,
+  2026{\natexlab{c}}.
+\newblock Project CAD artifact.
+
+\bibitem[Green(2026{\natexlab{d}})]{greenspiralscad2026}
+Andrew Green.
+\newblock Spiral cone and control geometry openscad generator,
+  2026{\natexlab{d}}.
+\newblock Project CAD artifact implementing the contracting logarithmic spiral
+  and matched control geometries.
+
+\end{thebibliography}

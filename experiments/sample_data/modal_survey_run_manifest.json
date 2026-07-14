@@ -1,0 +1,174 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-SAMPLE-MODAL-0001",
+  "session_id": "SES-SAMPLE-SYNTH",
+  "protocol_branch": "modal_survey",
+  "protocol_version": "1.0.0",
+  "hypothesis_ids": [
+    "H-01",
+    "H-01a",
+    "H-09"
+  ],
+  "timestamp": "2026-07-14T12:00:00Z",
+  "operator_id": "OP-SYNTH",
+  "control_role": "active",
+  "randomization": {
+    "seed": 20260714,
+    "scheme": "synthetic - single deterministic shot",
+    "blinded": false
+  },
+  "specimen": {
+    "specimen_id": "SP-SYNTH-Q154",
+    "specimen_type": "quartz_crystal",
+    "material": {
+      "name": "alpha-quartz",
+      "density_g_cm3": 2.65,
+      "density_source": "handbook (synthetic record)"
+    },
+    "geometry": {
+      "length_mm": 154.05,
+      "diameter_wide_mm": 34.0,
+      "diameter_narrow_mm": 25.0,
+      "diameter_mode": "across_vertices",
+      "facet_count": 6,
+      "angle_female_deg": 51.843,
+      "angle_male_deg": 60.0,
+      "angle_mode": "face_slope"
+    },
+    "mass_measured_g": 154.0,
+    "provenance": {
+      "origin": "SYNTHETIC specimen record (no physical object)",
+      "classification_note": "synthetic; mode frequencies planted at 4096 / 10042.677 / 12288 Hz"
+    }
+  },
+  "drive_config": {
+    "drive_id": "DRV-SAMPLE-TAP",
+    "branch": "modal_survey",
+    "drive_type": "impulse_tap",
+    "placement": {
+      "drive_x_mm": 77.0,
+      "note": "synthetic tap at t = 5 ms"
+    },
+    "timing": {
+      "session_duration_s": 0.25,
+      "drive_off_time_s": 0.0058
+    },
+    "reference_clock": {
+      "shared": true,
+      "source": "synthetic common timebase"
+    },
+    "source_claim_refs": [
+      "RG-01"
+    ]
+  },
+  "acquisition": {
+    "acquisition_id": "ACQ-SAMPLE-MODAL",
+    "sample_rate_hz": 32768.0,
+    "duration_s": 0.25,
+    "n_samples": 8192,
+    "single_shot": true,
+    "n_runs": 1,
+    "post_drive": {
+      "drive_off_time_s": 0.0058,
+      "post_drive_ratio": 42.1
+    },
+    "channels": [
+      {
+        "channel_id": "CH1",
+        "sensor_type": "contact_mic",
+        "units": "V",
+        "position_xyz_mm": [
+          40.0,
+          18.0,
+          0.0
+        ],
+        "aperture_mm": 6.0,
+        "calibration_ref": "SYNTH"
+      },
+      {
+        "channel_id": "CH2",
+        "sensor_type": "accelerometer",
+        "units": "m/s2",
+        "position_xyz_mm": [
+          120.0,
+          18.0,
+          0.0
+        ],
+        "aperture_mm": 8.0,
+        "calibration_ref": "SYNTH",
+        "sensor_mass_g": 0.8
+      },
+      {
+        "channel_id": "CH3",
+        "sensor_type": "force",
+        "units": "N",
+        "position_xyz_mm": [
+          77.0,
+          -20.0,
+          0.0
+        ],
+        "calibration_ref": "SYNTH"
+      }
+    ],
+    "artifact_register_ref": "synthetic - not applicable",
+    "notes": "n_runs = 1 sample shot; real campaigns follow EXPERIMENT_PROTOCOL.md repeat counts."
+  },
+  "environment": {
+    "bench_id": "BENCH-SYNTH",
+    "timestamp_start": "2026-07-14T12:00:00Z",
+    "temperature_c_start": 21.0,
+    "notes": "synthetic environment record"
+  },
+  "timeseries": [
+    {
+      "file": "modal_survey_response.csv",
+      "format": "csv",
+      "sha256": "c49ce73d7e502a7df358561742a4da5919dc2017f6d110fc940fe5d8b7164fad",
+      "channel_ids": [
+        "CH1",
+        "CH2",
+        "CH3"
+      ],
+      "run_index": 0,
+      "sample_rate_hz": 32768.0,
+      "t0_s": 0.0,
+      "n_rows": 8192,
+      "columns": [
+        {
+          "name": "t_s",
+          "units": "s",
+          "description": "time from acquisition start"
+        },
+        {
+          "name": "mic_v",
+          "units": "V",
+          "channel_id": "CH1",
+          "description": "contact mic"
+        },
+        {
+          "name": "accel_m_s2",
+          "units": "m/s2",
+          "channel_id": "CH2",
+          "description": "accelerometer"
+        },
+        {
+          "name": "force_n",
+          "units": "N",
+          "channel_id": "CH3",
+          "description": "tap force"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "software": {
+      "numpy": "2.4.4",
+      "generator": "make_samples.py"
+    },
+    "generator_script": "experiments/sample_data/make_samples.py",
+    "generator_seed": 20260714,
+    "synthetic": true
+  },
+  "classification_note": "SYNTHETIC pipeline-test data; carries no evidential weight.",
+  "notes": "Planted modes: 4096 Hz (tau 60 ms), 10042.677 Hz (tau 35 ms), 12288 Hz (tau 20 ms); tap at 5 ms."
+}

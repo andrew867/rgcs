@@ -1,0 +1,353 @@
+{
+  "name": "RGCS v2 golden coherence datasets",
+  "generator": "tools/generate_golden_coherence.py",
+  "master_seed": 20260714,
+  "fs_hz": 100000.0,
+  "f0_hz": 5000.0,
+  "coherence_window_s": 0.002,
+  "coherence_hop_s": 0.0005,
+  "classification_policy": "docs/SCIENTIFIC_CLASSIFICATION_POLICY.md",
+  "metric_spec": "docs/COHERENCE_METRICS.md",
+  "test_matrix": "docs/COHERENCE_TEST_MATRIX.md",
+  "notes": [
+    "All datasets are Derived synthetic records; none are measurements.",
+    "Coherence metric adapted from KOS-07 (Koster et al. 2026, Methods) as an Established signal-processing definition.",
+    "'Spatial phase anisotropy' adapts the GAN-05 shear-scalar FORM as a mathematical analogy only; no physical equivalence with cosmological shear (or magnon BEC) is claimed.",
+    "Tolerance semantics: atol = |got - value| <= atol; rtol = |got - value| <= rtol*|value|; min/max = one-sided bound; exact = string equality."
+  ],
+  "datasets": {
+    "case_a_white_noise": {
+      "file": "case_a_white_noise.csv",
+      "description": "Complex circular white Gaussian noise, 20 ms. Coherence must sit at the small positive window baseline, far from 1 (KOS-07 baseline concept).",
+      "classification": "Derived (synthetic; Established statistics)",
+      "seed": 20260715,
+      "params": {
+        "fs_hz": 100000.0,
+        "n_samples": 2000,
+        "sigma": 1.0
+      },
+      "expected": {
+        "coherence_mean": {
+          "value": 0.08858710438117315,
+          "atol": 0.03
+        },
+        "coherence_max": {
+          "value": 0.09648185334112064,
+          "atol": 0.05
+        },
+        "baseline_theory": {
+          "value": 0.08355427582103334,
+          "atol": 0.03,
+          "note": "(2 sqrt(pi)/3)/sqrt(N_window)"
+        },
+        "mode_occupancy_5kHz_500Hz": {
+          "value": 0.010712279295802506,
+          "atol": 0.01
+        },
+        "phase_linearity": {
+          "value": 0.03164680432568638,
+          "atol": 0.15
+        }
+      }
+    },
+    "case_b_pure_sinusoid": {
+      "file": "case_b_pure_sinusoid.csv",
+      "description": "Noise-free complex tone at f0=5 kHz, amp 1, phase0=0.7 rad. Coherence must be ~1 in every window.",
+      "classification": "Derived (synthetic; Established)",
+      "seed": 20260716,
+      "params": {
+        "fs_hz": 100000.0,
+        "f0_hz": 5000.0,
+        "amp": 1.0,
+        "phase0_rad": 0.7,
+        "n_samples": 2000
+      },
+      "expected": {
+        "coherence_min": {
+          "value": 1.0,
+          "atol": 1e-06,
+          "note": "exactly 1 to numerical precision"
+        },
+        "phase_linearity": {
+          "value": 1.0,
+          "atol": 1e-06
+        },
+        "inst_freq_mean_hz": {
+          "value": 4999.999999999993,
+          "atol": 1.0
+        },
+        "mode_occupancy_5kHz_500Hz": {
+          "value": 1.0,
+          "atol": 0.001
+        }
+      }
+    },
+    "case_c_decaying_sinusoid": {
+      "file": "case_c_decaying_sinusoid.csv",
+      "description": "Tone at 5 kHz starting at t=5 ms with exponential amplitude decay tau=8 ms in weak noise. Coherence must stay high while amplitude falls and persist below the amplitude noise floor (KOS-10 analogue).",
+      "classification": "Derived (synthetic; Established)",
+      "seed": 20260717,
+      "params": {
+        "fs_hz": 100000.0,
+        "f0_hz": 5000.0,
+        "amp0": 3.0,
+        "tau_amp_s": 0.008,
+        "t_on_s": 0.005,
+        "noise_sigma": 0.05,
+        "n_samples": 5000
+      },
+      "expected": {
+        "coherence_max": {
+          "value": 0.9944197242004481,
+          "atol": 0.02
+        },
+        "coherence_at_10ms": {
+          "value": 0.9940318694343154,
+          "atol": 0.05,
+          "note": "amplitude already down ~2x; coherence still high"
+        },
+        "onset_time_s": {
+          "value": 0.005,
+          "atol": 0.001,
+          "note": "true signal start 0.005 s"
+        },
+        "coherence_decay_tau_s": {
+          "value": 0.023891193993939377,
+          "rtol": 0.5,
+          "note": "order-of-magnitude check; coherence decays later and faster than amplitude"
+        },
+        "coherence_below_amp_floor": {
+          "value": 0.5458640166857931,
+          "atol": 0.15,
+          "note": "max C in windows where envelope < noise sigma; must exceed 3x white-noise baseline"
+        },
+        "envelope_best_model": {
+          "value": "exponential",
+          "exact": true
+        },
+        "aic_exp_minus_power": {
+          "value": -141.47651560022936,
+          "max": 0.0,
+          "note": "exponential must beat power law"
+        },
+        "aic_exp_minus_nochange": {
+          "value": -271.9930286127013,
+          "max": -10.0,
+          "note": "exponential must crush no-change"
+        },
+        "envelope_fit_tau_s": {
+          "value": 0.00740055122993164,
+          "rtol": 0.15,
+          "note": "true tau_amp 0.008 s"
+        }
+      }
+    },
+    "case_d_random_phase_runs": {
+      "file": "case_d_random_phase_runs.csv",
+      "description": "100 independent runs of the same tone with per-run random initial phase (uniform) in weak noise. Per-run coherence high; ensemble initial phase uniform (Rayleigh must NOT reject). This is the KOS-06 spontaneous-order signature.",
+      "classification": "Derived (synthetic; Established statistics)",
+      "seed": 20260718,
+      "params": {
+        "fs_hz": 100000.0,
+        "f0_hz": 5000.0,
+        "n_runs": 100,
+        "n_samples_per_run": 1000,
+        "noise_sigma": 0.1
+      },
+      "expected": {
+        "per_run_coherence_mean": {
+          "value": 0.9901969816397372,
+          "atol": 0.03
+        },
+        "per_run_phase_linearity_min": {
+          "value": 0.9972246843848906,
+          "atol": 0.1
+        },
+        "ensemble_Rbar": {
+          "value": 0.10962038801963025,
+          "atol": 0.1,
+          "note": "near 0 for uniform phases"
+        },
+        "rayleigh_p": {
+          "value": 0.30142000137207836,
+          "min": 0.05,
+          "note": "must NOT reject uniformity"
+        },
+        "circular_variance": {
+          "value": 0.8903796119803697,
+          "atol": 0.1,
+          "note": "near 1 for uniform"
+        }
+      }
+    },
+    "case_e_coupled_oscillators": {
+      "file": "case_e_coupled_oscillators.csv",
+      "summary_file": "case_e_plv_summary.csv",
+      "description": "Two coupled Stuart-Landau oscillators (5000 vs 5080 Hz, mu=400, noise=8), coupling K swept over 10 values x 8 runs. PLV low below and high above the phase-reduction critical coupling K_c = pi*|f1-f2| ~= 251.3 s^-1. Model as RGCS physics = Hypothesis (DC-H2); dataset = Derived.",
+      "classification": "Derived (generator); Hypothesis (as RGCS model)",
+      "seed": 20260719,
+      "params": {
+        "fs_hz": 100000.0,
+        "f1_hz": 5000.0,
+        "f2_hz": 5080.0,
+        "mu": 400.0,
+        "noise": 8.0,
+        "K_grid": [
+          0.0,
+          50.0,
+          100.0,
+          150.0,
+          200.0,
+          250.0,
+          300.0,
+          400.0,
+          600.0,
+          1000.0
+        ],
+        "n_runs_per_K": 8,
+        "n_samples": 5000,
+        "K_c_theory": 251.32741228718345
+      },
+      "expected": {
+        "plv_at_K0_mean": {
+          "value": 0.08651925567333044,
+          "atol": 0.15,
+          "note": "unlocked: low PLV"
+        },
+        "plv_at_Kmax_mean": {
+          "value": 0.9999985495837957,
+          "atol": 0.05,
+          "note": "locked: PLV ~ 1"
+        },
+        "threshold_K": {
+          "value": 204.19167739778368,
+          "atol": 60.0,
+          "note": "K_c theory ~251.3; midpoint-crossing estimator on noisy PLV"
+        },
+        "threshold_ci": {
+          "value": [
+            203.82556403873804,
+            204.88448797506433
+          ],
+          "note": "95% bootstrap CI, n_boot=500, seed MASTER_SEED+55"
+        },
+        "plv_monotone_spearman_min": {
+          "value": 0.9,
+          "min": 0.9,
+          "note": "mean PLV must increase with K (rank corr > 0.9)"
+        }
+      }
+    },
+    "case_f_pump_leakage": {
+      "file": "case_f_pump_leakage.csv",
+      "description": "False-coherence trap: fixed-phase pump leakage in noise for 100 'sample' and 100 'control' (no-crystal) runs. Coherence alone is HIGH and identical in both. Controls that must catch it: (1) Rayleigh test REJECTS ensemble-phase uniformity (phase imprinted by pump, contra KOS-06/KOS-13); (2) control-subtracted coherence ~ 0.",
+      "classification": "Derived (synthetic)",
+      "seed": 20260720,
+      "params": {
+        "fs_hz": 100000.0,
+        "f0_hz": 5000.0,
+        "n_runs_per_cond": 100,
+        "leak_amp": 0.6,
+        "noise_sigma": 0.3,
+        "pump_phase_rad": 0.4,
+        "n_samples": 1000
+      },
+      "expected": {
+        "sample_coherence_mean": {
+          "value": 0.8011262287880321,
+          "atol": 0.05,
+          "note": "high \u2014 the trap"
+        },
+        "control_coherence_mean": {
+          "value": 0.8025135500638828,
+          "atol": 0.05
+        },
+        "coherence_excess_sample_minus_control": {
+          "value": -0.001387321275850728,
+          "atol": 0.02,
+          "note": "~0: no genuine effect"
+        },
+        "rayleigh_p_sample": {
+          "value": 1.0450333669595444e-41,
+          "max": 1e-06,
+          "note": "MUST reject uniformity"
+        },
+        "ensemble_Rbar_sample": {
+          "value": 0.9996570837317874,
+          "atol": 0.1,
+          "note": "near 1: pump-imprinted phase"
+        },
+        "ensemble_phase_vs_pump_rad": {
+          "value": 0.4009226341450469,
+          "atol": 0.1,
+          "note": "clusters at pump phase 0.4 rad"
+        }
+      }
+    },
+    "case_g_sensor_geometry": {
+      "file": "case_g_sensor_geometry.csv",
+      "description": "Spatial-filtering analogue of KOS-11: three point sensors at 30/75/120 mm and one 60-mm-aperture 'wide' sensor on a 150 mm 1-D standing-wave field. Long-wavelength mode (300 mm) survives aperture averaging; short-wavelength mode (20 mm) is averaged out (aperture = 3 lambda exactly), so the wide sensor's coherence falls to the noise baseline while point sensors still see it. 'Spatial phase anisotropy' scalar (GAN-05 mathematical analogy ONLY \u2014 never 'quantum shear') is small for the common coherent mode and large for mutually detuned channels.",
+      "classification": "Derived (synthetic)",
+      "seed": 20260721,
+      "params": {
+        "fs_hz": 100000.0,
+        "f0_hz": 5000.0,
+        "sensor_x_mm": [
+          35.0,
+          75.0,
+          115.0
+        ],
+        "aperture_mm": 60.0,
+        "length_mm": 150.0,
+        "noise_sigma": 0.15,
+        "lambda_long_mm": 300.0,
+        "lambda_short_mm": 20.0,
+        "n_samples": 2000
+      },
+      "expected": {
+        "long_point_coherence": {
+          "value": 0.9605015256924428,
+          "atol": 0.05
+        },
+        "long_wide_coherence": {
+          "value": 0.9744445954963389,
+          "atol": 0.05,
+          "note": "aperture passes long lambda"
+        },
+        "short_point_coherence": {
+          "value": 0.9784166008378015,
+          "atol": 0.05,
+          "note": "point sensors still coherent"
+        },
+        "short_wide_coherence": {
+          "value": 0.08880028295526553,
+          "atol": 0.08,
+          "note": "aperture-averaged toward noise baseline"
+        },
+        "aniso_scalar_coherent_long": {
+          "value": 735.4797721834752,
+          "rtol": 0.5,
+          "note": "small: common phase rate across channels"
+        },
+        "aniso_scalar_detuned": {
+          "value": 198152.8295887257,
+          "rtol": 0.2,
+          "note": "theory ~ ((2pi*50)^2 + (2pi*100)^2 + (2pi*50)^2)/3 = 1.97e5 rad^2/s^2"
+        },
+        "aniso_ratio_detuned_over_long": {
+          "value": 269.41982238403943,
+          "min": 10.0,
+          "note": "detuned/long anisotropy ratio must exceed 10"
+        }
+      }
+    }
+  },
+  "plots": [
+    "plots/case_ab_coherence_bounds.png",
+    "plots/case_c_decaying_sinusoid.png",
+    "plots/case_d_random_phase_runs.png",
+    "plots/case_e_locking_threshold.png",
+    "plots/case_f_pump_leakage_controls.png",
+    "plots/case_g_sensor_geometry.png"
+  ]
+}

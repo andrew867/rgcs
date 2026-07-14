@@ -1,0 +1,17 @@
+{
+  "bench_id": "BENCH-A",
+  "fixture_id": "FIX-VBLOCK-03",
+  "timestamp_start": "2026-07-14T14:02:00Z",
+  "timestamp_end": "2026-07-14T14:41:00Z",
+  "temperature_c_start": 21.4,
+  "temperature_c_end": 21.9,
+  "specimen_temperature_c": 21.6,
+  "humidity_pct": 44,
+  "pressure_hpa": 1012,
+  "ambient_acoustic_dba": 38.5,
+  "mains_frequency_hz": 60,
+  "emi_survey_note": "switching PSU on adjacent bench powered off during runs",
+  "vibration_background_note": "HVAC on; floor vibration < accelerometer noise floor",
+  "instrument_phase_drift_deg": 2.1,
+  "notes": "Example instance for environment.schema.json."
+}
