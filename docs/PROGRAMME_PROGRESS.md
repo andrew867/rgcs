@@ -24,8 +24,16 @@ Linux reference platform).
 | 07 | Coil / laser / timing / experiment design | COMPLETE | `8751b51` | 364/2/0 | `AGENT_07_HANDOFF.md` |
 | 08 | Software / hardware / CAD / portability (T1) | COMPLETE | `75229cc` | 376/1/0 ‡ | `AGENT_08_HANDOFF.md` |
 | 09 | Four manuscripts + public docs + Lessons Learned | COMPLETE | `7baad8c` | 376/1/0 | `AGENT_09_HANDOFF.md` |
-| 10 | Independent adversarial QA | COMPLETE | (this commit) | 376/1/0; 3 new defects D-V3-01..03 documented | `QA_REPORT_V3.md` |
-| 11 | Integration, repair, release, public package | pending | — | — | — |
+| 10 | Independent adversarial QA | COMPLETE | `22dd988` | 376/1/0; 3 new defects D-V3-01..03 documented | `QA_REPORT_V3.md` |
+| 11 | Integration, repair, release, public package | COMPLETE | `1bd9c5a` + (this commit); tag `v3.0.0-rc1` | 376/1/0; D-V3-01..03 FIXED; gate table GREEN (rc) | `release/RELEASE_NOTES.md` |
+
+## FINAL VERDICT (2026-07-15)
+
+**GREEN — release candidate v3.0.0-rc1 shipped.** All 12 quality gates
+green (gate 8 carries the documented Linux-execution limitation); final
+`3.0.0` requires only a green Linux CI run. Release artifacts + checksums
++ provenance under `release/`; recommended public wording in the release
+notes.
 
 ## Registry / claims state
 

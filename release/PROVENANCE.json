@@ -1,0 +1,37 @@
+{
+  "baseline": {
+    "commit": "f9fd2c2",
+    "frozen_path": "archive/v2.0.0/",
+    "tag": "v2.0.0"
+  },
+  "environment": {
+    "numpy": "2.5.1",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.2",
+    "xelatex": "MiKTeX-XeTeX 4.18 (MiKTeX 26.2)"
+  },
+  "qa": {
+    "defects_fixed": [
+      "D-V3-01",
+      "D-V3-02",
+      "D-V3-03"
+    ],
+    "open_non_blocking": [
+      "NR3-001 (inherited)",
+      "QA-D-19 (v2 tooling, frozen)"
+    ],
+    "report": "docs/QA_REPORT_V3.md"
+  },
+  "registries": {
+    "rgcs_m": "61 ids, schema 1, frozen",
+    "rscs": "40 ids (17 coordinates + 23 operators)"
+  },
+  "release_commit": "1bd9c5a0bb8540ba8bf6507a1a578b127a632641",
+  "test_evidence": {
+    "cep_battery": "all_ok",
+    "generated_artifacts": "byte-stable across regenerations",
+    "schema_validation": "12/12 targets OK",
+    "suite": "376 passed, 1 inherited failure (NR3-001, documented Windows/numpy golden byte-equality)"
+  },
+  "version": "3.0.0-rc1"
+}

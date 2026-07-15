@@ -3,6 +3,17 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [3.0.0-rc1] — 2026-07-15
+
+Release candidate: all 12 quality gates GREEN (gate 8 with the documented
+Linux-execution limitation). Agent 11 fixed the three QA defects
+(D-V3-01 coordinate count, D-V3-02 figure reproducibility via
+SOURCE_DATE_EPOCH, D-V3-03 CITATION.cff), rebuilt and repackaged the
+manuscripts, and shipped `release/` (source zip, manuscript bundle,
+sample-experiments bundle, SHA256SUMS, PROVENANCE.json, release notes
+with gate table, limitations, and recommended public wording). Final
+3.0.0 is gated only on a green Linux CI run.
+
 ## [Unreleased] — 3.0.0 programme (RSCS 1.0)
 
 ### Added
