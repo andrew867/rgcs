@@ -105,23 +105,31 @@ def classification_of(fn: Callable[..., Any]) -> RSCSClassification:
     return meta
 
 
-def assert_no_src_upgrade(output_label: str, *input_labels: str) -> None:
-    """Firewall: an output may not claim a STRONGER class than its inputs.
+#: Rank at/above which a claim is "strong" (grounded): DER and EST.
+STRONG_RANK = 3
 
-    Enforces design principle 4: SRC/HYP evidence cannot be laundered into a
-    stronger EST/DER conclusion without an explicit boundary node (which the
-    caller models by declaring the output HYP/ENG). Raises ValueError on a
-    forbidden upgrade."""
+
+def assert_no_src_upgrade(output_label: str, *input_labels: str) -> None:
+    """Firewall: weak evidence may not be laundered into a strong claim.
+
+    Enforces design principle 4: "No SRC claim may flow directly into EST or
+    DER output without an explicit HYP or ENG boundary node." Concretely, a
+    STRONG output (DER/EST, rank >= 3) is forbidden whenever ANY input is WEAK
+    (HYP/ENG/SRC, rank < 3): reaching a grounded claim from weak evidence
+    requires NEW evidence (a passed test), not relabeling. The allowed
+    boundary move SRC/HYP -> HYP/ENG (weak -> weak) is permitted. Raises
+    ValueError on a forbidden upgrade."""
     if output_label not in VALID_CLASSES:
         raise ValueError(f"invalid output class {output_label!r}")
-    out_rank = CLASS_RANK[output_label]
     for lbl in input_labels:
         if lbl not in VALID_CLASSES:
             raise ValueError(f"invalid input class {lbl!r}")
-        if out_rank > CLASS_RANK[lbl]:
+    if CLASS_RANK[output_label] >= STRONG_RANK:
+        weak = [lbl for lbl in input_labels if CLASS_RANK[lbl] < STRONG_RANK]
+        if weak:
             raise ValueError(
-                f"claim firewall violation: output {output_label!r} is "
-                f"stronger than input {lbl!r}; route through an explicit "
+                f"claim firewall violation: strong output {output_label!r} "
+                f"from weak input(s) {weak}; route through an explicit "
                 f"HYP/ENG boundary node (design principle 4)")
 
 

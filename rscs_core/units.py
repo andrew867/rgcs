@@ -53,7 +53,14 @@ def rad_s_to_hz(omega_rad_s: float) -> float:
 
 
 def wrap_phase(phi_rad: float) -> float:
-    """Wrap a phase to the canonical S^1 chart [0, 2*pi) (RSCS-C.3)."""
+    """Wrap a phase to the canonical S^1 chart [0, 2*pi) (RSCS-C.3).
+
+    Guards the float-modulo wart where ``x % TWO_PI`` can round up to exactly
+    ``TWO_PI`` for x just below a multiple of 2*pi; the result is always in
+    the half-open interval [0, 2*pi), so wrapping is idempotent."""
     if not is_finite_number(phi_rad):
         raise ValueError(f"phi_rad must be a finite number; got {phi_rad!r}")
-    return float(phi_rad) % TWO_PI
+    r = float(phi_rad) % TWO_PI
+    if r >= TWO_PI:            # rounding pushed it to the open boundary
+        r = 0.0
+    return r
