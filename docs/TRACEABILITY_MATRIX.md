@@ -184,3 +184,16 @@ operators).
 | README Lessons Learned + v3 header | -- | README.md | Agent 10 public-claims review |
 | Layout QA | build logs | docs/LAYOUT_QA_REPORT_V3.md | Agent 10 re-check |
 | QA-D-02 closure | manuscript/references.bib (v2) verified correct | docs/DEFECT_REGISTER.md addendum | Agent 10 |
+
+## Agent 10 — independent adversarial QA
+
+| Deliverable | File | Outcome |
+|---|---|---|
+| QA report (fresh, v3) | docs/QA_REPORT_V3.md | YELLOW -> GREEN after D-V3-01..03 |
+| Defect register updates | docs/DEFECT_REGISTER.md (Agent 10 addendum) | 3 new defects documented BEFORE fixes |
+| Claim audit (v3 rows) | docs/CLAIM_AUDIT_V3.md | no classification defects |
+| Reproducibility audit | docs/REPRODUCIBILITY_AUDIT_V3.md | tables byte-stable; figures D-V3-02 |
+| Layout re-check | QA_REPORT_V3 section 2 | 0 undefined / 0 overfull (independent scan) |
+| Cross-platform report | QA_REPORT_V3 sections 2/4 + REPRODUCIBILITY_AUDIT_V3 | Windows green (376/1); Linux gap recorded |
+| Source/provenance audit | adversarial lint suite + registry cross-resolution script | pass |
+| Gate recommendation | QA_REPORT_V3 section 5 | proceed to Agent 11 |

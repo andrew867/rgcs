@@ -98,3 +98,16 @@ Severity: P0 blocker / P1 major / P2 minor / P3 cosmetic. Nothing was fixed by Q
   the v3 manuscripts do not cite Koster. Closing as fixed-in-v2-final.
 - v3 manuscript layout: all four builds show 0 undefined references and
   0 overfull boxes (see docs/LAYOUT_QA_REPORT_V3.md).
+
+### Agent 10 addendum (2026-07-15) — v3 adversarial QA findings
+
+- **D-V3-01 (P2, OPEN -> Agent 11):** generated coordinate count wrong
+  (18 vs true 17): make_v3_artifacts.py adds +1 for RSCS-C.15 which is
+  already a registry row; propagates to the RSCS Foundations abstract and
+  README. Fix: drop +1, regenerate, rebuild, correct README.
+- **D-V3-02 (P3, OPEN -> Agent 11):** manuscript figure PDFs not
+  byte-reproducible (matplotlib CreationDate metadata). Fix:
+  SOURCE_DATE_EPOCH before matplotlib import; verify regen-clean.
+- **D-V3-03 (P2, OPEN -> Agent 11):** CITATION.cff still v2.0.0.
+- QA-D-19 (v2 make_figures dead code) remains OPEN, non-blocking (frozen
+  v2 tooling behavior; disposition: document, do not patch v2).

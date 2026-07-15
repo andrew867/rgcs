@@ -77,6 +77,12 @@ v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
   0 undefined refs / 0 overfull boxes (`docs/LAYOUT_QA_REPORT_V3.md`);
   README v3 header + public Lessons Learned section; QA-D-02 verified
   fixed in the v2 bib and closed.
+- Agent 10: independent adversarial QA — fresh `QA_REPORT_V3.md` (22
+  dimensions), `CLAIM_AUDIT_V3.md`, `REPRODUCIBILITY_AUDIT_V3.md`,
+  defect-register addendum documenting D-V3-01 (coordinate count 18→17),
+  D-V3-02 (figure PDFs carry CreationDate), D-V3-03 (CITATION.cff still
+  v2) BEFORE fixes; gate recommendation YELLOW → GREEN after Agent 11
+  repairs.
 
 ### Changed
 - `pyproject.toml`: project renamed `rgcs-v3` 3.0.0a1 (D3-001); missing
@@ -88,5 +94,6 @@ v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 ## [2.0.0] — 2026-07-14
 
 Frozen baseline. See `archive/v2.0.0/release/RELEASE_NOTES.md`.
+
 
 
