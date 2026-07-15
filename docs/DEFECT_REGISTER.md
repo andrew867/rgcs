@@ -111,3 +111,18 @@ Severity: P0 blocker / P1 major / P2 minor / P3 cosmetic. Nothing was fixed by Q
 - **D-V3-03 (P2, OPEN -> Agent 11):** CITATION.cff still v2.0.0.
 - QA-D-19 (v2 make_figures dead code) remains OPEN, non-blocking (frozen
   v2 tooling behavior; disposition: document, do not patch v2).
+
+### Agent 13 addendum (2026-07-15) — hosted CI findings
+
+- **D-V3-04 (P3, environment):** NR3-001 byte-equality fails on hosted
+  ubuntu-latest even with numpy pinned to the golden version 2.4.4
+  (case_a_white_noise.csv drifts; the Windows drift was case_e). The
+  golden CSVs record their full generation environment
+  (archive/v2.0.0/release/PROVENANCE.json: Python 3.11.15 GCC 13.3.0,
+  numpy 2.4.4, scipy 1.17.1). Repair sequence: (1) pin scipy==1.17.1 in
+  the CI reference job; (2) if byte-equality still drifts, adopt the
+  documented fallback: the byte-exactness guarantee is scoped to the
+  ARCHIVED v2 build environment (where it was verified at v2 release,
+  with recorded checksums); hosted CI verifies tolerance-aware numerical
+  equivalence on every platform and deselects only that exact node id.
+  Either endpoint keeps determinism tests strong everywhere else.
