@@ -183,8 +183,10 @@ def crystal() -> None:
         _macro("gvNo", f"{QUARTZ_N_O:.4f}")
         + _macro("gvNe", f"{QUARTZ_N_E:.4f}")
         + _macro("gvBirefringence", f"{QUARTZ_N_E - QUARTZ_N_O:.4f}")
-        + _macro("gvPelDn", f"{dn:.2e}")
-        + _macro("gvMTwo", f"{m2:.2e}")
+        # D-V3-06: scientific notation must go through siunitx \num so it
+        # typesets as a x 10^b instead of raw ASCII "1.23e-08".
+        + _macro("gvPelDn", f"\\num{{{dn:.2e}}}")
+        + _macro("gvMTwo", f"\\num{{{m2:.2e}}}")
         + _macro("gvDensity", f"{ALPHA_QUARTZ_DENSITY_KG_M3:.0f}")
         + _macro("gvZql", f"{zql:.0f}")
         + _macro("gvXql", f"{xql:.0f}")

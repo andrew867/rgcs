@@ -26,7 +26,7 @@
     "rgcs_m": "61 ids, schema 1, frozen",
     "rscs": "40 ids (17 coordinates + 23 operators)"
   },
-  "release_commit": "441612cfe6af61ebc2609d6068a49de274ba2e95",
+  "release_commit": "441612c",
   "test_evidence": {
     "cep_battery": "all_ok",
     "generated_artifacts": "byte-stable across regenerations",

@@ -135,3 +135,22 @@ Severity: P0 blocker / P1 major / P2 minor / P3 cosmetic. Nothing was fixed by Q
   environment and deselected by exact node id in all hosted CI jobs.
   Hosted matrix green: ubuntu/windows/macos x 3.11/3.13 + pinned
   reference.
+
+### Post-release figure-rendering audit (2026-07-15, user report)
+
+- **D-V3-05 (P3, FIXED):** README PNG `docs/images/anisotropy_sweep.png`
+  showed raw mathtext (`\{qL}(\theta)$`) — the one-off shell generation
+  escaped the `$` characters. Fix: permanent generator
+  `tools/make_readme_images.py` with correct raw-string labels; PNGs
+  regenerated and visually verified.
+- **D-V3-06 (P3, FIXED):** generated macros gvPelDn/gvMTwo rendered
+  scientific notation as ASCII ("-2.95e-08") in the Crystal Application
+  manuscript. Fix: macros now emit siunitx `\num{}`; manuscript rebuilt
+  (0 undefined / 0 overfull) and visually verified as -2.95 x 10^-8 and
+  7.01 x 10^-16.
+- Full-figure audit performed: all three v3 manuscript figure PDFs, all
+  four manuscript PDFs (TikZ + captions + equations), README PNGs, and
+  v2 spot-checks render correctly. Known-accepted: frozen v2
+  fig_epsilon_map title uses the ASCII style ("1.125e-03") — v2 shipped
+  record, not modified; registry-verbatim ASCII strings (E^3, g^(2)) in
+  generated tables are data faithfulness, not rendering defects.
