@@ -2,7 +2,7 @@
 """Build the v3 release package under release/ (Agent 11).
 
 Artifacts:
-  rgcs-v3.0.0-rc1-source.zip        git archive of the release commit
+  rgcs-v3.0.0-source.zip            git archive of the release commit
   rgcs_v3_manuscripts.zip           4 PDFs + TeX/tables/figures/checksums
   rgcs_v3_sample_experiments.zip    schemas + templates + sample data
   SHA256SUMS.txt                    checksums of everything above
@@ -23,7 +23,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 REL = REPO / "release"
-VERSION = "3.0.0-rc1"
+VERSION = "3.0.0"
 
 
 def _sha(path: Path) -> str:
@@ -102,8 +102,14 @@ def main() -> int:
             "xelatex": _v(["xelatex", "--version"]),
         },
         "test_evidence": {
-            "suite": "376 passed, 1 inherited failure (NR3-001, "
-                     "documented Windows/numpy golden byte-equality)",
+            "suite": "377 portable tests pass on every platform; the "
+                     "golden byte-equality test is scoped to the archived "
+                     "v2 build environment (NR3-001/D-V3-04) and replaced "
+                     "everywhere else by a tolerance-aware regeneration "
+                     "test",
+            "hosted_ci": "GitHub Actions: ubuntu/windows/macos x "
+                         "Python 3.11/3.13 portable matrix + pinned "
+                         "ubuntu reference job, all green",
             "schema_validation": "12/12 targets OK",
             "cep_battery": "all_ok",
             "generated_artifacts": "byte-stable across regenerations",
@@ -111,9 +117,9 @@ def main() -> int:
         "registries": {"rgcs_m": "61 ids, schema 1, frozen",
                        "rscs": "40 ids (17 coordinates + 23 operators)"},
         "qa": {"report": "docs/QA_REPORT_V3.md",
-               "defects_fixed": ["D-V3-01", "D-V3-02", "D-V3-03"],
-               "open_non_blocking": ["NR3-001 (inherited)",
-                                     "QA-D-19 (v2 tooling, frozen)"]},
+               "defects_fixed": ["D-V3-01", "D-V3-02", "D-V3-03",
+                                 "D-V3-04"],
+               "open_non_blocking": ["QA-D-19 (v2 tooling, frozen)"]},
     }
     (REL / "PROVENANCE.json").write_text(
         json.dumps(prov, indent=2, sort_keys=True), encoding="utf-8")

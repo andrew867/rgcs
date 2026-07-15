@@ -68,3 +68,11 @@ python3 tools/make_figures.py && python3 tools/make_tables.py
 QT_QPA_PLATFORM=offscreen python3 tools/packaging/make_release.py
 sha256sum -c release/SHA256SUMS.txt   # must be 100% OK
 ```
+
+## v3.0.0 addendum (Agent 13)
+
+Hosted release path: push main -> CI matrix (3 OS x 2 Python + pinned
+reference) must be green -> version flip commit -> release/ rebuilt via
+tools/build_v3_release.py <sha> -> annotated tag v3.0.0 -> GitHub release
+with release/ assets -> repository public. Exact commands in
+docs/GITHUB_PUBLICATION_REPORT.md.

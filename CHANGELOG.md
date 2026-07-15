@@ -3,6 +3,19 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [3.0.0] — 2026-07-15
+
+Final release. Agent 13: GitHub repository bootstrapped
+(https://github.com/andrew867/rgcs), hosted CI matrix green
+(ubuntu/windows/macos × Python 3.11/3.13 portable + pinned ubuntu
+reference), NR3-001 determinism policy completed (D-V3-04: portable
+tolerance-aware golden-regeneration test on every platform; byte
+equality scoped to the archived v2 environment), versions flipped to
+3.0.0, release artifacts rebuilt, tag `v3.0.0`, GitHub release
+published, repository public. Agent 12 (publication polish) preceded:
+README rewrite, contributor documents, docs index, communication kit,
+publication readiness report.
+
 ## [3.0.0-rc1] — 2026-07-15
 
 Release candidate: all 12 quality gates GREEN (gate 8 with the documented

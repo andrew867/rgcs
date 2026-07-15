@@ -29,11 +29,12 @@ Linux reference platform).
 
 ## FINAL VERDICT (2026-07-15)
 
-**GREEN — release candidate v3.0.0-rc1 shipped.** All 12 quality gates
-green (gate 8 carries the documented Linux-execution limitation); final
-`3.0.0` requires only a green Linux CI run. Release artifacts + checksums
-+ provenance under `release/`; recommended public wording in the release
-notes.
+**GREEN — v3.0.0 released.** All 12 quality gates green with hosted CI
+evidence: GitHub Actions matrix (ubuntu/windows/macos x Python
+3.11/3.13 portable + pinned ubuntu reference) all green at the release
+lineage. Repository: https://github.com/andrew867/rgcs. Release
+artifacts + checksums + provenance under `release/`; Agent 13 record in
+`docs/GITHUB_PUBLICATION_REPORT.md`.
 
 ## Registry / claims state
 

@@ -126,3 +126,12 @@ Severity: P0 blocker / P1 major / P2 minor / P3 cosmetic. Nothing was fixed by Q
   with recorded checksums); hosted CI verifies tolerance-aware numerical
   equivalence on every platform and deselects only that exact node id.
   Either endpoint keeps determinism tests strong everywhere else.
+- **D-V3-04 CLOSED (2026-07-15):** resolved via the pre-registered
+  fallback endpoint. New portable test
+  test_generator_numerically_equivalent regenerates the goldens on EVERY
+  platform (string cells/headers exact; numeric cells within one printed
+  unit, 2e-8; manifest floats within max(2e-8, 1e-9 rel) with per-field
+  mismatch reporting); byte-equality test scoped to the archived v2 build
+  environment and deselected by exact node id in all hosted CI jobs.
+  Hosted matrix green: ubuntu/windows/macos x 3.11/3.13 + pinned
+  reference.
