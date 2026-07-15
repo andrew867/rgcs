@@ -68,22 +68,38 @@ def _cell_equal(ref: str, new: str) -> bool:
         return False       # non-numeric cells must match exactly
 
 
-def _deep_equal(ref, new) -> bool:
-    """Recursive manifest comparison: floats within PRINT_ATOL (computed
-    'expected' values drift at the last digits across platforms exactly
-    like the CSV cells); every other type exact."""
+def _deep_diff(ref, new, path, out):
+    """Recursive manifest comparison collecting every mismatch with its
+    path and values, so a cross-platform failure reports the exact
+    offending fields and magnitudes. Floats compare within PRINT_ATOL
+    absolute OR 1e-9 relative (manifest 'expected' values are stored at
+    full double precision, so large values need the relative term);
+    every other type exact."""
     if isinstance(ref, float) or isinstance(new, float):
         try:
-            return abs(float(new) - float(ref)) <= PRINT_ATOL
+            r, n = float(ref), float(new)
         except (TypeError, ValueError):
-            return False
+            out.append((path, ref, new))
+            return
+        if abs(n - r) > max(PRINT_ATOL, 1e-9 * abs(r)):
+            out.append((path, r, n))
+        return
     if isinstance(ref, dict) and isinstance(new, dict):
-        return (ref.keys() == new.keys()
-                and all(_deep_equal(ref[k], new[k]) for k in ref))
+        if ref.keys() != new.keys():
+            out.append((path, sorted(ref.keys()), sorted(new.keys())))
+            return
+        for k in ref:
+            _deep_diff(ref[k], new[k], f"{path}.{k}", out)
+        return
     if isinstance(ref, list) and isinstance(new, list):
-        return (len(ref) == len(new)
-                and all(_deep_equal(r, n) for r, n in zip(ref, new)))
-    return ref == new
+        if len(ref) != len(new):
+            out.append((path, f"len {len(ref)}", f"len {len(new)}"))
+            return
+        for i, (r, n) in enumerate(zip(ref, new)):
+            _deep_diff(r, n, f"{path}[{i}]", out)
+        return
+    if ref != new:
+        out.append((path, ref, new))
 
 
 @pytest.mark.slow
@@ -108,8 +124,11 @@ def test_generator_numerically_equivalent(golden_dir, regenerated):
         ref_m = json.load(fh)
     with open(regenerated / "manifest.json") as fh:
         new_m = json.load(fh)
-    assert _deep_equal(ref_m["datasets"], new_m["datasets"]), \
-        "manifest datasets drift beyond printed precision"
+    mismatches: list = []
+    _deep_diff(ref_m["datasets"], new_m["datasets"], "datasets", mismatches)
+    assert not mismatches, (
+        "manifest drift beyond tolerance (path, ref, new): "
+        + "; ".join(f"{p} {r!r} -> {n!r}" for p, r, n in mismatches[:10]))
     assert new_m["master_seed"] == ref_m["master_seed"]
 
 
