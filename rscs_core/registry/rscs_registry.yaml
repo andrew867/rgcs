@@ -327,3 +327,15 @@ operators:
     v2_reproduces: []
     manuscript_target: "RSCS Foundations, memory chapter; software/hardware plan"
     tests: ["tests/unit/test_rscs_hg_memory.py::test_update_records_observation"]
+  - id: RSCS-O.17
+    name: anisotropic elastic wave speeds (Christoffel)
+    class: EST
+    units: "m/s"
+    signature: "(stiffness_voigt_pa, density_kg_m3, direction) -> {v_qL, v_qS1, v_qS2}"
+    module: "rscs_core.propagation:christoffel_wave_speeds"
+    provenance: []
+    v2_reproduces: ["RGCS-M.10"]
+    convention: "Christoffel Gamma_ik = c_ijkl n_j n_l; eigenvalues = rho v^2"
+    manuscript_target: "RGCS Crystal Application, anisotropic propagation"
+    tests: ["tests/unit/test_rscs_anisotropy.py::test_axis_speeds_match_closed_form",
+            "tests/regression/test_rscs_conservative_extension.py::test_anisotropy_reproduces_scalar_vL"]

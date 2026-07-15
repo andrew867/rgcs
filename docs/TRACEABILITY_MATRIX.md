@@ -88,3 +88,16 @@ Falsifiable software claims H-15..H-19 in `docs/CLAIM_REGISTER.md`;
 mapping/classification in `docs/NHT_HAL_RSCS_MAPPING.md`; architecture in
 `docs/HG_RSCS_MEMORY_ARCHITECTURE.md`. NHT/HAL stays HYP; consciousness/quartz
 claims excluded (`docs/EXCLUSION_MATRIX.md`).
+
+## Agent 05 — crystal application (anisotropic propagation)
+
+| RSCS/RGCS id | Source / reproduces | Module | Tests | Manuscript |
+|---|---|---|---|---|
+| RSCS-O.17 anisotropic Christoffel | Christoffel elastodynamics; reproduces scalar RGCS-M.10 at crystal axes | `rscs_core.propagation:christoffel_wave_speeds` | `unit/test_rscs_anisotropy.py`; `regression::test_anisotropy_reproduces_scalar_vL` | Crystal Application §1 |
+| α-quartz elastic model (EST handbook) | closes v2 D-19a | `rgcs_core.anisotropy` | `unit/test_rscs_anisotropy.py::test_axis_speeds_match_closed_form` | Crystal Application §1 |
+| Quasi-mode taxonomy (qL, qS1, qS2) | Christoffel eigenvectors | `rscs_core.propagation` | `unit/test_rscs_anisotropy.py::test_quasi_long_is_fastest` | Crystal Application §2 |
+
+Node menu (§3, 8 definitions; 1-3 implemented in frozen v2, 4-8 HYP for
+Agent 07), environmental factors (§5), model selection (§7), CAD/FEA (§8,
+Agent 08), crystal DB + inverse design (§9, Agent 08), historical crosswalk
+(§10, Agent 09) are framed in `docs/RGCS_CRYSTAL_APPLICATION.md`.

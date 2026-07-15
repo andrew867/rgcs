@@ -20,7 +20,75 @@ from ..coordinates import GroupDelay
 from ..registry import rscs_classified
 
 __all__ = ["cascade", "is_unitary", "reverse_cascade", "phase_match",
-           "group_delay_imbalance", "balance_group_delay"]
+           "group_delay_imbalance", "balance_group_delay",
+           "voigt_to_tensor", "christoffel_matrix", "christoffel_wave_speeds"]
+
+# Voigt index map (i,j) -> Voigt index 0..5.
+_VOIGT = {(0, 0): 0, (1, 1): 1, (2, 2): 2,
+          (1, 2): 3, (2, 1): 3, (0, 2): 4, (2, 0): 4, (0, 1): 5, (1, 0): 5}
+
+
+def voigt_to_tensor(c_voigt: np.ndarray) -> np.ndarray:
+    """Expand a 6x6 Voigt stiffness matrix to the full c_ijkl (3x3x3x3)."""
+    c = np.asarray(c_voigt, dtype=float)
+    if c.shape != (6, 6):
+        raise ValueError("stiffness must be a 6x6 Voigt matrix")
+    if not np.all(np.isfinite(c)):
+        raise ValueError("stiffness must be finite")
+    if not np.allclose(c, c.T, atol=1e-6 * (np.abs(c).max() or 1.0)):
+        raise ValueError("Voigt stiffness must be symmetric")
+    full = np.empty((3, 3, 3, 3), dtype=float)
+    for i in range(3):
+        for j in range(3):
+            for k in range(3):
+                for l in range(3):
+                    full[i, j, k, l] = c[_VOIGT[(i, j)], _VOIGT[(k, l)]]
+    return full
+
+
+def christoffel_matrix(c_voigt: np.ndarray, direction: np.ndarray) -> np.ndarray:
+    """Christoffel matrix Gamma_ik = c_ijkl n_j n_l (Pa) for a unit direction."""
+    n = np.asarray(direction, dtype=float)
+    if n.shape != (3,) or not np.all(np.isfinite(n)):
+        raise ValueError("direction must be a finite 3-vector")
+    norm = float(np.linalg.norm(n))
+    if norm == 0.0:
+        raise ValueError("direction must be non-zero")
+    n = n / norm
+    c = voigt_to_tensor(c_voigt)
+    return np.einsum("ijkl,j,l->ik", c, n, n)
+
+
+@rscs_classified("EST", registry=("RSCS-O.17",), units="m/s",
+                 note="Christoffel elastodynamics: eigenvalues of Gamma give "
+                      "rho v^2 for the quasi-longitudinal and two quasi-shear "
+                      "modes; generalizes the frozen scalar v_L (RGCS-M.10)")
+def christoffel_wave_speeds(c_voigt: np.ndarray, density_kg_m3: float,
+                            direction: np.ndarray) -> dict[str, Any]:
+    """Anisotropic elastic wave speeds along ``direction`` (RSCS-O.17).
+
+    Solves the Christoffel eigenproblem Gamma v = rho c^2 v. Returns the three
+    phase speeds sorted descending: the quasi-longitudinal speed and the two
+    quasi-shear speeds (m/s), plus the polarization eigenvectors. Along a pure
+    crystal axis the quasi-longitudinal speed reduces to sqrt(c_axis/rho)."""
+    if not (isinstance(density_kg_m3, (int, float))
+            and np.isfinite(density_kg_m3) and density_kg_m3 > 0):
+        raise ValueError("density must be positive and finite")
+    gamma = christoffel_matrix(c_voigt, direction)
+    vals, vecs = np.linalg.eigh(gamma)          # symmetric -> real eigenpairs
+    if np.any(vals < 0):
+        raise ValueError("negative Christoffel eigenvalue (non-physical "
+                         "stiffness for this direction)")
+    speeds = np.sqrt(vals / density_kg_m3)
+    order = np.argsort(speeds)[::-1]            # descending: qL, qS1, qS2
+    speeds = speeds[order]
+    return {
+        "v_quasi_long_m_s": float(speeds[0]),
+        "v_quasi_shear1_m_s": float(speeds[1]),
+        "v_quasi_shear2_m_s": float(speeds[2]),
+        "speeds_m_s": speeds,
+        "polarizations": vecs[:, order],
+    }
 
 
 def _as_2x2(m: np.ndarray) -> np.ndarray:

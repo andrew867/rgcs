@@ -122,6 +122,19 @@ def test_no_growth_degenerate_pair():
     assert np.allclose(total, 1.0, atol=1e-9)
 
 
+def test_anisotropy_reproduces_scalar_vL():
+    # RSCS-O.17 (anisotropic Christoffel) generalizes the frozen scalar v_L
+    # (RGCS-M.10, default 6310 m/s +/- 5%). Along the Z optic axis the
+    # quasi-longitudinal speed must fall inside v2's declared uncertainty band
+    # -- the conservative extension of the scalar model.
+    from rgcs_core.anisotropy import axis_speeds
+    from rgcs_core.uncertainty import default_wave_speed
+    v2 = default_wave_speed()                 # mean 6310, u_rel 0.05
+    lo, hi = v2.interval(k=1.0)               # +/- 1 sigma band
+    z_ql = axis_speeds()["Z"]["v_quasi_long_m_s"]
+    assert lo <= z_ql <= hi, f"Z quasi-long {z_ql} outside v2 band [{lo},{hi}]"
+
+
 def test_real_symmetric_coupling_would_grow():
     # Guard the QA-D-04 correction: the WRONG real-symmetric generator
     # (K_real = pi*g, applied as a real coupling in the exponent) produces

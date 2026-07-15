@@ -137,6 +137,23 @@ interpretation. The NHT space-to-phase encoding (`𝒮₂`, O.3) and the HAL
 lattice (`ℋ`, O.13; C.14) remain **HYP** and quarantined; the HG record may
 reference them but its own class is ENG (never evidence).
 
+## 4b. Agent 05 append — anisotropic elastic propagation (governance path)
+
+Appended 2026-07-14 by Agent 05 via the §4 governance path (DECISION_LOG
+D5-001), before first use.
+
+| ID | Symbol | Name | Type (in → out) | Class | Provenance | Required test |
+|---|---|---|---|---|---|---|
+| RSCS-O.17 | `𝒞ℎ` | anisotropic elastic wave speeds (Christoffel) | (stiffness `C` [Pa, 6×6 Voigt], density ρ [kg/m³], direction `n̂`) → (v_qL, v_qS1, v_qS2) [m/s] | EST | Christoffel/Kelvin-Christoffel elastodynamics (standard) | quasi-longitudinal ≥ quasi-shear; along a crystal axis reduces to √(c_axis/ρ); reproduces v2 scalar `v_L` within its declared band |
+
+`𝒞ℎ` generalizes the frozen v2 scalar effective wave speed `v_L` (RGCS-M.10,
+a Hypothesis that one scalar suffices) into a **measured-orientation** model:
+the eigenvalues of the Christoffel matrix `Γ_ik = c_ijkl n_j n_l` give ρv² for
+the quasi-longitudinal and two quasi-shear modes. It reproduces `v̄_L` at the
+crystal axes and explains v2's ±5% band as the physical X–Z anisotropy
+spread. Crystal-specific elastic constants (α-quartz) live in the RGCS
+application layer (`rgcs_core.anisotropy`), not in the general operator.
+
 ## 5. Gate status
 
 This ledger + `references/source_registry.yaml` +
