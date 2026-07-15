@@ -1,0 +1,92 @@
+{
+  "program_id": "TP-Q154-phase-sweep-001",
+  "master_clock": {
+    "reference_hz": 32768,
+    "reference_source": "32.768 kHz TCXO",
+    "carrier_divider": 8,
+    "jitter_budget_ns_rms": 100,
+    "drift_budget_ppm": 2
+  },
+  "channels": [
+    {
+      "channel_id": "CH-COIL-A",
+      "role": "coil_a",
+      "frequency_hz": 4096,
+      "preset": "carrier_4096",
+      "macro_mode": "half_spacing",
+      "commanded_phase_deg": 0,
+      "latency_calibration_s": 1.2e-06,
+      "synchronized_to": "master_clock"
+    },
+    {
+      "channel_id": "CH-COIL-B",
+      "role": "coil_b",
+      "frequency_hz": 4096,
+      "preset": "carrier_4096",
+      "macro_mode": "half_spacing",
+      "commanded_phase_deg": 180,
+      "latency_calibration_s": 1.3e-06,
+      "synchronized_to": "master_clock"
+    },
+    {
+      "channel_id": "CH-LASER",
+      "role": "laser_trigger",
+      "frequency_hz": 20,
+      "preset": "laser_trigger",
+      "macro_mode": "none",
+      "latency_calibration_s": 4.0e-07,
+      "synchronized_to": "master_clock"
+    },
+    {
+      "channel_id": "CH-ADC",
+      "role": "adc_sync",
+      "frequency_hz": 4096,
+      "macro_mode": "none",
+      "latency_calibration_s": 2.0e-07,
+      "synchronized_to": "master_clock"
+    }
+  ],
+  "coil_pair": {
+    "mode": "opposed",
+    "inductance_h": 0.0001,
+    "resistance_ohm": 10,
+    "distributed_capacitance_f": 1e-09,
+    "coupling_k": 0.15
+  },
+  "interaction_coordinate": {
+    "location": "measured_node",
+    "point_mm": [0.0, 0.0, 71.5],
+    "phase_budget": {
+      "cable_length_m": 2.0,
+      "cable_velocity_factor": 0.66,
+      "driver_delay_s": 1.5e-06,
+      "acoustic_path_mm": 71.5,
+      "acoustic_speed_source": "anisotropy:Z",
+      "optical_transit_s": 1.7e-10,
+      "group_delay_s": 0
+    }
+  },
+  "optical_probe_ids": ["OPT-Q154-node-fwd-001", "OPT-Q154-node-bwd-001"],
+  "sweeps": {
+    "phase_deg": [0, 45, 90, 135, 180, 225, 270, 315],
+    "direction": ["forward", "backward"]
+  },
+  "control_branches": [
+    "coil_only", "optical_only", "acoustic_only", "combined",
+    "dummy_crystal", "glass_control", "rotated_crystal", "sham_timing",
+    "thermal_control", "randomized_blinded"
+  ],
+  "randomization": { "seed": 20260715, "blinded": true },
+  "safety": {
+    "voltage_v_max": 30,
+    "current_a_max": 3,
+    "pulse_energy_mj_max": 5,
+    "specimen_temp_stop_c": 5,
+    "dummy_load_first": true,
+    "interlocks": ["coil overcurrent trip", "laser enclosure interlock", "thermal cutoff"]
+  },
+  "instrumentation": ["oscilloscope", "current_probe", "hall_sensor", "accelerometer", "photodiode", "temperature"],
+  "hypothesis_ids": ["H-24", "H-25", "H-26", "H-27", "H-28", "H-29"],
+  "prereg_ref": "docs/EXPERIMENTAL_PROGRAMME.md section 4",
+  "notes": "Full factorial phase-sweep programme on SP-Q154-001; node menu definitions 4-8 addressed via H-24..H-28."
+}

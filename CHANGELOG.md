@@ -48,6 +48,16 @@ v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
   generated mechanism comparison table; claims H-20..H-23 (H-21/H-23
   pre-registered nulls, D6-003). Doc:
   `OPTICAL_AND_NONRECIPROCAL_COUPLING.md`.
+- Agent 07: synchronized excitation/measurement architecture —
+  `rgcs_core/timing` (master clock, exact-cycle closures with golden
+  125 ms → 512 & 187, modulation families 20/20.48/21/40.96 Hz, coil A/B
+  phases, phase-at-coordinate with six declared delay terms, coil
+  electrical model, D7-003 safety envelope + dummy-load-first, sweeps +
+  ten-branch factorial control matrix with seeded blinding,
+  cross-correlation fidelity, signal-level function-generator presets);
+  timing programme schema + example; claims H-24..H-30 (node-menu rows
+  H-24..H-28); docs `COIL_LASER_TIMING_AND_PHASE.md`,
+  `EXPERIMENTAL_PROGRAMME.md`.
 
 ### Changed
 - `pyproject.toml`: project renamed `rgcs-v3` 3.0.0a1 (D3-001); missing
@@ -59,3 +69,4 @@ v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 ## [2.0.0] — 2026-07-14
 
 Frozen baseline. See `archive/v2.0.0/release/RELEASE_NOTES.md`.
+

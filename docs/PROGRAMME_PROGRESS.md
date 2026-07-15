@@ -16,8 +16,8 @@ backslashes) and NR3-001 (Linux-generated golden CSVs).
 | 03 | RSCS mathematical core + Conservative Extension | COMPLETE | `5048687`, `c4cde1c`, `a1cdd80`, `b42f977` | 293/4/0 | `AGENT_03_HANDOFF.md` |
 | 04 | NHT/HAL → Hydrogenuine memory bridge | COMPLETE | `7e00f19` | 307/4/0 | `NHT_HAL_RSCS_MAPPING.md`, `HG_RSCS_MEMORY_ARCHITECTURE.md` |
 | 05 | Crystal application (anisotropic Christoffel) | COMPLETE | `4ccdd89` | 315/4/0 | `RGCS_CRYSTAL_APPLICATION.md` |
-| 06 | Optical / photon–phonon / nonreciprocal coupling | COMPLETE | (this commit) | 347/2/0 † | `AGENT_06_HANDOFF.md` |
-| 07 | Coil / laser / timing / experiment design | pending | — | — | — |
+| 06 | Optical / photon–phonon / nonreciprocal coupling | COMPLETE | `1052c24` | 347/2/0 † | `AGENT_06_HANDOFF.md` |
+| 07 | Coil / laser / timing / experiment design | COMPLETE | (this commit) | 364/2/0 | `AGENT_07_HANDOFF.md` |
 | 08 | Software / hardware / CAD / portability | pending | — | — | — |
 | 09 | Four manuscripts + public docs + Lessons Learned | pending | — | — | — |
 | 10 | Independent adversarial QA | pending | — | — | — |
@@ -29,8 +29,10 @@ backslashes) and NR3-001 (Linux-generated golden CSVs).
   `rscs_core/registry/rscs_registry.yaml`. Frozen RGCS-M registry: 61,
   schema 1, untouched.
 - Claims: H-01..H-14 (v2, frozen), H-15..H-19 (Agent 04, ENG software),
-  H-20..H-23 (Agent 06, optical; H-21/H-23 pre-registered nulls).
-- DECISION_LOG: D3-001..015, D4-001..003, D5-001..002, D6-001..003.
+  H-20..H-23 (Agent 06, optical; H-21/H-23 pre-registered nulls),
+  H-24..H-30 (Agent 07: node-menu rows + timing gates).
+- DECISION_LOG: D3-001..015, D4-001..003, D5-001..002, D6-001..003,
+  D7-001..003.
 
 ## Standing verification (every checkpoint)
 

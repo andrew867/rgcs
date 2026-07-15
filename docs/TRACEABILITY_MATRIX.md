@@ -125,3 +125,28 @@ frozen provenance ledgers: `docs/generated/OPTICAL_MECHANISM_COMPARISON.md`
 (`tools/generate_optical_comparison.py`, determinism-pinned by
 `unit::test_comparison_table_up_to_date`). Optical experiment schema:
 `experiments/schemas/optical_probe.schema.json` (+ validated example).
+
+## Agent 07 — coil / laser / timing / experimental design
+
+No new RSCS ids (D7-001); all rows are application-layer `rgcs_core.timing`
+with v2 `@classified` decorators.
+
+| Deliverable | Source / rule | Module / file | Tests |
+|---|---|---|---|
+| Master-clock model (single reference, latency slots) | RG-14; D7-001 | `rgcs_core.timing:master_clock` | `unit/test_rgcs_timing.py::test_master_clock_carrier` |
+| Exact-cycle closures (golden 125 ms -> 512 & 187) | RG-12/13 | `timing:exact_closure, closure_window_s, key_closures` | `::test_golden_125ms_closure`, `::test_key_closures_644_587` |
+| Modulation families 20/20.48/21/40.96 Hz | RG-13 (Source) + Derived exact variants | `timing:MODULATION_FAMILIES, modulation_family_report` | `::test_modulation_families` |
+| Macro sequences + "shorter by half" naming | frozen v2 drive (D-13); D7-002 | v2 `rgcs_core.drive` (unchanged) + schema enum | `::test_presets_signal_level_and_names` |
+| Coil A/B phases (opposed/in_phase/offset) | RG-14 (WB3 complementary) | `timing:coil_pair_phases` | `::test_coil_pair_modes` |
+| Phase at interaction coordinate (6 delay terms) | brief; uses Agent 05 anisotropy + Agent 06 optics | `timing:phase_at_coordinate` | `::test_phase_at_coordinate_terms` |
+| Coil model (Z, self-resonance, mutual L, ringing, energy) | standard circuit theory (EST) | `timing:coil_impedance, self_resonance_hz, mutual_inductance_h, ring_response, pulse_energy_uj` | `::test_coil_impedance_and_resonance` etc. |
+| Safety envelope + dummy-load-first | D7-003 | `timing:SAFETY_LIMITS, safe_drive_check` | `::test_pulse_energy_and_safety` |
+| Sweeps + factorial control matrix + seeded blinding | brief items | `timing:phase_sweep, sweep_grid, control_matrix, randomized_order` | `::test_sweep_grid_and_control_matrix` |
+| Cross-correlation / signal fidelity | EP-05-02 principle (classical) | `timing:cross_correlation, signal_fidelity` | `::test_cross_correlation_recovers_lag` |
+| Function-generator presets (signal-level) | RG-12/13/14; D7-003 | `timing:function_generator_presets` | `::test_presets_signal_level_and_names` |
+| Timing programme schema + example | brief; D7-002/003 | `experiments/schemas/timing_program.schema.json` | `validate.py` (green) |
+
+Claims H-24..H-30 in `docs/CLAIM_REGISTER.md`; pre-registration spine
+`docs/EXPERIMENTAL_PROGRAMME.md`; engineering detail
+`docs/COIL_LASER_TIMING_AND_PHASE.md` (embedded acceptance requirements
+section 9 feed Agent 08).

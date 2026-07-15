@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/timing_program.schema.json",
+  "title": "RGCS synchronized timing programme",
+  "description": "One synchronized excitation/measurement programme (Agent 07). Binding rules: ONE master clock; every channel declares a latency calibration; phase claims require the calibration measured (not null); safety limits per DECISION_LOG D7-003 (V <= 30, I <= 3 A, pulse energy <= 5 mJ, dummy-load-first); macro modes use the frozen v2 names standard/half_spacing/double_rate (D7-002, never 'double pulse'); geometric_center, predicted_node, and measured_node are distinct interaction coordinates; no human exposure or therapeutic protocol is representable.",
+  "type": "object",
+  "required": ["program_id", "master_clock", "channels", "interaction_coordinate", "control_branches", "safety", "hypothesis_ids"],
+  "additionalProperties": false,
+  "properties": {
+    "program_id": { "type": "string", "pattern": "^TP-[A-Za-z0-9_.-]+$" },
+    "master_clock": {
+      "type": "object",
+      "required": ["reference_hz", "reference_source", "carrier_divider"],
+      "additionalProperties": false,
+      "properties": {
+        "reference_hz": { "type": "number", "exclusiveMinimum": 0, "description": "e.g. 32768 (TCXO)." },
+        "reference_source": { "type": "string", "description": "e.g. '32.768 kHz TCXO', 'AWG internal OCXO'." },
+        "carrier_divider": { "type": "integer", "minimum": 1, "description": "reference/divider = carrier (8 -> 4096 Hz)." },
+        "jitter_budget_ns_rms": { "type": "number", "minimum": 0 },
+        "drift_budget_ppm": { "type": "number", "minimum": 0 }
+      }
+    },
+    "channels": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["channel_id", "role", "frequency_hz", "latency_calibration_s"],
+        "additionalProperties": false,
+        "properties": {
+          "channel_id": { "type": "string" },
+          "role": { "type": "string", "enum": ["coil_a", "coil_b", "acoustic", "electrode", "laser_trigger", "optical_modulation", "polarization_modulation", "scope_sync", "adc_sync"] },
+          "frequency_hz": { "type": "number", "exclusiveMinimum": 0 },
+          "preset": { "type": "string", "description": "Name from rgcs_core.timing.function_generator_presets()." },
+          "macro_mode": { "type": "string", "enum": ["standard", "half_spacing", "double_rate", "none"], "description": "Frozen v2 envelope names only (D7-002)." },
+          "commanded_phase_deg": { "type": "number" },
+          "latency_calibration_s": { "type": ["number", "null"], "description": "MEASURED channel latency. null = uncalibrated; phase claims from this channel are then invalid." },
+          "synchronized_to": { "type": "string", "description": "Must reference the master clock or another channel_id." }
+        }
+      }
+    },
+    "coil_pair": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": { "type": "string", "enum": ["opposed", "in_phase", "offset"] },
+        "offset_deg": { "type": "number" },
+        "inductance_h": { "type": "number", "exclusiveMinimum": 0 },
+        "resistance_ohm": { "type": "number", "exclusiveMinimum": 0 },
+        "distributed_capacitance_f": { "type": "number", "minimum": 0 },
+        "coupling_k": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "interaction_coordinate": {
+      "type": "object",
+      "required": ["location"],
+      "additionalProperties": false,
+      "properties": {
+        "location": { "type": "string", "enum": ["geometric_center", "prismatic_shaft_prior", "predicted_node", "measured_node", "custom"], "description": "DISTINCT locations (node menu section 3); phase is computed AT this coordinate." },
+        "point_mm": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" } },
+        "phase_budget": {
+          "type": "object",
+          "description": "Inputs to rgcs_core.timing.phase_at_coordinate; every term declared, none inferred from GPIO timing alone.",
+          "additionalProperties": false,
+          "properties": {
+            "cable_length_m": { "type": "number", "minimum": 0 },
+            "cable_velocity_factor": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+            "driver_delay_s": { "type": "number", "minimum": 0 },
+            "acoustic_path_mm": { "type": "number", "minimum": 0 },
+            "acoustic_speed_source": { "type": "string", "description": "'anisotropy:direction' (preferred, rgcs_core.anisotropy) or 'scalar_vL_band'." },
+            "optical_transit_s": { "type": "number", "minimum": 0 },
+            "group_delay_s": { "type": "number", "minimum": 0 }
+          }
+        }
+      }
+    },
+    "optical_probe_ids": { "type": "array", "items": { "type": "string", "pattern": "^OPT-[A-Za-z0-9_.-]+$" }, "description": "Linked optical_probe records (Agent 06 schema) for laser/polarization arms." },
+    "sweeps": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "phase_deg": { "type": "array", "items": { "type": "number" } },
+        "delay_s": { "type": "array", "items": { "type": "number" } },
+        "frequency_hz": { "type": "array", "items": { "type": "number", "exclusiveMinimum": 0 } },
+        "amplitude_vpp": { "type": "array", "items": { "type": "number", "minimum": 0, "maximum": 10 } },
+        "polarization": { "type": "array", "items": { "type": "string" } },
+        "direction": { "type": "array", "items": { "type": "string", "enum": ["forward", "backward"] } },
+        "loading": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "control_branches": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "enum": ["coil_only", "optical_only", "acoustic_only", "combined", "dummy_crystal", "glass_control", "rotated_crystal", "sham_timing", "thermal_control", "randomized_blinded"] },
+      "description": "Branches RUN. Skipped branches must be listed in skipped_branches with a reason (silent omission is non-compliant)."
+    },
+    "skipped_branches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["branch", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "branch": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "randomization": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "seed": { "type": "integer" },
+        "blinded": { "type": "boolean" }
+      }
+    },
+    "safety": {
+      "type": "object",
+      "required": ["voltage_v_max", "current_a_max", "dummy_load_first"],
+      "additionalProperties": false,
+      "properties": {
+        "voltage_v_max": { "type": "number", "exclusiveMinimum": 0, "maximum": 30, "description": "D7-003 envelope." },
+        "current_a_max": { "type": "number", "exclusiveMinimum": 0, "maximum": 3 },
+        "pulse_energy_mj_max": { "type": "number", "minimum": 0, "maximum": 5 },
+        "specimen_temp_stop_c": { "type": "number", "exclusiveMinimum": 0, "maximum": 10 },
+        "dummy_load_first": { "type": "boolean", "const": true, "description": "Every operating point cleared on an instrumented dummy load before any specimen run." },
+        "interlocks": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "instrumentation": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["oscilloscope", "current_probe", "hall_sensor", "fluxgate_sensor", "accelerometer", "contact_mic", "photodiode", "temperature", "interferometer"] },
+      "description": "Synchronized instruments; data formats per the v2 timeseries_channel schema."
+    },
+    "hypothesis_ids": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^(H-[0-9]{2}[a-z]?|EXPLORATORY)$" } },
+    "prereg_ref": { "type": "string", "description": "Pointer to the pre-registered section of docs/EXPERIMENTAL_PROGRAMME.md." },
+    "notes": { "type": "string" }
+  }
+}

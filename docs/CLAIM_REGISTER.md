@@ -48,3 +48,22 @@ H-21,HYP,"Any directional (forward/backward) optical asymmetry reverses sign und
 H-22,ENG,"The optical control battery separates path-geometry effects from absorption/heating at matched absorbed power",optical_probe.schema.json controls enum,response vs path at matched power,"heating_matched_power_off_node, dummy_crystal",controls cannot separate geometry from heating -> optical branch unusable,n/a,testable-at-bench
 H-23,HYP,"Circular-polarization (sigma+ vs sigma-) dependence of any optical response at low power; expected outcome is NULL in transparent unbiased quartz",RSCS-O.22 chi3 spin term (null default),response difference sigma+ vs sigma-,"polarization_flip, no_drive_baseline",dependence absent = expected null; dependence present must survive polarization_flip + sham controls or is artifact,paired-run difference stats,pre-registered-null
 ```
+
+## Agent 07 — node-menu and timing claims (H-24..H-30)
+
+Pre-registered in `docs/EXPERIMENTAL_PROGRAMME.md` section 4. H-24..H-28
+give the five HYP node definitions (crystal application section 3,
+definitions 4-8) their observables and failure conditions; the measured
+vibration node supersedes (inherited H-07 rule). H-29/H-30 are ENG timing
+architecture gates.
+
+```csv
+claim_id,class,statement,source_or_derivation,observable,controls,failure_condition,uncertainty,status
+H-24,HYP,"An electrical node (impedance minimum) exists along the shaft distinct from the geometric definitions",node menu def 4,impedance vs position,"fixture swap, dummy_crystal",no reproducible minimum distinct from geometry or moves with fixture,position sigma,pre-registered
+H-25,HYP,"An optical path/phase feature marks a node location",node menu def 5 + RSCS-O.18,phase map along ray paths,"glass_control, no_drive_baseline",no feature above phase-noise floor at claimed location,phase noise floor,pre-registered
+H-26,HYP,"Maximal multimode overlap defines a stable node location",node menu def 6 + RSCS-O.19 overlap,overlap argmax from measured mode shapes,re-measurement,argmax unstable > +/-5 mm across re-measurement,+/-5 mm,pre-registered
+H-27,HYP,"Coupling-integral maximum defines a node location",node menu def 7 + RSCS-O.4,fitted g vs probe position,"sensor_reposition",no position-dependence of fitted g above uncertainty,fit sigma,pre-registered
+H-28,HYP,"A phase singularity/saddle exists in the spatial phase field",node menu def 8,phase-field critical point (spatial mapping branch),"sensor aperture check (KOS-11)",no critical point or aperture artifact,aperture bound,pre-registered
+H-29,ENG,"Latency calibration + phase_at_coordinate predicts measured phase at the interaction coordinate within +/-5 deg at 4096 Hz",rgcs_core.timing.phase_at_coordinate,measured vs predicted phase,"calibrated vs uncalibrated channel",error > 5 deg after calibration -> phase claims blocked,+/-5 deg gate,pre-registered
+H-30,ENG,"Sham-timing branch is indistinguishable from combined on every NON-phase observable",EXPERIMENTAL_PROGRAMME section 4,amplitude-only observables sham vs combined,"randomized_blinded order",sham differs on amplitude-only observables -> uncontrolled drive artifact,SAP effect-size rules,pre-registered
+```
