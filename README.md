@@ -1,151 +1,230 @@
 # RGCS — Resonant Geometry Computational System
 
-Version 3 programme (RSCS 1.0) in progress; frozen baseline v2.0.0
-(2026-07-14, tag `v2.0.0` / `archive/v2.0.0/`). MIT license.
-Author: Andrew Green.
+**v3.0.0-rc1 (RSCS 1.0)** · MIT license · Author: Andrew Green
+Frozen baseline: v2.0.0 (tag `v2.0.0`, `archive/v2.0.0/` — byte-identical, never modified)
 
-**What v3 adds** (all tested, all conservative extensions of the frozen
-v2 mathematics): the typed RSCS coordinate/operator framework
-(`rscs_core`, 17 coordinates + 23 operators with machine-checked
-provenance), anisotropic Christoffel propagation resolving the v2 scalar
-wave-speed hypothesis, an optical probe layer with pre-registered null
-expectations, a synchronized coil/laser timing architecture with a
-binding safety envelope, Windows portability fixes + two-OS CI, and four
-generated-number manuscripts (`manuscripts/`). Programme ledger:
-`docs/PROGRAMME_PROGRESS.md`.
-
-RGCS v2 is a research instrument — a computational core, a desktop
-workbench, an experiment kit, and a fully generated manuscript — for
-studying acoustic/mechanical resonance and phase coherence in engineered
-quartz geometries (faceted crystals, harmonic-length ladders, logarithmic
-spiral cones).
+RGCS is a **reproducible research framework** for studying acoustic/mechanical
+resonance and phase coherence in engineered quartz geometries: a typed,
+provenance-checked mathematics library, a desktop workbench, safety-bounded
+experiment schemas, and four fully generated manuscripts — plus a
+pre-registered falsification plan for every hypothesis the project holds.
 
 ## Honest scope — read this first
 
-**No RGCS hypothesis has been experimentally confirmed.** This release
-contains zero measurements of real crystals. What it contains is the
-machinery to test the project's 14 pre-registered hypotheses honestly:
-every hypothesis ships with an observable, a matched control, a failure
-condition, and an uncertainty statement (manuscript Table 9,
-`docs/ROADMAP_TO_FALSIFICATION.md`).
+**No RGCS hypothesis has been experimentally confirmed.** The repository
+contains zero confirming measurements of real crystals. What it contains is
+the machinery to test its 30 pre-registered claims honestly: every hypothesis
+ships with an observable, matched controls, an uncertainty statement, and a
+failure condition — several directional claims are pre-registered **nulls**
+(the expected outcome is *no effect*). The project makes **no therapeutic,
+medical, cosmological, or consciousness claims**, and a forbidden-vocabulary
+lint enforces that in the test suite.
 
-**Classification policy (binding, machine-checked)** — every scientific
-statement in code, docs, UI, and manuscript carries one of four labels
-(`docs/SCIENTIFIC_CLASSIFICATION_POLICY.md`):
+Every scientific statement in code, docs, UI, and manuscripts carries one of
+five machine-checked labels (`docs/SCIENTIFIC_CLASSIFICATION_POLICY.md`):
 
-- **Established** — textbook math/physics anyone can verify independently.
-- **Derived** — computed within RGCS from stated inputs by stated math;
-  inherits the weakest label of its inputs.
-- **Hypothesis** — an RGCS conjecture that measurement could falsify;
-  never presented as fact.
-- **Source claim** — a statement by an external source (archival corpus or
-  the three reference papers' domain conclusions), reported with
-  provenance, not endorsed.
+| Label | Meaning |
+|---|---|
+| **Established** (EST) | textbook math/physics anyone can verify independently |
+| **Derived** (DER) | computed within RGCS from stated inputs by stated math; inherits the weakest input label |
+| **Hypothesis** (HYP) | a falsifiable RGCS conjecture; never presented as fact |
+| **Source claim** (SRC) | an external source's statement, reported with provenance, not endorsed |
+| **Engineering plan** (ENG) | unbuilt software/hardware design; never evidence |
 
-The project makes **no therapeutic, medical, cosmological, or
-consciousness claims**. The three peer-reviewed reference papers (Lee &
-Tsai 2026; Gan et al. 2025; Koster et al. 2026) contribute *mathematical
-templates and measurement methodology only* — their physics stays in their
-domains. A forbidden-vocabulary lint enforces this in the test suite.
+A machine-enforced firewall rejects any Established/Derived output computed
+from Hypothesis/Source/Engineering inputs.
 
-## Repository layout
+## Architecture
 
-- `rgcs_core/` — deterministic, typed library implementing the 61
-  registered equations (`docs/model_registry.yaml`); classification
-  metadata on every claim-bearing function.
-- `rgcs_desktop/` — PySide6 desktop workbench (13 panels): workspaces,
-  source import with checksums, spectra, experiment builder with schema
-  validation and ethics gate, background analysis jobs, reproducibility
-  bundles.
-- `manuscript/` — `rgcs_v2.tex` (28 pp.); every figure/table/inline value
-  generated from `rgcs_core` by `tools/make_figures.py` /
-  `tools/make_tables.py`.
-- `experiments/` — JSON schemas, 8 experiment-branch templates, control
-  matrix, golden sample data.
-- `scad/` — OpenSCAD CAD generators (provenance-preserved; see
-  `scad/README.md` for a known defect and workaround).
-- `tests/` — 227 automated tests (unit, property, golden, regression,
-  UI smoke, integration).
-- `docs/` — the full specification, QA, and audit trail.
-- `release/` — release artifacts, checksums, provenance manifest.
+```
+┌─────────────────────────────────────────────────────────────────┐
+│ rgcs_desktop      PySide6 workbench (13 panels) + headless,     │
+│                   tested services (provenance graph, waveform/   │
+│                   timing preview, phase-budget views)             │
+├─────────────────────────────────────────────────────────────────┤
+│ rgcs_core         crystal application: geometry, resonance       │
+│                   ladders, coupled modes, anisotropy (Christoffel)│
+│                   optics, timing/drive, experiments, crystal DB,  │
+│                   FEA export — 61 frozen equations RGCS-M.1..61   │
+├─────────────────────────────────────────────────────────────────┤
+│ rscs_core         RSCS 1.0 typed framework: 17 coordinates +     │
+│                   23 operators on declared manifolds, machine     │
+│                   registry, classification firewall, embedding ι  │
+├─────────────────────────────────────────────────────────────────┤
+│ Conservative Extension Property (machine-tested, every commit):   │
+│        O_RSCS(ι(x)) = ι(O_RGCS(x))  on the frozen v2 domain      │
+├─────────────────────────────────────────────────────────────────┤
+│ RGCS v2.0.0 — FROZEN  (tag v2.0.0, archive/v2.0.0/)              │
+└─────────────────────────────────────────────────────────────────┘
 
-Note: `EXPECTED_TREE.md` lists a `package.json`; this project is a
-pure-Python stack (no Node toolchain), so no `package.json` ships — the
-deviation is recorded here and in `docs/RELEASE_CHECKLIST.md`.
-
-## Install
-
-```bash
-python3 -m pip install .              # core library only
-python3 -m pip install ".[desktop]"   # + desktop workbench
-python3 -m pip install ".[desktop,dev]"  # + test tooling
+experiments/   JSON schemas + validated example manifests (13 schemas)
+manuscripts/   4 XeLaTeX manuscripts, every number generated from code
+embedded/      HG Embedded OS contract (ESP32/CYD; ENG until built)
+scad/          OpenSCAD CAD generators (v7 fixes the v6 D-02 defect)
+docs/          full specification, decision log, QA and audit trail
+release/       v3.0.0-rc1 artifacts, SHA256SUMS, provenance manifest
 ```
 
-Requires Python ≥ 3.11.
+The layering rule: v3 never edits v2 — it reaches the frozen core only
+through the embedding, and the Conservative Extension Property battery
+proves the round trip on every test run.
 
-## Run
+## A taste of what's inside
+
+The flagship v3 result — the v2 scalar wave-speed *hypothesis* resolved into
+a measured-orientation anisotropic model that recovers the scalar as its
+special case (its ±5 % band turns out to be the physical X–Z spread):
+
+![Anisotropic wave speed vs direction, with the v2 scalar band](docs/images/anisotropy_sweep.png)
+
+The three frozen macro drive envelopes, rendered by the same code the
+desktop preview and firmware acceptance tests use (the source's ambiguous
+"shorter by half" phrase is preserved as *two* distinctly named modes):
+
+![The three frozen macro drive envelopes](docs/images/macro_envelopes.png)
+
+Desktop workbench screenshots will accompany the T2 panel tranche; until
+then the headless services behind those panels are fully tested and their
+outputs are what you see above.
+
+## Quick start
 
 ```bash
-python3 -m rgcs_desktop               # desktop workbench
-python3 -m rgcs_desktop --smoke-check # headless packaging self-test
-QT_QPA_PLATFORM=offscreen python3 -m pytest   # full test suite (227)
+git clone <this-repo> && cd RGCS
+python3 -m pip install -e ".[dev]"        # core + test tooling
+python3 -m pytest -q                       # 377 tests; expect 376 passed
+                                           # (1 documented golden-CSV
+                                           # byte-equality test is
+                                           # Linux-reference-only)
 ```
 
-## Build the manuscript
+Then try the library:
+
+```python
+from rscs_core.coupling import couple_modes
+couple_modes([1000.0, 1000.0], [[0.0, 10.0], [10.0, 0.0]])
+# hybrid frequencies 990/1010 Hz — the 2g splitting, anti-Hermitian K = i·2πg
+
+from rgcs_core.anisotropy import axis_speeds
+axis_speeds()["Z"]["v_quasi_long_m_s"]   # 6330 m/s = sqrt(c33/rho)
+```
+
+Desktop workbench: `pip install -e ".[desktop]"` then
+`python -m rgcs_desktop` (or `--smoke-check` headless).
+Validate experiment manifests: `python experiments/schemas/validate.py`.
+
+## Build the manuscripts
 
 ```bash
-python3 tools/make_figures.py
-python3 tools/make_tables.py
-cd manuscript && latexmk -xelatex rgcs_v2.tex
+python tools/make_v3_artifacts.py       # regenerate every table/figure
+cd manuscripts/rscs_foundations
+xelatex rscs_foundations.tex && bibtex rscs_foundations \
+  && xelatex rscs_foundations.tex && xelatex rscs_foundations.tex
 ```
 
-## Build a desktop binary
+(Each manuscript directory has a `BUILD.md`; `latexmk -xelatex` works where
+perl is available.) The v2 manuscript builds the same way in `manuscript/`.
 
-Linux: `tools/packaging/build_linux.sh` (PyInstaller; output under
-`release/linux/`). Windows: reproducible instructions in
-`tools/packaging/build_windows.md` (no Windows artifact is included in
-this release; built and tested on Linux only).
+## Publications
 
-## Lessons Learned
+| Work | What it covers | Source |
+|---|---|---|
+| **RSCS Foundations** | the typed framework, conservative extension, coupling keystone | `manuscripts/rscs_foundations/` |
+| **RGCS Crystal Application** | anisotropic propagation, node menu, optical probe layer | `manuscripts/rgcs_crystal_application/` |
+| **Software & Hardware Roadmap** | platform layering, timing architecture, safety envelope, embedded contract | `manuscripts/software_hardware_plan/` |
+| **Historical & Source Companion** | the source corpus in its own words, adaptations and binding exclusions | `manuscripts/historical_source_companion/` |
+| RGCS v2 manuscript (28 pp.) | the frozen v2 system | `manuscript/rgcs_v2.pdf` |
+
+Every numeric table, figure, and inline value in all five documents is
+generated from the tested libraries at build time — no number is hand-typed.
+
+## Lessons learned
 
 - Independent QA is most valuable when it is allowed to overturn the
   project's own mathematics. A v2 review found an incorrect time-domain
-  coupling map; fixing it (anti-Hermitian `K = i·2πg`) changed the
-  physical interpretation and produced a permanent regression test.
+  coupling map; fixing it (anti-Hermitian `K = i·2πg`) changed the physical
+  interpretation and produced a permanent regression test.
 - Provenance and classification matter as much as equations. Separating
-  Established, Derived, Hypothesis, Source, and Engineering claims
-  allowed historical material to inspire tests without becoming evidence
-  by repetition — and a machine-enforced firewall keeps it that way.
+  Established, Derived, Hypothesis, Source, and Engineering claims allowed
+  historical material to inspire tests without becoming evidence by
+  repetition — and a machine-enforced firewall keeps it that way.
 - Historical or unconventional claims can often be translated into
-  measurable variables without presuming they are true: "the eye" became
-  an eight-definition node menu with failure conditions; "a single
-  crystal tone" became a scalar wave speed that anisotropic modelling
-  then explained.
+  measurable variables without presuming they are true: "the eye" became an
+  eight-definition node menu with failure conditions; "a single crystal
+  tone" became a scalar wave speed that anisotropic modelling then explained.
 - A resonant system cannot be characterized by geometry and nominal
-  frequency alone. Boundary conditions, anisotropy, mode overlap, phase,
-  delay, damping, loading, uncertainty, and measurement fidelity all
-  matter — the v3 phase-at-coordinate model exists because commanded
-  phase is never the phase at the crystal.
-- Cross-platform numerical reproducibility requires pinned reference
-  environments plus tolerance-aware portability tests. Two of our
-  "Windows defects" turned out to be an undeclared dependency; the third
-  was a real path-separator bug. Declared environments and a two-OS CI
-  matrix caught what code review had not.
+  frequency alone: boundary conditions, anisotropy, mode overlap, phase,
+  delay, damping, loading, uncertainty, and measurement fidelity all matter.
+  The phase-at-coordinate model exists because commanded phase is never the
+  phase at the crystal.
+- Cross-platform numerical reproducibility requires declared environments
+  plus tolerance-aware portability tests. Two of our "Windows defects"
+  turned out to be an undeclared dependency; the third was a real
+  path-separator bug. A two-OS CI matrix caught what code review had not.
 - Frozen registries and conservative-extension tests made it possible to
-  expand the framework without silently rewriting earlier results: v3
-  provably reproduces v2 wherever it overlaps.
-- Software and mathematical modelling advanced faster than the physical
-  measurement programme. The project's strongest current output is a
-  reproducible framework and falsification plan, not experimental
-  confirmation — and every claim-bearing surface says so.
+  expand the framework without silently rewriting earlier results.
+- Software and modelling advanced faster than the measurement programme.
+  The project's strongest current output is a reproducible framework and
+  falsification plan, not experimental confirmation — and every
+  claim-bearing surface says so.
 - Independent review, negative results, and explicit failure conditions
   strengthened rather than weakened the project.
 
-A fuller engineering version lives in
-`docs/SOFTWARE_HARDWARE_ARCHITECTURE.md` and the Software & Hardware
-manuscript.
+Fuller engineering version: `docs/SOFTWARE_HARDWARE_ARCHITECTURE.md`.
+
+## Roadmap
+
+| Tranche | Content | Status |
+|---|---|---|
+| — | Green Linux CI run | **the only gate to final v3.0.0** |
+| T2 | Desktop Qt panels over the tested headless services | contracts fixed |
+| T3 | FEA import scripts, coupling-graph panel | scoped |
+| T4 | HG Embedded OS firmware (BSP, timing service, self-test) | contract published |
+| T5 | Timing hardware (TCXO/DDS/CPLD + interlocks) | ENG until measured |
+| T6 | Latency-calibration campaign (unblocks phase claims, gate H-29) | pre-registered |
+| — | Bench campaigns for claims H-20..H-30 | pre-registered |
+
+## Limitations (honest list)
+
+1. One inherited test failure by design: a golden CSV is byte-exact only on
+   the Linux reference platform (semantics are tolerance-checked
+   everywhere; deselected in Windows CI with documented justification).
+2. The CI matrix is defined but the Linux legs have not yet executed.
+3. Desktop panels, FEA import, firmware, and hardware are contracts and
+   tested headless services — not shipped UI/firmware/hardware.
+4. No bench data: nothing physical is confirmed (see Honest scope).
+5. The four v3 manuscripts are concise generated-number spines (3–5 pp.)
+   over the fuller repository documentation, by design at this stage.
+
+Full list with evidence: `release/RELEASE_NOTES.md` and
+`docs/QA_REPORT_V3.md`.
+
+## Contributing, support, and conduct
+
+See [CONTRIBUTING.md](CONTRIBUTING.md), [SUPPORT.md](SUPPORT.md),
+[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), [SECURITY.md](SECURITY.md),
+[FAQ.md](FAQ.md), and — for the *why* behind the unusual discipline —
+[DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md) and
+[RESEARCH_HISTORY.md](RESEARCH_HISTORY.md).
 
 ## Citing
 
-See `CITATION.cff`. Release provenance (input checksums, build
-environment, package versions): `release/PROVENANCE.json`.
+See [`CITATION.cff`](CITATION.cff) (GitHub renders a "Cite this repository"
+button from it). Release provenance — commit, environment, checksums, test
+evidence: `release/PROVENANCE.json` and `release/SHA256SUMS.txt`.
+
+## Acknowledgements
+
+- The historical crystal-practice corpus and personal working logs that
+  posed the questions this programme formalizes (preserved, with authorship
+  and original wording, in the Historical & Source Companion).
+- K. Arisaka (UCLA) for the publicly presented NHT/HAL proposals whose
+  *structure* inspired the Hydrogenuine memory record — adapted as
+  engineering, with the neuroscience explicitly quarantined.
+- The authors of the six photonics/magnonics papers whose published
+  mathematics is adapted (and only the mathematics — every forbidden
+  transfer is registered): Sohn, Orsel & Bahl; Cheng et al.; Lapointe,
+  Coia & Vallée; Wang et al.; Zhang, Zhan, Gong & Niu; Chao, Yam, Vivien
+  & Dagens; and Koster et al. for the coherence-metric methodology.
+- The open-source stack this project stands on: NumPy, SciPy, matplotlib,
+  PySide6, pytest, Hypothesis, jsonschema, TeX Gyre/XeLaTeX.
