@@ -147,6 +147,23 @@ coordinates:
     tests: ["tests/unit/test_rscs_hg_memory.py::test_record_construction",
             "tests/unit/test_rscs_hg_memory.py::test_frame_consistency"]
 
+  - id: RSCS-C.16
+    name: optical carrier
+    class: EST
+    units: "wavelength nm; envelope bandwidth Hz"
+    manifold: "R+ x R+"
+    module: "rscs_core.coordinates.optical:OpticalCarrier"
+    provenance: []
+    tests: ["tests/unit/test_rscs_optical.py::test_optical_carrier"]
+  - id: RSCS-C.17
+    name: directional propagation pair
+    class: DER
+    units: "rad/mm (beta, delta_beta)"
+    manifold: "R^2"
+    module: "rscs_core.coordinates.optical:DirectionalPropagation"
+    provenance: ["EP-06-01"]
+    tests: ["tests/unit/test_rscs_optical.py::test_directional_propagation"]
+
 operators:
   - id: RSCS-O.1
     name: frame transform
@@ -339,22 +356,6 @@ operators:
     manuscript_target: "RGCS Crystal Application, anisotropic propagation"
     tests: ["tests/unit/test_rscs_anisotropy.py::test_axis_speeds_match_closed_form",
             "tests/regression/test_rscs_conservative_extension.py::test_anisotropy_reproduces_scalar_vL"]
-  - id: RSCS-C.16
-    name: optical carrier
-    class: EST
-    units: "wavelength nm; envelope bandwidth Hz"
-    manifold: "R+ x R+"
-    module: "rscs_core.coordinates.optical:OpticalCarrier"
-    provenance: []
-    tests: ["tests/unit/test_rscs_optical.py::test_optical_carrier"]
-  - id: RSCS-C.17
-    name: directional propagation pair
-    class: DER
-    units: "rad/mm (beta, delta_beta)"
-    manifold: "R^2"
-    module: "rscs_core.coordinates.optical:DirectionalPropagation"
-    provenance: ["EP-06-01"]
-    tests: ["tests/unit/test_rscs_optical.py::test_directional_propagation"]
 
   - id: RSCS-O.18
     name: dispersion phase expansion

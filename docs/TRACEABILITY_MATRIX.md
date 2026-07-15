@@ -150,3 +150,24 @@ Claims H-24..H-30 in `docs/CLAIM_REGISTER.md`; pre-registration spine
 `docs/EXPERIMENTAL_PROGRAMME.md`; engineering detail
 `docs/COIL_LASER_TIMING_AND_PHASE.md` (embedded acceptance requirements
 section 9 feed Agent 08).
+
+## Agent 08 — software / hardware / CAD / portability
+
+| Deliverable | Rule / defect | Module / file | Tests |
+|---|---|---|---|
+| V2-WIN-01 fix (POSIX zip arcnames) | MIG-CODE-07 | `rgcs_desktop/services/bundle.py` | `integration/test_vertical_slice.py::test_step_7` (now green) + `unit/test_rgcs_platform.py::test_bundle_arcnames_posix` |
+| Specimen-listing re-diagnosis | MIG-CODE-07 | pyproject dev extra (jsonschema/referencing) | vertical-slice steps 4/4b green |
+| Windows CI | MIG-CODE-07 | `.github/workflows/ci.yml` | CI matrix itself |
+| FEA export contract | crystal app section 8 | `rgcs_core/fea_export.py` | `unit/test_rgcs_platform.py::test_fea_export_roundtrip` |
+| Crystal DB + migration | crystal app section 9 | `rgcs_core/crystal_db.py` | `::test_crystal_db_roundtrip`, `::test_crystal_db_migration_rules` |
+| HG memory persistence (H-15/17/19 machine-tested) | Agent 04 claims | `rscs_core/memory/persistence.py` | `::test_hg_persistence_*`, `::test_hg_uncertainty_calibration_h19` |
+| Provenance graph service | brief desktop rule 5 | `rgcs_desktop/services/provenance_graph.py` | `::test_provenance_graph_builds` |
+| Waveform/timing preview service | Agent 07 acceptance 9.6 | `rgcs_desktop/services/waveform_preview.py` | `::test_waveform_preview` |
+| SCAD v7 (D-02 fix) + CAD provenance | D-02 | `scad/vogel_parametric_crystal_models_v7_RGCS_v3.scad`, `scad/README.md` | manual OpenSCAD render (CAD, no unit harness) |
+| HG Embedded OS contract + app manifest schema | brief embedded section | `embedded/HG_EMBEDDED_OS_CONTRACT.md`, `embedded/app_manifest.schema.json` | schema is JSON-Schema-valid; firmware tests at T4 |
+| Timing hardware roadmap (quantified) | brief timing roadmap | `docs/SOFTWARE_HARDWARE_ARCHITECTURE.md` section 7 | requirements from Agent 07 section 9 |
+
+Registry file repair: RSCS-C.16/C.17 rows moved from the operators list to
+the coordinates list (YAML placement error introduced in the Agent 06
+append; ids/content unchanged; graph test now pins 17 coordinates + 23
+operators).

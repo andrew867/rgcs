@@ -47,3 +47,11 @@ Exit criteria: see `RELEASE_CHECKLIST.md` gate walk.
 ## M10 — First hardware campaign (FUTURE, out of scope for 2.0.0)
 Execute branch 1 (modal survey) per `EXPERIMENT_PROTOCOL.md`; first
 adjudication of H-01/H-03/H-04 per `STATISTICAL_ANALYSIS_PLAN.md`.
+
+## v3 Agent 08 milestone
+
+M-v3-platform-T1 (2026-07-15): V2-WIN-01 fixed (vertical slice fully green
+on Windows); jsonschema/referencing declared; Windows CI added; crystal DB
++ HG persistence + FEA export implemented and tested; provenance-graph and
+waveform-preview services implemented; SCAD v7 closes D-02; HG Embedded OS
+contract + app manifest schema published. Next: T2 desktop panels.

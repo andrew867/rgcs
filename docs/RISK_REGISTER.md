@@ -18,3 +18,13 @@ likelihood: H/M/L. Status reflects release 2.0.0.
 | R-11 | **Windows build unverified** — release built/tested on Linux only | M/M | Reproducible-build instructions (`tools/packaging/build_windows.md`); PyInstaller spec is OS-agnostic; smoke-check flag (`--smoke-check`) for post-build verification | Open, documented in RELEASE_NOTES |
 | R-12 | **Dependency drift** (numpy/scipy/pydantic majors) | M/M | Version floors in pyproject; exact build-environment versions recorded in `release/PROVENANCE.json` | Mitigated |
 | R-13 | **SCAD compact-mode defect misleads CAD users** (D-02, inert flag) | L/M | Shipped unmodified for provenance with a prominent warning + workaround in `scad/README.md` | Accepted, documented |
+
+## v3 Agent 08 additions
+
+| ID | Risk | Mitigation |
+|---|---|---|
+| R-08-1 | ESP32 internal crystal drift (10-40 ppm) invalidates phase claims | TCXO reference mandatory (architecture section 7); H-29 gate blocks phase claims without calibration |
+| R-08-2 | SD-card config could loosen safety limits | limits compile into firmware; config may only tighten (HG OS contract section 2) |
+| R-08-3 | Schema migration hook missing on future version bump | migrate() fails loudly; CI runs the migration tests |
+| R-08-4 | Desktop panels drift from headless services | panels are thin views over tested services (T2 rule); services carry the tests |
+| R-08-5 | CPLD dead-time logic is safety-relevant | classified ENG until measured; interlock loop is hardware and independent of it |

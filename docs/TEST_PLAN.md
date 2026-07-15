@@ -60,3 +60,13 @@ Markers: `slow` (long-running dataset regeneration), `benchmark`
   Verified clean in adversarial runs; documented limitation.
 - QA-D-20/22/24/25: default-parameter and API-doc mismatches, blocking-call
   hygiene in one widget path — cosmetic, registered in DEFECT_REGISTER.md.
+
+## v3 Agent 08 addendum
+
+New gates: `tests/unit/test_rgcs_platform.py` (FEA contract round-trip +
+tamper detection; crystal DB round-trip + migration failure modes; HG
+persistence H-15/H-17/H-19 now machine-tested; provenance graph
+determinism; waveform preview; V2-WIN-01 regression guard). CI matrix
+(Linux+Windows x Py3.11/3.13) runs schema validation and generated-doc
+freshness as gate steps; NR3-001 byte-equality is deselected on Windows
+with documented justification (`.github/workflows/ci.yml`).

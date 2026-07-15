@@ -65,3 +65,16 @@ in `RELEASE_CHECKLIST.md`.
       (`tools/packaging/build_windows.md`). Recorded as a release-notes
       limitation, not a gate failure (gates require source + build
       instructions).
+
+## v3 Agent 08 acceptance criteria
+
+1. Full suite green on Windows except NR3-001 (documented); vertical slice
+   10/10. [MET in this commit]
+2. `experiments/schemas/validate.py` green on 12 targets. [MET]
+3. FEA export verifies (sha256) and refuses invalid geometry. [MET]
+4. Crystal DB migration: unknown/newer schema fails loudly. [MET]
+5. HG store: H-15 keyed retrieval, H-17 monotonicity enforcement, H-19
+   no-silent-inflation all machine-tested. [MET]
+6. Embedded: firmware may not arm outputs without hardware interlock loop
+   + passing self-test + per-channel latency calibration (H-29). [contract
+   published; verification at T4/T5]

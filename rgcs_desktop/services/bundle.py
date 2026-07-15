@@ -37,7 +37,11 @@ def export_bundle(ws: Workspace, dest: str | Path | None = None) -> Path:
         if base.exists():
             for p in sorted(base.rglob("*")):
                 if p.is_file() and not p.name.startswith("."):
-                    members.append((str(p.relative_to(ws.root)), p))
+                    # MIG-CODE-07 / V2-WIN-01: arcnames must be POSIX ('/')
+                    # on every platform -- str(relative_to) yields '\' on
+                    # Windows, desyncing CHECKSUMS.json from the stored
+                    # member names (ZipFile normalizes those to '/').
+                    members.append((p.relative_to(ws.root).as_posix(), p))
 
     checksums: dict[str, str] = {}
     versions = {

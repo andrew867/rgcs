@@ -58,6 +58,17 @@ v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
   timing programme schema + example; claims H-24..H-30 (node-menu rows
   H-24..H-28); docs `COIL_LASER_TIMING_AND_PHASE.md`,
   `EXPERIMENTAL_PROGRAMME.md`.
+- Agent 08: platform tranche T1 — **V2-WIN-01 fixed** (POSIX zip
+  arcnames; vertical slice fully green on Windows), specimen-listing
+  defect re-diagnosed as missing `jsonschema` (deps declared), Windows CI
+  matrix; `rgcs_core/fea_export` (sha256-verified material-card contract),
+  `rgcs_core/crystal_db` (schema-versioned persistence + migration),
+  `rscs_core/memory/persistence` (H-15/H-17/H-19 machine-tested);
+  headless desktop services (provenance graph, waveform/timing preview,
+  phase-budget rows); SCAD v7 fixes D-02 with CAD provenance notes;
+  HG Embedded OS contract + app-manifest schema; quantified DDS/TCXO/PLL/
+  CPLD roadmap (FPGA explicitly not justified). Docs:
+  `SOFTWARE_HARDWARE_ARCHITECTURE.md`, enterprise-doc addenda.
 
 ### Changed
 - `pyproject.toml`: project renamed `rgcs-v3` 3.0.0a1 (D3-001); missing

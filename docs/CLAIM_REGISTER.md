@@ -67,3 +67,12 @@ H-28,HYP,"A phase singularity/saddle exists in the spatial phase field",node men
 H-29,ENG,"Latency calibration + phase_at_coordinate predicts measured phase at the interaction coordinate within +/-5 deg at 4096 Hz",rgcs_core.timing.phase_at_coordinate,measured vs predicted phase,"calibrated vs uncalibrated channel",error > 5 deg after calibration -> phase claims blocked,+/-5 deg gate,pre-registered
 H-30,ENG,"Sham-timing branch is indistinguishable from combined on every NON-phase observable",EXPERIMENTAL_PROGRAMME section 4,amplitude-only observables sham vs combined,"randomized_blinded order",sham differs on amplitude-only observables -> uncontrolled drive artifact,SAP effect-size rules,pre-registered
 ```
+
+## Agent 08 status updates (2026-07-15)
+
+H-15, H-17, H-19 (previously `testable-at-persistence-layer`) are now
+**machine-tested-pass** via `rscs_core/memory/persistence.py` and
+`tests/unit/test_rgcs_platform.py` (keyed retrieval + no distinct-key
+collision; append-order/monotonicity enforcement; no silent sigma
+inflation). Rows above are append-only and retained unchanged; this note
+supersedes their status column.

@@ -36,3 +36,11 @@ follow the same discipline.
 - D-02 SCAD compact-mode rings fix (see `scad/README.md`).
 - Windows binary build (documented path, not yet produced in this
   Linux-only environment).
+
+## v3 Agent 08 addendum
+
+Tranches T1-T6 with dependency graph in
+`docs/SOFTWARE_HARDWARE_ARCHITECTURE.md` section 8. T1 (fixes, CI,
+persistence, FEA, headless services, embedded contracts) is COMPLETE in
+this commit; T2 desktop panels consume the tested headless services; T4/T5
+firmware/hardware are ENG until built and measured.

@@ -8,6 +8,10 @@ failures were missing-`jsonschema` artifacts and pass once
 `jsonschema`/`referencing` are installed (environment fix; Agent 08
 declares them in pyproject). Remaining 2: V2-WIN-01 (zip arcname
 backslashes) and NR3-001 (Linux-generated golden CSVs).
+‡ Agent 08 fixed V2-WIN-01 (POSIX bundle arcnames) and declared the
+schema deps, so the inherited count is now 1: only NR3-001 (byte-equality
+of Linux-generated golden CSVs; deselected in Windows CI, passes on the
+Linux reference platform).
 
 | Agent | Scope | Status | Commits | Suite (passed/inherited-failed/new-regressions) | Handoff |
 |---|---|---|---|---|---|
@@ -17,8 +21,8 @@ backslashes) and NR3-001 (Linux-generated golden CSVs).
 | 04 | NHT/HAL → Hydrogenuine memory bridge | COMPLETE | `7e00f19` | 307/4/0 | `NHT_HAL_RSCS_MAPPING.md`, `HG_RSCS_MEMORY_ARCHITECTURE.md` |
 | 05 | Crystal application (anisotropic Christoffel) | COMPLETE | `4ccdd89` | 315/4/0 | `RGCS_CRYSTAL_APPLICATION.md` |
 | 06 | Optical / photon–phonon / nonreciprocal coupling | COMPLETE | `1052c24` | 347/2/0 † | `AGENT_06_HANDOFF.md` |
-| 07 | Coil / laser / timing / experiment design | COMPLETE | (this commit) | 364/2/0 | `AGENT_07_HANDOFF.md` |
-| 08 | Software / hardware / CAD / portability | pending | — | — | — |
+| 07 | Coil / laser / timing / experiment design | COMPLETE | `8751b51` | 364/2/0 | `AGENT_07_HANDOFF.md` |
+| 08 | Software / hardware / CAD / portability (T1) | COMPLETE | (this commit) | 376/1/0 ‡ | `AGENT_08_HANDOFF.md` |
 | 09 | Four manuscripts + public docs + Lessons Learned | pending | — | — | — |
 | 10 | Independent adversarial QA | pending | — | — | — |
 | 11 | Integration, repair, release, public package | pending | — | — | — |

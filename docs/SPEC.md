@@ -66,3 +66,12 @@ Python ≥ 3.11; numpy ≥ 1.26, scipy ≥ 1.11, pydantic ≥ 2.5; desktop extra
 PySide6 ≥ 6.6, pyqtgraph ≥ 0.13; dev extra: pytest, hypothesis, pytest-qt.
 Headless test runs use `QT_QPA_PLATFORM=offscreen`. Manuscript builds with
 `latexmk -xelatex`.
+
+## v3 Agent 08 addendum
+
+Platform/portability spec for v3 lives in
+`docs/SOFTWARE_HARDWARE_ARCHITECTURE.md` (single source of truth):
+layering (rscs_core reusable library), V2-WIN-01 fix, Windows CI matrix,
+persistence contracts (crystal DB, HG store, FEA export), desktop v3 view
+contracts, HG Embedded OS contract (`embedded/`), quantified timing
+hardware roadmap, tranche graph T1-T6.

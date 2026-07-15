@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/app_manifest.schema.json",
+  "title": "HG Embedded OS application manifest",
+  "description": "Build-time app selection contract (ENG; HG_EMBEDDED_OS_CONTRACT.md section 3). Any app that can arm outputs must cap them at or below the D7-003 envelope; the build rejects manifests requesting uncapped output classes.",
+  "type": "object",
+  "required": ["app_id", "version", "sdk_services", "bsp_capabilities"],
+  "additionalProperties": false,
+  "properties": {
+    "app_id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+    "version": { "type": "string" },
+    "description": { "type": "string" },
+    "sdk_services": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["ui", "storage", "timing", "peripherals", "logging", "lifecycle"] },
+      "uniqueItems": true
+    },
+    "bsp_capabilities": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["display", "touch", "sd", "rtc_tcxo", "pwm_rmt", "triggers", "adc"] },
+      "uniqueItems": true
+    },
+    "storage_quota_kb": { "type": "integer", "minimum": 0 },
+    "output_classes": {
+      "type": "array",
+      "description": "Required (non-empty caps) for every output the app can arm; omit entirely for output-free apps (e.g. karaoke).",
+      "items": {
+        "type": "object",
+        "required": ["class", "voltage_v_max", "current_a_max"],
+        "additionalProperties": false,
+        "properties": {
+          "class": { "type": "string", "enum": ["coil_pwm", "trigger_isolated", "audio"] },
+          "voltage_v_max": { "type": "number", "exclusiveMinimum": 0, "maximum": 30 },
+          "current_a_max": { "type": "number", "exclusiveMinimum": 0, "maximum": 3 },
+          "requires_interlock": { "type": "boolean", "default": true }
+        }
+      }
+    }
+  }
+}

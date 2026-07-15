@@ -74,3 +74,18 @@ Severity: P0 blocker / P1 major / P2 minor / P3 cosmetic. Nothing was fixed by Q
 - **QA-D-24** `DEFAULT_WAVE_SPEED_M_S`/`DEFAULT_WAVE_SPEED_U_REL` are public, used by a desktop viewer, in `__all__`, but absent from `docs/CORE_API_SPEC.md`.
 - **QA-D-25** `run_analysis(wait=True)` branch inside a widget method blocks up to 120 s if ever wired to UI (currently only tests use it); several viewers call fast core functions synchronously in event handlers — `avoided_crossing_sweep` is the one most likely to grow into a stall.
 - **QA-D-26** `rgcs_v2.tex:1019` hand-types the nominal count "1507.328" (also present in generated Table 5); the only hand-typed derived numeral found — all other manuscript numerics route through the 63 `\gv` macro uses (66 defined) or generated tables.
+
+### Agent 08 addendum (2026-07-15)
+
+- **V2-WIN-01 FIXED** in `rgcs_desktop/services/bundle.py` (POSIX arcnames
+  via `as_posix()`); regression guard `test_bundle_arcnames_posix`;
+  `test_step_7_reproducibility_bundle` passes on Windows.
+- **"Specimen-listing Windows defect" RE-DIAGNOSED:** the step-4/4b
+  vertical-slice failures were missing-`jsonschema` import errors, not a
+  listing defect; with the dependency declared (pyproject dev extra) the
+  tests pass unmodified. The frozen V2_BASELINE_AUDIT.md wording is
+  superseded by this addendum (audit file itself untouched).
+- **D-02 (SCAD compact-mode rings inert) FIXED in v7**
+  (`scad/vogel_parametric_crystal_models_v7_RGCS_v3.scad`); v6 retained
+  verbatim; diff summary in `scad/README.md`.
+- QA-D-02 (Koster citation) remains OPEN, owner Agent 09.

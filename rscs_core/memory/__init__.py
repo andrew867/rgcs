@@ -18,9 +18,12 @@ from ..registry import rscs_classified
 
 from .hydrogenuine import (HydrogenuineRecord, store as hg_store,
                            replay as hg_replay, update as hg_update)
+from .persistence import (HG_STORE_SCHEMA_VERSION, allocentric_key,
+                          load_store, retrieve_by_key, save_store)
 
 __all__ = ["store", "recall", "HydrogenuineRecord", "hg_store", "hg_replay",
-           "hg_update"]
+           "hg_update", "HG_STORE_SCHEMA_VERSION", "allocentric_key",
+           "save_store", "load_store", "retrieve_by_key"]
 
 
 @rscs_classified("HYP", registry=("RSCS-O.13",), provenance=("EP-07-02",),
