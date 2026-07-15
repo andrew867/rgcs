@@ -6,7 +6,7 @@ Author: Andrew Green.
 
 **What v3 adds** (all tested, all conservative extensions of the frozen
 v2 mathematics): the typed RSCS coordinate/operator framework
-(`rscs_core`, 18 coordinates + 23 operators with machine-checked
+(`rscs_core`, 17 coordinates + 23 operators with machine-checked
 provenance), anisotropic Christoffel propagation resolving the v2 scalar
 wave-speed hypothesis, an optical probe layer with pre-registered null
 expectations, a synchronized coil/laser timing architecture with a

@@ -21,6 +21,10 @@ import numpy as np
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
 
+import os
+# D-V3-02: byte-reproducible figure PDFs (matplotlib honors
+# SOURCE_DATE_EPOCH for the embedded CreationDate).
+os.environ.setdefault("SOURCE_DATE_EPOCH", "0")
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
@@ -106,7 +110,8 @@ def foundations() -> None:
     hyb = cm["hybrid_frequencies_hz"]
 
     macros = (
-        _macro("gvNumCoords", str(len(reg["coordinates"]) + 1))  # + C.15
+        # D-V3-01 fix: C.15 is a registry row; count rows directly.
+        _macro("gvNumCoords", str(len(reg["coordinates"])))
         + _macro("gvNumOps", str(len(reg["operators"])))
         + _macro("gvCepAllOk", "all pass" if cep["all_ok"] else "FAILURES")
         + _macro("gvHybridLower", f"{hyb[0]:.1f}")

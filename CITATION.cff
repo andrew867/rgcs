@@ -1,22 +1,26 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-title: "RGCS v2: Resonant Geometry Computational System"
-version: 2.0.0
-date-released: "2026-07-14"
+title: "RGCS v3 / RSCS 1.0: Resonant Geometry Computational System"
+version: 3.0.0-rc1
+date-released: "2026-07-15"
 license: MIT
 authors:
   - family-names: Green
     given-names: Andrew
     email: me@andrewgreen.ca
 abstract: >-
-  Deterministic, typed, tested Python library (rgcs_core, equations
-  RGCS-M.1..M.61), desktop research workbench (rgcs_desktop), experiment
-  schemas/templates, and a fully generated manuscript for studying
-  acoustic/mechanical resonance and phase coherence in engineered quartz
-  geometries. All scientific statements are classified as Established,
-  Derived, Hypothesis, or Source claim; all 14 project hypotheses are
-  pre-registered with observables, controls, failure conditions, and
-  uncertainty statements, and none has been experimentally confirmed.
+  Deterministic, typed, tested Python libraries: rscs_core (RSCS 1.0
+  typed coordinate/operator framework, 17 coordinates + 23 operators,
+  Conservative Extension Property over the frozen v2 mathematics) and
+  rgcs_core (crystal application: equations RGCS-M.1..M.61 frozen,
+  anisotropic Christoffel propagation, optical probe layer, synchronized
+  timing architecture), a desktop research workbench (rgcs_desktop),
+  experiment schemas, and four fully generated manuscripts. All
+  scientific statements are classified as Established, Derived,
+  Hypothesis, Source claim, or Engineering plan; all project hypotheses
+  are pre-registered with observables, controls, failure conditions, and
+  uncertainty statements — several as expected nulls — and none has been
+  experimentally confirmed.
 keywords:
   - resonance
   - quartz
