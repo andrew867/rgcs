@@ -20,9 +20,21 @@ v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
   `tests/adversarial/`, `experiments/protocols|notebooks`.
 - `.gitattributes` line-ending normalization.
 
+- Agent 02: verified source registry, equation-provenance ledger, adaptation
+  /exclusion matrices, and the frozen `docs/RSCS_NOTATION_LEDGER.md`
+  (RSCS-C.1..14 coordinates, RSCS-O.1..13 operators).
+- Agent 03: `rscs_core` mathematical backbone — 14 typed coordinates, 13
+  operators, RGCS→RSCS embedding with the Conservative Extension Property
+  (reproduces RGCS-M.23/24/28/46/55/56/10-11), a claim/provenance firewall,
+  and a machine-readable RSCS registry. 64 new tests; anti-Hermitian coupling
+  `K=i·2πg` (QA-D-04) enforced. Docs: `RSCS_MATHEMATICAL_MODEL.md`,
+  `RSCS_OPERATOR_REGISTRY.md`, `RSCS_COORDINATE_SCHEMA.md`,
+  `AGENT_03_HANDOFF.md`.
+
 ### Changed
 - `pyproject.toml`: project renamed `rgcs-v3` 3.0.0a1 (D3-001); missing
-  `pyyaml` dependency declared (fixes V2-PKG-01 for v3 builds).
+  `pyyaml` dependency declared (fixes V2-PKG-01 for v3 builds); `rscs_core`
+  packaged with its registry yaml.
 - v2 release artifacts moved unchanged to `archive/v2.0.0/release/`;
   top-level `release/` reserved for v3 outputs.
 
