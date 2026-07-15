@@ -22,8 +22,8 @@ Linux reference platform).
 | 05 | Crystal application (anisotropic Christoffel) | COMPLETE | `4ccdd89` | 315/4/0 | `RGCS_CRYSTAL_APPLICATION.md` |
 | 06 | Optical / photon–phonon / nonreciprocal coupling | COMPLETE | `1052c24` | 347/2/0 † | `AGENT_06_HANDOFF.md` |
 | 07 | Coil / laser / timing / experiment design | COMPLETE | `8751b51` | 364/2/0 | `AGENT_07_HANDOFF.md` |
-| 08 | Software / hardware / CAD / portability (T1) | COMPLETE | (this commit) | 376/1/0 ‡ | `AGENT_08_HANDOFF.md` |
-| 09 | Four manuscripts + public docs + Lessons Learned | pending | — | — | — |
+| 08 | Software / hardware / CAD / portability (T1) | COMPLETE | `75229cc` | 376/1/0 ‡ | `AGENT_08_HANDOFF.md` |
+| 09 | Four manuscripts + public docs + Lessons Learned | COMPLETE | (this commit) | 376/1/0 | `AGENT_09_HANDOFF.md` |
 | 10 | Independent adversarial QA | pending | — | — | — |
 | 11 | Integration, repair, release, public package | pending | — | — | — |
 

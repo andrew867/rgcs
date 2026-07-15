@@ -1,0 +1,113 @@
+% ======================================================================
+% Historical and Source Companion (RGCS v3, Agent 09)
+% Compile: latexmk -xelatex historical_source_companion.tex
+% Generated tables from tools/make_v3_artifacts.py.
+% ======================================================================
+\documentclass[10pt,letterpaper]{article}
+\input{../common/rgcs_v3_preamble.tex}
+\usepackage[hidelinks,pdftitle={RGCS Historical and Source Companion},pdfauthor={Andrew Green}]{hyperref}
+\graphicspath{{figures/}}
+\input{tables/generated_values}
+\rhead{\small Historical \& Source Companion}
+
+\title{\vspace{-2.0em}\textbf{Historical and Source Companion\\
+to RGCS v3 / RSCS 1.0}}
+\author{Andrew Green}
+\date{2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This companion preserves the source material behind the RGCS programme
+--- historical practice, personal logs, theoretical proposals, and recent
+peer-reviewed photonics --- in its own words and with its own authors,
+and records exactly what the programme did with each piece: what
+mathematics was adapted (always re-derived and re-tested), what
+interpretation was \emph{excluded} by a binding forbidden-transfer
+clause, and which testable hypotheses resulted. Nothing here is evidence
+for anything; that is the point of keeping it separate. The register
+covers \gvNumSources{} sources and \gvNumEp{} equation-level adaptation
+rows.
+\end{abstract}
+
+\section{Why a companion}
+Programmes that draw inspiration from unconventional sources face two
+symmetric failure modes: laundering (source claims quietly become
+physics by repetition) and erasure (the historical material is discarded
+or ridiculed, destroying the record of where questions came from). The
+RGCS discipline avoids both with one rule: \textbf{every statement keeps
+its author and its class}. A source claim \SRC{} may inspire a
+hypothesis \HYP{} only through an explicit, registered translation with
+an observable, controls, and a failure condition --- and the original
+wording is preserved here unchanged.
+
+\section{The historical crystal-practice corpus \SRC}
+The programme's origin material is a practice tradition around faceted
+quartz instruments (the Vogel-style cut lineage) and a personal
+working log (``JH log'') whose operating points parameterize the v2/v3
+protocols: the \SI{4096}{\hertz} coil carrier; the sound keys at 1496,
+644, and \SI{587}{\hertz}; the \SI{20}{\hertz} electrode-pulse family
+with its 15\,V setting; the 46\,ms burst envelopes with their spacings
+and pauses; opposed complementary coils; and ``the eye'' --- a special
+interior locus of the crystal. In the source's own frame these are
+statements of practice, made in earnest, with their own vocabulary of
+resonance, keys, and awakening. The programme records them respectfully
+and verbatim in the source-evidence ledger, assigns each an RG-$\ast$
+identifier, and gives them \emph{no truth value}: they select where to
+look, never what is true.
+
+Two translations illustrate the method. ``A single crystal tone''
+becomes the scalar effective wave speed $\vL$ \eqid{RGCS-M.10} --- which
+v3's anisotropic model then resolves, recovering the scalar as the
+orientation-unknown case. ``The eye'' becomes an eight-entry node menu
+(metric centre, shaft prior, measured vibration node, electrical node,
+optical feature, overlap maximum, coupling maximum, phase singularity),
+of which the measured node supersedes all others and five entries are
+pre-registered hypotheses H-24\,--\,H-28 with failure conditions.
+
+\section{The Arisaka NHT/HAL proposals \SRC}
+The Neural Holography Theory and Holographic Ring Attractor Lattice
+proposals \citep{arisaka2022nht,arisaka2022vision,arisaka2023colloquium}
+are theoretical neuroscience: space encoded in the phase of oriented
+traveling waves, ring-attractor lattices as memory, egocentric
+$\leftrightarrow$ allocentric transforms. They are their authors'
+proposals and remain so. The programme adapted their \emph{structure}
+--- a typed memory record with allocentric/egocentric positions, a frame
+transform, predicted vs.\ observed states \eqid{RSCS-C.15}, \ENG{} ---
+which is useful software regardless of the neuroscience, while the
+space-to-phase encoding \eqid{RSCS-O.3} and memory lattice
+\eqid{RSCS-C.14} are quarantined \HYP{} requiring an explicit
+acknowledgment flag to construct. \textbf{Excluded outright}: any
+consciousness claim, any brain-mechanism claim, and any claim that
+quartz realizes memory.
+
+\section{The photonics source set \SRC{} $\to$ adapted mathematics}
+Six recent works supplied the optical/nonreciprocal mathematics:
+phonon-mediated Autler--Townes splitting \citep{sohn2021phonon},
+terahertz-bandwidth acousto-optic isolation \citep{cheng2024terahertz},
+self-induced nonlinear nonreciprocity \citep{wang2025selfinduced},
+noiseless single-photon isolation \citep{zhang2023noiseless}, TMOKE
+coupled-waveguide beating \citep{chao2025tmoke}, and latched-garnet
+Faraday isolation via spiral-helix laser writing
+\citep{lapointe2023faraday}. Each achieves its effect through an active
+ingredient quartz is not claimed to have; the binding posture is that an
+unbiased passive quartz path is \emph{reciprocal} and every directional
+observable's pre-registered expectation is the null. The complete
+equation-level ledger --- what crossed, what is forbidden --- follows.
+\input{tables/adaptation_ledger}
+
+\section{Evidence boundaries, stated plainly}
+As of this writing: no experiment in this programme has confirmed any
+non-standard physical hypothesis. The v2 measurement campaigns produced
+calibrations, controls, artifact identifications, and negative results
+--- all registered. The value the historical material has contributed is
+real but methodological: it generated precise, falsifiable questions
+that conventional instrumentation can answer. If every pre-registered
+hypothesis fails, the companion still stands as an honest record of a
+tradition, its language, and a disciplined attempt to test it.
+
+\bibliographystyle{unsrtnat}
+\bibliography{../../references/references,../common/handbooks}
+
+\end{document}

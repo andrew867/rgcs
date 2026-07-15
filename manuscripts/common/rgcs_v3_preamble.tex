@@ -1,0 +1,69 @@
+% ======================================================================
+% RGCS v3 / RSCS 1.0 shared manuscript preamble (Agent 09).
+% Extends the v2 preamble discipline: classification tags, registry-id
+% tags, generated-values input done by each document. Compile each
+% manuscript with: latexmk -xelatex <main>.tex
+% ======================================================================
+\usepackage[margin=0.9in]{geometry}
+\usepackage{fontspec}
+% Load by filename so the build works on machines where the TeX Gyre
+% fonts are shipped by the TeX distribution but not registered with the
+% OS font system (e.g. MiKTeX on Windows).
+\setmainfont{texgyrepagella}[Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic]
+\setsansfont{texgyreheros}[Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic]
+\setmonofont{DejaVuSansMono}[Extension=.ttf, UprightFont=*,
+  BoldFont=*-Bold, ItalicFont=*-Oblique, Scale=0.86]
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,longtable,array,tabularx,multirow}
+\usepackage{graphicx,float}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{pdflscape}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\sisetup{detect-all,per-mode=symbol}
+\usepackage{enumitem}
+\setlist{nosep,leftmargin=1.4em}
+\usepackage{microtype}
+\emergencystretch=2.5em
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
+
+% ---------- palette ----------
+\definecolor{estcol}{HTML}{17324D}
+\definecolor{dercol}{HTML}{2A7F78}
+\definecolor{hypcol}{HTML}{B4582E}
+\definecolor{srccol}{HTML}{7A6A9E}
+\definecolor{engcol}{HTML}{6E7B2A}
+\definecolor{soft}{HTML}{EEF4F8}
+\definecolor{inkgray}{HTML}{5C5F66}
+
+% ---------- classification tags ----------
+% \mbox keeps the tag usable in both text and math mode.
+\newcommand{\cltag}[2]{\mbox{\textcolor{#1}{\sffamily\scriptsize\bfseries[#2]}}}
+\newcommand{\EST}{\cltag{estcol}{EST}}   % Established
+\newcommand{\DER}{\cltag{dercol}{DER}}   % Derived
+\newcommand{\HYP}{\cltag{hypcol}{HYP}}   % Hypothesis
+\newcommand{\SRC}{\cltag{srccol}{SRC}}   % Source claim
+\newcommand{\ENG}{\cltag{engcol}{ENG}}   % Engineering plan
+\newcommand{\eqid}[1]{\textcolor{inkgray}{\scriptsize\textsf{#1}}}
+
+% ---------- RSCS symbols ----------
+\newcommand{\iotamap}{\iota}
+\newcommand{\Kop}{\mathcal{K}}
+\newcommand{\Top}{\mathcal{T}}
+\newcommand{\Fop}{\mathcal{F}}
+\newcommand{\Pop}{\mathcal{P}}
+\newcommand{\Oop}{\mathcal{O}}
+\newcommand{\vL}{v_{L}}
+\newcommand{\Cw}{\mathcal{C}_{w}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small RGCS v3 / RSCS 1.0}
+\cfoot{\small\thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{14pt}

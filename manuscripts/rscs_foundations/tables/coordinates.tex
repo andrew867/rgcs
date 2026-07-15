@@ -1,0 +1,25 @@
+\begin{longtable}{@{}l p{4.2cm} l p{4.6cm} l@{}}
+\caption{RSCS coordinates (machine registry \texttt{rscs\_registry.yaml}); RSCS-C.15 is defined in the memory application layer.}\label{tab:coords}\\
+\toprule ID & Name & Class & Units & Manifold \\ \midrule
+\endfirsthead
+\toprule ID & Name & Class & Units & Manifold \\ \midrule
+\endhead
+RSCS-C.1 & spatial coordinate & EST & mm (x, y, z) in E\^{}3 & E\^{}3 \\
+RSCS-C.2 & time & EST & s & R \\
+RSCS-C.3 & phase coordinate & EST & rad (wrapped to [0, 2*pi)) & S\^{}1 \\
+RSCS-C.4 & angular frequency & EST & rad/\allowbreak{}s (omega = 2*pi*f) & R \\
+RSCS-C.5 & wavevector / oriented frame element & EST & rad/\allowbreak{}mm in R\^{}3 & R\^{}3 \\
+RSCS-C.6 & mode index tuple & EST & integer indices & Z\^{}n \\
+RSCS-C.7 & modal state (occupancy) & EST & complex amplitudes (campaign observable X) & C\^{}n \\
+RSCS-C.8 & orientation / reference frame & EST & SO(3) x {+/\allowbreak{}-} & SO(3) x {+/-} \\
+RSCS-C.9 & polarization / spin state & EST & Stokes 3-vector on S\^{}2 (dimensionless) & S\^{}2 \\
+RSCS-C.10 & selection coordinate & DER & class label (selector unit) + population [0,1] & R or Z \\
+RSCS-C.11 & group-delay coordinate & DER & s (per mode) & R\^{}n \\
+RSCS-C.12 & uncertainty descriptor & DER & (value in caller unit, relative 1-sigma, dist) & - \\
+RSCS-C.13 & provenance tag & EST & (source\_id, class, path) & enum tuple \\
+RSCS-C.14 & memory-lattice coordinate & HYP & (orientation index, carrier phase rad) on T\^{}n & T\^{}n \\
+RSCS-C.15 & Hydrogenuine memory record & ENG & engineering record (composite of C.1/\allowbreak{}C.8/\allowbreak{}C.2/\allowbreak{}C.3/\allowbreak{}C.7/\allowbreak{}C.12/\allowbreak{}C.13) & product \\
+RSCS-C.16 & optical carrier & EST & wavelength nm; envelope bandwidth Hz & R+ x R+ \\
+RSCS-C.17 & directional propagation pair & DER & rad/\allowbreak{}mm (beta, delta\_beta) & R\^{}2 \\
+\bottomrule
+\end{longtable}

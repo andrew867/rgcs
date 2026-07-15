@@ -89,3 +89,12 @@ Severity: P0 blocker / P1 major / P2 minor / P3 cosmetic. Nothing was fixed by Q
   (`scad/vogel_parametric_crystal_models_v7_RGCS_v3.scad`); v6 retained
   verbatim; diff summary in `scad/README.md`.
 - QA-D-02 (Koster citation) remains OPEN, owner Agent 09.
+
+### Agent 09 addendum (2026-07-15)
+
+- **QA-D-02 (Koster citation) VERIFIED FIXED:** `manuscript/references.bib`
+  (v2, shipped) already carries the corrected entry ("Emergence of phase
+  coherence in a magnon Bose-Einstein condensate", full nine-author list);
+  the v3 manuscripts do not cite Koster. Closing as fixed-in-v2-final.
+- v3 manuscript layout: all four builds show 0 undefined references and
+  0 overfull boxes (see docs/LAYOUT_QA_REPORT_V3.md).

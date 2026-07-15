@@ -1,6 +1,18 @@
-# RGCS v2 — Resonant Geometry Computational System
+# RGCS — Resonant Geometry Computational System
 
-Version 2.0.0 (2026-07-14). MIT license. Author: Andrew Green.
+Version 3 programme (RSCS 1.0) in progress; frozen baseline v2.0.0
+(2026-07-14, tag `v2.0.0` / `archive/v2.0.0/`). MIT license.
+Author: Andrew Green.
+
+**What v3 adds** (all tested, all conservative extensions of the frozen
+v2 mathematics): the typed RSCS coordinate/operator framework
+(`rscs_core`, 18 coordinates + 23 operators with machine-checked
+provenance), anisotropic Christoffel propagation resolving the v2 scalar
+wave-speed hypothesis, an optical probe layer with pre-registered null
+expectations, a synchronized coil/laser timing architecture with a
+binding safety envelope, Windows portability fixes + two-OS CI, and four
+generated-number manuscripts (`manuscripts/`). Programme ledger:
+`docs/PROGRAMME_PROGRESS.md`.
 
 RGCS v2 is a research instrument — a computational core, a desktop
 workbench, an experiment kit, and a fully generated manuscript — for
@@ -93,6 +105,45 @@ Linux: `tools/packaging/build_linux.sh` (PyInstaller; output under
 `release/linux/`). Windows: reproducible instructions in
 `tools/packaging/build_windows.md` (no Windows artifact is included in
 this release; built and tested on Linux only).
+
+## Lessons Learned
+
+- Independent QA is most valuable when it is allowed to overturn the
+  project's own mathematics. A v2 review found an incorrect time-domain
+  coupling map; fixing it (anti-Hermitian `K = i·2πg`) changed the
+  physical interpretation and produced a permanent regression test.
+- Provenance and classification matter as much as equations. Separating
+  Established, Derived, Hypothesis, Source, and Engineering claims
+  allowed historical material to inspire tests without becoming evidence
+  by repetition — and a machine-enforced firewall keeps it that way.
+- Historical or unconventional claims can often be translated into
+  measurable variables without presuming they are true: "the eye" became
+  an eight-definition node menu with failure conditions; "a single
+  crystal tone" became a scalar wave speed that anisotropic modelling
+  then explained.
+- A resonant system cannot be characterized by geometry and nominal
+  frequency alone. Boundary conditions, anisotropy, mode overlap, phase,
+  delay, damping, loading, uncertainty, and measurement fidelity all
+  matter — the v3 phase-at-coordinate model exists because commanded
+  phase is never the phase at the crystal.
+- Cross-platform numerical reproducibility requires pinned reference
+  environments plus tolerance-aware portability tests. Two of our
+  "Windows defects" turned out to be an undeclared dependency; the third
+  was a real path-separator bug. Declared environments and a two-OS CI
+  matrix caught what code review had not.
+- Frozen registries and conservative-extension tests made it possible to
+  expand the framework without silently rewriting earlier results: v3
+  provably reproduces v2 wherever it overlaps.
+- Software and mathematical modelling advanced faster than the physical
+  measurement programme. The project's strongest current output is a
+  reproducible framework and falsification plan, not experimental
+  confirmation — and every claim-bearing surface says so.
+- Independent review, negative results, and explicit failure conditions
+  strengthened rather than weakened the project.
+
+A fuller engineering version lives in
+`docs/SOFTWARE_HARDWARE_ARCHITECTURE.md` and the Software & Hardware
+manuscript.
 
 ## Citing
 

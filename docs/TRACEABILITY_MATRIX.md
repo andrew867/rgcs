@@ -171,3 +171,16 @@ Registry file repair: RSCS-C.16/C.17 rows moved from the operators list to
 the coordinates list (YAML placement error introduced in the Agent 06
 append; ids/content unchanged; graph test now pins 17 coordinates + 23
 operators).
+
+## Agent 09 — manuscripts and public documentation
+
+| Deliverable | Source of numbers | File(s) | Verification |
+|---|---|---|---|
+| RSCS Foundations (PDF+TeX) | tools/make_v3_artifacts.py (registry, CEP battery, coupling golden, ATS figure) | manuscripts/rscs_foundations/ | build log 0 undefined / 0 overfull; CHECKSUMS.json |
+| RGCS Crystal Application (PDF+TeX) | axis speeds, optics constants, M2, anisotropy sweep | manuscripts/rgcs_crystal_application/ | same |
+| Software & Hardware Roadmap (PDF+TeX) | timing closures, modulation families, provenance-graph counts, safety limits, macro envelopes | manuscripts/software_hardware_plan/ | same |
+| Historical & Source Companion (PDF+TeX) | equation_provenance.yaml adaptation ledger (landscape) | manuscripts/historical_source_companion/ | same |
+| Shared preamble + handbook bib | -- | manuscripts/common/ | builds on MiKTeX by filename-loaded fonts |
+| README Lessons Learned + v3 header | -- | README.md | Agent 10 public-claims review |
+| Layout QA | build logs | docs/LAYOUT_QA_REPORT_V3.md | Agent 10 re-check |
+| QA-D-02 closure | manuscript/references.bib (v2) verified correct | docs/DEFECT_REGISTER.md addendum | Agent 10 |

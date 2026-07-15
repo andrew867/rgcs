@@ -1,0 +1,31 @@
+\begin{longtable}{@{}l p{6.4cm} l p{3.4cm}@{}}
+\caption{RSCS operators; the last column names the frozen v2 results each operator must reproduce (machine-tested).}\label{tab:ops}\\
+\toprule ID & Name & Class & Reproduces \\ \midrule
+\endfirsthead
+\toprule ID & Name & Class & Reproduces \\ \midrule
+\endhead
+RSCS-O.1 & frame transform & EST & -- \\
+RSCS-O.2 & time<->frequency map (analytic signal) & EST & RGCS-M.55 \\
+RSCS-O.3 & space->phase map & HYP & -- \\
+RSCS-O.4 & mode-coupling operator (anti-Hermitian) & EST & RGCS-M.23, RGCS-M.24, RGCS-M.28, RGCS-M.46 \\
+RSCS-O.5 & parity / supermode basis change & EST & RGCS-M.23, RGCS-M.24, RGCS-M.25 \\
+RSCS-O.6 & transfer-matrix cascade & EST & -- \\
+RSCS-O.7 & phase-matching predicate & EST & -- \\
+RSCS-O.8 & group-delay / dispersion balance & DER & -- \\
+RSCS-O.9 & state preparation & DER & -- \\
+RSCS-O.10 & observation / metric & EST & RGCS-M.56 \\
+RSCS-O.11 & uncertainty propagation & DER & RGCS-M.10, RGCS-M.11 \\
+RSCS-O.12 & provenance propagation & EST & -- \\
+RSCS-O.13 & memory-lattice store / recall & HYP & -- \\
+RSCS-O.14 & HG memory store (write) & ENG & -- \\
+RSCS-O.15 & HG memory replay (recall) & ENG & -- \\
+RSCS-O.16 & HG memory update (predict<->observe) & ENG & -- \\
+RSCS-O.17 & anisotropic elastic wave speeds (Christoffel) & EST & RGCS-M.10 \\
+RSCS-O.18 & dispersion phase expansion & EST & -- \\
+RSCS-O.19 & photon-phonon mode conversion (selection rules) & DER & -- \\
+RSCS-O.20 & Autler-Townes split response & EST & RGCS-M.24 \\
+RSCS-O.21 & critical coupling & EST & -- \\
+RSCS-O.22 & state-dependent susceptibility + nonreciprocal metrics & DER & -- \\
+RSCS-O.23 & directional propagation split + beating length & EST & -- \\
+\bottomrule
+\end{longtable}

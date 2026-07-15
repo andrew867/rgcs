@@ -1,0 +1,9 @@
+{
+  "bibtex": "MiKTeX-BibTeX 4.2 (MiKTeX 26.2)",
+  "generator": "tools/make_v3_artifacts.py",
+  "matplotlib": "3.11.0",
+  "numpy": "2.5.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.13.2",
+  "xelatex": "MiKTeX-XeTeX 4.18 (MiKTeX 26.2)"
+}

@@ -9,3 +9,14 @@ release/linux/
 .pytest_cache/
 .venv/
 .hypothesis/
+
+# LaTeX build intermediates (v3 manuscripts; PDFs and sources ARE committed)
+manuscripts/**/*.aux
+manuscripts/**/*.log
+manuscripts/**/*.out
+manuscripts/**/*.toc
+manuscripts/**/*.bbl
+manuscripts/**/*.blg
+manuscripts/**/*.fls
+manuscripts/**/*.fdb_latexmk
+manuscripts/**/*.xdv
