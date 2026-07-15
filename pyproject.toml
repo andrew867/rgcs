@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rgcs-v3"
-version = "3.0.0a1"
+version = "3.0.0rc1"
 description = "RGCS v3 / RSCS 1.0: typed resonant-coordinate framework (rscs_core) plus the deterministic, tested RGCS crystal-application core (rgcs_core)."
 requires-python = ">=3.11"
 license = { text = "MIT" }

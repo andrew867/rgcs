@@ -1,6 +1,7 @@
 # RGCS — Resonant Geometry Computational System
 
-**v3.0.0-rc1 (RSCS 1.0)** · MIT license · Author: Andrew Green
+**v3.0.0-rc1** — includes **RSCS 1.0**, the Resonant Spacetime Coordinate
+System typed-mathematics layer · MIT license · Author: Andrew Green
 Frozen baseline: v2.0.0 (tag `v2.0.0`, `archive/v2.0.0/` — byte-identical, never modified)
 
 RGCS is a **reproducible research framework** for studying acoustic/mechanical
