@@ -1,0 +1,286 @@
+# Machine-readable RSCS 1.0 registry (Agent 03).
+# Single source of truth mapping every RSCS-C.* coordinate and RSCS-O.*
+# operator to its implementation module, class, units, provenance (EP-* ids
+# from references/equation_provenance.yaml), and tests. Validated by
+# rscs_core.registry.load_registry and cross-checked by the adversarial suite
+# (every id used in code/docs must exist here; every entry must have a test).
+#
+# This file does NOT alter docs/model_registry.yaml (the frozen RGCS-M.1..61
+# registry, schema 1). RSCS lives in its own namespace (DECISION_LOG D3-006).
+schema_version: 1
+model_version: "RSCS-1.0"
+
+coordinates:
+  - id: RSCS-C.1
+    name: spatial coordinate
+    class: EST
+    units: "mm (x, y, z) in E^3"
+    manifold: "E^3"
+    module: "rscs_core.coordinates.space:SpatialCoordinate"
+    provenance: []
+    v2_instance: "NOTATION_AND_UNITS 2.6 crystal-axis frame"
+    tests: ["tests/unit/test_rscs_coordinates.py::test_spatial_coordinate"]
+  - id: RSCS-C.2
+    name: time
+    class: EST
+    units: "s"
+    manifold: "R"
+    module: "rscs_core.coordinates.spectral:TimeCoordinate"
+    provenance: []
+    tests: ["tests/unit/test_rscs_coordinates.py::test_time_coordinate"]
+  - id: RSCS-C.3
+    name: phase coordinate
+    class: EST
+    units: "rad (wrapped to [0, 2*pi))"
+    manifold: "S^1"
+    module: "rscs_core.coordinates.spectral:PhaseCoordinate"
+    provenance: []
+    v2_instance: "v2 chi (compact phase), r_phi (phase residue)"
+    tests: ["tests/unit/test_rscs_coordinates.py::test_phase_wraps",
+            "tests/property/test_rscs_properties.py::test_phase_wrap_invariance"]
+  - id: RSCS-C.4
+    name: angular frequency
+    class: EST
+    units: "rad/s (omega = 2*pi*f)"
+    manifold: "R"
+    module: "rscs_core.coordinates.spectral:AngularFrequency"
+    provenance: []
+    tests: ["tests/property/test_rscs_properties.py::test_frequency_roundtrip"]
+  - id: RSCS-C.5
+    name: wavevector / oriented frame element
+    class: EST
+    units: "rad/mm in R^3"
+    manifold: "R^3"
+    module: "rscs_core.coordinates.spectral:Wavevector"
+    provenance: ["EP-07-01", "EP-02-01"]
+    tests: ["tests/unit/test_rscs_coordinates.py::test_wavevector"]
+  - id: RSCS-C.6
+    name: mode index tuple
+    class: EST
+    units: "integer indices"
+    manifold: "Z^n"
+    module: "rscs_core.coordinates.modal:ModeIndex"
+    provenance: []
+    v2_instance: "v2 N (axial), n (compact), P (parity)"
+    tests: ["tests/unit/test_rscs_coordinates.py::test_mode_index"]
+  - id: RSCS-C.7
+    name: modal state (occupancy)
+    class: EST
+    units: "complex amplitudes (campaign observable X)"
+    manifold: "C^n"
+    module: "rscs_core.coordinates.modal:ModalState"
+    provenance: []
+    v2_instance: "v2 analytic signal z(t); modal amplitudes RGCS-M.23-28/46"
+    tests: ["tests/unit/test_rscs_coordinates.py::test_modal_state_occupancy"]
+  - id: RSCS-C.8
+    name: orientation / reference frame
+    class: EST
+    units: "SO(3) x {+/-}"
+    manifold: "SO(3) x {+/-}"
+    module: "rscs_core.coordinates.space:OrientationFrame"
+    provenance: ["EP-08-01"]
+    exclusions: ["no visual-perception import (SRC-3-08)"]
+    tests: ["tests/unit/test_rscs_coordinates.py::test_orientation_frame",
+            "tests/property/test_rscs_properties.py::test_frame_roundtrip"]
+  - id: RSCS-C.9
+    name: polarization / spin state
+    class: EST
+    units: "Stokes 3-vector on S^2 (dimensionless)"
+    manifold: "S^2"
+    module: "rscs_core.coordinates.medium:PolarizationState"
+    provenance: ["EP-04-02"]
+    exclusions: ["no atomic-vapor NLNR physics (SRC-3-04)"]
+    tests: ["tests/unit/test_rscs_coordinates.py::test_polarization"]
+  - id: RSCS-C.10
+    name: selection coordinate
+    class: DER
+    units: "class label (selector unit) + population [0,1]"
+    manifold: "R or Z"
+    module: "rscs_core.coordinates.medium:SelectionCoordinate"
+    provenance: ["EP-05-01"]
+    exclusions: ["no single-photon/quantum-regime physics (SRC-3-05)"]
+    tests: ["tests/unit/test_rscs_coordinates.py::test_selection"]
+  - id: RSCS-C.11
+    name: group-delay coordinate
+    class: DER
+    units: "s (per mode)"
+    manifold: "R^n"
+    module: "rscs_core.coordinates.medium:GroupDelay"
+    provenance: ["EP-02-03"]
+    tests: ["tests/unit/test_rscs_coordinates.py::test_group_delay"]
+  - id: RSCS-C.12
+    name: uncertainty descriptor
+    class: DER
+    units: "(value in caller unit, relative 1-sigma, dist)"
+    manifold: "-"
+    module: "rscs_core.coordinates.meta:Uncertainty"
+    provenance: []
+    v2_instance: "v2 UncertainValue (RGCS-M.10)"
+    tests: ["tests/unit/test_rscs_coordinates.py::test_uncertainty_wraps_v2"]
+  - id: RSCS-C.13
+    name: provenance tag
+    class: EST
+    units: "(source_id, class, path)"
+    manifold: "enum tuple"
+    module: "rscs_core.coordinates.meta:ProvenanceTag"
+    provenance: ["EP-03-01"]
+    tests: ["tests/unit/test_rscs_coordinates.py::test_provenance_tag"]
+  - id: RSCS-C.14
+    name: memory-lattice coordinate
+    class: HYP
+    units: "(orientation index, carrier phase rad) on T^n"
+    manifold: "T^n"
+    module: "rscs_core.coordinates.memory:MemoryLattice"
+    provenance: ["EP-07-01", "EP-07-02"]
+    exclusions: ["NHT/HAL: no consciousness/brain/memory import (SRC-3-07)"]
+    quarantined: true
+    tests: ["tests/adversarial/test_rscs_firewall.py::test_memory_lattice_quarantined"]
+
+operators:
+  - id: RSCS-O.1
+    name: frame transform
+    class: EST
+    units: "mm -> mm"
+    signature: "(SpatialCoordinate, OrientationFrame) -> SpatialCoordinate"
+    module: "rscs_core.transforms:frame_transform"
+    provenance: ["EP-08-01"]
+    exclusions: ["no visual-perception import (SRC-3-08)"]
+    v2_reproduces: []
+    manuscript_target: "RSCS Foundations, frame transforms"
+    tests: ["tests/property/test_rscs_properties.py::test_frame_roundtrip"]
+  - id: RSCS-O.2
+    name: time<->frequency map (analytic signal)
+    class: EST
+    units: "X(t) -> complex analytic signal"
+    signature: "ndarray[real] -> ndarray[complex]"
+    module: "rscs_core.transforms:time_to_frequency"
+    provenance: []
+    v2_reproduces: ["RGCS-M.55"]
+    manuscript_target: "RSCS Foundations, spectral maps"
+    tests: ["tests/regression/test_rscs_conservative_extension.py::test_analytic_signal_cep"]
+  - id: RSCS-O.3
+    name: space->phase map
+    class: HYP
+    units: "(rad/mm, mm, rad/s, s) -> rad"
+    signature: "(SpatialCoordinate, Wavevector, omega, t) -> PhaseCoordinate"
+    module: "rscs_core.transforms:space_to_phase"
+    provenance: ["EP-07-01"]
+    exclusions: ["NHT/HAL: no consciousness/brain/memory import (SRC-3-07)"]
+    v2_reproduces: []
+    manuscript_target: "RSCS Foundations, candidate encodings (HYP)"
+    tests: ["tests/adversarial/test_rscs_firewall.py::test_space_to_phase_is_hyp"]
+  - id: RSCS-O.4
+    name: mode-coupling operator (anti-Hermitian)
+    class: EST
+    units: "Hz (H) + rad/s (K)"
+    signature: "(frequencies_hz, g_matrix_hz) -> {H, K, hybrids}"
+    module: "rscs_core.coupling:couple_modes"
+    provenance: ["EP-01-01", "EP-04-01"]
+    exclusions: ["no phonon-ATS (SRC-3-01)", "no atomic-vapor NLNR (SRC-3-04)"]
+    v2_reproduces: ["RGCS-M.23", "RGCS-M.24", "RGCS-M.28", "RGCS-M.46"]
+    convention: "K = i*2*pi*g (anti-Hermitian, QA-D-04 frozen)"
+    manuscript_target: "RSCS Foundations, coupling algebra"
+    tests: ["tests/regression/test_rscs_conservative_extension.py::test_two_mode_cep",
+            "tests/regression/test_rscs_conservative_extension.py::test_anti_hermitian_2g_splitting",
+            "tests/regression/test_rscs_conservative_extension.py::test_no_growth_degenerate_pair"]
+  - id: RSCS-O.5
+    name: parity / supermode basis change
+    class: EST
+    units: "dimensionless"
+    signature: "ModalState(2) -> ModalState(2)"
+    module: "rscs_core.modes:to_parity_basis"
+    provenance: ["EP-02-02", "EP-06-02"]
+    exclusions: ["no waveguide/TMOKE device physics (SRC-3-02, SRC-3-06)"]
+    v2_reproduces: ["RGCS-M.23", "RGCS-M.24", "RGCS-M.25"]
+    manuscript_target: "RSCS Foundations, modal projection"
+    tests: ["tests/property/test_rscs_properties.py::test_parity_self_inverse",
+            "tests/unit/test_rscs_operators.py::test_parity_diagonalizes_degenerate"]
+  - id: RSCS-O.6
+    name: transfer-matrix cascade
+    class: EST
+    units: "dimensionless"
+    signature: "Sequence[2x2] -> 2x2"
+    module: "rscs_core.propagation:cascade"
+    provenance: ["EP-02-02", "EP-02-03", "EP-06-03"]
+    exclusions: ["no CMOS-photonic / TMOKE device claims (SRC-3-02, SRC-3-06)"]
+    v2_reproduces: []
+    manuscript_target: "RSCS Foundations, propagation"
+    tests: ["tests/unit/test_rscs_operators.py::test_cascade_unitary",
+            "tests/property/test_rscs_properties.py::test_cascade_associative"]
+  - id: RSCS-O.7
+    name: phase-matching predicate
+    class: EST
+    units: "rad/mm"
+    signature: "(k_plus, q, k_minus) -> {delta_q, matched}"
+    module: "rscs_core.propagation:phase_match"
+    provenance: ["EP-02-01"]
+    v2_reproduces: []
+    manuscript_target: "RSCS Foundations, phase matching"
+    tests: ["tests/unit/test_rscs_operators.py::test_phase_match"]
+  - id: RSCS-O.8
+    name: group-delay / dispersion balance
+    class: DER
+    units: "s -> s"
+    signature: "GroupDelay -> GroupDelay"
+    module: "rscs_core.propagation:balance_group_delay"
+    provenance: ["EP-02-03"]
+    v2_reproduces: []
+    manuscript_target: "RSCS Foundations, dispersion balancing"
+    tests: ["tests/unit/test_rscs_operators.py::test_group_delay_balance"]
+  - id: RSCS-O.9
+    name: state preparation
+    class: DER
+    units: "dimensionless occupancy"
+    signature: "(PolarizationState, SelectionCoordinate) -> ModalState"
+    module: "rscs_core.state_preparation:prepare_two_level"
+    provenance: ["EP-04-02", "EP-05-01"]
+    exclusions: ["no atomic-vapor (SRC-3-04)", "no single-photon (SRC-3-05)"]
+    v2_reproduces: []
+    manuscript_target: "RSCS Foundations, state preparation"
+    tests: ["tests/unit/test_rscs_operators.py::test_state_prep_occupancy"]
+  - id: RSCS-O.10
+    name: observation / metric
+    class: EST
+    units: "dimensionless coherence; dB metrics"
+    signature: "ModalState/segment -> (coherence, IL, isolation, contrast)"
+    module: "rscs_core.observation:coherence"
+    provenance: ["EP-01-03", "EP-04-03", "EP-05-02"]
+    exclusions: ["no device performance import (SRC-3-01/04/05)"]
+    v2_reproduces: ["RGCS-M.56"]
+    manuscript_target: "RSCS Foundations, observation maps"
+    tests: ["tests/regression/test_rscs_conservative_extension.py::test_coherence_cep",
+            "tests/unit/test_rscs_operators.py::test_dB_metrics"]
+  - id: RSCS-O.11
+    name: uncertainty propagation
+    class: DER
+    units: "unit -> unit"
+    signature: "(Uncertainty, factor) -> Uncertainty"
+    module: "rscs_core.uncertainty:scale"
+    provenance: []
+    v2_reproduces: ["RGCS-M.10", "RGCS-M.11"]
+    manuscript_target: "RSCS Foundations, uncertainty boundary"
+    tests: ["tests/regression/test_rscs_conservative_extension.py::test_uncertainty_cep",
+            "tests/property/test_rscs_properties.py::test_uncertainty_monotonic"]
+  - id: RSCS-O.12
+    name: provenance propagation
+    class: EST
+    units: "metadata"
+    signature: "(op_name, out_class, *ProvenanceTag) -> ProvenanceTag"
+    module: "rscs_core.provenance:propagate"
+    provenance: []
+    v2_reproduces: []
+    manuscript_target: "RSCS Foundations, provenance firewall"
+    tests: ["tests/adversarial/test_rscs_firewall.py::test_no_src_upgrade",
+            "tests/adversarial/test_rscs_firewall.py::test_provenance_propagate_caps_class"]
+  - id: RSCS-O.13
+    name: memory-lattice store / recall
+    class: HYP
+    units: "candidate (rad phases on a torus)"
+    signature: "(ModalState, orientation_index) -> MemoryLattice; recall -> phases"
+    module: "rscs_core.memory:store"
+    provenance: ["EP-07-01", "EP-07-02"]
+    exclusions: ["NHT/HAL: no consciousness/brain/memory import (SRC-3-07)"]
+    quarantined: true
+    v2_reproduces: []
+    manuscript_target: "Historical companion / Agent 04 memory bridge (HYP)"
+    tests: ["tests/adversarial/test_rscs_firewall.py::test_memory_store_requires_ack"]
