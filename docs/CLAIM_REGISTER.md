@@ -17,3 +17,19 @@ claim_id,class,statement,source_or_derivation,observable,controls,failure_condit
 CLM-3-000,EST,"RGCS v2.0.0 baseline reproduces from frozen archives (232/232 files SHA256-identical; 10/10 release checksums)",docs/V2_BASELINE_AUDIT.md,repo diff vs archives,independent re-extraction,any hash mismatch,exact,verified
 CLM-3-001,DER,"4 of 227 v2 tests fail on Windows/Py3.13 due to environment drift and v2 Windows portability defects (V2-WIN-01, V2-PKG-01), not baseline corruption",docs/V2_BASELINE_AUDIT.md §3,pytest results,same suite on Linux/Py3.11/numpy 2.4.4,failures persist in pinned Linux env,n/a,open-until-linux-rerun
 ```
+
+## Agent 04 — falsifiable HG memory software claims (H-15..H-19)
+
+These are ENG software claims about the Hydrogenuine memory implementation
+(RSCS-C.15, RSCS-O.14/15/16), each with a pre-registered failure condition
+(`docs/NHT_HAL_RSCS_MAPPING.md` §4). They test the engineering artifact, NOT
+the NHT/HAL neuroscience (which stays HYP/SRC and excluded).
+
+```csv
+claim_id,class,statement,source_or_derivation,observable,controls,failure_condition,uncertainty,status
+H-15,ENG,"HG retrieval quality: a stored record is retrievable by its allocentric key",docs/HG_RSCS_MEMORY_ARCHITECTURE.md,exact-match recall rate over N stores,distinct keys,any distinct-key collision or lost record,n/a,testable-at-persistence-layer
+H-16,ENG,"HG transform consistency: replay into any frame preserves allo == frame.ego",tests/property/test_rscs_hg_properties.py,frame_consistent() after replay,random frames,any inconsistency > 1e-6 mm,1e-6 mm,machine-tested-pass
+H-17,ENG,"HG temporal continuity: event_time ordering preserved and monotonic under append",docs/HG_RSCS_MEMORY_ARCHITECTURE.md,sortedness of replayed sequence,append order,any reorder/aliasing of timestamps,n/a,testable-at-persistence-layer
+H-18,ENG,"HG localization/replay fidelity: replay into original frame reproduces egocentric position; allocentric anchor invariant",tests/property/test_rscs_hg_properties.py,"||ego_replayed-ego||, ||allo_replayed-allo||",random frames/positions,drift > 1e-9 mm,1e-9 mm,machine-tested-pass
+H-19,ENG,"HG uncertainty calibration: after update with a sharper observation, reported sigma does not increase without a flag",docs/HG_RSCS_MEMORY_ARCHITECTURE.md,sigma before/after update,sharper observation,silent sigma inflation,n/a,testable-at-persistence-layer
+```

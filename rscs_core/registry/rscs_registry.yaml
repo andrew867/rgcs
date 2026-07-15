@@ -135,6 +135,17 @@ coordinates:
     exclusions: ["NHT/HAL: no consciousness/brain/memory import (SRC-3-07)"]
     quarantined: true
     tests: ["tests/adversarial/test_rscs_firewall.py::test_memory_lattice_quarantined"]
+  - id: RSCS-C.15
+    name: Hydrogenuine memory record
+    class: ENG
+    units: "engineering record (composite of C.1/C.8/C.2/C.3/C.7/C.12/C.13)"
+    manifold: "product"
+    module: "rscs_core.memory.hydrogenuine:HydrogenuineRecord"
+    provenance: ["EP-07-01", "EP-07-02"]
+    exclusions: ["NHT/HAL: no consciousness/brain/memory import (SRC-3-07)",
+                 "no claim quartz realizes memory"]
+    tests: ["tests/unit/test_rscs_hg_memory.py::test_record_construction",
+            "tests/unit/test_rscs_hg_memory.py::test_frame_consistency"]
 
 operators:
   - id: RSCS-O.1
@@ -284,3 +295,35 @@ operators:
     v2_reproduces: []
     manuscript_target: "Historical companion / Agent 04 memory bridge (HYP)"
     tests: ["tests/adversarial/test_rscs_firewall.py::test_memory_store_requires_ack"]
+  - id: RSCS-O.14
+    name: HG memory store (write)
+    class: ENG
+    units: "engineering record"
+    signature: "(allo, ego, frame, t, predicted, ...) -> HydrogenuineRecord"
+    module: "rscs_core.memory.hydrogenuine:store"
+    provenance: ["EP-07-01"]
+    exclusions: ["NHT/HAL: no consciousness/brain/memory import (SRC-3-07)",
+                 "no claim quartz realizes memory"]
+    v2_reproduces: []
+    manuscript_target: "RSCS Foundations, memory chapter; software/hardware plan"
+    tests: ["tests/unit/test_rscs_hg_memory.py::test_store_requires_frame_consistency"]
+  - id: RSCS-O.15
+    name: HG memory replay (recall)
+    class: ENG
+    units: "engineering record"
+    signature: "(HydrogenuineRecord, query_frame) -> HydrogenuineRecord"
+    module: "rscs_core.memory.hydrogenuine:replay"
+    provenance: ["EP-07-01"]
+    v2_reproduces: []
+    manuscript_target: "RSCS Foundations, memory chapter; software/hardware plan"
+    tests: ["tests/property/test_rscs_hg_properties.py::test_replay_fidelity"]
+  - id: RSCS-O.16
+    name: HG memory update (predict<->observe)
+    class: ENG
+    units: "engineering record"
+    signature: "(HydrogenuineRecord, observed) -> HydrogenuineRecord"
+    module: "rscs_core.memory.hydrogenuine:update"
+    provenance: ["EP-07-01"]
+    v2_reproduces: []
+    manuscript_target: "RSCS Foundations, memory chapter; software/hardware plan"
+    tests: ["tests/unit/test_rscs_hg_memory.py::test_update_records_observation"]

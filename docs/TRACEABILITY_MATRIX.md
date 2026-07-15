@@ -72,3 +72,19 @@ Conservative Extension Property.
 Conservative Extension Property coverage: `rscs_core/embedding/` +
 `tests/regression/test_rscs_conservative_extension.py` (O.2/O.4/O.10/O.11 vs
 frozen RGCS-M.55/23-28-46/56/10-11). RSCS-M.* namespace reserved and unused.
+
+## Agent 04 — Hydrogenuine memory bridge
+
+| RSCS id | Source / class | Module | Tests | Claims / manuscript |
+|---|---|---|---|---|
+| RSCS-C.15 HG record | ENG; NHT/HAL fields (SRC-3-07/08) | `rscs_core.memory.hydrogenuine:HydrogenuineRecord` | `unit/test_rscs_hg_memory.py` | RSCS Foundations memory chapter |
+| RSCS-O.14 HG store | ENG | `rscs_core.memory.hydrogenuine:store` | `unit/test_rscs_hg_memory.py::test_store_requires_frame_consistency` | H-15/H-16 |
+| RSCS-O.15 HG replay | ENG | `rscs_core.memory.hydrogenuine:replay` | `property/test_rscs_hg_properties.py::test_replay_fidelity` | H-16/H-18 |
+| RSCS-O.16 HG update | ENG | `rscs_core.memory.hydrogenuine:update` | `unit/test_rscs_hg_memory.py::test_update_records_observation` | H-19 |
+| RSCS-O.3 space→phase (HYP) | HYP; NHT (EP-07-01) | `rscs_core.transforms:space_to_phase` | `adversarial/test_rscs_firewall.py::test_nht_lattice_still_hyp_quarantined` | H-15..H-19 depend on it staying HYP |
+| RSCS-C.14/O.13 HAL lattice (HYP) | HYP quarantined (SRC-3-07) | `rscs_core.coordinates.memory`, `rscs_core.memory` | `adversarial/test_rscs_firewall.py` | Historical companion |
+
+Falsifiable software claims H-15..H-19 in `docs/CLAIM_REGISTER.md`;
+mapping/classification in `docs/NHT_HAL_RSCS_MAPPING.md`; architecture in
+`docs/HG_RSCS_MEMORY_ARCHITECTURE.md`. NHT/HAL stays HYP; consciousness/quartz
+claims excluded (`docs/EXCLUSION_MATRIX.md`).

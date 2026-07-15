@@ -121,3 +121,31 @@ def test_incompatible_coupling_size_rejected():
     with pytest.raises(ValueError):
         ops.apply_coupling(s, [[0.0, 1.0, 0.0], [1.0, 0.0, 1.0],
                                 [0.0, 1.0, 0.0]], 1e-4)
+
+
+# --- HG memory bridge: ENG classification + NHT/HAL exclusion carried ---
+
+def test_hg_operators_are_eng_never_evidence():
+    from rscs_core.memory import hg_store, hg_replay, hg_update
+    for fn in (hg_store, hg_replay, hg_update):
+        assert classification_of(fn).label == "ENG"
+
+
+def test_hg_store_carries_nht_exclusion():
+    from rscs_core.memory import hg_store
+    meta = classification_of(hg_store)
+    joined = " ".join(meta.exclusions).lower()
+    assert "src-3-07" in joined and "quartz" in joined
+
+
+def test_hg_registry_ids_present():
+    ids = registry_ids()
+    assert {"RSCS-C.15", "RSCS-O.14", "RSCS-O.15", "RSCS-O.16"} <= ids
+
+
+def test_nht_lattice_still_hyp_quarantined():
+    # Agent 04 must NOT have promoted the NHT lattice out of HYP quarantine.
+    from rscs_core.transforms import space_to_phase
+    from rscs_core.memory import store as lattice_store
+    assert classification_of(space_to_phase).label == "HYP"
+    assert classification_of(lattice_store).label == "HYP"

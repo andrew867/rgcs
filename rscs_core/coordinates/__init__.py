@@ -14,6 +14,9 @@ from .modal import ModeIndex, ModalState
 from .medium import PolarizationState, SelectionCoordinate, GroupDelay
 from .meta import Uncertainty, ProvenanceTag
 from .memory import MemoryLattice
+# RSCS-C.15 HydrogenuineRecord lives in rscs_core.memory (the memory
+# application) to avoid a coordinates<->memory import cycle; import it from
+# `rscs_core.memory`, not from here.
 
 #: Map RSCS-C.* id -> coordinate class, for registry cross-checks.
 COORDINATE_TYPES = {

@@ -108,6 +108,35 @@ the operator must reproduce the named `RGCS-M.*` result on the v2 domain
 - Anything an agent needs that is not here goes through an append-only edit
   to this ledger **before** first use, logged in `docs/DECISION_LOG.md`.
 
+## 4a. Agent 04 append — Hydrogenuine memory bridge (governance path)
+
+Appended 2026-07-14 by Agent 04 via the §4 governance path (DECISION_LOG
+D4-001), before first use. These extend the memory layer; they do not
+redefine any frozen symbol. The NHT/HAL exclusions of `docs/EXCLUSION_MATRIX.md`
+(SRC-3-07/08) apply throughout: no consciousness/brain/memory conclusion is
+imported into RGCS physics, and nothing here claims quartz realizes these.
+
+New coordinate:
+
+| ID | Symbol | Name | Components | Manifold | Class | Notes |
+|---|---|---|---|---|---|---|
+| RSCS-C.15 | `𝐡` | Hydrogenuine memory record | allo `x` (C.1), ego `x` (C.1), frame `ρ` (C.8), time `t` (C.2), phase `φ` (C.3), orientation/scale, predicted `ψ` (C.7), observed `ψ` (C.7), uncertainty `u` (C.12), provenance `p` (C.13) | product of the above | **ENG** | engineering memory record (never evidence); a composite of existing coordinates. The optional NHT phase field is **HYP** when populated by `𝒮₂` (O.3). |
+
+New operators:
+
+| ID | Symbol | Name | Type (in → out) | Class | Provenance | Required test |
+|---|---|---|---|---|---|---|
+| RSCS-O.14 | `ℳ_w` | HG memory store (write) | (allo, ego, frame, t, ψ_pred, ψ_obs, u, p) → C.15 | ENG | project abstraction | record is well-formed; provenance carried |
+| RSCS-O.15 | `ℳ_r` | HG memory replay (recall) | (C.15, query frame) → C.15 (re-referenced) | ENG | project abstraction | replay fidelity round-trip within tol |
+| RSCS-O.16 | `ℳ_u` | HG memory update (predict↔observe) | (C.15, new obs ψ) → C.15 | ENG | project abstraction | observed replaces predicted; uncertainty shrinks or is flagged |
+
+`ℳ_w/ℳ_r/ℳ_u` are **ENG** software operations: an engineering data structure
+and its store/replay/update semantics, useful as ordinary spatial memory
+(cf. SLAM keyframe / event-sourced record) independently of the NHT
+interpretation. The NHT space-to-phase encoding (`𝒮₂`, O.3) and the HAL
+lattice (`ℋ`, O.13; C.14) remain **HYP** and quarantined; the HG record may
+reference them but its own class is ENG (never evidence).
+
 ## 5. Gate status
 
 This ledger + `references/source_registry.yaml` +

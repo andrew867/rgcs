@@ -16,7 +16,11 @@ import numpy as np
 from ..coordinates import MemoryLattice, ModalState
 from ..registry import rscs_classified
 
-__all__ = ["store", "recall"]
+from .hydrogenuine import (HydrogenuineRecord, store as hg_store,
+                           replay as hg_replay, update as hg_update)
+
+__all__ = ["store", "recall", "HydrogenuineRecord", "hg_store", "hg_replay",
+           "hg_update"]
 
 
 @rscs_classified("HYP", registry=("RSCS-O.13",), provenance=("EP-07-02",),
