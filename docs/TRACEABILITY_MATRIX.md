@@ -41,3 +41,34 @@ H-08/H-08b→M.40–M.45; H-09→M.46–M.49; H-10/H-11→anisotropy M.51–M.55
 H-12/H-13→COH metrics + M.61; H-14→COH-M5/M10 re-adjudication. Each has a
 failure condition in manuscript Table 9 and a protocol row in
 `ROADMAP_TO_FALSIFICATION.md`.
+
+---
+
+## RSCS 1.0 traceability (Agent 03)
+
+Chain: RSCS id → source equation/provenance (`references/equation_provenance.yaml`
+EP-*; or the frozen RGCS-M.* it reproduces) → module → tests → manuscript
+target. Authoritative machine registry: `rscs_core/registry/rscs_registry.yaml`.
+RSCS reproduces (never redefines) the cited RGCS-M.* on the v2 domain via the
+Conservative Extension Property.
+
+| RSCS id | Source / reproduces | Module | Tests | Manuscript target |
+|---|---|---|---|---|
+| RSCS-C.1..14 | typed coordinates; EP-07-01/02-01/04-02/05-01/02-03/03-01/08-01 | `rscs_core.coordinates.*` | `unit/test_rscs_coordinates.py`; `adversarial/test_rscs_firewall.py` | RSCS Foundations §coordinates; RSCS_COORDINATE_SCHEMA.md |
+| RSCS-O.1 frame transform | EP-08-01 | `rscs_core.transforms:frame_transform` | `property::test_frame_roundtrip` | RSCS Foundations §frames |
+| RSCS-O.2 time↔freq | reproduces RGCS-M.55 | `rscs_core.transforms:time_to_frequency` | `regression::test_analytic_signal_cep` | RSCS Foundations §spectral |
+| RSCS-O.3 space→phase (HYP) | EP-07-01 | `rscs_core.transforms:space_to_phase` | `adversarial::test_space_to_phase_is_hyp` | Historical companion / Agent 04 (HYP) |
+| RSCS-O.4 coupling | EP-01-01, EP-04-01; reproduces RGCS-M.23/24/28/46 | `rscs_core.coupling:couple_modes` | `regression::test_two_mode_cep`, `::test_anti_hermitian_2g_splitting`, `::test_no_growth_degenerate_pair` | RSCS Foundations §coupling algebra |
+| RSCS-O.5 parity basis | EP-02-02, EP-06-02; reproduces RGCS-M.23–25 | `rscs_core.modes:to_parity_basis` | `property::test_parity_self_inverse`; `unit::test_parity_diagonalizes_degenerate` | RSCS Foundations §modal projection |
+| RSCS-O.6 transfer cascade | EP-02-02/03, EP-06-03 | `rscs_core.propagation:cascade` | `unit::test_cascade_unitary`; `property::test_cascade_associative` | RSCS Foundations §propagation |
+| RSCS-O.7 phase matching | EP-02-01 | `rscs_core.propagation:phase_match` | `unit::test_phase_match` | RSCS Foundations §phase matching |
+| RSCS-O.8 group-delay balance | EP-02-03 | `rscs_core.propagation:balance_group_delay` | `unit::test_group_delay_balance` | RSCS Foundations §dispersion |
+| RSCS-O.9 state preparation | EP-04-02, EP-05-01 | `rscs_core.state_preparation:prepare_two_level` | `unit::test_state_prep_occupancy` | RSCS Foundations §preparation |
+| RSCS-O.10 observation | EP-01-03/04-03/05-02; reproduces RGCS-M.56 | `rscs_core.observation:coherence` | `regression::test_coherence_cep`; `unit::test_dB_metrics` | RSCS Foundations §observation |
+| RSCS-O.11 uncertainty | reproduces RGCS-M.10/11 | `rscs_core.uncertainty:scale` | `regression::test_uncertainty_cep`; `property::test_uncertainty_monotonic` | RSCS Foundations §uncertainty |
+| RSCS-O.12 provenance | design principle 4 firewall | `rscs_core.provenance:propagate` | `adversarial::test_no_src_upgrade`, `::test_provenance_propagate_caps_class` | RSCS Foundations §provenance firewall |
+| RSCS-O.13 memory (HYP) | EP-07-01/02 | `rscs_core.memory:store` | `adversarial::test_memory_store_requires_ack` | Historical companion / Agent 04 (HYP) |
+
+Conservative Extension Property coverage: `rscs_core/embedding/` +
+`tests/regression/test_rscs_conservative_extension.py` (O.2/O.4/O.10/O.11 vs
+frozen RGCS-M.55/23-28-46/56/10-11). RSCS-M.* namespace reserved and unused.
