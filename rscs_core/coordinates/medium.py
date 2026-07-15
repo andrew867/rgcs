@@ -51,6 +51,37 @@ class PolarizationState(RSCSCoordinate):
         """Circular component s3 in [-1, 1]."""
         return self.stokes[2]
 
+    @classmethod
+    def from_jones(cls, ex: complex, ey: complex) -> "PolarizationState":
+        """Build the Stokes state of a Jones vector (Ex, Ey) (Agent 06).
+
+        Convention: s1 = |Ex|^2 - |Ey|^2, s2 = 2 Re(Ex* Ey),
+        s3 = 2 Im(Ex* Ey); right-circular (1, i)/sqrt(2) -> s3 = +1
+        (sigma_plus). Overall intensity and global phase are dropped
+        (a pure state on the Poincare sphere)."""
+        ex_c, ey_c = complex(ex), complex(ey)
+        if not (np.isfinite(ex_c.real) and np.isfinite(ex_c.imag)
+                and np.isfinite(ey_c.real) and np.isfinite(ey_c.imag)):
+            raise ValueError("Jones components must be finite")
+        s0 = abs(ex_c) ** 2 + abs(ey_c) ** 2
+        if s0 == 0.0:
+            raise ValueError("Jones vector must be non-zero")
+        cross = np.conj(ex_c) * ey_c
+        return cls(((abs(ex_c) ** 2 - abs(ey_c) ** 2) / s0,
+                    2.0 * cross.real / s0, 2.0 * cross.imag / s0))
+
+    @property
+    def jones(self) -> tuple[complex, complex]:
+        """A representative unit Jones vector (Ex, Ey) of this pure state
+        (defined up to a global phase). Inverse of from_jones for pure
+        states: from_jones(*state.jones) == state."""
+        s1, s2, s3 = self.stokes
+        psi = 0.5 * np.arctan2(s2, s1)              # orientation
+        chi = 0.5 * np.arcsin(np.clip(s3, -1.0, 1.0))  # ellipticity
+        ex = np.cos(psi) * np.cos(chi) - 1j * np.sin(psi) * np.sin(chi)
+        ey = np.sin(psi) * np.cos(chi) + 1j * np.cos(psi) * np.sin(chi)
+        return complex(ex), complex(ey)
+
     def components(self) -> dict[str, Any]:
         return {"stokes": list(self.stokes), "helicity": self.helicity}
 

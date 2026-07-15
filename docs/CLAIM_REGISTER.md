@@ -33,3 +33,18 @@ H-17,ENG,"HG temporal continuity: event_time ordering preserved and monotonic un
 H-18,ENG,"HG localization/replay fidelity: replay into original frame reproduces egocentric position; allocentric anchor invariant",tests/property/test_rscs_hg_properties.py,"||ego_replayed-ego||, ||allo_replayed-allo||",random frames/positions,drift > 1e-9 mm,1e-9 mm,machine-tested-pass
 H-19,ENG,"HG uncertainty calibration: after update with a sharper observation, reported sigma does not increase without a flag",docs/HG_RSCS_MEMORY_ARCHITECTURE.md,sigma before/after update,sharper observation,silent sigma inflation,n/a,testable-at-persistence-layer
 ```
+
+## Agent 06 — optical / directional claims (H-20..H-23)
+
+Optical-branch claims with pre-registered failure conditions
+(`docs/OPTICAL_AND_NONRECIPROCAL_COUPLING.md` section 4). The binding null
+expectation for all directional observables is NO asymmetry (DECISION_LOG
+D6-003); H-21/H-23 are pre-registered as expected nulls.
+
+```csv
+claim_id,class,statement,source_or_derivation,observable,controls,failure_condition,uncertainty,status
+H-20,HYP,"Intensity-modulated probe addressing the measured mode-overlap region shows a photoelastic sideband at the acoustic drive frequency, magnitude within 10x of the DER estimate (delta_n = -1/2 n^3 p S)",rgcs_core.optics.photoelastic_index_shift + OPTICAL_AND_NONRECIPROCAL_COUPLING.md section 3,optical sideband amplitude at f_drive,"heating_matched_power_off_node, glass_isotropic_control, no_drive_baseline",no sideband above noise at predicted magnitude with drive verified on,DER estimate 10x band,pre-registered
+H-21,HYP,"Any directional (forward/backward) optical asymmetry reverses sign under beam reversal; expected outcome is NULL (no asymmetry, D6-003)",DECISION_LOG D6-003 + RSCS-O.22/O.23,forward-vs-backward response difference,"beam_reversal, sham_timing, coil_phase_flip, rotated_crystal",asymmetry that fails to reverse under the battery = artifact; absence of asymmetry = expected null,paired-run difference stats,pre-registered-null
+H-22,ENG,"The optical control battery separates path-geometry effects from absorption/heating at matched absorbed power",optical_probe.schema.json controls enum,response vs path at matched power,"heating_matched_power_off_node, dummy_crystal",controls cannot separate geometry from heating -> optical branch unusable,n/a,testable-at-bench
+H-23,HYP,"Circular-polarization (sigma+ vs sigma-) dependence of any optical response at low power; expected outcome is NULL in transparent unbiased quartz",RSCS-O.22 chi3 spin term (null default),response difference sigma+ vs sigma-,"polarization_flip, no_drive_baseline",dependence absent = expected null; dependence present must survive polarization_flip + sham controls or is artifact,paired-run difference stats,pre-registered-null
+```

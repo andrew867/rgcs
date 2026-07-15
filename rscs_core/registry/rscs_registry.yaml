@@ -339,3 +339,85 @@ operators:
     manuscript_target: "RGCS Crystal Application, anisotropic propagation"
     tests: ["tests/unit/test_rscs_anisotropy.py::test_axis_speeds_match_closed_form",
             "tests/regression/test_rscs_conservative_extension.py::test_anisotropy_reproduces_scalar_vL"]
+  - id: RSCS-C.16
+    name: optical carrier
+    class: EST
+    units: "wavelength nm; envelope bandwidth Hz"
+    manifold: "R+ x R+"
+    module: "rscs_core.coordinates.optical:OpticalCarrier"
+    provenance: []
+    tests: ["tests/unit/test_rscs_optical.py::test_optical_carrier"]
+  - id: RSCS-C.17
+    name: directional propagation pair
+    class: DER
+    units: "rad/mm (beta, delta_beta)"
+    manifold: "R^2"
+    module: "rscs_core.coordinates.optical:DirectionalPropagation"
+    provenance: ["EP-06-01"]
+    tests: ["tests/unit/test_rscs_optical.py::test_directional_propagation"]
+
+  - id: RSCS-O.18
+    name: dispersion phase expansion
+    class: EST
+    units: "rad"
+    signature: "(delta_phi0_rad, delta_tau_s, delta_beta2_s2, omega, omega0) -> rad"
+    module: "rscs_core.propagation:dispersion_phase"
+    provenance: ["EP-02-01", "EP-02-03"]
+    v2_reproduces: []
+    manuscript_target: "RSCS Foundations, optical chapter"
+    tests: ["tests/unit/test_rscs_optical.py::test_dispersion_phase_at_carrier",
+            "tests/property/test_rscs_optical_properties.py::test_dispersion_phase_polynomial"]
+  - id: RSCS-O.19
+    name: photon-phonon mode conversion (selection rules)
+    class: DER
+    units: "dimensionless efficiency in [0, 1]"
+    signature: "(omegas, ks, parities, overlap, L) -> {allowed, efficiency}"
+    module: "rscs_core.coupling:mode_conversion"
+    provenance: ["EP-02-01", "EP-02-02"]
+    v2_reproduces: []
+    manuscript_target: "RGCS Crystal Application, optical coupling"
+    tests: ["tests/unit/test_rscs_optical.py::test_mode_conversion_selection_rules"]
+  - id: RSCS-O.20
+    name: Autler-Townes split response
+    class: EST
+    units: "dimensionless |response|^2"
+    signature: "(detuning_rad_s, kappa_rad_s, g_split_rad_s) -> array"
+    module: "rscs_core.observation:autler_townes_response"
+    provenance: ["EP-01-02"]
+    v2_reproduces: ["RGCS-M.24"]
+    convention: "dressed splitting G maps to the 2g hybrid split: G = 2*pi*(2g)"
+    manuscript_target: "RSCS Foundations, observation chapter"
+    tests: ["tests/unit/test_rscs_optical.py::test_ats_peak_separation",
+            "tests/regression/test_rscs_optical_regression.py::test_ats_matches_coupled_mode_splitting"]
+  - id: RSCS-O.21
+    name: critical coupling
+    class: EST
+    units: "dimensionless power transmission"
+    signature: "(kappa_int, kappa_ext, detuning) -> T"
+    module: "rscs_core.observation:critical_coupling_transmission"
+    provenance: ["EP-01-03"]
+    v2_reproduces: []
+    manuscript_target: "RSCS Foundations, observation chapter"
+    tests: ["tests/unit/test_rscs_optical.py::test_critical_coupling_zero"]
+  - id: RSCS-O.22
+    name: state-dependent susceptibility + nonreciprocal metrics
+    class: DER
+    units: "dimensionless chi; ratio + rad"
+    signature: "(chi1, B, chi3, s) -> chi_xy; (chi_xy, k, L) -> {ratio, phase}"
+    module: "rscs_core.coupling:nonreciprocal_metrics"
+    provenance: ["EP-04-01", "EP-04-02", "EP-04-03"]
+    v2_reproduces: []
+    convention: "chi_xy = 0 is the reciprocal null (D6-003)"
+    manuscript_target: "RSCS Foundations, coupling chapter"
+    tests: ["tests/unit/test_rscs_optical.py::test_reciprocal_null",
+            "tests/property/test_rscs_optical_properties.py::test_real_chi_pure_phase"]
+  - id: RSCS-O.23
+    name: directional propagation split + beating length
+    class: EST
+    units: "rad/mm; mm"
+    signature: "(DirectionalPropagation) -> betas; (beta_e, beta_o) -> L_beat"
+    module: "rscs_core.propagation:beating_length_mm"
+    provenance: ["EP-06-01", "EP-06-03"]
+    v2_reproduces: []
+    manuscript_target: "RSCS Foundations, propagation chapter"
+    tests: ["tests/unit/test_rscs_optical.py::test_beating_length"]

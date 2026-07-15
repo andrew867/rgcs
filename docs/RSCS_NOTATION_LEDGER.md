@@ -154,6 +154,40 @@ crystal axes and explains v2's ±5% band as the physical X–Z anisotropy
 spread. Crystal-specific elastic constants (α-quartz) live in the RGCS
 application layer (`rgcs_core.anisotropy`), not in the general operator.
 
+## 4c. Agent 06 append — optical / photon-phonon / nonreciprocal coupling (governance path)
+
+Appended 2026-07-15 by Agent 06 via the §4 governance path (DECISION_LOG
+D6-001), before first use. All source-domain exclusions of
+`docs/EXCLUSION_MATRIX.md` apply: no device performance value (isolation dB,
+insertion loss, bandwidth) is imported into a quartz prediction, and no claim
+is made that quartz realizes acousto-optic ATS, self-induced nonreciprocity,
+TMOKE, or Faraday isolation.
+
+New coordinates:
+
+| ID | Symbol | Name | Components (unit) | Manifold | Class | Notes |
+|---|---|---|---|---|---|---|
+| RSCS-C.16 | `𝛌` | optical carrier | vacuum wavelength λ₀ (nm), envelope bandwidth (Hz, ≥0) | ℝ₊×ℝ₊ | EST | carrier/envelope separation; ω₀ = 2πc/λ₀ derived. Jones↔Stokes conversions live on `𝛔_c` (C.9, same registry row). |
+| RSCS-C.17 | `𝛃` | directional propagation pair | β (rad/mm), δβ (rad/mm) | ℝ² | DER | β_f = β+δβ, β_b = β−δβ (EP-06-01); nonreciprocal split 2δβ |
+
+New operators:
+
+| ID | Symbol | Name | Type (in → out) | Class | Provenance | Required test |
+|---|---|---|---|---|---|---|
+| RSCS-O.18 | `𝒟Φ` | dispersion phase expansion | (ΔΦ₀, Δτ, Δβ₂, ω, ω₀) → ΔΦ (rad) | EST | EP-02-01/03 (Taylor expansion, standard) | ΔΦ(ω₀)=ΔΦ₀; dΔΦ/dω = group delay |
+| RSCS-O.19 | `𝒳` | photon–phonon mode conversion (selection rules) | (𝐤, q, parity, overlap, L) → {allowed, η} | DER | EP-02-01/02 | η ∝ \|overlap\|²·sinc²(Δq·L/2); parity must flip; blocked when any rule fails |
+| RSCS-O.20 | `𝒜T` | Autler–Townes split response | (Δ, κ, G) → \|χ\|² lineshape | EST | EP-01-02 | peak separation → G for G≫κ; threshold G>√(κ₁κ₂); maps to RGCS-M.24 (2g split) |
+| RSCS-O.21 | `𝒞c` | critical coupling | (κ_int, κ_ext, Δ) → T | EST | EP-01-03 | T(0)=0 iff κ_int=κ_ext |
+| RSCS-O.22 | `𝒳s` | state-dependent susceptibility + nonreciprocal metrics | (χ⁽¹⁾B, χ⁽³⁾s) → χ_xy; (χ_xy,k,L) → (T_ratio, φ_nr) | DER | EP-04-01/02/03 | χ_xy real ⇒ T_ratio=1 (pure phase); linear in B and s |
+| RSCS-O.23 | `𝕃b` | directional propagation & beating length | 𝛃 → (β_f, β_b); (β_e, β_o) → L_beat | EST | EP-06-01/03 | L_beat = 2π/\|β_e−β_o\|; split = 2δβ |
+
+The conventional-physics posture is explicit (DECISION_LOG D6-003): a
+passive, lossless, unbiased quartz optical path is **reciprocal**; the null
+expectation for every directional test is *no asymmetry*. Any observed
+asymmetry is HYP until it survives the reversal/sham/control battery
+(claims H-20..H-23). Crystal optical constants (α-quartz indices,
+photoelastic tensor) live in the application layer `rgcs_core.optics`.
+
 ## 5. Gate status
 
 This ledger + `references/source_registry.yaml` +

@@ -1,7 +1,10 @@
 """RSCS propagation operators:
   RSCS-O.6 transfer-matrix cascade (EP-02-02/03, EP-06-03),
   RSCS-O.7 phase-matching predicate (EP-02-01),
-  RSCS-O.8 group-delay / dispersion balance (EP-02-03).
+  RSCS-O.8 group-delay / dispersion balance (EP-02-03),
+  RSCS-O.17 anisotropic elastic wave speeds (Christoffel),
+  RSCS-O.18 dispersion phase expansion (Agent 06),
+  RSCS-O.23 directional propagation split + beating length (Agent 06).
 
 O.6 composes 2x2 transfer matrices and exposes the swap-on-reversal signature
 that produces nonreciprocity (Chao eq. 10-13). O.7 evaluates the acousto-optic
@@ -16,12 +19,14 @@ from typing import Any, Sequence
 
 import numpy as np
 
-from ..coordinates import GroupDelay
+from ..coordinates import DirectionalPropagation, GroupDelay
 from ..registry import rscs_classified
 
 __all__ = ["cascade", "is_unitary", "reverse_cascade", "phase_match",
            "group_delay_imbalance", "balance_group_delay",
-           "voigt_to_tensor", "christoffel_matrix", "christoffel_wave_speeds"]
+           "voigt_to_tensor", "christoffel_matrix", "christoffel_wave_speeds",
+           "dispersion_phase", "dispersion_group_delay",
+           "directional_betas", "beating_length_mm"]
 
 # Voigt index map (i,j) -> Voigt index 0..5.
 _VOIGT = {(0, 0): 0, (1, 1): 1, (2, 2): 2,
@@ -175,3 +180,87 @@ def balance_group_delay(tau: GroupDelay) -> GroupDelay:
     the imbalance is preserved, only the common offset is removed."""
     arr = np.asarray(tau.tau_g_s, dtype=float)
     return GroupDelay(arr - float(np.mean(arr)))
+
+
+# --- Agent 06: dispersion phase expansion (RSCS-O.18) ---
+
+@rscs_classified("EST", registry=("RSCS-O.18",),
+                 provenance=("EP-02-01", "EP-02-03"), units="rad",
+                 note="Taylor phase expansion Delta_Phi = Delta_Phi0 + "
+                      "Delta_tau (w-w0) + 1/2 Delta_beta2 (w-w0)^2")
+def dispersion_phase(delta_phi0_rad: float, delta_tau_s: float,
+                     delta_beta2_s2: float, omega_rad_s: float,
+                     omega0_rad_s: float) -> float:
+    """Differential phase between two paths/modes at angular frequency omega:
+
+        Delta_Phi(w) = Delta_Phi0 + Delta_tau (w - w0)
+                       + (1/2) Delta_beta2 (w - w0)^2      (rad).
+
+    Delta_tau (s) is the group-delay difference; Delta_beta2 (s^2) the
+    group-velocity-dispersion difference. At w = w0 this is Delta_Phi0."""
+    for name, v in (("delta_phi0_rad", delta_phi0_rad),
+                    ("delta_tau_s", delta_tau_s),
+                    ("delta_beta2_s2", delta_beta2_s2),
+                    ("omega_rad_s", omega_rad_s),
+                    ("omega0_rad_s", omega0_rad_s)):
+        if not np.isfinite(v):
+            raise ValueError(f"{name} must be finite")
+    dw = float(omega_rad_s) - float(omega0_rad_s)
+    return (float(delta_phi0_rad) + float(delta_tau_s) * dw
+            + 0.5 * float(delta_beta2_s2) * dw * dw)
+
+
+@rscs_classified("EST", registry=("RSCS-O.18",),
+                 provenance=("EP-02-03",), units="s",
+                 note="d(Delta_Phi)/dw = Delta_tau + Delta_beta2 (w-w0): the "
+                      "frequency-dependent group-delay difference")
+def dispersion_group_delay(delta_tau_s: float, delta_beta2_s2: float,
+                           omega_rad_s: float, omega0_rad_s: float) -> float:
+    """Group-delay difference at omega: the exact w-derivative of
+    dispersion_phase (s). At w = w0 this is Delta_tau."""
+    for name, v in (("delta_tau_s", delta_tau_s),
+                    ("delta_beta2_s2", delta_beta2_s2),
+                    ("omega_rad_s", omega_rad_s),
+                    ("omega0_rad_s", omega0_rad_s)):
+        if not np.isfinite(v):
+            raise ValueError(f"{name} must be finite")
+    return float(delta_tau_s) + float(delta_beta2_s2) * (
+        float(omega_rad_s) - float(omega0_rad_s))
+
+
+# --- Agent 06: directional propagation + modal beating (RSCS-O.23) ---
+
+@rscs_classified("EST", registry=("RSCS-O.23",), provenance=("EP-06-01",),
+                 units="rad/mm",
+                 exclusions=("no TMOKE magneto-optic physics import "
+                             "(SRC-3-06); delta_beta is a model parameter, "
+                             "not an asserted quartz property (D6-003)",),
+                 note="beta_f = beta + dbeta, beta_b = beta - dbeta; "
+                      "split 2*dbeta; dbeta=0 is the reciprocal null")
+def directional_betas(dp: DirectionalPropagation) -> dict[str, float]:
+    """Forward/backward propagation constants of a directional pair
+    (RSCS-C.17) and the nonreciprocal split (rad/mm)."""
+    if not isinstance(dp, DirectionalPropagation):
+        raise TypeError("dp must be a DirectionalPropagation (RSCS-C.17)")
+    return {"beta_forward_rad_mm": dp.forward_rad_mm,
+            "beta_backward_rad_mm": dp.backward_rad_mm,
+            "split_rad_mm": dp.nonreciprocal_split_rad_mm,
+            "reciprocal": dp.is_reciprocal}
+
+
+@rscs_classified("EST", registry=("RSCS-O.23",), provenance=("EP-06-03",),
+                 units="mm",
+                 note="modal beating length L_beat = 2*pi/|beta_e - beta_o|")
+def beating_length_mm(beta_even_rad_mm: float,
+                      beta_odd_rad_mm: float) -> float:
+    """Supermode beating length L_beat = 2*pi / |beta_e - beta_o| (mm).
+    Raises for degenerate supermodes (no beating; infinite length)."""
+    for name, v in (("beta_even_rad_mm", beta_even_rad_mm),
+                    ("beta_odd_rad_mm", beta_odd_rad_mm)):
+        if not np.isfinite(v):
+            raise ValueError(f"{name} must be finite")
+    diff = abs(float(beta_even_rad_mm) - float(beta_odd_rad_mm))
+    if diff == 0.0:
+        raise ValueError("degenerate supermodes: beating length undefined "
+                         "(beta_e == beta_o)")
+    return 2.0 * np.pi / diff

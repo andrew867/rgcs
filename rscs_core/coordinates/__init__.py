@@ -1,4 +1,4 @@
-"""RSCS typed coordinates (RSCS-C.1 .. RSCS-C.14).
+"""RSCS typed coordinates (RSCS-C.1 .. RSCS-C.14, C.16, C.17).
 
 Immutable, unit-tagged coordinate records on declared manifolds. Import the
 concrete types from here; each maps to exactly one RSCS-C.* registry row.
@@ -14,6 +14,8 @@ from .modal import ModeIndex, ModalState
 from .medium import PolarizationState, SelectionCoordinate, GroupDelay
 from .meta import Uncertainty, ProvenanceTag
 from .memory import MemoryLattice
+from .optical import (OpticalCarrier, DirectionalPropagation,
+                      SPEED_OF_LIGHT_M_S)
 # RSCS-C.15 HydrogenuineRecord lives in rscs_core.memory (the memory
 # application) to avoid a coordinates<->memory import cycle; import it from
 # `rscs_core.memory`, not from here.
@@ -34,6 +36,8 @@ COORDINATE_TYPES = {
     "RSCS-C.12": Uncertainty,
     "RSCS-C.13": ProvenanceTag,
     "RSCS-C.14": MemoryLattice,
+    "RSCS-C.16": OpticalCarrier,
+    "RSCS-C.17": DirectionalPropagation,
 }
 
 __all__ = [
@@ -41,5 +45,6 @@ __all__ = [
     "SpatialCoordinate", "OrientationFrame", "TimeCoordinate",
     "PhaseCoordinate", "AngularFrequency", "Wavevector", "ModeIndex",
     "ModalState", "PolarizationState", "SelectionCoordinate", "GroupDelay",
-    "Uncertainty", "ProvenanceTag", "MemoryLattice", "COORDINATE_TYPES",
+    "Uncertainty", "ProvenanceTag", "MemoryLattice", "OpticalCarrier",
+    "DirectionalPropagation", "SPEED_OF_LIGHT_M_S", "COORDINATE_TYPES",
 ]

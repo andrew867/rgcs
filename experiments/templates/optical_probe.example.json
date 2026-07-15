@@ -1,0 +1,57 @@
+{
+  "probe_id": "OPT-Q154-node-fwd-001",
+  "beam": {
+    "wavelength_nm": 632.8,
+    "power_mw": 1.0,
+    "laser_class": "2",
+    "interlock_present": true,
+    "polarization": {
+      "type": "linear",
+      "stokes": [1.0, 0.0, 0.0],
+      "modulated": false
+    },
+    "intensity_modulation": {
+      "enabled": true,
+      "frequency_hz": 20.0,
+      "depth_pct": 50,
+      "synchronized_to": "master_clock"
+    }
+  },
+  "path": {
+    "entry_facet": "F3",
+    "entry_point_mm": [12.0, 0.0, 40.0],
+    "target": "measured_node",
+    "target_point_mm": [0.0, 0.0, 71.5],
+    "incidence_angle_deg": 10.0,
+    "refractive_branch": "ordinary",
+    "exit_facet": "F6"
+  },
+  "direction": "forward",
+  "reversal_pair_id": "OPT-Q154-node-bwd-001",
+  "expected_mechanisms": [
+    {
+      "mechanism": "photoelastic_phase_modulation",
+      "classification": "Derived",
+      "predicted_magnitude": -3e-08,
+      "predicted_units": "delta_n at strain 1e-7 (p11)",
+      "prediction_ref": "rgcs_core.optics.photoelastic_index_shift; docs/OPTICAL_AND_NONRECIPROCAL_COUPLING.md section 5"
+    },
+    {
+      "mechanism": "photothermal_absorption",
+      "classification": "Derived",
+      "predicted_magnitude": 0.0,
+      "predicted_units": "artifact channel; bounded by heating control",
+      "prediction_ref": "heating_matched_power_off_node control"
+    }
+  ],
+  "controls": [
+    "heating_matched_power_off_node",
+    "beam_reversal",
+    "polarization_flip",
+    "sham_timing",
+    "glass_isotropic_control",
+    "no_drive_baseline"
+  ],
+  "hypothesis_ids": ["H-20", "H-21"],
+  "notes": "Forward arm of the H-20/H-21 directional pair on specimen SP-Q154-001. Null expectation for direction dependence: none (D6-003)."
+}

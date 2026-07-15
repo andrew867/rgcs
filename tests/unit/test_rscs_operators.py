@@ -82,7 +82,9 @@ def test_dB_metrics():
 
 
 def test_operators_map_complete():
-    assert set(ops.OPERATORS) == {f"RSCS-O.{i}" for i in range(1, 14)}
+    # O.1-13 (Agent 03), O.14-16 (Agent 04), O.17 (Agent 05),
+    # O.18-23 (Agent 06)
+    assert set(ops.OPERATORS) == {f"RSCS-O.{i}" for i in range(1, 24)}
 
 
 def test_coupling_rejects_asymmetric():

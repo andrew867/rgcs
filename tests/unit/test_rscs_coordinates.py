@@ -131,6 +131,10 @@ def test_memory_lattice_requires_ack():
 
 
 def test_all_coordinate_ids_present():
-    assert set(COORDINATE_TYPES) == {f"RSCS-C.{i}" for i in range(1, 15)}
+    # C.1-14 (Agent 03) + C.16/C.17 (Agent 06); C.15 lives in
+    # rscs_core.memory (import-cycle avoidance, see coordinates/__init__)
+    expected = {f"RSCS-C.{i}" for i in range(1, 15)} | {"RSCS-C.16",
+                                                        "RSCS-C.17"}
+    assert set(COORDINATE_TYPES) == expected
     for cid, cls in COORDINATE_TYPES.items():
         assert cls.registry_id == cid

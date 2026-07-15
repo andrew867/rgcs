@@ -101,3 +101,27 @@ Node menu (§3, 8 definitions; 1-3 implemented in frozen v2, 4-8 HYP for
 Agent 07), environmental factors (§5), model selection (§7), CAD/FEA (§8,
 Agent 08), crystal DB + inverse design (§9, Agent 08), historical crosswalk
 (§10, Agent 09) are framed in `docs/RGCS_CRYSTAL_APPLICATION.md`.
+
+## Agent 06 — optical / photon-phonon / nonreciprocal coupling
+
+| RSCS/RGCS id | Source / reproduces | Module | Tests | Manuscript |
+|---|---|---|---|---|
+| RSCS-C.16 optical carrier | carrier/envelope separation (standard) | `rscs_core.coordinates.optical:OpticalCarrier` | `unit/test_rscs_optical.py::test_optical_carrier` | RSCS Foundations, optical ch. |
+| RSCS-C.17 directional propagation pair | EP-06-01 (TMOKE perturbation form, math only) | `rscs_core.coordinates.optical:DirectionalPropagation` | `unit/test_rscs_optical.py::test_directional_propagation` | RSCS Foundations |
+| RSCS-C.9 Jones<->Stokes extension | standard polarization algebra | `rscs_core.coordinates.medium:PolarizationState.from_jones/.jones` | `unit::test_jones_stokes_roundtrip`; `property::test_jones_stokes_roundtrip_property` | RSCS Foundations |
+| RSCS-O.18 dispersion phase | EP-02-01/03 (Taylor expansion) | `rscs_core.propagation:dispersion_phase` | `unit::test_dispersion_phase_at_carrier`; `property::test_dispersion_phase_polynomial` | RSCS Foundations |
+| RSCS-O.19 photon-phonon conversion | EP-02-01/02 (four selection rules) | `rscs_core.coupling:mode_conversion, overlap_integral` | `unit::test_mode_conversion_selection_rules`; `property::test_overlap_cauchy_schwarz` | Crystal Application, optical section |
+| RSCS-O.20 Autler-Townes lineshape | EP-01-02; reproduces RGCS-M.24 (G = 2*pi*2g) | `rscs_core.observation:autler_townes_response` | `unit::test_ats_peak_separation`; `regression::test_ats_matches_coupled_mode_splitting` | RSCS Foundations |
+| RSCS-O.21 critical coupling | EP-01-03 | `rscs_core.observation:critical_coupling_transmission` | `unit::test_critical_coupling_zero` | RSCS Foundations |
+| RSCS-O.22 state-dependent susceptibility + NR metrics | EP-04-01/02/03 (null default, D6-003) | `rscs_core.coupling:state_dependent_susceptibility, nonreciprocal_metrics` | `unit::test_reciprocal_null`; `property::test_real_chi_pure_phase` | RSCS Foundations |
+| RSCS-O.23 directional betas / beating length | EP-06-01/03 | `rscs_core.propagation:directional_betas, beating_length_mm` | `unit::test_beating_length`; `property::test_beating_length_positive_and_symmetric` | RSCS Foundations |
+| alpha-quartz optical constants (EST handbook) | D6-002 (Hecht; Narasimhamurty) | `rgcs_core.optics` | `unit/test_rgcs_optics.py` | Crystal Application, optical section |
+| Ray/path model (entry facet -> node menu target) | geometry (EST) | `rgcs_core.optics:ray_to_target` | `unit/test_rgcs_optics.py::test_ray_to_target_addresses_node` | Crystal Application section 3 |
+| Photoelastic/M2 estimates (DER) | standard elasto-optics; uses Agent 05 anisotropy | `rgcs_core.optics:photoelastic_index_shift, quartz_acousto_optic_m2` | `regression::test_quartz_m2_uses_agent05_anisotropy` | Crystal Application, optical section |
+
+Claims H-20..H-23 in `docs/CLAIM_REGISTER.md` (H-21/H-23 pre-registered
+nulls per D6-003). Reference-mechanism comparison table GENERATED from the
+frozen provenance ledgers: `docs/generated/OPTICAL_MECHANISM_COMPARISON.md`
+(`tools/generate_optical_comparison.py`, determinism-pinned by
+`unit::test_comparison_table_up_to_date`). Optical experiment schema:
+`experiments/schemas/optical_probe.schema.json` (+ validated example).

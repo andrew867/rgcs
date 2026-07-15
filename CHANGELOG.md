@@ -30,6 +30,24 @@ v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
   `K=i·2πg` (QA-D-04) enforced. Docs: `RSCS_MATHEMATICAL_MODEL.md`,
   `RSCS_OPERATOR_REGISTRY.md`, `RSCS_COORDINATE_SCHEMA.md`,
   `AGENT_03_HANDOFF.md`.
+- Agent 04: Hydrogenuine memory bridge — RSCS-C.15 HG record (ENG) +
+  RSCS-O.14/15/16 store/replay/update; NHT/HAL kept HYP-quarantined;
+  falsifiable software claims H-15..H-19. Docs: `NHT_HAL_RSCS_MAPPING.md`,
+  `HG_RSCS_MEMORY_ARCHITECTURE.md`.
+- Agent 05: anisotropic crystal propagation — RSCS-O.17 Christoffel wave
+  speeds (`rscs_core.propagation`) + `rgcs_core/anisotropy` (α-quartz
+  elastic constants, closes v2 D-19a); resolves the scalar `v_L`
+  Hypothesis into a measured-orientation model reproducing v2 at the
+  crystal axes. Doc: `RGCS_CRYSTAL_APPLICATION.md`.
+- Agent 06: optical/photon-phonon/nonreciprocal layer — RSCS-C.16/C.17
+  coordinates, Jones↔Stokes on C.9, RSCS-O.18..O.23 (dispersion phase,
+  conversion selection rules, Autler–Townes, critical coupling,
+  state-dependent susceptibility with reciprocal-null default, directional
+  betas/beating); `rgcs_core/optics` (quartz optical constants, ray/path
+  model, photoelastic/M2 estimates); optical experiment schema +
+  generated mechanism comparison table; claims H-20..H-23 (H-21/H-23
+  pre-registered nulls, D6-003). Doc:
+  `OPTICAL_AND_NONRECIPROCAL_COUPLING.md`.
 
 ### Changed
 - `pyproject.toml`: project renamed `rgcs-v3` 3.0.0a1 (D3-001); missing

@@ -28,6 +28,7 @@ SCHEMA_FILES = [
     "control_matrix.schema.json",
     "run_manifest.schema.json",
     "analysis_result.schema.json",
+    "optical_probe.schema.json",
 ]
 
 # instance path (relative to repo root) -> schema file
@@ -48,6 +49,7 @@ DEFAULT_TARGETS = {
     "experiments/templates/branch_06_spiral_cone.template.json": "run_manifest.schema.json",
     "experiments/templates/branch_07_water.template.json": "run_manifest.schema.json",
     "experiments/templates/branch_08_spatial_mapping.template.json": "run_manifest.schema.json",
+    "experiments/templates/optical_probe.example.json": "optical_probe.schema.json",
     "experiments/controls/control_matrix.example.json": "control_matrix.schema.json",
     "experiments/sample_data/modal_survey_run_manifest.json": "run_manifest.schema.json",
     "experiments/sample_data/opposed_coil_run_manifest.json": "run_manifest.schema.json",
