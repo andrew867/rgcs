@@ -20,3 +20,11 @@ manuscripts/**/*.blg
 manuscripts/**/*.fls
 manuscripts/**/*.fdb_latexmk
 manuscripts/**/*.xdv
+manuscript/*.aux
+manuscript/*.log
+manuscript/*.out
+manuscript/*.toc
+manuscript/*.fls
+manuscript/*.fdb_latexmk
+manuscript/*.xdv
+manuscript/*.blg

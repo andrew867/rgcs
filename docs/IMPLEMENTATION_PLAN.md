@@ -10,7 +10,7 @@ follow the same discipline.
 | 01 | Source ingestion & evidence ledger | `SOURCE_EVIDENCE_LEDGER.md`, `SOURCE_DELTA_REPORT.md`, `INCONSISTENCY_REGISTER.md` (D-01..D-24 + WB-SO addendum), `SCIENTIFIC_CLASSIFICATION_POLICY.md`, `PROVENANCE_REGISTER.csv` |
 | 02 | Mathematical foundations | `MATHEMATICAL_MODEL.md` (RGCS-M.1..M.61), `model_registry.yaml`, `NOTATION_AND_UNITS.md`, `DIMENSIONAL_ANALYSIS.md`, `MODEL_ASSUMPTIONS.md` |
 | 03 | Coherence & dynamics spec | `COHERENCE_METRICS.md` (COH-M1..M14), `DYNAMIC_COHERENCE_SPEC.md`, `COHERENCE_TEST_MATRIX.md`, normative generator `tools/generate_golden_coherence.py`, golden datasets + manifest |
-| 04 | Computational core | `rgcs_core/` (11 packages), `CORE_API_SPEC.md`, core test suites, `release/test_report_core.md` |
+| 04 | Computational core | `rgcs_core/` (11 packages), `CORE_API_SPEC.md`, core test suites, `archive/v2.0.0/release/test_report_core.md` |
 | 05 | Desktop workbench | `rgcs_desktop/` (13 panels), `DESKTOP_PRODUCT_SPEC.md`, `DESKTOP_ARCHITECTURE.md`, `USER_GUIDE.md`, UI/integration tests, packaging specs |
 | 06 | Experiment kit | `experiments/` schemas, 8 branch templates, `CONTROL_MATRIX`, `EXPERIMENT_PROTOCOL.md`, `STATISTICAL_ANALYSIS_PLAN.md`, `ROADMAP_TO_FALSIFICATION.md`, `SAFETY_AND_ARTIFACT_CHECKLIST.md` |
 | 07 | Manuscript | `manuscript/rgcs_v2.tex` + generated figures/tables/macros via `tools/make_figures.py`, `tools/make_tables.py`; `LAYOUT_QA_REPORT.md` |

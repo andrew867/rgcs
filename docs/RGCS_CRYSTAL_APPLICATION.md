@@ -154,7 +154,9 @@ and solver are scoped with Agent 08 persistence.
 ## 10. Historical / source crosswalk
 
 The JH/Vogel historical wave-speed and geometry statements are preserved
-verbatim as SRC in `docs/HISTORICAL_SOURCE_CORPUS.md` (Agent 09) with the
+verbatim as SRC in the Historical & Source Companion manuscript
+(`manuscripts/historical_source_companion/`, Agent 09; source rows in
+`docs/SOURCE_EVIDENCE_LEDGER.md`) with the
 adjacent mathematical translation stated (e.g. "a single crystal tone" →
 the scalar `v_L` special case of §1; "the eye" → the node menu of §3). Source
 wording is retained; the translation is labelled, never substituted for the
