@@ -66,7 +66,9 @@ def cavity_modes_fem(lengths_m, divisions, n_modes=8,
 
     K = stiff.assemble(basis)
     M = mass.assemble(basis)
-    vals, vecs = eigsh(K, k=n_modes + 1, M=M, sigma=0.0, which="LM")
+    v0 = np.full(K.shape[0], 1.0 / np.sqrt(K.shape[0]))  # V4-D-003
+    vals, vecs = eigsh(K, k=n_modes + 1, M=M, sigma=0.0, which="LM",
+                       v0=v0)
     order = np.argsort(vals)
     freqs = np.sqrt(np.clip(vals[order], 0, None)) / (2 * np.pi)
     return {"frequencies_hz": freqs, "modes": vecs[:, order],

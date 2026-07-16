@@ -193,6 +193,14 @@ def build_bundle(outdir: str | Path = None, fast: bool = False) -> Path:
                  meshio.Mesh(verts, [("triangle", tris)]))
     meshio.write(gdir / "crystal.obj",
                  meshio.Mesh(verts, [("triangle", tris)]))
+    # meshio stamps the OBJ header with a wall-clock time (breaks
+    # bit-determinism, V4-D-003 family) — normalize it
+    obj = (gdir / "crystal.obj").read_text(encoding="utf-8")
+    lines = obj.splitlines()
+    if lines and lines[0].startswith("#"):
+        lines[0] = "# rscs2 proofbundle (deterministic header)"
+    (gdir / "crystal.obj").write_text("\n".join(lines) + "\n",
+                                      encoding="utf-8")
     _write_glb(gdir / "crystal.glb", verts, tris)
     _wjson(gdir / "crystal.step.status.json", {
         "artifact": "crystal.step",

@@ -1,0 +1,97 @@
+[
+  {
+    "check": "K symmetry (isotropic)",
+    "status": "PASS",
+    "detail": "rel asym 1.22e-16"
+  },
+  {
+    "check": "K symmetry (anisotropic)",
+    "status": "PASS",
+    "detail": "rel asym 6.72e-17"
+  },
+  {
+    "check": "M symmetry + positive",
+    "status": "PASS",
+    "detail": "asym 3.40e-17, min eig proxy > 0"
+  },
+  {
+    "check": "mass patch (V4-D-001 root cause guard)",
+    "status": "PASS",
+    "detail": "uMu = rhoV within 8.8e-16 (V4-D-001 guard)"
+  },
+  {
+    "check": "stiffness nullspace (translation)",
+    "status": "PASS",
+    "detail": "rigid translation K-energy -7.1e-15"
+  },
+  {
+    "check": "free anisotropic body: rigid/residuals/orthogonality",
+    "status": "PASS",
+    "detail": "6 rigid; max residual 1.5e-11; ortho 2.0e-15"
+  },
+  {
+    "check": "tensor ordering (Voigt -> full)",
+    "status": "PASS",
+    "detail": "minor+major symmetries; C11/C44 slots correct"
+  },
+  {
+    "check": "Bond rotation anchors",
+    "status": "PASS",
+    "detail": "120deg invariance; frame invariance 9.7e-16"
+  },
+  {
+    "check": "Christoffel vs frozen v3 axes",
+    "status": "PASS",
+    "detail": "X 0.0e+00; Y 0.0e+00; Z 0.0e+00"
+  },
+  {
+    "check": "units end-to-end (Pa, kg/m^3 -> Hz)",
+    "status": "PASS",
+    "detail": "cantilever f1 5084.7 Hz vs EB 5222.0 Hz (2.6%)"
+  },
+  {
+    "check": "piezo uncoupled limit (G8)",
+    "status": "PASS",
+    "detail": "e=0 recovers elastic exactly (8.8e-13)"
+  },
+  {
+    "check": "material constants vs published",
+    "status": "PASS",
+    "detail": "e11=0.171; eps_r 4.428/4.634; rho ~2648 (Bechmann)"
+  },
+  {
+    "check": "ideal vs nominal distinct + exact (G10)",
+    "status": "PASS",
+    "detail": "ideal 110.03766741071429 != nominal 110.0 (exact reprs)"
+  },
+  {
+    "check": "registry completeness (G2)",
+    "status": "PASS",
+    "detail": "44 objects, all with id/units/class/provenance/exclusions/tests/module/status"
+  },
+  {
+    "check": "frozen history (G1)",
+    "status": "PASS",
+    "detail": "archive untouched; tags v2.0.0/v3.0.0/v3.0.1 present"
+  },
+  {
+    "check": "screenshot authenticity (G24)",
+    "status": "PASS",
+    "detail": "17 PNGs valid, declared live-recomputed"
+  },
+  {
+    "check": "claims wording (G29)",
+    "status": "PASS",
+    "detail": "no AFFIRMATIVE claim vocabulary; exclusion statements verified manually (V4-D-002)"
+  },
+  {
+    "check": "bundle determinism (G25/G26)",
+    "status": "PASS",
+    "detail": "110 files; all data artifacts bit-identical across two builds"
+  },
+  {
+    "check": "licences (G30)",
+    "status": "PASS",
+    "detail": "runtime deps permissive (numpy, scipy, scikit-fem, meshio, matplotlib, pyyaml, pydantic); gmsh GPL isolated as subprocess (DV4-006); pyopencl MIT optional"
+  }
+]

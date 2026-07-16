@@ -229,3 +229,20 @@ def test_christoffel_anchor_quartz():
     assert out["n_rigid_modes"] == 1
     for n, fn in enumerate(out["elastic_frequencies_hz"][:4], start=1):
         assert fn == pytest.approx(n * v_z / (2 * lz), rel=1e-3)
+
+
+def test_solve_modes_bit_deterministic():
+    """V4-D-003 regression: two identical solves must be BIT-identical.
+    ARPACK's default random start vector made eigenpairs jitter at
+    ~1e-10 between calls (breaking bit-reproducible proof bundles);
+    solve_modes now passes a deterministic v0."""
+    mesh = fem.box_mesh((0.05, 0.01, 0.01), (8, 2, 2))
+    prob = fem.assemble_isotropic(mesh, 210e9, 0.3, 7850.0)
+    a = fem.solve_modes(prob, 8)
+    b = fem.solve_modes(prob, 8)
+    assert np.array_equal(a["frequencies_hz"], b["frequencies_hz"])
+    assert np.array_equal(a["modes"], b["modes"])
+    r = fem.solve_modes(fem.assemble_isotropic(
+        fem.box_mesh((0.05, 0.01, 0.01), (8, 2, 2)),
+        210e9, 0.3, 7850.0), 8)
+    assert np.array_equal(a["frequencies_hz"], r["frequencies_hz"])

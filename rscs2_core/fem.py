@@ -158,7 +158,11 @@ def solve_modes(problem: ElasticProblem, n_modes: int,
     else:
         Kc, Mc = K, M
     k = min(n_modes, Kc.shape[0] - 2)
-    vals, vecs = eigsh(Kc, k=k, M=Mc, sigma=0.0, which="LM")
+    # deterministic ARPACK start vector (V4-D-003): the default random
+    # v0 makes eigenpairs jitter ~1e-10 between calls, breaking
+    # bit-reproducible artifacts
+    v0 = np.full(Kc.shape[0], 1.0 / np.sqrt(Kc.shape[0]))
+    vals, vecs = eigsh(Kc, k=k, M=Mc, sigma=0.0, which="LM", v0=v0)
     order = np.argsort(vals)
     vals, vecs = vals[order], vecs[:, order]
     freqs = np.sqrt(np.clip(vals, 0.0, None)) / (2 * np.pi)

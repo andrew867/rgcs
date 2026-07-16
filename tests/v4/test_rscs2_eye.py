@@ -213,6 +213,16 @@ def test_adversarial_symmetric_body_no_unique_eye():
     assert res.status != "STABLE_CANDIDATE_REGION"
 
 
+def test_stable_requires_persistence_evidence():
+    """V4-D-004 regression: even a perfect planted candidate must NOT
+    be STABLE when no mesh-refinement evidence is supplied (G21)."""
+    c0 = np.array([10.0, 10.0, 40.0])
+    res = eye_consensus(_fieldset(c0), GEOM)      # no refined_fields
+    assert res.status == "NO_STABLE_CANDIDATE"
+    assert any("persistence not evaluated" in r["reason"]
+               for r in res.rejected)
+
+
 # --- complex-field diagnostics -----------------------------------------
 
 def test_d9_phase_coherence_refuses_real_and_ranks_coherent():

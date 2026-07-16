@@ -145,7 +145,8 @@ def solve_piezo_modes(prob: PiezoProblem, n_modes: int,
         Keff = Keff[keep][:, keep]
         M = M[keep][:, keep]
     k = min(n_modes, Keff.shape[0] - 2)
-    vals, vecs = eigsh(Keff, k=k, M=M, sigma=0.0, which="LM")
+    v0 = np.full(Keff.shape[0], 1.0 / np.sqrt(Keff.shape[0]))  # V4-D-003
+    vals, vecs = eigsh(Keff, k=k, M=M, sigma=0.0, which="LM", v0=v0)
     order = np.argsort(vals)
     freqs = np.sqrt(np.clip(vals[order], 0, None)) / (2 * np.pi)
     rigid = freqs < RIGID_MODE_TOL_HZ

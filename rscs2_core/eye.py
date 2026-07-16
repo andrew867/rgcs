@@ -542,7 +542,9 @@ def eye_consensus(fields: list[DiagnosticField],
           body-spanning field is NOT an interaction region);
       3. inside-body validity;
       4. null comparison vs conventional node/antinode locations;
-      5. mesh persistence (D14) against refined_fields;
+      5. mesh persistence (D14) against refined_fields — REQUIRED
+         evidence: without refined_fields no candidate can reach
+         STABLE (G21, V4-D-004);
       6. boundary sensitivity (D13) across boundary_fields variants;
       7. mode dependence (>= min_modes distinct modes);
       8. uncertainty persistence (D15) across draws.
@@ -642,14 +644,23 @@ def eye_consensus(fields: list[DiagnosticField],
             cand.status = "CONVENTIONAL_NODE_EXPLAINS_RESULT"
             candidates.append(cand)
             continue
-        # gate 5: mesh persistence (D14)
-        if rc is not None:
-            m, dist = _match(cen, rc, persistence_tol_mm)
-            cand.gates["mesh_persistence_shift_mm"] = float(dist)
-            if m is None:
-                cand.status = "MESH_ARTIFACT_REJECTED"
-                candidates.append(cand)
-                continue
+        # gate 5: mesh persistence (D14). STABLE is NEVER granted
+        # without refinement evidence (G21, V4-D-004): a candidate
+        # whose persistence was not evaluated is rejected, not promoted
+        if rc is None:
+            rejected.append({"centroid_mm": cen.tolist(),
+                             "reason": "mesh-refinement persistence "
+                                       "not evaluated (no refined_"
+                                       "fields supplied): STABLE "
+                                       "cannot be granted (G21)",
+                             "diagnostics": diags})
+            continue
+        m, dist = _match(cen, rc, persistence_tol_mm)
+        cand.gates["mesh_persistence_shift_mm"] = float(dist)
+        if m is None:
+            cand.status = "MESH_ARTIFACT_REJECTED"
+            candidates.append(cand)
+            continue
         # gate 6: boundary sensitivity (D13)
         if bc:
             shifts = {}

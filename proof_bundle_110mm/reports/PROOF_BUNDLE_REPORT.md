@@ -14,8 +14,8 @@ numerical authority (DV4-004).
   [13779.3, 13779.7, 26044.8, 31882.4] Hz
 - nominal first elastic modes:
   [13784.0, 13784.8, 26059.0, 31894.6] Hz
-- orthonormality error: ideal 1.78e-15,
-  nominal 1.89e-15
+- orthonormality error: ideal 1.55e-15,
+  nominal 2.00e-15
 - mass patch rel err: 8.84e-16
 - cavity max rel err vs exact: 2.39e-04
 - Christoffel Z-axis vs frozen v3: 0.00e+00
