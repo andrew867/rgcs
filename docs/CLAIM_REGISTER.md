@@ -76,3 +76,14 @@ H-15, H-17, H-19 (previously `testable-at-persistence-layer`) are now
 collision; append-order/monotonicity enforcement; no silent sigma
 inflation). Rows above are append-only and retained unchanged; this note
 supersedes their status column.
+
+## RGCS v4 — eye-robustness claim (H-31; planning)
+
+Pre-registered per DV4-010/011. A computed "eye candidate" is elevated
+from DER field feature to this falsifiable HYP only via the robustness
+battery; otherwise the run reports a weaker class or NULL.
+
+```csv
+claim_id,class,statement,source_or_derivation,observable,controls,failure_condition,uncertainty,status
+H-31,HYP,"A candidate eye region computed by the Eye Consensus Functional is robust: it persists across mesh refinement AND uncertainty sampling AND >=2 independent physical channels AND boundary perturbation, and is distinguishable from the geometric centre and conventional modal nodes/antinodes",docs/plans-v4/V4_EYE_DIAGNOSTICS_SPEC.md,consensus-region location + stability/confidence scores,"mesh refinement (D.13), uncertainty MC (D.14), cross-channel (D.15), boundary perturbation (D.12), geometric-centre + node/antinode comparison",candidate fails any persistence/agreement threshold -> reported at weaker class or NULL (never elevated),region-location CI across ensembles,planning-pre-registered
+```

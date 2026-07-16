@@ -63,3 +63,4 @@ artifacts + checksums + provenance under `release/`; Agent 13 record in
 | 13b | Figure-rendering audit (D-V3-05/06 fixed, assets refreshed) | COMPLETE | DEFECT_REGISTER addendum |
 | 14 | Measurement campaign design (ENG): lab manual, calibration, bench, protocol, pipeline, validation plan for H-01..H-30 | COMPLETE (this commit) | docs/VALIDATION_PLAN.md |
 | 15 | Publication/DOI/community release: .zenodo.json + metadata, 7-piece communication kit (docs/community/), contributor + modelling roadmaps, final publication report (PUBLISH COMPLETE) | COMPLETE (this commit) | docs/FINAL_PUBLICATION_REPORT.md |
+| v4-plan | RGCS v4 / RSCS 2.0 implementation planning (25 docs, 8 tranches, 32 phases; no production code) | COMPLETE (this commit) | docs/plans-v4/V4_HANDOFF.md |

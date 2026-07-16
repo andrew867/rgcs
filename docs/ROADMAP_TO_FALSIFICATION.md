@@ -36,3 +36,9 @@
 - **f_0 = 4096 Hz significance** — Source claim; RGCS tests specimens built on the ladder (H-01a) but does not test "4096 is special"; no experiment in this roadmap can confirm numerological significance (RG-17 containment).
 - **Established mathematics** (eigenvalue algebra, circular statistics, coherence definition) — verified by golden-value unit tests (ledger Part E), not experiments.
 - **Source presets** (20 Hz/15 V, 1496 Hz, 46/46/184, coil points) — Source claims; they parameterize protocols but carry no truth value of their own.
+
+## RGCS v4 addition (planning)
+
+| H | Statement | Falsification protocol |
+|---|---|---|
+| H-31 | A computed eye candidate is a robust cross-physics region (not centre/node/artifact) | Eye Consensus Functional + robustness battery (mesh/uncertainty/cross-channel/boundary persistence) in `docs/plans-v4/V4_EYE_DIAGNOSTICS_SPEC.md`; fails -> weaker class or NULL. A *computed* candidate is DER/HYP, never EST; correlating it to a *measured* node is the Agent-14 bench lane (H-07/H-24..H-28). |

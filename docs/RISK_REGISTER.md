@@ -28,3 +28,13 @@ likelihood: H/M/L. Status reflects release 2.0.0.
 | R-08-3 | Schema migration hook missing on future version bump | migrate() fails loudly; CI runs the migration tests |
 | R-08-4 | Desktop panels drift from headless services | panels are thin views over tested services (T2 rule); services carry the tests |
 | R-08-5 | CPLD dead-time logic is safety-relevant | classified ENG until measured; interlock loop is hardware and independent of it |
+
+## RGCS v4 additions (planning; full table docs/plans-v4/V4_RISK_REGISTER.md)
+
+| id | Risk | Mitigation |
+|---|---|---|
+| RV4-02 | Gmsh GPL contaminates MIT | Gmsh as external subprocess only; meshio (MIT) bridge (DV4-006) |
+| RV4-03 | No GPU hardware -> acceleration unverifiable | four-status ladder; ship experimental; CPU stays authority (DV4-007) |
+| RV4-04 | Eye diagnostics over-interpreted as physical | SRC/DER/HYP only; robustness battery; NULL verdict; exclusion lint (DV4-010) |
+| RV4-08 | Conservative-extension anchor fails -> v4 diverges from v3 | V.6/V.9 hard gates at M4/M8; halt, never loosen tolerance |
+| RV4-14 | Frozen v3/v2 modified | CI frozen-path diff gate; anchors read frozen modules read-only |

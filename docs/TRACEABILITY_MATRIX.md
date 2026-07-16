@@ -212,3 +212,13 @@ operators).
 No new RSCS ids, no new equations (D14-001). All numeric operating
 points inside the frozen envelope; directional optical rows keep their
 pre-registered NULL posture.
+
+## RGCS v4 / RSCS 2.0 (planning)
+
+Full v4 requirement->spec->id->test mapping: `docs/plans-v4/V4_TRACEABILITY_MATRIX.md`.
+New namespaces RSCS2-E/G/B/S/A/D/V/U (planning; no registry rows yet — the
+execution run authors machine-registry rows before first use per the
+governance path). Conservative-extension anchors RSCS2-V.6 (reproduces
+frozen rgcs_core.anisotropy) and RSCS2-V.9 (reproduces frozen
+RSCS-O.4/RGCS-M.24) are CI gates. Claim H-31 (eye robustness) links to
+docs/plans-v4/V4_EYE_DIAGNOSTICS_SPEC.md.
