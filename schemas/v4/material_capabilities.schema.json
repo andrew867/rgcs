@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs.v4.material_capabilities.1",
+  "title": "RGCS v4 MaterialCapabilities",
+  "type": "object",
+  "required": ["schema_version", "material_id", "display_name",
+               "material_family", "reference_only", "source_ids",
+               "symmetry", "coordinate_frame", "temperature_range",
+               "capabilities"],
+  "properties": {
+    "schema_version": {"const": "rgcs.v4.material_capabilities.1"},
+    "material_id": {"type": "string",
+                    "pattern": "^(material|reference|source_hypothesis)\\.[a-z0-9_]+$"},
+    "display_name": {"type": "string", "minLength": 1},
+    "material_family": {"type": "string"},
+    "reference_only": {"type": "boolean"},
+    "source_ids": {"type": "array", "items": {"type": "string"}},
+    "symmetry": {"type": "string"},
+    "coordinate_frame": {"type": "string"},
+    "temperature_range": {"type": "object"},
+    "notes": {"type": "array", "items": {"type": "string"}},
+    "capabilities": {
+      "type": "object",
+      "minProperties": 24,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status", "classification", "parameter_set_ids",
+                     "source_ids", "reason"],
+        "properties": {
+          "status": {"enum": ["SUPPORTED", "REFERENCE_ONLY",
+                               "INTERFACE_ONLY", "UNSUPPORTED",
+                               "UNKNOWN"]},
+          "classification": {"enum": ["CORE_VALIDATED",
+                                       "REDUCED_ORDER_VALIDATED",
+                                       "INTERFACE_ONLY",
+                                       "SOURCE_HYPOTHESIS",
+                                       "NOT_APPLICABLE"]},
+          "parameter_set_ids": {"type": "array"},
+          "source_ids": {"type": "array"},
+          "temperature_constraints": {"type": "object"},
+          "field_constraints": {"type": "object"},
+          "reason": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}

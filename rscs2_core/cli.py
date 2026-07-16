@@ -193,6 +193,27 @@ def cmd_proof_bundle(args):
     return 0
 
 
+def cmd_capabilities(args):
+    """Material capability firewall (Agent M2): matrix or one record;
+    with --check, the applicability decision for one capability."""
+    from .multiphysics import applicability, get_material
+    from .multiphysics.materials import (MATERIALS,
+                                         capability_matrix_markdown)
+    if args.material is None:
+        print(capability_matrix_markdown())
+        return 0
+    try:
+        m = get_material(args.material)
+    except KeyError as e:
+        print(str(e), file=sys.stderr)
+        return 2
+    if args.check:
+        _pj(applicability(m, args.check))
+        return 0
+    _pj(m.to_dict())
+    return 0
+
+
 def cmd_report(args):
     bundle = Path(args.bundle)
     v = json.loads((bundle / "VERDICT.json").read_text())
@@ -287,6 +308,11 @@ def make_parser() -> argparse.ArgumentParser:
                     help="recorded; sweep backend policy (DV4-007)")
     sp.add_argument("--refinement", default="all",
                     help="recorded; bundle always runs all levels")
+    sp = add("capabilities", cmd_capabilities,
+             help="material capability matrix / record / check")
+    sp.add_argument("material", nargs="?", default=None)
+    sp.add_argument("--check", default=None,
+                    help="capability key to test (applicability)")
     sp = add("report", cmd_report, help="print a bundle's report")
     sp.add_argument("--bundle", default="proof_bundle_110mm")
     sp = add("verify-checksums", cmd_verify_checksums,
