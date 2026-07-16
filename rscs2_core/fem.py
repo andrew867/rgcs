@@ -163,9 +163,12 @@ def solve_modes(problem: ElasticProblem, n_modes: int,
     vals, vecs = vals[order], vecs[:, order]
     freqs = np.sqrt(np.clip(vals, 0.0, None)) / (2 * np.pi)
     rigid = freqs < RIGID_MODE_TOL_HZ
-    # residuals ||K u - w^2 M u|| / ||w^2 M u|| for elastic modes
-    residuals = np.zeros(k)
+    # residuals ||K u - w^2 M u|| / ||w^2 M u|| — meaningful only for
+    # ELASTIC modes (for rigid modes both terms ~0: reported as NaN)
+    residuals = np.full(k, np.nan)
     for i in range(k):
+        if rigid[i]:
+            continue
         lhs = Kc @ vecs[:, i] - vals[i] * (Mc @ vecs[:, i])
         denom = np.linalg.norm(vals[i] * (Mc @ vecs[:, i]))
         residuals[i] = np.linalg.norm(lhs) / denom if denom > 0 else np.inf
