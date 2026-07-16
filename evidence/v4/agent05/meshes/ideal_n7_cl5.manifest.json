@@ -1,0 +1,53 @@
+{
+  "geometry": {
+    "variant": "ideal_n7",
+    "length_mm": "110.03766741071429",
+    "length_mm_float": 110.03766741071429,
+    "wide_diameter_mm": 28.58121231447124,
+    "narrow_diameter_mm": 21.435909235853433,
+    "diameter_policy": "SP-Q154 ratios 40/154 and 30/154 x L (documented default; explicit parameters)",
+    "facets": 6,
+    "female_angle_deg": 51.843,
+    "male_angle_deg": 60.0,
+    "angle_mode": "face_slope",
+    "diameter_mode": "across_vertices",
+    "female_cap_height_mm": 15.751436546782289,
+    "male_cap_height_mm": 16.076931926890072,
+    "shaft_length_mm": 78.20929893704194,
+    "frame": "body +Z from female apex (z=0) to male apex (z=L); x_v2 == z_body; quartz C-axis default +Z",
+    "orientation_euler_zxz_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "geometric_centre_z_mm": 55.018833705357146,
+    "rgcs_node_prior": "shaft midpoint prior per frozen rgcs_core.geometry.nodes (RGCS-M.38/39); measured node NOT supplied",
+    "eye_coordinate": null,
+    "region_annotations": {
+      "electrode_candidates": "shaft facets 1 and 4 (opposed), z in [0.35L, 0.65L]",
+      "coil_envelopes": "coaxial, centered z=0.3L and z=0.7L",
+      "optical_entry": "lower shaft facet 1, z ~ 0.4L",
+      "fixture_pads": "3-point cradle at z = 0.224L, 0.776L (free-free flexural node stations)"
+    }
+  },
+  "clmax_mm": 5.0,
+  "order": 1,
+  "gmsh_cmd": "C:\\Users\\andrew\\OneDrive - Green O365\\Documents\\GitHub\\RGCS\\.venv\\Scripts\\gmsh -3 evidence\\v4\\agent05\\meshes\\ideal_n7_cl5.geo -o evidence\\v4\\agent05\\meshes\\ideal_n7_cl5.msh -format msh2 -order 1 -v 2",
+  "n_nodes": 522,
+  "n_tets": 1738,
+  "quality": {
+    "n_inverted": 0,
+    "total_volume_mm3": 36372.109573029535,
+    "min_dihedral_deg": 14.924843398374374,
+    "max_aspect": 3.8137564866563576,
+    "mean_aspect": 1.667800491147723,
+    "edge_mm_min": 2.679488654478504,
+    "edge_mm_max": 10.22032014260999
+  },
+  "mesh_volume_mm3": 36372.109573029535,
+  "analytic_volume_mm3": 36372.10957303013,
+  "volume_rel_err": 1.640346219580951e-14,
+  "nodes_sha256": "a1762ff261ea967454f982fee980020c5298b6589d3e52c036806301825bc285",
+  "tets_sha256": "1c9a6480bb35861378746c403da3cd363d35fdbd8084883cd4816052fe065309",
+  "step_export_status": "NOT_GENERATED (built-in kernel; OCC path IMPLEMENTED_DOCUMENTED_UNTESTED, DV4-013)"
+}
