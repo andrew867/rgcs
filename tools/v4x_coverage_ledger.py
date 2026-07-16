@@ -153,10 +153,23 @@ def main() -> int:
              f"Gate G42: {'PASS' if rep['gate_G42_pass'] else 'FAIL'}",
              "", "| ID | Item | Owner | Artifact | Status |",
              "|---|---|---|---|---|"]
+    # INTERFACE_ONLY rows carry their disclaimer in the row itself:
+    # the ledger is read row-by-row, so a header note far above does
+    # not travel with the claim.
+    gloss = {"INTERFACE_ONLY": "INTERFACE_ONLY — deferred by design, "
+                               "no solver, not implemented",
+             "ETHICS_APPROVAL_REQUIRED": "ETHICS_APPROVAL_REQUIRED — "
+                                         "not performed",
+             "PROTOCOL_READY_HARDWARE_REQUIRED":
+                 "PROTOCOL_READY_HARDWARE_REQUIRED — protocol only, "
+                 "not performed",
+             "SOURCE_HYPOTHESIS": "SOURCE_HYPOTHESIS — retained "
+                                  "without endorsement, not established"}
     for r in rep["rows"]:
         lines.append(f"| {r['id']} | {r['title']} | "
                      f"{r['owner'] or '**NONE (P1)**'} | "
-                     f"`{r['artifact'] or '-'}` | {r['status']} |")
+                     f"`{r['artifact'] or '-'}` | "
+                     f"{gloss.get(r['status'], r['status'])} |")
     (out / "V4X_COVERAGE_LEDGER.md").write_text("\n".join(lines) +
                                                 "\n", encoding="utf-8")
     print(f"coverage {rep['covered']}/{rep['total_ids']} "

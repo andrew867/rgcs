@@ -261,9 +261,19 @@ def main() -> int:
         banned = ["portal", "consciousness", "therapeutic",
                   "metric engineering", "metric-engineering",
                   "cosmolog"]
-        negations = ("no ", "not ", "never", "exclusion", "excluded",
-                     "forbidden", "no unsupported", "import;",
-                     "unsupported")
+        negations = ("no ", "no-", "not ", "never", "exclusion",
+                     "excluded", "forbidden", "no unsupported",
+                     "import;", "unsupported",
+                     # V4X-D-001: the consciousness lane is a declared,
+                     # quarantined research programme. Naming it, or
+                     # citing its path/status, is not a claim that
+                     # quartz does anything to consciousness. These
+                     # markers denote the disclaiming context; the
+                     # separate T-lane check below enforces that the
+                     # disclaimer is real rather than decorative.
+                     "consciousness_lane", "quarantin",
+                     "source_hypothesis", "analogy only",
+                     "separate", "lane")
         offenders = []
         for p in (REPO / "docs").rglob("*V4*.md"):
             low = p.read_text(encoding="utf-8", errors="ignore").lower()
@@ -279,6 +289,49 @@ def main() -> int:
         return ("no AFFIRMATIVE claim vocabulary; exclusion statements "
                 "verified manually (V4-D-002)")
     check("claims wording (G29)", claims)
+
+    # --- consciousness-lane discipline (G51, V4X-D-001) ------------------
+    def tlane_quarantine():
+        """G29 now tolerates the word 'consciousness' near lane
+        markers, so this check makes the quarantine load-bearing
+        instead of decorative: the lane must exist, declare itself,
+        refuse quartz imports, and never claim causation."""
+        import ast
+
+        lane = REPO / "consciousness_lane"
+        assert lane.is_dir(), "consciousness lane missing"
+        init = (lane / "__init__.py").read_text(encoding="utf-8")
+        assert "QUARANTINE CONTRACT" in init
+        forbidden = ("rscs2_core.fem", "rscs2_core.eye",
+                     "rscs2_core.modal", "rscs2_core.eye_refinement")
+        for f in lane.rglob("*.py"):
+            tree = ast.parse(f.read_text(encoding="utf-8"))
+            for node in ast.walk(tree):
+                if isinstance(node, ast.Import):
+                    names = [a.name for a in node.names]
+                elif isinstance(node, ast.ImportFrom):
+                    names = [node.module or ""]
+                else:
+                    continue
+                for n in names:
+                    assert n not in forbidden, \
+                        f"{f.name} imports quartz solver {n}"
+        # no quartz module may import the lane, either
+        for f in (REPO / "rscs2_core").rglob("*.py"):
+            txt = f.read_text(encoding="utf-8", errors="ignore")
+            assert "consciousness_lane" not in txt, \
+                f"quartz module {f.name} reaches into the lane"
+        # causal claims are forbidden in the lane's public docs
+        for p in (REPO / "docs").rglob("*V4X*.md"):
+            low = p.read_text(encoding="utf-8", errors="ignore").lower()
+            for bad in ("proves consciousness", "quartz consciousness",
+                        "causes consciousness",
+                        "consciousness is caused by",
+                        "measured consciousness"):
+                assert bad not in low, f"{p.name}: causal claim '{bad}'"
+        return ("lane present, quarantine declared, no quartz imports "
+                "either direction, no causal claims")
+    check("consciousness-lane quarantine (G51)", tlane_quarantine)
 
     # --- bundle determinism (G25/G26) ---------------------------------------
     if not fast:

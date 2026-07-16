@@ -24,7 +24,22 @@ import zipfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-VERSION = "4.1.1"
+
+
+def _version() -> str:
+    """Single source of truth: pyproject. A hardcoded copy here drifts
+    from the release it claims to build (this is what shipped stale
+    v4.1.0 assets and forced the v4.1.1 patch)."""
+    import re
+    m = re.search(r'^version = "([^"]+)"',
+                  (REPO / "pyproject.toml").read_text(encoding="utf-8"),
+                  re.M)
+    if not m:
+        raise SystemExit("cannot read version from pyproject.toml")
+    return m.group(1)
+
+
+VERSION = _version()
 REL = REPO / "release" / "v4"
 
 
