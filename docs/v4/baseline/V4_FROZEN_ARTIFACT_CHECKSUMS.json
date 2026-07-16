@@ -1,0 +1,16 @@
+{
+  "archive_v2_tree": "de8d41744be341f724a8833257441d42d795e10c",
+  "proof_bundle_sha256sums_digest": "3883ebcf429c87f06daaf87a52b0ad352924f16f81cb28eb6f49899b47f1d861",
+  "release_checksum_files": {
+    "release/SHA256SUMS.txt": "9ebc33bd042f17907a9b5c3134f21b053bca2f4e651c8a7786af885fd632a994",
+    "release/v4/SHA256SUMS.txt": "ce0e24a5f95616a6a0201f0114f2396986de1453c2f6fd3361410cf03801befc"
+  },
+  "tag_tree_hashes": {
+    "v2.0.0": "26550d8517ffb7a242fda48f5c4f1af90ca24cdf",
+    "v3.0.0": "7b98857b2a7579b490a978175278f85dc273bfc2",
+    "v3.0.1": "2ad99ad5f2073179b890797c922d94f6d8e47576",
+    "v4.0.0": "e2da19b84ca9429fb10c04d18595b3d76062aed7",
+    "v4.0.0-alpha": "a521491100165508db151b816f6297550dbb9807",
+    "v4.0.0-rc1": "a521491100165508db151b816f6297550dbb9807"
+  }
+}

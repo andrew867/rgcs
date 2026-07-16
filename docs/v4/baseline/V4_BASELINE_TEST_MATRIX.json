@@ -1,0 +1,90 @@
+{
+  "__pycache__": {
+    "files": [],
+    "test_functions": 0
+  },
+  "_note": "static function count; authoritative counts come from pytest runs (LOCAL evidence only)",
+  "adversarial": {
+    "files": [
+      "test_rscs_firewall.py",
+      "test_source_provenance_lint.py"
+    ],
+    "test_functions": 23
+  },
+  "golden": {
+    "files": [
+      "test_golden_values.py"
+    ],
+    "test_functions": 17
+  },
+  "integration": {
+    "files": [
+      "test_vertical_slice.py"
+    ],
+    "test_functions": 10
+  },
+  "property": {
+    "files": [
+      "test_properties.py",
+      "test_rscs_hg_properties.py",
+      "test_rscs_optical_properties.py",
+      "test_rscs_properties.py"
+    ],
+    "test_functions": 33
+  },
+  "regression": {
+    "files": [
+      "test_generator_determinism.py",
+      "test_golden_coherence_manifest.py",
+      "test_performance.py",
+      "test_qa_d04_coupling_map.py",
+      "test_rscs_conservative_extension.py",
+      "test_rscs_optical_regression.py"
+    ],
+    "test_functions": 68
+  },
+  "ui": {
+    "files": [
+      "test_smoke.py"
+    ],
+    "test_functions": 13
+  },
+  "unit": {
+    "files": [
+      "test_coherence.py",
+      "test_experiments_provenance.py",
+      "test_geometry.py",
+      "test_harmonics_compact.py",
+      "test_loading_drive.py",
+      "test_malformed_inputs.py",
+      "test_qa_hardening.py",
+      "test_resonance_coupled.py",
+      "test_rgcs_optics.py",
+      "test_rgcs_platform.py",
+      "test_rgcs_timing.py",
+      "test_rscs_anisotropy.py",
+      "test_rscs_coordinates.py",
+      "test_rscs_hg_memory.py",
+      "test_rscs_operators.py",
+      "test_rscs_optical.py"
+    ],
+    "test_functions": 209
+  },
+  "v4": {
+    "files": [
+      "test_rscs2_accel.py",
+      "test_rscs2_cli.py",
+      "test_rscs2_crystal110.py",
+      "test_rscs2_eye.py",
+      "test_rscs2_piezo.py",
+      "test_rscs2_projections.py",
+      "test_rscs2_quartz.py",
+      "test_rscs2_reference.py",
+      "test_rscs2_refsystems.py",
+      "test_rscs2_registry.py",
+      "test_rscs2_solver.py",
+      "test_v4c_baseline.py"
+    ],
+    "test_functions": 99
+  }
+}

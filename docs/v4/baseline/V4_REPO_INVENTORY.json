@@ -1,0 +1,40 @@
+{
+  "authority_commits": {
+    "3fcb0d7": "commit",
+    "715486b": "commit",
+    "7962817": "commit",
+    "9165594": "commit"
+  },
+  "branch": "v4-dev",
+  "dirty_files": [
+    "?? docs/v4/",
+    "?? release/v4/",
+    "?? tests/v4/test_v4c_baseline.py",
+    "?? tools/v4/"
+  ],
+  "head": "2fed8fdc5b8c7f11abd880a91dbc84ad7b9004ae",
+  "protected_tags_present": {
+    "v2.0.0": "f9fd2c20a05334e12ac9113ba86853c6591fc84e",
+    "v3.0.0": "83521f73d6ad02b009ada88f3b8d33a8a00fc253",
+    "v3.0.1": "70d032ac25db28e98d217d7bf3311a9013b878ee",
+    "v4.0.0": "2fed8fdc5b8c7f11abd880a91dbc84ad7b9004ae",
+    "v4.0.0-alpha": "05a427a4392d97973a9fcfc1e5b60971d24fd1d8",
+    "v4.0.0-rc1": "05a427a4392d97973a9fcfc1e5b60971d24fd1d8"
+  },
+  "remotes": [
+    "origin\thttps://github.com/andrew867/rgcs.git (fetch)",
+    "origin\thttps://github.com/andrew867/rgcs.git (push)"
+  ],
+  "tags": [
+    "v2.0.0",
+    "v3.0.0",
+    "v3.0.0-rc1",
+    "v3.0.1",
+    "v4.0.0",
+    "v4.0.0-alpha",
+    "v4.0.0-rc1"
+  ],
+  "worktrees": [
+    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS 2fed8fd [v4-dev]"
+  ]
+}

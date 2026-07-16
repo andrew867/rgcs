@@ -1,0 +1,328 @@
+{
+  "rgcs_core/__init__.py": {
+    "bytes": 1800,
+    "def_count": 0,
+    "markers": []
+  },
+  "rgcs_core/anisotropy/__init__.py": {
+    "bytes": 4089,
+    "def_count": 3,
+    "markers": []
+  },
+  "rgcs_core/coherence/__init__.py": {
+    "bytes": 2004,
+    "def_count": 0,
+    "markers": []
+  },
+  "rgcs_core/coherence/anisotropy.py": {
+    "bytes": 7184,
+    "def_count": 4,
+    "markers": []
+  },
+  "rgcs_core/coherence/metrics.py": {
+    "bytes": 13585,
+    "def_count": 17,
+    "markers": []
+  },
+  "rgcs_core/coherence/models.py": {
+    "bytes": 7328,
+    "def_count": 3,
+    "markers": []
+  },
+  "rgcs_core/compact_modes/__init__.py": {
+    "bytes": 7296,
+    "def_count": 3,
+    "markers": []
+  },
+  "rgcs_core/coupled_modes/__init__.py": {
+    "bytes": 1080,
+    "def_count": 0,
+    "markers": []
+  },
+  "rgcs_core/coupled_modes/dynamics.py": {
+    "bytes": 6616,
+    "def_count": 2,
+    "markers": []
+  },
+  "rgcs_core/coupled_modes/static.py": {
+    "bytes": 8555,
+    "def_count": 8,
+    "markers": []
+  },
+  "rgcs_core/crystal_db.py": {
+    "bytes": 6684,
+    "def_count": 7,
+    "markers": []
+  },
+  "rgcs_core/drive/__init__.py": {
+    "bytes": 10559,
+    "def_count": 7,
+    "markers": []
+  },
+  "rgcs_core/experiments/__init__.py": {
+    "bytes": 7906,
+    "def_count": 7,
+    "markers": []
+  },
+  "rgcs_core/fea_export.py": {
+    "bytes": 5409,
+    "def_count": 5,
+    "markers": []
+  },
+  "rgcs_core/geometry/__init__.py": {
+    "bytes": 1146,
+    "def_count": 0,
+    "markers": []
+  },
+  "rgcs_core/geometry/angles.py": {
+    "bytes": 1597,
+    "def_count": 1,
+    "markers": []
+  },
+  "rgcs_core/geometry/crystal.py": {
+    "bytes": 9549,
+    "def_count": 6,
+    "markers": []
+  },
+  "rgcs_core/geometry/nodes.py": {
+    "bytes": 5165,
+    "def_count": 5,
+    "markers": []
+  },
+  "rgcs_core/geometry/spiral.py": {
+    "bytes": 7214,
+    "def_count": 6,
+    "markers": []
+  },
+  "rgcs_core/harmonics/__init__.py": {
+    "bytes": 5323,
+    "def_count": 4,
+    "markers": []
+  },
+  "rgcs_core/loading/__init__.py": {
+    "bytes": 6328,
+    "def_count": 6,
+    "markers": []
+  },
+  "rgcs_core/optics/__init__.py": {
+    "bytes": 9917,
+    "def_count": 9,
+    "markers": []
+  },
+  "rgcs_core/provenance/__init__.py": {
+    "bytes": 6054,
+    "def_count": 9,
+    "markers": []
+  },
+  "rgcs_core/resonance/__init__.py": {
+    "bytes": 7689,
+    "def_count": 9,
+    "markers": []
+  },
+  "rgcs_core/timing/__init__.py": {
+    "bytes": 31122,
+    "def_count": 20,
+    "markers": []
+  },
+  "rgcs_core/uncertainty.py": {
+    "bytes": 2958,
+    "def_count": 2,
+    "markers": []
+  },
+  "rscs2_core/__init__.py": {
+    "bytes": 1100,
+    "def_count": 0,
+    "markers": []
+  },
+  "rscs2_core/accel.py": {
+    "bytes": 12331,
+    "def_count": 8,
+    "markers": [
+      "interface_only_markers"
+    ]
+  },
+  "rscs2_core/cli.py": {
+    "bytes": 11542,
+    "def_count": 18,
+    "markers": []
+  },
+  "rscs2_core/crystal110.py": {
+    "bytes": 14999,
+    "def_count": 9,
+    "markers": []
+  },
+  "rscs2_core/eye.py": {
+    "bytes": 33883,
+    "def_count": 15,
+    "markers": []
+  },
+  "rscs2_core/fem.py": {
+    "bytes": 13339,
+    "def_count": 15,
+    "markers": []
+  },
+  "rscs2_core/piezo.py": {
+    "bytes": 7842,
+    "def_count": 5,
+    "markers": []
+  },
+  "rscs2_core/projections.py": {
+    "bytes": 21378,
+    "def_count": 22,
+    "markers": []
+  },
+  "rscs2_core/proofbundle.py": {
+    "bytes": 42833,
+    "def_count": 7,
+    "markers": [
+      "interface_only_markers"
+    ]
+  },
+  "rscs2_core/quartz.py": {
+    "bytes": 8224,
+    "def_count": 10,
+    "markers": []
+  },
+  "rscs2_core/reference.py": {
+    "bytes": 4740,
+    "def_count": 6,
+    "markers": []
+  },
+  "rscs2_core/refsystems.py": {
+    "bytes": 4742,
+    "def_count": 3,
+    "markers": []
+  },
+  "rscs2_core/registry/__init__.py": {
+    "bytes": 3341,
+    "def_count": 3,
+    "markers": []
+  },
+  "rscs_core/__init__.py": {
+    "bytes": 1355,
+    "def_count": 0,
+    "markers": []
+  },
+  "rscs_core/coordinates/__init__.py": {
+    "bytes": 2011,
+    "def_count": 0,
+    "markers": []
+  },
+  "rscs_core/coordinates/_base.py": {
+    "bytes": 2903,
+    "def_count": 3,
+    "markers": [
+      "raises_notimplemented"
+    ]
+  },
+  "rscs_core/coordinates/medium.py": {
+    "bytes": 5415,
+    "def_count": 3,
+    "markers": []
+  },
+  "rscs_core/coordinates/memory.py": {
+    "bytes": 2749,
+    "def_count": 1,
+    "markers": []
+  },
+  "rscs_core/coordinates/meta.py": {
+    "bytes": 3170,
+    "def_count": 2,
+    "markers": []
+  },
+  "rscs_core/coordinates/modal.py": {
+    "bytes": 2933,
+    "def_count": 2,
+    "markers": []
+  },
+  "rscs_core/coordinates/optical.py": {
+    "bytes": 3903,
+    "def_count": 2,
+    "markers": []
+  },
+  "rscs_core/coordinates/space.py": {
+    "bytes": 3725,
+    "def_count": 3,
+    "markers": []
+  },
+  "rscs_core/coordinates/spectral.py": {
+    "bytes": 3141,
+    "def_count": 4,
+    "markers": []
+  },
+  "rscs_core/coupling/__init__.py": {
+    "bytes": 14052,
+    "def_count": 10,
+    "markers": []
+  },
+  "rscs_core/embedding/__init__.py": {
+    "bytes": 5741,
+    "def_count": 10,
+    "markers": []
+  },
+  "rscs_core/memory/__init__.py": {
+    "bytes": 2903,
+    "def_count": 2,
+    "markers": []
+  },
+  "rscs_core/memory/hydrogenuine.py": {
+    "bytes": 9643,
+    "def_count": 4,
+    "markers": []
+  },
+  "rscs_core/memory/persistence.py": {
+    "bytes": 7661,
+    "def_count": 8,
+    "markers": []
+  },
+  "rscs_core/modes/__init__.py": {
+    "bytes": 2482,
+    "def_count": 4,
+    "markers": []
+  },
+  "rscs_core/observation/__init__.py": {
+    "bytes": 7829,
+    "def_count": 10,
+    "markers": []
+  },
+  "rscs_core/operators/__init__.py": {
+    "bytes": 3729,
+    "def_count": 0,
+    "markers": []
+  },
+  "rscs_core/propagation/__init__.py": {
+    "bytes": 12678,
+    "def_count": 14,
+    "markers": []
+  },
+  "rscs_core/provenance/__init__.py": {
+    "bytes": 2282,
+    "def_count": 2,
+    "markers": []
+  },
+  "rscs_core/registry/__init__.py": {
+    "bytes": 7296,
+    "def_count": 8,
+    "markers": []
+  },
+  "rscs_core/state_preparation/__init__.py": {
+    "bytes": 2107,
+    "def_count": 1,
+    "markers": []
+  },
+  "rscs_core/transforms/__init__.py": {
+    "bytes": 3896,
+    "def_count": 3,
+    "markers": []
+  },
+  "rscs_core/uncertainty/__init__.py": {
+    "bytes": 2275,
+    "def_count": 3,
+    "markers": []
+  },
+  "rscs_core/units.py": {
+    "bytes": 2800,
+    "def_count": 4,
+    "markers": []
+  }
+}
