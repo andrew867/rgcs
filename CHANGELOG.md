@@ -13,6 +13,15 @@ v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
   confidence rows for H-01..H-30, phase gates (H-29/H-30 first),
   TOST-quantified null acceptance for the pre-registered reciprocity
   nulls, and campaign acceptance/failure criteria (D14-002 phasing).
+- Agent 15 (post-release): archival + community package — `.zenodo.json`
+  machine metadata + `docs/ZENODO_METADATA.md` (no DOI invented);
+  `docs/community/` communication kit (press summary, community
+  announcement, forum/reddit/LinkedIn/email posts, release FAQ — all
+  stating what RGCS is, is not, current evidence, limitations, and how
+  to contribute); `docs/CONTRIBUTOR_ROADMAP.md` (software vs
+  experimental lanes explicit); `docs/MODELLING_ROADMAP.md` (v4 tier
+  plan under reproducibility invariants: CPU oracle, seeded MC,
+  typed I/O); `docs/FINAL_PUBLICATION_REPORT.md` → **PUBLISH COMPLETE**.
 
 ## [3.0.0] — 2026-07-15
 
@@ -129,6 +138,7 @@ with gate table, limitations, and recommended public wording). Final
 ## [2.0.0] — 2026-07-14
 
 Frozen baseline. See `archive/v2.0.0/release/RELEASE_NOTES.md`.
+
 
 
 
