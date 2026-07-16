@@ -1,0 +1,17 @@
+{
+  "draws": [
+    {
+      "c_scale": 1.01,
+      "rho_scale": 1.0
+    },
+    {
+      "c_scale": 0.99,
+      "rho_scale": 1.0
+    },
+    {
+      "c_scale": 1.0,
+      "rho_scale": 1.01
+    }
+  ],
+  "policy": "material draws +/-1% on C and rho (eye D15 gate); handbook third-decimal dependence declared (D6-002)"
+}

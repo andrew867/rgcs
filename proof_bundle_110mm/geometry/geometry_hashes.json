@@ -1,0 +1,17 @@
+{
+  "coarse": {
+    "clmax_mm": 9.0,
+    "nodes_sha256": "a81c2885a04ad3a955cedcff8505c321c44dca3688c4dbde89dc2fb1cee7c602",
+    "tets_sha256": "c76913b831d06902adda899ddf204b82d54570d057458593cfba435e06f03c3b"
+  },
+  "fine": {
+    "clmax_mm": 5.5,
+    "nodes_sha256": "6165cb5ac0a079d97af2d7e34386414f118f8b1e46b630cfeefeee841f848894",
+    "tets_sha256": "c4065c78292d38b2e412c21adf296c1ab3db92afe7a524de3479ea8f3516ad55"
+  },
+  "medium": {
+    "clmax_mm": 7.0,
+    "nodes_sha256": "89faba621640d33e99108180a751152c3856e20bd0924910c5e43d0dd955e942",
+    "tets_sha256": "1b14e3b5aedd2b15943ac20c01d98cb0e21b2ab192c62b1d7a925e1b53a303fe"
+  }
+}

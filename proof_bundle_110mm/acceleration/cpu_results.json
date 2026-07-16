@@ -1,0 +1,13 @@
+{
+  "rows": [
+    "cpu-numpy-lapack,float64,10000,0.021586,0.000e+00,0.000000",
+    "cpu-numpy-closedform,float64,10000,0.004116,2.916e-15,0.000000",
+    "cpu-numpy-lapack,float64,50000,0.156417,0.000e+00,0.000000",
+    "cpu-numpy-closedform,float64,50000,0.035765,3.753e-14,0.000000",
+    "cpu-numpy-lapack,float64,200000,0.495926,0.000e+00,0.000000",
+    "cpu-numpy-closedform,float64,200000,0.149342,1.558e-14,0.000000",
+    "cpu-numpy-lapack,float64,500000,1.430556,0.000e+00,0.000000",
+    "cpu-numpy-closedform,float64,500000,0.346579,2.053e-14,0.000000"
+  ],
+  "source": "evidence/v4/agent07"
+}

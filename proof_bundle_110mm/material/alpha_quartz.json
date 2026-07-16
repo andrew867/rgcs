@@ -1,0 +1,100 @@
+{
+  "classification": "EST (handbook input)",
+  "density_kg_m3": 2648.0,
+  "dielectric_relative_constant_strain": [
+    4.428,
+    4.428,
+    4.634
+  ],
+  "frame": "X=a-axis(2-fold), Z=c-axis(3-fold), right-handed",
+  "material": "alpha-quartz",
+  "piezo_voigt_c_m2": [
+    [
+      0.171,
+      -0.171,
+      0.0,
+      -0.0406,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0406,
+      -0.171
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "provenance": [
+    "frozen rgcs_core.anisotropy (Bechmann 1958; Auld 1973)",
+    "piezo/dielectric: Bechmann 1958, IEEE 176 convention"
+  ],
+  "stiffness_voigt_gpa": [
+    [
+      86.6,
+      6.7,
+      12.6,
+      17.8,
+      0.0,
+      0.0
+    ],
+    [
+      6.7,
+      86.6,
+      12.6,
+      -17.8,
+      0.0,
+      0.0
+    ],
+    [
+      12.6,
+      12.6,
+      106.1,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      17.8,
+      -17.8,
+      0.0,
+      57.8,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      57.8,
+      17.8
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      17.8,
+      39.949999999999996
+    ]
+  ],
+  "symmetry_class": "trigonal-32",
+  "temperature_ref_c": 25.0,
+  "uncertainty": {
+    "density_pct": 0.1,
+    "dielectric_pct": 2.0,
+    "elastic_third_decimal": "reference/temperature dependent (D5-002)",
+    "piezo_pct": 2.0
+  },
+  "voigt_order": "11,22,33,23,13,12"
+}

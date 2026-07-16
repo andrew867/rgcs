@@ -1,0 +1,46 @@
+{
+  "axial_rx_to_tx": {
+    "direction": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "geometric_length_mm": 110.03766741071429,
+    "optical_path_length_mm": 169.74475512219232,
+    "phase_rad": 1685426.282165859,
+    "transit_time_s": 5.662075565696596e-10
+  },
+  "axial_tx_to_rx": {
+    "direction": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "geometric_length_mm": 110.03766741071429,
+    "optical_path_length_mm": 169.74475512219232,
+    "phase_rad": 1685426.282165859,
+    "transit_time_s": 5.662075565696596e-10
+  },
+  "side_to_centre": {
+    "direction": [
+      -0.7151323810622916,
+      0.0,
+      0.6989890396538256
+    ],
+    "geometric_length_mm": 15.742402408085026,
+    "optical_path_length_mm": 24.284322856658573,
+    "phase_rad": 241123.42061909378,
+    "transit_time_s": 8.10037818118112e-11
+  },
+  "side_to_node_prior": {
+    "direction": [
+      -0.7203177628751268,
+      0.0,
+      0.6936442319277026
+    ],
+    "geometric_length_mm": 15.629076912943281,
+    "optical_path_length_mm": 24.109506279075763,
+    "phase_rad": 239387.63529715996,
+    "transit_time_s": 8.042065647654074e-11
+  }
+}

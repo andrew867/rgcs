@@ -1,0 +1,4 @@
+level,clmax_mm,n_nodes,n_tets,min_dihedral_deg,max_aspect,n_inverted,volume_rel_err
+coarse,9.0,167,439,19.107,3.455,0,1.60e-14
+medium,7.0,273,798,17.267,3.593,0,1.62e-14
+fine,5.5,444,1454,14.405,3.806,0,1.62e-14

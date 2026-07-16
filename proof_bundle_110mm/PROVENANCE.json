@@ -1,0 +1,21 @@
+{
+  "copied_from_committed_evidence": {
+    "acceleration/*": "evidence/v4/agent07 (hardware-dependent: Iris Xe + i5-1135G7)",
+    "benchmarks/tuning_fork.csv": "evidence/v4/agent10/avoided_crossing_v9.csv"
+  },
+  "frozen_authorities": [
+    "rgcs_core (v3, tags v3.0.x)",
+    "rscs_core (v3)",
+    "archive/v2.0.0 (untouched)"
+  ],
+  "generated_by": "python -m rscs2_core.proofbundle",
+  "live_recomputed": [
+    "geometry",
+    "material",
+    "modes",
+    "fields",
+    "eye",
+    "figures",
+    "benchmarks (except tuning_fork.csv)"
+  ]
+}

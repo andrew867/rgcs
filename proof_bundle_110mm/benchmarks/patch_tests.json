@@ -1,0 +1,6 @@
+{
+  "free_body_rigid_modes": 6,
+  "mass_patch_uMu_vs_rhoV_rel_err": 8.839355291601563e-16,
+  "note": "piezo single-element energy patch validated in tests/v4/test_rscs2_piezo.py (1e-9)",
+  "orthonormality_error": 2.220446049250313e-15
+}

@@ -1,0 +1,4 @@
+{
+  "reason": "D9/D10 require a damped/driven COMPLEX response field; undamped real normal modes are the declared degenerate case (engine refuses, tested). The machinery is validated on synthetic complex fields (vortex winding +1; Ampere anchor for D12).",
+  "status": "NOT_APPLICABLE_TO_UNDAMPED_REAL_MODES"
+}

@@ -1,0 +1,5 @@
+{
+  "artifact": "crystal.step",
+  "reason": "canonical geometry is built with the gmsh BUILT-IN kernel (deterministic .geo); STEP export requires the OCC kernel path which is documented but has no test coverage on this machine (user decision DV4-013: 'documented, implemented, untested'). No untested artifact ships in a proof bundle.",
+  "status": "DOCUMENTED_IMPLEMENTED_UNTESTED -> NOT GENERATED"
+}
