@@ -38,6 +38,29 @@ def test_all_lanes_present(report):
     assert report["total_ids"] == 248
 
 
+def test_contract_is_portable_without_the_prompt_pack():
+    """The pack lives under gitignored internal-docs/, so it is absent
+    on CI and on any fresh clone. The binding contract must not depend
+    on it (this failed every portable CI job at c352bc6)."""
+    assert cov.LEDGER_SNAPSHOT.exists()
+    saved = cov.LEDGER_MD
+    try:
+        cov.LEDGER_MD = pathlib.Path("no", "such", "pack.md")
+        rep = cov.build()
+        assert rep["total_ids"] == 248
+        assert rep["gate_G42_pass"]
+    finally:
+        cov.LEDGER_MD = saved
+
+
+def test_snapshot_matches_pack_when_pack_present():
+    """If the pack is available it is authoritative; drift is an error,
+    not a silent divergence."""
+    if not cov.LEDGER_MD.exists():
+        pytest.skip("prompt pack not present (expected on CI)")
+    assert cov.parse_ledger() == cov._parse_pack()
+
+
 def test_statuses_are_declared_classes(report):
     from rscs2_core.research_records import STATUS_CLASSES
     extra = {"CANDIDATE_NEW_COUPLING"}

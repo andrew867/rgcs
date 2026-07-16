@@ -22,6 +22,13 @@ LEDGER_MD = ROOT / "internal-docs" / "plans-v4" / \
     "RGCS_Master_Research_Expansion_Prompt_Pack" / \
     "03_MASTER_COVERAGE_LEDGER.md"
 
+# The prompt pack lives under gitignored internal-docs/, so it is absent
+# on CI and on any fresh clone. A binding coverage contract cannot depend
+# on a file that is not in the repository, so the ID list is snapshotted
+# here. When the pack IS present it is authoritative and any drift from
+# the snapshot is an error rather than a silent divergence.
+LEDGER_SNAPSHOT = ROOT / "docs" / "v4" / "V4X_LEDGER_IDS.json"
+
 # Static dispositions: {id: (owner, artifact, status)}
 OWNERS: dict = {}
 
@@ -112,13 +119,51 @@ def _dynamic_maps() -> dict:
     return out
 
 
-def parse_ledger() -> dict:
+def _parse_pack() -> dict:
     text = LEDGER_MD.read_text(encoding="utf-8")
     ids = {}
     for m in re.finditer(r"^\|\s*([ACEFGHISW]\d{2,3})\s*\|\s*"
                          r"([^|]+?)\s*\|", text, re.M):
         ids[m.group(1)] = m.group(2).strip()
     return ids
+
+
+def parse_ledger() -> dict:
+    """The committed snapshot is the portable contract; the pack is the
+    authority when it is available."""
+    snap = json.loads(LEDGER_SNAPSHOT.read_text(encoding="utf-8")) \
+        if LEDGER_SNAPSHOT.exists() else None
+    if not LEDGER_MD.exists():
+        if snap is None:
+            raise SystemExit(
+                "no ledger source: neither the prompt pack nor "
+                f"{LEDGER_SNAPSHOT.relative_to(ROOT)} is present")
+        return snap["ids"]
+    pack = _parse_pack()
+    if snap is not None and snap["ids"] != pack:
+        added = sorted(set(pack) - set(snap["ids"]))
+        removed = sorted(set(snap["ids"]) - set(pack))
+        raise SystemExit(
+            "ledger snapshot has drifted from the prompt pack "
+            f"(added {added}, removed {removed}); re-run with "
+            "--refresh-snapshot after confirming the change is "
+            "intended")
+    return pack
+
+
+def write_snapshot() -> int:
+    ids = _parse_pack()
+    LEDGER_SNAPSHOT.write_text(
+        json.dumps({"source": "03_MASTER_COVERAGE_LEDGER.md "
+                              "(RGCS Master Research Expansion Prompt "
+                              "Pack)",
+                    "note": "portable snapshot of the binding coverage "
+                            "contract; the pack itself lives under "
+                            "gitignored internal-docs/",
+                    "total": len(ids), "ids": ids}, indent=1,
+                   sort_keys=True) + "\n", encoding="utf-8")
+    print(f"snapshot written: {len(ids)} ids")
+    return 0
 
 
 def build() -> dict:
@@ -141,6 +186,8 @@ def build() -> dict:
 
 
 def main() -> int:
+    if "--refresh-snapshot" in sys.argv:
+        return write_snapshot()
     rep = build()
     out = ROOT / "docs" / "v4"
     out.mkdir(parents=True, exist_ok=True)

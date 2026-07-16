@@ -140,3 +140,23 @@ version that drifts from `pyproject.toml` is precisely the defect class
 that shipped stale documents in the v4.1.0 manuscripts asset and forced
 the v4.1.1 patch. The builder now parses the version from
 `pyproject.toml` (single source of truth) and fails loudly if it cannot.
+
+## V4X-D-003 — the coverage contract must live in the repository
+
+The coverage-ledger generator parsed its ID list from
+`internal-docs/plans-v4/.../03_MASTER_COVERAGE_LEDGER.md`. That path is
+under gitignored `internal-docs/`, so it exists only on the author's
+machine: every portable CI job at c352bc6 failed with FileNotFoundError,
+and a fresh clone could not evaluate gate G42 at all.
+
+A binding, release-blocking contract cannot depend on a file that is not
+in the repository. `docs/v4/V4X_LEDGER_IDS.json` now snapshots the 248
+IDs and titles (the project's own backlog, not third-party source
+material, so committing it raises no redistribution question). The
+prompt pack remains authoritative when present: if the snapshot and the
+pack disagree, the generator refuses to run and reports the added and
+removed IDs rather than silently diverging. Refresh deliberately with
+`python tools/v4x_coverage_ledger.py --refresh-snapshot`.
+
+Regression: `test_contract_is_portable_without_the_prompt_pack` builds
+the ledger with the pack path pointed at nothing and requires 248/248.
