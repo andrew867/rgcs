@@ -53,3 +53,12 @@ artifacts + checksums + provenance under `release/`; Agent 13 record in
 2. `git diff --stat 715486b HEAD -- archive/v2.0.0` → empty (freeze).
 3. `python tools/generate_optical_comparison.py --check` → up to date.
 4. `python experiments/schemas/validate.py` → all OK (needs jsonschema).
+
+## Post-release stages
+
+| Stage | Scope | Status | Record |
+|---|---|---|---|
+| 12 | Publication polish + contributor experience | COMPLETE (c9acd86..3ab9bf0) | docs/PUBLICATION_READINESS_REPORT.md |
+| 13 | GitHub bootstrap, 3-OS CI, v3.0.0 release, public flip | COMPLETE (tag v3.0.0 at 83521f7) | docs/GITHUB_PUBLICATION_REPORT.md |
+| 13b | Figure-rendering audit (D-V3-05/06 fixed, assets refreshed) | COMPLETE | DEFECT_REGISTER addendum |
+| 14 | Measurement campaign design (ENG): lab manual, calibration, bench, protocol, pipeline, validation plan for H-01..H-30 | COMPLETE (this commit) | docs/VALIDATION_PLAN.md |

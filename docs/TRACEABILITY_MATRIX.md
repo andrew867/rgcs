@@ -197,3 +197,18 @@ operators).
 | Cross-platform report | QA_REPORT_V3 sections 2/4 + REPRODUCIBILITY_AUDIT_V3 | Windows green (376/1); Linux gap recorded |
 | Source/provenance audit | adversarial lint suite + registry cross-resolution script | pass |
 | Gate recommendation | QA_REPORT_V3 section 5 | proceed to Agent 11 |
+
+## Agent 14 — measurement campaign (ENG documentation)
+
+| Deliverable | File | Anchored to |
+|---|---|---|
+| Lab manual (phases, roles, blinding, environment, safety) | docs/LAB_MANUAL.md | D7-003, D6-003, v2 EXPERIMENT_PROTOCOL/SAP, D14-001/002 |
+| Calibration guide (chain, H-29 gate, uncertainty budget) | docs/CALIBRATION_GUIDE.md | rgcs_core.timing.phase_at_coordinate; CLAIM rows H-29/H-30 |
+| Bench hardware (equipment, fixtures, coils, optics, timing box) | docs/BENCH_HARDWARE.md | SOFTWARE_HARDWARE_ARCHITECTURE section 7; safe_drive_check |
+| Measurement protocol (per-branch runbooks) | docs/MEASUREMENT_PROTOCOL.md | timing_program/optical_probe/run_manifest schemas; control_matrix |
+| Data pipeline (formats, gates, stats plumbing) | docs/DATA_PIPELINE.md | v2 timeseries/manifest contracts; UncertainValue; HG store soak |
+| Validation plan (H-01..H-30 table, acceptance/failure, statistics) | docs/VALIDATION_PLAN.md | CLAIM_REGISTER, ROADMAP_TO_FALSIFICATION, v2 SAP |
+
+No new RSCS ids, no new equations (D14-001). All numeric operating
+points inside the frozen envelope; directional optical rows keep their
+pre-registered NULL posture.

@@ -3,6 +3,17 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [Unreleased]
+
+- Agent 14 (post-release): measurement-campaign design (ENG, no new
+  physics/equations/ids — D14-001): `LAB_MANUAL.md`,
+  `CALIBRATION_GUIDE.md`, `BENCH_HARDWARE.md`,
+  `MEASUREMENT_PROTOCOL.md`, `DATA_PIPELINE.md`, `VALIDATION_PLAN.md`
+  with per-hypothesis observable/measurement/expected/null/controls/
+  confidence rows for H-01..H-30, phase gates (H-29/H-30 first),
+  TOST-quantified null acceptance for the pre-registered reciprocity
+  nulls, and campaign acceptance/failure criteria (D14-002 phasing).
+
 ## [3.0.0] — 2026-07-15
 
 Final release. Agent 13: GitHub repository bootstrapped
