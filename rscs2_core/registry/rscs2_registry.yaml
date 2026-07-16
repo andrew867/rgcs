@@ -1,0 +1,47 @@
+# Machine-readable RSCS 2.0 registry (RGCS v4). Append-only; new ids
+# registered here before first use (governance path, DV4-002). Does NOT
+# alter the frozen RGCS-M / RSCS-C / RSCS-O registries.
+#
+# Namespaces (DV4-002): RSCS2-E (equations), RSCS2-G (geometry/mesh),
+# RSCS2-B (boundary), RSCS2-S (solver), RSCS2-A (accelerator),
+# RSCS2-D (diagnostics), RSCS2-V (benchmarks), RSCS2-U (uncertainty/inverse).
+schema_version: 1
+model_version: "RSCS-2.0-dev"
+
+# Only objects with a SHIPPED, TESTED implementation are listed. The full
+# planned id set lives in docs/plans-v4/V4_MATHEMATICAL_MODEL_PLAN.md and
+# is registered here as each is implemented and validated.
+benchmarks:
+  - id: RSCS2-V.1
+    name: free-free longitudinal rod
+    class: EST
+    units: "Hz"
+    signature: "(E, rho, L, n) -> f_n"
+    module: "rscs2_core.reference:rod_longitudinal_free_free_hz"
+    provenance: ["Blevins; Landau-Lifshitz Theory of Elasticity"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_reference.py::test_rod_longitudinal"]
+    doc_target: "V4_REFERENCE_SYSTEMS_SPEC"
+    status: "reference-implemented (analytic); solver reproduction PENDING M3"
+  - id: RSCS2-V.2
+    name: fixed-free Euler-Bernoulli cantilever beam
+    class: EST
+    units: "Hz"
+    signature: "(E, rho, L, w, t, n) -> f_n"
+    module: "rscs2_core.reference:euler_bernoulli_cantilever_hz"
+    provenance: ["Blevins; Timoshenko Vibration Problems in Engineering"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_reference.py::test_cantilever_eb"]
+    doc_target: "V4_REFERENCE_SYSTEMS_SPEC"
+    status: "reference-implemented (analytic); solver reproduction PENDING M3"
+  - id: RSCS2-V.3
+    name: Timoshenko cantilever correction
+    class: EST
+    units: "Hz"
+    signature: "(E, G, rho, L, w, t, k', n) -> f_n"
+    module: "rscs2_core.reference:timoshenko_cantilever_hz"
+    provenance: ["Timoshenko beam theory"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_reference.py::test_timoshenko_reduces_to_eb"]
+    doc_target: "V4_REFERENCE_SYSTEMS_SPEC"
+    status: "reference-implemented (analytic); solver reproduction PENDING M3"

@@ -154,3 +154,16 @@ Severity: P0 blocker / P1 major / P2 minor / P3 cosmetic. Nothing was fixed by Q
   fig_epsilon_map title uses the ASCII style ("1.125e-03") — v2 shipped
   record, not modified; registry-verbatim ASCII strings (E^3, g^(2)) in
   generated tables are data faithfulness, not rendering defects.
+
+### RGCS v4 (v4-dev branch) — Agent 00 finding (2026-07-16)
+
+- **V4-D-001 (P1, OPEN):** CPU FEM eigensolver does not reproduce the
+  analytic cantilever eigenfrequency (RSCS2-V.2): computed first flexural
+  mode ~4-22x too low and *decreasing* with mesh refinement, across
+  ElementHex1 and ElementVector(ElementTetP2()) on init_tensor meshes.
+  Ruled out: BC application, matrix symmetry (~1e-16), mesh geometry
+  (bbox exact), material (c correct); dense eigh cross-check confirms the
+  assembled (K,M) pair is mesh-dependently wrong. Fix path: single-element
+  patch tests, gmsh-generated well-shaped tet beam, per-element Jacobian
+  verification, static-deflection patch test. BLOCKS the M3 gate and any
+  v4 release. Documented before fix (QA discipline).
