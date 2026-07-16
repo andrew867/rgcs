@@ -71,11 +71,17 @@ def test_all_sixteen_diagnostics_registered_with_full_metadata():
         # DV4-010: eye diagnostics are never Established
         assert "DER" in spec["classification"]
         assert "EST" not in spec["classification"].split()[0]
-    assert set(ALLOWED_STATUSES) == {
-        "STABLE_CANDIDATE_REGION", "MODE_SPECIFIC_CANDIDATE",
-        "BOUNDARY_SENSITIVE_CANDIDATE",
-        "CONVENTIONAL_NODE_EXPLAINS_RESULT", "MESH_ARTIFACT_REJECTED",
-        "NO_STABLE_CANDIDATE"}
+    # V4C-D-001 vocabulary: coincidence classes + anomaly classes are
+    # all first-class statuses; legacy v4.0.0 name retained read-only
+    assert {"DISTINCT_STABLE_CANDIDATE",
+            "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
+            "CONVENTIONAL_NODE_EXPLAINS_RESULT",
+            "CONVENTIONAL_MODEL_INSUFFICIENT",
+            "CANDIDATE_NEW_COUPLING", "MODE_SPECIFIC_CANDIDATE",
+            "BOUNDARY_SENSITIVE_CANDIDATE", "MESH_ARTIFACT_REJECTED",
+            "NO_STABLE_CANDIDATE", "INSUFFICIENT_RESOLUTION",
+            "CONTRADICTORY_DIAGNOSTICS",
+            "STABLE_CANDIDATE_REGION"} <= set(ALLOWED_STATUSES)
 
 
 # --- MANDATORY adversarial battery -------------------------------------
@@ -90,8 +96,11 @@ def test_adversarial_synthetic_known_candidate_found():
                                             for d in ([0.5, 0, 0],
                                                       [0, 0.5, 0],
                                                       [0, 0, 0.5])])
-    assert res.status == "STABLE_CANDIDATE_REGION"
+    # V4C-D-001: stable + resolved separation from every conventional
+    # station -> DISTINCT_STABLE_CANDIDATE (17.6 mm from the nearest)
+    assert res.status == "DISTINCT_STABLE_CANDIDATE"
     top = res.candidates[0]
+    assert top.node_comparison["separation_mm"] > 10.0
     assert np.linalg.norm(top.centroid_mm - c0) < 3.0
     assert top.gates["agreement_families"] >= 3
     assert top.uncertainty["recurrence_fraction"] == 1.0
@@ -144,7 +153,7 @@ def test_adversarial_two_competing_regions():
     flds = [_blob_field(d, c1, extra_centers=[c2]) for d in DIAG_SET]
     res = eye_consensus(flds, GEOM, refined_fields=flds)
     stable = [c for c in res.candidates
-              if c.status == "STABLE_CANDIDATE_REGION"]
+              if c.status in eye.STABLE_FAMILY]
     assert len(stable) == 2
     assert res.procedure["competing_candidates"] is True
     got = sorted(c.centroid_mm[2] for c in stable)
@@ -176,15 +185,20 @@ def test_adversarial_uncertainty_collapse():
                for r in res.rejected)
 
 
-def test_adversarial_conventional_node_explains():
-    """A blob sitting ON an ordinary node/antinode station is explained
-    conventionally, never promoted."""
+def test_adversarial_blob_on_node_yields_overlap_not_threshold():
+    """V4C-D-001: a blob sitting ON an ordinary node/antinode station
+    is attributed via INTERVAL OVERLAP (grid-resolution localization),
+    never via a physical proximity threshold — and its exact
+    separation is preserved."""
     c0 = np.array([10.0, 10.0, 22.4])       # a conventional feature
     res = eye_consensus(_fieldset(c0), GEOM,
                         refined_fields=_fieldset(c0))
-    assert res.status == "CONVENTIONAL_NODE_EXPLAINS_RESULT"
-    d = res.candidates[0].distances_mm["nearest_conventional_feature"]
-    assert d <= 3.0
+    assert res.status in ("UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
+                          "CONVENTIONAL_NODE_EXPLAINS_RESULT")
+    nc = res.candidates[0].node_comparison
+    assert nc["separation_mm"] is not None       # always reported
+    assert nc["separation_mm"] <= \
+        nc["candidate_halfwidth_mm"] + nc["comparator_halfwidth_mm"]
 
 
 def test_adversarial_symmetric_body_no_unique_eye():
@@ -210,7 +224,7 @@ def test_adversarial_symmetric_body_no_unique_eye():
         "conventional_features_mm": np.empty((0, 3)),
     }
     res = eye_consensus(flds, geom)
-    assert res.status != "STABLE_CANDIDATE_REGION"
+    assert res.status not in eye.STABLE_FAMILY
 
 
 def test_stable_requires_persistence_evidence():

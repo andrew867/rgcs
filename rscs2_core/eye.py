@@ -192,10 +192,129 @@ _FAMILIES = {"D1": "kinematic", "D3": "kinematic", "D7": "kinematic",
              "D9": "phase", "D10": "phase", "D11": "rotational",
              "D12": "em"}
 
-ALLOWED_STATUSES = ("STABLE_CANDIDATE_REGION", "MODE_SPECIFIC_CANDIDATE",
-                    "BOUNDARY_SENSITIVE_CANDIDATE",
-                    "CONVENTIONAL_NODE_EXPLAINS_RESULT",
-                    "MESH_ARTIFACT_REJECTED", "NO_STABLE_CANDIDATE")
+#: V4C-D-001: proximity-threshold node classification REMOVED.
+#: Coincidence with a conventional node is a NUMERICAL statement
+#: (exact within solver/interpolation tolerance) or an UNCERTAINTY
+#: statement (localization intervals overlap) — never a physical
+#: millimetre radius. Physical proximity and numerical coincidence
+#: are different concepts.
+NUMERICAL_COINCIDENCE_TOL_MM = 1e-6
+
+ALLOWED_STATUSES = (
+    # stable family (all persistence gates passed):
+    "DISTINCT_STABLE_CANDIDATE",
+    "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
+    "CONVENTIONAL_NODE_EXPLAINS_RESULT",   # EXACT coincidence only
+    # further-analysis verdicts (assigned only by explicit comparator
+    # failure analysis, never automatically):
+    "CONVENTIONAL_MODEL_INSUFFICIENT", "CANDIDATE_NEW_COUPLING",
+    # gate-failure / null family:
+    "MODE_SPECIFIC_CANDIDATE", "BOUNDARY_SENSITIVE_CANDIDATE",
+    "MESH_ARTIFACT_REJECTED", "NO_STABLE_CANDIDATE",
+    "INSUFFICIENT_RESOLUTION", "CONTRADICTORY_DIAGNOSTICS",
+    # retained for reading v4.0.0-era records:
+    "STABLE_CANDIDATE_REGION",
+)
+
+#: statuses meaning "survived every stability/persistence gate"
+STABLE_FAMILY = ("DISTINCT_STABLE_CANDIDATE",
+                 "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
+                 "CONVENTIONAL_NODE_EXPLAINS_RESULT",
+                 "STABLE_CANDIDATE_REGION")
+
+
+def median_point_spacing_mm(points_mm: np.ndarray,
+                            sample: int = 200) -> float:
+    """Median nearest-neighbor spacing of a point cloud (the mesh-
+    resolution component of localization uncertainty)."""
+    pts = np.atleast_2d(np.asarray(points_mm, float))
+    if len(pts) < 2:
+        return 0.0
+    idx = np.linspace(0, len(pts) - 1, min(sample, len(pts)),
+                      dtype=int)
+    nn = []
+    for i in idx:
+        d = np.linalg.norm(pts - pts[i], axis=1)
+        d[i] = np.inf
+        nn.append(d.min())
+    return float(np.median(nn))
+
+
+def node_coincidence_comparison(candidate_mm: np.ndarray,
+                                comparators_mm: np.ndarray,
+                                candidate_halfwidth_mm: float,
+                                comparator_halfwidth_mm: float,
+                                mesh_resolution_mm: float,
+                                convergence_shift_mm: float | None,
+                                cloud_rms_mm: float | None) -> dict:
+    """Uncertainty-aware candidate-vs-conventional-node comparison
+    (V4C-D-001 corrected rule).
+
+    - EXACT_CONVENTIONAL_NODE_COINCIDENCE: separation numerically zero
+      within NUMERICAL_COINCIDENCE_TOL_MM (float/interpolation error
+      only — NEVER a physical radius);
+    - UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE: the localization
+      intervals of candidate and comparator overlap;
+    - NEAR_CONVENTIONAL_NODE_BUT_DISTINCT / DISTINCT_FROM_CONVENTIONAL_
+      NODE: resolved separation (near/far is descriptive only; both
+      are scientifically DISTINCT).
+
+    The raw coordinates and exact separation are always preserved."""
+    cand = np.asarray(candidate_mm, float)
+    comps = np.atleast_2d(np.asarray(comparators_mm, float))
+    if comps.size == 0:
+        return {"separation_mm": None, "nearest_comparator_mm": None,
+                "classification": "DISTINCT_FROM_CONVENTIONAL_NODE",
+                "note": "no conventional comparators supplied"}
+    d = np.linalg.norm(comps - cand, axis=1)
+    j = int(np.argmin(d))
+    sep = float(d[j])
+    combined = candidate_halfwidth_mm + comparator_halfwidth_mm
+    if sep <= NUMERICAL_COINCIDENCE_TOL_MM:
+        cls = "EXACT_CONVENTIONAL_NODE_COINCIDENCE"
+    elif sep <= combined:
+        cls = "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE"
+    elif sep <= 10.0 * max(combined, NUMERICAL_COINCIDENCE_TOL_MM):
+        cls = "NEAR_CONVENTIONAL_NODE_BUT_DISTINCT"
+    else:
+        cls = "DISTINCT_FROM_CONVENTIONAL_NODE"
+    return {
+        "candidate_mm": cand.tolist(),
+        "nearest_comparator_mm": comps[j].tolist(),
+        "separation_mm": sep,
+        "candidate_halfwidth_mm": candidate_halfwidth_mm,
+        "comparator_halfwidth_mm": comparator_halfwidth_mm,
+        "mesh_resolution_mm": mesh_resolution_mm,
+        "convergence_shift_mm": convergence_shift_mm,
+        "cloud_rms_mm": cloud_rms_mm,
+        "numerical_tol_mm": NUMERICAL_COINCIDENCE_TOL_MM,
+        "classification": cls,
+        "rule": "exact = numerical tolerance only; overlap = "
+                "localization intervals; a resolved separation is "
+                "reported at its exact value, never absorbed into a "
+                "proximity threshold (V4C-D-001)",
+    }
+
+
+def frequency_sensitivity(problem, sol, point_mm: np.ndarray,
+                          radius_mm: float) -> list[dict]:
+    """Per-mode frequency sensitivity to a point-mass perturbation at
+    the candidate: df/dm ~= -(f/2) <|phi|^2> over DOFs within radius
+    (first-order Rayleigh, mass-normalized modes)."""
+    locs = problem.basis.doflocs * 1000.0        # mm
+    p = np.asarray(point_mm, float)
+    d2 = ((locs[0] - p[0]) ** 2 + (locs[1] - p[1]) ** 2
+          + (locs[2] - p[2]) ** 2)
+    near = d2 <= radius_mm ** 2
+    out = []
+    nr = sol["n_rigid_modes"]
+    for k, f in enumerate(sol["elastic_frequencies_hz"]):
+        phi = sol["modes"][:, nr + k]
+        amp2 = float(np.mean(phi[near] ** 2) * 3.0) if near.any() \
+            else 0.0
+        out.append({"mode": k + 1, "frequency_hz": float(f),
+                    "df_dm_hz_per_kg": -0.5 * float(f) * amp2})
+    return out
 
 
 @dataclass
@@ -233,6 +352,7 @@ class Candidate:
     gates: dict = field(default_factory=dict)
     distances_mm: dict = field(default_factory=dict)
     uncertainty: dict = field(default_factory=dict)
+    node_comparison: dict = field(default_factory=dict)
 
 
 @dataclass
@@ -521,7 +641,7 @@ def eye_consensus(fields: list[DiagnosticField],
                   min_agree_families: int = 3,
                   persistence_tol_mm: float = 5.0,
                   boundary_tol_mm: float = 5.0,
-                  node_tol_mm: float = 3.0,
+                  node_tol_mm: float | None = None,
                   uncertainty_min_fraction: float = 0.6,
                   min_modes: int = 2,
                   max_extent_fraction: float = 0.35) -> EyeConsensusResult:
@@ -541,7 +661,9 @@ def eye_consensus(fields: list[DiagnosticField],
           exceed max_extent_fraction of the body length (a flat or
           body-spanning field is NOT an interaction region);
       3. inside-body validity;
-      4. null comparison vs conventional node/antinode locations;
+      4. (REMOVED, V4C-D-001) the former proximity-threshold null
+         comparison; node coincidence is now an uncertainty-aware
+         classification applied AFTER the persistence gates;
       5. mesh persistence (D14) against refined_fields — REQUIRED
          evidence: without refined_fields no candidate can reach
          STABLE (G21, V4-D-004);
@@ -553,7 +675,11 @@ def eye_consensus(fields: list[DiagnosticField],
         "quantile": quantile, "link_radius_mm": link_radius_mm,
         "min_agree_families": min_agree_families,
         "persistence_tol_mm": persistence_tol_mm,
-        "boundary_tol_mm": boundary_tol_mm, "node_tol_mm": node_tol_mm,
+        "boundary_tol_mm": boundary_tol_mm,
+        "node_tol_mm_removed": "V4C-D-001: proximity-threshold node "
+                               "classification removed; passed value "
+                               "is IGNORED",
+        "numerical_coincidence_tol_mm": NUMERICAL_COINCIDENCE_TOL_MM,
         "uncertainty_min_fraction": uncertainty_min_fraction,
         "min_modes": min_modes,
         "max_extent_fraction": max_extent_fraction,
@@ -636,14 +762,10 @@ def eye_consensus(fields: list[DiagnosticField],
                                        "body (invalid)",
                              "diagnostics": diags})
             continue
-        # gate 4: null comparison
-        d_conv = cand.distances_mm.get("nearest_conventional_feature",
-                                       np.inf)
-        cand.gates["null_comparison_mm"] = d_conv
-        if d_conv <= node_tol_mm:
-            cand.status = "CONVENTIONAL_NODE_EXPLAINS_RESULT"
-            candidates.append(cand)
-            continue
+        # (former gate 4 REMOVED, V4C-D-001): the exact separation is
+        # recorded; classification happens after the persistence gates
+        cand.gates["null_comparison_mm"] = cand.distances_mm.get(
+            "nearest_conventional_feature", np.inf)
         # gate 5: mesh persistence (D14). STABLE is NEVER granted
         # without refinement evidence (G21, V4-D-004): a candidate
         # whose persistence was not evaluated is rejected, not promoted
@@ -706,21 +828,53 @@ def eye_consensus(fields: list[DiagnosticField],
                                            f"{uncertainty_min_fraction})",
                                  "diagnostics": diags})
                 continue
-        cand.status = "STABLE_CANDIDATE_REGION"
+        # ALL persistence gates passed. Classify against conventional
+        # nodes with the UNCERTAINTY-AWARE rule (V4C-D-001): the exact
+        # separation is preserved; only numerical coincidence or
+        # interval overlap may attribute the candidate to a node.
+        mesh_res = median_point_spacing_mm(fields[0].points_mm) \
+            if fields else 0.0
+        conv_shift = cand.gates.get("mesh_persistence_shift_mm")
+        cloud_rms = (cand.uncertainty or {}).get("cloud_rms_mm")
+        parts = [x for x in (conv_shift, cloud_rms) if x]
+        halfwidth = max(
+            float(np.sqrt(np.sum(np.square(parts)))) if parts
+            else 0.0, mesh_res)
+        cand.node_comparison = node_coincidence_comparison(
+            cen, conv, halfwidth, mesh_res, mesh_res, conv_shift,
+            cloud_rms)
+        cls = cand.node_comparison["classification"]
+        if cls == "EXACT_CONVENTIONAL_NODE_COINCIDENCE":
+            cand.status = "CONVENTIONAL_NODE_EXPLAINS_RESULT"
+        elif cls == "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE":
+            cand.status = "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE"
+        else:
+            cand.status = "DISTINCT_STABLE_CANDIDATE"
         candidates.append(cand)
 
     candidates.sort(key=lambda c: -c.score)
     null_cmp = {"conventional_features_mm": conv.tolist(),
-                "node_tol_mm": node_tol_mm}
-    stable = [c for c in candidates
-              if c.status == "STABLE_CANDIDATE_REGION"]
+                "numerical_coincidence_tol_mm":
+                    NUMERICAL_COINCIDENCE_TOL_MM,
+                "policy": "exact coincidence or interval overlap "
+                          "only; no physical proximity threshold "
+                          "(V4C-D-001)"}
+    stable = [c for c in candidates if c.status in STABLE_FAMILY]
     if stable:
-        status = "STABLE_CANDIDATE_REGION"
+        # most informative stable classification wins the verdict:
+        # a resolved-distinct candidate outranks overlap outranks
+        # exact coincidence (the candidate coordinate is preserved in
+        # every case)
+        srank = {"DISTINCT_STABLE_CANDIDATE": 0,
+                 "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE": 1,
+                 "CONVENTIONAL_NODE_EXPLAINS_RESULT": 2,
+                 "STABLE_CANDIDATE_REGION": 3}
+        status = sorted((c.status for c in stable),
+                        key=srank.__getitem__)[0]
         procedure["competing_candidates"] = len(stable) > 1
     elif candidates:
         # most informative surviving classification, by gate order
-        order = ["CONVENTIONAL_NODE_EXPLAINS_RESULT",
-                 "MESH_ARTIFACT_REJECTED",
+        order = ["MESH_ARTIFACT_REJECTED",
                  "BOUNDARY_SENSITIVE_CANDIDATE",
                  "MODE_SPECIFIC_CANDIDATE"]
         status = sorted((c.status for c in candidates),

@@ -1,4 +1,6 @@
 # Case Study — The Canonical 110 mm Crystal (computational)
+> **Corrective addendum (V4C-D-001, 2026-07-16):** the verdict below used a node-proximity threshold. Corrected reclassification: UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE with the exact 3.906 mm separation preserved - see docs/v4/EYE_NODE_COINCIDENCE_CORRECTION.md.
+
 
 All results computational; no experimental confirmation exists. The
 historical eye is a Source claim; the ideal and nominal geometries are
@@ -53,3 +55,4 @@ scrambled-field control returns NO_STABLE_CANDIDATE every build.
 
 `python -m rscs2_core.proofbundle` → verify with
 `rgcs-v4 verify-checksums`. Verdict is machine-read from VERDICT.json.
+

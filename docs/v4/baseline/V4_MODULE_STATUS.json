@@ -141,6 +141,21 @@
       "interface_only_markers"
     ]
   },
+  "rscs2_core/calibration.py": {
+    "bytes": 9127,
+    "def_count": 8,
+    "markers": []
+  },
+  "rscs2_core/chiral_phonon.py": {
+    "bytes": 2878,
+    "def_count": 3,
+    "markers": []
+  },
+  "rscs2_core/circulation.py": {
+    "bytes": 2874,
+    "def_count": 4,
+    "markers": []
+  },
   "rscs2_core/cli.py": {
     "bytes": 12504,
     "def_count": 19,
@@ -151,10 +166,29 @@
     "def_count": 9,
     "markers": []
   },
-  "rscs2_core/eye.py": {
-    "bytes": 33883,
-    "def_count": 15,
+  "rscs2_core/curves.py": {
+    "bytes": 2981,
+    "def_count": 5,
     "markers": []
+  },
+  "rscs2_core/dynamic_boundary.py": {
+    "bytes": 7717,
+    "def_count": 8,
+    "markers": [
+      "interface_only_markers"
+    ]
+  },
+  "rscs2_core/eye.py": {
+    "bytes": 41252,
+    "def_count": 18,
+    "markers": []
+  },
+  "rscs2_core/eye_votes.py": {
+    "bytes": 7372,
+    "def_count": 3,
+    "markers": [
+      "interface_only_markers"
+    ]
   },
   "rscs2_core/fem.py": {
     "bytes": 13339,
@@ -167,7 +201,7 @@
     "markers": []
   },
   "rscs2_core/multiphysics/capabilities.py": {
-    "bytes": 6239,
+    "bytes": 6717,
     "def_count": 3,
     "markers": [
       "interface_only_markers"
@@ -194,6 +228,16 @@
       "interface_only_markers"
     ]
   },
+  "rscs2_core/optical_am.py": {
+    "bytes": 4917,
+    "def_count": 8,
+    "markers": []
+  },
+  "rscs2_core/optics_channels.py": {
+    "bytes": 8784,
+    "def_count": 10,
+    "markers": []
+  },
   "rscs2_core/piezo.py": {
     "bytes": 7842,
     "def_count": 5,
@@ -205,7 +249,7 @@
     "markers": []
   },
   "rscs2_core/proofbundle.py": {
-    "bytes": 42833,
+    "bytes": 46722,
     "def_count": 7,
     "markers": [
       "interface_only_markers"
@@ -218,6 +262,11 @@
       "interface_only_markers"
     ]
   },
+  "rscs2_core/quantity_registry.py": {
+    "bytes": 5794,
+    "def_count": 6,
+    "markers": []
+  },
   "rscs2_core/quartz.py": {
     "bytes": 8224,
     "def_count": 10,
@@ -228,6 +277,55 @@
     "def_count": 6,
     "markers": []
   },
+  "rscs2_core/refmodels/__init__.py": {
+    "bytes": 348,
+    "def_count": 0,
+    "markers": []
+  },
+  "rscs2_core/refmodels/avoided_crossing.py": {
+    "bytes": 4411,
+    "def_count": 4,
+    "markers": []
+  },
+  "rscs2_core/refmodels/block_hamiltonian.py": {
+    "bytes": 3970,
+    "def_count": 1,
+    "markers": [
+      "interface_only_markers"
+    ]
+  },
+  "rscs2_core/refmodels/dressed_spin.py": {
+    "bytes": 3631,
+    "def_count": 2,
+    "markers": []
+  },
+  "rscs2_core/refmodels/dynamic_me.py": {
+    "bytes": 6175,
+    "def_count": 2,
+    "markers": [
+      "interface_only_markers"
+    ]
+  },
+  "rscs2_core/refmodels/exciton_magnon.py": {
+    "bytes": 3502,
+    "def_count": 5,
+    "markers": []
+  },
+  "rscs2_core/refmodels/iome_linipo4.py": {
+    "bytes": 10110,
+    "def_count": 13,
+    "markers": []
+  },
+  "rscs2_core/refmodels/metacrystal.py": {
+    "bytes": 4901,
+    "def_count": 3,
+    "markers": []
+  },
+  "rscs2_core/refmodels/nonlinear_spin.py": {
+    "bytes": 8234,
+    "def_count": 8,
+    "markers": []
+  },
   "rscs2_core/refsystems.py": {
     "bytes": 4742,
     "def_count": 3,
@@ -236,6 +334,26 @@
   "rscs2_core/registry/__init__.py": {
     "bytes": 3341,
     "def_count": 3,
+    "markers": []
+  },
+  "rscs2_core/source_hypotheses/__init__.py": {
+    "bytes": 453,
+    "def_count": 0,
+    "markers": []
+  },
+  "rscs2_core/source_hypotheses/fdt.py": {
+    "bytes": 8864,
+    "def_count": 8,
+    "markers": []
+  },
+  "rscs2_core/source_hypotheses/lore.py": {
+    "bytes": 6696,
+    "def_count": 3,
+    "markers": []
+  },
+  "rscs2_core/torsion_mech.py": {
+    "bytes": 6052,
+    "def_count": 8,
     "markers": []
   },
   "rscs_core/__init__.py": {

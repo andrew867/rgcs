@@ -8,4 +8,4 @@ two-mode hybridization model (RSCS-O.4/RGCS-M.24, fork V.9 within
 6.4%), Ampere's law (D12), and the Ghosh 1999 Sellmeier fits vs frozen
 handbook indices. Numbers: benchmarks/*.csv, figure
 reference_comparison.png. Nothing in this bundle asserts physics
-beyond these anchors; the eye verdict is CONVENTIONAL_NODE_FOUND.
+beyond these anchors; the eye verdict is UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE.

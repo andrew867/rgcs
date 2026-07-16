@@ -1,0 +1,29 @@
+[
+  {
+    "candidate_halfwidth_mm": 3.0764499366281055,
+    "candidate_mm": [
+      -0.29476921772271897,
+      -0.2048928098210453,
+      102.23976226211207
+    ],
+    "centroid_mm": [
+      -0.29476921772271897,
+      -0.2048928098210453,
+      102.23976226211207
+    ],
+    "classification": "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
+    "cloud_rms_mm": 0.03177129840020578,
+    "comparator_halfwidth_mm": 3.0764499366281055,
+    "convergence_shift_mm": 0.3533079604912047,
+    "mesh_resolution_mm": 3.0764499366281055,
+    "nearest_comparator_mm": [
+      -0.4465814424125295,
+      0.7735017479759247,
+      106.01843442900096
+    ],
+    "numerical_tol_mm": 1e-06,
+    "rule": "exact = numerical tolerance only; overlap = localization intervals; a resolved separation is reported at its exact value, never absorbed into a proximity threshold (V4C-D-001)",
+    "separation_mm": 3.9062342744787877,
+    "status": "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE"
+  }
+]

@@ -142,9 +142,16 @@ def applicability(material: "MaterialCapabilities",
                 "reason_code": "CAPABILITY_UNKNOWN_NOT_PERMISSION",
                 "reason": "capability status UNKNOWN — execution "
                           "refused until a registered record exists"}
+    # UNSUPPORTED: RGCS has no VALIDATED implementation of this
+    # mechanism for this material. This is a statement about the
+    # SOFTWARE, never proof that the mechanism is physically absent,
+    # impossible, or incapable of producing an observable effect
+    # (binding scope statement, V4C corrective integration).
     return {"applicability": "NOT_APPLICABLE",
             "classification": "NOT_APPLICABLE",
-            "reason_code": "MATERIAL_CAPABILITY_ABSENT",
-            "reason": rec.reason or
-            f"{material.material_id} has no registered "
-            f"{capability_key} capability"}
+            "reason_code": "MECHANISM_NOT_IMPLEMENTED_FOR_MATERIAL",
+            "reason": (rec.reason or
+                       f"{material.material_id} has no registered "
+                       f"{capability_key} capability")
+            + " [no validated implementation exists; this is not "
+              "evidence of physical nonexistence]"}

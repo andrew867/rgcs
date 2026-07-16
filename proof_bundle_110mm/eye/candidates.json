@@ -37,9 +37,16 @@
     ],
     "gates": {
       "agreement_families": 3,
+      "boundary_shifts_mm": {
+        "cradle": 1.0274078564945546,
+        "free": 0.03177129840099822
+      },
       "extent_mm": 19.333752469705257,
       "inside_body": true,
-      "null_comparison_mm": 3.9062342744787877
+      "mesh_persistence_shift_mm": 0.3533079604912047,
+      "n_modes": 4,
+      "null_comparison_mm": 3.9062342744787877,
+      "uncertainty_fraction": 1.0
     },
     "mode_indices": [
       0,
@@ -47,8 +54,50 @@
       2,
       3
     ],
+    "node_comparison": {
+      "candidate_halfwidth_mm": 3.0764499366281055,
+      "candidate_mm": [
+        -0.29476921772271897,
+        -0.2048928098210453,
+        102.23976226211207
+      ],
+      "classification": "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
+      "cloud_rms_mm": 0.03177129840020578,
+      "comparator_halfwidth_mm": 3.0764499366281055,
+      "convergence_shift_mm": 0.3533079604912047,
+      "mesh_resolution_mm": 3.0764499366281055,
+      "nearest_comparator_mm": [
+        -0.4465814424125295,
+        0.7735017479759247,
+        106.01843442900096
+      ],
+      "numerical_tol_mm": 1e-06,
+      "rule": "exact = numerical tolerance only; overlap = localization intervals; a resolved separation is reported at its exact value, never absorbed into a proximity threshold (V4C-D-001)",
+      "separation_mm": 3.9062342744787877
+    },
     "score": 0.9241912134595436,
-    "status": "CONVENTIONAL_NODE_EXPLAINS_RESULT",
-    "uncertainty": {}
+    "status": "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
+    "uncertainty": {
+      "cloud_mm": [
+        [
+          -0.26958337384004,
+          -0.21240389040740268,
+          102.22191086613404
+        ],
+        [
+          -0.2695833738404565,
+          -0.21240389040718993,
+          102.22191086613398
+        ],
+        [
+          -0.2695833738392318,
+          -0.21240389040781327,
+          102.22191086613363
+        ]
+      ],
+      "cloud_rms_mm": 0.03177129840020578,
+      "n_draws": 3,
+      "recurrence_fraction": 1.0
+    }
   }
 ]

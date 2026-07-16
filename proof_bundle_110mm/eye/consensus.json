@@ -1,5 +1,5 @@
 {
-  "status": "CONVENTIONAL_NODE_EXPLAINS_RESULT",
+  "status": "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
   "candidates": [
     {
       "centroid_mm": [
@@ -38,12 +38,19 @@
         2,
         3
       ],
-      "status": "CONVENTIONAL_NODE_EXPLAINS_RESULT",
+      "status": "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
       "gates": {
         "agreement_families": 3,
         "extent_mm": 19.333752469705257,
         "inside_body": true,
-        "null_comparison_mm": 3.9062342744787877
+        "null_comparison_mm": 3.9062342744787877,
+        "mesh_persistence_shift_mm": 0.3533079604912047,
+        "boundary_shifts_mm": {
+          "free": 0.03177129840099822,
+          "cradle": 1.0274078564945546
+        },
+        "n_modes": 4,
+        "uncertainty_fraction": 1.0
       },
       "distances_mm": {
         "geometric_centre_mm": 47.222293079830266,
@@ -51,7 +58,49 @@
         "node_prior_mm": 47.385036083320934,
         "nearest_conventional_feature": 3.9062342744787877
       },
-      "uncertainty": {}
+      "uncertainty": {
+        "recurrence_fraction": 1.0,
+        "n_draws": 3,
+        "cloud_mm": [
+          [
+            -0.26958337384004,
+            -0.21240389040740268,
+            102.22191086613404
+          ],
+          [
+            -0.2695833738404565,
+            -0.21240389040718993,
+            102.22191086613398
+          ],
+          [
+            -0.2695833738392318,
+            -0.21240389040781327,
+            102.22191086613363
+          ]
+        ],
+        "cloud_rms_mm": 0.03177129840020578
+      },
+      "node_comparison": {
+        "candidate_mm": [
+          -0.29476921772271897,
+          -0.2048928098210453,
+          102.23976226211207
+        ],
+        "nearest_comparator_mm": [
+          -0.4465814424125295,
+          0.7735017479759247,
+          106.01843442900096
+        ],
+        "separation_mm": 3.9062342744787877,
+        "candidate_halfwidth_mm": 3.0764499366281055,
+        "comparator_halfwidth_mm": 3.0764499366281055,
+        "mesh_resolution_mm": 3.0764499366281055,
+        "convergence_shift_mm": 0.3533079604912047,
+        "cloud_rms_mm": 0.03177129840020578,
+        "numerical_tol_mm": 1e-06,
+        "classification": "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
+        "rule": "exact = numerical tolerance only; overlap = localization intervals; a resolved separation is reported at its exact value, never absorbed into a proximity threshold (V4C-D-001)"
+      }
     }
   ],
   "rejected": [
@@ -186,11 +235,13 @@
     "min_agree_families": 3,
     "persistence_tol_mm": 5.0,
     "boundary_tol_mm": 5.0,
-    "node_tol_mm": 4.0,
+    "node_tol_mm_removed": "V4C-D-001: proximity-threshold node classification removed; passed value is IGNORED",
+    "numerical_coincidence_tol_mm": 1e-06,
     "uncertainty_min_fraction": 0.6,
     "min_modes": 2,
     "max_extent_fraction": 0.35,
-    "note": "gates are sequential pass/fail checks; consensus is NOT an average of normalized fields"
+    "note": "gates are sequential pass/fail checks; consensus is NOT an average of normalized fields",
+    "competing_candidates": false
   },
   "null_comparison": {
     "conventional_features_mm": [
@@ -235,6 +286,7 @@
         54.61256739758276
       ]
     ],
-    "node_tol_mm": 4.0
+    "numerical_coincidence_tol_mm": 1e-06,
+    "policy": "exact coincidence or interval overlap only; no physical proximity threshold (V4C-D-001)"
   }
 }

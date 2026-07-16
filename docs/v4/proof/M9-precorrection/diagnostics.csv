@@ -1,0 +1,17 @@
+diagnostic,name,classification,units
+D1,displacement amplitude,DER (eye claims never EST, DV4-010),m (mode-normalized)
+D2,strain-energy density,DER (DV4-010),J/m^3 (mode-normalized)
+D3,kinetic-energy density,DER (DV4-010),J/m^3 (mode-normalized)
+D4,stress concentration (von Mises),DER (DV4-010),Pa (mode-normalized)
+D5,piezoelectric/electric-energy density,DER (DV4-010),J/m^3
+D6,optical-path sensitivity,DER (DV4-010),strain (mode-normalized)
+D7,coil/drive-mode overlap density,DER (DV4-010),N/m^3 * m (normalized)
+D8,cross-modal overlap,DER (DV4-010),m^2 (normalized)
+D9,phase coherence,DER (DV4-010),dimensionless [0,1]
+D10,phase singularity,DER (DV4-010),integer winding per plaquette
+D11,displacement vorticity/circulation,DER (DV4-010),1/1 (normalized)
+D12,electromagnetic circulation,DER (DV4-010),T*m
+D13,boundary-condition sensitivity,DER (DV4-010),mm
+D14,mesh-refinement persistence,DER (DV4-010),mm
+D15,uncertainty persistence,DER (DV4-010),fraction [0,1]; cloud rms mm
+D16,cross-physics consensus,DER (DV4-010),count

@@ -1,6 +1,6 @@
 {
   "archive_v2_tree": "de8d41744be341f724a8833257441d42d795e10c",
-  "proof_bundle_sha256sums_digest": "3883ebcf429c87f06daaf87a52b0ad352924f16f81cb28eb6f49899b47f1d861",
+  "proof_bundle_sha256sums_digest": "4fa4889b378d72aca5d5a8fb263387dce982ec46fcb55f80cf09b1796a958779",
   "release_checksum_files": {
     "release/SHA256SUMS.txt": "9ebc33bd042f17907a9b5c3134f21b053bca2f4e651c8a7786af885fd632a994",
     "release/v4/SHA256SUMS.txt": "ce0e24a5f95616a6a0201f0114f2396986de1453c2f6fd3361410cf03801befc"

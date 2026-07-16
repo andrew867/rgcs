@@ -82,11 +82,21 @@ dependence, uncertainty persistence. Adversarial battery: planted
 candidate found; flat/noise/outside/collapse/artifact/boundary cases
 all rejected correctly; NO_STABLE_CANDIDATE is a first-class outcome.
 
-**Canonical result:** CONVENTIONAL_NODE_EXPLAINS_RESULT — one 3-family
-region at the male cap/shaft junction (z ≈ 102.2 mm), 3.94 mm from an
-ordinary node/antinode station, ~46–47 mm from the geometric centre
-and the frozen RGCS node prior. No stable special region exists in the
-first four elastic modes; `eye_coordinate` is null everywhere.
+**Canonical result (corrected, V4C-D-001):**
+UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE — one 3-family region at
+(−0.295, −0.205, 102.240) mm near the male cap/shaft junction, an
+exactly reported **3.906 mm** from the nearest ordinary node/antinode
+station at (−0.447, 0.774, 106.018) mm. The separation is real and
+preserved; at the current mesh-dominated localization uncertainty
+(±3.08 mm per side) the intervals overlap, so the implemented
+conventional model MAY explain the feature — deliberately weaker than
+"explains". The candidate is unambiguously distinct from the
+geometric centre (~47 mm) and the frozen RGCS node prior (~50.6 mm);
+the junction plane (~0.4 mm away) remains a viable, untested
+conventional explanation; mesh levels near clmax ≈ 4 mm would
+discriminate. The v4.0.0 release used a proximity-threshold rule
+(defect V4C-D-001, corrected in the v4.1.0 line; v4.0.0 records are
+frozen history). `eye_coordinate` remains null everywhere.
 
 ## 9. Reference systems (Agent 10)
 

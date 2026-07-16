@@ -1,0 +1,54 @@
+[
+  {
+    "bbox_mm": [
+      [
+        -6.475430914996628,
+        -5.414512235840378,
+        94.53456103589495
+      ],
+      [
+        4.689105145345637,
+        5.414512235840378,
+        106.01843442900108
+      ]
+    ],
+    "centroid_mm": [
+      -0.29476921772271897,
+      -0.2048928098210453,
+      102.23976226211207
+    ],
+    "contributing": [
+      "D1",
+      "D11",
+      "D3",
+      "D7",
+      "D8"
+    ],
+    "distances_mm": {
+      "geometric_centre_mm": 47.222293079830266,
+      "nearest_conventional_feature": 3.9062342744787877,
+      "node_prior_mm": 47.385036083320934,
+      "shaft_midpoint_mm": 47.385036083320934
+    },
+    "families": [
+      "cross_modal",
+      "kinematic",
+      "rotational"
+    ],
+    "gates": {
+      "agreement_families": 3,
+      "extent_mm": 19.333752469705257,
+      "inside_body": true,
+      "null_comparison_mm": 3.9062342744787877
+    },
+    "mode_indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "score": 0.9241912134595436,
+    "status": "CONVENTIONAL_NODE_EXPLAINS_RESULT",
+    "uncertainty": {}
+  }
+]

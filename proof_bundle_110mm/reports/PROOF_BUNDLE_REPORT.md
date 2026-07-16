@@ -1,6 +1,6 @@
 # Proof Bundle Report — Canonical 110 mm Crystal
 
-**VERDICT: CONVENTIONAL_NODE_FOUND** (engine status: CONVENTIONAL_NODE_EXPLAINS_RESULT; the verdict was
+**VERDICT: UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE** (engine status: UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE; the verdict was
 not forced — a null or conventional outcome passes).
 
 Configurations: ideal N=7 (110.03766741071429 mm =
@@ -23,7 +23,7 @@ numerical authority (DV4-004).
 
 ## Eye
 
-CONVENTIONAL_NODE_EXPLAINS_RESULT: see eye/consensus.json and
+UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE: see eye/consensus.json and
 docs/plans-v4/EYE_DIAGNOSTIC_REPORT_110MM.md. eye_coordinate is null.
 
 ## Provenance

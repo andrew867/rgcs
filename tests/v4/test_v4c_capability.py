@@ -133,10 +133,19 @@ def test_envelope_no_fake_zero_and_reason_codes():
                     "NOT_APPLICABLE", ["ENG"], 0.0, {})
     env = not_applicable_result(
         "mod.magnon", "material.alpha_quartz",
-        "MATERIAL_CAPABILITY_ABSENT",
-        "Alpha quartz has no registered magnetic-order capability.")
+        "MECHANISM_NOT_IMPLEMENTED_FOR_MATERIAL",
+        "No validated quartz magnetic-order model exists (not "
+        "evidence of physical nonexistence).")
     assert env["value"] is None
-    assert env["reason_code"] == "MATERIAL_CAPABILITY_ABSENT"
+    assert env["reason_code"] == \
+        "MECHANISM_NOT_IMPLEMENTED_FOR_MATERIAL"
+    # the applicability service carries the non-nonexistence note
+    from rscs2_core.multiphysics import applicability, get_material
+    app = applicability(get_material("material.alpha_quartz"),
+                        "magnon_modes")
+    assert app["reason_code"] == \
+        "MECHANISM_NOT_IMPLEMENTED_FOR_MATERIAL"
+    assert "not" in app["reason"] and "nonexistence" in app["reason"]
     assert env["classification"] == "NOT_APPLICABLE"
 
 

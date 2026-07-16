@@ -504,8 +504,20 @@ def build_bundle(outdir: str | Path = None, fast: bool = False) -> Path:
                             boundary_fields={"free": f_coarse,
                                              "cradle": f_bc},
                             uncertainty_fields=draws,
-                            link_radius_mm=6.0, node_tol_mm=4.0)
+                            link_radius_mm=6.0)
     _w(edir / "consensus.json", res.to_json())
+    # V4C-D-001 corrected evidence: per-candidate uncertainty-aware
+    # node comparison + frequency sensitivity around each stable
+    # candidate (Rayleigh point-mass estimate on the coarse solve)
+    _wjson(edir / "node_coincidence.json",
+           [{"centroid_mm": c.centroid_mm.tolist(),
+             "status": c.status, **c.node_comparison}
+            for c in res.candidates if c.node_comparison])
+    _wjson(edir / "frequency_sensitivity.json",
+           [{"centroid_mm": c.centroid_mm.tolist(),
+             "per_mode": eye.frequency_sensitivity(
+                 prob_c, sol_c, c.centroid_mm, 8.0)}
+            for c in res.candidates if c.node_comparison])
     _wjson(edir / "candidates.json",
            [c.__dict__ for c in res.candidates])
     _csv(edir / "diagnostics.csv",
@@ -532,9 +544,17 @@ def build_bundle(outdir: str | Path = None, fast: bool = False) -> Path:
            f"{c.distances_mm.get('node_prior_mm', np.nan):.3f}")
           for i, c in enumerate(res.candidates)])
     _csv(edir / "conventional_node_comparison.csv",
-         "candidate,d_nearest_conventional_mm,node_tol_mm,explained",
-         [(i, f"{c.distances_mm.get('nearest_conventional_feature', np.nan):.3f}",
-           4.0, c.status == "CONVENTIONAL_NODE_EXPLAINS_RESULT")
+         "candidate,separation_mm,candidate_halfwidth_mm,"
+         "comparator_halfwidth_mm,mesh_resolution_mm,"
+         "convergence_shift_mm,classification",
+         [(i,
+           f"{(c.node_comparison or {}).get('separation_mm', float('nan')):.4f}",
+           f"{(c.node_comparison or {}).get('candidate_halfwidth_mm', float('nan')):.4f}",
+           f"{(c.node_comparison or {}).get('comparator_halfwidth_mm', float('nan')):.4f}",
+           f"{(c.node_comparison or {}).get('mesh_resolution_mm', float('nan')):.4f}",
+           (c.node_comparison or {}).get("convergence_shift_mm"),
+           (c.node_comparison or {}).get("classification",
+                                         c.status))
           for i, c in enumerate(res.candidates)])
     # no-candidate control: value-scrambled fields must yield null
     scr = []
@@ -544,12 +564,41 @@ def build_bundle(outdir: str | Path = None, fast: bool = False) -> Path:
         scr.append(eye.DiagnosticField(f.diagnostic_id, f.points_mm, v,
                                        f.raw_max, f.units,
                                        f.mode_indices, "scrambled"))
-    res_null = eye.eye_consensus(scr, geom, link_radius_mm=6.0,
-                                 node_tol_mm=4.0)
+    res_null = eye.eye_consensus(scr, geom, link_radius_mm=6.0)
     _wjson(edir / "no_candidate_control.json", {
         "control": "value-scrambled diagnostic fields (seeded)",
         "status": res_null.status,
         "passes": res_null.status == "NO_STABLE_CANDIDATE"})
+    # v4-completion (Agent M9): typed vote layer + applicability +
+    # exclusion statement. Votes for unsupported mechanisms are
+    # NOT_APPLICABLE and never counted; optical votes without a solved
+    # optical field are INTERFACE_ONLY; the vote layer can only
+    # downgrade the field-level verdict.
+    from . import eye_votes as ev
+    app_map = ev.quartz_vote_applicability(solved_optical_field=False)
+    _wjson(edir / "quartz_applicability.json", app_map)
+    votes = []
+    for vid, rec in app_map.items():
+        if rec["applicability"] == "APPLICABLE":
+            votes.append(ev.EyeVote(
+                vid, "APPLICABLE", rec["quantity"], rec["units"],
+                "canonical-run field artifacts (this bundle)", None,
+                None, "conventional controls evaluated "
+                      "(consensus.json)", "CORE_VALIDATED", None))
+        else:
+            votes.append(ev.EyeVote(
+                vid, rec["applicability"], rec["quantity"],
+                rec["units"], "M2 capability record", None, None,
+                None, "NOT_APPLICABLE"
+                if rec["applicability"] == "NOT_APPLICABLE"
+                else "INTERFACE_ONLY", rec["reason"]))
+    vote_out = ev.consensus_from_votes(res.status, votes)
+    _wjson(edir / "votes_v4c.json",
+           {**vote_out, "votes": [v.__dict__ for v in votes]})
+    shutil.copy(REPO / "docs/v4/"
+                       "WHAT_THIS_QUARTZ_MODEL_DOES_NOT_INCLUDE.md",
+                edir / "WHAT_THIS_QUARTZ_MODEL_DOES_NOT_INCLUDE.md")
+
     _w(edir / "eye_summary.md", f"""# Eye summary (canonical 110 mm)
 
 Engine status: **{res.status}**
@@ -782,11 +831,23 @@ interpretation. eye_coordinate remains **null** in every record.
     # ---------------- reports --------------------------------------------
     log("[9/10] reports + manifests")
     rdir = out / "reports"
+    # V4C-D-001 corrected vocabulary: coincidence is exact-or-overlap,
+    # never a proximity threshold; distinct stable candidates are
+    # reported as such with their exact separations
     verdict_map = {
-        "STABLE_CANDIDATE_REGION": "STABLE_CANDIDATE_REGION_FOUND",
-        "CONVENTIONAL_NODE_EXPLAINS_RESULT": "CONVENTIONAL_NODE_FOUND",
+        "DISTINCT_STABLE_CANDIDATE": "DISTINCT_STABLE_CANDIDATE",
+        "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE":
+            "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
+        "CONVENTIONAL_NODE_EXPLAINS_RESULT":
+            "EXACT_CONVENTIONAL_NODE_COINCIDENCE",
+        "CONVENTIONAL_MODEL_INSUFFICIENT":
+            "CONVENTIONAL_MODEL_INSUFFICIENT",
+        "CANDIDATE_NEW_COUPLING": "CANDIDATE_NEW_COUPLING",
+        "STABLE_CANDIDATE_REGION": "DISTINCT_STABLE_CANDIDATE",
         "MODE_SPECIFIC_CANDIDATE": "MODE_DEPENDENT_ONLY",
         "NO_STABLE_CANDIDATE": "NO_STABLE_CANDIDATE",
+        "INSUFFICIENT_RESOLUTION": "INSUFFICIENT_RESOLUTION",
+        "CONTRADICTORY_DIAGNOSTICS": "CONTRADICTORY_DIAGNOSTICS",
         "MESH_ARTIFACT_REJECTED": "NUMERICALLY_INCONCLUSIVE",
         "BOUNDARY_SENSITIVE_CANDIDATE": "NUMERICALLY_INCONCLUSIVE",
     }
@@ -887,9 +948,19 @@ reports/REPRODUCTION.md). Start with reports/PROOF_BUNDLE_REPORT.md.
     _wjson(out / "VERDICT.json", {
         "verdict": verdict,
         "engine_status": res.status,
-        "allowed": ["STABLE_CANDIDATE_REGION_FOUND",
-                    "CONVENTIONAL_NODE_FOUND", "MODE_DEPENDENT_ONLY",
-                    "NO_STABLE_CANDIDATE", "NUMERICALLY_INCONCLUSIVE"],
+        "allowed": ["DISTINCT_STABLE_CANDIDATE",
+                    "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
+                    "EXACT_CONVENTIONAL_NODE_COINCIDENCE",
+                    "CONVENTIONAL_MODEL_INSUFFICIENT",
+                    "CANDIDATE_NEW_COUPLING", "MODE_DEPENDENT_ONLY",
+                    "NO_STABLE_CANDIDATE", "INSUFFICIENT_RESOLUTION",
+                    "CONTRADICTORY_DIAGNOSTICS",
+                    "NUMERICALLY_INCONCLUSIVE"],
+        "vocabulary_note": "V4C-D-001: coincidence requires numerical "
+                           "exactness or interval overlap; a resolved "
+                           "separation is reported at its exact value "
+                           "(v4.0.0 used a proximity threshold and "
+                           "its records are frozen history)",
         "null_control": res_null.status,
         "not_forced": "a null result is a passing outcome",
         "eye_coordinate": None})

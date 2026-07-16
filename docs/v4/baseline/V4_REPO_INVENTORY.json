@@ -7,13 +7,48 @@
   },
   "branch": "v4-dev",
   "dirty_files": [
+    " M docs/v4/baseline/V4_BASELINE_TEST_MATRIX.json",
+    " M docs/v4/baseline/V4_FROZEN_ARTIFACT_CHECKSUMS.json",
     " M docs/v4/baseline/V4_MODULE_STATUS.json",
     " M docs/v4/baseline/V4_REPO_INVENTORY.json",
-    " M tests/v4/test_v4c_baseline.py",
+    " M proof_bundle_110mm/SHA256SUMS.txt",
+    " M proof_bundle_110mm/figures/axes.pdf",
+    " M proof_bundle_110mm/figures/coil_fields.pdf",
+    " M proof_bundle_110mm/figures/convergence.pdf",
+    " M proof_bundle_110mm/figures/displacement.pdf",
+    " M proof_bundle_110mm/figures/electric_energy.pdf",
+    " M proof_bundle_110mm/figures/eye_consensus.pdf",
+    " M proof_bundle_110mm/figures/eye_diagnostics.pdf",
+    " M proof_bundle_110mm/figures/eye_uncertainty.pdf",
+    " M proof_bundle_110mm/figures/geometry.pdf",
+    " M proof_bundle_110mm/figures/mesh_quality.pdf",
+    " M proof_bundle_110mm/figures/modes_001_002_005_010.pdf",
+    " M proof_bundle_110mm/figures/null_control.pdf",
+    " M proof_bundle_110mm/figures/optical_paths.pdf",
+    " M proof_bundle_110mm/figures/overlap.pdf",
+    " M proof_bundle_110mm/figures/reference_comparison.pdf",
+    " M proof_bundle_110mm/figures/strain_energy.pdf",
+    " M proof_bundle_110mm/figures/tagged_mesh.pdf",
+    " M proof_bundle_110mm/reports/PROOF_BUNDLE_REPORT.pdf",
+    " M rscs2_core/eye.py",
+    " M rscs2_core/multiphysics/capabilities.py",
+    " M rscs2_core/proofbundle.py",
+    " M tests/v4/test_rscs2_eye.py",
+    " M tests/v4/test_v4c_capability.py",
+    "?? docs/v4/WHAT_THIS_QUARTZ_MODEL_DOES_NOT_INCLUDE.md",
+    "?? docs/v4/proof/M9-precorrection/",
+    "?? proof_bundle_110mm/eye/WHAT_THIS_QUARTZ_MODEL_DOES_NOT_INCLUDE.md",
+    "?? proof_bundle_110mm/eye/quartz_applicability.json",
+    "?? proof_bundle_110mm/eye/votes_v4c.json",
     "?? release/v4/",
-    "M docs/v4/baseline/V4_BASELINE_TEST_MATRIX.json"
+    "?? rscs2_core/eye_votes.py",
+    "?? rscs2_core/optics_channels.py",
+    "?? tests/v4/test_v4c_channels.py",
+    "?? tests/v4/test_v4c_eye_votes.py",
+    "?? tests/v4/test_v4c_node_coincidence.py",
+    "M docs/plans-v4/DEFECT_REGISTER_V4.md"
   ],
-  "head": "687288127ecee7e2f8adfe00e86fd5b3a42baa00",
+  "head": "54f5e187fd07bfb96d2b488af5748dc0a41daf7f",
   "protected_tags_present": {
     "v2.0.0": "f9fd2c20a05334e12ac9113ba86853c6591fc84e",
     "v3.0.0": "83521f73d6ad02b009ada88f3b8d33a8a00fc253",
@@ -36,6 +71,6 @@
     "v4.0.0-rc1"
   ],
   "worktrees": [
-    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS 6872881 [v4-dev]"
+    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS 54f5e18 [v4-dev]"
   ]
 }

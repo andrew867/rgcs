@@ -1,6 +1,6 @@
 # Eye summary (canonical 110 mm)
 
-Engine status: **CONVENTIONAL_NODE_EXPLAINS_RESULT**
+Engine status: **UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE**
 Candidates: 1; rejected clusters:
 10. Scrambled-field null control:
 NO_STABLE_CANDIDATE (must be NO_STABLE_CANDIDATE).

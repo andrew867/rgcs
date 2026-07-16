@@ -1,5 +1,23 @@
 # Eye Diagnostic Report — Canonical 110 mm Crystal (RGCS v4, Agent 09)
 
+> **CORRECTIVE ADDENDUM (2026-07-16, V4C-D-001).** This report's
+> verdict used a node-proximity threshold (candidates within ~4 mm of
+> an ordinary node/antinode station were classified as conventionally
+> explained). That rule was scientifically incorrect: physical
+> proximity is not numerical coincidence, and the 3.94 mm separation
+> reported below is a resolved measurement, not zero. Under the
+> corrected uncertainty-aware rule the same feature — candidate
+> (−0.295, −0.205, 102.240) mm, nearest station (−0.447, 0.774,
+> 106.018) mm, separation 3.906 mm — classifies as
+> **UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE**: the conventional model
+> MAY explain it within the current localization uncertainty
+> (mesh-resolution-dominated halfwidth 3.08 mm per side), which is a
+> weaker statement than this report's original "explains". The text
+> below is preserved unmodified as the v4.0.0 historical record. See
+> `docs/v4/EYE_NODE_COINCIDENCE_CORRECTION.md` for the corrected
+> analysis, the full evidence table, and the mesh refinement that
+> would discriminate the two readings.
+
 **Verdict: `CONVENTIONAL_NODE_EXPLAINS_RESULT`.**
 The canonical crystal does **not** exhibit a stable, computationally
 special interaction region under the registered 16-diagnostic

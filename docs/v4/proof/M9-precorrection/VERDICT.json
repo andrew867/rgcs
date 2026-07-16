@@ -1,0 +1,14 @@
+{
+  "allowed": [
+    "STABLE_CANDIDATE_REGION_FOUND",
+    "CONVENTIONAL_NODE_FOUND",
+    "MODE_DEPENDENT_ONLY",
+    "NO_STABLE_CANDIDATE",
+    "NUMERICALLY_INCONCLUSIVE"
+  ],
+  "engine_status": "CONVENTIONAL_NODE_EXPLAINS_RESULT",
+  "eye_coordinate": null,
+  "not_forced": "a null result is a passing outcome",
+  "null_control": "NO_STABLE_CANDIDATE",
+  "verdict": "CONVENTIONAL_NODE_FOUND"
+}

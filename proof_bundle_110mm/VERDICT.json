@@ -1,14 +1,20 @@
 {
   "allowed": [
-    "STABLE_CANDIDATE_REGION_FOUND",
-    "CONVENTIONAL_NODE_FOUND",
+    "DISTINCT_STABLE_CANDIDATE",
+    "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
+    "EXACT_CONVENTIONAL_NODE_COINCIDENCE",
+    "CONVENTIONAL_MODEL_INSUFFICIENT",
+    "CANDIDATE_NEW_COUPLING",
     "MODE_DEPENDENT_ONLY",
     "NO_STABLE_CANDIDATE",
+    "INSUFFICIENT_RESOLUTION",
+    "CONTRADICTORY_DIAGNOSTICS",
     "NUMERICALLY_INCONCLUSIVE"
   ],
-  "engine_status": "CONVENTIONAL_NODE_EXPLAINS_RESULT",
+  "engine_status": "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
   "eye_coordinate": null,
   "not_forced": "a null result is a passing outcome",
   "null_control": "NO_STABLE_CANDIDATE",
-  "verdict": "CONVENTIONAL_NODE_FOUND"
+  "verdict": "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
+  "vocabulary_note": "V4C-D-001: coincidence requires numerical exactness or interval overlap; a resolved separation is reported at its exact value (v4.0.0 used a proximity threshold and its records are frozen history)"
 }

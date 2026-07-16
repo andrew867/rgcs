@@ -1,0 +1,240 @@
+{
+  "status": "CONVENTIONAL_NODE_EXPLAINS_RESULT",
+  "candidates": [
+    {
+      "centroid_mm": [
+        -0.29476921772271897,
+        -0.2048928098210453,
+        102.23976226211207
+      ],
+      "bbox_mm": [
+        [
+          -6.475430914996628,
+          -5.414512235840378,
+          94.53456103589495
+        ],
+        [
+          4.689105145345637,
+          5.414512235840378,
+          106.01843442900108
+        ]
+      ],
+      "score": 0.9241912134595436,
+      "contributing": [
+        "D1",
+        "D11",
+        "D3",
+        "D7",
+        "D8"
+      ],
+      "families": [
+        "cross_modal",
+        "kinematic",
+        "rotational"
+      ],
+      "mode_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "status": "CONVENTIONAL_NODE_EXPLAINS_RESULT",
+      "gates": {
+        "agreement_families": 3,
+        "extent_mm": 19.333752469705257,
+        "inside_body": true,
+        "null_comparison_mm": 3.9062342744787877
+      },
+      "distances_mm": {
+        "geometric_centre_mm": 47.222293079830266,
+        "shaft_midpoint_mm": 47.385036083320934,
+        "node_prior_mm": 47.385036083320934,
+        "nearest_conventional_feature": 3.9062342744787877
+      },
+      "uncertainty": {}
+    }
+  ],
+  "rejected": [
+    {
+      "centroid_mm": [
+        6.192742773668242,
+        1.2573669828309504,
+        60.23404004360447
+      ],
+      "reason": "insufficient diagnostic-family agreement (2 < 3)",
+      "diagnostics": [
+        "D2",
+        "D4",
+        "D6"
+      ]
+    },
+    {
+      "centroid_mm": [
+        -5.501830135590931,
+        7.627555723314432,
+        62.86057258103008
+      ],
+      "reason": "insufficient diagnostic-family agreement (2 < 3)",
+      "diagnostics": [
+        "D2",
+        "D4",
+        "D6"
+      ]
+    },
+    {
+      "centroid_mm": [
+        -5.197824352003144,
+        -7.408564751541865,
+        60.81242854223338
+      ],
+      "reason": "insufficient diagnostic-family agreement (2 < 3)",
+      "diagnostics": [
+        "D2",
+        "D4",
+        "D6"
+      ]
+    },
+    {
+      "centroid_mm": [
+        -0.6470425699687742,
+        0.37324951350093855,
+        90.57412243123906
+      ],
+      "reason": "insufficient diagnostic-family agreement (1 < 3)",
+      "diagnostics": [
+        "D1",
+        "D3"
+      ]
+    },
+    {
+      "centroid_mm": [
+        -3.0321145368204685,
+        -8.868151460405691,
+        41.52831078760583
+      ],
+      "reason": "insufficient diagnostic-family agreement (2 < 3)",
+      "diagnostics": [
+        "D4",
+        "D6"
+      ]
+    },
+    {
+      "centroid_mm": [
+        -0.3178951065305812,
+        -7.118870346797167,
+        90.35850390014038
+      ],
+      "reason": "insufficient diagnostic-family agreement (1 < 3)",
+      "diagnostics": [
+        "D7"
+      ]
+    },
+    {
+      "centroid_mm": [
+        5.0664269293909175e-05,
+        7.244544971536398,
+        90.36450327757272
+      ],
+      "reason": "insufficient diagnostic-family agreement (1 < 3)",
+      "diagnostics": [
+        "D7"
+      ]
+    },
+    {
+      "centroid_mm": [
+        -0.1661223867461578,
+        -0.05616131277201941,
+        4.741480667935531
+      ],
+      "reason": "insufficient diagnostic-family agreement (1 < 3)",
+      "diagnostics": [
+        "D1",
+        "D3",
+        "D7"
+      ]
+    },
+    {
+      "centroid_mm": [
+        1.5098228863655903,
+        -7.859099443570175,
+        77.6853616001913
+      ],
+      "reason": "insufficient diagnostic-family agreement (2 < 3)",
+      "diagnostics": [
+        "D2",
+        "D4",
+        "D6"
+      ]
+    },
+    {
+      "centroid_mm": [
+        -1.4546112948896164,
+        7.936638629600968,
+        77.5746416704855
+      ],
+      "reason": "insufficient diagnostic-family agreement (2 < 3)",
+      "diagnostics": [
+        "D2",
+        "D4",
+        "D6"
+      ]
+    }
+  ],
+  "procedure": {
+    "quantile": 0.95,
+    "link_radius_mm": 6.0,
+    "min_agree_families": 3,
+    "persistence_tol_mm": 5.0,
+    "boundary_tol_mm": 5.0,
+    "node_tol_mm": 4.0,
+    "uncertainty_min_fraction": 0.6,
+    "min_modes": 2,
+    "max_extent_fraction": 0.35,
+    "note": "gates are sequential pass/fail checks; consensus is NOT an average of normalized fields"
+  },
+  "null_comparison": {
+    "conventional_features_mm": [
+      [
+        0.8931628848293988,
+        -1.5470034959518495,
+        106.01843442899458
+      ],
+      [
+        -3.561351390825651,
+        -6.168441552516012,
+        78.97571571055857
+      ],
+      [
+        -1.786325769650141,
+        0.0,
+        106.01843442900108
+      ],
+      [
+        -5.757267368674875,
+        4.985553531292977,
+        76.8289839910307
+      ],
+      [
+        -9.569688724118503,
+        -5.464378949326942e-13,
+        89.0959956967567
+      ],
+      [
+        -6.351621123244672,
+        -5.501271481811754,
+        50.37896770749356
+      ],
+      [
+        -0.4465814424125295,
+        0.7735017479759247,
+        106.01843442900096
+      ],
+      [
+        -3.9313666466412296,
+        -0.0001447910656269865,
+        54.61256739758276
+      ]
+    ],
+    "node_tol_mm": 4.0
+  }
+}

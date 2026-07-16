@@ -1,2 +1,2 @@
-candidate,d_nearest_conventional_mm,node_tol_mm,explained
-0,3.906,4.0,True
+candidate,separation_mm,candidate_halfwidth_mm,comparator_halfwidth_mm,mesh_resolution_mm,convergence_shift_mm,classification
+0,3.9062,3.0764,3.0764,3.0764,0.3533079604912047,UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE

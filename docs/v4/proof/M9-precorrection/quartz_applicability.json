@@ -1,0 +1,86 @@
+{
+  "chiral_phonon_am": {
+    "applicability": "NOT_APPLICABLE",
+    "quantity": "angular_momentum.phonon.chiral_mode",
+    "reason": "frozen boundary 6: alpha quartz may not acquire this mechanism without a quartz-specific registered source and implementation (no registered quartz g-factor)",
+    "units": "kg m^2/s"
+  },
+  "chirality_density": {
+    "applicability": "NOT_APPLICABLE",
+    "quantity": "chirality.spin_texture",
+    "reason": "frozen boundary 6: alpha quartz may not acquire this mechanism without a quartz-specific registered source and implementation",
+    "units": "dimensionless"
+  },
+  "cross_field_am_alignment": {
+    "applicability": "INTERFACE_ONLY",
+    "quantity": "alignment of DISTINCT AM quantities (geometric only)",
+    "reason": "material supports optics but no optical field was actually solved in this run",
+    "units": "correlation"
+  },
+  "dynamic_boundary_sensitivity": {
+    "applicability": "APPLICABLE",
+    "quantity": "M6 boundary-variant shift",
+    "reason": null,
+    "units": "mm"
+  },
+  "hybridization_participation": {
+    "applicability": "APPLICABLE",
+    "quantity": "near-degenerate pair participation",
+    "reason": null,
+    "units": "fraction"
+  },
+  "magnetoelectric_quadrature": {
+    "applicability": "NOT_APPLICABLE",
+    "quantity": "dynamic ME I/Q",
+    "reason": "frozen boundary 6: alpha quartz may not acquire this mechanism without a quartz-specific registered source and implementation",
+    "units": "s/m"
+  },
+  "mechanical_circulation": {
+    "applicability": "APPLICABLE",
+    "quantity": "circulation.mechanical.displacement",
+    "reason": null,
+    "units": "m^2"
+  },
+  "mesh_fixture_sensitivity": {
+    "applicability": "APPLICABLE",
+    "quantity": "persistence controls (D13/D14)",
+    "reason": null,
+    "units": "mm"
+  },
+  "optical_oam": {
+    "applicability": "INTERFACE_ONLY",
+    "quantity": "angular_momentum.optical.orbital",
+    "reason": "material supports optics but no optical field was actually solved in this run",
+    "units": "J s/m^3"
+  },
+  "optical_sam": {
+    "applicability": "INTERFACE_ONLY",
+    "quantity": "angular_momentum.optical.spin",
+    "reason": "material supports optics but no optical field was actually solved in this run",
+    "units": "J s/m^3"
+  },
+  "ordinary_nodal_structure": {
+    "applicability": "APPLICABLE",
+    "quantity": "conventional node/antinode control",
+    "reason": null,
+    "units": "m"
+  },
+  "symmetry_breaking_persistence": {
+    "applicability": "APPLICABLE",
+    "quantity": "M6 splitting persistence",
+    "reason": null,
+    "units": "Hz"
+  },
+  "topological_charge": {
+    "applicability": "INTERFACE_ONLY",
+    "quantity": "optical phase winding",
+    "reason": "material supports optics but no optical field was actually solved in this run",
+    "units": "integer"
+  },
+  "torsional_mode_energy": {
+    "applicability": "APPLICABLE",
+    "quantity": "torsion.mechanical.mode_energy",
+    "reason": null,
+    "units": "J"
+  }
+}
