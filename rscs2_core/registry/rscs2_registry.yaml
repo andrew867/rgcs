@@ -213,3 +213,48 @@ boundary:
     tests: ['tests/v4/test_rscs2_piezo.py::test_electrode_reversal_flips_displacement']
     doc_target: 'V4_PIEZOELECTRIC_MULTIPHYSICS_SPEC'
     status: 'implemented + validated (reversal antisymmetry; zero-drive zero-response)'
+accelerator:
+  - id: RSCS2-A.1
+    name: backend-neutral dispatch (cpu/opencl/cuda_interface/auto)
+    class: ENG
+    units: n/a
+    signature: 'sweep(C, rho, dirs, backend, device) -> speeds + device/dtype record'
+    module: 'rscs2_core.accel:sweep'
+    provenance: ['DV4-004/007/013']
+    exclusions: ['no silent fallback; explicit unavailable backend raises']
+    tests: ['tests/v4/test_rscs2_accel.py::test_auto_backend_reports_choice', 'tests/v4/test_rscs2_accel.py::test_explicit_unavailable_backend_raises_no_silent_fallback']
+    doc_target: 'V4_ACCELERATOR_BACKEND_SPEC'
+    status: 'implemented + tested'
+  - id: RSCS2-A.2
+    name: device capability detection
+    class: ENG
+    units: n/a
+    signature: 'discover_devices() -> platform/device/driver/mem/fp64'
+    module: 'rscs2_core.accel:discover_devices'
+    provenance: ['pyopencl device queries']
+    exclusions: []
+    tests: ['tests/v4/test_rscs2_accel.py::test_capability_report_shape']
+    doc_target: 'V4_ACCELERATOR_BACKEND_SPEC'
+    status: 'implemented + tested (Iris Xe fp32-only + i5 CPU-CL fp64 discovered)'
+  - id: RSCS2-A.3
+    name: batched Christoffel sweep kernel (OpenCL)
+    class: DER
+    units: 'm/s'
+    signature: 'directions (N,3) -> speeds (N,3) desc; closed-form sym-3x3 eigenvalues'
+    module: 'rscs2_core.accel:OpenCLChristoffel'
+    provenance: ['trigonometric closed-form eigenvalues (standard)']
+    exclusions: ['fp32 devices carry registered 2e-4 tolerance']
+    tests: ['tests/v4/test_rscs2_accel.py::test_opencl_parity_every_device', 'tests/v4/test_rscs2_accel.py::test_opencl_deterministic_across_runs']
+    doc_target: 'V4_ACCELERATOR_BACKEND_SPEC'
+    status: 'HARDWARE_BENCHMARKED on Iris Xe (fp32) + i5-1135G7 CL (fp64); MULTI_DEVICE_REPRODUCED for this kernel; see evidence/v4/agent07/'
+  - id: RSCS2-A.5
+    name: CPU/device parity harness
+    class: ENG
+    units: 'relative error'
+    signature: 'per-device max rel err vs cpu float64 authority, registered tolerances {f64: 1e-10, f32: 2e-4}'
+    module: 'rscs2_core.accel:PARITY_TOL'
+    provenance: ['DV4-007 ladder']
+    exclusions: []
+    tests: ['tests/v4/test_rscs2_accel.py::test_opencl_parity_every_device']
+    doc_target: 'V4_ACCELERATOR_BACKEND_SPEC'
+    status: 'implemented + passing on 2 real devices'

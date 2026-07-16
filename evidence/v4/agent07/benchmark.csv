@@ -1,0 +1,17 @@
+device,dtype,n_directions,warm_total_s,max_rel_err_vs_cpu_f64,kernel_event_s
+cpu-numpy-lapack,float64,10000,0.021586,0.000e+00,0.000000
+cpu-numpy-closedform,float64,10000,0.004116,2.916e-15,0.000000
+Intel(R) Iris(R) Xe Graphics,float32,10000,0.001604,2.347e-06,0.000022
+11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz,float64,10000,0.001764,7.281e-15,0.000190
+cpu-numpy-lapack,float64,50000,0.156417,0.000e+00,0.000000
+cpu-numpy-closedform,float64,50000,0.035765,3.753e-14,0.000000
+Intel(R) Iris(R) Xe Graphics,float32,50000,0.002073,1.175e-05,0.000048
+11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz,float64,50000,0.003071,1.285e-14,0.000624
+cpu-numpy-lapack,float64,200000,0.495926,0.000e+00,0.000000
+cpu-numpy-closedform,float64,200000,0.149342,1.558e-14,0.000000
+Intel(R) Iris(R) Xe Graphics,float32,200000,0.003221,4.680e-06,0.000135
+11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz,float64,200000,0.004956,1.718e-14,0.001731
+cpu-numpy-lapack,float64,500000,1.430556,0.000e+00,0.000000
+cpu-numpy-closedform,float64,500000,0.346579,2.053e-14,0.000000
+Intel(R) Iris(R) Xe Graphics,float32,500000,0.006627,3.395e-05,0.000321
+11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz,float64,500000,0.009847,1.802e-14,0.004275

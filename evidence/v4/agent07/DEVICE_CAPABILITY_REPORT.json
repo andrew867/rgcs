@@ -1,0 +1,29 @@
+{
+  "os": "Windows-11-10.0.26200-SP0",
+  "cpu": "Intel64 Family 6 Model 140 Stepping 1, GenuineIntel",
+  "python": "3.13.2",
+  "opencl_devices": [
+    {
+      "platform": "Intel(R) OpenCL Graphics",
+      "device": "Intel(R) Iris(R) Xe Graphics",
+      "type": "ALL | GPU",
+      "driver": "32.0.101.7085",
+      "global_mem_mb": 14770,
+      "max_workgroup": 512,
+      "fp64": false
+    },
+    {
+      "platform": "Intel(R) OpenCL",
+      "device": "11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz",
+      "type": "ALL | CPU",
+      "driver": "2026.20.1.0.12_160000",
+      "global_mem_mb": 32384,
+      "max_workgroup": 8192,
+      "fp64": true
+    }
+  ],
+  "cuda": {
+    "available": false,
+    "note": "no NVIDIA driver in this environment; cuda_interface status = INTERFACE_TESTED only"
+  }
+}
