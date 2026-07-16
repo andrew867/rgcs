@@ -37,3 +37,5 @@ release/*.zip
 # v4 generated workspaces (demo + CLI scratch; proof_bundle_110mm IS committed)
 demo_out/
 cli_work/
+
+docs/v4/proof/C02/scratch/

@@ -1,0 +1,15 @@
+{
+  "drive_frequency_hz": 13775.677512708919,
+  "damping_ratio": 0.01,
+  "solved_complex_field": true,
+  "d9_mean_coherence": 0.7730445746860485,
+  "d9_min_coherence": 3.863503389080072e-11,
+  "d10_n_singularities": 4,
+  "d10_charges": [
+    1,
+    -1,
+    -1,
+    1
+  ],
+  "note": "phase diagnostics on an ACTUALLY SOLVED complex response; near-resonant single-mode drive is expected to be highly phase-coherent \u2014 vortices here would indicate multi-mode interference"
+}

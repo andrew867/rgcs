@@ -1,0 +1,1744 @@
+{
+  "total_ids": 248,
+  "covered": 248,
+  "uncovered": [],
+  "rows": [
+    {
+      "id": "A01",
+      "title": "Exciton-cavity photon polariton model",
+      "owner": "C01 polaritons",
+      "artifact": "rscs2_core/refmodels/polariton.py::hopfield_2x2,cavity_dispersion_ev,polariton_dispersion",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "A02",
+      "title": "Hopfield coefficients and Rabi splitting",
+      "owner": "C01 polaritons",
+      "artifact": "rscs2_core/refmodels/polariton.py::hopfield_2x2,cavity_dispersion_ev,polariton_dispersion",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "A03",
+      "title": "Momentum/angle dispersion",
+      "owner": "C01 polaritons",
+      "artifact": "rscs2_core/refmodels/polariton.py::hopfield_2x2,cavity_dispersion_ev,polariton_dispersion",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "A04",
+      "title": "Magnon-polariton third-mode extension",
+      "owner": "C01 polaritons",
+      "artifact": "rscs2_core/refmodels/polariton.py::hopfield_3x3,polarization_channel",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "A05",
+      "title": "Polarization and magnetic-field channels",
+      "owner": "C01 polaritons",
+      "artifact": "rscs2_core/refmodels/polariton.py::hopfield_3x3,polarization_channel",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "A06",
+      "title": "Quantum transduction interface",
+      "owner": "C01/C13",
+      "artifact": "rscs2_core/refmodels/polariton.py::transduction_interface",
+      "status": "INTERFACE_ONLY"
+    },
+    {
+      "id": "A07",
+      "title": "Adaptive sub-millimetre Eye refinement",
+      "owner": "C02 Eye refinement",
+      "artifact": "rscs2_core/eye_refinement.py::candidate_ladder,refined_verdict + docs/v4/proof/C02/refinement_ladder.json",
+      "status": "INSUFFICIENT_RESOLUTION"
+    },
+    {
+      "id": "A08",
+      "title": "More elastic modes, mesh levels, boundaries, material draws",
+      "owner": "C02 Eye refinement",
+      "artifact": "rscs2_core/eye_refinement.py::candidate_ladder,refined_verdict + docs/v4/proof/C02/refinement_ladder.json",
+      "status": "INSUFFICIENT_RESOLUTION"
+    },
+    {
+      "id": "A09",
+      "title": "Complex driven Eye response, D9/D10 phase diagnostics",
+      "owner": "C02 Eye refinement",
+      "artifact": "rscs2_core/fem.py::harmonic_field + eye_refinement.py::driven_phase_diagnostics",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "A10",
+      "title": "Eye candidate frequency sensitivity versus coordinate",
+      "owner": "C02 Eye refinement",
+      "artifact": "rscs2_core/eye_refinement.py::frequency_sensitivity_map",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "A11",
+      "title": "Harmonic crystal family N=5 through N=12",
+      "owner": "C03 harmonic family",
+      "artifact": "rscs2_core/harmonic_family.py::build_family_member,tolerance_sensitivity,specimen_registry",
+      "status": "CANDIDATE_NEW_COUPLING"
+    },
+    {
+      "id": "A12",
+      "title": "Manufacturing tolerances and prospective specimen generator",
+      "owner": "C03 harmonic family",
+      "artifact": "rscs2_core/harmonic_family.py::build_family_member,tolerance_sensitivity,specimen_registry",
+      "status": "CANDIDATE_NEW_COUPLING"
+    },
+    {
+      "id": "A13",
+      "title": "Frequency-key registry and null-model significance",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry,coincidence_significance",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "A14",
+      "title": "BVD equivalent circuit extraction",
+      "owner": "C06 BVD",
+      "artifact": "rscs2_core/bvd.py::extract_bvd,derived_parameters",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "A15",
+      "title": "C0, R1, L1, C1, fs, fp, Q, k_eff\u00b2, spurious modes",
+      "owner": "C06 BVD",
+      "artifact": "rscs2_core/bvd.py::extract_bvd,derived_parameters",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "A16",
+      "title": "Coil, electrode, transducer, fixture, and apparatus models",
+      "owner": "C07 apparatus",
+      "artifact": "rscs2_core/apparatus.py::wheeler_inductance_h,crossed_coil_coupling,apparatus_registry,ordinary_artifact_model",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "A17",
+      "title": "Calibration, uncertainty, inverse design",
+      "owner": "C08 calibration/inverse design",
+      "artifact": "rscs2_core/calibration.py (v4.1 module)",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "A18",
+      "title": "DFT/BSE/ab-initio/QFT/microscopic interfaces only",
+      "owner": "C13 future interfaces",
+      "artifact": "rscs2_core/interfaces_future.py::request_computation",
+      "status": "INTERFACE_ONLY"
+    },
+    {
+      "id": "C001",
+      "title": "decaying resonance of state change",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C002",
+      "title": "awareness of time as current velocity of state change",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C003",
+      "title": "subjective time as internal update/novelty/arousal/memory dynamics",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C004",
+      "title": "block-universe wavefront versus snapshot",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C005",
+      "title": "observer-frame and 4th-dimension language",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C006",
+      "title": "two or three linked temporal phases",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C007",
+      "title": "Arisaka \u201cspace is time\u201d audit",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C008",
+      "title": "MePMoS",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "C009",
+      "title": "Neural Holographic Tomography",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "C010",
+      "title": "Holographic Ring Attractor Lattice",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C011",
+      "title": "Q-HAL, BFFT, CAIRO, TERESA",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "C012",
+      "title": "space-to-time operator S_to_T",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C013",
+      "title": "alpha/theta/gamma phase timing",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C014",
+      "title": "language and creativity as frequency-time navigation",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C015",
+      "title": "microtubules as candidate coherence transformers",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C016",
+      "title": "tau_c * eta_phi * K_cross > theta_neural_bias",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C017",
+      "title": "ordered water and aromatic-electron transition hypotheses",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C018",
+      "title": "Hz/kHz/MHz/GHz/THz resonance claims",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C019",
+      "title": "fractal time-crystal hypothesis",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C020",
+      "title": "6G/THz instrumentation analogy",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "C021",
+      "title": "100 GHz\u201310 THz measurement lane",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "C022",
+      "title": "superheterodyne receiver analogy",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "C023",
+      "title": "cross-frequency coupling and downconversion",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C024",
+      "title": "interpersonal synchrony and mentorship",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C025",
+      "title": "firefly and pendulum synchronization analogies",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C026",
+      "title": "gamma 40\u2013160 Hz and consciousness claims",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C027",
+      "title": "dreams versus wake permanence",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C028",
+      "title": "temporal permanence through other observers",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C029",
+      "title": "aura as social/behavioral influence radius",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C030",
+      "title": "external field or receiver hypothesis",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C031",
+      "title": "multiverse and quantum-state influence",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C032",
+      "title": "quantum cognition versus literal quantum brain",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C033",
+      "title": "entanglement and nonclassical-correlation tests",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C034",
+      "title": "manifestation as attention-shaped affordance/path selection",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C035",
+      "title": "path-integral language as metaphor unless formalized",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C036",
+      "title": "active inference and affordances",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C037",
+      "title": "first-person conduit/empty-mind origin report",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C038",
+      "title": "spirit/God/private myth layer",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C039",
+      "title": "mystical language preserved without public scientific endorsement",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C040",
+      "title": "layer map from unknown information state to molecular, neural, cognitive, phenomenological",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C041",
+      "title": "Dream-Wake Constraint Theory",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C042",
+      "title": "Field-Constraint Layer and K_ext quarantine",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C043",
+      "title": "fragments-of-energy source family",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C044",
+      "title": "sixth/seventh-sense separation",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "C045",
+      "title": "social entrainment, speaker-listener coupling, mentoring",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C046",
+      "title": "flow as subsystem coherence",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C047",
+      "title": "raising consciousness as coordination, not magic",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C048",
+      "title": "\u201ccoherence is not truth\u201d control",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "C049",
+      "title": "embodied spatial event memory architecture for Hydrogenuine",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "C050",
+      "title": "SWR-like replay and offline consolidation",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "C051",
+      "title": "Q-HAL local world-memory block",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "C052",
+      "title": "BFFT transform/compression scaffold",
+      "owner": "T-lane theory registry",
+      "artifact": "consciousness_lane/theory_registry.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "E001",
+      "title": "4096 Hz non-contact brushing on 3 axes",
+      "owner": "E-lane E01",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E002",
+      "title": "4096 Hz non-contact brushing on all 6 sides",
+      "owner": "E-lane E01",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E003",
+      "title": "contact and non-contact acoustic excitation",
+      "owner": "E-lane E01",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E004",
+      "title": "tuning forks versus voice-coil/piezo drive",
+      "owner": "E-lane E01",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E005",
+      "title": "silver electrodes at measured compression node",
+      "owner": "E-lane E02",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E006",
+      "title": "20/21 Hz pulse comparison",
+      "owner": "E-lane E02",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E007",
+      "title": "1496/587/644 node excitation",
+      "owner": "E-lane E02",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E008",
+      "title": "crossed copper/silver coils at 90\u00b0",
+      "owner": "E-lane E03",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E009",
+      "title": "40 turns, 0.33 mm wire modern coil hypothesis",
+      "owner": "E-lane E03",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E010",
+      "title": "seven-turn coil, one-litre vessel, 70\u00b0F historical scaffold",
+      "owner": "E-lane E03/E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E011",
+      "title": "3-axis magnetometer",
+      "owner": "E-lane E03",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E012",
+      "title": "high-impedance electric-field/electrometer channel",
+      "owner": "E-lane E08",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E013",
+      "title": "capacitance and impedance",
+      "owner": "E-lane E08",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E014",
+      "title": "microphone and contact microphone",
+      "owner": "E-lane E08",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E015",
+      "title": "accelerometer",
+      "owner": "E-lane E08",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E016",
+      "title": "scanning laser vibrometer",
+      "owner": "E-lane E08",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E017",
+      "title": "current, voltage, field, temperature, humidity, SPL",
+      "owner": "E-lane E08",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E018",
+      "title": "grounded/ungrounded, glove, no-contact, automated controls",
+      "owner": "E-lane E09",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E019",
+      "title": "fixed nonmetal jig",
+      "owner": "E-lane E09",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E020",
+      "title": "dummy coil, resistor, no crystal, rotated crystal, metal bracket controls",
+      "owner": "E-lane E09",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E021",
+      "title": "cheap quartz before expensive precision crystal",
+      "owner": "E-lane E04",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E022",
+      "title": "repeated days and blind labels",
+      "owner": "E-lane E09",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E023",
+      "title": "simultaneous acoustic and electrical pickup",
+      "owner": "E-lane E09",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E024",
+      "title": "phone-app claims tested only as instrument-limited ENG/HYP",
+      "owner": "E-lane E08",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E025",
+      "title": "collector-reference geometry from CAD source",
+      "owner": "E-lane E08",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E026",
+      "title": "north/orientation logging",
+      "owner": "E-lane E09",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "E027",
+      "title": "contact force and mounting-pressure logging",
+      "owner": "E-lane E09",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "F001",
+      "title": "4096 Hz",
+      "owner": "E-lane E01",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "F002",
+      "title": "20.480 kHz = 4096\u00d75",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "CORE_VALIDATED"
+    },
+    {
+      "id": "F003",
+      "title": "32.768 kHz = 4096\u00d78 = 2^15",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "CORE_VALIDATED"
+    },
+    {
+      "id": "F004",
+      "title": "20 Hz",
+      "owner": "E-lane E02",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "F005",
+      "title": "19.8 Hz",
+      "owner": "E-lane E02",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "F006",
+      "title": "21 Hz",
+      "owner": "E-lane E02",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "F007",
+      "title": "21\u00d7195 \u2248 4095 Hz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F008",
+      "title": "40.00 Hz",
+      "owner": "E-lane E07",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "F009",
+      "title": "40.96 Hz = 4096/100",
+      "owner": "E-lane E07",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "F010",
+      "title": "41.00 Hz",
+      "owner": "E-lane E07",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "F011",
+      "title": "42.00 Hz",
+      "owner": "E-lane E07",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "F012",
+      "title": "8 Hz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "F013",
+      "title": "20.48 Hz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "CORE_VALIDATED"
+    },
+    {
+      "id": "F014",
+      "title": "5.12 kHz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "CORE_VALIDATED"
+    },
+    {
+      "id": "F015",
+      "title": "10.24 kHz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "CORE_VALIDATED"
+    },
+    {
+      "id": "F016",
+      "title": "5.1515 kHz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F017",
+      "title": "10.3030 kHz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F018",
+      "title": "20.000 kHz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "F019",
+      "title": "20.6061 kHz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F020",
+      "title": "18.5\u201321.2 kHz",
+      "owner": "E-lane E01",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "F021",
+      "title": "19.8\u201321.2 kHz",
+      "owner": "E-lane E01",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "F022",
+      "title": "10.0\u201312.7 kHz",
+      "owner": "E-lane E01",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "F023",
+      "title": "24.5\u201325.5 kHz",
+      "owner": "E-lane E01",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "F024",
+      "title": "1496 Hz",
+      "owner": "E-lane E02",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "F025",
+      "title": "587 Hz",
+      "owner": "E-lane E02",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "F026",
+      "title": "644 Hz",
+      "owner": "E-lane E02",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "F027",
+      "title": "465 Hz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F028",
+      "title": "787 Hz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F029",
+      "title": "880 Hz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F030",
+      "title": "465\u00d744 = 20.460 kHz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F031",
+      "title": "787\u00d726 = 20.462 kHz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F032",
+      "title": "210.42\u00d798 = 20.62116 kHz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F033",
+      "title": "4160\u00d75 = 20.800 kHz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "F034",
+      "title": "4225\u00d75 = 21.125 kHz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "F035",
+      "title": "4225\u00d78 = 33.800 kHz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "F036",
+      "title": "10,20,30,50,80,130,210,340,550 Hz",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F037",
+      "title": "7,9,14,21,42",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F038",
+      "title": "multiples of 9",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F039",
+      "title": "51.843\u00d720 and chains \u00d7128, \u00d7256, \u00d74096",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F040",
+      "title": "60\u00d74096 phase-factor branch",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F041",
+      "title": "46 ms",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F042",
+      "title": "60\u03c0/4096 s",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F043",
+      "title": "192-cycle binary timing",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F044",
+      "title": "phi^8 timing",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F045",
+      "title": "552 ms macrocycle",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F046",
+      "title": "2260.992 cycles",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "CORE_VALIDATED"
+    },
+    {
+      "id": "F047",
+      "title": "1507.328 cycles",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "CORE_VALIDATED"
+    },
+    {
+      "id": "F048",
+      "title": "density ladder 64\u00d78^(n-1)",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F049",
+      "title": "2.45 GHz powers-of-eight ratio",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F050",
+      "title": "454 Omega value",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F051",
+      "title": "7.6 Hz phi-EEG lead",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "F052",
+      "title": "f(n)=f0\u00d7phi^n",
+      "owner": "C04 frequency keys",
+      "artifact": "rscs2_core/frequency_keys.py::build_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "G001",
+      "title": "Rx angle 51.843\u00b0",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "G002",
+      "title": "source form 51\u00b051\u203251\u2033",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "G003",
+      "title": "decimal conversion near 51.86\u00b0",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "G004",
+      "title": "vendor approximation 52\u00b0",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "G005",
+      "title": "pyramid comparison near 51.8\u00b0",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "G006",
+      "title": "Tx angle 60.000\u00b0 and 58\u201360\u00b0 sensitivity",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "CORE_VALIDATED"
+    },
+    {
+      "id": "G007",
+      "title": "six-sided lattice alignment",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "G008",
+      "title": "6, 8, 12, and 24 facet families",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "G009",
+      "title": "facet rotation and square/hexagonal alignment",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "G010",
+      "title": "phi ellipse, sqrt(phi), sqrt(3), sqrt(5), 60\u00b0/72\u00b0",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "G011",
+      "title": "C-axis and lateral-axis XRD determination",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "G012",
+      "title": "vendor 100 nm alignment claim as SRC, not accepted fact",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "G013",
+      "title": "ideal versus nominal 110 mm geometry",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "CORE_VALIDATED"
+    },
+    {
+      "id": "G014",
+      "title": "non-metric eye coordinate",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "CORE_VALIDATED"
+    },
+    {
+      "id": "G015",
+      "title": "71 mm 24-sided natural citrine",
+      "owner": "E-lane E04",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "G016",
+      "title": "81 mm 8-sided natural citrine",
+      "owner": "E-lane E04",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "G017",
+      "title": "75 mm 24-sided Himalayan rutilated",
+      "owner": "E-lane E04",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "G018",
+      "title": "63 mm 24-sided Himalayan rutilated",
+      "owner": "E-lane E04",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "G019",
+      "title": "138 mm 24-sided Himalayan rutilated",
+      "owner": "E-lane E04",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "G020",
+      "title": "86 mm 24-sided Himalayan rutilated",
+      "owner": "E-lane E04",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "G021",
+      "title": "62 mm 24-sided Himalayan smoky",
+      "owner": "E-lane E04",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "G022",
+      "title": "125 mm 8-sided Himalayan",
+      "owner": "E-lane E04",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "G023",
+      "title": "157 mm 8-sided flawless Himalayan",
+      "owner": "E-lane E04",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "G024",
+      "title": "125 mm 12-sided flawless Himalayan",
+      "owner": "E-lane E04",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "G025",
+      "title": "34 g, 39 g, 59 g and all catalog mass/dimension records",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "SOURCE_HYPOTHESIS"
+    },
+    {
+      "id": "G026",
+      "title": "clear quartz, citrine, amethyst, smoky, rutilated comparisons",
+      "owner": "E-lane E04",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "G027",
+      "title": "inclusions, surface damage, polish, density, and seller uncertainty",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "G028",
+      "title": "prospective N=5..12 specimen family",
+      "owner": "C03/C05 specimen registry",
+      "artifact": "rscs2_core/harmonic_family.py::specimen_registry",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "G029",
+      "title": "printed polymer geometry controls",
+      "owner": "E-lane E04",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "G030",
+      "title": "glass acoustic controls",
+      "owner": "E-lane E04",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "H001",
+      "title": "grip force and contact location",
+      "owner": "E-lane E06",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H002",
+      "title": "hand capacitance",
+      "owner": "E-lane E06",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H003",
+      "title": "contact stiffness and damping",
+      "owner": "E-lane E06",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H004",
+      "title": "equivalent modal load",
+      "owner": "E-lane E06",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H005",
+      "title": "personalized held-target length correction",
+      "owner": "E-lane E06",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H006",
+      "title": "grounded versus ungrounded",
+      "owner": "E-lane E06",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H007",
+      "title": "glove and no-contact",
+      "owner": "E-lane E06",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H008",
+      "title": "automated no-operator baseline",
+      "owner": "E-lane E06",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H009",
+      "title": "breathing protocol",
+      "owner": "E-lane E07",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H010",
+      "title": "imagery and expectancy",
+      "owner": "E-lane E07",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H011",
+      "title": "meditation state",
+      "owner": "E-lane E07",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H012",
+      "title": "optional EEG",
+      "owner": "E-lane E07",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H013",
+      "title": "heart rate and physiological logging",
+      "owner": "E-lane E07",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H014",
+      "title": "40.96 Hz compared with 40/41/42",
+      "owner": "E-lane E07",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H015",
+      "title": "blinded objective outcomes",
+      "owner": "E-lane E07",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H016",
+      "title": "privacy, consent, ethics, and withdrawal",
+      "owner": "E-lane E07",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "H017",
+      "title": "ordinary mechanical/capacitive subtraction before residual claims",
+      "owner": "E-lane E06",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "ETHICS_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "I001",
+      "title": "DFT",
+      "owner": "C13 future interfaces",
+      "artifact": "rscs2_core/interfaces_future.py::interface_record",
+      "status": "INTERFACE_ONLY"
+    },
+    {
+      "id": "I002",
+      "title": "Bethe-Salpeter",
+      "owner": "C13 future interfaces",
+      "artifact": "rscs2_core/interfaces_future.py::interface_record",
+      "status": "INTERFACE_ONLY"
+    },
+    {
+      "id": "I003",
+      "title": "ab-initio spin dynamics",
+      "owner": "C13 future interfaces",
+      "artifact": "rscs2_core/interfaces_future.py::interface_record",
+      "status": "INTERFACE_ONLY"
+    },
+    {
+      "id": "I004",
+      "title": "microscopic proton tunnelling",
+      "owner": "C13 future interfaces",
+      "artifact": "rscs2_core/interfaces_future.py::interface_record",
+      "status": "INTERFACE_ONLY"
+    },
+    {
+      "id": "I005",
+      "title": "microscopic plasmonics",
+      "owner": "C13 future interfaces",
+      "artifact": "rscs2_core/interfaces_future.py::interface_record",
+      "status": "INTERFACE_ONLY"
+    },
+    {
+      "id": "I006",
+      "title": "QFT/QED",
+      "owner": "C13 future interfaces",
+      "artifact": "rscs2_core/interfaces_future.py::interface_record",
+      "status": "INTERFACE_ONLY"
+    },
+    {
+      "id": "I007",
+      "title": "nonclassical photon generation",
+      "owner": "C13 future interfaces",
+      "artifact": "rscs2_core/interfaces_future.py::interface_record",
+      "status": "INTERFACE_ONLY"
+    },
+    {
+      "id": "I008",
+      "title": "full quantum transduction",
+      "owner": "C13 future interfaces",
+      "artifact": "rscs2_core/interfaces_future.py::interface_record",
+      "status": "INTERFACE_ONLY"
+    },
+    {
+      "id": "I009",
+      "title": "quantum-computing simulators",
+      "owner": "C13 future interfaces",
+      "artifact": "rscs2_core/interfaces_future.py::interface_record",
+      "status": "INTERFACE_ONLY"
+    },
+    {
+      "id": "I010",
+      "title": "full fluid chemistry",
+      "owner": "C13 future interfaces",
+      "artifact": "rscs2_core/interfaces_future.py::interface_record",
+      "status": "INTERFACE_ONLY"
+    },
+    {
+      "id": "I011",
+      "title": "complete microscopic consciousness theory",
+      "owner": "C13 future interfaces",
+      "artifact": "rscs2_core/interfaces_future.py::interface_record",
+      "status": "INTERFACE_ONLY"
+    },
+    {
+      "id": "S001",
+      "title": "logarithmic contracting spiral r=r0 exp(-a\u03b8)",
+      "owner": "G01 spiral cone",
+      "artifact": "rscs2_core/spiral_cone.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "S002",
+      "title": "inverse frequency-wavelength surface",
+      "owner": "G01 spiral cone",
+      "artifact": "rscs2_core/spiral_cone.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "S003",
+      "title": "3D spiral-cone path with vertical exponent p",
+      "owner": "G01 spiral cone",
+      "artifact": "rscs2_core/spiral_cone.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "S004",
+      "title": "stable-focus eigenvalues -a\u00b1i",
+      "owner": "G01 spiral cone",
+      "artifact": "rscs2_core/spiral_cone.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "S005",
+      "title": "curvature invariant 1/sqrt(1+a\u00b2)",
+      "owner": "G01 spiral cone",
+      "artifact": "rscs2_core/spiral_cone.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "S006",
+      "title": "scale ratios phi, 2, e, 8",
+      "owner": "G01 spiral cone",
+      "artifact": "rscs2_core/spiral_cone.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "S007",
+      "title": "one-pointed spinning waveform translation",
+      "owner": "G01 spiral cone",
+      "artifact": "rscs2_core/spiral_cone.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "S008",
+      "title": "cusp or centre response",
+      "owner": "G01 spiral cone",
+      "artifact": "rscs2_core/spiral_cone.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "S009",
+      "title": "mode overlap Lambda_ab",
+      "owner": "G01 spiral cone",
+      "artifact": "rscs2_core/spiral_cone.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "S010",
+      "title": "geometry merit Gamma_s",
+      "owner": "G01 spiral cone",
+      "artifact": "rscs2_core/spiral_cone.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "S011",
+      "title": "OpenSCAD printable geometry",
+      "owner": "G01 spiral cone",
+      "artifact": "rscs2_core/spiral_cone.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "S012",
+      "title": "PCB copper cymatic disk",
+      "owner": "G02 cymatic disk",
+      "artifact": "rscs2_core/cymatic_disk.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "S013",
+      "title": "dielectric substrate and copper-layer model",
+      "owner": "G02 cymatic disk",
+      "artifact": "rscs2_core/cymatic_disk.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "S014",
+      "title": "PCB electromagnetic and structural resonance",
+      "owner": "G02 cymatic disk",
+      "artifact": "rscs2_core/cymatic_disk.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "S015",
+      "title": "Chladni/cymatic pattern synthesis",
+      "owner": "G02 cymatic disk",
+      "artifact": "rscs2_core/cymatic_disk.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "S016",
+      "title": "plain disk control",
+      "owner": "G02 cymatic disk",
+      "artifact": "rscs2_core/cymatic_disk.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "S017",
+      "title": "simple cone control",
+      "owner": "G02 cymatic disk",
+      "artifact": "rscs2_core/cymatic_disk.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "S018",
+      "title": "flat logarithmic spiral control",
+      "owner": "G02 cymatic disk",
+      "artifact": "rscs2_core/cymatic_disk.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "S019",
+      "title": "Archimedean spiral control",
+      "owner": "G02 cymatic disk",
+      "artifact": "rscs2_core/cymatic_disk.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "S020",
+      "title": "mass-matched blank",
+      "owner": "G02 cymatic disk",
+      "artifact": "rscs2_core/cymatic_disk.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "S021",
+      "title": "printed polymer, glass, copper, quartz-like controls",
+      "owner": "G02 cymatic disk",
+      "artifact": "rscs2_core/cymatic_disk.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "S022",
+      "title": "FFT peak, Q, ring-down, node map, cusp amplitude",
+      "owner": "G02 cymatic disk",
+      "artifact": "rscs2_core/cymatic_disk.py",
+      "status": "REDUCED_ORDER_VALIDATED"
+    },
+    {
+      "id": "S023",
+      "title": "selected kHz target optimization",
+      "owner": "G02 cymatic disk",
+      "artifact": "rscs2_core/cymatic_disk.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "S024",
+      "title": "fabrication exports: SCAD, STL, DXF, Gerber, drill, BOM",
+      "owner": "G02 cymatic disk",
+      "artifact": "rscs2_core/cymatic_disk.py",
+      "status": "ENGINEERING_PROTOTYPE"
+    },
+    {
+      "id": "W001",
+      "title": "matched blind vessels",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W002",
+      "title": "sham exposure",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W003",
+      "title": "temperature control",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W004",
+      "title": "dissolved-gas control",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W005",
+      "title": "pH",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W006",
+      "title": "conductivity",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W007",
+      "title": "UV-visible and IR where available",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W008",
+      "title": "acoustic-pressure logging",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W009",
+      "title": "flow rate and pressure",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W010",
+      "title": "no-crystal control",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W011",
+      "title": "raw quartz control",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W012",
+      "title": "polymer and glass controls",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W013",
+      "title": "reversed orientation",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W014",
+      "title": "one through seven passes",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W015",
+      "title": "seven-turn one-litre 70\u00b0F source geometry",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W016",
+      "title": "contamination, mass balance, randomized labels",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    },
+    {
+      "id": "W017",
+      "title": "no ingestion or therapeutic claims",
+      "owner": "E-lane E05",
+      "artifact": "rscs2_core/protocols_v4x.py::build_protocols",
+      "status": "PROTOCOL_READY_HARDWARE_REQUIRED"
+    }
+  ],
+  "gate_G42_pass": true
+}

@@ -269,6 +269,33 @@ def harmonic_response(problem: ElasticProblem, force: np.ndarray,
             "amplitude_max": amps}
 
 
+def harmonic_field(problem: ElasticProblem, force: np.ndarray,
+                   freq_hz: float, damping_ratio: float = 0.01,
+                   fixed_dofs: np.ndarray | None = None) -> np.ndarray:
+    """Full COMPLEX displacement field of a damped harmonic drive at
+    one frequency (V4X Agent C02, A09): the solved complex response
+    the D9/D10 phase diagnostics require. Same operator as
+    harmonic_response; returns u in the FULL dof space (zeros at
+    fixed dofs)."""
+    from scipy.sparse.linalg import spsolve
+    K, M = problem.K, problem.M
+    f = np.asarray(force, dtype=complex)
+    keep = np.arange(problem.ndof)
+    if fixed_dofs is not None and len(fixed_dofs):
+        keep = np.setdiff1d(keep, np.asarray(fixed_dofs))
+        K = K[keep][:, keep]
+        M = M[keep][:, keep]
+        f = f[keep]
+    w = 2 * np.pi * float(freq_hz)
+    A = (K - w ** 2 * M).astype(complex)
+    if damping_ratio > 0:
+        A = A + 1j * damping_ratio * w * K / (2 * np.pi)
+    u = spsolve(A.tocsc(), f)
+    full = np.zeros(problem.ndof, dtype=complex)
+    full[keep] = u
+    return full
+
+
 def save_modes(result: dict, path) -> None:
     """Deterministic serialization of a solve_modes result (.npz)."""
     np.savez_compressed(

@@ -1,0 +1,126 @@
+{
+  "levels": {
+    "coarse": {
+      "clmax_mm": 8.0,
+      "centroid_mm": [
+        -0.255692937049308,
+        0.01611340351064414,
+        102.28780334059758
+      ],
+      "element_spacing_mm": 6.8956136000074135,
+      "f_elastic_hz": [
+        13781.673067267686,
+        13782.005654125865,
+        26067.03164905719,
+        31897.583630890414,
+        31904.28895718441,
+        35270.272045111524,
+        50857.73602088582,
+        52704.66967866389
+      ]
+    },
+    "fine": {
+      "clmax_mm": 5.5,
+      "centroid_mm": [
+        -0.060456332732462814,
+        0.050943955574014016,
+        102.30663180933796
+      ],
+      "element_spacing_mm": 4.971837772177419,
+      "f_elastic_hz": [
+        13775.677512708919,
+        13775.733848826972,
+        25897.00590870591,
+        31855.177969932076,
+        31856.752514077325,
+        35268.63004372178,
+        50504.52417546351,
+        52570.46677888988
+      ]
+    },
+    "finer": {
+      "clmax_mm": 4.5,
+      "centroid_mm": [
+        0.09036923466528009,
+        -0.3210947361347168,
+        102.05281936476898
+      ],
+      "element_spacing_mm": 4.096195118115134,
+      "f_elastic_hz": [
+        13774.009313282928,
+        13774.106601948892,
+        25863.997758857626,
+        31843.17402161089,
+        31844.0699645618,
+        35268.027898394794,
+        50444.94953739424,
+        52528.20756779473
+      ]
+    }
+  },
+  "ladder": {
+    "ladder": [
+      {
+        "level": "coarse",
+        "clmax_mm": 8.0,
+        "centroid_mm": [
+          -0.255692937049308,
+          0.01611340351064414,
+          102.28780334059758
+        ],
+        "element_spacing_mm": 6.8956136000074135,
+        "shift_from_previous_mm": null
+      },
+      {
+        "level": "fine",
+        "clmax_mm": 5.5,
+        "centroid_mm": [
+          -0.060456332732462814,
+          0.050943955574014016,
+          102.30663180933796
+        ],
+        "element_spacing_mm": 4.971837772177419,
+        "shift_from_previous_mm": 0.1992109692193655
+      },
+      {
+        "level": "finer",
+        "clmax_mm": 4.5,
+        "centroid_mm": [
+          0.09036923466528009,
+          -0.3210947361347168,
+          102.05281936476898
+        ],
+        "element_spacing_mm": 4.096195118115134,
+        "shift_from_previous_mm": 0.47495462617736034
+      }
+    ],
+    "shifts_mm": [
+      0.1992109692193655,
+      0.47495462617736034
+    ],
+    "monotone_converging": false,
+    "finest_halfwidth_mm": 4.096195118115134,
+    "note": "halfwidth is mesh-resolution dominated; the candidate coordinate at every level is preserved exactly (G07)"
+  },
+  "refined_verdict": {
+    "candidate_mm": [
+      0.09036923466528009,
+      -0.3210947361347168,
+      102.05281936476898
+    ],
+    "nearest_comparator_mm": [
+      -0.447,
+      0.774,
+      106.018
+    ],
+    "separation_mm": 4.148572723899848,
+    "candidate_halfwidth_mm": 4.096195118115134,
+    "comparator_halfwidth_mm": 4.096195118115134,
+    "mesh_resolution_mm": 4.096195118115134,
+    "convergence_shift_mm": 0.47495462617736034,
+    "cloud_rms_mm": 0.032,
+    "numerical_tol_mm": 1e-06,
+    "classification": "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
+    "rule": "exact = numerical tolerance only; overlap = localization intervals; a resolved separation is reported at its exact value, never absorbed into a proximity threshold (V4C-D-001)"
+  }
+}

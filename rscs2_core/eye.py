@@ -488,7 +488,13 @@ def phase_coherence_field(points_mm: np.ndarray,
     REFUSES real input — an undamped real mode has trivial coherence
     (declared degenerate case in the spec)."""
     w = np.asarray(complex_values)
-    if not np.iscomplexobj(w) or np.allclose(w.imag, 0.0):
+    # RELATIVE realness test (V4X-C02 fix): a small-amplitude driven
+    # response is genuinely complex even when |Im| is absolutely tiny;
+    # the refusal is for fields whose imaginary part is negligible
+    # RELATIVE to the field scale (undamped real modes).
+    scale = float(np.max(np.abs(w))) if w.size else 0.0
+    if not np.iscomplexobj(w) or scale == 0.0 or \
+            float(np.max(np.abs(w.imag))) < 1e-12 * scale:
         raise ValueError("D9 requires a genuinely COMPLEX field "
                          "(damped/driven response); real modes are the "
                          "declared degenerate case")
@@ -509,7 +515,12 @@ def phase_singularities_on_plane(grid_x_mm: np.ndarray,
     Returns singular plaquette centers and their charges. REFUSES real
     input (winding of a real field is mathematically invalid)."""
     w = np.asarray(complex_grid)
-    if not np.iscomplexobj(w) or np.allclose(w.imag, 0.0):
+    # relative realness test (V4X-C02 fix, mirrors D9): refusal is
+    # for fields whose imaginary part is negligible RELATIVE to the
+    # field scale, not merely absolutely small
+    wscale = float(np.max(np.abs(w))) if w.size else 0.0
+    if not np.iscomplexobj(w) or wscale == 0.0 or \
+            float(np.max(np.abs(w.imag))) < 1e-12 * wscale:
         raise ValueError("D10 requires a COMPLEX scalar field")
     ph = np.angle(w)
 
