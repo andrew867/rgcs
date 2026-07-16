@@ -56,6 +56,50 @@ equations:
     tests: ['tests/v4/test_rscs2_piezo.py::test_single_element_energy_patch', 'tests/v4/test_rscs2_piezo.py::test_zero_piezo_reduces_exactly_to_elastic', 'tests/v4/test_rscs2_piezo.py::test_open_ge_short_and_extensional_coupling']
     doc_target: 'V4_PIEZOELECTRIC_MULTIPHYSICS_SPEC'
     status: 'implemented + validated (energy patch 1e-9; zero-e reduction 1e-9; k_eff^2 physical order)'
+  - id: RSCS2-E.8
+    name: anisotropic refractive index + ray projection (optical)
+    class: EST
+    units: 'dimensionless, mm, rad'
+    signature: 'Ghosh 1999 Sellmeier n_o/n_e(lambda); uniaxial n(theta); vector Snell; probe paths via frozen ray_to_target'
+    module: 'rscs2_core.projections'
+    provenance: ['Ghosh 1999 Opt. Commun. 163, 95; frozen rgcs_core.optics (D6-002)']
+    exclusions: ['plane-wave indices only: double-refraction walk-off NOT modelled (declared, fail-loud)', 'octave wavelength presets are ARITHMETIC, no coupling claim']
+    tests: ['tests/v4/test_rscs2_projections.py::test_sellmeier_reproduces_frozen_indices_at_sodium_d', 'tests/v4/test_rscs2_projections.py::test_vector_snell_matches_frozen_scalar_and_tir', 'tests/v4/test_rscs2_projections.py::test_probe_paths_reciprocity_and_target_menu']
+    doc_target: 'V4_OPTICAL_MODELLING_SPEC'
+    status: 'implemented + validated (Sellmeier anchors frozen constants at 589.3 nm within 2e-4)'
+  - id: RSCS2-E.9
+    name: photoelastic phase projection (strain -> probe phase)
+    class: EST
+    units: 'rad'
+    signature: 'dphi = (2 pi/lambda) sum dn(S_i) L_i, dn = -1/2 n^3 p S (frozen)'
+    module: 'rscs2_core.projections:photoelastic_phase_shift_rad'
+    provenance: ['frozen rgcs_core.optics.photoelastic_index_shift; Narasimhamurty p constants']
+    exclusions: ['magnitude projection for H-20; no measured-sideband claim']
+    tests: ['tests/v4/test_rscs2_projections.py::test_photoelastic_projection_closed_form']
+    doc_target: 'V4_OPTICAL_MODELLING_SPEC'
+    status: 'implemented + validated (closed form + frozen docstring anchor)'
+  - id: RSCS2-E.10
+    name: quasi-static coil field (Biot-Savart polyline)
+    class: EST
+    units: 'T'
+    signature: 'Hanson-Hirshman stable segment form; opposed pair w/ frozen coil_pair_phases + winding handedness'
+    module: 'rscs2_core.projections:biot_savart_polyline'
+    provenance: ['Biot-Savart (standard); Hanson & Hirshman 2002; frozen rgcs_core.timing coil model']
+    exclusions: ['magnetoquasistatic (<< self-resonance); no toroidal eye assumed; leakage control REQUIRED for any coupling record']
+    tests: ['tests/v4/test_rscs2_projections.py::test_biot_savart_loop_vs_exact_on_axis', 'tests/v4/test_rscs2_projections.py::test_coil_pair_opposed_vs_in_phase', 'tests/v4/test_rscs2_projections.py::test_coupling_report_requires_leakage_control']
+    doc_target: 'V4_COIL_AND_EM_COUPLING_SPEC'
+    status: 'implemented + validated (exact on-axis anchor 1e-4; div B = 0)'
+  - id: RSCS2-E.11
+    name: modal drive projection
+    class: EST
+    units: 'N (generalized)'
+    signature: 'f_n = int phi_n . b dV on mass-orthonormal modes'
+    module: 'rscs2_core.projections:assemble_body_force+project_force_vector'
+    provenance: ['standard modal projection']
+    exclusions: ['projection onto modes, NOT an electromechanical field solve']
+    tests: ['tests/v4/test_rscs2_projections.py::test_modal_drive_projection_orthonormality']
+    doc_target: 'V4_COIL_AND_EM_COUPLING_SPEC'
+    status: 'implemented + validated (M phi_k projects to exactly e_k)'
 solver:
   - id: RSCS2-S.1
     name: sparse generalized eigensolve

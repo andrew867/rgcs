@@ -1,0 +1,7 @@
+sequence,key_hz,window_s,closes_exactly
+standard,1496.0,0.125,True
+half_spacing,1496.0,0.0625,False
+standard,644.0,0.25,True
+half_spacing,644.0,0.125,False
+standard,587.0,1.0,True
+half_spacing,587.0,0.5,False
