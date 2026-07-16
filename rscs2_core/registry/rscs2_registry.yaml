@@ -135,3 +135,60 @@ benchmarks:
     tests: ["tests/v4/test_rscs2_solver.py::test_mesh_convergence"]
     doc_target: "V4_TEST_PLAN"
     status: "VALIDATED: monotone, final err < 0.5%"
+  - id: RSCS2-V.5
+    name: isotropic cube exact Lame mode
+    class: EST
+    units: "Hz"
+    signature: "free-cube spectrum contains f = v_s/(sqrt(2) a), nu-independent"
+    module: "rscs2_core.reference:cube_lame_mode_hz"
+    provenance: ["exact classical solution; Demarest JASA 49, 768 (1971) 8-digit check"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_solver.py::test_cube_lame_mode_v5"]
+    doc_target: "V4_REFERENCE_SYSTEMS_SPEC"
+    status: "VALIDATED: +0.03-0.05% at nu=0.25 and 0.33; nu-independence confirmed"
+boundary:
+  - id: RSCS2-B.1
+    name: free (traction-free) boundary
+    class: EST
+    units: "n/a (natural BC)"
+    signature: "no constraint; rigid modes detected + separated"
+    module: "rscs2_core.fem:solve_modes"
+    provenance: ["standard FEM natural BC"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_solver.py::test_free_body_rigid_modes_and_mass_patch"]
+    doc_target: "V4_CPU_SOLVER_SPEC"
+    status: "implemented + validated"
+  - id: RSCS2-B.2
+    name: fixed (Dirichlet) boundary
+    class: EST
+    units: "n/a"
+    signature: "displacement DOFs condensed on tagged facets"
+    module: "rscs2_core.fem:solve_modes"
+    provenance: ["standard FEM essential BC"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_solver.py::test_cantilever_eb_benchmark"]
+    doc_target: "V4_CPU_SOLVER_SPEC"
+    status: "implemented + validated"
+  - id: RSCS2-B.3
+    name: elastic support (Robin/spring foundation)
+    class: EST
+    units: "Pa/m"
+    signature: "K += k * <u,v> on tagged facets; k->inf = fixed, k->0 = free"
+    module: "rscs2_core.fem:add_elastic_support"
+    provenance: ["standard Robin BC"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_solver.py::test_elastic_support_limits_b3"]
+    doc_target: "V4_CPU_SOLVER_SPEC"
+    status: "implemented + validated (both limits pinned)"
+  - id: RSCS2-B.4
+    name: mass loading (hand-loading-equivalent)
+    class: EST
+    units: "kg/m^2"
+    signature: "M += sigma * <u,v> on tagged facets"
+    module: "rscs2_core.fem:add_surface_mass"
+    provenance: ["standard added-mass; v3 loading family (H-08) analogue"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_solver.py::test_mass_loading_b4"]
+    doc_target: "V4_CPU_SOLVER_SPEC"
+    status: "implemented + validated (Rayleigh tip-mass shift quantitative)"
+

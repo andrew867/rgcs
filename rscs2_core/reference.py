@@ -82,6 +82,19 @@ def timoshenko_cantilever_hz(youngs_pa: float, shear_modulus_pa: float,
     return f_eb / math.sqrt(corr)
 
 
+def cube_lame_mode_hz(shear_modulus_pa: float, density_kg_m3: float,
+                      edge_m: float) -> float:
+    """Fundamental Lame (equivoluminal) mode of a FREE isotropic cube —
+    an EXACT closed-form eigenfrequency, independent of Poisson's ratio:
+        f = v_s / (sqrt(2) * a),  v_s = sqrt(G / rho).
+    Classical exact solution; used by Demarest (JASA 49, 768 (1971),
+    'Cube-Resonance Method to Determine the Elastic Constants of
+    Solids') as the 8-significant-digit check for cube spectra.
+    (RSCS2-V.5 anchor.)"""
+    v_s = math.sqrt(shear_modulus_pa / density_kg_m3)
+    return v_s / (math.sqrt(2.0) * edge_m)
+
+
 def lame_from_e_nu(youngs_pa: float, poisson: float) -> tuple[float, float]:
     """(lambda, mu) Lame parameters from (E, nu). EST identity."""
     lam = youngs_pa * poisson / ((1 + poisson) * (1 - 2 * poisson))

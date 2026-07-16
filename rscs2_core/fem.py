@@ -37,6 +37,7 @@ from skfem.models.elasticity import linear_elasticity
 
 __all__ = ["box_mesh", "ElasticProblem", "assemble_isotropic",
            "assemble_anisotropic", "solve_modes", "component_dofs",
+           "add_elastic_support", "add_surface_mass",
            "harmonic_response", "save_modes", "load_modes",
            "RIGID_MODE_TOL_HZ"]
 
@@ -181,6 +182,47 @@ def solve_modes(problem: ElasticProblem, n_modes: int,
         "orthonormality_error": ortho_err,
         "ndof": Kc.shape[0],
     }
+
+
+def add_elastic_support(problem: ElasticProblem,
+                        facet_predicate: Callable,
+                        stiffness_pa_per_m: float) -> ElasticProblem:
+    """RSCS2-B.3 elastic support (Robin BC): distributed springs of
+    stiffness k [Pa/m] on the selected facets, added to K.
+    k -> infinity approaches the fixed BC; k -> 0 recovers free."""
+    from skfem import FacetBasis
+    if not (np.isfinite(stiffness_pa_per_m) and stiffness_pa_per_m >= 0):
+        raise ValueError("stiffness must be finite and >= 0")
+    fb = FacetBasis(problem.mesh, ElementVector(ElementTetP2()),
+                    facets=problem.mesh.facets_satisfying(facet_predicate))
+
+    @BilinearForm
+    def spring(u, v, w):
+        return stiffness_pa_per_m * dot(u, v)
+
+    Ks = spring.assemble(fb)
+    return ElasticProblem(problem.mesh, problem.basis, problem.K + Ks,
+                          problem.M, problem.density_kg_m3)
+
+
+def add_surface_mass(problem: ElasticProblem, facet_predicate: Callable,
+                     areal_density_kg_m2: float) -> ElasticProblem:
+    """RSCS2-B.4 mass loading (hand-loading-equivalent): an added areal
+    mass density [kg/m^2] on the selected facets, added to M. Every
+    eigenfrequency is non-increasing under added mass (Rayleigh)."""
+    from skfem import FacetBasis
+    if not (np.isfinite(areal_density_kg_m2) and areal_density_kg_m2 >= 0):
+        raise ValueError("areal density must be finite and >= 0")
+    fb = FacetBasis(problem.mesh, ElementVector(ElementTetP2()),
+                    facets=problem.mesh.facets_satisfying(facet_predicate))
+
+    @BilinearForm
+    def addmass(u, v, w):
+        return areal_density_kg_m2 * dot(u, v)
+
+    Ma = addmass.assemble(fb)
+    return ElasticProblem(problem.mesh, problem.basis, problem.K,
+                          problem.M + Ma, problem.density_kg_m3)
 
 
 def harmonic_response(problem: ElasticProblem, force: np.ndarray,

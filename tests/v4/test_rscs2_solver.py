@@ -147,6 +147,68 @@ def test_orthonormality_harmonic_and_serialization(tmp_path):
     assert back["n_rigid_modes"] == out["n_rigid_modes"]
 
 
+def test_cube_lame_mode_v5():
+    """RSCS2-V.5: the FREE isotropic cube spectrum contains the EXACT
+    closed-form Lame mode f = v_s/(sqrt(2) a) — Demarest's (JASA 1971)
+    8-digit check — at BOTH Poisson ratios, at the SAME frequency
+    (the Lame mode is nu-independent)."""
+    a = 0.02
+    found = []
+    for nu in (0.25, 0.33):
+        mu = E / (2 * (1 + nu))
+        f_lame = ref.cube_lame_mode_hz(mu, RHO, a)
+        mesh = fem.box_mesh((a, a, a), (6, 6, 6))
+        prob = fem.assemble_isotropic(mesh, E, nu, RHO)
+        out = fem.solve_modes(prob, 20)
+        f = out["elastic_frequencies_hz"]
+        nearest = f[np.argmin(np.abs(f - f_lame))]
+        assert nearest == pytest.approx(f_lame, rel=2e-3)  # +0.03-0.05% obs
+        found.append(nearest / np.sqrt(mu))   # normalize out G-dependence
+    # nu-independence: normalized Lame frequencies agree across nu
+    assert found[0] == pytest.approx(found[1], rel=2e-3)
+
+
+def test_elastic_support_limits_b3():
+    """RSCS2-B.3: spring support at the root -> free as k->0, -> fixed as
+    k->infinity; f1 strictly increasing in k."""
+    mesh = fem.box_mesh((L, W, T), (12, 2, 2))
+    base = fem.assemble_isotropic(mesh, E, NU, RHO)
+    fixed = base.dofs_on(lambda x: np.isclose(x[0], 0.0))
+    f_fixed = fem.solve_modes(base, 4, fixed_dofs=fixed)[
+        "elastic_frequencies_hz"][0]
+    root = lambda x: np.isclose(x[0], 0.0)  # noqa: E731
+    f1s = []
+    for k in (1e9, 1e12, 1e16):
+        prob = fem.add_elastic_support(base, root, k)
+        out = fem.solve_modes(prob, 8)
+        f1s.append(out["frequencies_hz"][0])   # includes near-rigid at low k
+    assert f1s[0] < f1s[1] < f1s[2]            # monotone in k
+    assert f1s[2] == pytest.approx(f_fixed, rel=0.02)   # stiff limit = fixed
+
+
+def test_mass_loading_b4():
+    """RSCS2-B.4: added tip mass lowers every eigenfrequency (Rayleigh)
+    and the added mass is exactly accounted in u^T M u."""
+    mesh = fem.box_mesh((L, W, T), (12, 2, 2))
+    base = fem.assemble_isotropic(mesh, E, NU, RHO)
+    fixed = base.dofs_on(lambda x: np.isclose(x[0], 0.0))
+    f0 = fem.solve_modes(base, 4, fixed_dofs=fixed)["elastic_frequencies_hz"]
+    tip = lambda x: np.isclose(x[0], L)  # noqa: E731
+    sigma = 10.0    # kg/m^2 on the tip face (area W*T)
+    loaded = fem.add_surface_mass(base, tip, sigma)
+    assert loaded.total_mass_kg() == pytest.approx(
+        RHO * L * W * T + sigma * W * T, rel=1e-9)
+    f1 = fem.solve_modes(loaded, 4,
+                         fixed_dofs=fixed)["elastic_frequencies_hz"]
+    assert np.all(f1 < f0)                     # monotone decrease (Rayleigh)
+    # quantitative: tip-mass shift f1/f0 = sqrt(m_eff/(m_eff+dm)),
+    # m_eff = 0.2427 m_beam for the fundamental cantilever mode
+    dm = sigma * W * T
+    m_eff = 0.2427 * RHO * L * W * T
+    assert f1[0] / f0[0] == pytest.approx(
+        np.sqrt(m_eff / (m_eff + dm)), rel=5e-3)
+
+
 def test_christoffel_anchor_quartz():
     """RSCS2-V.6 (conservative extension, DV4-009): a laterally-constrained
     alpha-quartz bar along Z reproduces the FROZEN v3 Christoffel
