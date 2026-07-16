@@ -1,0 +1,295 @@
+{
+  "status": "CONVENTIONAL_NODE_EXPLAINS_RESULT",
+  "candidates": [
+    {
+      "centroid_mm": [
+        -0.15217301898576774,
+        -0.03599685944414972,
+        102.17855837858102
+      ],
+      "bbox_mm": [
+        [
+          -3.4546566845802644,
+          -4.039127453194413,
+          97.21418172848034
+        ],
+        [
+          3.8006109182208183,
+          4.089746300234962,
+          106.01843442900108
+        ]
+      ],
+      "score": 0.97621040301768,
+      "contributing": [
+        "D1",
+        "D11",
+        "D3",
+        "D7",
+        "D8"
+      ],
+      "families": [
+        "cross_modal",
+        "kinematic",
+        "rotational"
+      ],
+      "mode_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "status": "CONVENTIONAL_NODE_EXPLAINS_RESULT",
+      "gates": {
+        "agreement_families": 3,
+        "extent_mm": 14.008296188404733,
+        "inside_body": true,
+        "null_comparison_mm": 3.9353033425376953
+      },
+      "distances_mm": {
+        "geometric_centre_mm": 47.159983923405626,
+        "shaft_midpoint_mm": 47.32273072187175,
+        "node_prior_mm": 47.32273072187175,
+        "nearest_conventional_feature": 3.9353033425376953
+      },
+      "uncertainty": {}
+    }
+  ],
+  "rejected": [
+    {
+      "centroid_mm": [
+        8.87115265353885,
+        -0.6736316839385917,
+        60.60410017703722
+      ],
+      "reason": "insufficient diagnostic-family agreement (2 < 3)",
+      "diagnostics": [
+        "D2",
+        "D4",
+        "D6"
+      ]
+    },
+    {
+      "centroid_mm": [
+        -8.861116567885752,
+        0.5458882502983543,
+        58.28159629879376
+      ],
+      "reason": "insufficient diagnostic-family agreement (2 < 3)",
+      "diagnostics": [
+        "D2",
+        "D4",
+        "D6"
+      ]
+    },
+    {
+      "centroid_mm": [
+        -0.5737952892577174,
+        -8.271585941870445,
+        61.17026194919359
+      ],
+      "reason": "insufficient diagnostic-family agreement (2 < 3)",
+      "diagnostics": [
+        "D2",
+        "D4",
+        "D6"
+      ]
+    },
+    {
+      "centroid_mm": [
+        0.6093089379785885,
+        8.310074301955247,
+        58.50715184300371
+      ],
+      "reason": "insufficient diagnostic-family agreement (2 < 3)",
+      "diagnostics": [
+        "D2",
+        "D4",
+        "D6"
+      ]
+    },
+    {
+      "centroid_mm": [
+        7.985322132334996,
+        2.1538586523388874,
+        91.86986725380642
+      ],
+      "reason": "insufficient diagnostic-family agreement (1 < 3)",
+      "diagnostics": [
+        "D1",
+        "D3"
+      ]
+    },
+    {
+      "centroid_mm": [
+        -2.599206259924988,
+        7.847649602754101,
+        90.6060332002273
+      ],
+      "reason": "insufficient diagnostic-family agreement (1 < 3)",
+      "diagnostics": [
+        "D1",
+        "D3",
+        "D7"
+      ]
+    },
+    {
+      "centroid_mm": [
+        -0.04097196121167561,
+        -7.872375837987355,
+        91.22380630331737
+      ],
+      "reason": "insufficient diagnostic-family agreement (1 < 3)",
+      "diagnostics": [
+        "D1",
+        "D3",
+        "D7"
+      ]
+    },
+    {
+      "centroid_mm": [
+        -9.265915661064275,
+        -0.17620734730632626,
+        92.35584209548882
+      ],
+      "reason": "insufficient diagnostic-family agreement (1 < 3)",
+      "diagnostics": [
+        "D1",
+        "D3"
+      ]
+    },
+    {
+      "centroid_mm": [
+        0.07712270377237912,
+        -0.00890552446406275,
+        55.1664327378919
+      ],
+      "reason": "insufficient diagnostic-family agreement (1 < 3)",
+      "diagnostics": [
+        "D2",
+        "D4"
+      ]
+    },
+    {
+      "centroid_mm": [
+        0.1506764525269277,
+        0.25862477476117884,
+        3.9378591367039384
+      ],
+      "reason": "insufficient diagnostic-family agreement (1 < 3)",
+      "diagnostics": [
+        "D1",
+        "D3",
+        "D7"
+      ]
+    },
+    {
+      "centroid_mm": [
+        8.513418627376367,
+        -0.26207772449906774,
+        75.16106014157165
+      ],
+      "reason": "insufficient diagnostic-family agreement (2 < 3)",
+      "diagnostics": [
+        "D2",
+        "D4",
+        "D6"
+      ]
+    },
+    {
+      "centroid_mm": [
+        -8.377950090704362,
+        0.008018740685168694,
+        78.44903330619441
+      ],
+      "reason": "insufficient diagnostic-family agreement (2 < 3)",
+      "diagnostics": [
+        "D2",
+        "D4",
+        "D6"
+      ]
+    },
+    {
+      "centroid_mm": [
+        -9.945634908727158,
+        0.004572397066924331,
+        39.04452510361639
+      ],
+      "reason": "insufficient diagnostic-family agreement (2 < 3)",
+      "diagnostics": [
+        "D2",
+        "D4",
+        "D6"
+      ]
+    },
+    {
+      "centroid_mm": [
+        9.945792083277999,
+        -0.0041475266993195575,
+        39.04228192003067
+      ],
+      "reason": "insufficient diagnostic-family agreement (2 < 3)",
+      "diagnostics": [
+        "D2",
+        "D4",
+        "D6"
+      ]
+    }
+  ],
+  "procedure": {
+    "quantile": 0.95,
+    "link_radius_mm": 6.0,
+    "min_agree_families": 3,
+    "persistence_tol_mm": 5.0,
+    "boundary_tol_mm": 5.0,
+    "node_tol_mm": 4.0,
+    "uncertainty_min_fraction": 0.6,
+    "min_modes": 2,
+    "max_extent_fraction": 0.35,
+    "note": "gates are sequential pass/fail checks; consensus is NOT an average of normalized fields"
+  },
+  "null_comparison": {
+    "conventional_features_mm": [
+      [
+        1.7863257696544605,
+        0.0,
+        106.0184344289946
+      ],
+      [
+        1.4290625528986531,
+        7.415037306984938,
+        78.62230105810109
+      ],
+      [
+        -0.44658144241253,
+        0.7735017479759257,
+        106.01843442900096
+      ],
+      [
+        8.488033460295812,
+        1.9822858632334572e-12,
+        29.030889278574854
+      ],
+      [
+        10.12821468644318,
+        2.1021595922321445e-12,
+        89.91197939795107
+      ],
+      [
+        0.16194690859172664,
+        2.74624971868705,
+        51.48360133311743
+      ],
+      [
+        1.7863257696544605,
+        0.0,
+        106.0184344289946
+      ],
+      [
+        0.1620079298436985,
+        -5.415108781789607,
+        54.53021238485524
+      ]
+    ],
+    "node_tol_mm": 4.0
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "status": "CONVENTIONAL_NODE_EXPLAINS_RESULT",
+  "frequencies": {
+    "coarse_cl8_hz": [
+      13781.673067267651,
+      13782.005654125818,
+      26067.031649057146,
+      31897.583630890414
+    ],
+    "refined_cl5p5_hz": [
+      13775.677512709191,
+      13775.733848827165,
+      25897.00590870596,
+      31855.177969932105
+    ]
+  },
+  "n_fields": 29,
+  "n_candidates": 1,
+  "n_rejected": 14,
+  "procedure": {
+    "quantile": 0.95,
+    "link_radius_mm": 6.0,
+    "min_agree_families": 3,
+    "persistence_tol_mm": 5.0,
+    "boundary_tol_mm": 5.0,
+    "node_tol_mm": 4.0,
+    "uncertainty_min_fraction": 0.6,
+    "min_modes": 2,
+    "max_extent_fraction": 0.35,
+    "note": "gates are sequential pass/fail checks; consensus is NOT an average of normalized fields"
+  }
+}

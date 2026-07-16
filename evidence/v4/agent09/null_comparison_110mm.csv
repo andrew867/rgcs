@@ -1,0 +1,9 @@
+feature_x_mm,feature_y_mm,feature_z_mm,kind
+1.786,0.000,106.018,antinode
+1.429,7.415,78.622,node
+-0.447,0.774,106.018,antinode
+8.488,0.000,29.031,node
+10.128,0.000,89.912,antinode
+0.162,2.746,51.484,node
+1.786,0.000,106.018,antinode
+0.162,-5.415,54.530,node

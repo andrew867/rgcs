@@ -324,3 +324,180 @@ accelerator:
     tests: ['tests/v4/test_rscs2_accel.py::test_opencl_parity_every_device']
     doc_target: 'V4_ACCELERATOR_BACKEND_SPEC'
     status: 'implemented + passing on 2 real devices'
+diagnostics:
+  - id: RSCS2-D.1
+    name: 'displacement amplitude'
+    class: DER
+    units: 'm (mode-normalized)'
+    signature: '|u(x)| of a mass-orthonormal mode'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D1"] holds full metadata)'
+    provenance: ['standard modal analysis']
+    exclusions: ['coarse-mesh interpolation error at caps', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'
+  - id: RSCS2-D.2
+    name: 'strain-energy density'
+    class: DER
+    units: 'J/m^3 (mode-normalized)'
+    signature: 'w_s = 1/2 eps:C:eps'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D2"] holds full metadata)'
+    provenance: ['linear elasticity']
+    exclusions: ['singular corners exaggerate w_s under refinement', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'
+  - id: RSCS2-D.3
+    name: 'kinetic-energy density'
+    class: DER
+    units: 'J/m^3 (mode-normalized)'
+    signature: 'w_k = 1/2 rho w^2 |u|^2'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D3"] holds full metadata)'
+    provenance: ['standard modal analysis']
+    exclusions: ['same interpolation risks as D1', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'
+  - id: RSCS2-D.4
+    name: 'stress concentration (von Mises)'
+    class: DER
+    units: 'Pa (mode-normalized)'
+    signature: 'sigma_vm of sigma = C:eps'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D4"] holds full metadata)'
+    provenance: ['von Mises (standard)']
+    exclusions: ['corner singularities grow with refinement (classic non-persistent artifact)', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'
+  - id: RSCS2-D.5
+    name: 'piezoelectric/electric-energy density'
+    class: DER
+    units: 'J/m^3'
+    signature: 'w_e = 1/2 grad(phi) . eps_diel . grad(phi)'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D5"] holds full metadata)'
+    provenance: ['rscs2_core.piezo (IEEE 176)']
+    exclusions: ['gauge choice affects phi but not grad(phi)', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'
+  - id: RSCS2-D.6
+    name: 'optical-path sensitivity'
+    class: DER
+    units: 'strain (mode-normalized)'
+    signature: '|eps_pp(x)| along probe direction p (photoelastic kernel of RSCS2-E.9)'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D6"] holds full metadata)'
+    provenance: ['frozen rgcs_core.optics photoelastic model']
+    exclusions: ['path discretization aliasing', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'
+  - id: RSCS2-D.7
+    name: 'coil/drive-mode overlap density'
+    class: DER
+    units: 'N/m^3 * m (normalized)'
+    signature: '|b(x) . u_n(x)| for a declared drive pattern b'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D7"] holds full metadata)'
+    provenance: ['RSCS2-E.11 projection']
+    exclusions: ['uniform-b trivially mirrors D1 component', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'
+  - id: RSCS2-D.8
+    name: 'cross-modal overlap'
+    class: DER
+    units: 'm^2 (normalized)'
+    signature: '|u_i(x)||u_j(x)| for a near-degenerate mode pair'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D8"] holds full metadata)'
+    provenance: ['frozen coupled-mode framework']
+    exclusions: ['degenerate pairs mix arbitrarily (basis ambiguity)', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'
+  - id: RSCS2-D.9
+    name: 'phase coherence'
+    class: DER
+    units: 'dimensionless [0,1]'
+    signature: 'local |mean(e^{i arg u})| over a neighborhood of a COMPLEX response field'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D9"] holds full metadata)'
+    provenance: ['standard signal coherence']
+    exclusions: ['damping model changes phases', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'
+  - id: RSCS2-D.10
+    name: 'phase singularity'
+    class: DER
+    units: 'integer winding per plaquette'
+    signature: '2*pi winding of arg(w) on plaquettes of a plane slice of a COMPLEX scalar field'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D10"] holds full metadata)'
+    provenance: ['Nye & Berry 1974 (standard)']
+    exclusions: ['grid aliasing creates spurious +/- pairs', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'
+  - id: RSCS2-D.11
+    name: 'displacement vorticity/circulation'
+    class: DER
+    units: '1/1 (normalized)'
+    signature: '|curl u(x)| of the mode shape'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D11"] holds full metadata)'
+    provenance: ['vector calculus']
+    exclusions: ['coarse-mesh curl noise', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'
+  - id: RSCS2-D.12
+    name: 'electromagnetic circulation'
+    class: DER
+    units: 'T*m'
+    signature: 'loop circulation of a SOLVED EM field (e.g. the RSCS2-E.10 Biot-Savart field)'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D12"] holds full metadata)'
+    provenance: ["Ampere's law (standard)"]
+    exclusions: ['discretization of the loop integral', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'
+  - id: RSCS2-D.13
+    name: 'boundary-condition sensitivity'
+    class: DER
+    units: 'mm'
+    signature: 'candidate centroid shift across declared BC variants'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D13"] holds full metadata)'
+    provenance: ['sensitivity analysis']
+    exclusions: ['all-variant artifacts pass this gate (limitation declared)', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'
+  - id: RSCS2-D.14
+    name: 'mesh-refinement persistence'
+    class: DER
+    units: 'mm'
+    signature: 'candidate centroid shift coarse -> refined'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D14"] holds full metadata)'
+    provenance: ['FEM verification practice']
+    exclusions: ['two coarse meshes sharing an artifact (use >= 2x refinement)', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'
+  - id: RSCS2-D.15
+    name: 'uncertainty persistence'
+    class: DER
+    units: 'fraction [0,1]; cloud rms mm'
+    signature: 'candidate recurrence fraction and centroid cloud over material/parameter perturbation draws'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D15"] holds full metadata)'
+    provenance: ['Monte-Carlo sensitivity']
+    exclusions: ['correlated draws underestimate spread', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'
+  - id: RSCS2-D.16
+    name: 'cross-physics consensus'
+    class: DER
+    units: 'count'
+    signature: 'count of DISTINCT diagnostic families agreeing on a region (elastic energy / optical / drive / piezo / kinematic)'
+    module: 'rscs2_core.eye (DIAGNOSTIC_SPECS["D16"] holds full metadata)'
+    provenance: ['this engine (documented procedure)']
+    exclusions: ['double-counting correlated diagnostics (D1/D3, D1/uniform-D7) — families deduplicated', 'eye claims never EST (DV4-010)']
+    tests: ['tests/v4/test_rscs2_eye.py']
+    doc_target: 'V4_EYE_DIAGNOSTICS_SPEC'
+    status: 'implemented + adversarially tested; canonical-110 run: CONVENTIONAL_NODE_EXPLAINS_RESULT'

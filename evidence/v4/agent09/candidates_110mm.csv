@@ -1,0 +1,2 @@
+status,cx_mm,cy_mm,cz_mm,score,families,n_modes,d_centre_mm,d_shaftmid_mm,d_nodeprior_mm,d_conventional_mm
+CONVENTIONAL_NODE_EXPLAINS_RESULT,-0.152,-0.036,102.179,0.9762,cross_modal|kinematic|rotational,4,47.160,47.323,47.323,3.935
