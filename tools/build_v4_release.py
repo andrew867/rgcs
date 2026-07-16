@@ -24,7 +24,7 @@ import zipfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-VERSION = "4.1.0"
+VERSION = "4.1.1"
 REL = REPO / "release" / "v4"
 
 

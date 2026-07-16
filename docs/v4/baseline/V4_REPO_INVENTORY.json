@@ -7,25 +7,27 @@
   },
   "branch": "v4-dev",
   "dirty_files": [
+    " M CITATION.cff",
+    " M README.md",
+    " M docs/CANONICAL_110MM_CASE_STUDY.md",
+    " M docs/EYE_METHODOLOGY.md",
+    " M docs/PROGRAMME_PROGRESS.md",
+    " M docs/RELEASE_NOTES_V4.md",
+    " M docs/USER_GUIDE_V4.md",
+    " M docs/ZENODO_METADATA_V4.md",
     " M docs/v4/baseline/V4_BASELINE_TEST_MATRIX.json",
     " M docs/v4/baseline/V4_FROZEN_ARTIFACT_CHECKSUMS.json",
-    " M docs/v4/baseline/V4_MODULE_STATUS.json",
     " M docs/v4/baseline/V4_REPO_INVENTORY.json",
-    " M rscs2_core/multiphysics/coupling.py",
-    " M rscs2_core/refmodels/iome_linipo4.py",
-    " M tools/qa_audit_v4_results.json",
-    "?? docs/v4/RGCS_V4_1_COMPLETION_MANUSCRIPT.md",
-    "?? docs/v4/V4_OPTICAL_CHANNEL_TAXONOMY.md",
-    "?? docs/v4/V4_QA_FINAL_VERDICT.md",
-    "?? docs/v4/V4_WHAT_IS_NOT_MODELLED.md",
-    "?? docs/v4/examples/",
-    "?? docs/v4/registers/",
+    " M pyproject.toml",
+    " M tools/build_v4_release.py",
+    "?? docs/v4/DOCUMENTATION_AUDIT_V4_1_FINAL.json",
+    "?? docs/v4/DOCUMENTATION_AUDIT_V4_1_FINAL.md",
+    "?? docs/v4/runlogs/CLOSEOUT-runlog.md",
     "?? release/v4/",
-    "?? tests/v4/test_v4c_docs_examples.py",
-    "?? tests/v4/test_v4c_q1_adversarial.py",
-    "M docs/plans-v4/DEFECT_REGISTER_V4.md"
+    "?? tests/v4/test_v4c_docs_closeout.py",
+    "M CHANGELOG.md"
   ],
-  "head": "97936cc3d49568c68c640229cc6677d9f36cebdb",
+  "head": "4c2a1cc1989fa76e62c3aaade389e1766560f305",
   "protected_tags_present": {
     "v2.0.0": "f9fd2c20a05334e12ac9113ba86853c6591fc84e",
     "v3.0.0": "83521f73d6ad02b009ada88f3b8d33a8a00fc253",
@@ -45,9 +47,11 @@
     "v3.0.1",
     "v4.0.0",
     "v4.0.0-alpha",
-    "v4.0.0-rc1"
+    "v4.0.0-rc1",
+    "v4.1.0",
+    "v4.1.0-rc1"
   ],
   "worktrees": [
-    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS 97936cc [v4-dev]"
+    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS 4c2a1cc [v4-dev]"
   ]
 }

@@ -54,16 +54,20 @@ falls back silently. CUDA is INTERFACE_TESTED only (no hardware).
 
 ```bash
 rgcs-v4 proof-bundle canonical-110          # ~5-10 min, full meshes
-rgcs-v4 verify-checksums                    # 110/110 OK expected
+rgcs-v4 verify-checksums                    # 115/115 OK expected
 ```
 
 Produces `proof_bundle_110mm/` — geometry (STL/OBJ/GLB/VTU + hashes),
 frozen material tensors, live benchmarks, ideal+nominal mode tables,
-field exports, the full eye-consensus rerun, 17 figures (PNG+PDF), and
-reports. The verdict is machine-read from `VERDICT.json`; for the
-canonical crystal it is **CONVENTIONAL_NODE_FOUND** — the eye engine
-found no stable special region and explains the one agreeing region as
-ordinary modal structure. That is a passing scientific outcome.
+field exports, the full eye-consensus rerun with the corrected
+uncertainty-aware node comparison, 17 figures (PNG+PDF), and reports.
+The verdict is machine-read from `VERDICT.json`; for the canonical
+crystal (v4.1.0) it is **UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE** —
+the one 3-family candidate sits 3.906 mm from the nearest conventional
+station with a 3.08 mm localization halfwidth, so the conventional
+model *may* explain it within uncertainty (not established that it
+does; finer meshes discriminate). A null or indeterminate verdict is a
+passing scientific outcome.
 
 ## The scripted demo
 

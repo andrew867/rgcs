@@ -30,17 +30,32 @@ nominal frequencies differ by the expected −ΔL/L scaling family —
 the two configurations are numerically distinguishable and never
 conflated.
 
-## The eye question
+## The eye question (corrected, v4.1.0)
 
-The 16-diagnostic consensus (Agent 09; rerun in every proof bundle)
-returns **CONVENTIONAL_NODE_EXPLAINS_RESULT**: the single region where
-three independent diagnostic families agree (male cap/shaft junction,
-z ≈ 102.2 mm) lies within 4 mm of an ordinary node/antinode station of
-the examined modes. Distances: ~47 mm from the geometric centre
-(L/2), ~46 mm from the frozen RGCS node prior (RGCS-M.39). A
-scrambled-field control returns NO_STABLE_CANDIDATE every build.
-**No stable, computationally special interaction region was found**;
-`eye_coordinate` remains null.
+The 16-diagnostic consensus (rerun in every proof bundle) finds one
+region where three independent diagnostic families agree, at the male
+cap/shaft junction. Corrected uncertainty-aware record (V4C-D-001; the
+old 4 mm proximity rule is removed):
+
+- candidate coordinate: (−0.295, −0.205, **102.240**) mm;
+- nearest conventional node/antinode station:
+  (−0.447, 0.774, **106.018**) mm;
+- exact separation: **3.906 mm** (reported exactly, never absorbed);
+- localization halfwidth: 3.08 mm (mesh-resolution dominated);
+  convergence shift between mesh levels: 0.353 mm; material-draw
+  cloud rms: 0.032 mm; numerical coincidence tolerance: 1e-6 mm;
+- verdict: **`UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE`** — the
+  implemented conventional model *may* explain the result within
+  current localization uncertainty; it is *not established that it
+  does*. Finer mesh resolution is the discriminating next computation.
+
+Distances from declared priors: ~47 mm from the geometric centre
+(L/2), ~46 mm from the frozen RGCS node prior (RGCS-M.39) — the
+candidate is neither. A scrambled-field control returns
+NO_STABLE_CANDIDATE every build. `eye_coordinate` remains null (no
+exact coincidence and no distinct-stable claim). The v4.0.0 records,
+which used the retired proximity rule, are frozen history
+(`docs/v4/proof/M9-precorrection/`).
 
 ## Addressability projections (no coupling claims)
 

@@ -3,6 +3,25 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [4.1.1] — 2026-07-16
+
+Documentation-only patch release (no code, solver, or evidence
+changes; v4.1.0 remains tagged and frozen). Reason: the v4.1.0
+manuscripts asset shipped four documents (USER_GUIDE_V4,
+RELEASE_NOTES_V4, ZENODO_METADATA_V4, EYE_METHODOLOGY) that still
+asserted the retired CONVENTIONAL_NODE verdict as current without a
+correction marker — contradicting the release's own V4C-D-001
+correction. This patch: full documentation consistency audit
+(`docs/v4/DOCUMENTATION_AUDIT_V4_1_FINAL.md` + machine-readable JSON);
+README rewritten for v4.1 (release, install, CLI quick start, corrected
+Eye record with the 3.906 mm separation and uncertainty interpretation,
+capability-firewall and reference-system distinctions, unimplemented-
+physics list); corrected/labelled the four stale documents; historical
+banners on superseded v4.0.0 texts; closeout guard tests
+(`tests/v4/test_v4c_docs_closeout.py`) that fail the build if the 4 mm
+rule, the retired verdict-as-current, or physical-nonexistence claims
+are reintroduced; documentation/asset audit of the release builder.
+
 ## [4.1.0] — 2026-07-16
 
 Capability-aware multiphysics completion of v4 (all results

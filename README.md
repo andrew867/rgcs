@@ -4,15 +4,76 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21387947.svg)](https://doi.org/10.5281/zenodo.21387947)
 
-**v3.0.0** — includes **RSCS 1.0**, the Resonant Spacetime Coordinate
-System typed-mathematics layer · MIT license · Author: Andrew Green
-Frozen baseline: v2.0.0 (tag `v2.0.0`, `archive/v2.0.0/` — byte-identical, never modified)
+**Current release: [v4.1.0](https://github.com/andrew867/rgcs/releases/tag/v4.1.0)**
+· includes RSCS 2.0 (capability-aware multiphysics) on the RSCS 1.0
+typed-mathematics layer · MIT license · Author: Andrew Green
+Frozen history: v2.0.0 (`archive/v2.0.0/`), v3.0.x, v4.0.0 — tags and
+records never modified. The DOI badge above is the latest **minted**
+DOI (v3.0.1); the v4.1.0 Zenodo record is pending human verification
+(see Citing).
 
 RGCS is a **reproducible research framework** for studying acoustic/mechanical
 resonance and phase coherence in engineered quartz geometries: a typed,
-provenance-checked mathematics library, a desktop workbench, safety-bounded
-experiment schemas, and four fully generated manuscripts — plus a
-pre-registered falsification plan for every hypothesis the project holds.
+provenance-checked mathematics library, a validated anisotropic FEM +
+piezoelectric solver stack, a capability firewall that refuses to fabricate
+results for unimplemented mechanisms, an uncertainty-aware Eye Consensus
+diagnostic engine, reduced-order reference systems for non-quartz physics,
+a desktop workbench, safety-bounded experiment schemas, and fully generated
+manuscripts — plus a pre-registered falsification plan for every hypothesis
+the project holds.
+
+## RGCS v4.1 at a glance
+
+- **All results are computational. No experimental confirmation exists.**
+- Validated quartz core (CORE_VALIDATED): anisotropic elasticity, modal
+  + static FEM, piezoelectric coupling, dielectric response, photoelastic
+  and birefringent optics, mechanical torsion/circulation diagnostics,
+  calibration with uncertainty ([user guide](docs/USER_GUIDE_V4.md),
+  [v4.1 release notes](docs/RELEASE_NOTES_V4_1.md)).
+- **Eye Consensus verdict (canonical 110 mm crystal):**
+  `UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE`. The candidate at
+  (−0.295, −0.205, 102.240) mm sits **3.906 mm** from the nearest
+  conventional station (−0.447, 0.774, 106.018) mm; the localization
+  halfwidth is 3.08 mm (mesh-resolution dominated; convergence shift
+  0.353 mm, material-draw cloud rms 0.032 mm). The implemented
+  conventional model **may** explain the result within current
+  uncertainty — it is **not established that it does**; finer mesh
+  resolution is the discriminating next computation. (v4.1 removed the
+  old 4 mm proximity rule, defect V4C-D-001; the v4.0.0 records are
+  frozen history.)
+- **Capability firewall:** unimplemented quartz mechanisms (magnetic
+  order, magnons, excitons, ferrotoroidic/IOME, dynamic magnetoelectric
+  tensors, metacrystal statistics, microscopic tunnelling, chiral-phonon
+  Zeeman, spacetime torsion) return typed
+  `MECHANISM_NOT_IMPLEMENTED_FOR_MATERIAL` results — never numeric
+  zeros, and **never a claim of physical nonexistence**
+  ([binding scope statement](docs/v4/WHAT_THIS_QUARTZ_MODEL_DOES_NOT_INCLUDE.md),
+  [capability matrix](docs/v4/V4_MATERIAL_CAPABILITY_MATRIX.md)).
+- **Separate reference systems** (REDUCED_ORDER_VALIDATED, never quartz):
+  exciton-magnon, avoided crossings, dressed spin, chiral phonons,
+  dynamic magnetoelectric response, metacrystal g2 transfer, LiNiPO4
+  IOME, MnF2 annealing comparator, nonlinear AFM switching,
+  phonon-controlled exchange. They are comparison systems and hypothesis
+  generators — not evidence those mechanisms operate in the quartz
+  specimen.
+- **Quarantined source hypotheses:** FDT and source-lore material are
+  import-firewalled SOURCE_HYPOTHESIS adapters with pre-registered
+  falsification discriminators ([provenance](sources/registry/),
+  [FDT adapter](docs/v4/V4_FDT_SOURCE_HYPOTHESIS_ADAPTER.md)).
+- **Not implemented anywhere:** DFT, Bethe-Salpeter, ab-initio spin
+  dynamics, QFT, microscopic QED/plasmonics, microscopic proton
+  tunnelling, nonclassical photon-statistics generation, photon creation
+  from classical boundary switching, or a complete microscopic
+  explanation of Eye candidates.
+- **Status at the release commit (`4c2a1cc`):** 605 tests passed
+  (1 archived-environment byte test deselected by policy D-V3-04);
+  hosted CI 10/10 jobs green (Ubuntu/Windows/macOS); adversarial audit
+  19/19; proof bundle 115/115 checksums
+  ([proof bundle](proof_bundle_110mm/), regenerate with
+  `python -m rscs2_core.proofbundle`).
+- **iGPU:** Intel Iris Xe (fp32) parity 3.4e-05 and i5-1135G7 CPU-CL
+  (fp64) parity 1.8e-14, measured on real hardware at v4.0.0 and
+  unchanged; CUDA remains interface-only (no hardware).
 
 ## Honest scope — read this first
 
@@ -94,13 +155,25 @@ outputs are what you see above.
 
 ## Quick start
 
+Python ≥ 3.11 on Windows, Linux, or macOS (CI covers all three).
+
 ```bash
-git clone <this-repo> && cd RGCS
-python3 -m pip install -e ".[dev]"        # core + test tooling
-python3 -m pytest -q                       # 377 tests; expect 376 passed
-                                           # (1 documented golden-CSV
-                                           # byte-equality test is
-                                           # Linux-reference-only)
+git clone https://github.com/andrew867/rgcs && cd rgcs
+python -m pip install -e ".[dev]"
+python -m pip install "scikit-fem>=10" meshio matplotlib gmsh   # v4 solver stack
+python -m pytest -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic
+# expect: 605 passed, at the v4.1.0 release commit
+```
+
+The v4 CLI entry point is `rgcs-v4` (or `python -m rscs2_core.cli`):
+
+```bash
+rgcs-v4 capabilities material.alpha_quartz --check magnon_modes
+#   -> NOT_APPLICABLE with reason_code MECHANISM_NOT_IMPLEMENTED_FOR_MATERIAL
+rgcs-v4 modes ideal_n7 --n 12          # anisotropic modal solve (needs gmsh)
+rgcs-v4 proof-bundle canonical-110     # the full reproducibility bundle
+rgcs-v4 verify-checksums               # 115/115 expected
+python tools/demo_v4.py --fast         # 10-step clean-workspace demo
 ```
 
 Then try the library:
@@ -191,18 +264,26 @@ Fuller engineering version: `docs/SOFTWARE_HARDWARE_ARCHITECTURE.md`.
 
 ## Limitations (honest list)
 
-1. One inherited test failure by design: a golden CSV is byte-exact only on
-   the Linux reference platform (semantics are tolerance-checked
-   everywhere; deselected in Windows CI with documented justification).
-2. The CI matrix is defined but the Linux legs have not yet executed.
-3. Desktop panels, FEA import, firmware, and hardware are contracts and
-   tested headless services — not shipped UI/firmware/hardware.
-4. No bench data: nothing physical is confirmed (see Honest scope).
-5. The four v3 manuscripts are concise generated-number spines (3–5 pp.)
-   over the fuller repository documentation, by design at this stage.
+1. **No bench data: nothing physical is confirmed** (see Honest scope).
+2. Eye localization is mesh-resolution dominated (±3.08 mm at shipped
+   mesh levels): whether the 3.906 mm candidate/station separation is
+   real structure or discretization is an OPEN question — finer meshes
+   are the discriminating computation.
+3. New-wave source papers (Toyoda, Schlauderer, Afanasiev, …) are
+   registered metadata-only; numeric comparisons against their measured
+   values are marked pending until full texts are supplied locally.
+4. One inherited test is byte-exact only in the archived v2 reference
+   environment (deselected everywhere per policy D-V3-04; a
+   tolerance-aware equivalent runs on every platform).
+5. v4-specific GUI views are staged past 4.1 (the CLI + offscreen
+   rendering cover every function); desktop panels beyond the v3
+   workbench, firmware, and hardware remain contracts.
+6. No DFT/BSE/ab-initio/QFT/microscopic solvers anywhere; the metacrystal
+   transfer is a declared reduced rule; optical walk-off is not modelled.
 
-Full list with evidence: `release/RELEASE_NOTES.md` and
-`docs/QA_REPORT_V3.md`.
+Full lists with evidence: [docs/RELEASE_NOTES_V4_1.md](docs/RELEASE_NOTES_V4_1.md),
+`docs/v4/V4_WHAT_IS_NOT_MODELLED.md`, and the historical
+`release/RELEASE_NOTES.md` / `docs/QA_REPORT_V3.md`.
 
 ## Contributing, support, and conduct
 
@@ -215,8 +296,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md), [SUPPORT.md](SUPPORT.md),
 ## Citing
 
 See [`CITATION.cff`](CITATION.cff) (GitHub renders a "Cite this repository"
-button from it). Release provenance — commit, environment, checksums, test
-evidence: `release/PROVENANCE.json` and `release/SHA256SUMS.txt`.
+button from it). Minted DOIs: 10.5281/zenodo.21387947 (v3.0.1 version DOI)
+and 10.5281/zenodo.21387946 (concept DOI, always latest). **The v4.1.0
+Zenodo record is pending human verification/publication** (see
+`docs/ZENODO_METADATA_V4.md`); its version DOI will be added to
+CITATION.cff in a follow-up commit once minted. Release provenance —
+commit, environment, checksums, test evidence: the `PROVENANCE.json` and
+`SHA256SUMS.txt` assets on each GitHub release.
 
 ## Acknowledgements
 

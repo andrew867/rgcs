@@ -1,4 +1,12 @@
-# RGCS v4.0.0 Release Notes (RSCS 2.0)
+# RGCS v4.0.0 Release Notes (RSCS 2.0) — HISTORICAL
+
+> **Historical record (superseded).** These are the notes of the
+> frozen v4.0.0 release. Its Eye verdict wording
+> ("CONVENTIONAL_NODE_FOUND") used a 4 mm node-proximity rule that
+> was later removed as defect V4C-D-001; the current interpretation
+> is UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE — see
+> [RELEASE_NOTES_V4_1.md](RELEASE_NOTES_V4_1.md). Preserved unchanged
+> below as history.
 
 All results are computational; no experimental confirmation exists.
 The historical eye is a Source claim; computed candidates are

@@ -1,0 +1,44 @@
+{
+  "audit": "v4.1 final documentation closeout",
+  "repository_commit_audited": "4c2a1cc1989fa76e62c3aaade389e1766560f305",
+  "release_audited": "v4.1.0",
+  "canonical_record": {
+    "verdict": "UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE",
+    "candidate_mm": [-0.295, -0.205, 102.240],
+    "nearest_conventional_station_mm": [-0.447, 0.774, 106.018],
+    "separation_mm": 3.906,
+    "localization_halfwidth_mm": 3.08,
+    "convergence_shift_mm": 0.353,
+    "material_draw_cloud_rms_mm": 0.032,
+    "numerical_coincidence_tolerance_mm": 1e-06,
+    "interpretation": "implemented conventional model MAY explain the result within current localization uncertainty; not established that it does; finer mesh resolution is the discriminating next computation"
+  },
+  "inventory": [
+    {"path": "README.md", "status": "FIXED", "action": "rewritten for v4.1 (release, install, CLI, Eye record, firewall, limitations, Zenodo status)"},
+    {"path": "docs/CANONICAL_110MM_CASE_STUDY.md", "status": "FIXED", "action": "eye section replaced with corrected uncertainty-aware record"},
+    {"path": "docs/EYE_METHODOLOGY.md", "status": "FIXED", "action": "corrected gate + verdict vocabulary + canonical result"},
+    {"path": "docs/USER_GUIDE_V4.md", "status": "FIXED", "action": "corrected verdict; 115/115 count"},
+    {"path": "docs/ZENODO_METADATA_V4.md", "status": "FIXED", "action": "v4.1.0 metadata current; v4.0.0 block labelled historical"},
+    {"path": "docs/PROGRAMME_PROGRESS.md", "status": "FIXED", "action": "v4.1 completion row appended"},
+    {"path": "docs/RELEASE_NOTES_V4.md", "status": "HISTORICAL_PRESERVED", "action": "superseded banner added"},
+    {"path": "docs/RELEASE_NOTES_V4_1.md", "status": "CURRENT", "action": "none"},
+    {"path": "docs/RGCS_V4_TECHNICAL_MANUSCRIPT.md", "status": "CURRENT", "action": "verified corrected at 97936cc"},
+    {"path": "docs/v4/RGCS_V4_1_COMPLETION_MANUSCRIPT.md", "status": "CURRENT", "action": "verified"},
+    {"path": "docs/plans-v4/EYE_DIAGNOSTIC_REPORT_110MM.md", "status": "HISTORICAL_PRESERVED", "action": "corrective addendum already present"},
+    {"path": "docs/plans-v4/* (agent records)", "status": "HISTORICAL_PRESERVED", "action": "execution history; none"},
+    {"path": "docs/v4/WHAT_THIS_QUARTZ_MODEL_DOES_NOT_INCLUDE.md", "status": "CURRENT", "action": "binding scope statement; verified"},
+    {"path": "docs/v4/proof/M9-precorrection/", "status": "HISTORICAL_PRESERVED", "action": "pre-correction run, labelled"},
+    {"path": "pyproject.toml", "status": "FIXED", "action": "version 4.1.1"},
+    {"path": "CITATION.cff", "status": "FIXED", "action": "version 4.1.1 + release URL; DOI pending human mint"},
+    {"path": "CHANGELOG.md", "status": "FIXED", "action": "[4.1.1] entry added"},
+    {"path": "tools/build_v4_release.py", "status": "FIXED", "action": "VERSION 4.1.1"},
+    {"path": "tests/v4/test_v4c_docs_closeout.py", "status": "ADDED", "action": "7 guard tests (stale-term linter, numbers, versions, links, bundle agreement)"},
+    {"path": "release asset rgcs-v4.1.0-manuscripts.zip", "status": "SUPERSEDED_BY_PATCH", "action": "shipped 4 uncorrected docs -> v4.1.1 rebuild; v4.1.0 frozen"}
+  ],
+  "pending_human_action": [
+    "verify/publish Zenodo record for the final v4.1.x release",
+    "add minted version DOI to CITATION.cff (follow-up commit)"
+  ],
+  "unresolved_blockers": [],
+  "verdict": "CONSISTENT after fixes; enforcement mechanical via guard tests; v4.1.1 patch release required and executed for asset correctness"
+}
