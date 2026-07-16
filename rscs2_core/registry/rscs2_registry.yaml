@@ -11,6 +11,74 @@ model_version: "RSCS-2.0-dev"
 # Only objects with a SHIPPED, TESTED implementation are listed. The full
 # planned id set lives in docs/plans-v4/V4_MATHEMATICAL_MODEL_PLAN.md and
 # is registered here as each is implemented and validated.
+equations:
+  - id: RSCS2-E.1
+    name: linear elastodynamic eigenproblem
+    class: EST
+    units: "Pa, kg/m^3 -> Hz"
+    signature: "div(sigma) + rho*omega^2*u = 0; K u = omega^2 M u"
+    module: "rscs2_core.fem:assemble_isotropic"
+    provenance: ["continuum mechanics (Landau-Lifshitz; Achenbach)"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_solver.py::test_cantilever_eb_benchmark"]
+    doc_target: "V4_CPU_SOLVER_SPEC"
+    status: "implemented + validated (M3 benchmarks green)"
+  - id: RSCS2-E.2
+    name: isotropic constitutive (Lame)
+    class: EST
+    units: "Pa"
+    signature: "sigma = lam*tr(eps)*I + 2*mu*eps"
+    module: "rscs2_core.fem:assemble_isotropic"
+    provenance: ["standard; skfem linear_elasticity model"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_solver.py::test_isotropic_constrained_bar_pwave"]
+    doc_target: "V4_CPU_SOLVER_SPEC"
+    status: "implemented + validated"
+  - id: RSCS2-E.3
+    name: anisotropic constitutive (full tensor)
+    class: EST
+    units: "Pa"
+    signature: "sigma_ij = C_ijkl eps_kl; C from frozen Voigt via voigt_to_tensor"
+    module: "rscs2_core.fem:assemble_anisotropic"
+    provenance: ["frozen rgcs_core.anisotropy (Bechmann 1958; Auld 1973)"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_solver.py::test_christoffel_anchor_quartz"]
+    doc_target: "V4_ANISOTROPIC_QUARTZ_SPEC"
+    status: "implemented + validated (conservative-extension anchor V.6 green)"
+solver:
+  - id: RSCS2-S.1
+    name: sparse generalized eigensolve
+    class: EST
+    units: "Hz"
+    signature: "(ElasticProblem, n, fixed_dofs) -> frequencies, modes, residuals"
+    module: "rscs2_core.fem:solve_modes"
+    provenance: ["scipy.sparse.linalg.eigsh shift-invert"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_solver.py::test_mesh_convergence"]
+    doc_target: "V4_CPU_SOLVER_SPEC"
+    status: "implemented + validated"
+  - id: RSCS2-S.2
+    name: rigid-body mode handling
+    class: EST
+    units: "count"
+    signature: "modes < RIGID_MODE_TOL_HZ classified rigid, reported separately"
+    module: "rscs2_core.fem:solve_modes"
+    provenance: ["standard modal analysis"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_solver.py::test_free_body_rigid_modes_and_mass_patch"]
+    doc_target: "V4_CPU_SOLVER_SPEC"
+    status: "implemented + validated (6 rigid modes on free body)"
+  - id: RSCS2-S.4
+    name: modal residual check
+    class: DER
+    units: "dimensionless"
+    signature: "||K u - w^2 M u|| / ||w^2 M u|| per mode"
+    module: "rscs2_core.fem:solve_modes"
+    provenance: ["standard"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_solver.py::test_cantilever_eb_benchmark"]
+    doc_target: "V4_CPU_SOLVER_SPEC"
+    status: "implemented + validated (residuals < 1e-6)"
 benchmarks:
   - id: RSCS2-V.1
     name: free-free longitudinal rod
@@ -22,7 +90,7 @@ benchmarks:
     exclusions: []
     tests: ["tests/v4/test_rscs2_reference.py::test_rod_longitudinal"]
     doc_target: "V4_REFERENCE_SYSTEMS_SPEC"
-    status: "reference-implemented (analytic); solver reproduction PENDING M3"
+    status: "analytic validated; solver validates the constrained P-wave ladder variant (test_isotropic_constrained_bar_pwave)"
   - id: RSCS2-V.2
     name: fixed-free Euler-Bernoulli cantilever beam
     class: EST
@@ -33,7 +101,7 @@ benchmarks:
     exclusions: []
     tests: ["tests/v4/test_rscs2_reference.py::test_cantilever_eb"]
     doc_target: "V4_REFERENCE_SYSTEMS_SPEC"
-    status: "reference-implemented (analytic); solver reproduction PENDING M3"
+    status: "analytic reference + solver reproduction VALIDATED (M3)"
   - id: RSCS2-V.3
     name: Timoshenko cantilever correction
     class: EST
@@ -44,4 +112,26 @@ benchmarks:
     exclusions: []
     tests: ["tests/v4/test_rscs2_reference.py::test_timoshenko_reduces_to_eb"]
     doc_target: "V4_REFERENCE_SYSTEMS_SPEC"
-    status: "reference-implemented (analytic); solver reproduction PENDING M3"
+    status: "analytic + SOLVER VALIDATED: thick-beam z-bend +0.03% vs Timoshenko (test_thick_beam_timoshenko)"
+  - id: RSCS2-V.6
+    name: alpha-quartz Christoffel ladder (conservative extension)
+    class: EST
+    units: "Hz"
+    signature: "constrained quartz bar along Z: f_n = n * vZ_frozen / (2L)"
+    module: "rscs2_core.fem:assemble_anisotropic"
+    provenance: ["frozen rgcs_core.anisotropy wave_speeds (RSCS-O.17)"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_solver.py::test_christoffel_anchor_quartz"]
+    doc_target: "V4_REFERENCE_SYSTEMS_SPEC"
+    status: "VALIDATED: FEM ladder matches frozen v3 speed (rtol 1e-3)"
+  - id: RSCS2-V.8
+    name: mesh-refinement convergence
+    class: EST
+    units: "relative error"
+    signature: "err(EB) strictly decreasing over 3 refinement levels"
+    module: "rscs2_core.fem:solve_modes"
+    provenance: ["FEM convergence theory"]
+    exclusions: []
+    tests: ["tests/v4/test_rscs2_solver.py::test_mesh_convergence"]
+    doc_target: "V4_TEST_PLAN"
+    status: "VALIDATED: monotone, final err < 0.5%"

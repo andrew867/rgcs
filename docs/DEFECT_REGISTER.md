@@ -167,3 +167,13 @@ Severity: P0 blocker / P1 major / P2 minor / P3 cosmetic. Nothing was fixed by Q
   patch tests, gmsh-generated well-shaped tet beam, per-element Jacobian
   verification, static-deflection patch test. BLOCKS the M3 gate and any
   v4 release. Documented before fix (QA discipline).
+- **V4-D-001 CLOSED (2026-07-16):** root cause = the prototype MASS form
+  used ddot(u,v) (matrix double-contraction) on vector displacement
+  fields, inflating M ~480x (trace 58.13 vs 0.12 kg-scale) and driving
+  all frequencies down mesh-dependently. NOT a library bug. Fix:
+  rho*dot(u,v) in rscs2_core.fem. Evidence: cantilever f1 = 834.9 Hz vs
+  EB 835.5 Hz (-0.07%); monotone convergence 1.53%->0.18%->0.17%; static
+  tip deflection -0.2% of FL^3/3EI; 6 rigid modes on free body; mass
+  patch u^T M u = rho*V to 1e-9; quartz Christoffel ladder EXACT vs the
+  frozen v3 speed (63299.3 Hz = vZ/(2L), harmonics n=1..4). Regression
+  pins: test_v4_d001_regression_ddot_mass_is_wrong + mass patch test.
