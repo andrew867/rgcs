@@ -1,6 +1,10 @@
-# RGCS v3.0.0 / RSCS 1.0 — Release Notes
+# RGCS v3.0.1 / RSCS 1.0 — Release Notes
 
-**Date:** 2026-07-15. **License:** MIT. **Baseline:** RGCS v2.0.0 (tag
+*(v3.0.1 is an archival/community patch over the v3.0.0 scientific
+baseline: figure-rendering fixes D-V3-05/06, the laboratory validation
+campaign, and the Zenodo/community package. No mathematical change.)*
+
+**Date:** 2026-07-16. **License:** MIT. **Baseline:** RGCS v2.0.0 (tag
 `v2.0.0`, `archive/v2.0.0/` — byte-identical, never modified).
 **Repository:** https://github.com/andrew867/rgcs
 
@@ -71,7 +75,7 @@ build environment, verified at v2 release and recorded by checksum.
 See `SHA256SUMS.txt` for checksums and `PROVENANCE.json` for the release
 commit, environment, and test evidence.
 
-- `rgcs-v3.0.0-source.zip` — full source at the release commit
+- `rgcs-v3.0.1-source.zip` — full source at the release commit
 - `rgcs_v3_manuscripts.zip` — 4 PDFs + TeX + generated tables/figures +
   per-manuscript checksums/build docs
 - `rgcs_v3_sample_experiments.zip` — 13 JSON schemas + validated example

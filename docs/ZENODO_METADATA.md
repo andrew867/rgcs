@@ -18,7 +18,7 @@ issues one.**
 | Funding | none — self-funded independent research |
 | Communities | suggested after record creation: *open-science*, *reproducible-research* (join requests are per-community and post-hoc) |
 | Keywords | reproducible research; research software; resonance; quartz; elastodynamics; coupled oscillators; acousto-optics; falsification; pre-registration; provenance; claim classification; metrology; open science |
-| Related identifiers | `isSupplementTo` → https://github.com/andrew867/rgcs · `isIdenticalTo` → the v3.0.0 release URL |
+| Related identifiers | `isSupplementTo` → https://github.com/andrew867/rgcs · `isIdenticalTo` → the v3.0.1 release URL |
 
 ## Abstract (as archived)
 
