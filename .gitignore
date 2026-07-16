@@ -28,3 +28,8 @@ manuscript/*.fls
 manuscript/*.fdb_latexmk
 manuscript/*.xdv
 manuscript/*.blg
+
+# Release ZIPs live on the GitHub release (checksummed in SHA256SUMS.txt),
+# not in git history — tracking them nested each source zip inside the
+# next and compounded ~30-60 MB per release.
+release/*.zip
