@@ -45,6 +45,17 @@ equations:
     tests: ["tests/v4/test_rscs2_solver.py::test_christoffel_anchor_quartz", "tests/v4/test_rscs2_quartz.py::test_christoffel_matches_frozen_v3_on_sweep", "tests/v4/test_rscs2_quartz.py::test_rotation_identity_inverse_composition", "tests/v4/test_rscs2_quartz.py::test_trigonal_symmetry_and_known_rotation"]
     doc_target: "V4_ANISOTROPIC_QUARTZ_SPEC"
     status: "implemented + validated (conservative-extension anchor V.6 green)"
+  - id: RSCS2-E.5
+    name: linear piezoelectric coupling (stress-charge form)
+    class: EST
+    units: 'C/m^2, F/m, Pa -> Hz'
+    signature: 'sigma=C:S-e^T.E; D=e:S+eps.E; block [[Kuu,Kup],[Kup^T,-Kpp]]'
+    module: 'rscs2_core.piezo:PiezoProblem'
+    provenance: ['IEEE 176; Bechmann 1958 (e11=0.171, e14=-0.0406 C/m^2; eps11=4.428, eps33=4.634 rel)']
+    exclusions: ['no accuracy claim beyond supplied tensors/BCs']
+    tests: ['tests/v4/test_rscs2_piezo.py::test_single_element_energy_patch', 'tests/v4/test_rscs2_piezo.py::test_zero_piezo_reduces_exactly_to_elastic', 'tests/v4/test_rscs2_piezo.py::test_open_ge_short_and_extensional_coupling']
+    doc_target: 'V4_PIEZOELECTRIC_MULTIPHYSICS_SPEC'
+    status: 'implemented + validated (energy patch 1e-9; zero-e reduction 1e-9; k_eff^2 physical order)'
 solver:
   - id: RSCS2-S.1
     name: sparse generalized eigensolve
@@ -191,4 +202,14 @@ boundary:
     tests: ["tests/v4/test_rscs2_solver.py::test_mass_loading_b4"]
     doc_target: "V4_CPU_SOLVER_SPEC"
     status: "implemented + validated (Rayleigh tip-mass shift quantitative)"
-
+  - id: RSCS2-B.5
+    name: electrode boundaries (short/open circuit, gauge)
+    class: EST
+    units: 'V'
+    signature: 'short: phi=0 on electrodes; open: single gauge node; k_eff^2=(fo^2-fs^2)/fo^2'
+    module: 'rscs2_core.piezo:solve_piezo_modes'
+    provenance: ['IEEE 176 resonance definitions']
+    exclusions: []
+    tests: ['tests/v4/test_rscs2_piezo.py::test_electrode_reversal_flips_displacement']
+    doc_target: 'V4_PIEZOELECTRIC_MULTIPHYSICS_SPEC'
+    status: 'implemented + validated (reversal antisymmetry; zero-drive zero-response)'
