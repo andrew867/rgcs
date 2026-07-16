@@ -176,6 +176,14 @@ def solve_modes(problem: ElasticProblem, n_modes: int,
     # vectors; verify and report the worst off-diagonal
     gram = vecs.T @ (Mc @ vecs)
     ortho_err = float(np.max(np.abs(gram - np.eye(k))))
+    if fixed_dofs is not None and len(fixed_dofs):
+        # expand condensed eigenvectors to full DOF space (zeros at the
+        # fixed dofs) so modes are indexable by basis.doflocs
+        full = np.zeros((K.shape[0], k))
+        free = np.setdiff1d(np.arange(K.shape[0]),
+                            np.asarray(fixed_dofs))
+        full[free, :] = vecs
+        vecs = full
     return {
         "frequencies_hz": freqs,
         "elastic_frequencies_hz": freqs[~rigid],

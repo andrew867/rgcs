@@ -157,6 +157,28 @@ benchmarks:
     tests: ["tests/v4/test_rscs2_solver.py::test_cube_lame_mode_v5"]
     doc_target: "V4_REFERENCE_SYSTEMS_SPEC"
     status: "VALIDATED: +0.03-0.05% at nu=0.25 and 0.33; nu-independence confirmed"
+  - id: RSCS2-V.4
+    name: conventional reference systems (cavity + tuning fork)
+    class: EST
+    units: 'Hz'
+    signature: 'rigid-wall cavity vs EXACT closed form; base-fixed fork sym/antisym pair + common-mode rejection'
+    module: 'rscs2_core.refsystems'
+    provenance: ['exact Helmholtz rectangular-cavity solution; classical tuning-fork mode structure']
+    exclusions: ['fork pair regime is base-FIXED (weak coupling); free fork is strong-coupling (documented)']
+    tests: ['tests/v4/test_rscs2_refsystems.py::test_cavity_exact_reference', 'tests/v4/test_rscs2_refsystems.py::test_cavity_degeneracy_in_cube', 'tests/v4/test_rscs2_refsystems.py::test_fork_symmetric_antisymmetric_and_cmr']
+    doc_target: 'V4_REFERENCE_SYSTEMS_SPEC'
+    status: 'VALIDATED: cavity FEM within 1.7e-4 of exact incl. 3-fold cube degeneracy; fork pair S0=8.70 Hz on 1237.8 Hz, CMR ratio 0.26'
+  - id: RSCS2-V.9
+    name: avoided-crossing anchor vs frozen two-mode model (conservative extension)
+    class: EST
+    units: 'Hz'
+    signature: 'tip-mass detuned fork pair: FEM splitting vs frozen S = sqrt(Delta^2 + S0^2)'
+    module: 'rscs2_core.refsystems + rgcs_core.coupled_modes.static:coupled_two_mode'
+    provenance: ['FROZEN RSCS-O.4 / RGCS-M.24 (DV4-009)']
+    exclusions: ['detuning mapped via Rayleigh tip-mass formula (m_eff = 0.2427 m_prong)']
+    tests: ['tests/v4/test_rscs2_refsystems.py::test_v9_avoided_crossing_anchor_frozen_model']
+    doc_target: 'V4_REFERENCE_SYSTEMS_SPEC'
+    status: 'VALIDATED: frozen model tracks FEM splitting within 6.4% over detuning sweep 0..10.7 Hz (evidence/v4/agent10/avoided_crossing_v9.*)'
 boundary:
   - id: RSCS2-B.1
     name: free (traction-free) boundary
