@@ -3,6 +3,80 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [4.2.0] — 2026-07-16
+
+Master Research Expansion: the post-v4.1 backlog translated into
+equations, protocols, controls, and honest statuses. The v4.1 quartz
+core, its corrected Eye verdict, and all prior tags are unchanged.
+Nothing in this release is an experimental result.
+
+**Coverage contract.** All 248 master-ledger IDs (A01–A18, F001–F052,
+G001–G030, E001–E027, S001–S024, W001–W017, H001–H017, C001–C052,
+I001–I011) have an owner, an artifact, and a disposition;
+`docs/v4/V4X_COVERAGE_LEDGER.md` is generated and gate G42 is enforced
+by `tests/v4/test_v4x_coverage_ledger.py`.
+
+**Eye sub-millimetre refinement (C02) — INSUFFICIENT_RESOLUTION.** A
+three-level mesh ladder (clmax 8.0/5.5/4.5 mm, 8 elastic modes) with
+complex driven response (`fem.harmonic_field`), D9/D10 phase
+diagnostics, and a frequency-sensitivity map. The axial coordinate is
+stable (z ≈ 102.05–102.31 mm) and modal frequencies converge, but the
+transverse centroid still moves at the mesh scale: halfwidth 4.096 mm
+versus separation 4.149 mm. The run therefore does **not** resolve
+whether the candidate coincides with the conventional node — it neither
+refutes nor establishes distinctness. The canonical v4.1 record
+(separation 3.906 mm, halfwidth 3.08 mm) is preserved and not
+superseded. No proximity threshold is used; exact coincidence remains
+the 1e-6 mm numerical tolerance only.
+
+**Eye D9/D10 guard fix.** The realness guards in
+`phase_coherence_field` and `phase_singularities_on_plane` moved from an
+absolute `np.allclose(w.imag, 0)` test to a relative one
+(`max|Im w| < 1e-12 × scale`). The absolute form rejected genuine complex
+driven responses at small amplitude — a solver-scale artifact, not
+physics.
+
+**Geometry (G01/G02, S001–S024).** Spiral-cone mathematics (curvature
+invariant κ·r = 1/√(1+a²), focus eigenvalues −a ± i, per-turn ratio
+e^(−2πa)), pinched twisted-cone variant, clamped-plate Bessel modes,
+Mohan spiral inductance, structural-versus-electrical resonance
+separation, matched controls, and SCAD/DXF/STL/Gerber/drill exports.
+`cusp_response_metric` is now arc-length weighted so concentration does
+not depend on path sampling density. Merit functionals are declared ENG
+constructs with no physical significance.
+
+**Experimental lane (E001–E027, W001–W017, H001–H017).** Nine campaigns
+with channels, control matrices, randomization, blinding,
+preregistration, and safety-gate evaluation. E01–E05/E08/E09 are
+`PROTOCOL_READY_HARDWARE_REQUIRED`; E06 human loading and E07
+operator-state are `ETHICS_APPROVAL_REQUIRED` and the gate enforces that
+regardless of engineering safety. Water protocols require a
+no-ingestion/no-therapeutic-claims acknowledgement. Synthetic DAQ
+analysis validated on planted ring-down fixtures; the schema refuses to
+label synthetic data as measured. **No hardware was operated and no data
+was measured.**
+
+**Consciousness lane (C001–C052) — quarantined.** New `consciousness_lane/`
+package with a layered theory registry (layer, status, evidence tag,
+falsification condition per entry) and reduced models: Kuramoto against
+its analytic K_c = 2γ, state-change decay, dream–wake constraint with a
+quarantined K_ext, and the microtubule causal threshold
+(τ_c·η_φ·K_cross > θ), which does not clear at the reference 310 K
+decoherence estimate and never upgrades on a favourable parameter guess.
+THz/superheterodyne items are analogies only; quantum-probability models
+are not a quantum brain; Hydrogenuine items make no consciousness claim;
+first-person and private-myth layers are retained non-public, unendorsed
+and unrefuted. The package may not import quartz solvers — enforced by
+test. No consciousness record is usable as evidence in quartz
+computation.
+
+**Adversarial QA (Q01).** Eight attack tests: threshold reintroduction,
+source laundering, future-interface coercion, quarantine leakage, ethics
+gate bypass, synthetic-as-measured, frequency near-miss rounding, and
+stale coverage. All repelled.
+
+Tests: 303 passing.
+
 ## [4.1.1] — 2026-07-16
 
 Documentation-only patch release (no code, solver, or evidence

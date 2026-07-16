@@ -4,10 +4,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21387947.svg)](https://doi.org/10.5281/zenodo.21387947)
 
-**Current release: [v4.1.0](https://github.com/andrew867/rgcs/releases/tag/v4.1.0)**
+**Current release: [v4.2.0](https://github.com/andrew867/rgcs/releases/tag/v4.2.0)**
 · includes RSCS 2.0 (capability-aware multiphysics) on the RSCS 1.0
 typed-mathematics layer · MIT license · Author: Andrew Green
-Frozen history: v2.0.0 (`archive/v2.0.0/`), v3.0.x, v4.0.0 — tags and
+Frozen history: v2.0.0 (`archive/v2.0.0/`), v3.0.x, v4.0.0, v4.1.x — tags and
 records never modified. The DOI badge above is the latest **minted**
 DOI (v3.0.1); the v4.1.0 Zenodo record is pending human verification
 (see Citing).
@@ -65,7 +65,20 @@ the project holds.
   tunnelling, nonclassical photon-statistics generation, photon creation
   from classical boundary switching, or a complete microscopic
   explanation of Eye candidates.
-- **Status at the release commit (`4c2a1cc`):** 605 tests passed
+- **Research expansion (v4.2.0):** the post-v4.1 backlog is translated
+  into equations, protocols, controls, and honest statuses — see the
+  [programme report](docs/v4/V4X_PROGRAMME_REPORT.md) and the
+  [coverage ledger](docs/v4/V4X_COVERAGE_LEDGER.md) (248/248 IDs
+  disposed). The experimental campaigns are **protocols only**: no
+  hardware was operated and no data was measured. The
+  [consciousness lane](consciousness_lane/) is a separate, quarantined
+  research programme whose records may never be used as evidence in
+  quartz computation. The sub-millimetre
+  [Eye refinement](docs/v4/V4X_EYE_SUBMM_REFINEMENT.md) returned
+  **INSUFFICIENT_RESOLUTION** — it did not resolve whether the candidate
+  coincides with the conventional node, and the canonical v4.1 record
+  stands unchanged.
+- **Status at the release commit (`4c2a1cc`, v4.1.0):** 605 tests passed
   (1 archived-environment byte test deselected by policy D-V3-04);
   hosted CI 10/10 jobs green (Ubuntu/Windows/macOS); adversarial audit
   19/19; proof bundle 115/115 checksums
@@ -162,7 +175,7 @@ git clone https://github.com/andrew867/rgcs && cd rgcs
 python -m pip install -e ".[dev]"
 python -m pip install "scikit-fem>=10" meshio matplotlib gmsh   # v4 solver stack
 python -m pytest -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic
-# expect: 605 passed, at the v4.1.0 release commit
+# expect: 681 passed, at the v4.2.0 release commit
 ```
 
 The v4 CLI entry point is `rgcs-v4` (or `python -m rscs2_core.cli`):

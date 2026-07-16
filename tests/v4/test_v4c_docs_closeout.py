@@ -90,17 +90,21 @@ def test_no_physical_nonexistence_claims():
         assert "MECHANISM_NOT_IMPLEMENTED_FOR_MATERIAL" in _read(rel)
 
 
+VERSION = "4.2.0"
+
+
 def test_version_consistency():
     py = _read("pyproject.toml")
-    assert 'version = "4.1.1"' in py
+    assert f'version = "{VERSION}"' in py
     cff = _read("CITATION.cff")
-    assert "version: 4.1.1" in cff
-    assert "releases/tag/v4.1.1" in cff
+    assert f"version: {VERSION}" in cff
+    assert f"releases/tag/v{VERSION}" in cff
     ch = _read("CHANGELOG.md")
-    assert "[4.1.1]" in ch and "[4.1.0]" in ch
+    for v in (VERSION, "4.1.1", "4.1.0"):
+        assert f"[{v}]" in ch
     readme = _read("README.md")
-    assert "releases/tag/v4.1" in readme
-    assert "605 tests" in readme or "605 passed" in readme
+    assert f"releases/tag/v{VERSION}" in readme
+    assert "681 tests" in readme or "681 passed" in readme
     assert "115/115" in readme
 
 
