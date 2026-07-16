@@ -1,0 +1,32 @@
+[
+  {
+    "file": "helix_frenet.png",
+    "sha256": "b2c5b9c837050dddefc9de350024c0f55ba90633bb330d251072e5a90f829674",
+    "producer": "tools/v4/gen_m3_figures.py",
+    "classification": "CORE_VALIDATED/REDUCED_ORDER per panel"
+  },
+  {
+    "file": "torsion_benchmark.png",
+    "sha256": "4927152b7837f38c66a84ebf786326691caf31693633e04fb165bb698ce0e4c3",
+    "producer": "tools/v4/gen_m3_figures.py",
+    "classification": "CORE_VALIDATED/REDUCED_ORDER per panel"
+  },
+  {
+    "file": "vortex_phase_charges.png",
+    "sha256": "eb21cb01b65a01dca3b4673afa8f3ea128fbe65a09391ffed6a6be5091bdd09b",
+    "producer": "tools/v4/gen_m3_figures.py",
+    "classification": "CORE_VALIDATED/REDUCED_ORDER per panel"
+  },
+  {
+    "file": "oam_vs_poynting.png",
+    "sha256": "ccb12d78aa7b492a47302ead056ba5b5dce09ad675eb45c7d78edfb532738291",
+    "producer": "tools/v4/gen_m3_figures.py",
+    "classification": "CORE_VALIDATED/REDUCED_ORDER per panel"
+  },
+  {
+    "file": "chiral_phonon_trajectories.png",
+    "sha256": "5d707cd6d89ce9f12f6a07fde0a4a81d4102bbc5c34cbfd57f81e8a646c207a3",
+    "producer": "tools/v4/gen_m3_figures.py",
+    "classification": "CORE_VALIDATED/REDUCED_ORDER per panel"
+  }
+]
