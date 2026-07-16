@@ -23,7 +23,7 @@ name: ci
 
 on:
   push:
-    branches: [main]
+    branches: [main, v4-dev]
     tags: ["v*"]
   pull_request:
 
@@ -57,6 +57,11 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e ".[desktop,dev]"
           python -m pip install pypdf
+          # v4 solver stack (tests/v4 in default testpaths; gmsh is an
+          # external subprocess per DV4-006 — the pip wheel ships the
+          # binary; pyopencl intentionally absent: accel tests
+          # self-skip and NOTHING may report a silent fallback as GPU)
+          python -m pip install "scikit-fem>=10" meshio matplotlib gmsh
       - name: Governance and schema lint
         run: |
           python experiments/schemas/validate.py
@@ -95,6 +100,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e ".[desktop,dev]"
           python -m pip install pypdf "numpy==2.4.4" "scipy==1.17.1"
+          python -m pip install "scikit-fem>=10" meshio matplotlib gmsh
       - name: Governance and schema lint
         run: |
           python experiments/schemas/validate.py
@@ -112,4 +118,41 @@ jobs:
         with:
           name: junit-reference
           path: junit-*.xml
+          if-no-files-found: warn
+
+  v4-demo:
+    # G25/G27: the one-command demo + proof bundle from a CLEAN
+    # workspace on every OS, plus the adversarial QA audit. iGPU
+    # hardware evidence is NOT collected here (no OpenCL devices on
+    # hosted runners; DV4-007 forbids reporting fallback as GPU) —
+    # the committed evidence/v4/agent07 artifacts carry the real-
+    # hardware results.
+    name: v4-demo / ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install v4 stack
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+          python -m pip install "scikit-fem>=10" meshio matplotlib gmsh
+      - name: Scripted demo (10 steps, clean workspace, exit 0)
+        run: python tools/demo_v4.py --fast
+      - name: Adversarial QA audit (fast tier)
+        run: python tools/qa_audit_v4.py --fast
+      - name: Upload demo record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v4-demo-record-${{ matrix.os }}
+          path: |
+            demo_out/demo_run_record.json
+            tools/qa_audit_v4_results.json
           if-no-files-found: warn
