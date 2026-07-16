@@ -135,9 +135,17 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # QA audit verifies frozen history vs old commits
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: gmsh system libraries (Linux headless)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libglu1-mesa libxrender1 libxcursor1 libxft2 libxinerama1
       - name: Install v4 stack
         run: |
           python -m pip install --upgrade pip

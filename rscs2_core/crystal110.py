@@ -226,15 +226,24 @@ def _geo_text(c: CanonicalCrystal, clmax_mm: float) -> str:
 
 def _gmsh_cmd() -> list[str]:
     """Command prefix for the gmsh CLI, run as a SEPARATE PROCESS
-    (DV4-006 GPL boundary: file interchange only). The pip wheel ships a
-    console script next to the interpreter; invoke it through the venv
-    python so its `import gmsh` resolves."""
-    base = Path(sys.executable).with_name("gmsh")
-    exe = base.with_suffix(".exe")
-    if exe.exists():
-        return [str(exe)]
-    if base.exists():
-        return [sys.executable, str(base)]
+    (DV4-006 GPL boundary: file interchange only). The pip wheel ships
+    a console script whose location varies: next to the interpreter in
+    a venv (posix), or under Scripts/ for a plain Windows install
+    (hosted CI). Plain scripts are invoked through this python so their
+    `import gmsh` resolves."""
+    import shutil as _shutil
+    pydir = Path(sys.executable).parent
+    for d in (pydir, pydir / "Scripts", pydir.parent / "Scripts",
+              pydir / "bin"):
+        exe = d / "gmsh.exe"
+        if exe.exists():
+            return [str(exe)]
+        script = d / "gmsh"
+        if script.exists():
+            return [sys.executable, str(script)]
+    found = _shutil.which("gmsh")
+    if found:
+        return [found]
     return ["gmsh"]     # PATH fallback (system install)
 
 
