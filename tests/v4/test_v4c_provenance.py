@@ -109,13 +109,20 @@ def test_ingest_upgrades_and_diff_refuses_silent_replacement(tmp_path):
     import shutil
     reg = tmp_path / "reg.yaml"
     shutil.copy(pv.SRC_REGISTRY, reg)
-    f = tmp_path / "toyoda.pdf"
+    # SRC-V4-04 (Afanasiev) is still metadata-only at this commit;
+    # SRC-V4-01/03/05/06/13/14/18 were upgraded with REAL corpus
+    # hashes by tools/v4x_ingest_corpus.py and would (correctly)
+    # refuse a placeholder ingest.
+    f = tmp_path / "afanasiev.pdf"
     f.write_bytes(b"full text placeholder bytes")
-    rec = pv.ingest_file("SRC-V4-01", f, registry_path=reg)
+    rec = pv.ingest_file("SRC-V4-04", f, registry_path=reg)
     assert rec["access_status"] == "FULL_TEXT_LOCAL"
     assert len(rec["sha256"]) == 64
     # same name, changed content -> refuse (source-diff tool)
     f.write_bytes(b"DIFFERENT content")
+    with pytest.raises(ProvenanceError, match="content change"):
+        pv.ingest_file("SRC-V4-04", f, registry_path=reg)
+    # and the REAL upgraded record refuses placeholder replacement
     with pytest.raises(ProvenanceError, match="content change"):
         pv.ingest_file("SRC-V4-01", f, registry_path=reg)
 

@@ -1,218 +1,340 @@
-# RGCS v4-completion source registry (Agent M1). Append-only.
-# Policy DV4C-003: the completion-programme source FILES were not
-# supplied locally. No guessed hashes: sha256 is null unless the file
-# is physically present and hashed. citation_status distinguishes
-# WEB_VERIFIED (checked 2026-07-16 via publisher/arXiv listing),
-# UNVERIFIED_RECALLED, and TOPIC_ONLY (pack names a topic, not a
-# specific paper). The v3 registry (references/source_registry.yaml,
-# SRC-3-xx) is frozen and linked, never edited.
 schema_version: 1
 sources:
-  - source_id: SRC-V4-00
-    title: "RGCS v4 Autonomous Prompt Pack (24 documents)"
-    authors: ["RGCS programme (Andrew Green)"]
-    year: 2026
-    source_type: INTERNAL_RGCS_AUTHORITY
-    local_filename: "internal-docs/plans-v4/RGCS_v4_Autonomous_Prompt_Pack.zip"
-    sha256: "cc54f1a014989251e36dbc1c953c59c3d9cc51500d0f480a88b3abadf9a21c5b"
-    licence_status: INTERNAL
-    redistribution_allowed: false      # gitignored internal docs
-    access_status: FULL_TEXT_LOCAL
-    citation_status: LOCAL
-    notes:
-      - "Authoritative for programme requirements AND for the specific"
-      - "numeric presets it enumerates (LiNiPO4 d-d bands 1300/1400/"
-      - "1670 nm; pump/probe 1700/1450 nm; FDT equation forms)."
-  - source_id: SRC-V4-01
-    title: "All-optical control of antiferromagnetic domains via an inverse optical magnetoelectric effect"
-    authors: ["S. Toyoda", "V. Kocsis", "Y. Tokunaga", "et al."]
-    year: 2026
-    source_type: PEER_REVIEWED_PRIMARY
-    ids: {doi: "10.1038/s41563-026-02608-4", arxiv: "2506.07051"}
-    local_filename: null
-    sha256: null
-    licence_status: NOT_APPLICABLE_NO_LOCAL_FILE
-    redistribution_allowed: false
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: WEB_VERIFIED
-    notes:
-      - "PRIMARY authority for IOME domain writing in LiNiPO4."
-      - "Open preprint exists (arXiv 2506.07051); not downloaded in"
-      - "this run (no file-download authorization); registry upgrades"
-      - "to FULL_TEXT_LOCAL via ingest tool when supplied."
-  - source_id: SRC-V4-02
-    title: "News & Views commentary on SRC-V4-01"
-    authors: []
-    year: 2026
-    source_type: COMMENTARY
-    ids: {doi: "10.1038/s41563-026-02641-3"}
-    local_filename: null
-    sha256: null
-    licence_status: RESTRICTED
-    redistribution_allowed: false
-    access_status: ACCESS_RESTRICTED_PREVIEW_ONLY
-    citation_status: PACK_MANDATED
-    notes:
-      - "MANDATED preview-only (pack); outranked by SRC-V4-01 for all"
-      - "substantive equations and data (gate B4)."
-  - source_id: SRC-V4-03
-    title: "Temporal and spectral fingerprints of ultrafast all-coherent spin switching"
-    authors: ["S. Schlauderer", "et al."]
-    year: 2019
-    source_type: PEER_REVIEWED_PRIMARY
-    ids: {doi: "10.1038/s41586-019-1174-7", arxiv: "2001.06255",
-          journal: "Nature 569, 383-387"}
-    local_filename: null
-    sha256: null
-    licence_status: NOT_APPLICABLE_NO_LOCAL_FILE
-    redistribution_allowed: false
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: WEB_VERIFIED
-    notes: ["THz-driven ballistic AFM spin switching in TmFeO3;"
-            , "authority for the M12 nonlinear trajectory regimes."]
-  - source_id: SRC-V4-04
-    title: "Ultrafast control of magnetic interactions via light-driven phonons"
-    authors: ["D. Afanasiev", "et al."]
-    year: 2021
-    source_type: PEER_REVIEWED_PRIMARY
-    ids: {doi: "10.1038/s41563-021-00922-7", journal: "Nature Materials"}
-    local_filename: null
-    sha256: null
-    licence_status: NOT_APPLICABLE_NO_LOCAL_FILE
-    redistribution_allowed: false
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: WEB_VERIFIED
-    notes: ["Authority for M12 phonon-controlled exchange J(Q)."]
-  - source_id: SRC-V4-05
-    title: "Polarization-dependent optical annealing / control of antiferromagnetic domain distribution (MnF2)"
-    authors: ["T. Higuchi", "M. Kuwata-Gonokami"]
-    year: 2016
-    source_type: PEER_REVIEWED_PRIMARY
-    ids: {journal: "Nature Communications (recalled)"}
-    local_filename: null
-    sha256: null
-    licence_status: NOT_APPLICABLE_NO_LOCAL_FILE
-    redistribution_allowed: false
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: UNVERIFIED_RECALLED
-    notes: ["Comparator authority for the MnF2 optical-annealing null"
-            , "model (thermal/polarization channel, NOT IOME)."]
-  - source_id: SRC-V4-06
-    topic: "excitons in van der Waals magnetic materials (exciton-magnon coupling)"
-    source_type: UNRESOLVED_TOPIC
-    local_filename: null
-    sha256: null
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: TOPIC_ONLY
-    notes: ["Pack names the topic; no specific paper supplied. The M4"
-            , "exciton-magnon model cites the pack (SRC-V4-00) for its"
-            , "cos^2(theta/2) declared form."]
-  - source_id: SRC-V4-07
-    topic: "symmetry lowering and proton tunnelling"
-    source_type: UNRESOLVED_TOPIC
-    local_filename: null
-    sha256: null
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: TOPIC_ONLY
-    notes: ["Microscopic tunnelling stays INTERFACE_ONLY (M6)."]
-  - source_id: SRC-V4-08
-    topic: "adaptive reinforcement-learning control of quantum error correction (control-architecture precedent only)"
-    source_type: UNRESOLVED_TOPIC
-    local_filename: null
-    sha256: null
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: TOPIC_ONLY
-    notes: ["Only the control-loop architecture transfers (M8 RL"
-            , "adapter, off by default). No QEC physics claims."]
-  - source_id: SRC-V4-09
-    topic: "quantum-statistical plasmonic metacrystals (g2 engineering)"
-    source_type: UNRESOLVED_TOPIC
-    local_filename: null
-    sha256: null
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: TOPIC_ONLY
-    notes: ["M7 fixtures are independently constructed canonical"
-            , "photon-statistics values (coherent g2=1, thermal g2=2)."]
-  - source_id: SRC-V4-10
-    topic: "mechanically protected / dressed spin coherence"
-    source_type: UNRESOLVED_TOPIC
-    local_filename: null
-    sha256: null
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: TOPIC_ONLY
-  - source_id: SRC-V4-11
-    topic: "photon-tail / dynamic-boundary work (classical analogue only)"
-    source_type: UNRESOLVED_TOPIC
-    local_filename: null
-    sha256: null
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: TOPIC_ONLY
-    notes: ["Classical mode mixing only; photon-creation claims are a"
-            , "registered exclusion (M6)."]
-  - source_id: SRC-V4-12
-    topic: "chiral magnetoelectric oscillations (electromagnon-type)"
-    source_type: UNRESOLVED_TOPIC
-    local_filename: null
-    sha256: null
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: TOPIC_ONLY
-  - source_id: SRC-V4-13
-    topic: "spin-orbit-exciton-induced phonon chirality"
-    source_type: UNRESOLVED_TOPIC
-    local_filename: null
-    sha256: null
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: TOPIC_ONLY
-  - source_id: SRC-V4-14
-    topic: "transverse and longitudinal angular momentum of light"
-    source_type: UNRESOLVED_TOPIC
-    candidate_reference: "Bliokh & Nori, Phys. Rep. 592, 1 (2015) [recalled, unverified]"
-    local_filename: null
-    sha256: null
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: TOPIC_ONLY
-    notes: ["M3 SAM/OAM densities use standard textbook canonical"
-            , "forms (EST) independent of the unavailable file."]
-  - source_id: SRC-V4-15
-    topic: "achromatic neutron lensing (geometry/inverse-design transfer only)"
-    source_type: UNRESOLVED_TOPIC
-    local_filename: null
-    sha256: null
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: TOPIC_ONLY
-  - source_id: SRC-V4-16
-    topic: "nonlocal squeezed-reservoir entanglement (reduced control/open-system structure only)"
-    source_type: UNRESOLVED_TOPIC
-    local_filename: null
-    sha256: null
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: TOPIC_ONLY
-  - source_id: SRC-V4-17
-    topic: "Faraday rotation references"
-    source_type: LINKED_V3_AUTHORITY
-    linked: ["references/source_registry.yaml SRC-3-05 (Faraday isolator)"]
-    local_filename: null
-    sha256: null
-    access_status: SEE_LINKED_V3_RECORD
-    citation_status: LOCAL_V3
-  - source_id: SRC-V4-18
-    title: "FDT interpretation (independent theory essay)"
-    source_type: INDEPENDENT_THEORY_ESSAY
-    local_filename: null
-    sha256: null
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: PACK_ENUMERATED
-    classification_ceiling: SOURCE_HYPOTHESIS
-    notes: ["Equations quarantined via the pack's enumeration"
-            , "(F=c^4/(4G) a1 a2; a_R=(n^2-1)/n^2; carrier identity;"
-            , "isotope/pressure/temperature equivalences). M13 owns."]
-  - source_id: SRC-V4-19
-    topic: "CERN, Atlantis, Higgs, Star Nation subtitle/transcript material"
-    source_type: SUBTITLE_TRANSCRIPT
-    local_filename: null
-    sha256: null
-    access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
-    citation_status: PACK_ENUMERATED
-    classification_ceiling: SOURCE_HYPOTHESIS
-    notes: ["Motifs registered from the pack's enumeration (M10);"
-            , "literal claims remain SRC; no endorsement."]
+- source_id: SRC-V4-00
+  title: RGCS v4 Autonomous Prompt Pack (24 documents)
+  authors:
+  - RGCS programme (Andrew Green)
+  year: 2026
+  source_type: INTERNAL_RGCS_AUTHORITY
+  local_filename: internal-docs/plans-v4/RGCS_v4_Autonomous_Prompt_Pack.zip
+  sha256: cc54f1a014989251e36dbc1c953c59c3d9cc51500d0f480a88b3abadf9a21c5b
+  licence_status: INTERNAL
+  redistribution_allowed: false
+  access_status: FULL_TEXT_LOCAL
+  citation_status: LOCAL
+  notes:
+  - Authoritative for programme requirements AND for the specific
+  - numeric presets it enumerates (LiNiPO4 d-d bands 1300/1400/
+  - 1670 nm; pump/probe 1700/1450 nm; FDT equation forms).
+- source_id: SRC-V4-01
+  title: All-optical control of antiferromagnetic domains via an inverse optical magnetoelectric
+    effect
+  authors:
+  - S. Toyoda
+  - V. Kocsis
+  - Y. Tokunaga
+  - et al.
+  year: 2026
+  source_type: PEER_REVIEWED_PRIMARY
+  ids:
+    doi: 10.1038/s41563-026-02608-4
+    arxiv: '2506.07051'
+  local_filename: C:\Users\andrew\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\2506.07051v1.pdf
+  sha256: eec25037c54d56e030e2a8f9b24178c1fd8892467e668beab260b71566ac3744
+  licence_status: NOT_APPLICABLE_NO_LOCAL_FILE
+  redistribution_allowed: false
+  access_status: FULL_TEXT_LOCAL
+  citation_status: WEB_VERIFIED
+  notes:
+  - PRIMARY authority for IOME domain writing in LiNiPO4.
+  - Open preprint exists (arXiv 2506.07051); not downloaded in
+  - this run (no file-download authorization); registry upgrades
+  - to FULL_TEXT_LOCAL via ingest tool when supplied.
+- source_id: SRC-V4-02
+  title: News & Views commentary on SRC-V4-01
+  authors: []
+  year: 2026
+  source_type: COMMENTARY
+  ids:
+    doi: 10.1038/s41563-026-02641-3
+  local_filename: null
+  sha256: null
+  licence_status: RESTRICTED
+  redistribution_allowed: false
+  access_status: ACCESS_RESTRICTED_PREVIEW_ONLY
+  citation_status: PACK_MANDATED
+  notes:
+  - MANDATED preview-only (pack); outranked by SRC-V4-01 for all
+  - substantive equations and data (gate B4).
+- source_id: SRC-V4-03
+  title: Temporal and spectral fingerprints of ultrafast all-coherent spin switching
+  authors:
+  - S. Schlauderer
+  - et al.
+  year: 2019
+  source_type: PEER_REVIEWED_PRIMARY
+  ids:
+    doi: 10.1038/s41586-019-1174-7
+    arxiv: '2001.06255'
+    journal: Nature 569, 383-387
+  local_filename: C:\Users\andrew\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\2001.06255v1.pdf
+  sha256: 21e1f5e076f56aabfb69af148ef8ac37cb7c6b77330dcf170f887a64c562dd2c
+  licence_status: NOT_APPLICABLE_NO_LOCAL_FILE
+  redistribution_allowed: false
+  access_status: FULL_TEXT_LOCAL
+  citation_status: WEB_VERIFIED
+  notes:
+  - THz-driven ballistic AFM spin switching in TmFeO3;
+  - authority for the M12 nonlinear trajectory regimes.
+- source_id: SRC-V4-04
+  title: Ultrafast control of magnetic interactions via light-driven phonons
+  authors:
+  - D. Afanasiev
+  - et al.
+  year: 2021
+  source_type: PEER_REVIEWED_PRIMARY
+  ids:
+    doi: 10.1038/s41563-021-00922-7
+    journal: Nature Materials
+  local_filename: null
+  sha256: null
+  licence_status: NOT_APPLICABLE_NO_LOCAL_FILE
+  redistribution_allowed: false
+  access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
+  citation_status: WEB_VERIFIED
+  notes:
+  - Authority for M12 phonon-controlled exchange J(Q).
+- source_id: SRC-V4-05
+  title: Polarization-dependent optical annealing / control of antiferromagnetic domain
+    distribution (MnF2)
+  authors:
+  - T. Higuchi
+  - M. Kuwata-Gonokami
+  year: 2016
+  source_type: PEER_REVIEWED_PRIMARY
+  ids:
+    journal: Nature Communications (recalled)
+  local_filename: C:\Users\andrew\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\ncomms10720.pdf
+  sha256: 6c10540c5f0a3dcc179387090a82da45689e48be786e1734d25b0a961d6f7606
+  licence_status: NOT_APPLICABLE_NO_LOCAL_FILE
+  redistribution_allowed: false
+  access_status: FULL_TEXT_LOCAL
+  citation_status: UNVERIFIED_RECALLED
+  notes:
+  - Comparator authority for the MnF2 optical-annealing null
+  - model (thermal/polarization channel, NOT IOME).
+- source_id: SRC-V4-06
+  topic: excitons in van der Waals magnetic materials (exciton-magnon coupling)
+  source_type: UNRESOLVED_TOPIC
+  local_filename: C:\Users\andrew\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\Excitons
+    in van der Waals magnetic materials.pdf
+  sha256: cb2bb56a18e7e1a3bd0888bbfedc3bea7e1c11a9e5449a6a05e1cb9a9777ae6c
+  access_status: FULL_TEXT_LOCAL
+  citation_status: TOPIC_ONLY
+  notes:
+  - Pack names the topic; no specific paper supplied. The M4
+  - exciton-magnon model cites the pack (SRC-V4-00) for its
+  - cos^2(theta/2) declared form.
+- source_id: SRC-V4-07
+  topic: symmetry lowering and proton tunnelling
+  source_type: UNRESOLVED_TOPIC
+  local_filename: null
+  sha256: null
+  access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
+  citation_status: TOPIC_ONLY
+  notes:
+  - Microscopic tunnelling stays INTERFACE_ONLY (M6).
+- source_id: SRC-V4-08
+  topic: adaptive reinforcement-learning control of quantum error correction (control-architecture
+    precedent only)
+  source_type: UNRESOLVED_TOPIC
+  local_filename: null
+  sha256: null
+  access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
+  citation_status: TOPIC_ONLY
+  notes:
+  - Only the control-loop architecture transfers (M8 RL
+  - adapter, off by default). No QEC physics claims.
+- source_id: SRC-V4-09
+  topic: quantum-statistical plasmonic metacrystals (g2 engineering)
+  source_type: UNRESOLVED_TOPIC
+  local_filename: null
+  sha256: null
+  access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
+  citation_status: TOPIC_ONLY
+  notes:
+  - M7 fixtures are independently constructed canonical
+  - photon-statistics values (coherent g2=1, thermal g2=2).
+- source_id: SRC-V4-10
+  topic: mechanically protected / dressed spin coherence
+  source_type: UNRESOLVED_TOPIC
+  local_filename: null
+  sha256: null
+  access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
+  citation_status: TOPIC_ONLY
+- source_id: SRC-V4-11
+  topic: photon-tail / dynamic-boundary work (classical analogue only)
+  source_type: UNRESOLVED_TOPIC
+  local_filename: null
+  sha256: null
+  access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
+  citation_status: TOPIC_ONLY
+  notes:
+  - Classical mode mixing only; photon-creation claims are a
+  - registered exclusion (M6).
+- source_id: SRC-V4-12
+  topic: chiral magnetoelectric oscillations (electromagnon-type)
+  source_type: UNRESOLVED_TOPIC
+  local_filename: null
+  sha256: null
+  access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
+  citation_status: TOPIC_ONLY
+- source_id: SRC-V4-13
+  topic: spin-orbit-exciton-induced phonon chirality
+  source_type: UNRESOLVED_TOPIC
+  local_filename: C:\Users\andrew\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\lujan-et-al-2024-spin-orbit-exciton-induced-phonon-chirality-in-a-quantum-magnet.pdf
+  sha256: 59ad60f781fd9679b0b1c644362453f419c83640564fd73c913a02486ac705eb
+  access_status: FULL_TEXT_LOCAL
+  citation_status: TOPIC_ONLY
+- source_id: SRC-V4-14
+  topic: transverse and longitudinal angular momentum of light
+  source_type: UNRESOLVED_TOPIC
+  candidate_reference: Bliokh & Nori, Phys. Rep. 592, 1 (2015) [recalled, unverified]
+  local_filename: C:\Users\andrew\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\spin-momentum-locking-in-the-near-field-of-metal-nanoparticles.pdf
+  sha256: fa00033fb4a94e0e833f21529d8715abd8613ad2f1c2cb86641f7723ef64dedb
+  access_status: FULL_TEXT_LOCAL
+  citation_status: TOPIC_ONLY
+  notes:
+  - M3 SAM/OAM densities use standard textbook canonical
+  - forms (EST) independent of the unavailable file.
+- source_id: SRC-V4-15
+  topic: achromatic neutron lensing (geometry/inverse-design transfer only)
+  source_type: UNRESOLVED_TOPIC
+  local_filename: null
+  sha256: null
+  access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
+  citation_status: TOPIC_ONLY
+- source_id: SRC-V4-16
+  topic: nonlocal squeezed-reservoir entanglement (reduced control/open-system structure
+    only)
+  source_type: UNRESOLVED_TOPIC
+  local_filename: null
+  sha256: null
+  access_status: METADATA_ONLY_NOT_LOCALLY_SUPPLIED
+  citation_status: TOPIC_ONLY
+- source_id: SRC-V4-17
+  topic: Faraday rotation references
+  source_type: LINKED_V3_AUTHORITY
+  linked:
+  - references/source_registry.yaml SRC-3-05 (Faraday isolator)
+  local_filename: null
+  sha256: null
+  access_status: SEE_LINKED_V3_RECORD
+  citation_status: LOCAL_V3
+- source_id: SRC-V4-18
+  title: FDT interpretation (independent theory essay)
+  source_type: INDEPENDENT_THEORY_ESSAY
+  local_filename: C:\Users\andrew\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\fdt-analysis-inverse-optical-magnetoelectric-effect.pdf
+  sha256: b7342fa180f1ce4f58261b64022fa63fc0cb6632a33c78153078ded7f418be97
+  access_status: FULL_TEXT_LOCAL
+  citation_status: PACK_ENUMERATED
+  classification_ceiling: SOURCE_HYPOTHESIS
+  notes:
+  - Equations quarantined via the pack's enumeration
+  - (F=c^4/(4G) a1 a2; a_R=(n^2-1)/n^2; carrier identity;
+  - isotope/pressure/temperature equivalences). M13 owns.
+- source_id: SRC-V4-19
+  topic: CERN, Atlantis, Higgs, Star Nation subtitle/transcript material
+  source_type: SUBTITLE_TRANSCRIPT
+  local_filename: see SRC-V4X-TRANSCRIPTS (4 local subtitle files, hashed in v4x_corpus_inventory.json)
+  sha256: null
+  access_status: FULL_TEXT_LOCAL_GROUPED
+  citation_status: PACK_ENUMERATED
+  classification_ceiling: SOURCE_HYPOTHESIS
+  notes:
+  - Motifs registered from the pack's enumeration (M10);
+  - literal claims remain SRC; no endorsement.
+- source_id: SRC-V4X-VOGEL
+  title: Marcel Vogel corpus (workbook, lab notes, research docs, Lifestream magazines,
+    phi-crystal notes; 15 files)
+  source_type: HISTORICAL_SOURCE
+  local_filename: internal-docs/plans-v4/references (family=vogel; per-file hashes
+    in v4x_corpus_inventory.json)
+  sha256: null
+  licence_status: LOCAL_ANALYSIS_ONLY
+  redistribution_allowed: false
+  access_status: FULL_TEXT_LOCAL_GROUPED
+  citation_status: LOCAL
+  notes:
+  - grouped family record; authoritative per-file SHA-256 list lives in sources/registry/v4x_corpus_inventory.json
+  classification_ceiling: SOURCE_HYPOTHESIS
+- source_id: SRC-V4X-COMMLOG
+  title: Jenhan Communications Log (page-indexed audit source)
+  source_type: HISTORICAL_SOURCE
+  local_filename: internal-docs/plans-v4/references (family=communications_log; per-file
+    hashes in v4x_corpus_inventory.json)
+  sha256: null
+  licence_status: LOCAL_ANALYSIS_ONLY
+  redistribution_allowed: false
+  access_status: FULL_TEXT_LOCAL_GROUPED
+  citation_status: LOCAL
+  notes:
+  - grouped family record; authoritative per-file SHA-256 list lives in sources/registry/v4x_corpus_inventory.json
+  classification_ceiling: SOURCE_HYPOTHESIS
+- source_id: SRC-V4X-ARISAKA
+  title: 'Arisaka source decks: GUT-1 MePMoS, GUT-2 NHT/HAL, GUT-3 vision, colloquium,
+    retinotopy rt1-rt4, bio (9 files)'
+  source_type: PEER_REVIEWED_THEORY
+  local_filename: internal-docs/plans-v4/references (family=arisaka; per-file hashes
+    in v4x_corpus_inventory.json)
+  sha256: null
+  licence_status: LOCAL_ANALYSIS_ONLY
+  redistribution_allowed: false
+  access_status: FULL_TEXT_LOCAL_GROUPED
+  citation_status: LOCAL
+  notes:
+  - grouped family record; authoritative per-file SHA-256 list lives in sources/registry/v4x_corpus_inventory.json
+- source_id: SRC-V4X-TRANSCRIPTS
+  title: CERN/Atlantis/Higgs/Star Nation subtitle transcripts (4 files) - the SRC-V4-19
+    material, now local
+  source_type: SUBTITLE_TRANSCRIPT
+  local_filename: internal-docs/plans-v4/references (family=subtitle_transcript; per-file
+    hashes in v4x_corpus_inventory.json)
+  sha256: null
+  licence_status: LOCAL_ANALYSIS_ONLY
+  redistribution_allowed: false
+  access_status: FULL_TEXT_LOCAL_GROUPED
+  citation_status: LOCAL
+  notes:
+  - grouped family record; authoritative per-file SHA-256 list lives in sources/registry/v4x_corpus_inventory.json
+  classification_ceiling: SOURCE_HYPOTHESIS
+- source_id: SRC-V4X-LORE-DECKS
+  title: source-lore workshop/channeling/radionics/astral corpus (89 files)
+  source_type: HISTORICAL_SOURCE
+  local_filename: internal-docs/plans-v4/references (family=source_lore_deck; per-file
+    hashes in v4x_corpus_inventory.json)
+  sha256: null
+  licence_status: LOCAL_ANALYSIS_ONLY
+  redistribution_allowed: false
+  access_status: FULL_TEXT_LOCAL_GROUPED
+  citation_status: LOCAL
+  notes:
+  - grouped family record; authoritative per-file SHA-256 list lives in sources/registry/v4x_corpus_inventory.json
+  classification_ceiling: SOURCE_HYPOTHESIS
+- source_id: SRC-V4X-HIST-ENG
+  title: historical engineering/patent/journal corpus (17 files incl. US725605, IEEE
+    Spectrum 1964)
+  source_type: HISTORICAL_SOURCE
+  local_filename: internal-docs/plans-v4/references (family=historical_engineering;
+    per-file hashes in v4x_corpus_inventory.json)
+  sha256: null
+  licence_status: LOCAL_ANALYSIS_ONLY
+  redistribution_allowed: false
+  access_status: FULL_TEXT_LOCAL_GROUPED
+  citation_status: LOCAL
+  notes:
+  - grouped family record; authoritative per-file SHA-256 list lives in sources/registry/v4x_corpus_inventory.json
+  classification_ceiling: SOURCE_HYPOTHESIS
+- source_id: SRC-V4X-PHYS-EXTRA
+  title: additional physics primaries/preprints beyond the mapped SRC-V4 records (23
+    files)
+  source_type: PEER_REVIEWED_PRIMARY
+  local_filename: internal-docs/plans-v4/references (family=physics_primary; per-file
+    hashes in v4x_corpus_inventory.json)
+  sha256: null
+  licence_status: LOCAL_ANALYSIS_ONLY
+  redistribution_allowed: false
+  access_status: FULL_TEXT_LOCAL_GROUPED
+  citation_status: LOCAL
+  notes:
+  - grouped family record; authoritative per-file SHA-256 list lives in sources/registry/v4x_corpus_inventory.json

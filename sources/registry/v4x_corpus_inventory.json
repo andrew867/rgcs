@@ -1,0 +1,1423 @@
+{
+  "generated_by": "tools/v4x_ingest_corpus.py",
+  "n_files": 177,
+  "root": "internal-docs/plans-v4/references (gitignored; hashes only are committed)",
+  "files": [
+    {
+      "filename": "10562961.pdf",
+      "bytes": 3728500,
+      "sha256": "86184df916f2d83c483d8abaf5f0c073e4ac0fc4e64346f1ec6ca547431e2b7e",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1302.0066v1.pdf",
+      "bytes": 553969,
+      "sha256": "bd7dd5827cd196a554ebb2670948eb0f2e864a58e6bf25c7f84576aaa31dbf45",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1302.0127v1.pdf",
+      "bytes": 587854,
+      "sha256": "d5e1d5c8745b0928cd3b1b53b35acecdfe576cb4ade1467c4a6b21f586778bf2",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1504.03113v2.pdf",
+      "bytes": 3458679,
+      "sha256": "3ef206091057b55d404763c62b8098b20cbcdb3af024a0930d11b60927044e11",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "154_48a5766284d47dc2523cb38d856654f6_STOLCVIKTOR.pdf",
+      "bytes": 4278529,
+      "sha256": "b370c7001b83f9cfa5ebca7bbd199976f4b971102b5dc0ec2fd9f993f4e307c7",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1823_17089885097347_Part_Master_Permission_Slip.pdf",
+      "bytes": 2088649,
+      "sha256": "6728f7635679357ce67829dccb10100e8d4b72e9d9037ce0da7b974360156d19",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1824_17089885180499_Levels_of_Consciousness.pdf",
+      "bytes": 88122,
+      "sha256": "da073fb11ff338fa4e74bf6c0091d69cb716f3a633b52a28601546ab0dd6dad1",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1825_1708988520344As_Above_So_Below.pdf",
+      "bytes": 1460995,
+      "sha256": "8421019eb0884a0a1d059886a1cc494ce3848c55578b1b3bf944c4ef82c65bb9",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1826_1708988525643Black_Box.pdf",
+      "bytes": 60224,
+      "sha256": "896c428fcc3b8bfa54459d882b22346af54d14513247e9728491bbe6c5d967ba",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1827_1708988527941Brick_Walls_and_Beliefs.pdf",
+      "bytes": 1012857,
+      "sha256": "ed9fc025f2e2a376d48987d17d80529ec6c54886cb3e0e3e601b72b138c92e00",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1828_1708988532557Changing_Core_Beliefs1.pdf",
+      "bytes": 976393,
+      "sha256": "84d296201f1b9db37aaf8b69730e46249361c6cc7791d33c1fb25e86ed0da705",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1830_1708988542210Circle_of_Self_Empowerment.pdf",
+      "bytes": 3083706,
+      "sha256": "c6897b4e09f6541498e55a1c15619432e8003f5f6912f4a9ecd052ebb38245f9",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1832_1708988558001Formula.pdf",
+      "bytes": 1842977,
+      "sha256": "a9239f893a63b4be98d4d5c7191234e460dcf39543317742bd2bb0e982a0b8f6",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1833_1708988564061Hour_Of_Power.pdf",
+      "bytes": 873996,
+      "sha256": "3460eb2525dcb442a7c275de96d0b7bb080327716f00cdae90c7d09d0272b6f7",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1834_1708988568044Increasing_The_Probability_Of_Contact.pdf",
+      "bytes": 2182074,
+      "sha256": "b563eb355ad260d66171045456f3e88c0bdf7ce10cf15bf7209e2f75712ad177",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1835_1708988574474Interdimensional_Portals_and_Where_to_Find_Them.pdf",
+      "bytes": 1002627,
+      "sha256": "9c40d0af7d718c9c88a819dbe3ccce2b57d8dba9f09d4425613085ed26c170da",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1836_1708988578350Interstellar_Enneagram.pdf",
+      "bytes": 428815,
+      "sha256": "efb4d7b7563a2d684a755a95c92c0f0565efdc056bef68317a571e0cc836f8a6",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1837_1708988582063Keys_of_Ascension.pdf",
+      "bytes": 42317,
+      "sha256": "7f2f42da0b43b8ee4590a8aeb1adc055c303cb464da74f86480916b46f8df5e3",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1838_1708988584636Mechanics_of_Channeling.pdf",
+      "bytes": 184607,
+      "sha256": "70e15ce0132aa4f4e841adff558d601898c6d20648b186d545f873c0356cb433",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1839_1708988587896Parallel_Realities_Diagram.pdf",
+      "bytes": 399467,
+      "sha256": "e704525812bc4022327a5a01c137e02974e7dca0df7bd40e5627cf48da3a20da",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1840_1708988591750Parallel_Reality_Wheel.pdf",
+      "bytes": 28239,
+      "sha256": "e2b1c86acd266653c29a60265aacc0a990e919f2748aee7aa759d207aeb8d225",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1842_170898908141233rd_Parallel.pdf",
+      "bytes": 764101,
+      "sha256": "4ec073d24238a76050f69c6c7bd18e4b5a4ed0591bbfa13f36341b92b31a81b0",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1843_1708989086085Preparing_for_Contact_101.pdf",
+      "bytes": 1816376,
+      "sha256": "c49aaea2be74e2972107ddc3f8c0c0cf0768beac0403127943ae5837b4512113",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1844_1708989096322Protocols_of_First_Contact.pdf",
+      "bytes": 349982,
+      "sha256": "ffb2190d2d294368d99cabfd44a7a902207e79f9496e2eac86a8251e58681307",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1845_1708989100021Reincarnation.pdf",
+      "bytes": 1535868,
+      "sha256": "f641827ec7852e6f731ce3b26ec7380c26fb24ecf27e8a9697dc27f5dd7cefee",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1846_1708989103654Resonance_Reflection.pdf",
+      "bytes": 620776,
+      "sha256": "22b8039fd0818d50c95d2aaba33c32ecadc8993f27e95a631ab2b06e1d90ba8d",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1847_1708989106891Sacred_Circuitry.pdf",
+      "bytes": 362984,
+      "sha256": "0d3c279094f909ed62966e35f9ac66030fd336b88bdb82266a69fa10fb38502a",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1849_1708989113868Soul_Blueprint_Workshop.pdf",
+      "bytes": 1284843,
+      "sha256": "000152f68add471ccd1fe7ce4226c4c6424f50da4395c2838ee97faa6634d2ec",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1850_1708989118894Spectrum_of_Fear.pdf",
+      "bytes": 16416,
+      "sha256": "4d24ecade830c03fb6a95ae7803d3fc045e71db06354984208ed0b915728c219",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1851_1708989121763Story_Tree.pdf",
+      "bytes": 1508150,
+      "sha256": "dcff236065abf9524b42e7e4e04a0a5629942a52b5940e20d431e9eb8279b22a",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1852_1708989127263Tell_Them_Bashar_Sent_You.pdf",
+      "bytes": 2182074,
+      "sha256": "b563eb355ad260d66171045456f3e88c0bdf7ce10cf15bf7209e2f75712ad177",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1853_1708989133448Tis_the_Season.pdf",
+      "bytes": 828676,
+      "sha256": "be26406e308d3ea4e6ac253281ebe2e922cc531bdbde2f0283a4514ca07c9536",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1854_1708989137050Transforming_Core_Beliefs.pdf",
+      "bytes": 600259,
+      "sha256": "f374c08b7b96ab28df3ab2ae6c5038d2e10063f82354828b4c7bc5307bc2f554",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1855_1708989140940Triad_Mind.pdf",
+      "bytes": 1186956,
+      "sha256": "6a88b1918d273531aa2fda247ea7ea8b1211de0d095d6ba8482c58a48a29d8b2",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1856_1708989170515UFO_Witness_Declaration.pdf",
+      "bytes": 68681,
+      "sha256": "6ca7f2b593cbfbac78fb82ed26acd9af12e17077480de3d90c825a6110b38685",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1857_1708989173892Vortex_Array.pdf",
+      "bytes": 1225515,
+      "sha256": "7a3eeaa22fc7d86de468ef951bdb7351bb303527687387d22c786dab7238a92f",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1858_1708989178963Vortex_Vibrations.pdf",
+      "bytes": 651216,
+      "sha256": "8f8fa875709e49c020154e90c1db048e3c5f7fb5aca24bbc06d7f5cf69073662",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1859_1708989182814Window_of_Discovery.pdf",
+      "bytes": 17929,
+      "sha256": "a9b84c90cbe33353fdb2d69a6ea86837ad2dc9aab7fae17c5d5e69bd3500aef5",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "1860_1708989185422You_Are_All_Time_Travelers.pdf",
+      "bytes": 2008021,
+      "sha256": "ad398808cf7990603177e4367789ceabf45f2b6e9b38da02720bf64aba8e1dbe",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "2001.06255v1.pdf",
+      "bytes": 5433902,
+      "sha256": "21e1f5e076f56aabfb69af148ef8ac37cb7c6b77330dcf170f887a64c562dd2c",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "2104.04803v2.pdf",
+      "bytes": 2947419,
+      "sha256": "601816949fb70a03ee0a8cef232f9e8faeae48a372c068495f7d54840d16e681",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "2105.09444v1.pdf",
+      "bytes": 4515595,
+      "sha256": "cf083e50d0ae663ed52390bb852a247893eef725e3058db514cf383c2057328c",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "2204.10574v1.pdf",
+      "bytes": 917944,
+      "sha256": "90bb97603ece9ef9b2093ed117dfff39ff09b750e7846b3fa52877b6d4fe7def",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "2403.10628v1.pdf",
+      "bytes": 20530082,
+      "sha256": "82798bd3fca0da7025106d43b518ee9577a73bcdced834ff560c7e9b01c28a20",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "2406.14660v1.pdf",
+      "bytes": 3956180,
+      "sha256": "4ec69df649ef08f5ab2db50460bb1ccc4ad8a4aebac09a46191a55a1efbf8ca5",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "2506.07051v1.pdf",
+      "bytes": 1139780,
+      "sha256": "eec25037c54d56e030e2a8f9b24178c1fd8892467e668beab260b71566ac3744",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "2507.18829v1.pdf",
+      "bytes": 1501310,
+      "sha256": "7ec4c794f2153a4499ca037091e96aad54b5ce753d3b630350f8fea294c41d48",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "2508.13356v1.pdf",
+      "bytes": 2844022,
+      "sha256": "f29bd9cef53a5d988048dae1831d40cc9cc75f141d7c9f3e1e0754dd74fceec7",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "2509.07900v1.pdf",
+      "bytes": 3198109,
+      "sha256": "83beb51d0ea643bc33864156ab2db399f34ba8f10da5cb5862c5089e4b9fc33e",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "2510.14021v1.pdf",
+      "bytes": 535444,
+      "sha256": "5b88b838e4e7b151039a0017fc7731318f95c3b8fe91ee6f87e3e2acee43fa45",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "2510.21636v2.pdf",
+      "bytes": 488560,
+      "sha256": "b9e54ac8b1f7a4f7a1d00f98d540d1941684f3483bc4b96648337a6693f6472e",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "2511.08951v1.pdf",
+      "bytes": 561433,
+      "sha256": "8916858c28d67688b6069c63c7784d82de3f040edacfc241abe9fc1c5541e7e8",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "2602.17657v2.pdf",
+      "bytes": 5454910,
+      "sha256": "4189ac23d9abc69f1297e598fba55e4bcd2e6b77b94e3f7d7375e7cfb48c741b",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "2604.27480v1.pdf",
+      "bytes": 3830803,
+      "sha256": "e7418145d435ceab7da5a31f851215b1365926642c9ffdde3e244916fa8f725c",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "[English (auto-generated)] C.E.R.N Shut Down - The Bigger Story Is Just Beginning [DownSub.com].txt",
+      "bytes": 9980,
+      "sha256": "708be02b66733b58ccef24f3d93ab234fef73621c0bc5f6d691b9e1710b52389",
+      "family": "subtitle_transcript",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "[English (auto-generated)] Part 1 - CERN, Broken Time, Atlantis & the Higgs Field  Matias De Stefano.txt",
+      "bytes": 17349,
+      "sha256": "0e3d5bebac4baf7849ab97caef9952297783017fb80cf075fe3200d8738e5813",
+      "family": "subtitle_transcript",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "[English (auto-generated)] Part 2 - CERN, Broken Time, Atlantis & the Higgs Field - Bir Tawil - Rama.txt",
+      "bytes": 14345,
+      "sha256": "4e34baef20e8d6308ef375c2200d72ae4592c66297a0dabb19aac8c40cc8f2bc",
+      "family": "subtitle_transcript",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "[English (auto-generated)] STAR NATION NEWS 113 ~ 06 07 2026 [DownSub.com].txt",
+      "bytes": 16768,
+      "sha256": "724a47124fbdf49133418c89885c30c9426b05dcd1673ec727efe348626f7fb6",
+      "family": "subtitle_transcript",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "arisaka.pdf",
+      "bytes": 57293,
+      "sha256": "dd525fbe6c697624bb9102ccd22c7e187d35f4f9189c41eef10c67eba5bba62a",
+      "family": "arisaka",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "arisaka_gut-1_mepmos_3-5-2022_v1.pdf",
+      "bytes": 11150038,
+      "sha256": "05441c8a3186bc510d730bfba61d73a060e2e1bef25c0329d3d8f2e6d5193025",
+      "family": "arisaka",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "arisaka_gut-2_nht_and_hal_3-5-2022_v1.pdf",
+      "bytes": 3496162,
+      "sha256": "7046070d4497605a6e9c9c4500662b3a5c3f68bbf9584696a69ce9c096dd99b2",
+      "family": "arisaka",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "arisaka_gut-3_vision_3-5-2022_v1.pdf",
+      "bytes": 9037622,
+      "sha256": "a5aa64b67a3fc354fb34435fa50cc2b93f5a167b7797d969f013b691ba6c3ff5",
+      "family": "arisaka",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Arthur-E-Powell-The-Solar-System.pdf",
+      "bytes": 2327146,
+      "sha256": "2a7bd090985f14c0cb3b3b70ba7cf0aba9d7376841106565e9c0a13d000238e5",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "astral-projection-workbook-pdf_compress.pdf",
+      "bytes": 10722235,
+      "sha256": "74d9da9bad9fe542d4f67e8d979eff8c669d4cedb5ad3d9461b345e803ace0ee",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "beck-article-mood-modification-with-elf.pdf",
+      "bytes": 200111,
+      "sha256": "616cef8667db5c6eedea421bcaf317280006c3e7d97640bc6f1f18ef186c0550",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "bob-beck-biography.pdf",
+      "bytes": 1283836,
+      "sha256": "deac0b3b944661931f5ee9d3ab17daaaa215b7cb6d76675501218c5dd2a98d73",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "consciousness-frequency-notes.md",
+      "bytes": 27002,
+      "sha256": "075093305d596c5816a73dc24faa68c8e58e383616f27b1164011c4bcc531430",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "custom-vibrational-healing-course-manual-2018-updated-11-9-18_compress.pdf",
+      "bytes": 1582314,
+      "sha256": "20b839cb457e7693e5e72d3d4964e2e3d70dd49dafe2695ccd23622f8f842724",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "david-tansley-radionics-interface-with-the-ether-fields-pdf_compress.pdf",
+      "bytes": 5619495,
+      "sha256": "04522233570462f6a7a2658da3754c07717979b4bb77ff30288db1afe7a96d65",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "discussion-of-human-resonant-frequency-4ij58krbtr.pdf",
+      "bytes": 50608,
+      "sha256": "719f01b164ec4945adbc6c24986f480a0d67d75398fec9acc25f5b552a776df9",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Dreamhill Research 1.pdf",
+      "bytes": 2991882,
+      "sha256": "dc8af0409b6df3b23d2f780ff6423d6475922261157b00c5b9b16c85742a3f7a",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Dreamhill Research experience.pdf",
+      "bytes": 2672904,
+      "sha256": "9abb06b99b78c7b740f976cb750c67e158ef17e36ef8a6dae3fd9b488cc92b67",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Dreamhill Research.pdf",
+      "bytes": 2994246,
+      "sha256": "c9244e92a10b7cae9a53fd8b77ba9457985aa399533518f5f3430a91271311ad",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "EMS114675.pdf",
+      "bytes": 1763981,
+      "sha256": "f5bd74725acd590214172caeacf7331779986c1d6665c42fc3a61813f21fce1b",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "etop07fundamentalsIII.pdf",
+      "bytes": 645060,
+      "sha256": "f20b7aee9fe6bae4934af20189754255877ce972a776123b23a699f5cfa85f96",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Excitons in van der Waals magnetic materials.pdf",
+      "bytes": 4182182,
+      "sha256": "cb2bb56a18e7e1a3bd0888bbfedc3bea7e1c11a9e5449a6a05e1cb9a9777ae6c",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "fdt-analysis-inverse-optical-magnetoelectric-effect.pdf",
+      "bytes": 314134,
+      "sha256": "b7342fa180f1ce4f58261b64022fa63fc0cb6632a33c78153078ded7f418be97",
+      "family": "fdt",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "IEEE-Spectrum-1964-03.pdf",
+      "bytes": 7763237,
+      "sha256": "e77339262f49acc9566020ac471ff18a1e70d21ce99b459244f9b0d7d07c2f27",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Integrated_Magnetless_Passive_Broadband_Faraday_Is.pdf",
+      "bytes": 1670195,
+      "sha256": "afbeb1311a04bf6ceb25611367c2c5edd1599d850adef90ac5738ee3f9f62772",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "JenhanCommunicationsLog.pdf",
+      "bytes": 14420477,
+      "sha256": "bcb697767139abaed79b254fa7d4dc751638a3f16fb5f20849741649f257a013",
+      "family": "communications_log",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Katsushi-Arisaka.pdf",
+      "bytes": 130805,
+      "sha256": "d488ac13aa1997b17a06e5e52da9feaff5157e67a86acda57567c38dad61a810",
+      "family": "arisaka",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "LabNotesMarcelVogel.pdf",
+      "bytes": 28731812,
+      "sha256": "669e498844d1694ab9988900615f43379ff62cfa72eeb687a13e17ea5c16e7b8",
+      "family": "vogel",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Lifestream -  July - Sept 1997.pdf",
+      "bytes": 1214626,
+      "sha256": "84f6467e8e3e1a82d95bdf363a5686782f6e60227d7963d3314be72071a79108",
+      "family": "vogel",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Lifestream - April - June 1996.pdf",
+      "bytes": 20888670,
+      "sha256": "d19c8fb08973718ac5360945d7bff45fda33fd784e5c726a35a0468e375bd85a",
+      "family": "vogel",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Lifestream - Jan - March 1996.pdf",
+      "bytes": 15675798,
+      "sha256": "ce143924f48715f4f6bacac30656140e4ea58a532854616201a516e24c82da05",
+      "family": "vogel",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Lifestream - July - Aug 1993.pdf",
+      "bytes": 2732741,
+      "sha256": "538376cfffe3195e44d95de1ab3cabe2e2d12324f559bb341149e995836c37fe",
+      "family": "vogel",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Lifestream - March - April 1994.pdf",
+      "bytes": 1599242,
+      "sha256": "370e717591bca41030800843eaf20ba527bb210bdcb412c4355f1ab32af09da1",
+      "family": "vogel",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Lifestream Sampler.pdf",
+      "bytes": 1295603,
+      "sha256": "2a48cda3638c8dbf74c245a381b06587b81d179b8747521303b0f5bec8dd7fc9",
+      "family": "vogel",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "lujan-et-al-2024-spin-orbit-exciton-induced-phonon-chirality-in-a-quantum-magnet.pdf",
+      "bytes": 6524929,
+      "sha256": "59ad60f781fd9679b0b1c644362453f419c83640564fd73c913a02486ac705eb",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Marcel Vogel Crystal Research Jen Han Notes Page.pdf",
+      "bytes": 3818926,
+      "sha256": "23e9e98d528bb36e8c767fc23adbda9dbe84f4034b9efb63d1b2fa1817149280",
+      "family": "vogel",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Marcel Vogel Crystal Research.pdf",
+      "bytes": 2701531,
+      "sha256": "bc9a9dd043852ec4db1672e30e577a94f9b781beff2dd86f0d0985f9feac39fb",
+      "family": "vogel",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Marcel Vogel's Crystal Knowledge Workbook.pdf",
+      "bytes": 67091343,
+      "sha256": "4e00a5f9dfb9801634e4af7a97a521dcbda05a3cbc293ffdb5390d418fca73ca",
+      "family": "vogel",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "marcel-vogel-crystal-research_compress.pdf",
+      "bytes": 9059964,
+      "sha256": "1ceedac8234c891647fc9bd68927609b703ac0133f0ffbc8d725e10a7e9d810e",
+      "family": "vogel",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "MarcelVogel.pdf",
+      "bytes": 148281,
+      "sha256": "9d4a5e78810ce18142b388301bd7249bd2cda19cd535a409d52e63b156c4e6a4",
+      "family": "vogel",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "ncomms10720.pdf",
+      "bytes": 1335387,
+      "sha256": "6c10540c5f0a3dcc179387090a82da45689e48be786e1734d25b0a961d6f7606",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "niyogi-et-al-2026-probing-anharmonic-and-heterogeneous-carrier-dynamics-across-sublattice-melting-in-a-minimal-model.pdf",
+      "bytes": 15128229,
+      "sha256": "701576eaae8ad741e8d3b992cb723d190b238a261a119edab3d14bd062fe6c93",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Peter Markovich_ Apparatus To Rectify Ether Energy (ATREE).pdf",
+      "bytes": 479685,
+      "sha256": "86ca2de032237fe8f323e4dafdfc78773686838fa0142b644336c74a08b046c3",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Physics.19.s91.pdf",
+      "bytes": 89138,
+      "sha256": "af7ca9d5a176df0d8a10161bfb76057834d380558eabba88fab258ccc4926731",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "r4jt-j39w.pdf",
+      "bytes": 5301241,
+      "sha256": "d9911bf793b2e5906e280e3cb2fc02ea40e99a01ab1ac65403d3f86daf6b45c9",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "research_papers_gravity_science_journal_10507.pdf",
+      "bytes": 1938181,
+      "sha256": "639e81cef0700c164c8346fb73b1af14a24b70f6647300b50501694f83ae4aff",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "research_papers_gravity_science_journal_10530.pdf",
+      "bytes": 1102870,
+      "sha256": "18de4da418d82991e06178a68e44ce17f5e16347603556d3998185a0134383ff",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "research_papers_gravity_science_journal_10536.pdf",
+      "bytes": 1662313,
+      "sha256": "5a9ef1d8d4611ea7715dcd7fba120fcd55d4066acc72e7d4c870e64686bad9cd",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "research_papers_gravity_science_journal_10568.pdf",
+      "bytes": 1648354,
+      "sha256": "3ab7bb12bfab2c60dd7dbceeb45dab1bf64d03d23f023509a8371da41657d358",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "research_papers_gravity_science_journal_8052.pdf",
+      "bytes": 87319,
+      "sha256": "f1680313075154b889537c84e7d9754bf605bc7ad4cbde1da27c1fe6659d9645",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "research_papers_gravity_science_journal_8820.pdf",
+      "bytes": 66835,
+      "sha256": "3849adfcdab63de24ffb06272dd059a32cfb33188be22618447f1cd34292ad75",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "research_papers_mechanics___electrodynamics_science_journal_10570.pdf",
+      "bytes": 1117060,
+      "sha256": "1e2642f8c85ba2fbce544a9de08cac60ec34b68eb68d4896217edf30189b9cd5",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "research_papers_mechanics___electrodynamics_science_journal_10578.pdf",
+      "bytes": 663389,
+      "sha256": "2b81a1da1ca607b992f2da667079bca3794c0a7fac2374d1b1d4cce8143d2e5b",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "research_papers_quantum_theory___particle_physics_science_journal_9789.pdf",
+      "bytes": 210530,
+      "sha256": "6af5b89d097052676b6b29a5fcd0cd39da42c5fa8c71020ea11e36cdf88ab270",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "research_papers_relativity_theory_science_journal_8913.pdf",
+      "bytes": 179593,
+      "sha256": "daebc0d2e7c2fe866326db6714899de9b16b5fe514edfe1aaf934b7a3a0e2381",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "rt1_-_eccentricity_biorxiv-2022-482161v1-arisaka.pdf",
+      "bytes": 3365357,
+      "sha256": "d9883fcfffba45b19d5b82c1dae28210900e980e4fa6f70af7fbe26d6656cb5f",
+      "family": "arisaka",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "rt2_-_depth_biorxiv-2022-482181v1-arisaka.pdf",
+      "bytes": 3372619,
+      "sha256": "d00086133e53dffde768f74c72e7436530519cb9d02aa95446294a50b443fdbb",
+      "family": "arisaka",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "rt3_-_scaling_biorxiv-2022-482004v1-arisaka.pdf",
+      "bytes": 13216009,
+      "sha256": "ce71bbe5078e9e266402b1e0084cad7f8d4cd5517a6ed6ecb32e0f7cbcfd3115",
+      "family": "arisaka",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "rt4_-_rotation_biorxiv-2022-482164v1-arisaka.pdf",
+      "bytes": 3022465,
+      "sha256": "0a1f7a56f2dc46bd8246c34aeed6755fd0b232a3c8e975d0551ff66bdef610b0",
+      "family": "arisaka",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "s10714-026-03528-z.pdf",
+      "bytes": 439058,
+      "sha256": "255fc46a25221a17bf1b71bef6cfaded597618dba2000551d1d5a9fa31e7eec0",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "s41377-024-01692-y.pdf",
+      "bytes": 1035338,
+      "sha256": "90cd40d1fa3d6d2bcc88a5190b4471efd1525c802786438955c3b08a71529042",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "s41467-026-74365-6_reference.pdf",
+      "bytes": 1762685,
+      "sha256": "47152a613289e003193278a274cb3824963631f4c7a7f9aa9ff9f6d7dffe169a",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "s41467-026-74925-w_reference.pdf",
+      "bytes": 3831645,
+      "sha256": "52323fa84400a17c82626977b4567b84e54494c7f569342ecc5c9f78f13c5346",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "s41467-026-75020-w.pdf",
+      "bytes": 2050646,
+      "sha256": "ef382b3fa4af9c2947925c438adac696f3b6d922ffc56e64757020a0c6aa92b4",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "s41567-026-03373-6.pdf",
+      "bytes": 6673166,
+      "sha256": "ad74d394ec7434a411530305e399a8803e47c50472b31291b18f7bee5581a44b",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "s41586-026-10759-2.pdf",
+      "bytes": 1463985,
+      "sha256": "89380d43e7f1539e6628c99e0d7bbd23acf66719d9396e9aa2beaf60a9ae915d",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "s41586-026-10782-3.pdf",
+      "bytes": 6962732,
+      "sha256": "5d14209c2ff75719d0abb26e43d18b531326c9b500ecfc4084f266daddbd743f",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "s41598-025-08507-z.pdf",
+      "bytes": 3650789,
+      "sha256": "3ae35c6a3f316c30d2f36caf6c84b387d342054b033233e5b97c1dcb72b7717a",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "s42005-023-01141-z.pdf",
+      "bytes": 1583774,
+      "sha256": "7a2b9641c6249b2d28a2b0b5303f013b8330e7d9e38c6737471f11dd61fd75ce",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "se1GD.zip",
+      "bytes": 111743,
+      "sha256": "bb7f603964ffc156ba0eeec204cc357ccb6bbd31574509d85c6723790abb1764",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Solving Wordle Using Information Theory.pdf",
+      "bytes": 1289240,
+      "sha256": "2e6ab821efb2122afdb77c43018e1d8fe86ee0231a73914543f5cb6c8ab812df",
+      "family": "unclassified",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "Soul Cycle.pdf",
+      "bytes": 1634319,
+      "sha256": "cdadc0bd1833bffd908c267511481d0377f88279f2be71e32c1d4af0a339f51c",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "spin-momentum-locking-in-the-near-field-of-metal-nanoparticles.pdf",
+      "bytes": 3826866,
+      "sha256": "fa00033fb4a94e0e833f21529d8715abd8613ad2f1c2cb86641f7723ef64dedb",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "structured-water_compress.pdf",
+      "bytes": 949661,
+      "sha256": "ccbde0cf077c94412e04951f33f666e2db229fa9a26cad24b932f5af56f7fa99",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "The Legacy of Marcel Vogel.pdf",
+      "bytes": 591080,
+      "sha256": "dcabf9711ca23c623df0596adc2a1f5c1925e62ac6fa2986662aa91dd059e044",
+      "family": "vogel",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "The+Crystal+Wisdom+of+Marcel+Vogel.pdf",
+      "bytes": 587820,
+      "sha256": "268f258c3810a95aaa71c8a5cd1e52045779e75c858ad6c1b20ac6a20e646d86",
+      "family": "vogel",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "the-body-electric_compress.pdf",
+      "bytes": 3392315,
+      "sha256": "4003ada2fc3a0d5775b798e7d75a52e62b2086b1ca94bd964e13f92bb3d1fa58",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "the-keys-of-atlantis_compress.pdf",
+      "bytes": 265756,
+      "sha256": "c1c3370c80886c112e25f77942b18843a6dbcc9d4e48723af19240fe1bf18e89",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "tsq1-bhsz.pdf",
+      "bytes": 696407,
+      "sha256": "840550b700d9aaf177c452b6e20b5230866b4d0582882f66ecf8e048702cfb8a",
+      "family": "physics_primary",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "understandingnew00chanrich_1.pdf",
+      "bytes": 232917851,
+      "sha256": "65e302ad84f285a6871f80364bf5c81612fa161fb5425ebac2c939b9b6ec20f1",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "US725605.pdf",
+      "bytes": 861112,
+      "sha256": "0b3b691bc14911afe519904e80a95ccc41f9020caac5f1f63aff788d43bbd4ea",
+      "family": "historical_engineering",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V1-1.pdf",
+      "bytes": 4883135,
+      "sha256": "de15182dbb8e888fd5bc4118e9a57fdf58d0026d11f487d1390de958c1913019",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V1-2.pdf",
+      "bytes": 4280708,
+      "sha256": "97e25e80bba00232f7eaee2f9eb131891e193010a8aecf553029b8dfe1829913",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V1-3.pdf",
+      "bytes": 4495775,
+      "sha256": "876abf6e8e48605c9b01e58abd38b7b28d61b36b5107923dc6650c93289536d3",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V1-4.pdf",
+      "bytes": 4462516,
+      "sha256": "6f61ec1509dfca14e15237b10179bd4ceee3ba86247c73000e45c10b17f1ae3a",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V2-1.pdf",
+      "bytes": 5851617,
+      "sha256": "d18148da538b5e89f9e1b752e474ba0d3de3b35b2eb17cb27aae4c96beeb2ac8",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V2-2.pdf",
+      "bytes": 6958207,
+      "sha256": "e12365b2a3532c950fc96fd43d6a21120166821cfbf89ef74df90e2f92e33fc3",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V2-3.pdf",
+      "bytes": 6308986,
+      "sha256": "cf7461addf890a2b5a22bb9f12e4f421714b4f02fa8afb0687483a3cbed7e88c",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V2-4.pdf",
+      "bytes": 3878732,
+      "sha256": "0a91094dbd421847a1303e575cbd05ba36028f71fe7612711e29a1b72382b04f",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V2-5.pdf",
+      "bytes": 4859517,
+      "sha256": "19c19b124814004101b767171f33d57f99cb16d8dcc0173218e113b0761d890d",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V2-6.pdf",
+      "bytes": 5272888,
+      "sha256": "07c5ebddb293f5b555e28e69dfc5043e789e83fcdb77e612380d2fafb421c8ec",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V3-1.pdf",
+      "bytes": 6338099,
+      "sha256": "3b1e3e4f64492cb804009891ea9596f8d7c13f9283ed915d744422df4c18ea79",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V3-2.pdf",
+      "bytes": 12678323,
+      "sha256": "541391e311526589ee9801ad3c028971f91439fba68e719a22ed97b1319552e2",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V3-3.pdf",
+      "bytes": 14004451,
+      "sha256": "e628908d7ef2061f9a096605c4cf88a5f63960d2c69587eeb330742198a04a39",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V3-4.pdf",
+      "bytes": 9983383,
+      "sha256": "537e247d53d825f2e276b970f65e4ff0499c0eadab8b16a0a24cbbef254c91b5",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V3-5.pdf",
+      "bytes": 7097930,
+      "sha256": "8a4f9d530657b738774864760b11547d716301752cb5239bd533cb9f5f0f7889",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V3-6.pdf",
+      "bytes": 6640376,
+      "sha256": "6d494badab77e6c8de40785eae9068173a50bc319bb51474d7cccce5b8bfe74c",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V4-1.pdf",
+      "bytes": 6523392,
+      "sha256": "59b621c6ad6d18f6a19f41ecf54d2a5cb52a443d49974b73f099591b8545452c",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V4-2.pdf",
+      "bytes": 6974732,
+      "sha256": "9ce05db23ab3495a68185b7890f1ef12c0bfe97ff9b6d8536c32cb585b8ea972",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V4-3.pdf",
+      "bytes": 7070702,
+      "sha256": "6fdaccd43f5f4888021547c106ce7873bb576077a099b985266684a1ffc3234a",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V4-4.pdf",
+      "bytes": 9111572,
+      "sha256": "d189012af009b5cffd8538e0246a8fdb5f77301ad5449cec4b33773e05b815e9",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V4-5.pdf",
+      "bytes": 6508006,
+      "sha256": "9237143c53b0a0d6ab1cf8c820a32b1db45dd04e362c5f3dc2e4e842fffb8e7f",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V4-6.pdf",
+      "bytes": 2102955,
+      "sha256": "588b3f5abdab86a3abcc96e372d73155ad5ac2aefbaf8a9250ef6abee7fac35e",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V5-1.pdf",
+      "bytes": 6471905,
+      "sha256": "5ddedb8d32e4d548ea5998b74b534135528e009a0066bed506293765def46ea8",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V5-2.pdf",
+      "bytes": 9222736,
+      "sha256": "ff2a494fb301f87173ebd0c02c7cc2f51d45bb8b10f2bfc912a34027f2a1a129",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V5-3.pdf",
+      "bytes": 6738910,
+      "sha256": "916e49060a8e7ecfdc5ad3f6e36582c6e811096c392b37a3f1526872b9233663",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V5-4.pdf",
+      "bytes": 17925880,
+      "sha256": "3fea9f76044be9d07ca7ff45e21b37492e127668a5324783cde68472516d3b24",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V5-5.pdf",
+      "bytes": 6307480,
+      "sha256": "fa783e13a890618356c88ecb97aef538f8db2ae079d483e01f27e5703f1e7771",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V5-6.pdf",
+      "bytes": 9753726,
+      "sha256": "2c8e4330b08118ddf847160d66c56eae9faa8a08084798b9cb8a4077cbb958b8",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V6-1.pdf",
+      "bytes": 8330093,
+      "sha256": "52019427889533129ad2d5f78c03b724b35e5211f0aaace8e61f60a45596d8ea",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V6-2.pdf",
+      "bytes": 19202069,
+      "sha256": "f2ffa678440dbe538eb1456b31686e8678728b3b34058ce6c561801640cec7d8",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V6-3.pdf",
+      "bytes": 6230774,
+      "sha256": "bb8b2092991e5c709e330d04400197002e6befd00f4f70bef4964f364ae80948",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V6-4.pdf",
+      "bytes": 9128087,
+      "sha256": "83427fab2d853378424fb82e63eb6facd73b7ecbf807429e473eb95e82b90fec",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V6-5.pdf",
+      "bytes": 6362630,
+      "sha256": "81c04234c6445750057fb58381b7b488b4352acddd8d8c67e1d8279ab7f9c32a",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V6-6.pdf",
+      "bytes": 19515565,
+      "sha256": "ca51e67dcb1da441062367cbc2c062d74a3046c95a62e47f24bef5dd0c158254",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V7-1.pdf",
+      "bytes": 6187456,
+      "sha256": "33162ddcee936f5560841441546ee7f158196b2ef8515098144bc1bbffbc9f32",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V7-2.pdf",
+      "bytes": 18597945,
+      "sha256": "6ec00c40b900d8a14eb45562bb032072f9dff05f58037324de222267a26c12ec",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V7-3.pdf",
+      "bytes": 5683719,
+      "sha256": "0c3fa1b95931b019eb82de29ff3829a24e8caa9eac6bb45678923730997d132b",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V7-4.pdf",
+      "bytes": 6447163,
+      "sha256": "6f7a88e1109113dd59c48ff2f27eb2188f2fe78eb13e85e9a7284a865255b348",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V7-5.pdf",
+      "bytes": 6050841,
+      "sha256": "303d4a32ce1e25c6eea4425c61441f27b50e9a5f1e5eca23815280c9a6c859f1",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V7-6.pdf",
+      "bytes": 6321810,
+      "sha256": "e236c50ae2bb850890f3d109b7ff9b9bc7a7c29de0b963ebdc66dc3dd1c1d74a",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "V8-1.pdf",
+      "bytes": 5855523,
+      "sha256": "913b285694059e68edf461330917be6b66828f9b1e60e962b528313abfcc1e19",
+      "family": "source_lore_deck",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    },
+    {
+      "filename": "vogel-phi-crystals_compress.pdf",
+      "bytes": 577378,
+      "sha256": "2cb9814cc197f35bf8a2bdd803a817b7e9b9d147ed76ca54f4d2fc9b088764bc",
+      "family": "vogel",
+      "licence_status": "LOCAL_ANALYSIS_ONLY",
+      "redistribution_allowed": false
+    }
+  ]
+}
