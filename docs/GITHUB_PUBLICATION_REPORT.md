@@ -112,10 +112,11 @@ unmodifiable under the freeze.
 
 ## DOI status
 
-No DOI yet (none invented). Zenodo-ready metadata and the exact
-sequence: `docs/DOI_RELEASE_GUIDE.md` (enable the GitHub–Zenodo toggle,
-publish/ingest, then add the issued DOI to CITATION.cff + README badge
-in a follow-up commit).
+**DOI ISSUED (2026-07-16):** version DOI `10.5281/zenodo.21387947`,
+concept DOI `10.5281/zenodo.21387946` — minted automatically from the
+v3.0.1 release (the webhook was enabled after v3.0.0, so v3.0.1 is the
+first archived release; v3.0.0 remains cited via the concept DOI
+lineage). CITATION.cff and the README badge carry the DOIs.
 
 ## Commands for future releases
 

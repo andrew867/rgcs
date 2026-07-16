@@ -63,3 +63,9 @@ clauses recorded in `references/equation_provenance.yaml`.
 1. `CITATION.cff`: add `identifiers:` block with the version DOI.
 2. README: DOI badge under the title.
 3. `docs/GITHUB_PUBLICATION_REPORT.md`: DOI status row updated.
+
+## ISSUED (2026-07-16)
+
+- Version DOI: **10.5281/zenodo.21387947** (v3.0.1 record, auto-published)
+- Concept DOI: **10.5281/zenodo.21387946** (always latest version)
+- Post-DOI checklist above: completed in the follow-up commit.

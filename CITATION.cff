@@ -4,6 +4,17 @@ title: "RGCS v3 / RSCS 1.0: Resonant Geometry Computational System"
 version: 3.0.1
 date-released: "2026-07-16"
 license: MIT
+doi: 10.5281/zenodo.21387947
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21387947
+    description: "Zenodo archive of release v3.0.1"
+  - type: doi
+    value: 10.5281/zenodo.21387946
+    description: "Concept DOI (always resolves to the latest version)"
+  - type: url
+    value: https://github.com/andrew867/rgcs/releases/tag/v3.0.1
+    description: "GitHub release"
 authors:
   - family-names: Green
     given-names: Andrew
