@@ -1,0 +1,203 @@
+# RGCS v4-completion equation provenance ledger (Agent M1; agents
+# append entries with their commits). Every adapted equation carries
+# source, locator, adaptation type, units check, classification
+# ceiling, and forbidden transfers. Ceilings can never be raised by
+# downstream code (gate B5).
+schema_version: 1
+equations:
+  - equation_id: RGCS-V4-EQ-001
+    name: magnetic toroidal moment
+    source_id: SRC-V4-01
+    source_locator: {section: "pack 08_IOME section 'Required implementation' item 1 (metadata-only primary)"}
+    source_expression: "T = 1/2 sum_i r_i x S_i"
+    adapted_expression: "T = 0.5 * sum_i cross(r_i, S_i)  [A m^2 / m = A m]"
+    source_domain_meaning: "toroidal order parameter of LiNiPO4"
+    rgcs_domain_meaning: "typed hidden-order state variable (domain block)"
+    adaptation_type: REDUCED_ORDER
+    permitted_substitutions: ["macroscopic domain average"]
+    forbidden_transfers: ["alpha quartz", "mechanical circulation identity", "optical vortex identity"]
+    units_check: "r [m] x S [A m^2] summed, x1/2 -> A m^3 microscopic; macroscopic density A/m^2 divided by volume; frame + origin policy declared in code"
+    classification: REDUCED_ORDER_VALIDATED
+  - equation_id: RGCS-V4-EQ-002
+    name: IOME free-energy coupling
+    source_id: SRC-V4-01
+    source_locator: {section: "pack 08_IOME item 3"}
+    source_expression: "F_IOME = -lambda S_omega . T ; S_omega = E_omega x H_omega = f k_hat"
+    adapted_expression: "F = -lam * f * dot(k_hat, T)"
+    source_domain_meaning: "photon-momentum/toroidal-moment coupling"
+    rgcs_domain_meaning: "propagation-direction writing bias in the domain model"
+    adaptation_type: REDUCED_ORDER
+    permitted_substitutions: ["time-averaged Poynting-direction channel"]
+    forbidden_transfers: ["alpha quartz", "static E x H outside the declared approximation"]
+    units_check: "lambda [J/(W m^-2)] x S [W/m^2] -> J; dimensionless k_hat.T_hat direction factor"
+    classification: REDUCED_ORDER_VALIDATED
+  - equation_id: RGCS-V4-EQ-003
+    name: directional complex refractive index
+    source_id: SRC-V4-01
+    source_locator: {section: "pack 08_IOME item 3"}
+    source_expression: "Delta n = eta(omega) k_hat . T"
+    adapted_expression: "dn_complex = eta_c(omega) * dot(k_hat, T_hat) * |T|"
+    source_domain_meaning: "nonreciprocal directional dichroism / optical diode"
+    rgcs_domain_meaning: "directional complex index observable; Re/Im serialized separately"
+    adaptation_type: REDUCED_ORDER
+    permitted_substitutions: []
+    forbidden_transfers: ["alpha quartz", "collapse of Re/Im into one score"]
+    units_check: "eta [dimensionless per unit T]; dn dimensionless"
+    classification: REDUCED_ORDER_VALIDATED
+  - equation_id: RGCS-V4-EQ-004
+    name: exciton-magnon energy modulation
+    source_id: SRC-V4-06
+    source_locator: {section: "pack 07 item 1 (topic-only source)"}
+    source_expression: "E_x(theta) = E_0 + A cos^2(theta/2)"
+    adapted_expression: "E_x(t) = E0 + A*cos(theta(t)/2)**2, theta driven by magnon coordinate"
+    source_domain_meaning: "spin-canting-dependent exciton energy in vdW magnets"
+    rgcs_domain_meaning: "reduced-order FM/sideband reference model"
+    adaptation_type: REDUCED_ORDER
+    permitted_substitutions: ["small-angle expansion"]
+    forbidden_transfers: ["alpha quartz", "microscopic BSE claims"]
+    units_check: "E [J or eV declared]; theta [rad]"
+    classification: REDUCED_ORDER_VALIDATED
+  - equation_id: RGCS-V4-EQ-005
+    name: two-mode avoided crossing (anchor)
+    source_id: SRC-V4-00
+    source_locator: {section: "frozen RSCS-O.4 / RGCS-M.24 (v3 authority)"}
+    source_expression: "S = sqrt(Delta^2 + S0^2)"
+    adapted_expression: "eigvals of [[fa, g],[g, fb]] (+ optional -i*gamma/2 diagonal)"
+    source_domain_meaning: "frozen v3 coupled-mode hybridization"
+    rgcs_domain_meaning: "M4 avoided-crossing reference; MUST reproduce frozen coupled_two_mode in the lossless limit"
+    adaptation_type: DIRECT
+    permitted_substitutions: ["complex poles for linewidth"]
+    forbidden_transfers: ["reinterpretation of frozen v3 results"]
+    units_check: "Hz throughout"
+    classification: CORE_VALIDATED
+  - equation_id: RGCS-V4-EQ-006
+    name: nonlinear AFM trajectory (multi-minimum)
+    source_id: SRC-V4-03
+    source_locator: {section: "pack 09 item A (metadata-only primary)"}
+    source_expression: "phi_ddot + gamma phi_dot + dW/dphi = tau(t); W multi-minimum (sine-Gordon-type)"
+    adapted_expression: "d2phi/dt2 = -gamma*dphi/dt - dW/dphi + tau(t), W(phi) = -K1 cos(2 phi)/2 + K2 cos(4 phi)/4 variant"
+    source_domain_meaning: "THz-driven ballistic spin motion over anisotropy barrier (TmFeO3)"
+    rgcs_domain_meaning: "reduced trajectory reference: under/over-barrier, phase slip, switching"
+    adaptation_type: REDUCED_ORDER
+    permitted_substitutions: ["torque channels displacive/impulsive"]
+    forbidden_transfers: ["alpha quartz", "ab-initio spin dynamics claims"]
+    units_check: "phi [rad], gamma [1/s], W [rad^2/s^2 normalized], tau [rad/s^2]"
+    classification: REDUCED_ORDER_VALIDATED
+  - equation_id: RGCS-V4-EQ-007
+    name: phonon-controlled exchange
+    source_id: SRC-V4-04
+    source_locator: {section: "pack 09 item B (metadata-only primary)"}
+    source_expression: "J = J(Q); F(phi, Q); omega_s^2 = d2F/dphi2"
+    adapted_expression: "J(Q) = J0*(1 + c1*Q + c2*Q^2); spin frequency from local curvature"
+    source_domain_meaning: "light-driven phonon modulates magnetic exchange"
+    rgcs_domain_meaning: "indirect parameter-modulation reference + classifier vs direct hybridization"
+    adaptation_type: REDUCED_ORDER
+    permitted_substitutions: []
+    forbidden_transfers: ["alpha quartz", "DFT exchange values"]
+    units_check: "J [J], Q [normalized coordinate], omega [rad/s]"
+    classification: REDUCED_ORDER_VALIDATED
+  - equation_id: RGCS-V4-EQ-008
+    name: FDT force relation
+    source_id: SRC-V4-18
+    source_locator: {section: "pack 10 item 1 (enumerated)"}
+    source_expression: "F = c^4/(4G) * alpha1 * alpha2"
+    adapted_expression: "typed record only; dimensional audit target; NO solver"
+    source_domain_meaning: "independent-theory force law"
+    rgcs_domain_meaning: "quarantined SOURCE_HYPOTHESIS for falsification harness"
+    adaptation_type: HYPOTHESIS
+    permitted_substitutions: []
+    forbidden_transfers: ["ALL default solvers", "EST/DER claims", "any material record"]
+    units_check: "c^4/(4G) = 3.026e43 N; alpha1,alpha2 dimensionless -> F [N]; audit records normalization gaps"
+    classification: SOURCE_HYPOTHESIS
+  - equation_id: RGCS-V4-EQ-009
+    name: FDT alpha_R map
+    source_id: SRC-V4-18
+    source_locator: {section: "pack 10 item 1"}
+    source_expression: "alpha_R = (n^2 - 1)/n^2"
+    adapted_expression: "invertible reparameterization of n; invertibility adds no evidence (audited)"
+    source_domain_meaning: "proposed refractive-index alignment map"
+    rgcs_domain_meaning: "quarantined; compared against conventional index models"
+    adaptation_type: HYPOTHESIS
+    permitted_substitutions: []
+    forbidden_transfers: ["ALL default solvers", "EST/DER claims"]
+    units_check: "dimensionless; n>=1 -> alpha_R in [0,1)"
+    classification: SOURCE_HYPOTHESIS
+  - equation_id: RGCS-V4-EQ-010
+    name: bounded g2 coherence transfer
+    source_id: SRC-V4-09
+    source_locator: {section: "pack 13 items 3-4 (topic-only source)"}
+    source_expression: "g2_out = band-limited transfer of g2_in (reduced rule)"
+    adapted_expression: "g2_out = lo + (hi-lo)*sigmoid(w*(g2_in-1)+b); (lo,hi) from registered band; identity when transfer disabled"
+    source_domain_meaning: "metacrystal geometry maps photon statistics toward allowed bands"
+    rgcs_domain_meaning: "transparent ENG transfer rule, REDUCED_ORDER reference; not microscopic plasmonics"
+    adaptation_type: REDUCED_ORDER
+    permitted_substitutions: []
+    forbidden_transfers: ["bulk alpha quartz", "microscopic plasmonic simulation claims"]
+    units_check: "g2 dimensionless >= 0"
+    classification: REDUCED_ORDER_VALIDATED
+  - equation_id: RGCS-V4-EQ-011
+    name: dynamic magnetoelectric response
+    source_id: SRC-V4-12
+    source_locator: {section: "pack 07A item 1"}
+    source_expression: "Delta P_i(omega) = alpha_ij(omega) Delta H_j(omega)"
+    adapted_expression: "P = alpha(omega) @ H with Lorentz alpha_ij(omega) = a_ij * w0^2/(w0^2 - w^2 - i w gamma)"
+    source_domain_meaning: "dynamical ME tensor of multiferroic/chiral systems"
+    rgcs_domain_meaning: "capability-gated reduced tensor response; quartz NOT_APPLICABLE"
+    adaptation_type: REDUCED_ORDER
+    permitted_substitutions: ["coupled-oscillator lineshape"]
+    forbidden_transfers: ["alpha quartz", "reciprocity inferred from tensor shape alone"]
+    units_check: "alpha [C m^-2 / (A m^-1) = s/m]; P [C/m^2]; H [A/m]"
+    classification: REDUCED_ORDER_VALIDATED
+  - equation_id: RGCS-V4-EQ-012
+    name: canonical optical SAM/OAM densities
+    source_id: SRC-V4-00
+    supplementary_source_ids: ["SRC-V4-14"]
+    source_locator: {section: "standard electromagnetic theory (EST); SRC-V4-14 is the unavailable topical review, supplementary only"}
+    source_expression: "s = (eps0/2w) Im(E* x E); l = (eps0/2w) Im(E*.(r x grad)E) [monochromatic canonical]"
+    adapted_expression: "same, complex field arrays; canonical vs Poynting kept distinct"
+    source_domain_meaning: "spin/orbital decomposition of optical angular momentum"
+    rgcs_domain_meaning: "typed optical diagnostics (M3); never identified with mechanical circulation"
+    adaptation_type: DIRECT
+    permitted_substitutions: ["paraxial LG-beam closed forms for fixtures"]
+    forbidden_transfers: ["identity with mechanical/toroidal/historical quantities"]
+    units_check: "J s / m^3"
+    classification: CORE_VALIDATED
+  - equation_id: RGCS-V4-EQ-013
+    name: chiral two-mode phonon angular momentum
+    source_id: SRC-V4-13
+    source_locator: {section: "pack 06 item 6 (topic-only source)"}
+    source_expression: "L_z = qx py - qy px for degenerate (qx, qy); circular when phase = +/- pi/2"
+    adapted_expression: "L_z(t) and cycle-average; sign from relative phase; Zeeman splitting dE = g_eff * B * sign(L)"
+    source_domain_meaning: "chiral phonon angular momentum + effective moment"
+    rgcs_domain_meaning: "reference model; material-specific g_eff; no default quartz activation"
+    adaptation_type: REDUCED_ORDER
+    permitted_substitutions: []
+    forbidden_transfers: ["alpha quartz default", "identity with optical SAM"]
+    units_check: "L [kg m^2/s per cell, normalized units declared]"
+    classification: REDUCED_ORDER_VALIDATED
+  - equation_id: RGCS-V4-EQ-014
+    name: Frenet-Serret curvature/torsion
+    source_id: SRC-V4-00
+    source_locator: {section: "standard differential geometry (EST)"}
+    source_expression: "tau = (r' x r'') . r''' / |r' x r''|^2 ; kappa = |r' x r''|/|r'|^3"
+    adapted_expression: "same, arclength-robust numerical implementation"
+    source_domain_meaning: "geometric torsion of a space curve"
+    rgcs_domain_meaning: "curve diagnostic; EXPLICITLY not a force field"
+    adaptation_type: DIRECT
+    permitted_substitutions: []
+    forbidden_transfers: ["mechanical twist identity", "spacetime torsion identity"]
+    units_check: "kappa, tau [1/m]"
+    classification: CORE_VALIDATED
+  - equation_id: RGCS-V4-EQ-015
+    name: Saint-Venant circular-shaft torsion
+    source_id: SRC-V4-00
+    source_locator: {section: "standard elasticity (EST)"}
+    source_expression: "theta' = T/(G J); J = pi r^4/2; f_n = n v_s/(2L) torsional ladder (fixed-fixed)"
+    adapted_expression: "twist-rate benchmark + torsional modal ladder vs FEM authority"
+    source_domain_meaning: "exact torsion of circular shafts"
+    rgcs_domain_meaning: "M3 mechanical-torsion benchmark anchor"
+    adaptation_type: DIRECT
+    permitted_substitutions: []
+    forbidden_transfers: []
+    units_check: "theta' [rad/m], T [N m], G [Pa], J [m^4]"
+    classification: CORE_VALIDATED
