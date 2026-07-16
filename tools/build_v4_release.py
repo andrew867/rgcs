@@ -24,7 +24,7 @@ import zipfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-VERSION = "4.0.0"
+VERSION = "4.1.0"
 REL = REPO / "release" / "v4"
 
 
@@ -64,6 +64,11 @@ def main() -> int:
         "USER_GUIDE_V4.md", "RELEASE_NOTES_V4.md")]
     manu += [(f"docs/plans-v4/{p.name}", p) for p in
              (REPO / "docs/plans-v4").glob("*.md")]
+    # v4.1 completion documentation set (registries, runlogs, QA)
+    manu += [(f"docs/v4/{p.relative_to(REPO / 'docs/v4').as_posix()}",
+              p) for p in (REPO / "docs/v4").rglob("*.md")]
+    manu += [(f"docs/v4/{p.relative_to(REPO / 'docs/v4').as_posix()}",
+              p) for p in (REPO / "docs/v4").rglob("*.yaml")]
     zip_paths(REL / f"rgcs-v{VERSION}-manuscripts.zip", manu)
 
     refs = tree(REPO / "evidence/v4/agent10", "reference-systems/agent10")
@@ -105,7 +110,9 @@ def main() -> int:
             "source": "git archive of the release commit",
             "proof-bundle": "committed proof_bundle_110mm (built by "
                             "python -m rscs2_core.proofbundle; "
-                            "verdict CONVENTIONAL_NODE_FOUND)",
+                            "verdict UNCERTAINTY_OVERLAPS_"
+                            "CONVENTIONAL_NODE, v4.1 corrected "
+                            "uncertainty-aware classification)",
             "manuscripts": "v4 documentation + QA/audit reports",
             "reference-systems": "agent10 evidence + comparison",
             "screenshots": "bundle figures + evidence figures (all "

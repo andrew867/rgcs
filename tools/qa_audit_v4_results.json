@@ -87,7 +87,7 @@
   {
     "check": "bundle determinism (G25/G26)",
     "status": "PASS",
-    "detail": "110 files; all data artifacts bit-identical across two builds"
+    "detail": "115 files; all data artifacts bit-identical across two builds"
   },
   {
     "check": "licences (G30)",

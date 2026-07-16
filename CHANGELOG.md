@@ -3,6 +3,51 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [4.1.0] — 2026-07-16
+
+Capability-aware multiphysics completion of v4 (all results
+computational; no experimental confirmation exists).
+
+**Corrected (V4C-D-001, user-identified):** the Eye Consensus
+node-classification rule that absorbed any candidate within a ~4 mm
+physical radius into a "conventional node" verdict is REMOVED and
+replaced by an uncertainty-aware comparison
+(`rscs2_core.eye.node_coincidence_comparison`): exact coincidence only
+within declared numerical tolerance (1e-6 mm); interval overlap and
+resolved separations reported at their exact values. The canonical
+110 mm candidate (z ≈ 102.240 mm) is PRESERVED and reclassified:
+separation 3.906 mm from the nearest conventional station, localization
+halfwidth 3.08 mm (mesh-resolution dominated), convergence shift
+0.353 mm, draw-cloud rms 0.032 mm → verdict
+`UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE`. The published v4.0.0 tag and
+bundle are frozen history; this release supersedes their
+interpretation.
+
+**Added:** source registry + equation ledger with mechanical
+classification ceilings (SRC-V4-00..19, RGCS-V4-EQ-001..015); material
+capability firewall (16 records, coupling graph with operator-
+capability floors, rgcs.v4.result.1 envelopes, no fake zeros;
+MECHANISM_NOT_IMPLEMENTED_FOR_MATERIAL is never presented as physical
+nonexistence); 12-quantity torsion/circulation/optical-AM/chiral
+registry with identity prohibitions; Saint-Venant torsion benchmark;
+Frenet-Serret; canonical SAM/OAM/topological-charge diagnostics;
+reduced-order reference systems (exciton-magnon, avoided crossing
+anchored to frozen v3, block Hamiltonian, dressed spin, dynamic
+magnetoelectric tensor, metacrystal g2 transfer, LiNiPO4 IOME with
+channel discriminators, MnF2 comparator, nonlinear AFM trajectories,
+phonon-controlled exchange with direct/indirect classifier); dynamic
+boundaries + symmetry lowering with work-energy closure; deterministic
+calibration/inverse design with immutable observation ledgers;
+quarantined FDT adapter + source-lore translation companion (import-
+firewalled, pre-registered predictions); expanded Eye vote layer with
+applicability; binding scope statement (What the Canonical Quartz
+Model Does and Does Not Claim); adversarial QA (V4C-D-002 NaN
+leakage, V4C-D-003 capability laundering — both closed with
+regressions).
+
+Frozen: v2.0.0/v3.0.x/v4.0.0 tags, archives, registries, Zenodo
+records.
+
 ## [3.0.1] — 2026-07-16
 
 Archival and community patch release (no mathematical or behavioral
