@@ -4,4 +4,4 @@ Depends on ``rgcs_core`` (never the reverse). All claim-bearing displays
 carry classification badges per docs/SCIENTIFIC_CLASSIFICATION_POLICY.md.
 """
 
-__version__ = "3.0.0"
+__version__ = "3.0.1"

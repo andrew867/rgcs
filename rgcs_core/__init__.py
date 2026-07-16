@@ -34,6 +34,6 @@ correspondence is determined by measurement, not assumed by terminology.
 from .provenance import MODEL_VERSION
 from .uncertainty import UncertainValue, default_wave_speed
 
-__version__ = "3.0.0"
+__version__ = "3.0.1"
 __all__ = ["MODEL_VERSION", "UncertainValue", "default_wave_speed",
            "__version__"]

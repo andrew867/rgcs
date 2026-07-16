@@ -2,7 +2,7 @@
 """Build the v3 release package under release/ (Agent 11).
 
 Artifacts:
-  rgcs-v3.0.0-source.zip            git archive of the release commit
+  rgcs-v<VERSION>-source.zip            git archive of the release commit
   rgcs_v3_manuscripts.zip           4 PDFs + TeX/tables/figures/checksums
   rgcs_v3_sample_experiments.zip    schemas + templates + sample data
   SHA256SUMS.txt                    checksums of everything above
@@ -23,7 +23,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 REL = REPO / "release"
-VERSION = "3.0.0"
+VERSION = "3.0.1"
 
 
 def _sha(path: Path) -> str:

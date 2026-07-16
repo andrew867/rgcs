@@ -1,5 +1,5 @@
 {
-  "title": "RGCS v3.0.0 / RSCS 1.0 — Resonant Geometry Computational System: typed coordinates, conservative extension, and a pre-registered falsification programme",
+  "title": "RGCS v3.0.1 / RSCS 1.0 — Resonant Geometry Computational System: typed coordinates, conservative extension, and a pre-registered falsification programme",
   "upload_type": "software",
   "description": "<p>RGCS is a reproducible research framework for studying acoustic and mechanical resonance in engineered quartz geometries. It pairs a typed, provenance-checked mathematics library (RSCS 1.0: 17 coordinate types, 23 operators, machine-enforced claim classification) with a crystal application (anisotropic Christoffel elastodynamics, coupled modes, an optical probe layer), safety-bounded experiment schemas, a complete laboratory validation plan, and four manuscripts whose every number is generated from tested code.</p><p>Its distinguishing discipline: a byte-frozen v2 baseline that v3 provably extends without change (the Conservative Extension Property, machine-tested on every run), and a falsification plan in which every hypothesis — several pre-registered as expected <em>nulls</em> — carries an observable, controls, and a failure condition.</p><p><strong>No physical hypothesis of the programme has been experimentally confirmed</strong>, and the software states this on every claim-bearing surface. The strongest current result is methodological: a demonstration that unconventional source material can be preserved faithfully and tested honestly without becoming evidence by repetition.</p>",
   "creators": [
@@ -30,12 +30,12 @@
       "scheme": "url"
     },
     {
-      "identifier": "https://github.com/andrew867/rgcs/releases/tag/v3.0.0",
+      "identifier": "https://github.com/andrew867/rgcs/releases/tag/v3.0.1",
       "relation": "isIdenticalTo",
       "scheme": "url"
     }
   ],
-  "version": "3.0.0",
+  "version": "3.0.1",
   "language": "eng",
   "notes": "Source release: cross-platform-tested source (ubuntu/windows/macos CI), schemas, manuscripts, and provenance; no packaged desktop binaries. Release artifact checksums: SHA256SUMS.txt in the GitHub release. The frozen v2.0.0 baseline ships inside the repository at archive/v2.0.0/."
 }

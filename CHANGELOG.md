@@ -3,7 +3,16 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
-## [Unreleased]
+## [3.0.1] — 2026-07-16
+
+Archival and community patch release (no mathematical or behavioral
+changes to the v3.0.0 scientific baseline). Contents since v3.0.0:
+figure-rendering fixes D-V3-05/06 (README PNG mathtext; siunitx
+scientific notation in the Crystal Application manuscript) with
+refreshed manuscript assets; the complete laboratory validation
+campaign (Agent 14); the archival/community package incl.
+`.zenodo.json` (Agent 15). Published to trigger the Zenodo webhook
+(enabled after v3.0.0 shipped) and mint the DOI.
 
 - Agent 14 (post-release): measurement-campaign design (ENG, no new
   physics/equations/ids — D14-001): `LAB_MANUAL.md`,
