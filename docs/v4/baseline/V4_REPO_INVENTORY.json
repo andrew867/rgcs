@@ -7,12 +7,13 @@
   },
   "branch": "v4-dev",
   "dirty_files": [
-    "?? docs/v4/",
+    " M docs/v4/baseline/V4_MODULE_STATUS.json",
+    " M docs/v4/baseline/V4_REPO_INVENTORY.json",
+    " M tests/v4/test_v4c_baseline.py",
     "?? release/v4/",
-    "?? tests/v4/test_v4c_baseline.py",
-    "?? tools/v4/"
+    "M docs/v4/baseline/V4_BASELINE_TEST_MATRIX.json"
   ],
-  "head": "2fed8fdc5b8c7f11abd880a91dbc84ad7b9004ae",
+  "head": "687288127ecee7e2f8adfe00e86fd5b3a42baa00",
   "protected_tags_present": {
     "v2.0.0": "f9fd2c20a05334e12ac9113ba86853c6591fc84e",
     "v3.0.0": "83521f73d6ad02b009ada88f3b8d33a8a00fc253",
@@ -35,6 +36,6 @@
     "v4.0.0-rc1"
   ],
   "worktrees": [
-    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS 2fed8fd [v4-dev]"
+    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS 6872881 [v4-dev]"
   ]
 }

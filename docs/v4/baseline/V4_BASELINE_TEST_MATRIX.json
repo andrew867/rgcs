@@ -83,8 +83,10 @@
       "test_rscs2_refsystems.py",
       "test_rscs2_registry.py",
       "test_rscs2_solver.py",
-      "test_v4c_baseline.py"
+      "test_v4c_baseline.py",
+      "test_v4c_capability.py",
+      "test_v4c_provenance.py"
     ],
-    "test_functions": 99
+    "test_functions": 123
   }
 }

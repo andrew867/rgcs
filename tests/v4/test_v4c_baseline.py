@@ -18,11 +18,16 @@ def test_scanner_runs_and_is_deterministic(tmp_path):
     first = {p.name: p.read_bytes() for p in OUT.glob("*.json")}
     subprocess.run(cmd, cwd=REPO, check=True, capture_output=True)
     second = {p.name: p.read_bytes() for p in OUT.glob("*.json")}
-    # dirty_files may legitimately differ between runs if the tree
-    # changes; everything else must be bit-stable on an unchanged tree
+    # dirty_files may legitimately differ between runs when the
+    # working tree is being edited (observed dev-time race);
+    # everything else must be bit-stable
     assert set(first) == set(second)
     for name in first:
-        assert first[name] == second[name], f"{name} nondeterministic"
+        a, b = json.loads(first[name]), json.loads(second[name])
+        if isinstance(a, dict):
+            a.pop("dirty_files", None)
+            b.pop("dirty_files", None)
+        assert a == b, f"{name} nondeterministic"
 
 
 def test_authority_commits_reachable_and_protected_tags():

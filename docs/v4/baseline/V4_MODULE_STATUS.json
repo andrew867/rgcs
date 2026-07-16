@@ -142,8 +142,8 @@
     ]
   },
   "rscs2_core/cli.py": {
-    "bytes": 11542,
-    "def_count": 18,
+    "bytes": 12504,
+    "def_count": 19,
     "markers": []
   },
   "rscs2_core/crystal110.py": {
@@ -161,6 +161,39 @@
     "def_count": 15,
     "markers": []
   },
+  "rscs2_core/multiphysics/__init__.py": {
+    "bytes": 901,
+    "def_count": 0,
+    "markers": []
+  },
+  "rscs2_core/multiphysics/capabilities.py": {
+    "bytes": 6239,
+    "def_count": 3,
+    "markers": [
+      "interface_only_markers"
+    ]
+  },
+  "rscs2_core/multiphysics/coupling.py": {
+    "bytes": 3773,
+    "def_count": 3,
+    "markers": [
+      "interface_only_markers"
+    ]
+  },
+  "rscs2_core/multiphysics/envelope.py": {
+    "bytes": 3886,
+    "def_count": 4,
+    "markers": [
+      "interface_only_markers"
+    ]
+  },
+  "rscs2_core/multiphysics/materials.py": {
+    "bytes": 13476,
+    "def_count": 6,
+    "markers": [
+      "interface_only_markers"
+    ]
+  },
   "rscs2_core/piezo.py": {
     "bytes": 7842,
     "def_count": 5,
@@ -174,6 +207,13 @@
   "rscs2_core/proofbundle.py": {
     "bytes": 42833,
     "def_count": 7,
+    "markers": [
+      "interface_only_markers"
+    ]
+  },
+  "rscs2_core/provenance_v4.py": {
+    "bytes": 10268,
+    "def_count": 12,
     "markers": [
       "interface_only_markers"
     ]
