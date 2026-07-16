@@ -33,3 +33,7 @@ manuscript/*.blg
 # not in git history — tracking them nested each source zip inside the
 # next and compounded ~30-60 MB per release.
 release/*.zip
+
+# v4 generated workspaces (demo + CLI scratch; proof_bundle_110mm IS committed)
+demo_out/
+cli_work/

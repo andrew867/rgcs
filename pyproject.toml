@@ -28,14 +28,18 @@ dev = [
     "referencing>=0.33",
 ]
 
+[project.scripts]
+rgcs-v4 = "rscs2_core.cli:main"
+
 [tool.setuptools.packages.find]
-include = ["rgcs_core*", "rgcs_desktop*", "rscs_core*"]
+include = ["rgcs_core*", "rgcs_desktop*", "rscs_core*", "rscs2_core*"]
 
 [tool.setuptools.package-data]
 rscs_core = ["registry/*.yaml"]
+rscs2_core = ["registry/*.yaml"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial"]
+testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial", "tests/v4"]
 pythonpath = ["."]
 markers = [
     "slow: long-running tests (dataset regeneration)",
