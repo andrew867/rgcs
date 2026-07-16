@@ -208,8 +208,8 @@
     ]
   },
   "rscs2_core/multiphysics/coupling.py": {
-    "bytes": 3773,
-    "def_count": 3,
+    "bytes": 5561,
+    "def_count": 4,
     "markers": [
       "interface_only_markers"
     ]
@@ -312,7 +312,7 @@
     "markers": []
   },
   "rscs2_core/refmodels/iome_linipo4.py": {
-    "bytes": 10110,
+    "bytes": 10754,
     "def_count": 13,
     "markers": []
   },

@@ -156,6 +156,18 @@ def write_domains(material_id: str, k_hat, t_mag: float,
     """Capability-gated IOME writing. `jones` is ACCEPTED and
     deliberately UNUSED by this mechanism (polarization invariance is
     the source model's claim — the ablation tests assert it)."""
+    # V4C-D-002: finite-input validation (Q1 adversarial find) —
+    # NaN/inf must never propagate into alignment envelopes
+    for name, v in (("t_mag", t_mag), ("fluence_j_m2", fluence_j_m2),
+                    ("lam_coupling", lam_coupling),
+                    ("wavelength_nm", wavelength_nm),
+                    ("temperature_k", temperature_k)):
+        if not math.isfinite(v):
+            raise ValueError(f"{name} must be finite, got {v}")
+    k_arr = np.asarray(k_hat, float)
+    if not np.all(np.isfinite(k_arr)) or \
+            not np.linalg.norm(k_arr) > 0:
+        raise ValueError("k_hat must be a finite nonzero vector")
     mat = get_material(material_id)
     app = applicability(mat, "domain_writing")
     if app["applicability"] == "NOT_APPLICABLE":

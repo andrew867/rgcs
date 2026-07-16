@@ -18,6 +18,37 @@ class CouplingRejected(ValueError):
     """Raised when an edge cannot activate for the material."""
 
 
+#: V4C-D-003 (Q1 adversarial find): operator-id families carry a
+#: MINIMUM required capability. An edge whose declared
+#: capability_requirement does not match its operator family is
+#: capability LAUNDERING and is rejected — a forged edge cannot
+#: activate a banned mechanism through a capability the material
+#: legitimately has.
+OPERATOR_CAPABILITY_FLOOR = {
+    "op.iome": "domain_writing",
+    "op.domain": "domain_writing",
+    "op.magnon": "magnon_modes",
+    "op.exciton": "exciton_frenkel",
+    "op.spin": "magnetic_order",
+    "op.me": "magnetoelectric_dynamic",
+    "op.toroidal": "ferrotoroidic_order",
+    "op.metacrystal": "quantum_statistical_response",
+    "op.plasmon": "plasmonic_near_field",
+    "op.tunnel": "microscopic_tunnelling_model",
+    "op.chiral_phonon": "chiral_phonons",
+    "op.fdt": None,          # never activatable through the graph
+}
+
+
+def _operator_floor(operator_id: str):
+    matches = [(p, c) for p, c in OPERATOR_CAPABILITY_FLOOR.items()
+               if operator_id.startswith(p)]
+    if not matches:
+        return False, None
+    # longest prefix wins
+    return True, max(matches, key=lambda t: len(t[0]))[1]
+
+
 @dataclass(frozen=True)
 class CouplingEdge:
     source_block: str
@@ -57,6 +88,18 @@ class CouplingGraph:
             raise CouplingRejected(
                 "source_hypothesis block cannot drive physics blocks "
                 "(FDT/lore quarantine)")
+        floored, floor_cap = _operator_floor(edge.operator_id)
+        if floored:
+            if floor_cap is None:
+                raise CouplingRejected(
+                    f"operator {edge.operator_id} can never activate "
+                    "through the coupling graph (quarantined family)")
+            if edge.capability_requirement != floor_cap:
+                raise CouplingRejected(
+                    f"capability laundering: operator "
+                    f"{edge.operator_id} requires capability "
+                    f"'{floor_cap}', not "
+                    f"'{edge.capability_requirement}' (V4C-D-003)")
         app = applicability(self.material, edge.capability_requirement)
         if app["applicability"] in ("NOT_APPLICABLE",):
             raise CouplingRejected(

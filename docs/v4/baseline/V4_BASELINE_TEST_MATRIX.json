@@ -87,6 +87,7 @@
       "test_v4c_calibration.py",
       "test_v4c_capability.py",
       "test_v4c_channels.py",
+      "test_v4c_docs_examples.py",
       "test_v4c_dynamic_boundary.py",
       "test_v4c_dynamic_me.py",
       "test_v4c_eye_votes.py",
@@ -96,9 +97,10 @@
       "test_v4c_node_coincidence.py",
       "test_v4c_nonlinear_spin.py",
       "test_v4c_provenance.py",
+      "test_v4c_q1_adversarial.py",
       "test_v4c_refmodels_m4.py",
       "test_v4c_torsion_oam.py"
     ],
-    "test_functions": 216
+    "test_functions": 228
   }
 }
