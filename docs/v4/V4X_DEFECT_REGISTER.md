@@ -20,6 +20,8 @@ misleading public statement · **P2** hygiene.
 | V4X-D-012 | P1 | G42 verified strings, not artifacts | CLOSED |
 | V4X-D-013 | P1 | arithmetic identities carried CORE_VALIDATED | CLOSED |
 | V4X-D-014 | P2 | C02 scratch meshes shipped in source assets | CLOSED |
+| V4X-D-015 | P1 | SHA256SUMS listed v4.2.0 files in the v4.2.1 release | CLOSED |
+| V4X-D-016 | P1 | SHA256SUMS written CRLF; `sha256sum -c` failed on every file | CLOSED |
 
 **No open P0 or P1.**
 
@@ -120,6 +122,31 @@ Fix: any arithmetic-kind record at `CORE_VALIDATED` now automatically
 carries `ARITHMETIC ONLY: ... not a claim that the value is a resonance
 of any quartz body`, enforced by G42F and by
 `test_arithmetic_identity_never_wears_a_physics_status`.
+
+## V4X-D-015 / V4X-D-016 (P1) — the checksum file did not check
+
+Both were caught by the **remote verification step**, after publishing —
+which is exactly why that step exists and why "the build succeeded" is
+not the same as "the release works".
+
+**D-015: wrong files.** `release/v4/` accumulates previous builds, and
+the builder hashed *everything in the directory*. The published
+`SHA256SUMS.txt` therefore listed the seven v4.2.0 assets alongside the
+v4.2.1 ones, so `sha256sum -c` failed on files the release does not
+contain. Fix: hash only assets matching the version being built, and
+print a note naming any other-version files present but not shipped.
+
+**D-016: wrong line endings.** `Path.write_text` on Windows emits CRLF.
+`sha256sum -c` then parses every filename with a trailing `\r` and
+reports `No such file or directory` for **all eight assets**. A user
+following the documented verification step would conclude the release
+was corrupt.
+
+Fix: `newline="\n"`. Verified by downloading the published assets to a
+clean directory and running `sha256sum -c` — 8/8 OK.
+
+The lesson generalizes: a verification artifact must itself be
+verified, from the outside, exactly as a user would.
 
 ## V4X-D-014 (P2) — scratch-data audit
 

@@ -141,12 +141,36 @@ def main() -> int:
     }
     (REL / "PROVENANCE.json").write_text(json.dumps(prov, indent=2))
 
+    # Hash ONLY this version's assets. release/v4/ accumulates previous
+    # builds, and hashing everything in the directory shipped a
+    # SHA256SUMS.txt listing v4.2.0 files inside the v4.2.1 release --
+    # so `sha256sum -c` failed on files the release does not contain
+    # (V4X-D-015, caught by remote verification).
     sums = []
+    shipped = []
     for p in sorted(REL.iterdir()):
-        if p.is_file() and p.name != "SHA256SUMS.txt":
-            sums.append(f"{hashlib.sha256(p.read_bytes()).hexdigest()}"
-                        f"  {p.name}")
-    (REL / "SHA256SUMS.txt").write_text("\n".join(sums) + "\n")
+        if not p.is_file() or p.name == "SHA256SUMS.txt":
+            continue
+        if p.name != "PROVENANCE.json" and f"v{VERSION}-" not in p.name:
+            continue
+        shipped.append(p.name)
+        sums.append(f"{hashlib.sha256(p.read_bytes()).hexdigest()}"
+                    f"  {p.name}")
+    # newline="\n" is load-bearing: Python's default on Windows writes
+    # CRLF, and `sha256sum -c` then reads every filename with a
+    # trailing \r and fails to open all of them. A checksum file that
+    # cannot be checked is worse than none (V4X-D-016).
+    (REL / "SHA256SUMS.txt").write_text("\n".join(sums) + "\n",
+                                        encoding="utf-8", newline="\n")
+    stale = [p.name for p in REL.iterdir()
+             if p.is_file() and p.name not in shipped
+             and p.name not in ("SHA256SUMS.txt", "PROVENANCE.json")]
+    print(f"SHA256SUMS covers {len(sums)} assets for v{VERSION}")
+    if stale:
+        print(f"note: {len(stale)} asset(s) from other versions are "
+              f"present in {REL.name}/ and are NOT hashed or shipped: "
+              f"{', '.join(sorted(stale)[:4])}"
+              + (" ..." if len(stale) > 4 else ""))
     print(f"release assets in {REL}")
     return 0
 
