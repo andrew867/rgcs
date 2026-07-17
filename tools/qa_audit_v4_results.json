@@ -85,9 +85,9 @@
     "detail": "no AFFIRMATIVE claim vocabulary; exclusion statements verified manually (V4-D-002)"
   },
   {
-    "check": "bundle determinism (G25/G26)",
+    "check": "consciousness-lane quarantine (G51)",
     "status": "PASS",
-    "detail": "115 files; all data artifacts bit-identical across two builds"
+    "detail": "lane present, quarantine declared, no quartz imports either direction, no causal claims"
   },
   {
     "check": "licences (G30)",

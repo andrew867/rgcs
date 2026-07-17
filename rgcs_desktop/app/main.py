@@ -15,9 +15,76 @@ def create_app(argv: list[str] | None = None) -> QApplication:
     return app
 
 
+def _default_workspace() -> Path:
+    """Per-user data location (installer contract): the user's
+    Documents\\RGCS Workspace. No hardcoded personal path."""
+    import os
+    docs = os.environ.get("USERPROFILE")
+    base = Path(docs) / "Documents" if docs else Path.home()
+    return base / "RGCS Workspace"
+
+
+def doctor() -> int:
+    """`--doctor`: offline diagnostics for the Start-Menu shortcut and
+    the first-run wizard. No network, no side effects."""
+    import platform
+
+    import rgcs_desktop
+    lines = [f"RGCS Workbench diagnostics",
+             f"  version        : {rgcs_desktop.__version__}",
+             f"  python         : {sys.version.split()[0]}",
+             f"  platform       : {platform.platform()}",
+             f"  default workspace: {_default_workspace()}"]
+    ok = True
+    for mod in ("PySide6", "numpy", "scipy", "openpyxl"):
+        try:
+            m = __import__(mod)
+            lines.append(f"  {mod:<15}: {getattr(m, '__version__', 'ok')}")
+        except ImportError:
+            lines.append(f"  {mod:<15}: MISSING")
+            if mod != "openpyxl":       # workbook export is optional
+                ok = False
+    try:
+        import rgcs_core.provenance as prov
+        lines.append(f"  model version  : {prov.MODEL_VERSION}")
+    except Exception as exc:            # noqa: BLE001
+        lines.append(f"  model version  : ERROR {exc}")
+        ok = False
+    lines.append(f"  claim boundary : SOFTWARE only; no physical "
+                 "result is validated")
+    print("\n".join(lines))
+    return 0 if ok else 1
+
+
+def export_workbook(argv: list[str]) -> int:
+    """`--export-workbook <path> [--private]`: regenerate the Master
+    Evidence Workbook from canonical data (one-click regeneration)."""
+    try:
+        from rgcs_workbench.workbook import generate
+    except ImportError:
+        print("workbook export requires the 'workbook' extra "
+              "(openpyxl); install it or use the packaged build",
+              file=sys.stderr)
+        return 2
+    out = next((a for a in argv if a.endswith(".xlsx")),
+               str(_default_workspace() /
+                   "RGCS_Master_Evidence_Workbook.xlsx"))
+    Path(out).parent.mkdir(parents=True, exist_ok=True)
+    generate(include_private="--private" in argv).save(out)
+    print(f"workbook regenerated: {out}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     multiprocessing.freeze_support()  # required for frozen (PyInstaller) builds
     argv = argv if argv is not None else sys.argv[1:]
+
+    # headless subcommands (no Qt event loop, safe in the packaged EXE)
+    if "--doctor" in argv:
+        return doctor()
+    if "--export-workbook" in argv:
+        return export_workbook(argv)
+
     app = create_app()
 
     if "--smoke-check" in argv:
@@ -71,16 +138,27 @@ def main(argv: list[str] | None = None) -> int:
                 return False
 
     context = AppContext()
+    # `--first-run` (used by the installer's post-install launch) forces
+    # the wizard; it is a flag, never a workspace path.
+    force_first_run = "--first-run" in argv
+    positional = [a for a in argv if not a.startswith("-")]
     # reopen the last workspace when available
     last = context.settings.last_workspace
-    if argv:
-        target = Path(argv[0])
+    if force_first_run:
+        from rgcs_desktop.app.first_run import run_first_run
+        run_first_run(context)
+    elif positional:
+        target = Path(positional[0])
         if (target / "workspace.db").exists():
             _guarded_open(context, target)
         else:
             context.create_workspace(target, target.name)
     elif last and (Path(last) / "workspace.db").exists():
         _guarded_open(context, Path(last))
+    elif not context.settings.first_run_done:
+        # first launch, no prior workspace: run the first-run wizard
+        from rgcs_desktop.app.first_run import run_first_run
+        run_first_run(context)
 
     window = MainWindow(context)
     window.show()

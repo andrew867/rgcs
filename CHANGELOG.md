@@ -3,6 +3,50 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [4.5.0] — 2026-07-17
+
+Windows Workbench, portable package, and Master Evidence Workbook
+(v4.5 pack). **SOFTWARE_GREEN, PHYSICAL_UNTESTED** unchanged: this is
+a packaging and interoperability release; no physical result is
+validated and no evidence class was promoted.
+
+**Canonical export model** (`rgcs_workbench/`): a typed `Record` /
+`CanonicalStore` layer pulls live data from every v4.x lane —
+frequency keys, harmonic relations, specimens, mode estimates, timing
+recipes, hypotheses, the Eye numerical ladder, the resonator
+platform campaign, hardware BOM, experiment queue, corrections,
+source registry, and PUBLIC_SAFE lore. Each row carries an evidence
+class from the eight-rung ladder and a privacy class; the store is
+the single source of truth and the workbook is generated one-way from
+it (never the reverse).
+
+**Master Evidence Workbook**: `python -m rgcs_workbench.workbook`
+(or the app's `--export-workbook`) writes a 17-sheet formula-visible
+xlsx — Dashboard, Frequency Keys, Harmonic Relations, Specimens, Mode
+Estimates, Timing Recipes, Hypotheses, Evidence Ledger, Eye Results,
+Resonator Platform, Hardware BOM, Experiment Queue, Corrections,
+Source Registry, Lore Registry, Installer Metadata, Workbook Guide.
+Derived cells stay live formulas (mode-estimate percentage errors,
+dashboard sums); evidence classes are colour-coded; a public export
+provably contains no PRIVATE row content. Excel is never required to
+run the app — the workbook is interoperability only.
+
+**Windows packaging** (`packaging/`): a PyInstaller onedir build
+frozen from `RGCSWorkbench.spec` produces `RGCSWorkbench.exe`, zipped
+into a portable ZIP that runs with no install, no admin, no
+telemetry, and no auto-start; per-user data lives in
+`Documents\RGCS Workspace`. Headless `--doctor` and `--smoke-check`
+verify the frozen build. The Inno Setup installer script
+(`RGCS_Workbench.iss`, per-user, `PrivilegesRequired=lowest`) is
+shipped in-tree; the compiled Setup EXE and clean-machine VM
+verification are **honestly gated** — Inno Setup is not present in the
+build environment and no clean VM was available, so this release ships
+the verified portable ZIP and workbook and does NOT claim a
+signed installer or clean-machine proof.
+
+Tests: 938 passing (1 archived-environment byte test deselected by
+policy D-V3-04), including 22 new workbench, workbook, and packaging tests.
+
 ## [4.4.0] — 2026-07-17
 
 Frequency-Key Harmonic Excitation and ESP32-CYD Instrument (v4.4

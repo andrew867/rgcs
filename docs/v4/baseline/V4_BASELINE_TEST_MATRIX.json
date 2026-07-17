@@ -72,6 +72,9 @@
   },
   "v4": {
     "files": [
+      "test_fkey_device_redteam.py",
+      "test_fkey_instrument.py",
+      "test_resonator_platform.py",
       "test_rscs2_accel.py",
       "test_rscs2_cli.py",
       "test_rscs2_crystal110.py",
@@ -83,6 +86,7 @@
       "test_rscs2_refsystems.py",
       "test_rscs2_registry.py",
       "test_rscs2_solver.py",
+      "test_v45_packaging.py",
       "test_v4c_baseline.py",
       "test_v4c_calibration.py",
       "test_v4c_capability.py",
@@ -100,8 +104,27 @@
       "test_v4c_provenance.py",
       "test_v4c_q1_adversarial.py",
       "test_v4c_refmodels_m4.py",
-      "test_v4c_torsion_oam.py"
+      "test_v4c_torsion_oam.py",
+      "test_v4x2_eye_sources.py",
+      "test_v4x2_platform_support.py",
+      "test_v4x2_qa.py",
+      "test_v4x2_refmodels.py",
+      "test_v4x_bvd_apparatus.py",
+      "test_v4x_consciousness.py",
+      "test_v4x_coverage_gates.py",
+      "test_v4x_coverage_ledger.py",
+      "test_v4x_depth_metrology_bvd_apparatus.py",
+      "test_v4x_frequency_keys.py",
+      "test_v4x_harmonic_specimens.py",
+      "test_v4x_orphan_sweep.py",
+      "test_v4x_polariton_interfaces.py",
+      "test_v4x_protocols.py",
+      "test_v4x_qa_adversarial.py",
+      "test_v4x_records_safety.py",
+      "test_v4x_release_metadata.py",
+      "test_v4x_spiral_cymatic.py",
+      "test_workbench.py"
     ],
-    "test_functions": 235
+    "test_functions": 546
   }
 }

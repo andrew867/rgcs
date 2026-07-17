@@ -48,3 +48,12 @@ class AppSettings:
     @last_workspace.setter
     def last_workspace(self, value: str) -> None:
         self._qs.setValue("paths/last_workspace", value)
+
+    # first-run wizard ----------------------------------------------------
+    @property
+    def first_run_done(self) -> bool:
+        return self._qs.value("app/first_run_done", False, type=bool)
+
+    @first_run_done.setter
+    def first_run_done(self, value: bool) -> None:
+        self._qs.setValue("app/first_run_done", bool(value))
