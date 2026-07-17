@@ -1,0 +1,154 @@
+{
+  "schema": "rgcs.v4x2.baseline_handoff/1",
+  "programme": "Post-v4.2 Emergent Resonator and Structured-Wave Expansion",
+  "repository": {
+    "head": "0af811f77975a696acd3427d97d752f8dfe9b67d",
+    "branch": "v4-dev",
+    "describe": "v4.2.1-1-g0af811f"
+  },
+  "branch_decision": {
+    "programme_branch": "v4-dev",
+    "marker_branch": "emergent-resonator (pointer at the start commit)",
+    "reason": "hosted CI triggers on v4-dev; running the programme on a parallel branch would bypass the CI gate every prior release used. The start point is recorded as a branch pointer so the programme's base commit is auditable."
+  },
+  "frozen_history": {
+    "tags": {
+      "v2.0.0": "f9fd2c20a05334e12ac9113ba86853c6591fc84e",
+      "v3.0.0": "83521f73d6ad02b009ada88f3b8d33a8a00fc253",
+      "v3.0.1": "70d032ac25db28e98d217d7bf3311a9013b878ee",
+      "v4.0.0": "2fed8fdc5b8c7f11abd880a91dbc84ad7b9004ae",
+      "v4.1.0": "4c2a1cc1989fa76e62c3aaade389e1766560f305",
+      "v4.1.1": "448037bd284d403cd1d3c9dddb8ec79c3dcee2df",
+      "v4.2.0": "d253c2f43206d5d00325f54cb1b62744dcd3e364",
+      "v4.2.1": "46074c357aec570075132e876a60cde96680af4c"
+    },
+    "archive_v2_intact": true,
+    "problems": [],
+    "passed": true
+  },
+  "working_tree": {
+    "entries": [
+      {
+        "state": "??",
+        "path": "release/v4/",
+        "kind": "generated_release_asset"
+      },
+      {
+        "state": "??",
+        "path": "tools/v4x2_baseline.py",
+        "kind": "unclassified_user_work_PRESERVE"
+      }
+    ],
+    "rule": "nothing here is deleted; unclassified entries are preserved and flagged for a human"
+  },
+  "test_counts": {
+    "authority": "docs/v4/RELEASE_METADATA.json (derived from a real pytest run, never prose)",
+    "tests_passed": 737,
+    "tests_deselected": 1,
+    "summary_line": "737 passed, 1 deselected, 7 warnings in 125.49s (0:02:05)",
+    "deselect_node": "tests/regression/test_generator_determinism.py::test_generator_deterministic",
+    "deselect_reason": "byte-equality test requires the archived v2.0.0 build environment; hosted CI deselects exactly this node id (policy D-V3-04)",
+    "exit_code": 0
+  },
+  "release": {
+    "source": "gh api",
+    "verified": true,
+    "n_assets": 9,
+    "tag": "v4.2.1"
+  },
+  "eye": {
+    "artifact": "docs\\v4\\proof\\C02\\refinement_ladder_v5.json",
+    "verdict": "NEAR_CONVENTIONAL_NODE_BUT_DISTINCT",
+    "separation_mm": 6.297646486228021,
+    "halfwidth_mm": 1.803284511410936,
+    "resolution_status": "RESOLVED",
+    "levels": {
+      "cl3": {
+        "spacing_mm": 3.423062072292956,
+        "centroid_mm": [
+          0.23666691609243637,
+          -0.01041743706878664,
+          100.9864890881228
+        ],
+        "n_dof": 5394
+      },
+      "cl2": {
+        "spacing_mm": 2.3618158847106816,
+        "centroid_mm": [
+          -0.05256023704508755,
+          -0.03774884691409296,
+          99.98933962563358
+        ],
+        "n_dof": 14550
+      },
+      "cl1.5": {
+        "spacing_mm": 1.803284511410936,
+        "centroid_mm": [
+          -0.04757561836648346,
+          -0.019763455516741524,
+          99.78335879095333
+        ],
+        "n_dof": 30816
+      }
+    },
+    "canonical_v41_record": {
+      "candidate_mm": [
+        -0.295,
+        -0.205,
+        102.24
+      ],
+      "station_mm": [
+        -0.447,
+        0.774,
+        106.018
+      ],
+      "separation_mm": 3.906,
+      "halfwidth_mm": 3.08,
+      "convergence_shift_mm": 0.353,
+      "cloud_rms_mm": 0.032,
+      "numerical_tolerance_mm": 1e-06,
+      "note": "preserved unchanged; this run does not supersede it and the candidate was never moved onto the comparator"
+    },
+    "stopped_before_cl": 1.25,
+    "resource_facts": {
+      "measured_peak_gb_at_cl1_5": 13.9,
+      "machine_ram_gb": 31.6,
+      "cl1_25_projection_gb": "45-71 (calibrated dof^2 model)",
+      "failed_estimate_defect": "first estimate used dof^1.5 (2-D rule) -> 0.29 GB, wrong ~150x; preserved as a defect record, see docs/v4/V4X_DEFECT_REGISTER.md"
+    }
+  },
+  "environment": {
+    "python": "3.13.2",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine_ram_gb": 31.6,
+    "solver_backends": [
+      "scipy shift-invert LU (default)",
+      "pyopencl (validated fp32/fp64)",
+      "CUDA (interface-only, no hardware)"
+    ]
+  },
+  "blockers": [
+    {
+      "id": "hardware",
+      "affects": "all E-lane campaigns + all physical resonator fabrication/measurement"
+    },
+    {
+      "id": "ethics",
+      "affects": "E06/E07 human studies"
+    },
+    {
+      "id": "compute",
+      "affects": "Eye ladder below cl=1.5 (needs ~48+ GB or an iterative eigensolver)"
+    },
+    {
+      "id": "xrd",
+      "affects": "specimen orientation unknown"
+    }
+  ],
+  "next_actions": [
+    "B01: ingest the five 2026 papers with hashes + firewall",
+    "Y01/Y02/Y03: ladder interpretation, calibrated resources, independent cluster census",
+    "R01-R07: synthetic design-to-certificate campaign",
+    "O01 orphan sweep, Q07 fresh-clone QA, R13+R12 release"
+  ]
+}
