@@ -3,6 +3,63 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [4.4.0] — 2026-07-17
+
+Frequency-Key Harmonic Excitation and ESP32-CYD Instrument (v4.4
+pack, agents A00–A26). All prior tags untouched. **SOFTWARE_GREEN,
+PHYSICAL_UNTESTED**: the specimen is an eBay listing, no board has
+been powered, and all six preregistered hypotheses are UNTESTED.
+
+**Exact relation engine** (`fkey_instrument/`): all frequency
+arithmetic in `fractions.Fraction` (floats refused at the parse
+boundary); every relation carries exactly one primary mechanism
+class from the pack's taxonomy. The frozen seed corpus classifies as
+required: 4096×5 is a low-order HARMONIC; 8×2560, 20.48×1000 and
+40.96×500 are exact but PHASE_CLOSURE_ONLY; the mixed sums
+(1496+32×587, order 33; the four-tone sum, order 21) are
+ARITHMETIC_COINCIDENCE — not emitted frequencies in a linear system.
+The A06 engine proves (analytically AND by independent FFT) that an
+ideal sine has no fifth harmonic while a 50% square carries one at
+exactly 1/5; duty error resurrects even harmonics.
+
+**Pre-arrival specimen model**: immutable revision 1 from seller
+claims (77.8 mm → quarter-wave 20278.959 Hz, half-wave 40557.918 Hz);
+correction record FK-CORR-001 verifies the two target percentage
+errors are ONE number (both ∝ v/L); the model licenses a search band,
+never a magic frequency; arrival measurements create revision 2 with
+mandatory instrument provenance.
+
+**Mechanism-first optimizer**: expected amplitude comes from the
+spectrum engine through a 2-DOF plant (transducer-vs-crystal
+discrimination by response-to-perturbation), so sine-"harmonics" and
+arithmetic coincidences score zero by construction; Pareto dominance
+runs within hypotheses (a sham is not a substitute for a resonance
+tone); campaigns compile randomized, blinded, sham-included, with the
+no-post-hoc-frequency rule declared.
+
+**Fail-off instrument twin + firmware**: strict JSON contracts
+(missing amplitude REFUSED, never defaulted; invalid JSON faults at
+load, before any output authority); safety FSM with fresh single-use
+expiring arm leases, no auto-arm, 14 latching fault causes,
+reset-lands-output-off; hash-chained SYNTHETIC logs; CYD board
+profiles are candidates (verified=False) with boot-strap/input-only/
+peripheral pin-conflict detection and UNKNOWN ⇒ OUTPUT_DISABLED;
+LEDC/RMT/DDS backends report requested vs calculated-realized
+frequency as exact rationals with measured=None until a measurement
+exists. Firmware source tree provided
+(`firmware/fkey_cyd/`, PlatformIO) mirroring the tested twin —
+NOT compiled here (no toolchain, no hardware).
+
+**Six demos** run entirely in simulator (relation census, waveform
+distinction, nominal sweep + bootstrap Q, optimizer + 4 validated
+recipes, full device cycle with intact log chain, fault refusal),
+every artifact SYNTHETIC-labelled. **46 FK coverage requirements**
+verified mechanically with bidirectional orphan checks; A24 red-team
+attacks are executable regression tests.
+
+Tests: 916 passing (1 archived-environment byte test deselected
+by policy D-V3-04).
+
 ## [4.3.0] — 2026-07-17
 
 Post-v4.2 Emergent Resonator and Structured-Wave Expansion. All prior

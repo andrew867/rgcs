@@ -1,0 +1,625 @@
+{
+ "total_requirements": 46,
+ "failures": {
+  "symbols": [],
+  "tests": [],
+  "docs": [],
+  "forward_orphans": [],
+  "reverse_orphans": []
+ },
+ "all_passed": true,
+ "rows": {
+  "FK-P001": {
+   "requirement": "frozen seed keys registered with provenance",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.relations:key_registry"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-P002": {
+   "requirement": "prearrival specimen immutable; seller claims never measurements",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.crystal_mode:prearrival_record",
+    "fkey_instrument.crystal_mode:arrival_revision"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py",
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-P003": {
+   "requirement": "FK-CORR-001 equal-percentage-error correction record",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.crystal_mode:target_errors"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py",
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-P004": {
+   "requirement": "hypotheses preregistered, optimizer cannot rewrite",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.optimizer:hypothesis_register"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-P005": {
+   "requirement": "no lore language can reach measured status: evidence classes enumerated and schema-enforced",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument:EVIDENCE_CLASSES"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-M001": {
+   "requirement": "exact rational parsing; floats refused",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.relations:hz"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-M002": {
+   "requirement": "mechanism taxonomy, one primary class per relation",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.relations:classify_scale",
+    "fkey_instrument.relations:classify_sum"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-M003": {
+   "requirement": "frozen seed corpus classifies per the pack",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.relations:seed_relations",
+    "fkey_instrument.relations:seed_explanation"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-M004": {
+   "requirement": "mechanism-first ranking; dedup; harmonic census",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.relations:rank",
+    "fkey_instrument.relations:dedup",
+    "fkey_instrument.relations:enumerate_harmonics"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-M005": {
+   "requirement": "phase closure: windows, drift, burst design",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.phase_closure:common_closure_window",
+    "fkey_instrument.phase_closure:closure_drift",
+    "fkey_instrument.phase_closure:burst_lengths"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-M006": {
+   "requirement": "sine has no 5th; square has 1/5 (analytic + FFT cross-check)",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.spectrum:fifth_harmonic_comparison",
+    "fkey_instrument.spectrum:fft_lines"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-M007": {
+   "requirement": "edge/plant shaping and expected-line gate",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.spectrum:edge_rolloff",
+    "fkey_instrument.spectrum:expected_line"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-M008": {
+   "requirement": "Nyquist/alias arithmetic incl. the marginal-48k case",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.spectrum:nyquist_check"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py",
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-M009": {
+   "requirement": "AM sideband arithmetic",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.relations:am_sidebands"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-C001": {
+   "requirement": "prearrival screening model reproduces pack numbers; candidate band not magic number",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.crystal_mode:screening_modes",
+    "fkey_instrument.crystal_mode:candidate_band"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-C002": {
+   "requirement": "2-DOF plant; transducer-vs-crystal discrimination",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.plant:CoupledPlant"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-C003": {
+   "requirement": "linear plant has zero intermodulation; nonlinearity explicit",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.plant:CoupledPlant"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-C004": {
+   "requirement": "fit refusal on undersampled/saturated; bootstrap Q",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.plant:fit_peak",
+    "fkey_instrument.plant:bootstrap_q"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-C005": {
+   "requirement": "thermal drift model for warm-up blocks",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.plant:thermal_drift"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-C006": {
+   "requirement": "BVD reuse from rscs2_core (no duplication)",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.bvd:bvd_impedance"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-O001": {
+   "requirement": "mechanism-first optimizer; arithmetic scores zero amplitude",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.optimizer:score",
+    "fkey_instrument.optimizer:optimize"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-O002": {
+   "requirement": "Pareto frontier per hypothesis, never one winner",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.optimizer:pareto_frontier"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-O003": {
+   "requirement": "ten required drive comparisons compiled as families",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.optimizer:candidate_families"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-O004": {
+   "requirement": "randomized blinded campaigns with sham + stop rules + no-post-hoc rule",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.optimizer:compile_campaign"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-J001": {
+   "requirement": "drive-recipe schema; strict validation; fuzz",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.contracts:validate_recipe"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-J002": {
+   "requirement": "canonical JSON + content hash",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.contracts:content_hash"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-J003": {
+   "requirement": "unknown versions refused with explicit no-migration",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.contracts:migrate"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-J004": {
+   "requirement": "desktop bridge: compile/upload/arm/run/logs/verify, never bypassing the FSM",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.optimizer:Bridge"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-F001": {
+   "requirement": "firmware source tree with FSM mirroring the twin",
+   "status": "FIRMWARE_SOURCE_PROVIDED_NOT_COMPILED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "firmware/fkey_cyd/src/safety_fsm.h",
+    "firmware/fkey_cyd/src/main.cpp",
+    "firmware/fkey_cyd/platformio.ini"
+   ]
+  },
+  "FK-F002": {
+   "requirement": "board profiles compile-time; unknown => OUTPUT_DISABLED",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.boards:board_profile"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "firmware/fkey_cyd/src/board_profile.h",
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-F003": {
+   "requirement": "signal backends with requested vs calculated-realized vs measured(None) separation",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.boards:LedcBackend",
+    "fkey_instrument.boards:RmtBackend",
+    "fkey_instrument.boards:DdsBackend"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-F004": {
+   "requirement": "4096/20480 timing report with quantization + drift",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.boards:timing_report_4096_and_20480"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-H001": {
+   "requirement": "pin-conflict detection incl. boot-strap and input-only",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.boards:pin_conflicts"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-H002": {
+   "requirement": "board questionnaire before any pin is named",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.boards:questionnaire"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md",
+    "docs/v4/fkey/BOM_WIRING_GEN0.md"
+   ]
+  },
+  "FK-H003": {
+   "requirement": "Gen-0 BOM/wiring/fixture/bring-up",
+   "status": "ENGINEERING_PROTOTYPE_NOTHING_BUILT",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/BOM_WIRING_GEN0.md"
+   ]
+  },
+  "FK-H004": {
+   "requirement": "sensor limitations documented: INA219 slow-only, 48k mic marginal at 20.48k",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.spectrum:nyquist_check"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/BOM_WIRING_GEN0.md",
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-S001": {
+   "requirement": "output off at boot; only RUNNING may drive output",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.device:SimDevice"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-S002": {
+   "requirement": "fresh single-use expiring arm lease; no auto-arm",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.device:SimDevice"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-S003": {
+   "requirement": "all 14 fault causes force output off and latch",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.device:FAULT_CAUSES"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-S004": {
+   "requirement": "reset/watchdog/brownout land output-off, authority dropped",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.device:SimDevice"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-S005": {
+   "requirement": "missing amplitude refused, never defaulted",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.contracts:validate_recipe"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-S006": {
+   "requirement": "hearing/animal caution documented; conservative first-run limits in schema (duty<=0.5, <=60s)",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.contracts:DRIVE_RECIPE_SCHEMA"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_instrument.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md",
+    "docs/v4/fkey/BOM_WIRING_GEN0.md"
+   ]
+  },
+  "FK-T001": {
+   "requirement": "six synthetic demos run from a fresh clone",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/SYNTHETIC_demo_report.json",
+    "docs/v4/fkey/SYNTHETIC_demo_report.md"
+   ]
+  },
+  "FK-T002": {
+   "requirement": "hash-chained device logs, verified by the bridge",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "fkey_instrument.device:SimDevice"
+   ],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-T003": {
+   "requirement": "A24 red-team attacks as executable regression tests",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  },
+  "FK-T004": {
+   "requirement": "coverage bidirectional orphan check (this tool)",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_fkey_device_redteam.py"
+   ],
+   "docs": [
+    "docs/v4/fkey/FKEY_INSTRUMENT.md"
+   ]
+  }
+ }
+}

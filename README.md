@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21387947.svg)](https://doi.org/10.5281/zenodo.21387947)
 
-**Current release: [v4.3.0](https://github.com/andrew867/rgcs/releases/tag/v4.3.0)**
+**Current release: [v4.4.0](https://github.com/andrew867/rgcs/releases/tag/v4.4.0)**
 · includes RSCS 2.0 (capability-aware multiphysics) on the RSCS 1.0
 typed-mathematics layer · MIT license · Author: Andrew Green
 Frozen history: v2.0.0 (`archive/v2.0.0/`), v3.0.x, v4.0.0, v4.1.x — tags and
@@ -109,7 +109,16 @@ the project holds.
   ([claim card v4](docs/v4/EYE_CLAIM_CARD.md),
   [platform](docs/v4/resonator/CLOSED_LOOP_PLATFORM.md)). Coverage
   288/288 verified mechanically.
-- **Status at the release commit (v4.3.0):** 857 tests passed
+- **Frequency-key instrument (v4.4.0):** an exact-arithmetic
+  frequency-relation engine (a 4096×5 harmonic is not an 8×2560
+  closure), a mechanism-first drive optimizer whose arithmetic
+  coincidences score zero amplitude by construction, a fail-off
+  ESP32-CYD instrument twin (arm leases, latched faults, hash-chained
+  logs) with firmware source (NOT compiled — no toolchain/hardware),
+  and six SYNTHETIC simulator demos
+  ([fkey docs](docs/v4/fkey/FKEY_INSTRUMENT.md)). The specimen is an
+  eBay listing; all six hypotheses are UNTESTED.
+- **Status at the release commit (v4.4.0):** 916 tests passed
   (1 archived-environment byte test deselected by policy D-V3-04);
   hosted CI 10/10 jobs green (Ubuntu/Windows/macOS); adversarial audit
   19/19 including the consciousness-lane quarantine check (G51);
@@ -208,7 +217,7 @@ git clone https://github.com/andrew867/rgcs && cd rgcs
 python -m pip install -e ".[dev]"
 python -m pip install "scikit-fem>=10" meshio matplotlib gmsh   # v4 solver stack
 python -m pytest -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic
-# expect: see docs/v4/RELEASE_METADATA.json, at the v4.3.0 release commit
+# expect: see docs/v4/RELEASE_METADATA.json, at the v4.4.0 release commit
 ```
 
 The v4 CLI entry point is `rgcs-v4` (or `python -m rscs2_core.cli`):
