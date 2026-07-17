@@ -31,7 +31,7 @@ DESELECT = ("tests/regression/test_generator_determinism.py::"
 COUNT_SITES = [
     ("README.md", r"expect:\s*(\d+)\s+passed"),
     ("README.md", r"\*\*\s*(\d+)\s+tests\s+passed"),
-    ("docs/v4/RELEASE_NOTES_V4_2_1.md", r"expect:\s*(\d+)\s+passed"),
+    ("docs/v4/RELEASE_NOTES_V4_3_0.md", r"expect:\s*(\d+)\s+passed"),
     ("CHANGELOG.md", r"Tests:\s*(\d+)\s+passing"),
 ]
 
@@ -83,7 +83,15 @@ def verify() -> dict:
         if not p.exists():
             continue
         text = p.read_text(encoding="utf-8")
-        for m in re.finditer(pattern, text):
+        matches = list(re.finditer(pattern, text))
+        if rel == "CHANGELOG.md":
+            # the changelog is chronological: only the NEWEST entry's
+            # count is current-facing; older entries carry their own
+            # historical counts correctly and must not be "fixed"
+            # (a blanket replace once falsified the 4.2.1 history —
+            # caught and reverted; this scoping prevents a repeat)
+            matches = matches[:1]
+        for m in matches:
             checked += 1
             got = int(m.group(1))
             if got != want:

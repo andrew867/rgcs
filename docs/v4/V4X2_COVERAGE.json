@@ -1,0 +1,5200 @@
+{
+ "total": 280,
+ "rows": [
+  {
+   "id": "B001",
+   "description": "Locate the final commit, branch, tags, release pages, assets, and CI run produced by the current closeout.",
+   "agent": "B00",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_baseline:build",
+    "tools.v4x2_baseline:verify_frozen"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_BASELINE_HANDOFF.json"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "B002",
+   "description": "Verify all frozen historical tags and archives remain byte-identical.",
+   "agent": "B00",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_baseline:build",
+    "tools.v4x2_baseline:verify_frozen"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_BASELINE_HANDOFF.json"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "B003",
+   "description": "Inventory dirty, untracked, generated, scratch, and proof files without deleting unrelated work.",
+   "agent": "B00",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_baseline:build",
+    "tools.v4x2_baseline:verify_frozen"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_BASELINE_HANDOFF.json"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "B004",
+   "description": "Reconcile local, hosted-CI, README, release-note, and proof-manifest test counts.",
+   "agent": "B00",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_baseline:build",
+    "tools.v4x2_baseline:verify_frozen"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_BASELINE_HANDOFF.json"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "B005",
+   "description": "Capture the final Eye verdict and every mesh/resource estimate from the closeout run.",
+   "agent": "B00",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_baseline:build",
+    "tools.v4x2_baseline:verify_frozen"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_BASELINE_HANDOFF.json"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "B006",
+   "description": "Create a post-closeout capability matrix showing implemented, protocol-ready, interface-only, and blocked components.",
+   "agent": "B00",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_baseline:build",
+    "tools.v4x2_baseline:verify_frozen"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_BASELINE_HANDOFF.json"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "B007",
+   "description": "Create a new programme branch from the verified final release commit or safest later commit.",
+   "agent": "B00",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_baseline:build",
+    "tools.v4x2_baseline:verify_frozen"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_BASELINE_HANDOFF.json"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "B008",
+   "description": "Write a machine-readable handoff snapshot with repository, environment, sources, blockers, and next actions.",
+   "agent": "B00",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_baseline:build",
+    "tools.v4x2_baseline:verify_frozen"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_BASELINE_HANDOFF.json"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "B009",
+   "description": "Register every new source with title, authors, DOI, local hash, publication state, and access status.",
+   "agent": "B01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "sources.registry.v4x2_source_registry:check_transfer",
+    "sources.registry.v4x2_source_registry:lookup",
+    "sources.registry.v4x2_source_registry:concept_map",
+    "sources.registry.v4x2_source_registry:drift_guard"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "register final hash of the in-press paper when published (drift guard)"
+  },
+  {
+   "id": "B010",
+   "description": "Extract page- or section-level provenance for every imported equation and numerical claim.",
+   "agent": "B01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "sources.registry.v4x2_source_registry:check_transfer",
+    "sources.registry.v4x2_source_registry:lookup",
+    "sources.registry.v4x2_source_registry:concept_map",
+    "sources.registry.v4x2_source_registry:drift_guard"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "register final hash of the in-press paper when published (drift guard)"
+  },
+  {
+   "id": "B011",
+   "description": "Record material, temperature, pressure, geometry, and instrument conditions for each experiment.",
+   "agent": "B01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "sources.registry.v4x2_source_registry:check_transfer",
+    "sources.registry.v4x2_source_registry:lookup",
+    "sources.registry.v4x2_source_registry:concept_map",
+    "sources.registry.v4x2_source_registry:drift_guard"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "register final hash of the in-press paper when published (drift guard)"
+  },
+  {
+   "id": "B012",
+   "description": "Define permitted mathematical transfers and forbidden physical transfers for each source.",
+   "agent": "B01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "sources.registry.v4x2_source_registry:check_transfer",
+    "sources.registry.v4x2_source_registry:lookup",
+    "sources.registry.v4x2_source_registry:concept_map",
+    "sources.registry.v4x2_source_registry:drift_guard"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "register final hash of the in-press paper when published (drift guard)"
+  },
+  {
+   "id": "B013",
+   "description": "Create source-specific claim cards distinguishing measurement, model, inference, and speculation.",
+   "agent": "B01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "sources.registry.v4x2_source_registry:check_transfer",
+    "sources.registry.v4x2_source_registry:lookup",
+    "sources.registry.v4x2_source_registry:concept_map",
+    "sources.registry.v4x2_source_registry:drift_guard"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "register final hash of the in-press paper when published (drift guard)"
+  },
+  {
+   "id": "B014",
+   "description": "Register reusable equations for SIAM exchange bias, master equations, VHS models, OAM mode decomposition, and epsilon-factorization.",
+   "agent": "B01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "sources.registry.v4x2_source_registry:check_transfer",
+    "sources.registry.v4x2_source_registry:lookup",
+    "sources.registry.v4x2_source_registry:concept_map",
+    "sources.registry.v4x2_source_registry:drift_guard"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "register final hash of the in-press paper when published (drift guard)"
+  },
+  {
+   "id": "B015",
+   "description": "Add citation and source-drift guards for public documentation.",
+   "agent": "B01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "sources.registry.v4x2_source_registry:check_transfer",
+    "sources.registry.v4x2_source_registry:lookup",
+    "sources.registry.v4x2_source_registry:concept_map",
+    "sources.registry.v4x2_source_registry:drift_guard"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "register final hash of the in-press paper when published (drift guard)"
+  },
+  {
+   "id": "B016",
+   "description": "Create a cross-source concept map without asserting a shared physical mechanism.",
+   "agent": "B01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "sources.registry.v4x2_source_registry:check_transfer",
+    "sources.registry.v4x2_source_registry:lookup",
+    "sources.registry.v4x2_source_registry:concept_map",
+    "sources.registry.v4x2_source_registry:drift_guard"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "register final hash of the in-press paper when published (drift guard)"
+  },
+  {
+   "id": "D001",
+   "description": "Define raw, calibrated, fitted, derived, accepted, and certified data classes.",
+   "agent": "D01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.stats:minimum_detectable_shift",
+    "resonator_platform.stats:sequential_alpha",
+    "resonator_platform.stats:preregistration",
+    "resonator_platform.stats:post_selection_guard",
+    "resonator_platform.stats:multi_frequency_search_penalty",
+    "resonator_platform.stats:bootstrap_ci"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "D002",
+   "description": "Define preregistered target bands and stopping rules.",
+   "agent": "D01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.stats:minimum_detectable_shift",
+    "resonator_platform.stats:sequential_alpha",
+    "resonator_platform.stats:preregistration",
+    "resonator_platform.stats:post_selection_guard",
+    "resonator_platform.stats:multi_frequency_search_penalty",
+    "resonator_platform.stats:bootstrap_ci"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "D003",
+   "description": "Handle repeated looks during iterative trimming.",
+   "agent": "D01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.stats:minimum_detectable_shift",
+    "resonator_platform.stats:sequential_alpha",
+    "resonator_platform.stats:preregistration",
+    "resonator_platform.stats:post_selection_guard",
+    "resonator_platform.stats:multi_frequency_search_penalty",
+    "resonator_platform.stats:bootstrap_ci"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "D004",
+   "description": "Handle multiple modes, frequencies, geometries, and specimens.",
+   "agent": "D01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.stats:minimum_detectable_shift",
+    "resonator_platform.stats:sequential_alpha",
+    "resonator_platform.stats:preregistration",
+    "resonator_platform.stats:post_selection_guard",
+    "resonator_platform.stats:multi_frequency_search_penalty",
+    "resonator_platform.stats:bootstrap_ci"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "D005",
+   "description": "Define held-out verification sweeps after tuning.",
+   "agent": "D01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.stats:minimum_detectable_shift",
+    "resonator_platform.stats:sequential_alpha",
+    "resonator_platform.stats:preregistration",
+    "resonator_platform.stats:post_selection_guard",
+    "resonator_platform.stats:multi_frequency_search_penalty",
+    "resonator_platform.stats:bootstrap_ci"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "D006",
+   "description": "Quantify remount, environmental, calibration, and model uncertainty.",
+   "agent": "D01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.stats:minimum_detectable_shift",
+    "resonator_platform.stats:sequential_alpha",
+    "resonator_platform.stats:preregistration",
+    "resonator_platform.stats:post_selection_guard",
+    "resonator_platform.stats:multi_frequency_search_penalty",
+    "resonator_platform.stats:bootstrap_ci"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "D007",
+   "description": "Define model-comparison and mechanism-selection metrics.",
+   "agent": "D01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.stats:minimum_detectable_shift",
+    "resonator_platform.stats:sequential_alpha",
+    "resonator_platform.stats:preregistration",
+    "resonator_platform.stats:post_selection_guard",
+    "resonator_platform.stats:multi_frequency_search_penalty",
+    "resonator_platform.stats:bootstrap_ci"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "D008",
+   "description": "Create prospective physical-validation plans for decorative, calibrated, and research tiers.",
+   "agent": "D01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.stats:minimum_detectable_shift",
+    "resonator_platform.stats:sequential_alpha",
+    "resonator_platform.stats:preregistration",
+    "resonator_platform.stats:post_selection_guard",
+    "resonator_platform.stats:multi_frequency_search_penalty",
+    "resonator_platform.stats:bootstrap_ci"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "H001",
+   "description": "Create a technical map from broadcast timebases and carriers to resonator measurement.",
+   "agent": "H01",
+   "status": "SOURCE_HYPOTHESIS",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/BROADCAST_HERITAGE.md"
+   ],
+   "blocker": "",
+   "next_action": "none (documented practice)"
+  },
+  {
+   "id": "H002",
+   "description": "Translate PLL, AFC, injection locking, impedance matching, sidebands, and phase noise into test-bench requirements.",
+   "agent": "H01",
+   "status": "SOURCE_HYPOTHESIS",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/BROADCAST_HERITAGE.md"
+   ],
+   "blocker": "",
+   "next_action": "none (documented practice)"
+  },
+  {
+   "id": "H003",
+   "description": "Define reference-clock and synchronization requirements for DAQ.",
+   "agent": "H01",
+   "status": "SOURCE_HYPOTHESIS",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/BROADCAST_HERITAGE.md"
+   ],
+   "blocker": "",
+   "next_action": "none (documented practice)"
+  },
+  {
+   "id": "H004",
+   "description": "Create feedline, fixture, and load de-embedding analogies with explicit limits.",
+   "agent": "H01",
+   "status": "SOURCE_HYPOTHESIS",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/BROADCAST_HERITAGE.md"
+   ],
+   "blocker": "",
+   "next_action": "none (documented practice)"
+  },
+  {
+   "id": "H005",
+   "description": "Build fault trees inspired by broadcast troubleshooting.",
+   "agent": "H01",
+   "status": "SOURCE_HYPOTHESIS",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/BROADCAST_HERITAGE.md"
+   ],
+   "blocker": "",
+   "next_action": "none (documented practice)"
+  },
+  {
+   "id": "H006",
+   "description": "Register NTSC 1000/1001 as a historical frequency-ratio example without numerological promotion.",
+   "agent": "H01",
+   "status": "SOURCE_HYPOTHESIS",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/BROADCAST_HERITAGE.md"
+   ],
+   "blocker": "",
+   "next_action": "none (documented practice)"
+  },
+  {
+   "id": "H007",
+   "description": "Create a respectful private lore note distinguishing user report from verified biography.",
+   "agent": "H01",
+   "status": "SOURCE_HYPOTHESIS",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/BROADCAST_HERITAGE.md"
+   ],
+   "blocker": "",
+   "next_action": "none (documented practice)"
+  },
+  {
+   "id": "H008",
+   "description": "Produce an engineering checklist for resonance work derived from broadcast practice.",
+   "agent": "H01",
+   "status": "SOURCE_HYPOTHESIS",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/BROADCAST_HERITAGE.md"
+   ],
+   "blocker": "",
+   "next_action": "none (documented practice)"
+  },
+  {
+   "id": "L001",
+   "description": "Record factual observations separately from feelings, interpretations, and later outcomes.",
+   "agent": "L01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md"
+   ],
+   "blocker": "",
+   "next_action": "ledger content is private and local-only by design"
+  },
+  {
+   "id": "L002",
+   "description": "Record dates, approximate times, locations, participants, and confidence only when user supplied.",
+   "agent": "L01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md"
+   ],
+   "blocker": "",
+   "next_action": "ledger content is private and local-only by design"
+  },
+  {
+   "id": "L003",
+   "description": "Preserve the cat-cafe intuition and Lane adoption as personal lore, not causal evidence.",
+   "agent": "L01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md"
+   ],
+   "blocker": "",
+   "next_action": "ledger content is private and local-only by design"
+  },
+  {
+   "id": "L004",
+   "description": "Preserve the Texas encounter as user-reported unresolved experience without identifying or inferring the person.",
+   "agent": "L01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md"
+   ],
+   "blocker": "",
+   "next_action": "ledger content is private and local-only by design"
+  },
+  {
+   "id": "L005",
+   "description": "Preserve the sense of connection to Dan and the research as interpretation, not a factual transfer claim.",
+   "agent": "L01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md"
+   ],
+   "blocker": "",
+   "next_action": "ledger content is private and local-only by design"
+  },
+  {
+   "id": "L006",
+   "description": "Preserve sudden engineering intuitions and track which later generated useful implementations.",
+   "agent": "L01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md"
+   ],
+   "blocker": "",
+   "next_action": "ledger content is private and local-only by design"
+  },
+  {
+   "id": "L007",
+   "description": "Create consent controls for private, shareable, and public narrative use.",
+   "agent": "L01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md"
+   ],
+   "blocker": "",
+   "next_action": "ledger content is private and local-only by design"
+  },
+  {
+   "id": "L008",
+   "description": "Create a no-diagnosis and no-pathologizing policy for research assistants handling lore.",
+   "agent": "L01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md"
+   ],
+   "blocker": "",
+   "next_action": "ledger content is private and local-only by design"
+  },
+  {
+   "id": "L009",
+   "description": "Capture the source trigger, reading depth, immediate felt connection, time, and active project context before elaboration.",
+   "agent": "L02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md",
+    "docs/v4/resonator/INTUITION_LEDGER.json"
+   ],
+   "blocker": "",
+   "next_action": "prospective entries from the next paper onward"
+  },
+  {
+   "id": "L010",
+   "description": "Translate each intuition into explicit equation, geometry, control, measurement, software, or narrative candidates.",
+   "agent": "L02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md",
+    "docs/v4/resonator/INTUITION_LEDGER.json"
+   ],
+   "blocker": "",
+   "next_action": "prospective entries from the next paper onward"
+  },
+  {
+   "id": "L011",
+   "description": "Record source-system conditions and forbidden transfers before implementation.",
+   "agent": "L02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md",
+    "docs/v4/resonator/INTUITION_LEDGER.json"
+   ],
+   "blocker": "",
+   "next_action": "prospective entries from the next paper onward"
+  },
+  {
+   "id": "L012",
+   "description": "Implement staged skim, source-read, translation, toy-model, relevance-test, and disposition triage.",
+   "agent": "L02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md",
+    "docs/v4/resonator/INTUITION_LEDGER.json"
+   ],
+   "blocker": "",
+   "next_action": "prospective entries from the next paper onward"
+  },
+  {
+   "id": "L013",
+   "description": "Track hits, partial hits, nulls, false analogies, duplicates, and abandoned leads symmetrically.",
+   "agent": "L02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md",
+    "docs/v4/resonator/INTUITION_LEDGER.json"
+   ],
+   "blocker": "",
+   "next_action": "prospective entries from the next paper onward"
+  },
+  {
+   "id": "L014",
+   "description": "Add prospective usefulness scoring before outcomes are known.",
+   "agent": "L02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md",
+    "docs/v4/resonator/INTUITION_LEDGER.json"
+   ],
+   "blocker": "",
+   "next_action": "prospective entries from the next paper onward"
+  },
+  {
+   "id": "L015",
+   "description": "Link productive leads to artifacts without upgrading intuition to evidence.",
+   "agent": "L02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md",
+    "docs/v4/resonator/INTUITION_LEDGER.json"
+   ],
+   "blocker": "",
+   "next_action": "prospective entries from the next paper onward"
+  },
+  {
+   "id": "L016",
+   "description": "Generate calibration reports on productive and noisy intuition categories and search diversity.",
+   "agent": "L02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/LORE_AND_INTUITION_POLICY.md",
+    "docs/v4/resonator/INTUITION_LEDGER.json"
+   ],
+   "blocker": "",
+   "next_action": "prospective entries from the next paper onward"
+  },
+  {
+   "id": "O001",
+   "description": "Extract every new device, experiment, equation, material, frequency, geometry, product, story, and control idea.",
+   "agent": "O01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_orphan_sweep:sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_ORPHAN_REGISTER.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "O002",
+   "description": "Extract every unresolved question, caveat, failure, and future interface.",
+   "agent": "O01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_orphan_sweep:sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_ORPHAN_REGISTER.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "O003",
+   "description": "Search for numbers, units, angles, dimensions, frequencies, ratios, memory estimates, and timings.",
+   "agent": "O01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_orphan_sweep:sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_ORPHAN_REGISTER.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "O004",
+   "description": "Search for ideas hidden only in assistant or agent prose.",
+   "agent": "O01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_orphan_sweep:sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_ORPHAN_REGISTER.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "O005",
+   "description": "Compare findings against all 240 fixed IDs and correct the actual count dynamically.",
+   "agent": "O01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_orphan_sweep:sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_ORPHAN_REGISTER.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "O006",
+   "description": "Create stable ORPHAN IDs for genuine uncovered items.",
+   "agent": "O01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_orphan_sweep:sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_ORPHAN_REGISTER.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "O007",
+   "description": "Assign owner, artifact, test, documentation, blocker, and disposition.",
+   "agent": "O01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_orphan_sweep:sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_ORPHAN_REGISTER.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "O008",
+   "description": "Issue a no-omission certificate only after independent verification.",
+   "agent": "O01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.v4x2_orphan_sweep:sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_ORPHAN_REGISTER.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "P001",
+   "description": "Define decorative, frequency-targeted, measured, calibrated, and research-specimen tiers.",
+   "agent": "P01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PRODUCT_TIERS_AND_CLAIMS.md"
+   ],
+   "blocker": "no physical product exists; Tier 0 copy only",
+   "next_action": "none until fabrication"
+  },
+  {
+   "id": "P002",
+   "description": "Define naming rules for target frequency, measured frequency, Q, and uncertainty.",
+   "agent": "P01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PRODUCT_TIERS_AND_CLAIMS.md"
+   ],
+   "blocker": "no physical product exists; Tier 0 copy only",
+   "next_action": "none until fabrication"
+  },
+  {
+   "id": "P003",
+   "description": "Create product configuration flow from family, material, geometry, symmetry, and mounting.",
+   "agent": "P01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PRODUCT_TIERS_AND_CLAIMS.md"
+   ],
+   "blocker": "no physical product exists; Tier 0 copy only",
+   "next_action": "none until fabrication"
+  },
+  {
+   "id": "P004",
+   "description": "Create evidence-backed product pages and disclaimers.",
+   "agent": "P01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PRODUCT_TIERS_AND_CLAIMS.md"
+   ],
+   "blocker": "no physical product exists; Tier 0 copy only",
+   "next_action": "none until fabrication"
+  },
+  {
+   "id": "P005",
+   "description": "Define serial, certificate, retest, and warranty boundaries.",
+   "agent": "P01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PRODUCT_TIERS_AND_CLAIMS.md"
+   ],
+   "blocker": "no physical product exists; Tier 0 copy only",
+   "next_action": "none until fabrication"
+  },
+  {
+   "id": "P006",
+   "description": "Create cost models for fabrication, testing, trimming, and certification.",
+   "agent": "P01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PRODUCT_TIERS_AND_CLAIMS.md"
+   ],
+   "blocker": "no physical product exists; Tier 0 copy only",
+   "next_action": "none until fabrication"
+  },
+  {
+   "id": "P007",
+   "description": "Define research-kit and open-design licensing options.",
+   "agent": "P01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PRODUCT_TIERS_AND_CLAIMS.md"
+   ],
+   "blocker": "no physical product exists; Tier 0 copy only",
+   "next_action": "none until fabrication"
+  },
+  {
+   "id": "P008",
+   "description": "Create a claim review gate that rejects therapeutic, consciousness, or anomalous-field claims without evidence.",
+   "agent": "P01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PRODUCT_TIERS_AND_CLAIMS.md"
+   ],
+   "blocker": "no physical product exists; Tier 0 copy only",
+   "next_action": "none until fabrication"
+  },
+  {
+   "id": "P009",
+   "description": "Define a complete useful open commons core for local Hydrogenuine operation.",
+   "agent": "P02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/OPEN_COMMONS_AND_ASSURANCE.md"
+   ],
+   "blocker": "",
+   "next_action": "check any future commercial decision against the boundary"
+  },
+  {
+   "id": "P010",
+   "description": "Define commercial assurance layers without making them prerequisites for the basic agent.",
+   "agent": "P02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/OPEN_COMMONS_AND_ASSURANCE.md"
+   ],
+   "blocker": "",
+   "next_action": "check any future commercial decision against the boundary"
+  },
+  {
+   "id": "P011",
+   "description": "Create a no-artificial-scarcity test for local operation, memory ownership, and subscription independence.",
+   "agent": "P02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/OPEN_COMMONS_AND_ASSURANCE.md"
+   ],
+   "blocker": "",
+   "next_action": "check any future commercial decision against the boundary"
+  },
+  {
+   "id": "P012",
+   "description": "Define ownership, export, deletion, revocation, portability, inspection, and consent for fingerprinting data.",
+   "agent": "P02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/OPEN_COMMONS_AND_ASSURANCE.md"
+   ],
+   "blocker": "",
+   "next_action": "check any future commercial decision against the boundary"
+  },
+  {
+   "id": "P013",
+   "description": "Produce a licensing and governance decision matrix and flag legal questions for counsel.",
+   "agent": "P02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/OPEN_COMMONS_AND_ASSURANCE.md"
+   ],
+   "blocker": "",
+   "next_action": "check any future commercial decision against the boundary"
+  },
+  {
+   "id": "P014",
+   "description": "Define anti-surveillance, telemetry, connector, and cloud-dependency rules.",
+   "agent": "P02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/OPEN_COMMONS_AND_ASSURANCE.md"
+   ],
+   "blocker": "",
+   "next_action": "check any future commercial decision against the boundary"
+  },
+  {
+   "id": "P015",
+   "description": "Create sustainable business models based on assurance and service rather than withholding the substrate.",
+   "agent": "P02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/OPEN_COMMONS_AND_ASSURANCE.md"
+   ],
+   "blocker": "",
+   "next_action": "check any future commercial decision against the boundary"
+  },
+  {
+   "id": "P016",
+   "description": "Produce a commons charter, commercial boundary, threat model, and repository migration plan.",
+   "agent": "P02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/OPEN_COMMONS_AND_ASSURANCE.md"
+   ],
+   "blocker": "",
+   "next_action": "check any future commercial decision against the boundary"
+  },
+  {
+   "id": "Q001",
+   "description": "Implement the logarithmic exchange-field relation with declared units and domains.",
+   "agent": "Q01",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.spin_electric:resonance_shift",
+    "rscs2_core.refmodels.spin_electric:rabi_detuning",
+    "rscs2_core.refmodels.spin_electric:coupled_pair_selectivity",
+    "rscs2_core.refmodels.spin_electric:tunability_coherence_tradeoff",
+    "rscs2_core.refmodels.spin_electric:guard_target"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q002",
+   "description": "Implement resonance-frequency shift and sign reversal with tip polarization.",
+   "agent": "Q01",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.spin_electric:resonance_shift",
+    "rscs2_core.refmodels.spin_electric:rabi_detuning",
+    "rscs2_core.refmodels.spin_electric:coupled_pair_selectivity",
+    "rscs2_core.refmodels.spin_electric:tunability_coherence_tradeoff",
+    "rscs2_core.refmodels.spin_electric:guard_target"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q003",
+   "description": "Implement linewidth or decoherence growth near stronger tunnelling.",
+   "agent": "Q01",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.spin_electric:resonance_shift",
+    "rscs2_core.refmodels.spin_electric:rabi_detuning",
+    "rscs2_core.refmodels.spin_electric:coupled_pair_selectivity",
+    "rscs2_core.refmodels.spin_electric:tunability_coherence_tradeoff",
+    "rscs2_core.refmodels.spin_electric:guard_target"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q004",
+   "description": "Implement Rabi chevrons under frequency and voltage detuning.",
+   "agent": "Q01",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.spin_electric:resonance_shift",
+    "rscs2_core.refmodels.spin_electric:rabi_detuning",
+    "rscs2_core.refmodels.spin_electric:coupled_pair_selectivity",
+    "rscs2_core.refmodels.spin_electric:tunability_coherence_tradeoff",
+    "rscs2_core.refmodels.spin_electric:guard_target"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q005",
+   "description": "Implement a coupled two-spin model with local detuning and approximately fixed inter-spin splitting.",
+   "agent": "Q01",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.spin_electric:resonance_shift",
+    "rscs2_core.refmodels.spin_electric:rabi_detuning",
+    "rscs2_core.refmodels.spin_electric:coupled_pair_selectivity",
+    "rscs2_core.refmodels.spin_electric:tunability_coherence_tradeoff",
+    "rscs2_core.refmodels.spin_electric:guard_target"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q006",
+   "description": "Implement a tunability-times-coherence operating-point optimizer.",
+   "agent": "Q01",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.spin_electric:resonance_shift",
+    "rscs2_core.refmodels.spin_electric:rabi_detuning",
+    "rscs2_core.refmodels.spin_electric:coupled_pair_selectivity",
+    "rscs2_core.refmodels.spin_electric:tunability_coherence_tradeoff",
+    "rscs2_core.refmodels.spin_electric:guard_target"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q007",
+   "description": "Reproduce selected qualitative and quantitative paper figures from declared parameters.",
+   "agent": "Q01",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.spin_electric:resonance_shift",
+    "rscs2_core.refmodels.spin_electric:rabi_detuning",
+    "rscs2_core.refmodels.spin_electric:coupled_pair_selectivity",
+    "rscs2_core.refmodels.spin_electric:tunability_coherence_tradeoff",
+    "rscs2_core.refmodels.spin_electric:guard_target"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q008",
+   "description": "Create a strict material and apparatus transfer firewall.",
+   "agent": "Q01",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.spin_electric:resonance_shift",
+    "rscs2_core.refmodels.spin_electric:rabi_detuning",
+    "rscs2_core.refmodels.spin_electric:coupled_pair_selectivity",
+    "rscs2_core.refmodels.spin_electric:tunability_coherence_tradeoff",
+    "rscs2_core.refmodels.spin_electric:guard_target"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q009",
+   "description": "Implement an eight-state constrained three-site occupancy model.",
+   "agent": "Q02",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.triangular_transport:steady_state",
+    "rscs2_core.refmodels.triangular_transport:classify_feature",
+    "rscs2_core.refmodels.triangular_transport:bias_sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none (qualitative scope declared)"
+  },
+  {
+   "id": "Q010",
+   "description": "Implement on-site energy, inter-site capacitive coupling, negligible direct hopping, and tip-position gating.",
+   "agent": "Q02",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.triangular_transport:steady_state",
+    "rscs2_core.refmodels.triangular_transport:classify_feature",
+    "rscs2_core.refmodels.triangular_transport:bias_sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none (qualitative scope declared)"
+  },
+  {
+   "id": "Q011",
+   "description": "Solve non-equilibrium populations with a Pauli master equation.",
+   "agent": "Q02",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.triangular_transport:steady_state",
+    "rscs2_core.refmodels.triangular_transport:classify_feature",
+    "rscs2_core.refmodels.triangular_transport:bias_sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none (qualitative scope declared)"
+  },
+  {
+   "id": "Q012",
+   "description": "Calculate current, differential conductance, total charge, and site occupancy.",
+   "agent": "Q02",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.triangular_transport:steady_state",
+    "rscs2_core.refmodels.triangular_transport:classify_feature",
+    "rscs2_core.refmodels.triangular_transport:bias_sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none (qualitative scope declared)"
+  },
+  {
+   "id": "Q013",
+   "description": "Classify transitions as net-charge change or internal redistribution.",
+   "agent": "Q02",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.triangular_transport:steady_state",
+    "rscs2_core.refmodels.triangular_transport:classify_feature",
+    "rscs2_core.refmodels.triangular_transport:bias_sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none (qualitative scope declared)"
+  },
+  {
+   "id": "Q014",
+   "description": "Explore symmetry, chirality, orbital-shape, and tip-position effects.",
+   "agent": "Q02",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.triangular_transport:steady_state",
+    "rscs2_core.refmodels.triangular_transport:classify_feature",
+    "rscs2_core.refmodels.triangular_transport:bias_sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none (qualitative scope declared)"
+  },
+  {
+   "id": "Q015",
+   "description": "Detect negative differential conductance caused by population trapping.",
+   "agent": "Q02",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.triangular_transport:steady_state",
+    "rscs2_core.refmodels.triangular_transport:classify_feature",
+    "rscs2_core.refmodels.triangular_transport:bias_sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none (qualitative scope declared)"
+  },
+  {
+   "id": "Q016",
+   "description": "Create an interpretation firewall for spatial ring and flower patterns.",
+   "agent": "Q02",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.triangular_transport:steady_state",
+    "rscs2_core.refmodels.triangular_transport:classify_feature",
+    "rscs2_core.refmodels.triangular_transport:bias_sweep"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none (qualitative scope declared)"
+  },
+  {
+   "id": "Q017",
+   "description": "Implement a honeycomb tight-binding baseline with Dirac points and M-point saddle points.",
+   "agent": "Q03",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.honeycomb_vhs:dos",
+    "rscs2_core.refmodels.honeycomb_vhs:expansion_narrows_band",
+    "rscs2_core.refmodels.honeycomb_vhs:nematic_splitting"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q018",
+   "description": "Implement lattice-expansion or hopping-reduction sweeps and quantify bandwidth narrowing.",
+   "agent": "Q03",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.honeycomb_vhs:dos",
+    "rscs2_core.refmodels.honeycomb_vhs:expansion_narrows_band",
+    "rscs2_core.refmodels.honeycomb_vhs:nematic_splitting"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q019",
+   "description": "Calculate density of states and extended saddle-point sensitivity.",
+   "agent": "Q03",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.honeycomb_vhs:dos",
+    "rscs2_core.refmodels.honeycomb_vhs:expansion_narrows_band",
+    "rscs2_core.refmodels.honeycomb_vhs:nematic_splitting"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q020",
+   "description": "Implement a controlled C6-to-C2 hopping perturbation and nematic observable.",
+   "agent": "Q03",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.honeycomb_vhs:dos",
+    "rscs2_core.refmodels.honeycomb_vhs:expansion_narrows_band",
+    "rscs2_core.refmodels.honeycomb_vhs:nematic_splitting"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q021",
+   "description": "Generate QPI-inspired geometric response proxies without claiming electronic equivalence.",
+   "agent": "Q03",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.honeycomb_vhs:dos",
+    "rscs2_core.refmodels.honeycomb_vhs:expansion_narrows_band",
+    "rscs2_core.refmodels.honeycomb_vhs:nematic_splitting"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q022",
+   "description": "Search resonator lattices for mode clustering, saddle points, and degeneracy splitting.",
+   "agent": "Q03",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.honeycomb_vhs:dos",
+    "rscs2_core.refmodels.honeycomb_vhs:expansion_narrows_band",
+    "rscs2_core.refmodels.honeycomb_vhs:nematic_splitting"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q023",
+   "description": "Design matched sixfold and twofold perturbation controls.",
+   "agent": "Q03",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.honeycomb_vhs:dos",
+    "rscs2_core.refmodels.honeycomb_vhs:expansion_narrows_band",
+    "rscs2_core.refmodels.honeycomb_vhs:nematic_splitting"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q024",
+   "description": "Create a transfer map from electronic lattice concepts to mechanical/electrical metamaterial questions.",
+   "agent": "Q03",
+   "status": "REDUCED_ORDER_VALIDATED",
+   "symbols": [
+    "rscs2_core.refmodels.honeycomb_vhs:dos",
+    "rscs2_core.refmodels.honeycomb_vhs:expansion_narrows_band",
+    "rscs2_core.refmodels.honeycomb_vhs:nematic_splitting"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q025",
+   "description": "Implement a generic problem-component filtration metadata scheme.",
+   "agent": "Q04",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "rscs2_core.refmodels.filtration_solver:apply_filtration",
+    "rscs2_core.refmodels.filtration_solver:eps_factorization_check"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "no RGCS solve restructured yet; no benefit claimed",
+   "next_action": "try the filtration on the coupled harmonic solve"
+  },
+  {
+   "id": "Q026",
+   "description": "Classify equations by geometry, pole/singularity order, coupling order, and implementation depth.",
+   "agent": "Q04",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "rscs2_core.refmodels.filtration_solver:apply_filtration",
+    "rscs2_core.refmodels.filtration_solver:eps_factorization_check"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "no RGCS solve restructured yet; no benefit claimed",
+   "next_action": "try the filtration on the coupled harmonic solve"
+  },
+  {
+   "id": "Q027",
+   "description": "Experiment with basis ordering that prioritizes localized or simpler subproblems.",
+   "agent": "Q04",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "rscs2_core.refmodels.filtration_solver:apply_filtration",
+    "rscs2_core.refmodels.filtration_solver:eps_factorization_check"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "no RGCS solve restructured yet; no benefit claimed",
+   "next_action": "try the filtration on the coupled harmonic solve"
+  },
+  {
+   "id": "Q028",
+   "description": "Separate nuisance parameter dependence before expensive symbolic or numerical reduction.",
+   "agent": "Q04",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "rscs2_core.refmodels.filtration_solver:apply_filtration",
+    "rscs2_core.refmodels.filtration_solver:eps_factorization_check"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "no RGCS solve restructured yet; no benefit claimed",
+   "next_action": "try the filtration on the coupled harmonic solve"
+  },
+  {
+   "id": "Q029",
+   "description": "Benchmark expression size, matrix sparsity, conditioning, and runtime before and after reordering.",
+   "agent": "Q04",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "rscs2_core.refmodels.filtration_solver:apply_filtration",
+    "rscs2_core.refmodels.filtration_solver:eps_factorization_check"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "no RGCS solve restructured yet; no benefit claimed",
+   "next_action": "try the filtration on the coupled harmonic solve"
+  },
+  {
+   "id": "Q030",
+   "description": "Create a factorization interface analogous in spirit to epsilon-factorized systems.",
+   "agent": "Q04",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "rscs2_core.refmodels.filtration_solver:apply_filtration",
+    "rscs2_core.refmodels.filtration_solver:eps_factorization_check"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "no RGCS solve restructured yet; no benefit claimed",
+   "next_action": "try the filtration on the coupled harmonic solve"
+  },
+  {
+   "id": "Q031",
+   "description": "Document conjectural versus proven properties of the new ordering.",
+   "agent": "Q04",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "rscs2_core.refmodels.filtration_solver:apply_filtration",
+    "rscs2_core.refmodels.filtration_solver:eps_factorization_check"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "no RGCS solve restructured yet; no benefit claimed",
+   "next_action": "try the filtration on the coupled harmonic solve"
+  },
+  {
+   "id": "Q032",
+   "description": "Apply the method to at least one RGCS model where it yields a measurable benefit or an honest null.",
+   "agent": "Q04",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "rscs2_core.refmodels.filtration_solver:apply_filtration",
+    "rscs2_core.refmodels.filtration_solver:eps_factorization_check"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "no RGCS solve restructured yet; no benefit claimed",
+   "next_action": "try the filtration on the coupled harmonic solve"
+  },
+  {
+   "id": "Q033",
+   "description": "Create a mechanism candidate registry for each observable.",
+   "agent": "Q05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.refmodels.discrimination:discrimination_tree",
+    "rscs2_core.refmodels.discrimination:identifiability_report"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q034",
+   "description": "Map each mechanism to unique predictions, controls, nuisance variables, and failure conditions.",
+   "agent": "Q05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.refmodels.discrimination:discrimination_tree",
+    "rscs2_core.refmodels.discrimination:identifiability_report"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q035",
+   "description": "Distinguish total generation from redistribution, mode conversion, and transfer-function change.",
+   "agent": "Q05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.refmodels.discrimination:discrimination_tree",
+    "rscs2_core.refmodels.discrimination:identifiability_report"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q036",
+   "description": "Create sign-reversal, phase, geometry, temperature, load, distance, and sham controls.",
+   "agent": "Q05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.refmodels.discrimination:discrimination_tree",
+    "rscs2_core.refmodels.discrimination:identifiability_report"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q037",
+   "description": "Implement model comparison with preregistered metrics and complexity penalties.",
+   "agent": "Q05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.refmodels.discrimination:discrimination_tree",
+    "rscs2_core.refmodels.discrimination:identifiability_report"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q038",
+   "description": "Track mechanism identifiability and unresolved degeneracy.",
+   "agent": "Q05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.refmodels.discrimination:discrimination_tree",
+    "rscs2_core.refmodels.discrimination:identifiability_report"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q039",
+   "description": "Generate experimental decision trees for PCB, printed, MEMS, and crystal specimens.",
+   "agent": "Q05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.refmodels.discrimination:discrimination_tree",
+    "rscs2_core.refmodels.discrimination:identifiability_report"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q040",
+   "description": "Add public-language guards against mechanism overstatement.",
+   "agent": "Q05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.refmodels.discrimination:discrimination_tree",
+    "rscs2_core.refmodels.discrimination:identifiability_report"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q041",
+   "description": "Define a common state, parameter, observable, control, and provenance schema.",
+   "agent": "Q06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "model_playground:run_model",
+    "model_playground:compare"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q042",
+   "description": "Implement adapters for oscillator, master-equation, lattice, spin, and coherent-field models.",
+   "agent": "Q06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "model_playground:run_model",
+    "model_playground:compare"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q043",
+   "description": "Compare redistribution, resonance shift, mode splitting, and symmetry breaking across models.",
+   "agent": "Q06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "model_playground:run_model",
+    "model_playground:compare"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q044",
+   "description": "Create dimensionless normalizations with explicit loss of physical units.",
+   "agent": "Q06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "model_playground:run_model",
+    "model_playground:compare"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q045",
+   "description": "Build interactive or scripted parameter sweeps and bifurcation maps.",
+   "agent": "Q06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "model_playground:run_model",
+    "model_playground:compare"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q046",
+   "description": "Create null models and randomized controls.",
+   "agent": "Q06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "model_playground:run_model",
+    "model_playground:compare"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q047",
+   "description": "Export hypothesis-generating observations back to domain agents without upgrading evidence.",
+   "agent": "Q06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "model_playground:run_model",
+    "model_playground:compare"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q048",
+   "description": "Create one cross-model case study and one demonstration of why similar pictures can have different mechanisms.",
+   "agent": "Q06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "model_playground:run_model",
+    "model_playground:compare"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_refmodels.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/NEW_PAPER_REFERENCE_MODELS.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q049",
+   "description": "Attack coverage rows that contain paths but no real symbols, tests, or documents.",
+   "agent": "Q07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_qa.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_QA_VERDICT.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q050",
+   "description": "Attack reference models presented as quartz mechanisms.",
+   "agent": "Q07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_qa.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_QA_VERDICT.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q051",
+   "description": "Attack targeted frequencies presented as measured or certified.",
+   "agent": "Q07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_qa.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_QA_VERDICT.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q052",
+   "description": "Attack trim algorithms for overshoot, mode switching, and post-hoc target changes.",
+   "agent": "Q07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_qa.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_QA_VERDICT.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q053",
+   "description": "Attack CAD, Gerber, toolpath, and certificate validity.",
+   "agent": "Q07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_qa.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_QA_VERDICT.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q054",
+   "description": "Attack private lore leakage and diagnosis language.",
+   "agent": "Q07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_qa.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_QA_VERDICT.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q055",
+   "description": "Attack product and documentary claims.",
+   "agent": "Q07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_qa.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_QA_VERDICT.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Q056",
+   "description": "Attack safety capability bypasses and release drift.",
+   "agent": "Q07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_qa.py"
+   ],
+   "docs": [
+    "docs/v4/V4X2_QA_VERDICT.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "R001",
+   "description": "Define the end-to-end resonator lifecycle state machine.",
+   "agent": "R01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.records:ResonatorLedger",
+    "resonator_platform.records:Lifecycle",
+    "resonator_platform.records:frequency_record",
+    "resonator_platform.records:make_id",
+    "resonator_platform.campaign:run_campaign"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic proof complete)"
+  },
+  {
+   "id": "R002",
+   "description": "Create stable identifiers for design, specimen, fixture, sweep, mode, trim operation, and certificate.",
+   "agent": "R01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.records:ResonatorLedger",
+    "resonator_platform.records:Lifecycle",
+    "resonator_platform.records:frequency_record",
+    "resonator_platform.records:make_id",
+    "resonator_platform.campaign:run_campaign"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic proof complete)"
+  },
+  {
+   "id": "R003",
+   "description": "Specify interfaces among CAD, FEA, circuit, DAQ, optimizer, and provenance modules.",
+   "agent": "R01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.records:ResonatorLedger",
+    "resonator_platform.records:Lifecycle",
+    "resonator_platform.records:frequency_record",
+    "resonator_platform.records:make_id",
+    "resonator_platform.campaign:run_campaign"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic proof complete)"
+  },
+  {
+   "id": "R004",
+   "description": "Implement resumable iteration with immutable measurement history.",
+   "agent": "R01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.records:ResonatorLedger",
+    "resonator_platform.records:Lifecycle",
+    "resonator_platform.records:frequency_record",
+    "resonator_platform.records:make_id",
+    "resonator_platform.campaign:run_campaign"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic proof complete)"
+  },
+  {
+   "id": "R005",
+   "description": "Separate predicted, measured, fitted, and accepted frequencies.",
+   "agent": "R01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.records:ResonatorLedger",
+    "resonator_platform.records:Lifecycle",
+    "resonator_platform.records:frequency_record",
+    "resonator_platform.records:make_id",
+    "resonator_platform.campaign:run_campaign"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic proof complete)"
+  },
+  {
+   "id": "R006",
+   "description": "Define rollback-safe handling for irreversible trims.",
+   "agent": "R01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.records:ResonatorLedger",
+    "resonator_platform.records:Lifecycle",
+    "resonator_platform.records:frequency_record",
+    "resonator_platform.records:make_id",
+    "resonator_platform.campaign:run_campaign"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic proof complete)"
+  },
+  {
+   "id": "R007",
+   "description": "Create a simulator-backed digital twin for dry runs.",
+   "agent": "R01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.records:ResonatorLedger",
+    "resonator_platform.records:Lifecycle",
+    "resonator_platform.records:frequency_record",
+    "resonator_platform.records:make_id",
+    "resonator_platform.campaign:run_campaign"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic proof complete)"
+  },
+  {
+   "id": "R008",
+   "description": "Deliver one complete synthetic design-to-certificate demonstration.",
+   "agent": "R01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.records:ResonatorLedger",
+    "resonator_platform.records:Lifecycle",
+    "resonator_platform.records:frequency_record",
+    "resonator_platform.records:make_id",
+    "resonator_platform.campaign:run_campaign"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic proof complete)"
+  },
+  {
+   "id": "R009",
+   "description": "Create radial tabs, concentric rings, paired islands, perforation cells, and edge-mass trim primitives.",
+   "agent": "R02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.design_trim:trim_cell",
+    "resonator_platform.design_trim:symmetric_group",
+    "resonator_platform.design_trim:export_bundle",
+    "resonator_platform.design_trim:reference_family"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no board house engaged; nothing fabricated",
+   "next_action": "order the LOW-800 reference disk when fabrication is authorized (human decision)"
+  },
+  {
+   "id": "R010",
+   "description": "Mark mechanical, electrical, and mixed trim zones separately.",
+   "agent": "R02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.design_trim:trim_cell",
+    "resonator_platform.design_trim:symmetric_group",
+    "resonator_platform.design_trim:export_bundle",
+    "resonator_platform.design_trim:reference_family"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no board house engaged; nothing fabricated",
+   "next_action": "order the LOW-800 reference disk when fabrication is authorized (human decision)"
+  },
+  {
+   "id": "R011",
+   "description": "Generate symmetric trim groups that preserve selected mode symmetry.",
+   "agent": "R02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.design_trim:trim_cell",
+    "resonator_platform.design_trim:symmetric_group",
+    "resonator_platform.design_trim:export_bundle",
+    "resonator_platform.design_trim:reference_family"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no board house engaged; nothing fabricated",
+   "next_action": "order the LOW-800 reference disk when fabrication is authorized (human decision)"
+  },
+  {
+   "id": "R012",
+   "description": "Estimate each cell's mass, area, resistance, inductance, capacitance, and local modal sensitivity.",
+   "agent": "R02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.design_trim:trim_cell",
+    "resonator_platform.design_trim:symmetric_group",
+    "resonator_platform.design_trim:export_bundle",
+    "resonator_platform.design_trim:reference_family"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no board house engaged; nothing fabricated",
+   "next_action": "order the LOW-800 reference disk when fabrication is authorized (human decision)"
+  },
+  {
+   "id": "R013",
+   "description": "Add optical fiducials, serial marks, test pads, coupons, and datum geometry.",
+   "agent": "R02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.design_trim:trim_cell",
+    "resonator_platform.design_trim:symmetric_group",
+    "resonator_platform.design_trim:export_bundle",
+    "resonator_platform.design_trim:reference_family"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no board house engaged; nothing fabricated",
+   "next_action": "order the LOW-800 reference disk when fabrication is authorized (human decision)"
+  },
+  {
+   "id": "R014",
+   "description": "Generate matched sham-trim and randomized-pattern controls.",
+   "agent": "R02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.design_trim:trim_cell",
+    "resonator_platform.design_trim:symmetric_group",
+    "resonator_platform.design_trim:export_bundle",
+    "resonator_platform.design_trim:reference_family"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no board house engaged; nothing fabricated",
+   "next_action": "order the LOW-800 reference disk when fabrication is authorized (human decision)"
+  },
+  {
+   "id": "R015",
+   "description": "Validate Gerber, drill, SVG, DXF, and preview agreement.",
+   "agent": "R02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.design_trim:trim_cell",
+    "resonator_platform.design_trim:symmetric_group",
+    "resonator_platform.design_trim:export_bundle",
+    "resonator_platform.design_trim:reference_family"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no board house engaged; nothing fabricated",
+   "next_action": "order the LOW-800 reference disk when fabrication is authorized (human decision)"
+  },
+  {
+   "id": "R016",
+   "description": "Produce a first-generation manufacturable reference disk family.",
+   "agent": "R02",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.design_trim:trim_cell",
+    "resonator_platform.design_trim:symmetric_group",
+    "resonator_platform.design_trim:export_bundle",
+    "resonator_platform.design_trim:reference_family"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no board house engaged; nothing fabricated",
+   "next_action": "order the LOW-800 reference disk when fabrication is authorized (human decision)"
+  },
+  {
+   "id": "R017",
+   "description": "Define interchangeable center-clamp, three-point, edge-clamp, nodal suspension, and free-edge fixture concepts.",
+   "agent": "R03",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.fixture:fixture_record",
+    "resonator_platform.fixture:coupling_model",
+    "resonator_platform.fixture:remount_repeatability",
+    "resonator_platform.fixture:fabrication_package"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no fixture machined",
+   "next_action": "machine the three-point fixture first (drawings in the package)"
+  },
+  {
+   "id": "R018",
+   "description": "Model fixture stiffness, damping, contact area, and preload effects.",
+   "agent": "R03",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.fixture:fixture_record",
+    "resonator_platform.fixture:coupling_model",
+    "resonator_platform.fixture:remount_repeatability",
+    "resonator_platform.fixture:fabrication_package"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no fixture machined",
+   "next_action": "machine the three-point fixture first (drawings in the package)"
+  },
+  {
+   "id": "R019",
+   "description": "Create repeatable orientation, datum, and sensor-placement systems.",
+   "agent": "R03",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.fixture:fixture_record",
+    "resonator_platform.fixture:coupling_model",
+    "resonator_platform.fixture:remount_repeatability",
+    "resonator_platform.fixture:fabrication_package"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no fixture machined",
+   "next_action": "machine the three-point fixture first (drawings in the package)"
+  },
+  {
+   "id": "R020",
+   "description": "Specify preload or torque measurement and calibration.",
+   "agent": "R03",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.fixture:fixture_record",
+    "resonator_platform.fixture:coupling_model",
+    "resonator_platform.fixture:remount_repeatability",
+    "resonator_platform.fixture:fabrication_package"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no fixture machined",
+   "next_action": "machine the three-point fixture first (drawings in the package)"
+  },
+  {
+   "id": "R021",
+   "description": "Add temperature, humidity, and fixture-state logging.",
+   "agent": "R03",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.fixture:fixture_record",
+    "resonator_platform.fixture:coupling_model",
+    "resonator_platform.fixture:remount_repeatability",
+    "resonator_platform.fixture:fabrication_package"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no fixture machined",
+   "next_action": "machine the three-point fixture first (drawings in the package)"
+  },
+  {
+   "id": "R022",
+   "description": "Design actuator isolation and cross-talk controls.",
+   "agent": "R03",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.fixture:fixture_record",
+    "resonator_platform.fixture:coupling_model",
+    "resonator_platform.fixture:remount_repeatability",
+    "resonator_platform.fixture:fabrication_package"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no fixture machined",
+   "next_action": "machine the three-point fixture first (drawings in the package)"
+  },
+  {
+   "id": "R023",
+   "description": "Create sham-remount and repeated-remount protocols.",
+   "agent": "R03",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.fixture:fixture_record",
+    "resonator_platform.fixture:coupling_model",
+    "resonator_platform.fixture:remount_repeatability",
+    "resonator_platform.fixture:fabrication_package"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no fixture machined",
+   "next_action": "machine the three-point fixture first (drawings in the package)"
+  },
+  {
+   "id": "R024",
+   "description": "Produce fabrication drawings, BOM, and assembly verification procedures.",
+   "agent": "R03",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [
+    "resonator_platform.fixture:fixture_record",
+    "resonator_platform.fixture:coupling_model",
+    "resonator_platform.fixture:remount_repeatability",
+    "resonator_platform.fixture:fabrication_package"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no fixture machined",
+   "next_action": "machine the three-point fixture first (drawings in the package)"
+  },
+  {
+   "id": "R025",
+   "description": "Define piezo, shaker, acoustic, impulse, electromagnetic, and electrostatic excitation interfaces.",
+   "agent": "R04",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.daq:fit_lorentzian",
+    "resonator_platform.daq:capture_sweep",
+    "resonator_platform.daq:detect_artifacts",
+    "resonator_platform.daq:mode_shape_scan",
+    "resonator_platform.daq:save_session",
+    "resonator_platform.daq:load_session"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "hardware drivers are INTERFACE_ONLY (no instruments)",
+   "next_action": "first physical instrument integration when hardware exists"
+  },
+  {
+   "id": "R026",
+   "description": "Define contact microphone, accelerometer, piezo pickup, laser vibrometer, optical lever, and impedance readout interfaces.",
+   "agent": "R04",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.daq:fit_lorentzian",
+    "resonator_platform.daq:capture_sweep",
+    "resonator_platform.daq:detect_artifacts",
+    "resonator_platform.daq:mode_shape_scan",
+    "resonator_platform.daq:save_session",
+    "resonator_platform.daq:load_session"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "hardware drivers are INTERFACE_ONLY (no instruments)",
+   "next_action": "first physical instrument integration when hardware exists"
+  },
+  {
+   "id": "R027",
+   "description": "Implement synchronized sweep, amplitude, phase, and environmental metadata capture.",
+   "agent": "R04",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.daq:fit_lorentzian",
+    "resonator_platform.daq:capture_sweep",
+    "resonator_platform.daq:detect_artifacts",
+    "resonator_platform.daq:mode_shape_scan",
+    "resonator_platform.daq:save_session",
+    "resonator_platform.daq:load_session"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "hardware drivers are INTERFACE_ONLY (no instruments)",
+   "next_action": "first physical instrument integration when hardware exists"
+  },
+  {
+   "id": "R028",
+   "description": "Implement calibration and transfer-function correction.",
+   "agent": "R04",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.daq:fit_lorentzian",
+    "resonator_platform.daq:capture_sweep",
+    "resonator_platform.daq:detect_artifacts",
+    "resonator_platform.daq:mode_shape_scan",
+    "resonator_platform.daq:save_session",
+    "resonator_platform.daq:load_session"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "hardware drivers are INTERFACE_ONLY (no instruments)",
+   "next_action": "first physical instrument integration when hardware exists"
+  },
+  {
+   "id": "R029",
+   "description": "Implement resonance, antiresonance, linewidth, Q, coherence, and uncertainty fits.",
+   "agent": "R04",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.daq:fit_lorentzian",
+    "resonator_platform.daq:capture_sweep",
+    "resonator_platform.daq:detect_artifacts",
+    "resonator_platform.daq:mode_shape_scan",
+    "resonator_platform.daq:save_session",
+    "resonator_platform.daq:load_session"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "hardware drivers are INTERFACE_ONLY (no instruments)",
+   "next_action": "first physical instrument integration when hardware exists"
+  },
+  {
+   "id": "R030",
+   "description": "Implement scanning or multi-point mode-shape acquisition.",
+   "agent": "R04",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.daq:fit_lorentzian",
+    "resonator_platform.daq:capture_sweep",
+    "resonator_platform.daq:detect_artifacts",
+    "resonator_platform.daq:mode_shape_scan",
+    "resonator_platform.daq:save_session",
+    "resonator_platform.daq:load_session"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "hardware drivers are INTERFACE_ONLY (no instruments)",
+   "next_action": "first physical instrument integration when hardware exists"
+  },
+  {
+   "id": "R031",
+   "description": "Detect clipping, nonlinearity, heating, drift, and cross-talk.",
+   "agent": "R04",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.daq:fit_lorentzian",
+    "resonator_platform.daq:capture_sweep",
+    "resonator_platform.daq:detect_artifacts",
+    "resonator_platform.daq:mode_shape_scan",
+    "resonator_platform.daq:save_session",
+    "resonator_platform.daq:load_session"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "hardware drivers are INTERFACE_ONLY (no instruments)",
+   "next_action": "first physical instrument integration when hardware exists"
+  },
+  {
+   "id": "R032",
+   "description": "Create synthetic fixtures and replayable DAQ sessions.",
+   "agent": "R04",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.daq:fit_lorentzian",
+    "resonator_platform.daq:capture_sweep",
+    "resonator_platform.daq:detect_artifacts",
+    "resonator_platform.daq:mode_shape_scan",
+    "resonator_platform.daq:save_session",
+    "resonator_platform.daq:load_session"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "hardware drivers are INTERFACE_ONLY (no instruments)",
+   "next_action": "first physical instrument integration when hardware exists"
+  },
+  {
+   "id": "R033",
+   "description": "Create trim candidates from unused sacrificial cells.",
+   "agent": "R05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.trim_control:trim_candidates",
+    "resonator_platform.trim_control:select_trim",
+    "resonator_platform.trim_control:approval_token",
+    "resonator_platform.trim_control:execute_trim",
+    "resonator_platform.trim_control:check_guards",
+    "resonator_platform.trim_control:register_machine",
+    "resonator_platform.trim_control:toolpath_text"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no laser/CNC exists; physical path unreachable by design until a machine with safety evidence is registered",
+   "next_action": "acquire enclosure+extraction before any laser (S01 hard refusal otherwise)"
+  },
+  {
+   "id": "R034",
+   "description": "Predict frequency, Q, symmetry, balance, and electrical consequences of each candidate.",
+   "agent": "R05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.trim_control:trim_candidates",
+    "resonator_platform.trim_control:select_trim",
+    "resonator_platform.trim_control:approval_token",
+    "resonator_platform.trim_control:execute_trim",
+    "resonator_platform.trim_control:check_guards",
+    "resonator_platform.trim_control:register_machine",
+    "resonator_platform.trim_control:toolpath_text"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no laser/CNC exists; physical path unreachable by design until a machine with safety evidence is registered",
+   "next_action": "acquire enclosure+extraction before any laser (S01 hard refusal otherwise)"
+  },
+  {
+   "id": "R035",
+   "description": "Select conservative trim sets under overshoot and symmetry constraints.",
+   "agent": "R05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.trim_control:trim_candidates",
+    "resonator_platform.trim_control:select_trim",
+    "resonator_platform.trim_control:approval_token",
+    "resonator_platform.trim_control:execute_trim",
+    "resonator_platform.trim_control:check_guards",
+    "resonator_platform.trim_control:register_machine",
+    "resonator_platform.trim_control:toolpath_text"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no laser/CNC exists; physical path unreachable by design until a machine with safety evidence is registered",
+   "next_action": "acquire enclosure+extraction before any laser (S01 hard refusal otherwise)"
+  },
+  {
+   "id": "R036",
+   "description": "Require operator approval and machine interlocks before physical execution.",
+   "agent": "R05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.trim_control:trim_candidates",
+    "resonator_platform.trim_control:select_trim",
+    "resonator_platform.trim_control:approval_token",
+    "resonator_platform.trim_control:execute_trim",
+    "resonator_platform.trim_control:check_guards",
+    "resonator_platform.trim_control:register_machine",
+    "resonator_platform.trim_control:toolpath_text"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no laser/CNC exists; physical path unreachable by design until a machine with safety evidence is registered",
+   "next_action": "acquire enclosure+extraction before any laser (S01 hard refusal otherwise)"
+  },
+  {
+   "id": "R037",
+   "description": "Generate machine-specific toolpaths without assuming a universal laser process.",
+   "agent": "R05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.trim_control:trim_candidates",
+    "resonator_platform.trim_control:select_trim",
+    "resonator_platform.trim_control:approval_token",
+    "resonator_platform.trim_control:execute_trim",
+    "resonator_platform.trim_control:check_guards",
+    "resonator_platform.trim_control:register_machine",
+    "resonator_platform.trim_control:toolpath_text"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no laser/CNC exists; physical path unreachable by design until a machine with safety evidence is registered",
+   "next_action": "acquire enclosure+extraction before any laser (S01 hard refusal otherwise)"
+  },
+  {
+   "id": "R038",
+   "description": "Record optical inspection, removed geometry, and uncertainty after each trim.",
+   "agent": "R05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.trim_control:trim_candidates",
+    "resonator_platform.trim_control:select_trim",
+    "resonator_platform.trim_control:approval_token",
+    "resonator_platform.trim_control:execute_trim",
+    "resonator_platform.trim_control:check_guards",
+    "resonator_platform.trim_control:register_machine",
+    "resonator_platform.trim_control:toolpath_text"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no laser/CNC exists; physical path unreachable by design until a machine with safety evidence is registered",
+   "next_action": "acquire enclosure+extraction before any laser (S01 hard refusal otherwise)"
+  },
+  {
+   "id": "R039",
+   "description": "Update empirical sensitivity after remeasurement.",
+   "agent": "R05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.trim_control:trim_candidates",
+    "resonator_platform.trim_control:select_trim",
+    "resonator_platform.trim_control:approval_token",
+    "resonator_platform.trim_control:execute_trim",
+    "resonator_platform.trim_control:check_guards",
+    "resonator_platform.trim_control:register_machine",
+    "resonator_platform.trim_control:toolpath_text"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no laser/CNC exists; physical path unreachable by design until a machine with safety evidence is registered",
+   "next_action": "acquire enclosure+extraction before any laser (S01 hard refusal otherwise)"
+  },
+  {
+   "id": "R040",
+   "description": "Stop automatically on mode loss, overshoot risk, damage, drift, or inconsistent response.",
+   "agent": "R05",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.trim_control:trim_candidates",
+    "resonator_platform.trim_control:select_trim",
+    "resonator_platform.trim_control:approval_token",
+    "resonator_platform.trim_control:execute_trim",
+    "resonator_platform.trim_control:check_guards",
+    "resonator_platform.trim_control:register_machine",
+    "resonator_platform.trim_control:toolpath_text"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no laser/CNC exists; physical path unreachable by design until a machine with safety evidence is registered",
+   "next_action": "acquire enclosure+extraction before any laser (S01 hard refusal otherwise)"
+  },
+  {
+   "id": "R041",
+   "description": "Model mass removal versus mass addition sensitivities.",
+   "agent": "R06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.tuning:TuningAction",
+    "resonator_platform.tuning:ReversibleSession",
+    "resonator_platform.tuning:plan_bidirectional",
+    "resonator_platform.tuning:multi_objective_score"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic)"
+  },
+  {
+   "id": "R042",
+   "description": "Design removable calibration masses and deposition pads.",
+   "agent": "R06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.tuning:TuningAction",
+    "resonator_platform.tuning:ReversibleSession",
+    "resonator_platform.tuning:plan_bidirectional",
+    "resonator_platform.tuning:multi_objective_score"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic)"
+  },
+  {
+   "id": "R043",
+   "description": "Model electrical capacitive, inductive, resistive, and bias tuning.",
+   "agent": "R06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.tuning:TuningAction",
+    "resonator_platform.tuning:ReversibleSession",
+    "resonator_platform.tuning:plan_bidirectional",
+    "resonator_platform.tuning:multi_objective_score"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic)"
+  },
+  {
+   "id": "R044",
+   "description": "Model thermal and electrostatic reversible tuning where applicable.",
+   "agent": "R06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.tuning:TuningAction",
+    "resonator_platform.tuning:ReversibleSession",
+    "resonator_platform.tuning:plan_bidirectional",
+    "resonator_platform.tuning:multi_objective_score"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic)"
+  },
+  {
+   "id": "R045",
+   "description": "Design coarse reversible tuning followed by fine permanent trim.",
+   "agent": "R06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.tuning:TuningAction",
+    "resonator_platform.tuning:ReversibleSession",
+    "resonator_platform.tuning:plan_bidirectional",
+    "resonator_platform.tuning:multi_objective_score"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic)"
+  },
+  {
+   "id": "R046",
+   "description": "Quantify hysteresis, creep, aging, and reversibility.",
+   "agent": "R06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.tuning:TuningAction",
+    "resonator_platform.tuning:ReversibleSession",
+    "resonator_platform.tuning:plan_bidirectional",
+    "resonator_platform.tuning:multi_objective_score"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic)"
+  },
+  {
+   "id": "R047",
+   "description": "Create multi-objective tuning strategies for frequency, Q, symmetry, and stability.",
+   "agent": "R06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.tuning:TuningAction",
+    "resonator_platform.tuning:ReversibleSession",
+    "resonator_platform.tuning:plan_bidirectional",
+    "resonator_platform.tuning:multi_objective_score"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic)"
+  },
+  {
+   "id": "R048",
+   "description": "Produce one synthetic campaign demonstrating recovery from an otherwise overshooting trim.",
+   "agent": "R06",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.tuning:TuningAction",
+    "resonator_platform.tuning:ReversibleSession",
+    "resonator_platform.tuning:plan_bidirectional",
+    "resonator_platform.tuning:multi_objective_score"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (synthetic)"
+  },
+  {
+   "id": "R049",
+   "description": "Define serial-number and specimen-identity rules.",
+   "agent": "R07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.certificate:issue",
+    "resonator_platform.certificate:verify",
+    "resonator_platform.certificate:supersede",
+    "resonator_platform.certificate:compact_payload"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "production signing-key ceremony is human-only",
+   "next_action": "key ceremony before any physical certificate"
+  },
+  {
+   "id": "R050",
+   "description": "Bind design, CAD, Gerber, simulation, material lot, and measurement hashes.",
+   "agent": "R07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.certificate:issue",
+    "resonator_platform.certificate:verify",
+    "resonator_platform.certificate:supersede",
+    "resonator_platform.certificate:compact_payload"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "production signing-key ceremony is human-only",
+   "next_action": "key ceremony before any physical certificate"
+  },
+  {
+   "id": "R051",
+   "description": "Record target, predicted, measured, fitted, and accepted mode values separately.",
+   "agent": "R07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.certificate:issue",
+    "resonator_platform.certificate:verify",
+    "resonator_platform.certificate:supersede",
+    "resonator_platform.certificate:compact_payload"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "production signing-key ceremony is human-only",
+   "next_action": "key ceremony before any physical certificate"
+  },
+  {
+   "id": "R052",
+   "description": "Record fixture, temperature, humidity, calibration, and instrument provenance.",
+   "agent": "R07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.certificate:issue",
+    "resonator_platform.certificate:verify",
+    "resonator_platform.certificate:supersede",
+    "resonator_platform.certificate:compact_payload"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "production signing-key ceremony is human-only",
+   "next_action": "key ceremony before any physical certificate"
+  },
+  {
+   "id": "R053",
+   "description": "Record every tuning action and before/after evidence.",
+   "agent": "R07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.certificate:issue",
+    "resonator_platform.certificate:verify",
+    "resonator_platform.certificate:supersede",
+    "resonator_platform.certificate:compact_payload"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "production signing-key ceremony is human-only",
+   "next_action": "key ceremony before any physical certificate"
+  },
+  {
+   "id": "R054",
+   "description": "Create human-readable and machine-readable certificate renderings.",
+   "agent": "R07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.certificate:issue",
+    "resonator_platform.certificate:verify",
+    "resonator_platform.certificate:supersede",
+    "resonator_platform.certificate:compact_payload"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "production signing-key ceremony is human-only",
+   "next_action": "key ceremony before any physical certificate"
+  },
+  {
+   "id": "R055",
+   "description": "Support certificate verification without private source access.",
+   "agent": "R07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.certificate:issue",
+    "resonator_platform.certificate:verify",
+    "resonator_platform.certificate:supersede",
+    "resonator_platform.certificate:compact_payload"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "production signing-key ceremony is human-only",
+   "next_action": "key ceremony before any physical certificate"
+  },
+  {
+   "id": "R056",
+   "description": "Define revocation, supersession, and retest procedures.",
+   "agent": "R07",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.certificate:issue",
+    "resonator_platform.certificate:verify",
+    "resonator_platform.certificate:supersede",
+    "resonator_platform.certificate:compact_payload"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "production signing-key ceremony is human-only",
+   "next_action": "key ceremony before any physical certificate"
+  },
+  {
+   "id": "R057",
+   "description": "Define printable bells, forks, rings, shells, membranes, spirals, cavities, and metamaterial cells.",
+   "agent": "R08",
+   "status": "PROTOCOL_READY_HARDWARE_REQUIRED",
+   "symbols": [
+    "resonator_platform.additive:process_card",
+    "resonator_platform.additive:register_material",
+    "resonator_platform.additive:beam_f1_hz",
+    "resonator_platform.additive:print_campaign_plan"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no printer access engaged",
+   "next_action": "stage 1: FDM PLA cantilever set (cheapest first)"
+  },
+  {
+   "id": "R058",
+   "description": "Model anisotropy, layer orientation, infill, creep, moisture, temperature, and print defects.",
+   "agent": "R08",
+   "status": "PROTOCOL_READY_HARDWARE_REQUIRED",
+   "symbols": [
+    "resonator_platform.additive:process_card",
+    "resonator_platform.additive:register_material",
+    "resonator_platform.additive:beam_f1_hz",
+    "resonator_platform.additive:print_campaign_plan"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no printer access engaged",
+   "next_action": "stage 1: FDM PLA cantilever set (cheapest first)"
+  },
+  {
+   "id": "R059",
+   "description": "Create material cards for common polymers, resins, ceramics, and silica routes.",
+   "agent": "R08",
+   "status": "PROTOCOL_READY_HARDWARE_REQUIRED",
+   "symbols": [
+    "resonator_platform.additive:process_card",
+    "resonator_platform.additive:register_material",
+    "resonator_platform.additive:beam_f1_hz",
+    "resonator_platform.additive:print_campaign_plan"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no printer access engaged",
+   "next_action": "stage 1: FDM PLA cantilever set (cheapest first)"
+  },
+  {
+   "id": "R060",
+   "description": "Design print coupons for modulus, damping, density, and trim calibration.",
+   "agent": "R08",
+   "status": "PROTOCOL_READY_HARDWARE_REQUIRED",
+   "symbols": [
+    "resonator_platform.additive:process_card",
+    "resonator_platform.additive:register_material",
+    "resonator_platform.additive:beam_f1_hz",
+    "resonator_platform.additive:print_campaign_plan"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no printer access engaged",
+   "next_action": "stage 1: FDM PLA cantilever set (cheapest first)"
+  },
+  {
+   "id": "R061",
+   "description": "Generate matched geometry controls across print orientations and materials.",
+   "agent": "R08",
+   "status": "PROTOCOL_READY_HARDWARE_REQUIRED",
+   "symbols": [
+    "resonator_platform.additive:process_card",
+    "resonator_platform.additive:register_material",
+    "resonator_platform.additive:beam_f1_hz",
+    "resonator_platform.additive:print_campaign_plan"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no printer access engaged",
+   "next_action": "stage 1: FDM PLA cantilever set (cheapest first)"
+  },
+  {
+   "id": "R062",
+   "description": "Integrate design-for-trim features into printed structures.",
+   "agent": "R08",
+   "status": "PROTOCOL_READY_HARDWARE_REQUIRED",
+   "symbols": [
+    "resonator_platform.additive:process_card",
+    "resonator_platform.additive:register_material",
+    "resonator_platform.additive:beam_f1_hz",
+    "resonator_platform.additive:print_campaign_plan"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no printer access engaged",
+   "next_action": "stage 1: FDM PLA cantilever set (cheapest first)"
+  },
+  {
+   "id": "R063",
+   "description": "Create a low-cost prototype campaign from print to measured certificate.",
+   "agent": "R08",
+   "status": "PROTOCOL_READY_HARDWARE_REQUIRED",
+   "symbols": [
+    "resonator_platform.additive:process_card",
+    "resonator_platform.additive:register_material",
+    "resonator_platform.additive:beam_f1_hz",
+    "resonator_platform.additive:print_campaign_plan"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no printer access engaged",
+   "next_action": "stage 1: FDM PLA cantilever set (cheapest first)"
+  },
+  {
+   "id": "R064",
+   "description": "Define escalation criteria from polymer prototype to ceramic or silica research device.",
+   "agent": "R08",
+   "status": "PROTOCOL_READY_HARDWARE_REQUIRED",
+   "symbols": [
+    "resonator_platform.additive:process_card",
+    "resonator_platform.additive:register_material",
+    "resonator_platform.additive:beam_f1_hz",
+    "resonator_platform.additive:print_campaign_plan"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no printer access engaged",
+   "next_action": "stage 1: FDM PLA cantilever set (cheapest first)"
+  },
+  {
+   "id": "R065",
+   "description": "Define microbeam, tuning-fork, ring, disk, membrane, and phononic-crystal device families.",
+   "agent": "R09",
+   "status": "INTERFACE_ONLY",
+   "symbols": [
+    "resonator_platform.mems:beam_resonator",
+    "resonator_platform.mems:trim_budget",
+    "resonator_platform.mems:foundry_handoff"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no cleanroom/foundry; handoff is a typed contract",
+   "next_action": "foundry MPW collaboration (human/budget decision)"
+  },
+  {
+   "id": "R066",
+   "description": "Model anchor, thermoelastic, surface, gas, electrode, and package losses.",
+   "agent": "R09",
+   "status": "INTERFACE_ONLY",
+   "symbols": [
+    "resonator_platform.mems:beam_resonator",
+    "resonator_platform.mems:trim_budget",
+    "resonator_platform.mems:foundry_handoff"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no cleanroom/foundry; handoff is a typed contract",
+   "next_action": "foundry MPW collaboration (human/budget decision)"
+  },
+  {
+   "id": "R067",
+   "description": "Model residual stress, process gradients, aging, contamination, and temperature coefficients.",
+   "agent": "R09",
+   "status": "INTERFACE_ONLY",
+   "symbols": [
+    "resonator_platform.mems:beam_resonator",
+    "resonator_platform.mems:trim_budget",
+    "resonator_platform.mems:foundry_handoff"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no cleanroom/foundry; handoff is a typed contract",
+   "next_action": "foundry MPW collaboration (human/budget decision)"
+  },
+  {
+   "id": "R068",
+   "description": "Define capacitive, piezoresistive, piezoelectric, optical, and magnetic transduction options.",
+   "agent": "R09",
+   "status": "INTERFACE_ONLY",
+   "symbols": [
+    "resonator_platform.mems:beam_resonator",
+    "resonator_platform.mems:trim_budget",
+    "resonator_platform.mems:foundry_handoff"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no cleanroom/foundry; handoff is a typed contract",
+   "next_action": "foundry MPW collaboration (human/budget decision)"
+  },
+  {
+   "id": "R069",
+   "description": "Define laser, FIB, annealing, electrode, deposition, and electrostatic tuning interfaces.",
+   "agent": "R09",
+   "status": "INTERFACE_ONLY",
+   "symbols": [
+    "resonator_platform.mems:beam_resonator",
+    "resonator_platform.mems:trim_budget",
+    "resonator_platform.mems:foundry_handoff"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no cleanroom/foundry; handoff is a typed contract",
+   "next_action": "foundry MPW collaboration (human/budget decision)"
+  },
+  {
+   "id": "R070",
+   "description": "Create fabrication-process and foundry capability abstractions.",
+   "agent": "R09",
+   "status": "INTERFACE_ONLY",
+   "symbols": [
+    "resonator_platform.mems:beam_resonator",
+    "resonator_platform.mems:trim_budget",
+    "resonator_platform.mems:foundry_handoff"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no cleanroom/foundry; handoff is a typed contract",
+   "next_action": "foundry MPW collaboration (human/budget decision)"
+  },
+  {
+   "id": "R071",
+   "description": "Create a microdevice digital-twin and synthetic wafer-variation campaign.",
+   "agent": "R09",
+   "status": "INTERFACE_ONLY",
+   "symbols": [
+    "resonator_platform.mems:beam_resonator",
+    "resonator_platform.mems:trim_budget",
+    "resonator_platform.mems:foundry_handoff"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no cleanroom/foundry; handoff is a typed contract",
+   "next_action": "foundry MPW collaboration (human/budget decision)"
+  },
+  {
+   "id": "R072",
+   "description": "Define escalation from simulation to university/foundry collaboration without claiming local fabrication capability.",
+   "agent": "R09",
+   "status": "INTERFACE_ONLY",
+   "symbols": [
+    "resonator_platform.mems:beam_resonator",
+    "resonator_platform.mems:trim_budget",
+    "resonator_platform.mems:foundry_handoff"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "no cleanroom/foundry; handoff is a typed contract",
+   "next_action": "foundry MPW collaboration (human/budget decision)"
+  },
+  {
+   "id": "R073",
+   "description": "Implement Barkhausen-loop and negative-resistance oscillator abstractions.",
+   "agent": "R10",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.oscillator:barkhausen",
+    "resonator_platform.oscillator:is_oscillator",
+    "resonator_platform.oscillator:leeson_phase_noise",
+    "resonator_platform.oscillator:tcf_compensation",
+    "resonator_platform.oscillator:aging_model"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (models; no circuit built)"
+  },
+  {
+   "id": "R074",
+   "description": "Integrate BVD or modal plant models with sustaining electronics.",
+   "agent": "R10",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.oscillator:barkhausen",
+    "resonator_platform.oscillator:is_oscillator",
+    "resonator_platform.oscillator:leeson_phase_noise",
+    "resonator_platform.oscillator:tcf_compensation",
+    "resonator_platform.oscillator:aging_model"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (models; no circuit built)"
+  },
+  {
+   "id": "R075",
+   "description": "Model amplitude regulation, drive nonlinearity, and frequency pulling.",
+   "agent": "R10",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.oscillator:barkhausen",
+    "resonator_platform.oscillator:is_oscillator",
+    "resonator_platform.oscillator:leeson_phase_noise",
+    "resonator_platform.oscillator:tcf_compensation",
+    "resonator_platform.oscillator:aging_model"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (models; no circuit built)"
+  },
+  {
+   "id": "R076",
+   "description": "Model phase noise, frequency noise, and Allan deviation.",
+   "agent": "R10",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.oscillator:barkhausen",
+    "resonator_platform.oscillator:is_oscillator",
+    "resonator_platform.oscillator:leeson_phase_noise",
+    "resonator_platform.oscillator:tcf_compensation",
+    "resonator_platform.oscillator:aging_model"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (models; no circuit built)"
+  },
+  {
+   "id": "R077",
+   "description": "Model temperature compensation and oven or sensor control.",
+   "agent": "R10",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.oscillator:barkhausen",
+    "resonator_platform.oscillator:is_oscillator",
+    "resonator_platform.oscillator:leeson_phase_noise",
+    "resonator_platform.oscillator:tcf_compensation",
+    "resonator_platform.oscillator:aging_model"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (models; no circuit built)"
+  },
+  {
+   "id": "R078",
+   "description": "Model package stress, mounting, gas pressure, and aging.",
+   "agent": "R10",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.oscillator:barkhausen",
+    "resonator_platform.oscillator:is_oscillator",
+    "resonator_platform.oscillator:leeson_phase_noise",
+    "resonator_platform.oscillator:tcf_compensation",
+    "resonator_platform.oscillator:aging_model"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (models; no circuit built)"
+  },
+  {
+   "id": "R079",
+   "description": "Create startup, loss-of-oscillation, and spurious-mode diagnostics.",
+   "agent": "R10",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.oscillator:barkhausen",
+    "resonator_platform.oscillator:is_oscillator",
+    "resonator_platform.oscillator:leeson_phase_noise",
+    "resonator_platform.oscillator:tcf_compensation",
+    "resonator_platform.oscillator:aging_model"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (models; no circuit built)"
+  },
+  {
+   "id": "R080",
+   "description": "Produce one synthetic oscillator design and stability report.",
+   "agent": "R10",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.oscillator:barkhausen",
+    "resonator_platform.oscillator:is_oscillator",
+    "resonator_platform.oscillator:leeson_phase_noise",
+    "resonator_platform.oscillator:tcf_compensation",
+    "resonator_platform.oscillator:aging_model"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (models; no circuit built)"
+  },
+  {
+   "id": "R081",
+   "description": "Implement a generic coherent sum of displaced and phase-shifted partial resonator fields.",
+   "agent": "R11",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.composite_modes:displaced_gaussian_pair",
+    "resonator_platform.composite_modes:azimuthal_content",
+    "resonator_platform.composite_modes:parity_selection",
+    "resonator_platform.composite_modes:partial_resonator_array",
+    "resonator_platform.composite_modes:transfer_firewall"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (mathematics verified)"
+  },
+  {
+   "id": "R082",
+   "description": "Compute angular Fourier or azimuthal mode distributions.",
+   "agent": "R11",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.composite_modes:displaced_gaussian_pair",
+    "resonator_platform.composite_modes:azimuthal_content",
+    "resonator_platform.composite_modes:parity_selection",
+    "resonator_platform.composite_modes:partial_resonator_array",
+    "resonator_platform.composite_modes:transfer_firewall"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (mathematics verified)"
+  },
+  {
+   "id": "R083",
+   "description": "Model paired counter-twisted, six-sector, three-pair, and circular-array designs.",
+   "agent": "R11",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.composite_modes:displaced_gaussian_pair",
+    "resonator_platform.composite_modes:azimuthal_content",
+    "resonator_platform.composite_modes:parity_selection",
+    "resonator_platform.composite_modes:partial_resonator_array",
+    "resonator_platform.composite_modes:transfer_firewall"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (mathematics verified)"
+  },
+  {
+   "id": "R084",
+   "description": "Explore phase-based even/odd and symmetry-family selection.",
+   "agent": "R11",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.composite_modes:displaced_gaussian_pair",
+    "resonator_platform.composite_modes:azimuthal_content",
+    "resonator_platform.composite_modes:parity_selection",
+    "resonator_platform.composite_modes:partial_resonator_array",
+    "resonator_platform.composite_modes:transfer_firewall"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (mathematics verified)"
+  },
+  {
+   "id": "R085",
+   "description": "Distinguish zero mean angular momentum from an unstructured zero-order mode.",
+   "agent": "R11",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.composite_modes:displaced_gaussian_pair",
+    "resonator_platform.composite_modes:azimuthal_content",
+    "resonator_platform.composite_modes:parity_selection",
+    "resonator_platform.composite_modes:partial_resonator_array",
+    "resonator_platform.composite_modes:transfer_firewall"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (mathematics verified)"
+  },
+  {
+   "id": "R086",
+   "description": "Design controls with randomized phases, separations, and amplitudes.",
+   "agent": "R11",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.composite_modes:displaced_gaussian_pair",
+    "resonator_platform.composite_modes:azimuthal_content",
+    "resonator_platform.composite_modes:parity_selection",
+    "resonator_platform.composite_modes:partial_resonator_array",
+    "resonator_platform.composite_modes:transfer_firewall"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (mathematics verified)"
+  },
+  {
+   "id": "R087",
+   "description": "Create trim strategies that correct composite-mode balance.",
+   "agent": "R11",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.composite_modes:displaced_gaussian_pair",
+    "resonator_platform.composite_modes:azimuthal_content",
+    "resonator_platform.composite_modes:parity_selection",
+    "resonator_platform.composite_modes:partial_resonator_array",
+    "resonator_platform.composite_modes:transfer_firewall"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (mathematics verified)"
+  },
+  {
+   "id": "R088",
+   "description": "Generate candidate PCB and printed-resonator layouts with predicted modal signatures.",
+   "agent": "R11",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.composite_modes:displaced_gaussian_pair",
+    "resonator_platform.composite_modes:azimuthal_content",
+    "resonator_platform.composite_modes:parity_selection",
+    "resonator_platform.composite_modes:partial_resonator_array",
+    "resonator_platform.composite_modes:transfer_firewall"
+   ],
+   "tests": [
+    "tests/v4/test_resonator_platform.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (mathematics verified)"
+  },
+  {
+   "id": "R089",
+   "description": "Determine the correct semantic version from the verified baseline.",
+   "agent": "R12",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "publish after QA recommends"
+  },
+  {
+   "id": "R090",
+   "description": "Update package, citation, changelog, README, docs, and asset metadata from one source of truth.",
+   "agent": "R12",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "publish after QA recommends"
+  },
+  {
+   "id": "R091",
+   "description": "Build source, proof, protocol, reference-model, and fabrication-example assets.",
+   "agent": "R12",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "publish after QA recommends"
+  },
+  {
+   "id": "R092",
+   "description": "Exclude private lore and private source material from public assets.",
+   "agent": "R12",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "publish after QA recommends"
+  },
+  {
+   "id": "R093",
+   "description": "Run focused, full, fresh-install, and hosted-CI tests.",
+   "agent": "R12",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "publish after QA recommends"
+  },
+  {
+   "id": "R094",
+   "description": "Publish an RC, verify downloaded assets, then publish the final immutable release.",
+   "agent": "R12",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "publish after QA recommends"
+  },
+  {
+   "id": "R095",
+   "description": "Fast-forward main only when safe and explicitly record the decision.",
+   "agent": "R12",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "publish after QA recommends"
+  },
+  {
+   "id": "R096",
+   "description": "Create final handoff with software completion versus physical and ethical blockers.",
+   "agent": "R12",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "publish after QA recommends"
+  },
+  {
+   "id": "R097",
+   "description": "Verify the public v4.2.1 release from clean downloads, including filenames, hashes, embedded versions, documents, and privacy.",
+   "agent": "R13",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.build_v4_release:_version"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "clean-staging build + remote byte verification at release"
+  },
+  {
+   "id": "R098",
+   "description": "Replace shared mutable release staging with clean version-scoped or ephemeral staging.",
+   "agent": "R13",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.build_v4_release:_version"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "clean-staging build + remote byte verification at release"
+  },
+  {
+   "id": "R099",
+   "description": "Generate a canonical current-version asset inventory and reject mixed-version rows or filenames.",
+   "agent": "R13",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.build_v4_release:_version"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "clean-staging build + remote byte verification at release"
+  },
+  {
+   "id": "R100",
+   "description": "Bind every asset to commit, tag, command, environment, input manifest, and hash.",
+   "agent": "R13",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.build_v4_release:_version"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "clean-staging build + remote byte verification at release"
+  },
+  {
+   "id": "R101",
+   "description": "Add adversarial release tests for stale files, dirty trees, mixed archives, missing docs, and checksum contamination.",
+   "agent": "R13",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.build_v4_release:_version"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "clean-staging build + remote byte verification at release"
+  },
+  {
+   "id": "R102",
+   "description": "Download every published asset, recompute hashes, inspect archive contents, and compare with the manifest.",
+   "agent": "R13",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.build_v4_release:_version"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "clean-staging build + remote byte verification at release"
+  },
+  {
+   "id": "R103",
+   "description": "Enforce immutable fix-forward policy for defective public releases and tags.",
+   "agent": "R13",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.build_v4_release:_version"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "clean-staging build + remote byte verification at release"
+  },
+  {
+   "id": "R104",
+   "description": "Produce a reusable release chain-of-custody gate consumed by R12 and hosted CI.",
+   "agent": "R13",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "tools.build_v4_release:_version"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/RELEASE_NOTES_V4_3_0.md"
+   ],
+   "blocker": "",
+   "next_action": "clean-staging build + remote byte verification at release"
+  },
+  {
+   "id": "S001",
+   "description": "Create hazard classes and capability gates for every fabrication and excitation method.",
+   "agent": "S01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.safety:check_process",
+    "resonator_platform.safety:stop_work_record"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (limits binding; no process enabled)"
+  },
+  {
+   "id": "S002",
+   "description": "Define FR-4, copper, resin, ceramic, silica, and coating process hazards.",
+   "agent": "S01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.safety:check_process",
+    "resonator_platform.safety:stop_work_record"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (limits binding; no process enabled)"
+  },
+  {
+   "id": "S003",
+   "description": "Define enclosure, extraction, filtration, fire, eye, electrical, and interlock requirements.",
+   "agent": "S01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.safety:check_process",
+    "resonator_platform.safety:stop_work_record"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (limits binding; no process enabled)"
+  },
+  {
+   "id": "S004",
+   "description": "Define safe RF, ultrasound, mechanical, and thermal exposure limits as externally sourced placeholders pending jurisdiction-specific review.",
+   "agent": "S01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.safety:check_process",
+    "resonator_platform.safety:stop_work_record"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (limits binding; no process enabled)"
+  },
+  {
+   "id": "S005",
+   "description": "Define microfabrication and FIB collaboration safety boundaries.",
+   "agent": "S01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.safety:check_process",
+    "resonator_platform.safety:stop_work_record"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (limits binding; no process enabled)"
+  },
+  {
+   "id": "S006",
+   "description": "Require risk assessment before any machine-control capability is enabled.",
+   "agent": "S01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.safety:check_process",
+    "resonator_platform.safety:stop_work_record"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (limits binding; no process enabled)"
+  },
+  {
+   "id": "S007",
+   "description": "Maintain ethics gates for human loading and operator-state studies.",
+   "agent": "S01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.safety:check_process",
+    "resonator_platform.safety:stop_work_record"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (limits binding; no process enabled)"
+  },
+  {
+   "id": "S008",
+   "description": "Create incident, near-miss, and stop-work records.",
+   "agent": "S01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "resonator_platform.safety:check_process",
+    "resonator_platform.safety:stop_work_record"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/CLOSED_LOOP_PLATFORM.md"
+   ],
+   "blocker": "",
+   "next_action": "none (limits binding; no process enabled)"
+  },
+  {
+   "id": "V001",
+   "description": "Create a chaptered documentary treatment from origin to current state.",
+   "agent": "V01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PUBLIC_NARRATIVE_AND_FACTCHECK.md"
+   ],
+   "blocker": "production is a human decision + L01 consent",
+   "next_action": "none"
+  },
+  {
+   "id": "V002",
+   "description": "Create a visual timeline with commits, releases, ideas, and experimental blockers.",
+   "agent": "V01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PUBLIC_NARRATIVE_AND_FACTCHECK.md"
+   ],
+   "blocker": "production is a human decision + L01 consent",
+   "next_action": "none"
+  },
+  {
+   "id": "V003",
+   "description": "Explain the evidence ladder in accessible language.",
+   "agent": "V01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PUBLIC_NARRATIVE_AND_FACTCHECK.md"
+   ],
+   "blocker": "production is a human decision + L01 consent",
+   "next_action": "none"
+  },
+  {
+   "id": "V004",
+   "description": "Show examples of models that were corrected by tests and CI.",
+   "agent": "V01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PUBLIC_NARRATIVE_AND_FACTCHECK.md"
+   ],
+   "blocker": "production is a human decision + L01 consent",
+   "next_action": "none"
+  },
+  {
+   "id": "V005",
+   "description": "Explain why intuition can generate leads while measurement decides claims.",
+   "agent": "V01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PUBLIC_NARRATIVE_AND_FACTCHECK.md"
+   ],
+   "blocker": "production is a human decision + L01 consent",
+   "next_action": "none"
+  },
+  {
+   "id": "V006",
+   "description": "Create interview prompts for Andrew and future collaborators.",
+   "agent": "V01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PUBLIC_NARRATIVE_AND_FACTCHECK.md"
+   ],
+   "blocker": "production is a human decision + L01 consent",
+   "next_action": "none"
+  },
+  {
+   "id": "V007",
+   "description": "Create a b-roll and visualization list using existing artifacts.",
+   "agent": "V01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PUBLIC_NARRATIVE_AND_FACTCHECK.md"
+   ],
+   "blocker": "production is a human decision + L01 consent",
+   "next_action": "none"
+  },
+  {
+   "id": "V008",
+   "description": "Create short, medium, and long public versions with claim review.",
+   "agent": "V01",
+   "status": "ENGINEERING_PROTOTYPE",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/PUBLIC_NARRATIVE_AND_FACTCHECK.md"
+   ],
+   "blocker": "production is a human decision + L01 consent",
+   "next_action": "none"
+  },
+  {
+   "id": "V009",
+   "description": "Create a one-page versioned Eye computational claim card with exact model conditions and caveats.",
+   "agent": "V02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "version the card on any new Eye result"
+  },
+  {
+   "id": "V010",
+   "description": "Create short, medium, and technical share texts that preserve computational versus physical distinctions.",
+   "agent": "V02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "version the card on any new Eye result"
+  },
+  {
+   "id": "V011",
+   "description": "Create a public correction ledger linking superseded statements to correcting evidence.",
+   "agent": "V02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "version the card on any new Eye result"
+  },
+  {
+   "id": "V012",
+   "description": "Implement a claim linter for physical-confirmation and nonexistence overclaims.",
+   "agent": "V02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "version the card on any new Eye result"
+  },
+  {
+   "id": "V013",
+   "description": "Create a public reproducibility route from claim to immutable source, commands, outputs, and status.",
+   "agent": "V02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "version the card on any new Eye result"
+  },
+  {
+   "id": "V014",
+   "description": "Define community-response handling for replication, criticism, alternate interpretations, and defects.",
+   "agent": "V02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "version the card on any new Eye result"
+  },
+  {
+   "id": "V015",
+   "description": "Archive only approved public posts with date, wording, platform, and consent status.",
+   "agent": "V02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "version the card on any new Eye result"
+  },
+  {
+   "id": "V016",
+   "description": "Generate update notices when replication, QA, or a later release materially changes a finding.",
+   "agent": "V02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "version the card on any new Eye result"
+  },
+  {
+   "id": "Y001",
+   "description": "Import every mesh level, candidate coordinate, mode frequency, localization width, and solver diagnostic.",
+   "agent": "Y01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:mac",
+    "rscs2_core.eye_ladder_analysis:track_modes",
+    "rscs2_core.eye_ladder_analysis:fit_convergence",
+    "rscs2_core.eye_ladder_analysis:signed_separation",
+    "rscs2_core.eye_ladder_analysis:ladder_interpretation"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Y002",
+   "description": "Track candidate identity across meshes using mode-shape overlap, not mode index alone.",
+   "agent": "Y01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:mac",
+    "rscs2_core.eye_ladder_analysis:track_modes",
+    "rscs2_core.eye_ladder_analysis:fit_convergence",
+    "rscs2_core.eye_ladder_analysis:signed_separation",
+    "rscs2_core.eye_ladder_analysis:ladder_interpretation"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Y003",
+   "description": "Fit plausible convergence models for x, y, z, frequency, and uncertainty without extrapolation laundering.",
+   "agent": "Y01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:mac",
+    "rscs2_core.eye_ladder_analysis:track_modes",
+    "rscs2_core.eye_ladder_analysis:fit_convergence",
+    "rscs2_core.eye_ladder_analysis:signed_separation",
+    "rscs2_core.eye_ladder_analysis:ladder_interpretation"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Y004",
+   "description": "Compare drift relative to both the canonical candidate and conventional station.",
+   "agent": "Y01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:mac",
+    "rscs2_core.eye_ladder_analysis:track_modes",
+    "rscs2_core.eye_ladder_analysis:fit_convergence",
+    "rscs2_core.eye_ladder_analysis:signed_separation",
+    "rscs2_core.eye_ladder_analysis:ladder_interpretation"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Y005",
+   "description": "Separate numerical drift, mode switching, interpolation effects, and physical sensitivity.",
+   "agent": "Y01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:mac",
+    "rscs2_core.eye_ladder_analysis:track_modes",
+    "rscs2_core.eye_ladder_analysis:fit_convergence",
+    "rscs2_core.eye_ladder_analysis:signed_separation",
+    "rscs2_core.eye_ladder_analysis:ladder_interpretation"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Y006",
+   "description": "Issue an evidence-classified final Eye verdict while preserving all prior records.",
+   "agent": "Y01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:mac",
+    "rscs2_core.eye_ladder_analysis:track_modes",
+    "rscs2_core.eye_ladder_analysis:fit_convergence",
+    "rscs2_core.eye_ladder_analysis:signed_separation",
+    "rscs2_core.eye_ladder_analysis:ladder_interpretation"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Y007",
+   "description": "Generate a queued-compute plan for finer or alternative solves if discrimination remains unresolved.",
+   "agent": "Y01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:mac",
+    "rscs2_core.eye_ladder_analysis:track_modes",
+    "rscs2_core.eye_ladder_analysis:fit_convergence",
+    "rscs2_core.eye_ladder_analysis:signed_separation",
+    "rscs2_core.eye_ladder_analysis:ladder_interpretation"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Y008",
+   "description": "Create public wording that reports the result without claiming coincidence, distinctness, or nonexistence beyond resolution.",
+   "agent": "Y01",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:mac",
+    "rscs2_core.eye_ladder_analysis:track_modes",
+    "rscs2_core.eye_ladder_analysis:fit_convergence",
+    "rscs2_core.eye_ladder_analysis:signed_separation",
+    "rscs2_core.eye_ladder_analysis:ladder_interpretation"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/EYE_CLAIM_CARD.md"
+   ],
+   "blocker": "",
+   "next_action": "none"
+  },
+  {
+   "id": "Y009",
+   "description": "Calibrate memory and runtime models from observed mesh, matrix, factorization, and solve data.",
+   "agent": "Y02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:memory_model",
+    "rscs2_core.eye_ladder_analysis:predict_memory_gb",
+    "rscs2_core.eye_ladder_analysis:preflight",
+    "rscs2_core.eye_ladder_analysis:job_manifest"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md"
+   ],
+   "blocker": "finer-than-1.5mm solves need ~48+ GB or LOBPCG/AMG",
+   "next_action": "benchmark LOBPCG vs shift-invert on the small case (job manifest queued)"
+  },
+  {
+   "id": "Y010",
+   "description": "Separate mesh memory, sparse matrices, factorization fill-in, eigenvectors, and Python overhead.",
+   "agent": "Y02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:memory_model",
+    "rscs2_core.eye_ladder_analysis:predict_memory_gb",
+    "rscs2_core.eye_ladder_analysis:preflight",
+    "rscs2_core.eye_ladder_analysis:job_manifest"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md"
+   ],
+   "blocker": "finer-than-1.5mm solves need ~48+ GB or LOBPCG/AMG",
+   "next_action": "benchmark LOBPCG vs shift-invert on the small case (job manifest queued)"
+  },
+  {
+   "id": "Y011",
+   "description": "Predict resource ranges with confidence intervals rather than a single optimistic number.",
+   "agent": "Y02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:memory_model",
+    "rscs2_core.eye_ladder_analysis:predict_memory_gb",
+    "rscs2_core.eye_ladder_analysis:preflight",
+    "rscs2_core.eye_ladder_analysis:job_manifest"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md"
+   ],
+   "blocker": "finer-than-1.5mm solves need ~48+ GB or LOBPCG/AMG",
+   "next_action": "benchmark LOBPCG vs shift-invert on the small case (job manifest queued)"
+  },
+  {
+   "id": "Y012",
+   "description": "Evaluate iterative, contour, matrix-free, reduced-basis, local-refinement, and domain-decomposition alternatives.",
+   "agent": "Y02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:memory_model",
+    "rscs2_core.eye_ladder_analysis:predict_memory_gb",
+    "rscs2_core.eye_ladder_analysis:preflight",
+    "rscs2_core.eye_ladder_analysis:job_manifest"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md"
+   ],
+   "blocker": "finer-than-1.5mm solves need ~48+ GB or LOBPCG/AMG",
+   "next_action": "benchmark LOBPCG vs shift-invert on the small case (job manifest queued)"
+  },
+  {
+   "id": "Y013",
+   "description": "Assess whether adaptive local refinement actually preserves the target mode and global physics.",
+   "agent": "Y02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:memory_model",
+    "rscs2_core.eye_ladder_analysis:predict_memory_gb",
+    "rscs2_core.eye_ladder_analysis:preflight",
+    "rscs2_core.eye_ladder_analysis:job_manifest"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md"
+   ],
+   "blocker": "finer-than-1.5mm solves need ~48+ GB or LOBPCG/AMG",
+   "next_action": "benchmark LOBPCG vs shift-invert on the small case (job manifest queued)"
+  },
+  {
+   "id": "Y014",
+   "description": "Implement preflight refusal when projected memory exceeds a configurable safety fraction.",
+   "agent": "Y02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:memory_model",
+    "rscs2_core.eye_ladder_analysis:predict_memory_gb",
+    "rscs2_core.eye_ladder_analysis:preflight",
+    "rscs2_core.eye_ladder_analysis:job_manifest"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md"
+   ],
+   "blocker": "finer-than-1.5mm solves need ~48+ GB or LOBPCG/AMG",
+   "next_action": "benchmark LOBPCG vs shift-invert on the small case (job manifest queued)"
+  },
+  {
+   "id": "Y015",
+   "description": "Create reproducible job packages for larger-memory machines or remote HPC.",
+   "agent": "Y02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:memory_model",
+    "rscs2_core.eye_ladder_analysis:predict_memory_gb",
+    "rscs2_core.eye_ladder_analysis:preflight",
+    "rscs2_core.eye_ladder_analysis:job_manifest"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md"
+   ],
+   "blocker": "finer-than-1.5mm solves need ~48+ GB or LOBPCG/AMG",
+   "next_action": "benchmark LOBPCG vs shift-invert on the small case (job manifest queued)"
+  },
+  {
+   "id": "Y016",
+   "description": "Benchmark at least two solver paths on a smaller controlled case.",
+   "agent": "Y02",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [
+    "rscs2_core.eye_ladder_analysis:memory_model",
+    "rscs2_core.eye_ladder_analysis:predict_memory_gb",
+    "rscs2_core.eye_ladder_analysis:preflight",
+    "rscs2_core.eye_ladder_analysis:job_manifest"
+   ],
+   "tests": [
+    "tests/v4/test_v4x2_eye_sources.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md"
+   ],
+   "blocker": "finer-than-1.5mm solves need ~48+ GB or LOBPCG/AMG",
+   "next_action": "benchmark LOBPCG vs shift-invert on the small case (job manifest queued)"
+  },
+  {
+   "id": "Y017",
+   "description": "Build a full-domain strain-energy cluster census for every retained mode and mesh level without seeding from named coordinates.",
+   "agent": "Y03",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/proof/C02/independent_census.json"
+   ],
+   "blocker": "",
+   "next_action": "rerun census at cl=1.5 on a larger-memory machine for a third level"
+  },
+  {
+   "id": "Y018",
+   "description": "Track modes and near-degenerate eigenspaces across meshes using MAC, subspace angles, frequency continuity, and symmetry.",
+   "agent": "Y03",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/proof/C02/independent_census.json"
+   ],
+   "blocker": "",
+   "next_action": "rerun census at cl=1.5 on a larger-memory machine for a third level"
+  },
+  {
+   "id": "Y019",
+   "description": "Match clusters across meshes by persistence, spatial overlap, energy fraction, and topology rather than nearest-point distance alone.",
+   "agent": "Y03",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/proof/C02/independent_census.json"
+   ],
+   "blocker": "",
+   "next_action": "rerun census at cl=1.5 on a larger-memory machine for a third level"
+  },
+  {
+   "id": "Y020",
+   "description": "Sweep threshold, smoothing, interpolation, neighborhood, weighting, and component rules and report verdict stability.",
+   "agent": "Y03",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/proof/C02/independent_census.json"
+   ],
+   "blocker": "",
+   "next_action": "rerun census at cl=1.5 on a larger-memory machine for a third level"
+  },
+  {
+   "id": "Y021",
+   "description": "Compare at least two discretization, solver, or post-processing paths.",
+   "agent": "Y03",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/proof/C02/independent_census.json"
+   ],
+   "blocker": "",
+   "next_action": "rerun census at cl=1.5 on a larger-memory machine for a third level"
+  },
+  {
+   "id": "Y022",
+   "description": "Run a bounded orientation, material, geometry, and boundary perturbation ensemble.",
+   "agent": "Y03",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/proof/C02/independent_census.json"
+   ],
+   "blocker": "",
+   "next_action": "rerun census at cl=1.5 on a larger-memory machine for a third level"
+  },
+  {
+   "id": "Y023",
+   "description": "Create a computational Eye claim card with exact commands, hashes, caveats, and prohibited interpretations.",
+   "agent": "Y03",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/proof/C02/independent_census.json"
+   ],
+   "blocker": "",
+   "next_action": "rerun census at cl=1.5 on a larger-memory machine for a third level"
+  },
+  {
+   "id": "Y024",
+   "description": "Issue an independent replication verdict while preserving all historical records.",
+   "agent": "Y03",
+   "status": "IMPLEMENTED_AND_TESTED",
+   "symbols": [],
+   "tests": [
+    "tests/v4/test_v4x2_platform_support.py"
+   ],
+   "docs": [
+    "docs/v4/resonator/EYE_POSTREFINEMENT_AND_RESOURCES.md",
+    "docs/v4/proof/C02/independent_census.json"
+   ],
+   "blocker": "",
+   "next_action": "rerun census at cl=1.5 on a larger-memory machine for a third level"
+  }
+ ],
+ "gates": {
+  "A_ids": {
+   "passed": true,
+   "failures": []
+  },
+  "B_symbols": {
+   "passed": true,
+   "failures": []
+  },
+  "C_tests": {
+   "passed": true,
+   "failures": []
+  },
+  "D_docs": {
+   "passed": true,
+   "failures": []
+  },
+  "E_status_depth": {
+   "passed": true,
+   "failures": []
+  },
+  "F_blockers": {
+   "passed": true,
+   "failures": []
+  }
+ },
+ "all_passed": true
+}

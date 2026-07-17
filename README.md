@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21387947.svg)](https://doi.org/10.5281/zenodo.21387947)
 
-**Current release: [v4.2.1](https://github.com/andrew867/rgcs/releases/tag/v4.2.1)**
+**Current release: [v4.3.0](https://github.com/andrew867/rgcs/releases/tag/v4.3.0)**
 · includes RSCS 2.0 (capability-aware multiphysics) on the RSCS 1.0
 typed-mathematics layer · MIT license · Author: Andrew Green
 Frozen history: v2.0.0 (`archive/v2.0.0/`), v3.0.x, v4.0.0, v4.1.x — tags and
@@ -98,7 +98,18 @@ the project holds.
   missing. All eleven defects are closed with regression tests
   ([QA verdict](docs/v4/V4X_QA_FINAL_VERDICT.md),
   [defect register](docs/v4/V4X_DEFECT_REGISTER.md)).
-- **Status at the release commit (v4.2.1):** 737 tests passed
+- **Emergent resonator programme (v4.3.0):** a closed-loop resonator
+  design→measure→trim→certify platform
+  ([resonator_platform/](resonator_platform/)) whose every artifact is
+  **synthetic and flagged so** — no hardware exists and every physical
+  path refuses by capability gate; five 2026 papers as firewalled
+  reference models; and the Eye **census correction**: the v4.1 and
+  v4.2.1 coordinates are two resolution-dependent estimates of one
+  apex feature, which has a symmetric family
+  ([claim card v4](docs/v4/EYE_CLAIM_CARD.md),
+  [platform](docs/v4/resonator/CLOSED_LOOP_PLATFORM.md)). Coverage
+  288/288 verified mechanically.
+- **Status at the release commit (v4.3.0):** 857 tests passed
   (1 archived-environment byte test deselected by policy D-V3-04);
   hosted CI 10/10 jobs green (Ubuntu/Windows/macOS); adversarial audit
   19/19 including the consciousness-lane quarantine check (G51);
@@ -197,7 +208,7 @@ git clone https://github.com/andrew867/rgcs && cd rgcs
 python -m pip install -e ".[dev]"
 python -m pip install "scikit-fem>=10" meshio matplotlib gmsh   # v4 solver stack
 python -m pytest -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic
-# expect: 737 passed, at the v4.2.1 release commit
+# expect: see docs/v4/RELEASE_METADATA.json, at the v4.3.0 release commit
 ```
 
 The v4 CLI entry point is `rgcs-v4` (or `python -m rscs2_core.cli`):

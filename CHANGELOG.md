@@ -3,6 +3,66 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [4.3.0] — 2026-07-17
+
+Post-v4.2 Emergent Resonator and Structured-Wave Expansion. All prior
+tags untouched. Coverage: 280 fixed IDs + 8 orphans = 288, verified
+mechanically (symbols import, tests exist, docs exist, status legal
+for depth) from the programme's first commit.
+
+**Closed-loop resonator platform** (`resonator_platform/`, 14
+modules): lifecycle state machine without a force flag; append-only
+hash-chained ledger; predicted/measured/fitted/accepted frequency
+separation enforced in constructors; digital twin with fabrication
+variation and execution noise; Lorentzian DAQ fits that report
+non-identifiability; conservative trim planner (overshoot is
+unrecoverable, so the selector refuses rather than burns); approval
+tokens + machine-capability registry requiring fume-extraction and
+interlock evidence (no machine registered → the physical path
+refuses, truthfully); reversible-trial tuning with exact rollback;
+HMAC certificates that refuse unfitted or out-of-band acceptance and
+print the claims they do NOT make; a complete synthetic
+design-to-certificate campaign (2 trim iterations, ACCEPTED in band,
+32-event intact ledger, deterministic per seed). Additive process
+cards (printed silica enforced ≠ quartz), MEMS twin with
+INTERFACE_ONLY foundry handoff, oscillator models with the
+resonator≠oscillator boundary in code, neutron-paper composite-mode
+mathematics with computationally verified parity selection and the
+angular-Nyquist alias band reported.
+
+**Eye: the census corrected the programme's own headline.** The
+unbiased full-domain cluster census (Y03) shows the v4.1
+(z=102.24 mm) and v4.2.1 (z=99.78 mm) coordinates are two
+resolution-dependent estimates of ONE male-apex feature — with a
+symmetric family (female-apex twin z≈4 mm, mid-shaft pair z≈58 mm)
+invisible to every earlier nearest-to-candidate analysis. Station
+comparison stands (5.1–6.7 mm vs ~1.8 mm halfwidth); eigenspace
+tracked <2.7° (no mode switch). Claim card v3 → v4 with the
+correction trail appended. Calibrated resource model with range
+predictions and preflight refusal; the 150× estimator failure is
+preserved as its calibration history.
+
+**Five 2026 papers ingested** with hashes, claim cards, equation
+provenance, and per-source transfer firewalls that raise on quartz
+claims; five reference models with tested analytic limits (a sign
+error in the triangular-transport removal rate was caught by its own
+redistribution test during development). Mechanism-discrimination
+tree defaults to INCONCLUSIVE; the model playground is structurally
+unable to write evidence.
+
+**Policy lanes**: broadcast heritage, product tiers (targeted ≠
+measured), Hydrogenuine open-commons/assurance boundary, private-lore
+mechanism (content local-only, never tracked), intuition pipeline
+with retrospective baseline labelled non-evidence, versioned claim
+cards.
+
+Nothing physical exists: no board, fixture, laser, instrument,
+printer, or cleanroom. Every physical path is capability-gated and
+currently refuses.
+
+Tests: 857 passing (1 archived-environment byte test deselected by
+policy D-V3-04).
+
 ## [4.2.1] — 2026-07-17
 
 Completeness audit of the v4.2 expansion. The `v4.2.0` tag stays

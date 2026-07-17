@@ -1,0 +1,206 @@
+{
+  "purpose": "unbiased full-domain cluster census + eigenspace tracking (Y03); no nearest-to-candidate selection anywhere in this pipeline",
+  "configuration": {
+    "quantile": 0.95,
+    "link_radius_mm": 6.0,
+    "diagnostics": [
+      "D2",
+      "D1",
+      "D8"
+    ],
+    "mode": "first elastic pair",
+    "geometry": "ideal_n7 (idealized model)"
+  },
+  "levels": {
+    "cl3.0": {
+      "clmax_mm": 3.0,
+      "n_clusters": 6,
+      "clusters": [
+        {
+          "diagnostic": "D1",
+          "centroid_mm": [
+            0.2090745777799207,
+            0.020606491194853093,
+            100.35511101268062
+          ],
+          "n_points": 312,
+          "d_to_v41_mm": 1.964127277788052,
+          "d_to_v5_mm": 0.6285278327157274,
+          "d_to_station_mm": 5.750334539261339
+        },
+        {
+          "diagnostic": "D8",
+          "centroid_mm": [
+            0.23666691609243637,
+            -0.01041743706878664,
+            100.9864890881228
+          ],
+          "n_points": 309,
+          "d_to_v41_mm": 1.3754350910382251,
+          "d_to_v5_mm": 1.2367348397536728,
+          "d_to_station_mm": 5.137977542192677
+        },
+        {
+          "diagnostic": "D2",
+          "centroid_mm": [
+            3.3369122782568126,
+            -9.138984068402243,
+            58.37903603208038
+          ],
+          "n_points": 184,
+          "d_to_v41_mm": 44.90869646657049,
+          "d_to_v5_mm": 42.531185427025825,
+          "d_to_station_mm": 48.80631243196604
+        },
+        {
+          "diagnostic": "D2",
+          "centroid_mm": [
+            -3.3459143227850254,
+            9.220895199730435,
+            58.309838982410106
+          ],
+          "n_points": 182,
+          "d_to_v41_mm": 45.033483382397264,
+          "d_to_v5_mm": 42.617994647376,
+          "d_to_station_mm": 48.5368145889938
+        },
+        {
+          "diagnostic": "D8",
+          "centroid_mm": [
+            0.015664728525924473,
+            0.0881076303559519,
+            3.6889226895632126
+          ],
+          "n_points": 57,
+          "d_to_v41_mm": 98.55200283963899,
+          "d_to_v5_mm": 96.09415921168988,
+          "d_to_station_mm": 102.33242189159361
+        },
+        {
+          "diagnostic": "D1",
+          "centroid_mm": [
+            -0.047220852651477144,
+            0.026835664738239094,
+            3.6683254502591893
+          ],
+          "n_points": 54,
+          "d_to_v41_mm": 98.57225860160314,
+          "d_to_v5_mm": 96.11468596416032,
+          "d_to_station_mm": 102.35318245344598
+        }
+      ],
+      "f_elastic_hz": [
+        13772.751964547659,
+        13772.757036886365,
+        25806.71523895712,
+        31833.61058506101,
+        31833.700234237225,
+        35267.55554484384,
+        50312.779272198975,
+        52494.557125779495
+      ]
+    },
+    "cl2.0": {
+      "clmax_mm": 2.0,
+      "n_clusters": 6,
+      "clusters": [
+        {
+          "diagnostic": "D8",
+          "centroid_mm": [
+            -0.05256023704508755,
+            -0.03774884691409296,
+            99.98933962563358
+          ],
+          "n_points": 983,
+          "d_to_v41_mm": 2.2698506795851987,
+          "d_to_v5_mm": 0.20715177632666146,
+          "d_to_station_mm": 6.09583996070453
+        },
+        {
+          "diagnostic": "D1",
+          "centroid_mm": [
+            -0.10606233554248896,
+            -0.09135633153975099,
+            99.33914253474772
+          ],
+          "n_points": 982,
+          "d_to_v41_mm": 2.9092243567902427,
+          "d_to_v5_mm": 0.4532906466271253,
+          "d_to_station_mm": 6.743309062525443
+        },
+        {
+          "diagnostic": "D2",
+          "centroid_mm": [
+            -7.886032924051028,
+            -5.665543550465453,
+            57.741281680519535
+          ],
+          "n_points": 572,
+          "d_to_v41_mm": 45.470619621872565,
+          "d_to_v5_mm": 43.13714178469929,
+          "d_to_station_mm": 49.26914311901433
+        },
+        {
+          "diagnostic": "D2",
+          "centroid_mm": [
+            7.8826379707636445,
+            5.656413820792115,
+            58.21191000343838
+          ],
+          "n_points": 556,
+          "d_to_v41_mm": 45.16306725084974,
+          "d_to_v5_mm": 42.69979175582035,
+          "d_to_station_mm": 48.77133455423173
+        },
+        {
+          "diagnostic": "D1",
+          "centroid_mm": [
+            0.09545462463799348,
+            0.004602838195620974,
+            4.1875427968142755
+          ],
+          "n_points": 146,
+          "d_to_v41_mm": 98.05345864244794,
+          "d_to_v5_mm": 95.59556800613244,
+          "d_to_station_mm": 101.83480860306177
+        },
+        {
+          "diagnostic": "D8",
+          "centroid_mm": [
+            0.022901968213296275,
+            -0.04833338770259322,
+            4.084648794624845
+          ],
+          "n_points": 145,
+          "d_to_v41_mm": 98.15599103640767,
+          "d_to_v5_mm": 95.69838166498577,
+          "d_to_station_mm": 101.93775124073818
+        }
+      ],
+      "f_elastic_hz": [
+        13772.379854092747,
+        13772.382117332707,
+        25786.017964301805,
+        31830.36211406336,
+        31830.38552014841,
+        35267.33543704,
+        50272.73428092666,
+        52482.987913448545
+      ]
+    }
+  },
+  "eigenspace_tracking": {
+    "principal_angles_deg": [
+      2.577333361548447,
+      2.6333620298357117
+    ],
+    "subspace_overlap": 0.9958712552243328,
+    "tracked": true,
+    "note": "the nearly degenerate first pair is tracked as a 2-D eigenSPACE; individual mode indices are not identities (Y002)"
+  },
+  "findings": {
+    "persistent_cluster_within_3mm_of_v41_coordinate": true,
+    "persistent_cluster_within_3mm_of_v5_coordinate": true,
+    "statement": "Under the tested mode, mesh, interpolation, and clustering configuration, the census identified a persistent cluster within 3 mm of the v4.1 coordinate, and identified one within 3 mm of the v4.2.1 coordinate. This is a statement about this pipeline and this idealized model, not a nonexistence claim and not a physical measurement."
+  }
+}

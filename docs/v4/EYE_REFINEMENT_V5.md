@@ -205,3 +205,28 @@ perturbation; it carries no claim about which location is preferred.
 The Eye question is **open**, and this programme has not closed it. It
 is not a blocker on releasing the rest of the work — it is a result:
 the resolution ran out before the question did.
+
+## Appended: the independent census (Y03, emergent programme)
+
+The account above used nearest-to-candidate selection. The unbiased
+full-domain census (`tools/v4x2_eye_census.py`,
+[`proof/C02/independent_census.json`](proof/C02/independent_census.json))
+corrects one framing and adds structure:
+
+- **One apex feature, two estimates.** The v4.1 (z = 102.24 mm) and V5
+  (z = 99.78 mm) coordinates are 2.53 mm apart; the census shows a
+  single persistent male-apex concentration whose centroid estimate
+  moves from ~102 mm (coarse) toward ~99.8 mm (fine). "The v4.1
+  coordinate does not survive refinement" conflated the estimate with
+  the feature — the FEATURE survives; the ESTIMATE was
+  resolution-dependent.
+- **The station comparison stands** (5.1–6.7 mm across meshes and
+  diagnostics, halfwidth ~1.8 mm at the finest level).
+- **The feature has a family**: a mirror concentration near the female
+  apex (z ≈ 4 mm) and a symmetric mid-shaft D2 pair (z ≈ 58 mm). Any
+  unique-point narrative must contend with this symmetry.
+- **No mode switch**: the first elastic eigenspace tracks across
+  meshes with principal angles < 2.7° (MAC/subspace, not index).
+
+Current wording of record: see
+[EYE_CLAIM_CARD.md](EYE_CLAIM_CARD.md), card **v4**.

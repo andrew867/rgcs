@@ -1,0 +1,1407 @@
+{
+ "ids": {
+  "B001": {
+   "agent_file": "04_BASELINE_AND_HANDOFF_AGENT.md",
+   "description": "Locate the final commit, branch, tags, release pages, assets, and CI run produced by the current closeout.",
+   "owner": "B00"
+  },
+  "B002": {
+   "agent_file": "04_BASELINE_AND_HANDOFF_AGENT.md",
+   "description": "Verify all frozen historical tags and archives remain byte-identical.",
+   "owner": "B00"
+  },
+  "B003": {
+   "agent_file": "04_BASELINE_AND_HANDOFF_AGENT.md",
+   "description": "Inventory dirty, untracked, generated, scratch, and proof files without deleting unrelated work.",
+   "owner": "B00"
+  },
+  "B004": {
+   "agent_file": "04_BASELINE_AND_HANDOFF_AGENT.md",
+   "description": "Reconcile local, hosted-CI, README, release-note, and proof-manifest test counts.",
+   "owner": "B00"
+  },
+  "B005": {
+   "agent_file": "04_BASELINE_AND_HANDOFF_AGENT.md",
+   "description": "Capture the final Eye verdict and every mesh/resource estimate from the closeout run.",
+   "owner": "B00"
+  },
+  "B006": {
+   "agent_file": "04_BASELINE_AND_HANDOFF_AGENT.md",
+   "description": "Create a post-closeout capability matrix showing implemented, protocol-ready, interface-only, and blocked components.",
+   "owner": "B00"
+  },
+  "B007": {
+   "agent_file": "04_BASELINE_AND_HANDOFF_AGENT.md",
+   "description": "Create a new programme branch from the verified final release commit or safest later commit.",
+   "owner": "B00"
+  },
+  "B008": {
+   "agent_file": "04_BASELINE_AND_HANDOFF_AGENT.md",
+   "description": "Write a machine-readable handoff snapshot with repository, environment, sources, blockers, and next actions.",
+   "owner": "B00"
+  },
+  "B009": {
+   "agent_file": "05_SOURCE_INGEST_AND_PROVENANCE_AGENT.md",
+   "description": "Register every new source with title, authors, DOI, local hash, publication state, and access status.",
+   "owner": "B01"
+  },
+  "B010": {
+   "agent_file": "05_SOURCE_INGEST_AND_PROVENANCE_AGENT.md",
+   "description": "Extract page- or section-level provenance for every imported equation and numerical claim.",
+   "owner": "B01"
+  },
+  "B011": {
+   "agent_file": "05_SOURCE_INGEST_AND_PROVENANCE_AGENT.md",
+   "description": "Record material, temperature, pressure, geometry, and instrument conditions for each experiment.",
+   "owner": "B01"
+  },
+  "B012": {
+   "agent_file": "05_SOURCE_INGEST_AND_PROVENANCE_AGENT.md",
+   "description": "Define permitted mathematical transfers and forbidden physical transfers for each source.",
+   "owner": "B01"
+  },
+  "B013": {
+   "agent_file": "05_SOURCE_INGEST_AND_PROVENANCE_AGENT.md",
+   "description": "Create source-specific claim cards distinguishing measurement, model, inference, and speculation.",
+   "owner": "B01"
+  },
+  "B014": {
+   "agent_file": "05_SOURCE_INGEST_AND_PROVENANCE_AGENT.md",
+   "description": "Register reusable equations for SIAM exchange bias, master equations, VHS models, OAM mode decomposition, and epsilon-factorization.",
+   "owner": "B01"
+  },
+  "B015": {
+   "agent_file": "05_SOURCE_INGEST_AND_PROVENANCE_AGENT.md",
+   "description": "Add citation and source-drift guards for public documentation.",
+   "owner": "B01"
+  },
+  "B016": {
+   "agent_file": "05_SOURCE_INGEST_AND_PROVENANCE_AGENT.md",
+   "description": "Create a cross-source concept map without asserting a shared physical mechanism.",
+   "owner": "B01"
+  },
+  "D001": {
+   "agent_file": "29_DATA_STATISTICS_AND_PREREGISTRATION_AGENT.md",
+   "description": "Define raw, calibrated, fitted, derived, accepted, and certified data classes.",
+   "owner": "D01"
+  },
+  "D002": {
+   "agent_file": "29_DATA_STATISTICS_AND_PREREGISTRATION_AGENT.md",
+   "description": "Define preregistered target bands and stopping rules.",
+   "owner": "D01"
+  },
+  "D003": {
+   "agent_file": "29_DATA_STATISTICS_AND_PREREGISTRATION_AGENT.md",
+   "description": "Handle repeated looks during iterative trimming.",
+   "owner": "D01"
+  },
+  "D004": {
+   "agent_file": "29_DATA_STATISTICS_AND_PREREGISTRATION_AGENT.md",
+   "description": "Handle multiple modes, frequencies, geometries, and specimens.",
+   "owner": "D01"
+  },
+  "D005": {
+   "agent_file": "29_DATA_STATISTICS_AND_PREREGISTRATION_AGENT.md",
+   "description": "Define held-out verification sweeps after tuning.",
+   "owner": "D01"
+  },
+  "D006": {
+   "agent_file": "29_DATA_STATISTICS_AND_PREREGISTRATION_AGENT.md",
+   "description": "Quantify remount, environmental, calibration, and model uncertainty.",
+   "owner": "D01"
+  },
+  "D007": {
+   "agent_file": "29_DATA_STATISTICS_AND_PREREGISTRATION_AGENT.md",
+   "description": "Define model-comparison and mechanism-selection metrics.",
+   "owner": "D01"
+  },
+  "D008": {
+   "agent_file": "29_DATA_STATISTICS_AND_PREREGISTRATION_AGENT.md",
+   "description": "Create prospective physical-validation plans for decorative, calibrated, and research tiers.",
+   "owner": "D01"
+  },
+  "H001": {
+   "agent_file": "25_BROADCAST_RESONATOR_HERITAGE_AGENT.md",
+   "description": "Create a technical map from broadcast timebases and carriers to resonator measurement.",
+   "owner": "H01"
+  },
+  "H002": {
+   "agent_file": "25_BROADCAST_RESONATOR_HERITAGE_AGENT.md",
+   "description": "Translate PLL, AFC, injection locking, impedance matching, sidebands, and phase noise into test-bench requirements.",
+   "owner": "H01"
+  },
+  "H003": {
+   "agent_file": "25_BROADCAST_RESONATOR_HERITAGE_AGENT.md",
+   "description": "Define reference-clock and synchronization requirements for DAQ.",
+   "owner": "H01"
+  },
+  "H004": {
+   "agent_file": "25_BROADCAST_RESONATOR_HERITAGE_AGENT.md",
+   "description": "Create feedline, fixture, and load de-embedding analogies with explicit limits.",
+   "owner": "H01"
+  },
+  "H005": {
+   "agent_file": "25_BROADCAST_RESONATOR_HERITAGE_AGENT.md",
+   "description": "Build fault trees inspired by broadcast troubleshooting.",
+   "owner": "H01"
+  },
+  "H006": {
+   "agent_file": "25_BROADCAST_RESONATOR_HERITAGE_AGENT.md",
+   "description": "Register NTSC 1000/1001 as a historical frequency-ratio example without numerological promotion.",
+   "owner": "H01"
+  },
+  "H007": {
+   "agent_file": "25_BROADCAST_RESONATOR_HERITAGE_AGENT.md",
+   "description": "Create a respectful private lore note distinguishing user report from verified biography.",
+   "owner": "H01"
+  },
+  "H008": {
+   "agent_file": "25_BROADCAST_RESONATOR_HERITAGE_AGENT.md",
+   "description": "Produce an engineering checklist for resonance work derived from broadcast practice.",
+   "owner": "H01"
+  },
+  "L001": {
+   "agent_file": "27_PRIVATE_LORE_AND_INTUITION_AGENT.md",
+   "description": "Record factual observations separately from feelings, interpretations, and later outcomes.",
+   "owner": "L01"
+  },
+  "L002": {
+   "agent_file": "27_PRIVATE_LORE_AND_INTUITION_AGENT.md",
+   "description": "Record dates, approximate times, locations, participants, and confidence only when user supplied.",
+   "owner": "L01"
+  },
+  "L003": {
+   "agent_file": "27_PRIVATE_LORE_AND_INTUITION_AGENT.md",
+   "description": "Preserve the cat-cafe intuition and Lane adoption as personal lore, not causal evidence.",
+   "owner": "L01"
+  },
+  "L004": {
+   "agent_file": "27_PRIVATE_LORE_AND_INTUITION_AGENT.md",
+   "description": "Preserve the Texas encounter as user-reported unresolved experience without identifying or inferring the person.",
+   "owner": "L01"
+  },
+  "L005": {
+   "agent_file": "27_PRIVATE_LORE_AND_INTUITION_AGENT.md",
+   "description": "Preserve the sense of connection to Dan and the research as interpretation, not a factual transfer claim.",
+   "owner": "L01"
+  },
+  "L006": {
+   "agent_file": "27_PRIVATE_LORE_AND_INTUITION_AGENT.md",
+   "description": "Preserve sudden engineering intuitions and track which later generated useful implementations.",
+   "owner": "L01"
+  },
+  "L007": {
+   "agent_file": "27_PRIVATE_LORE_AND_INTUITION_AGENT.md",
+   "description": "Create consent controls for private, shareable, and public narrative use.",
+   "owner": "L01"
+  },
+  "L008": {
+   "agent_file": "27_PRIVATE_LORE_AND_INTUITION_AGENT.md",
+   "description": "Create a no-diagnosis and no-pathologizing policy for research assistants handling lore.",
+   "owner": "L01"
+  },
+  "L009": {
+   "agent_file": "46_INTUITION_TO_HYPOTHESIS_PIPELINE_AGENT.md",
+   "description": "Capture the source trigger, reading depth, immediate felt connection, time, and active project context before elaboration.",
+   "owner": "L02"
+  },
+  "L010": {
+   "agent_file": "46_INTUITION_TO_HYPOTHESIS_PIPELINE_AGENT.md",
+   "description": "Translate each intuition into explicit equation, geometry, control, measurement, software, or narrative candidates.",
+   "owner": "L02"
+  },
+  "L011": {
+   "agent_file": "46_INTUITION_TO_HYPOTHESIS_PIPELINE_AGENT.md",
+   "description": "Record source-system conditions and forbidden transfers before implementation.",
+   "owner": "L02"
+  },
+  "L012": {
+   "agent_file": "46_INTUITION_TO_HYPOTHESIS_PIPELINE_AGENT.md",
+   "description": "Implement staged skim, source-read, translation, toy-model, relevance-test, and disposition triage.",
+   "owner": "L02"
+  },
+  "L013": {
+   "agent_file": "46_INTUITION_TO_HYPOTHESIS_PIPELINE_AGENT.md",
+   "description": "Track hits, partial hits, nulls, false analogies, duplicates, and abandoned leads symmetrically.",
+   "owner": "L02"
+  },
+  "L014": {
+   "agent_file": "46_INTUITION_TO_HYPOTHESIS_PIPELINE_AGENT.md",
+   "description": "Add prospective usefulness scoring before outcomes are known.",
+   "owner": "L02"
+  },
+  "L015": {
+   "agent_file": "46_INTUITION_TO_HYPOTHESIS_PIPELINE_AGENT.md",
+   "description": "Link productive leads to artifacts without upgrading intuition to evidence.",
+   "owner": "L02"
+  },
+  "L016": {
+   "agent_file": "46_INTUITION_TO_HYPOTHESIS_PIPELINE_AGENT.md",
+   "description": "Generate calibration reports on productive and noisy intuition categories and search diversity.",
+   "owner": "L02"
+  },
+  "O001": {
+   "agent_file": "33_ORPHAN_SWEEP_AGENT.md",
+   "description": "Extract every new device, experiment, equation, material, frequency, geometry, product, story, and control idea.",
+   "owner": "O01"
+  },
+  "O002": {
+   "agent_file": "33_ORPHAN_SWEEP_AGENT.md",
+   "description": "Extract every unresolved question, caveat, failure, and future interface.",
+   "owner": "O01"
+  },
+  "O003": {
+   "agent_file": "33_ORPHAN_SWEEP_AGENT.md",
+   "description": "Search for numbers, units, angles, dimensions, frequencies, ratios, memory estimates, and timings.",
+   "owner": "O01"
+  },
+  "O004": {
+   "agent_file": "33_ORPHAN_SWEEP_AGENT.md",
+   "description": "Search for ideas hidden only in assistant or agent prose.",
+   "owner": "O01"
+  },
+  "O005": {
+   "agent_file": "33_ORPHAN_SWEEP_AGENT.md",
+   "description": "Compare findings against all 240 fixed IDs and correct the actual count dynamically.",
+   "owner": "O01"
+  },
+  "O006": {
+   "agent_file": "33_ORPHAN_SWEEP_AGENT.md",
+   "description": "Create stable ORPHAN IDs for genuine uncovered items.",
+   "owner": "O01"
+  },
+  "O007": {
+   "agent_file": "33_ORPHAN_SWEEP_AGENT.md",
+   "description": "Assign owner, artifact, test, documentation, blocker, and disposition.",
+   "owner": "O01"
+  },
+  "O008": {
+   "agent_file": "33_ORPHAN_SWEEP_AGENT.md",
+   "description": "Issue a no-omission certificate only after independent verification.",
+   "owner": "O01"
+  },
+  "P001": {
+   "agent_file": "26_PRODUCT_PLATFORM_AND_CLAIMS_AGENT.md",
+   "description": "Define decorative, frequency-targeted, measured, calibrated, and research-specimen tiers.",
+   "owner": "P01"
+  },
+  "P002": {
+   "agent_file": "26_PRODUCT_PLATFORM_AND_CLAIMS_AGENT.md",
+   "description": "Define naming rules for target frequency, measured frequency, Q, and uncertainty.",
+   "owner": "P01"
+  },
+  "P003": {
+   "agent_file": "26_PRODUCT_PLATFORM_AND_CLAIMS_AGENT.md",
+   "description": "Create product configuration flow from family, material, geometry, symmetry, and mounting.",
+   "owner": "P01"
+  },
+  "P004": {
+   "agent_file": "26_PRODUCT_PLATFORM_AND_CLAIMS_AGENT.md",
+   "description": "Create evidence-backed product pages and disclaimers.",
+   "owner": "P01"
+  },
+  "P005": {
+   "agent_file": "26_PRODUCT_PLATFORM_AND_CLAIMS_AGENT.md",
+   "description": "Define serial, certificate, retest, and warranty boundaries.",
+   "owner": "P01"
+  },
+  "P006": {
+   "agent_file": "26_PRODUCT_PLATFORM_AND_CLAIMS_AGENT.md",
+   "description": "Create cost models for fabrication, testing, trimming, and certification.",
+   "owner": "P01"
+  },
+  "P007": {
+   "agent_file": "26_PRODUCT_PLATFORM_AND_CLAIMS_AGENT.md",
+   "description": "Define research-kit and open-design licensing options.",
+   "owner": "P01"
+  },
+  "P008": {
+   "agent_file": "26_PRODUCT_PLATFORM_AND_CLAIMS_AGENT.md",
+   "description": "Create a claim review gate that rejects therapeutic, consciousness, or anomalous-field claims without evidence.",
+   "owner": "P01"
+  },
+  "P009": {
+   "agent_file": "47_OPEN_COMMONS_COMMERCIAL_ASSURANCE_AGENT.md",
+   "description": "Define a complete useful open commons core for local Hydrogenuine operation.",
+   "owner": "P02"
+  },
+  "P010": {
+   "agent_file": "47_OPEN_COMMONS_COMMERCIAL_ASSURANCE_AGENT.md",
+   "description": "Define commercial assurance layers without making them prerequisites for the basic agent.",
+   "owner": "P02"
+  },
+  "P011": {
+   "agent_file": "47_OPEN_COMMONS_COMMERCIAL_ASSURANCE_AGENT.md",
+   "description": "Create a no-artificial-scarcity test for local operation, memory ownership, and subscription independence.",
+   "owner": "P02"
+  },
+  "P012": {
+   "agent_file": "47_OPEN_COMMONS_COMMERCIAL_ASSURANCE_AGENT.md",
+   "description": "Define ownership, export, deletion, revocation, portability, inspection, and consent for fingerprinting data.",
+   "owner": "P02"
+  },
+  "P013": {
+   "agent_file": "47_OPEN_COMMONS_COMMERCIAL_ASSURANCE_AGENT.md",
+   "description": "Produce a licensing and governance decision matrix and flag legal questions for counsel.",
+   "owner": "P02"
+  },
+  "P014": {
+   "agent_file": "47_OPEN_COMMONS_COMMERCIAL_ASSURANCE_AGENT.md",
+   "description": "Define anti-surveillance, telemetry, connector, and cloud-dependency rules.",
+   "owner": "P02"
+  },
+  "P015": {
+   "agent_file": "47_OPEN_COMMONS_COMMERCIAL_ASSURANCE_AGENT.md",
+   "description": "Create sustainable business models based on assurance and service rather than withholding the substrate.",
+   "owner": "P02"
+  },
+  "P016": {
+   "agent_file": "47_OPEN_COMMONS_COMMERCIAL_ASSURANCE_AGENT.md",
+   "description": "Produce a commons charter, commercial boundary, threat model, and repository migration plan.",
+   "owner": "P02"
+  },
+  "Q001": {
+   "agent_file": "19_SPIN_ELECTRIC_EXCHANGE_MODEL_AGENT.md",
+   "description": "Implement the logarithmic exchange-field relation with declared units and domains.",
+   "owner": "Q01"
+  },
+  "Q002": {
+   "agent_file": "19_SPIN_ELECTRIC_EXCHANGE_MODEL_AGENT.md",
+   "description": "Implement resonance-frequency shift and sign reversal with tip polarization.",
+   "owner": "Q01"
+  },
+  "Q003": {
+   "agent_file": "19_SPIN_ELECTRIC_EXCHANGE_MODEL_AGENT.md",
+   "description": "Implement linewidth or decoherence growth near stronger tunnelling.",
+   "owner": "Q01"
+  },
+  "Q004": {
+   "agent_file": "19_SPIN_ELECTRIC_EXCHANGE_MODEL_AGENT.md",
+   "description": "Implement Rabi chevrons under frequency and voltage detuning.",
+   "owner": "Q01"
+  },
+  "Q005": {
+   "agent_file": "19_SPIN_ELECTRIC_EXCHANGE_MODEL_AGENT.md",
+   "description": "Implement a coupled two-spin model with local detuning and approximately fixed inter-spin splitting.",
+   "owner": "Q01"
+  },
+  "Q006": {
+   "agent_file": "19_SPIN_ELECTRIC_EXCHANGE_MODEL_AGENT.md",
+   "description": "Implement a tunability-times-coherence operating-point optimizer.",
+   "owner": "Q01"
+  },
+  "Q007": {
+   "agent_file": "19_SPIN_ELECTRIC_EXCHANGE_MODEL_AGENT.md",
+   "description": "Reproduce selected qualitative and quantitative paper figures from declared parameters.",
+   "owner": "Q01"
+  },
+  "Q008": {
+   "agent_file": "19_SPIN_ELECTRIC_EXCHANGE_MODEL_AGENT.md",
+   "description": "Create a strict material and apparatus transfer firewall.",
+   "owner": "Q01"
+  },
+  "Q009": {
+   "agent_file": "20_TRIANGULAR_MANY_BODY_TRANSPORT_AGENT.md",
+   "description": "Implement an eight-state constrained three-site occupancy model.",
+   "owner": "Q02"
+  },
+  "Q010": {
+   "agent_file": "20_TRIANGULAR_MANY_BODY_TRANSPORT_AGENT.md",
+   "description": "Implement on-site energy, inter-site capacitive coupling, negligible direct hopping, and tip-position gating.",
+   "owner": "Q02"
+  },
+  "Q011": {
+   "agent_file": "20_TRIANGULAR_MANY_BODY_TRANSPORT_AGENT.md",
+   "description": "Solve non-equilibrium populations with a Pauli master equation.",
+   "owner": "Q02"
+  },
+  "Q012": {
+   "agent_file": "20_TRIANGULAR_MANY_BODY_TRANSPORT_AGENT.md",
+   "description": "Calculate current, differential conductance, total charge, and site occupancy.",
+   "owner": "Q02"
+  },
+  "Q013": {
+   "agent_file": "20_TRIANGULAR_MANY_BODY_TRANSPORT_AGENT.md",
+   "description": "Classify transitions as net-charge change or internal redistribution.",
+   "owner": "Q02"
+  },
+  "Q014": {
+   "agent_file": "20_TRIANGULAR_MANY_BODY_TRANSPORT_AGENT.md",
+   "description": "Explore symmetry, chirality, orbital-shape, and tip-position effects.",
+   "owner": "Q02"
+  },
+  "Q015": {
+   "agent_file": "20_TRIANGULAR_MANY_BODY_TRANSPORT_AGENT.md",
+   "description": "Detect negative differential conductance caused by population trapping.",
+   "owner": "Q02"
+  },
+  "Q016": {
+   "agent_file": "20_TRIANGULAR_MANY_BODY_TRANSPORT_AGENT.md",
+   "description": "Create an interpretation firewall for spatial ring and flower patterns.",
+   "owner": "Q02"
+  },
+  "Q017": {
+   "agent_file": "21_HONEYCOMB_VHS_NEMATIC_AGENT.md",
+   "description": "Implement a honeycomb tight-binding baseline with Dirac points and M-point saddle points.",
+   "owner": "Q03"
+  },
+  "Q018": {
+   "agent_file": "21_HONEYCOMB_VHS_NEMATIC_AGENT.md",
+   "description": "Implement lattice-expansion or hopping-reduction sweeps and quantify bandwidth narrowing.",
+   "owner": "Q03"
+  },
+  "Q019": {
+   "agent_file": "21_HONEYCOMB_VHS_NEMATIC_AGENT.md",
+   "description": "Calculate density of states and extended saddle-point sensitivity.",
+   "owner": "Q03"
+  },
+  "Q020": {
+   "agent_file": "21_HONEYCOMB_VHS_NEMATIC_AGENT.md",
+   "description": "Implement a controlled C6-to-C2 hopping perturbation and nematic observable.",
+   "owner": "Q03"
+  },
+  "Q021": {
+   "agent_file": "21_HONEYCOMB_VHS_NEMATIC_AGENT.md",
+   "description": "Generate QPI-inspired geometric response proxies without claiming electronic equivalence.",
+   "owner": "Q03"
+  },
+  "Q022": {
+   "agent_file": "21_HONEYCOMB_VHS_NEMATIC_AGENT.md",
+   "description": "Search resonator lattices for mode clustering, saddle points, and degeneracy splitting.",
+   "owner": "Q03"
+  },
+  "Q023": {
+   "agent_file": "21_HONEYCOMB_VHS_NEMATIC_AGENT.md",
+   "description": "Design matched sixfold and twofold perturbation controls.",
+   "owner": "Q03"
+  },
+  "Q024": {
+   "agent_file": "21_HONEYCOMB_VHS_NEMATIC_AGENT.md",
+   "description": "Create a transfer map from electronic lattice concepts to mechanical/electrical metamaterial questions.",
+   "owner": "Q03"
+  },
+  "Q025": {
+   "agent_file": "22_GEOMETRIC_FILTRATION_SOLVER_AGENT.md",
+   "description": "Implement a generic problem-component filtration metadata scheme.",
+   "owner": "Q04"
+  },
+  "Q026": {
+   "agent_file": "22_GEOMETRIC_FILTRATION_SOLVER_AGENT.md",
+   "description": "Classify equations by geometry, pole/singularity order, coupling order, and implementation depth.",
+   "owner": "Q04"
+  },
+  "Q027": {
+   "agent_file": "22_GEOMETRIC_FILTRATION_SOLVER_AGENT.md",
+   "description": "Experiment with basis ordering that prioritizes localized or simpler subproblems.",
+   "owner": "Q04"
+  },
+  "Q028": {
+   "agent_file": "22_GEOMETRIC_FILTRATION_SOLVER_AGENT.md",
+   "description": "Separate nuisance parameter dependence before expensive symbolic or numerical reduction.",
+   "owner": "Q04"
+  },
+  "Q029": {
+   "agent_file": "22_GEOMETRIC_FILTRATION_SOLVER_AGENT.md",
+   "description": "Benchmark expression size, matrix sparsity, conditioning, and runtime before and after reordering.",
+   "owner": "Q04"
+  },
+  "Q030": {
+   "agent_file": "22_GEOMETRIC_FILTRATION_SOLVER_AGENT.md",
+   "description": "Create a factorization interface analogous in spirit to epsilon-factorized systems.",
+   "owner": "Q04"
+  },
+  "Q031": {
+   "agent_file": "22_GEOMETRIC_FILTRATION_SOLVER_AGENT.md",
+   "description": "Document conjectural versus proven properties of the new ordering.",
+   "owner": "Q04"
+  },
+  "Q032": {
+   "agent_file": "22_GEOMETRIC_FILTRATION_SOLVER_AGENT.md",
+   "description": "Apply the method to at least one RGCS model where it yields a measurable benefit or an honest null.",
+   "owner": "Q04"
+  },
+  "Q033": {
+   "agent_file": "23_MECHANISM_DISCRIMINATION_AGENT.md",
+   "description": "Create a mechanism candidate registry for each observable.",
+   "owner": "Q05"
+  },
+  "Q034": {
+   "agent_file": "23_MECHANISM_DISCRIMINATION_AGENT.md",
+   "description": "Map each mechanism to unique predictions, controls, nuisance variables, and failure conditions.",
+   "owner": "Q05"
+  },
+  "Q035": {
+   "agent_file": "23_MECHANISM_DISCRIMINATION_AGENT.md",
+   "description": "Distinguish total generation from redistribution, mode conversion, and transfer-function change.",
+   "owner": "Q05"
+  },
+  "Q036": {
+   "agent_file": "23_MECHANISM_DISCRIMINATION_AGENT.md",
+   "description": "Create sign-reversal, phase, geometry, temperature, load, distance, and sham controls.",
+   "owner": "Q05"
+  },
+  "Q037": {
+   "agent_file": "23_MECHANISM_DISCRIMINATION_AGENT.md",
+   "description": "Implement model comparison with preregistered metrics and complexity penalties.",
+   "owner": "Q05"
+  },
+  "Q038": {
+   "agent_file": "23_MECHANISM_DISCRIMINATION_AGENT.md",
+   "description": "Track mechanism identifiability and unresolved degeneracy.",
+   "owner": "Q05"
+  },
+  "Q039": {
+   "agent_file": "23_MECHANISM_DISCRIMINATION_AGENT.md",
+   "description": "Generate experimental decision trees for PCB, printed, MEMS, and crystal specimens.",
+   "owner": "Q05"
+  },
+  "Q040": {
+   "agent_file": "23_MECHANISM_DISCRIMINATION_AGENT.md",
+   "description": "Add public-language guards against mechanism overstatement.",
+   "owner": "Q05"
+  },
+  "Q041": {
+   "agent_file": "24_UNIFIED_REDUCED_MODEL_PLAYGROUND_AGENT.md",
+   "description": "Define a common state, parameter, observable, control, and provenance schema.",
+   "owner": "Q06"
+  },
+  "Q042": {
+   "agent_file": "24_UNIFIED_REDUCED_MODEL_PLAYGROUND_AGENT.md",
+   "description": "Implement adapters for oscillator, master-equation, lattice, spin, and coherent-field models.",
+   "owner": "Q06"
+  },
+  "Q043": {
+   "agent_file": "24_UNIFIED_REDUCED_MODEL_PLAYGROUND_AGENT.md",
+   "description": "Compare redistribution, resonance shift, mode splitting, and symmetry breaking across models.",
+   "owner": "Q06"
+  },
+  "Q044": {
+   "agent_file": "24_UNIFIED_REDUCED_MODEL_PLAYGROUND_AGENT.md",
+   "description": "Create dimensionless normalizations with explicit loss of physical units.",
+   "owner": "Q06"
+  },
+  "Q045": {
+   "agent_file": "24_UNIFIED_REDUCED_MODEL_PLAYGROUND_AGENT.md",
+   "description": "Build interactive or scripted parameter sweeps and bifurcation maps.",
+   "owner": "Q06"
+  },
+  "Q046": {
+   "agent_file": "24_UNIFIED_REDUCED_MODEL_PLAYGROUND_AGENT.md",
+   "description": "Create null models and randomized controls.",
+   "owner": "Q06"
+  },
+  "Q047": {
+   "agent_file": "24_UNIFIED_REDUCED_MODEL_PLAYGROUND_AGENT.md",
+   "description": "Export hypothesis-generating observations back to domain agents without upgrading evidence.",
+   "owner": "Q06"
+  },
+  "Q048": {
+   "agent_file": "24_UNIFIED_REDUCED_MODEL_PLAYGROUND_AGENT.md",
+   "description": "Create one cross-model case study and one demonstration of why similar pictures can have different mechanisms.",
+   "owner": "Q06"
+  },
+  "Q049": {
+   "agent_file": "31_ADVERSARIAL_QA_AGENT.md",
+   "description": "Attack coverage rows that contain paths but no real symbols, tests, or documents.",
+   "owner": "Q07"
+  },
+  "Q050": {
+   "agent_file": "31_ADVERSARIAL_QA_AGENT.md",
+   "description": "Attack reference models presented as quartz mechanisms.",
+   "owner": "Q07"
+  },
+  "Q051": {
+   "agent_file": "31_ADVERSARIAL_QA_AGENT.md",
+   "description": "Attack targeted frequencies presented as measured or certified.",
+   "owner": "Q07"
+  },
+  "Q052": {
+   "agent_file": "31_ADVERSARIAL_QA_AGENT.md",
+   "description": "Attack trim algorithms for overshoot, mode switching, and post-hoc target changes.",
+   "owner": "Q07"
+  },
+  "Q053": {
+   "agent_file": "31_ADVERSARIAL_QA_AGENT.md",
+   "description": "Attack CAD, Gerber, toolpath, and certificate validity.",
+   "owner": "Q07"
+  },
+  "Q054": {
+   "agent_file": "31_ADVERSARIAL_QA_AGENT.md",
+   "description": "Attack private lore leakage and diagnosis language.",
+   "owner": "Q07"
+  },
+  "Q055": {
+   "agent_file": "31_ADVERSARIAL_QA_AGENT.md",
+   "description": "Attack product and documentary claims.",
+   "owner": "Q07"
+  },
+  "Q056": {
+   "agent_file": "31_ADVERSARIAL_QA_AGENT.md",
+   "description": "Attack safety capability bypasses and release drift.",
+   "owner": "Q07"
+  },
+  "R001": {
+   "agent_file": "08_CLOSED_LOOP_RESONATOR_PLATFORM_AGENT.md",
+   "description": "Define the end-to-end resonator lifecycle state machine.",
+   "owner": "R01"
+  },
+  "R002": {
+   "agent_file": "08_CLOSED_LOOP_RESONATOR_PLATFORM_AGENT.md",
+   "description": "Create stable identifiers for design, specimen, fixture, sweep, mode, trim operation, and certificate.",
+   "owner": "R01"
+  },
+  "R003": {
+   "agent_file": "08_CLOSED_LOOP_RESONATOR_PLATFORM_AGENT.md",
+   "description": "Specify interfaces among CAD, FEA, circuit, DAQ, optimizer, and provenance modules.",
+   "owner": "R01"
+  },
+  "R004": {
+   "agent_file": "08_CLOSED_LOOP_RESONATOR_PLATFORM_AGENT.md",
+   "description": "Implement resumable iteration with immutable measurement history.",
+   "owner": "R01"
+  },
+  "R005": {
+   "agent_file": "08_CLOSED_LOOP_RESONATOR_PLATFORM_AGENT.md",
+   "description": "Separate predicted, measured, fitted, and accepted frequencies.",
+   "owner": "R01"
+  },
+  "R006": {
+   "agent_file": "08_CLOSED_LOOP_RESONATOR_PLATFORM_AGENT.md",
+   "description": "Define rollback-safe handling for irreversible trims.",
+   "owner": "R01"
+  },
+  "R007": {
+   "agent_file": "08_CLOSED_LOOP_RESONATOR_PLATFORM_AGENT.md",
+   "description": "Create a simulator-backed digital twin for dry runs.",
+   "owner": "R01"
+  },
+  "R008": {
+   "agent_file": "08_CLOSED_LOOP_RESONATOR_PLATFORM_AGENT.md",
+   "description": "Deliver one complete synthetic design-to-certificate demonstration.",
+   "owner": "R01"
+  },
+  "R009": {
+   "agent_file": "09_CYMATIC_PCB_DESIGN_FOR_TRIM_AGENT.md",
+   "description": "Create radial tabs, concentric rings, paired islands, perforation cells, and edge-mass trim primitives.",
+   "owner": "R02"
+  },
+  "R010": {
+   "agent_file": "09_CYMATIC_PCB_DESIGN_FOR_TRIM_AGENT.md",
+   "description": "Mark mechanical, electrical, and mixed trim zones separately.",
+   "owner": "R02"
+  },
+  "R011": {
+   "agent_file": "09_CYMATIC_PCB_DESIGN_FOR_TRIM_AGENT.md",
+   "description": "Generate symmetric trim groups that preserve selected mode symmetry.",
+   "owner": "R02"
+  },
+  "R012": {
+   "agent_file": "09_CYMATIC_PCB_DESIGN_FOR_TRIM_AGENT.md",
+   "description": "Estimate each cell's mass, area, resistance, inductance, capacitance, and local modal sensitivity.",
+   "owner": "R02"
+  },
+  "R013": {
+   "agent_file": "09_CYMATIC_PCB_DESIGN_FOR_TRIM_AGENT.md",
+   "description": "Add optical fiducials, serial marks, test pads, coupons, and datum geometry.",
+   "owner": "R02"
+  },
+  "R014": {
+   "agent_file": "09_CYMATIC_PCB_DESIGN_FOR_TRIM_AGENT.md",
+   "description": "Generate matched sham-trim and randomized-pattern controls.",
+   "owner": "R02"
+  },
+  "R015": {
+   "agent_file": "09_CYMATIC_PCB_DESIGN_FOR_TRIM_AGENT.md",
+   "description": "Validate Gerber, drill, SVG, DXF, and preview agreement.",
+   "owner": "R02"
+  },
+  "R016": {
+   "agent_file": "09_CYMATIC_PCB_DESIGN_FOR_TRIM_AGENT.md",
+   "description": "Produce a first-generation manufacturable reference disk family.",
+   "owner": "R02"
+  },
+  "R017": {
+   "agent_file": "10_MEASUREMENT_JIG_AND_FIXTURE_AGENT.md",
+   "description": "Define interchangeable center-clamp, three-point, edge-clamp, nodal suspension, and free-edge fixture concepts.",
+   "owner": "R03"
+  },
+  "R018": {
+   "agent_file": "10_MEASUREMENT_JIG_AND_FIXTURE_AGENT.md",
+   "description": "Model fixture stiffness, damping, contact area, and preload effects.",
+   "owner": "R03"
+  },
+  "R019": {
+   "agent_file": "10_MEASUREMENT_JIG_AND_FIXTURE_AGENT.md",
+   "description": "Create repeatable orientation, datum, and sensor-placement systems.",
+   "owner": "R03"
+  },
+  "R020": {
+   "agent_file": "10_MEASUREMENT_JIG_AND_FIXTURE_AGENT.md",
+   "description": "Specify preload or torque measurement and calibration.",
+   "owner": "R03"
+  },
+  "R021": {
+   "agent_file": "10_MEASUREMENT_JIG_AND_FIXTURE_AGENT.md",
+   "description": "Add temperature, humidity, and fixture-state logging.",
+   "owner": "R03"
+  },
+  "R022": {
+   "agent_file": "10_MEASUREMENT_JIG_AND_FIXTURE_AGENT.md",
+   "description": "Design actuator isolation and cross-talk controls.",
+   "owner": "R03"
+  },
+  "R023": {
+   "agent_file": "10_MEASUREMENT_JIG_AND_FIXTURE_AGENT.md",
+   "description": "Create sham-remount and repeated-remount protocols.",
+   "owner": "R03"
+  },
+  "R024": {
+   "agent_file": "10_MEASUREMENT_JIG_AND_FIXTURE_AGENT.md",
+   "description": "Produce fabrication drawings, BOM, and assembly verification procedures.",
+   "owner": "R03"
+  },
+  "R025": {
+   "agent_file": "11_EXCITATION_READOUT_DAQ_AGENT.md",
+   "description": "Define piezo, shaker, acoustic, impulse, electromagnetic, and electrostatic excitation interfaces.",
+   "owner": "R04"
+  },
+  "R026": {
+   "agent_file": "11_EXCITATION_READOUT_DAQ_AGENT.md",
+   "description": "Define contact microphone, accelerometer, piezo pickup, laser vibrometer, optical lever, and impedance readout interfaces.",
+   "owner": "R04"
+  },
+  "R027": {
+   "agent_file": "11_EXCITATION_READOUT_DAQ_AGENT.md",
+   "description": "Implement synchronized sweep, amplitude, phase, and environmental metadata capture.",
+   "owner": "R04"
+  },
+  "R028": {
+   "agent_file": "11_EXCITATION_READOUT_DAQ_AGENT.md",
+   "description": "Implement calibration and transfer-function correction.",
+   "owner": "R04"
+  },
+  "R029": {
+   "agent_file": "11_EXCITATION_READOUT_DAQ_AGENT.md",
+   "description": "Implement resonance, antiresonance, linewidth, Q, coherence, and uncertainty fits.",
+   "owner": "R04"
+  },
+  "R030": {
+   "agent_file": "11_EXCITATION_READOUT_DAQ_AGENT.md",
+   "description": "Implement scanning or multi-point mode-shape acquisition.",
+   "owner": "R04"
+  },
+  "R031": {
+   "agent_file": "11_EXCITATION_READOUT_DAQ_AGENT.md",
+   "description": "Detect clipping, nonlinearity, heating, drift, and cross-talk.",
+   "owner": "R04"
+  },
+  "R032": {
+   "agent_file": "11_EXCITATION_READOUT_DAQ_AGENT.md",
+   "description": "Create synthetic fixtures and replayable DAQ sessions.",
+   "owner": "R04"
+  },
+  "R033": {
+   "agent_file": "12_LASER_CNC_TRIM_CONTROL_AGENT.md",
+   "description": "Create trim candidates from unused sacrificial cells.",
+   "owner": "R05"
+  },
+  "R034": {
+   "agent_file": "12_LASER_CNC_TRIM_CONTROL_AGENT.md",
+   "description": "Predict frequency, Q, symmetry, balance, and electrical consequences of each candidate.",
+   "owner": "R05"
+  },
+  "R035": {
+   "agent_file": "12_LASER_CNC_TRIM_CONTROL_AGENT.md",
+   "description": "Select conservative trim sets under overshoot and symmetry constraints.",
+   "owner": "R05"
+  },
+  "R036": {
+   "agent_file": "12_LASER_CNC_TRIM_CONTROL_AGENT.md",
+   "description": "Require operator approval and machine interlocks before physical execution.",
+   "owner": "R05"
+  },
+  "R037": {
+   "agent_file": "12_LASER_CNC_TRIM_CONTROL_AGENT.md",
+   "description": "Generate machine-specific toolpaths without assuming a universal laser process.",
+   "owner": "R05"
+  },
+  "R038": {
+   "agent_file": "12_LASER_CNC_TRIM_CONTROL_AGENT.md",
+   "description": "Record optical inspection, removed geometry, and uncertainty after each trim.",
+   "owner": "R05"
+  },
+  "R039": {
+   "agent_file": "12_LASER_CNC_TRIM_CONTROL_AGENT.md",
+   "description": "Update empirical sensitivity after remeasurement.",
+   "owner": "R05"
+  },
+  "R040": {
+   "agent_file": "12_LASER_CNC_TRIM_CONTROL_AGENT.md",
+   "description": "Stop automatically on mode loss, overshoot risk, damage, drift, or inconsistent response.",
+   "owner": "R05"
+  },
+  "R041": {
+   "agent_file": "13_BIDIRECTIONAL_TUNING_AGENT.md",
+   "description": "Model mass removal versus mass addition sensitivities.",
+   "owner": "R06"
+  },
+  "R042": {
+   "agent_file": "13_BIDIRECTIONAL_TUNING_AGENT.md",
+   "description": "Design removable calibration masses and deposition pads.",
+   "owner": "R06"
+  },
+  "R043": {
+   "agent_file": "13_BIDIRECTIONAL_TUNING_AGENT.md",
+   "description": "Model electrical capacitive, inductive, resistive, and bias tuning.",
+   "owner": "R06"
+  },
+  "R044": {
+   "agent_file": "13_BIDIRECTIONAL_TUNING_AGENT.md",
+   "description": "Model thermal and electrostatic reversible tuning where applicable.",
+   "owner": "R06"
+  },
+  "R045": {
+   "agent_file": "13_BIDIRECTIONAL_TUNING_AGENT.md",
+   "description": "Design coarse reversible tuning followed by fine permanent trim.",
+   "owner": "R06"
+  },
+  "R046": {
+   "agent_file": "13_BIDIRECTIONAL_TUNING_AGENT.md",
+   "description": "Quantify hysteresis, creep, aging, and reversibility.",
+   "owner": "R06"
+  },
+  "R047": {
+   "agent_file": "13_BIDIRECTIONAL_TUNING_AGENT.md",
+   "description": "Create multi-objective tuning strategies for frequency, Q, symmetry, and stability.",
+   "owner": "R06"
+  },
+  "R048": {
+   "agent_file": "13_BIDIRECTIONAL_TUNING_AGENT.md",
+   "description": "Produce one synthetic campaign demonstrating recovery from an otherwise overshooting trim.",
+   "owner": "R06"
+  },
+  "R049": {
+   "agent_file": "14_SERIALIZED_RESONATOR_CERTIFICATE_AGENT.md",
+   "description": "Define serial-number and specimen-identity rules.",
+   "owner": "R07"
+  },
+  "R050": {
+   "agent_file": "14_SERIALIZED_RESONATOR_CERTIFICATE_AGENT.md",
+   "description": "Bind design, CAD, Gerber, simulation, material lot, and measurement hashes.",
+   "owner": "R07"
+  },
+  "R051": {
+   "agent_file": "14_SERIALIZED_RESONATOR_CERTIFICATE_AGENT.md",
+   "description": "Record target, predicted, measured, fitted, and accepted mode values separately.",
+   "owner": "R07"
+  },
+  "R052": {
+   "agent_file": "14_SERIALIZED_RESONATOR_CERTIFICATE_AGENT.md",
+   "description": "Record fixture, temperature, humidity, calibration, and instrument provenance.",
+   "owner": "R07"
+  },
+  "R053": {
+   "agent_file": "14_SERIALIZED_RESONATOR_CERTIFICATE_AGENT.md",
+   "description": "Record every tuning action and before/after evidence.",
+   "owner": "R07"
+  },
+  "R054": {
+   "agent_file": "14_SERIALIZED_RESONATOR_CERTIFICATE_AGENT.md",
+   "description": "Create human-readable and machine-readable certificate renderings.",
+   "owner": "R07"
+  },
+  "R055": {
+   "agent_file": "14_SERIALIZED_RESONATOR_CERTIFICATE_AGENT.md",
+   "description": "Support certificate verification without private source access.",
+   "owner": "R07"
+  },
+  "R056": {
+   "agent_file": "14_SERIALIZED_RESONATOR_CERTIFICATE_AGENT.md",
+   "description": "Define revocation, supersession, and retest procedures.",
+   "owner": "R07"
+  },
+  "R057": {
+   "agent_file": "15_3D_PRINTED_MACRO_RESONATORS_AGENT.md",
+   "description": "Define printable bells, forks, rings, shells, membranes, spirals, cavities, and metamaterial cells.",
+   "owner": "R08"
+  },
+  "R058": {
+   "agent_file": "15_3D_PRINTED_MACRO_RESONATORS_AGENT.md",
+   "description": "Model anisotropy, layer orientation, infill, creep, moisture, temperature, and print defects.",
+   "owner": "R08"
+  },
+  "R059": {
+   "agent_file": "15_3D_PRINTED_MACRO_RESONATORS_AGENT.md",
+   "description": "Create material cards for common polymers, resins, ceramics, and silica routes.",
+   "owner": "R08"
+  },
+  "R060": {
+   "agent_file": "15_3D_PRINTED_MACRO_RESONATORS_AGENT.md",
+   "description": "Design print coupons for modulus, damping, density, and trim calibration.",
+   "owner": "R08"
+  },
+  "R061": {
+   "agent_file": "15_3D_PRINTED_MACRO_RESONATORS_AGENT.md",
+   "description": "Generate matched geometry controls across print orientations and materials.",
+   "owner": "R08"
+  },
+  "R062": {
+   "agent_file": "15_3D_PRINTED_MACRO_RESONATORS_AGENT.md",
+   "description": "Integrate design-for-trim features into printed structures.",
+   "owner": "R08"
+  },
+  "R063": {
+   "agent_file": "15_3D_PRINTED_MACRO_RESONATORS_AGENT.md",
+   "description": "Create a low-cost prototype campaign from print to measured certificate.",
+   "owner": "R08"
+  },
+  "R064": {
+   "agent_file": "15_3D_PRINTED_MACRO_RESONATORS_AGENT.md",
+   "description": "Define escalation criteria from polymer prototype to ceramic or silica research device.",
+   "owner": "R08"
+  },
+  "R065": {
+   "agent_file": "16_MEMS_NEMS_RESONATOR_AGENT.md",
+   "description": "Define microbeam, tuning-fork, ring, disk, membrane, and phononic-crystal device families.",
+   "owner": "R09"
+  },
+  "R066": {
+   "agent_file": "16_MEMS_NEMS_RESONATOR_AGENT.md",
+   "description": "Model anchor, thermoelastic, surface, gas, electrode, and package losses.",
+   "owner": "R09"
+  },
+  "R067": {
+   "agent_file": "16_MEMS_NEMS_RESONATOR_AGENT.md",
+   "description": "Model residual stress, process gradients, aging, contamination, and temperature coefficients.",
+   "owner": "R09"
+  },
+  "R068": {
+   "agent_file": "16_MEMS_NEMS_RESONATOR_AGENT.md",
+   "description": "Define capacitive, piezoresistive, piezoelectric, optical, and magnetic transduction options.",
+   "owner": "R09"
+  },
+  "R069": {
+   "agent_file": "16_MEMS_NEMS_RESONATOR_AGENT.md",
+   "description": "Define laser, FIB, annealing, electrode, deposition, and electrostatic tuning interfaces.",
+   "owner": "R09"
+  },
+  "R070": {
+   "agent_file": "16_MEMS_NEMS_RESONATOR_AGENT.md",
+   "description": "Create fabrication-process and foundry capability abstractions.",
+   "owner": "R09"
+  },
+  "R071": {
+   "agent_file": "16_MEMS_NEMS_RESONATOR_AGENT.md",
+   "description": "Create a microdevice digital-twin and synthetic wafer-variation campaign.",
+   "owner": "R09"
+  },
+  "R072": {
+   "agent_file": "16_MEMS_NEMS_RESONATOR_AGENT.md",
+   "description": "Define escalation from simulation to university/foundry collaboration without claiming local fabrication capability.",
+   "owner": "R09"
+  },
+  "R073": {
+   "agent_file": "17_OSCILLATOR_ELECTRONICS_PACKAGING_AGENT.md",
+   "description": "Implement Barkhausen-loop and negative-resistance oscillator abstractions.",
+   "owner": "R10"
+  },
+  "R074": {
+   "agent_file": "17_OSCILLATOR_ELECTRONICS_PACKAGING_AGENT.md",
+   "description": "Integrate BVD or modal plant models with sustaining electronics.",
+   "owner": "R10"
+  },
+  "R075": {
+   "agent_file": "17_OSCILLATOR_ELECTRONICS_PACKAGING_AGENT.md",
+   "description": "Model amplitude regulation, drive nonlinearity, and frequency pulling.",
+   "owner": "R10"
+  },
+  "R076": {
+   "agent_file": "17_OSCILLATOR_ELECTRONICS_PACKAGING_AGENT.md",
+   "description": "Model phase noise, frequency noise, and Allan deviation.",
+   "owner": "R10"
+  },
+  "R077": {
+   "agent_file": "17_OSCILLATOR_ELECTRONICS_PACKAGING_AGENT.md",
+   "description": "Model temperature compensation and oven or sensor control.",
+   "owner": "R10"
+  },
+  "R078": {
+   "agent_file": "17_OSCILLATOR_ELECTRONICS_PACKAGING_AGENT.md",
+   "description": "Model package stress, mounting, gas pressure, and aging.",
+   "owner": "R10"
+  },
+  "R079": {
+   "agent_file": "17_OSCILLATOR_ELECTRONICS_PACKAGING_AGENT.md",
+   "description": "Create startup, loss-of-oscillation, and spurious-mode diagnostics.",
+   "owner": "R10"
+  },
+  "R080": {
+   "agent_file": "17_OSCILLATOR_ELECTRONICS_PACKAGING_AGENT.md",
+   "description": "Produce one synthetic oscillator design and stability report.",
+   "owner": "R10"
+  },
+  "R081": {
+   "agent_file": "18_COMPOSITE_MODE_AND_OAM_RESONATOR_AGENT.md",
+   "description": "Implement a generic coherent sum of displaced and phase-shifted partial resonator fields.",
+   "owner": "R11"
+  },
+  "R082": {
+   "agent_file": "18_COMPOSITE_MODE_AND_OAM_RESONATOR_AGENT.md",
+   "description": "Compute angular Fourier or azimuthal mode distributions.",
+   "owner": "R11"
+  },
+  "R083": {
+   "agent_file": "18_COMPOSITE_MODE_AND_OAM_RESONATOR_AGENT.md",
+   "description": "Model paired counter-twisted, six-sector, three-pair, and circular-array designs.",
+   "owner": "R11"
+  },
+  "R084": {
+   "agent_file": "18_COMPOSITE_MODE_AND_OAM_RESONATOR_AGENT.md",
+   "description": "Explore phase-based even/odd and symmetry-family selection.",
+   "owner": "R11"
+  },
+  "R085": {
+   "agent_file": "18_COMPOSITE_MODE_AND_OAM_RESONATOR_AGENT.md",
+   "description": "Distinguish zero mean angular momentum from an unstructured zero-order mode.",
+   "owner": "R11"
+  },
+  "R086": {
+   "agent_file": "18_COMPOSITE_MODE_AND_OAM_RESONATOR_AGENT.md",
+   "description": "Design controls with randomized phases, separations, and amplitudes.",
+   "owner": "R11"
+  },
+  "R087": {
+   "agent_file": "18_COMPOSITE_MODE_AND_OAM_RESONATOR_AGENT.md",
+   "description": "Create trim strategies that correct composite-mode balance.",
+   "owner": "R11"
+  },
+  "R088": {
+   "agent_file": "18_COMPOSITE_MODE_AND_OAM_RESONATOR_AGENT.md",
+   "description": "Generate candidate PCB and printed-resonator layouts with predicted modal signatures.",
+   "owner": "R11"
+  },
+  "R089": {
+   "agent_file": "32_RELEASE_ENGINEERING_AGENT.md",
+   "description": "Determine the correct semantic version from the verified baseline.",
+   "owner": "R12"
+  },
+  "R090": {
+   "agent_file": "32_RELEASE_ENGINEERING_AGENT.md",
+   "description": "Update package, citation, changelog, README, docs, and asset metadata from one source of truth.",
+   "owner": "R12"
+  },
+  "R091": {
+   "agent_file": "32_RELEASE_ENGINEERING_AGENT.md",
+   "description": "Build source, proof, protocol, reference-model, and fabrication-example assets.",
+   "owner": "R12"
+  },
+  "R092": {
+   "agent_file": "32_RELEASE_ENGINEERING_AGENT.md",
+   "description": "Exclude private lore and private source material from public assets.",
+   "owner": "R12"
+  },
+  "R093": {
+   "agent_file": "32_RELEASE_ENGINEERING_AGENT.md",
+   "description": "Run focused, full, fresh-install, and hosted-CI tests.",
+   "owner": "R12"
+  },
+  "R094": {
+   "agent_file": "32_RELEASE_ENGINEERING_AGENT.md",
+   "description": "Publish an RC, verify downloaded assets, then publish the final immutable release.",
+   "owner": "R12"
+  },
+  "R095": {
+   "agent_file": "32_RELEASE_ENGINEERING_AGENT.md",
+   "description": "Fast-forward main only when safe and explicitly record the decision.",
+   "owner": "R12"
+  },
+  "R096": {
+   "agent_file": "32_RELEASE_ENGINEERING_AGENT.md",
+   "description": "Create final handoff with software completion versus physical and ethical blockers.",
+   "owner": "R12"
+  },
+  "R097": {
+   "agent_file": "44_RELEASE_ASSET_CHAIN_OF_CUSTODY_AGENT.md",
+   "description": "Verify the public v4.2.1 release from clean downloads, including filenames, hashes, embedded versions, documents, and privacy.",
+   "owner": "R13"
+  },
+  "R098": {
+   "agent_file": "44_RELEASE_ASSET_CHAIN_OF_CUSTODY_AGENT.md",
+   "description": "Replace shared mutable release staging with clean version-scoped or ephemeral staging.",
+   "owner": "R13"
+  },
+  "R099": {
+   "agent_file": "44_RELEASE_ASSET_CHAIN_OF_CUSTODY_AGENT.md",
+   "description": "Generate a canonical current-version asset inventory and reject mixed-version rows or filenames.",
+   "owner": "R13"
+  },
+  "R100": {
+   "agent_file": "44_RELEASE_ASSET_CHAIN_OF_CUSTODY_AGENT.md",
+   "description": "Bind every asset to commit, tag, command, environment, input manifest, and hash.",
+   "owner": "R13"
+  },
+  "R101": {
+   "agent_file": "44_RELEASE_ASSET_CHAIN_OF_CUSTODY_AGENT.md",
+   "description": "Add adversarial release tests for stale files, dirty trees, mixed archives, missing docs, and checksum contamination.",
+   "owner": "R13"
+  },
+  "R102": {
+   "agent_file": "44_RELEASE_ASSET_CHAIN_OF_CUSTODY_AGENT.md",
+   "description": "Download every published asset, recompute hashes, inspect archive contents, and compare with the manifest.",
+   "owner": "R13"
+  },
+  "R103": {
+   "agent_file": "44_RELEASE_ASSET_CHAIN_OF_CUSTODY_AGENT.md",
+   "description": "Enforce immutable fix-forward policy for defective public releases and tags.",
+   "owner": "R13"
+  },
+  "R104": {
+   "agent_file": "44_RELEASE_ASSET_CHAIN_OF_CUSTODY_AGENT.md",
+   "description": "Produce a reusable release chain-of-custody gate consumed by R12 and hosted CI.",
+   "owner": "R13"
+  },
+  "S001": {
+   "agent_file": "30_SAFETY_FABRICATION_AND_ETHICS_AGENT.md",
+   "description": "Create hazard classes and capability gates for every fabrication and excitation method.",
+   "owner": "S01"
+  },
+  "S002": {
+   "agent_file": "30_SAFETY_FABRICATION_AND_ETHICS_AGENT.md",
+   "description": "Define FR-4, copper, resin, ceramic, silica, and coating process hazards.",
+   "owner": "S01"
+  },
+  "S003": {
+   "agent_file": "30_SAFETY_FABRICATION_AND_ETHICS_AGENT.md",
+   "description": "Define enclosure, extraction, filtration, fire, eye, electrical, and interlock requirements.",
+   "owner": "S01"
+  },
+  "S004": {
+   "agent_file": "30_SAFETY_FABRICATION_AND_ETHICS_AGENT.md",
+   "description": "Define safe RF, ultrasound, mechanical, and thermal exposure limits as externally sourced placeholders pending jurisdiction-specific review.",
+   "owner": "S01"
+  },
+  "S005": {
+   "agent_file": "30_SAFETY_FABRICATION_AND_ETHICS_AGENT.md",
+   "description": "Define microfabrication and FIB collaboration safety boundaries.",
+   "owner": "S01"
+  },
+  "S006": {
+   "agent_file": "30_SAFETY_FABRICATION_AND_ETHICS_AGENT.md",
+   "description": "Require risk assessment before any machine-control capability is enabled.",
+   "owner": "S01"
+  },
+  "S007": {
+   "agent_file": "30_SAFETY_FABRICATION_AND_ETHICS_AGENT.md",
+   "description": "Maintain ethics gates for human loading and operator-state studies.",
+   "owner": "S01"
+  },
+  "S008": {
+   "agent_file": "30_SAFETY_FABRICATION_AND_ETHICS_AGENT.md",
+   "description": "Create incident, near-miss, and stop-work records.",
+   "owner": "S01"
+  },
+  "V001": {
+   "agent_file": "28_DOCUMENTARY_AND_PUBLIC_NARRATIVE_AGENT.md",
+   "description": "Create a chaptered documentary treatment from origin to current state.",
+   "owner": "V01"
+  },
+  "V002": {
+   "agent_file": "28_DOCUMENTARY_AND_PUBLIC_NARRATIVE_AGENT.md",
+   "description": "Create a visual timeline with commits, releases, ideas, and experimental blockers.",
+   "owner": "V01"
+  },
+  "V003": {
+   "agent_file": "28_DOCUMENTARY_AND_PUBLIC_NARRATIVE_AGENT.md",
+   "description": "Explain the evidence ladder in accessible language.",
+   "owner": "V01"
+  },
+  "V004": {
+   "agent_file": "28_DOCUMENTARY_AND_PUBLIC_NARRATIVE_AGENT.md",
+   "description": "Show examples of models that were corrected by tests and CI.",
+   "owner": "V01"
+  },
+  "V005": {
+   "agent_file": "28_DOCUMENTARY_AND_PUBLIC_NARRATIVE_AGENT.md",
+   "description": "Explain why intuition can generate leads while measurement decides claims.",
+   "owner": "V01"
+  },
+  "V006": {
+   "agent_file": "28_DOCUMENTARY_AND_PUBLIC_NARRATIVE_AGENT.md",
+   "description": "Create interview prompts for Andrew and future collaborators.",
+   "owner": "V01"
+  },
+  "V007": {
+   "agent_file": "28_DOCUMENTARY_AND_PUBLIC_NARRATIVE_AGENT.md",
+   "description": "Create a b-roll and visualization list using existing artifacts.",
+   "owner": "V01"
+  },
+  "V008": {
+   "agent_file": "28_DOCUMENTARY_AND_PUBLIC_NARRATIVE_AGENT.md",
+   "description": "Create short, medium, and long public versions with claim review.",
+   "owner": "V01"
+  },
+  "V009": {
+   "agent_file": "45_PUBLIC_FINDING_COMMUNICATION_AGENT.md",
+   "description": "Create a one-page versioned Eye computational claim card with exact model conditions and caveats.",
+   "owner": "V02"
+  },
+  "V010": {
+   "agent_file": "45_PUBLIC_FINDING_COMMUNICATION_AGENT.md",
+   "description": "Create short, medium, and technical share texts that preserve computational versus physical distinctions.",
+   "owner": "V02"
+  },
+  "V011": {
+   "agent_file": "45_PUBLIC_FINDING_COMMUNICATION_AGENT.md",
+   "description": "Create a public correction ledger linking superseded statements to correcting evidence.",
+   "owner": "V02"
+  },
+  "V012": {
+   "agent_file": "45_PUBLIC_FINDING_COMMUNICATION_AGENT.md",
+   "description": "Implement a claim linter for physical-confirmation and nonexistence overclaims.",
+   "owner": "V02"
+  },
+  "V013": {
+   "agent_file": "45_PUBLIC_FINDING_COMMUNICATION_AGENT.md",
+   "description": "Create a public reproducibility route from claim to immutable source, commands, outputs, and status.",
+   "owner": "V02"
+  },
+  "V014": {
+   "agent_file": "45_PUBLIC_FINDING_COMMUNICATION_AGENT.md",
+   "description": "Define community-response handling for replication, criticism, alternate interpretations, and defects.",
+   "owner": "V02"
+  },
+  "V015": {
+   "agent_file": "45_PUBLIC_FINDING_COMMUNICATION_AGENT.md",
+   "description": "Archive only approved public posts with date, wording, platform, and consent status.",
+   "owner": "V02"
+  },
+  "V016": {
+   "agent_file": "45_PUBLIC_FINDING_COMMUNICATION_AGENT.md",
+   "description": "Generate update notices when replication, QA, or a later release materially changes a finding.",
+   "owner": "V02"
+  },
+  "Y001": {
+   "agent_file": "06_EYE_POST_REFINEMENT_AGENT.md",
+   "description": "Import every mesh level, candidate coordinate, mode frequency, localization width, and solver diagnostic.",
+   "owner": "Y01"
+  },
+  "Y002": {
+   "agent_file": "06_EYE_POST_REFINEMENT_AGENT.md",
+   "description": "Track candidate identity across meshes using mode-shape overlap, not mode index alone.",
+   "owner": "Y01"
+  },
+  "Y003": {
+   "agent_file": "06_EYE_POST_REFINEMENT_AGENT.md",
+   "description": "Fit plausible convergence models for x, y, z, frequency, and uncertainty without extrapolation laundering.",
+   "owner": "Y01"
+  },
+  "Y004": {
+   "agent_file": "06_EYE_POST_REFINEMENT_AGENT.md",
+   "description": "Compare drift relative to both the canonical candidate and conventional station.",
+   "owner": "Y01"
+  },
+  "Y005": {
+   "agent_file": "06_EYE_POST_REFINEMENT_AGENT.md",
+   "description": "Separate numerical drift, mode switching, interpolation effects, and physical sensitivity.",
+   "owner": "Y01"
+  },
+  "Y006": {
+   "agent_file": "06_EYE_POST_REFINEMENT_AGENT.md",
+   "description": "Issue an evidence-classified final Eye verdict while preserving all prior records.",
+   "owner": "Y01"
+  },
+  "Y007": {
+   "agent_file": "06_EYE_POST_REFINEMENT_AGENT.md",
+   "description": "Generate a queued-compute plan for finer or alternative solves if discrimination remains unresolved.",
+   "owner": "Y01"
+  },
+  "Y008": {
+   "agent_file": "06_EYE_POST_REFINEMENT_AGENT.md",
+   "description": "Create public wording that reports the result without claiming coincidence, distinctness, or nonexistence beyond resolution.",
+   "owner": "Y01"
+  },
+  "Y009": {
+   "agent_file": "07_EYE_SOLVER_AND_RESOURCE_AGENT.md",
+   "description": "Calibrate memory and runtime models from observed mesh, matrix, factorization, and solve data.",
+   "owner": "Y02"
+  },
+  "Y010": {
+   "agent_file": "07_EYE_SOLVER_AND_RESOURCE_AGENT.md",
+   "description": "Separate mesh memory, sparse matrices, factorization fill-in, eigenvectors, and Python overhead.",
+   "owner": "Y02"
+  },
+  "Y011": {
+   "agent_file": "07_EYE_SOLVER_AND_RESOURCE_AGENT.md",
+   "description": "Predict resource ranges with confidence intervals rather than a single optimistic number.",
+   "owner": "Y02"
+  },
+  "Y012": {
+   "agent_file": "07_EYE_SOLVER_AND_RESOURCE_AGENT.md",
+   "description": "Evaluate iterative, contour, matrix-free, reduced-basis, local-refinement, and domain-decomposition alternatives.",
+   "owner": "Y02"
+  },
+  "Y013": {
+   "agent_file": "07_EYE_SOLVER_AND_RESOURCE_AGENT.md",
+   "description": "Assess whether adaptive local refinement actually preserves the target mode and global physics.",
+   "owner": "Y02"
+  },
+  "Y014": {
+   "agent_file": "07_EYE_SOLVER_AND_RESOURCE_AGENT.md",
+   "description": "Implement preflight refusal when projected memory exceeds a configurable safety fraction.",
+   "owner": "Y02"
+  },
+  "Y015": {
+   "agent_file": "07_EYE_SOLVER_AND_RESOURCE_AGENT.md",
+   "description": "Create reproducible job packages for larger-memory machines or remote HPC.",
+   "owner": "Y02"
+  },
+  "Y016": {
+   "agent_file": "07_EYE_SOLVER_AND_RESOURCE_AGENT.md",
+   "description": "Benchmark at least two solver paths on a smaller controlled case.",
+   "owner": "Y02"
+  },
+  "Y017": {
+   "agent_file": "43_EYE_INDEPENDENT_REPLICATION_AGENT.md",
+   "description": "Build a full-domain strain-energy cluster census for every retained mode and mesh level without seeding from named coordinates.",
+   "owner": "Y03"
+  },
+  "Y018": {
+   "agent_file": "43_EYE_INDEPENDENT_REPLICATION_AGENT.md",
+   "description": "Track modes and near-degenerate eigenspaces across meshes using MAC, subspace angles, frequency continuity, and symmetry.",
+   "owner": "Y03"
+  },
+  "Y019": {
+   "agent_file": "43_EYE_INDEPENDENT_REPLICATION_AGENT.md",
+   "description": "Match clusters across meshes by persistence, spatial overlap, energy fraction, and topology rather than nearest-point distance alone.",
+   "owner": "Y03"
+  },
+  "Y020": {
+   "agent_file": "43_EYE_INDEPENDENT_REPLICATION_AGENT.md",
+   "description": "Sweep threshold, smoothing, interpolation, neighborhood, weighting, and component rules and report verdict stability.",
+   "owner": "Y03"
+  },
+  "Y021": {
+   "agent_file": "43_EYE_INDEPENDENT_REPLICATION_AGENT.md",
+   "description": "Compare at least two discretization, solver, or post-processing paths.",
+   "owner": "Y03"
+  },
+  "Y022": {
+   "agent_file": "43_EYE_INDEPENDENT_REPLICATION_AGENT.md",
+   "description": "Run a bounded orientation, material, geometry, and boundary perturbation ensemble.",
+   "owner": "Y03"
+  },
+  "Y023": {
+   "agent_file": "43_EYE_INDEPENDENT_REPLICATION_AGENT.md",
+   "description": "Create a computational Eye claim card with exact commands, hashes, caveats, and prohibited interpretations.",
+   "owner": "Y03"
+  },
+  "Y024": {
+   "agent_file": "43_EYE_INDEPENDENT_REPLICATION_AGENT.md",
+   "description": "Issue an independent replication verdict while preserving all historical records.",
+   "owner": "Y03"
+  }
+ },
+ "note": "portable snapshot; the pack lives under gitignored internal-docs; orphans may increase the count",
+ "source": "03_EMERGENT_COVERAGE_LEDGER.md (Post-v4.2 Emergent Resonator Prompt Pack v2)",
+ "total": 280
+}

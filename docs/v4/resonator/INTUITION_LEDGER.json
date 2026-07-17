@@ -1,0 +1,58 @@
+{
+  "schema": "rgcs.intuition_ledger/1",
+  "append_only": true,
+  "rules": [
+    "capture the felt connection BEFORE deep reading",
+    "score every entry, including nulls and misleading leads",
+    "the metric is the full outcome distribution, never hits alone",
+    "retrospective entries are labelled and excluded from any skill claim"
+  ],
+  "outcome_vocabulary": ["USEFUL_TRANSFER", "WEAK_ANALOGY", "NULL", "MISLEADING", "PENDING"],
+  "entries": [
+    {
+      "id": "INT-2026-001",
+      "cohort": "RETROSPECTIVE_BASELINE",
+      "skill_evidence": false,
+      "paper": "10.1038/s41567-026-03353-w",
+      "felt_connection": "electrical tuning of a resonance with nonlinear thresholds — like trim sensitivity",
+      "outcome": "USEFUL_TRANSFER",
+      "adopted": "tunability-vs-linewidth bookkeeping (refmodels/spin_electric.py)"
+    },
+    {
+      "id": "INT-2026-002",
+      "cohort": "RETROSPECTIVE_BASELINE",
+      "skill_evidence": false,
+      "paper": "10.1038/s41467-026-75051-3",
+      "felt_connection": "patterns that come from internal rearrangement, not total change",
+      "outcome": "USEFUL_TRANSFER",
+      "adopted": "total-change/redistribution/transfer-function classification (discrimination tree)"
+    },
+    {
+      "id": "INT-2026-003",
+      "cohort": "RETROSPECTIVE_BASELINE",
+      "skill_evidence": false,
+      "paper": "10.1126/sciadv.aee3116",
+      "felt_connection": "geometry spacing reshaping what states exist",
+      "outcome": "USEFUL_TRANSFER",
+      "adopted": "spacing-tunes-bandwidth resonator-lattice design principle (honeycomb_vhs.py)"
+    },
+    {
+      "id": "INT-2026-004",
+      "cohort": "RETROSPECTIVE_BASELINE",
+      "skill_evidence": false,
+      "paper": "10.1103/pyt8-d7rt",
+      "felt_connection": "the right bookkeeping makes a hard system triangular",
+      "outcome": "WEAK_ANALOGY",
+      "adopted": "workflow demo only; no RGCS solve restructured; scored weak until a measured benefit exists"
+    },
+    {
+      "id": "INT-2026-005",
+      "cohort": "RETROSPECTIVE_BASELINE",
+      "skill_evidence": false,
+      "paper": "10.1063/5.0321755",
+      "felt_connection": "phase between two partial waves selecting mode families",
+      "outcome": "USEFUL_TRANSFER",
+      "adopted": "parity selection + azimuthal decomposition, computationally verified (composite_modes.py)"
+    }
+  ]
+}
