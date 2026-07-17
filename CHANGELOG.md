@@ -3,6 +3,85 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [4.2.1] — 2026-07-17
+
+Completeness audit of the v4.2 expansion. The `v4.2.0` tag stays
+immutable at `d253c2f` and is recorded as a CI-green tagged expansion
+candidate whose release publication was blocked before completion; it
+is superseded, not rewritten. All prior tags untouched.
+
+**Why this release exists.** v4.2.0 reported "coverage ledger 248/248,
+all gates green". That was true and meaningless at the same time: the
+gate verified that every ID had an owner *string* and an artifact
+*string*, both satisfiable with any nonempty text. Seven of the QA
+prompt's attacks succeeded against it.
+
+**Found and fixed (11 defects, no open P0/P1):**
+
+- **V4X-D-006 (P0)** C05 metrology was a registry of seller values
+  wearing an implemented workstream's status; no pipeline existed. New
+  `rscs2_core/metrology.py`: seller values cannot become measurements
+  (constructor-enforced), XRD returns `INTERFACE_ONLY` rather than
+  inferring axes from facets, malformed scans are refused not repaired.
+- **V4X-D-007 (P0)** consciousness-lane status laundering: 18 entries
+  claimed `REDUCED_ORDER_VALIDATED`, only 6 had models. Implemented 5
+  real models (ring attractor with saturation, phase-amplitude coupling
+  with surrogates, quantum order effects + parameter-free QQ equality +
+  classical comparator, subjective time); **downgraded 7** with the
+  reason recorded per entry. `model_symbol` now verified by test.
+- **V4X-D-012 (P1)** G42 verified strings → gates **G42A–G42G** verify
+  paths exist, symbols import, sources resolve, tests and docs exist,
+  status is legal for the delivered depth, and blocked rows name their
+  blocker and next action. 268 rows, all pass.
+- **V4X-D-010 (P1)** the P02 orphan sweep had never run. 20 orphans
+  registered with mandatory dispositions; coverage 248 → **268**.
+- **V4X-D-009 (P1)** 47 required standalone documents missing (1/38
+  agents complete) → ~50 documents written.
+- **V4X-D-005 (P1)** the cusp metric summed over path *samples*; a log
+  spiral crowds θ-uniform samples at its centre, so a **uniform** field
+  scored 0.695 concentration. Arc-length weighting fixed it, validated
+  against an independent analytic target (uniform → 0.0928 = the
+  arc-length fraction). Concentrated/uniform = **10.576×**, finite. The
+  audit's premise (that the >5× test was changed post-hoc) was wrong —
+  git history shows the threshold never moved.
+- **V4X-D-013 (P1)** nine frequency entries carried `CORE_VALIDATED` on
+  arithmetic identities; `F002: 20.480 kHz = 4096*5` read as a
+  validated resonance. Automatic **ARITHMETIC ONLY** note, enforced.
+- **V4X-D-008 (P1)** C01 lacked the mandatory strong-coupling
+  criterion. Added, verified against the complex eigenvalues.
+- **V4X-D-011 (P1)** "sub-millimetre refinement" ran at 8.0/5.5/4.5 mm.
+  Renamed honestly; a genuinely finer ladder was run.
+- **V4X-D-004 (P1)** release notes said 681 tests, the report said 682.
+  Counts now derive from a real pytest run into
+  `docs/v4/RELEASE_METADATA.json` and are guard-verified across docs.
+- **V4X-D-002 (P1)** the asset builder hardcoded its version.
+
+Also: BVD gains OSL calibration, multi-branch detection, identifiability
+reporting and SPICE export; the apparatus twin gains coil
+resistance/field/thermal/contact/transducer/cable models with the
+Biot-Savart map agreeing with the analytic formula to 1e-4.
+
+**The Eye is resolved, computationally, and the answer changed.** A
+finer ladder (3.0/2.0/1.5 mm, 30 816 dof) puts the halfwidth
+(1.803 mm) below the separation (6.298 mm) for the first time:
+`NEAR_CONVENTIONAL_NODE_BUT_DISTINCT` — the conventional model **does
+not explain** the candidate. The candidate also does not converge on
+the v4.1 coordinate: its distance from (−0.295, −0.205, 102.240) mm
+*grows* with resolution (1.375 → 2.270 → 2.476 mm), settling near
+(−0.048, −0.020, 99.78) mm. The canonical record is preserved unchanged
+(G07) — it faithfully records a ~4 mm-spacing computation — but it is
+resolution-limited, not converged. `cl=1.25` was not attempted:
+measured 13.9 GB at cl=1.5, projected ~45–71 GB against 31.6 GB of RAM,
+so the run stopped honestly. (The first resource estimate used the
+textbook dof^1.5 LU rule and was wrong by ~150x; it was corrected
+against the measurement.)
+
+**Unchanged and honest:** no measured data exists anywhere; every
+experimental campaign is protocol-only; E06/E07 are ethics-blocked; the
+Eye result is computational, on an ideal geometry, for one mode, with
+an assumed orientation — it is not evidence that any physical crystal
+does anything.
+
 ## [4.2.0] — 2026-07-16
 
 Master Research Expansion: the post-v4.1 backlog translated into
@@ -75,7 +154,15 @@ source laundering, future-interface coercion, quarantine leakage, ethics
 gate bypass, synthetic-as-measured, frequency near-miss rounding, and
 stale coverage. All repelled.
 
-Tests: 303 passing.
+Post-rc CI hardening (V4X-D-001/002/003): G51 consciousness-lane
+quarantine audit check (structural, AST-verified both directions);
+release-asset builder reads the version from pyproject instead of a
+hardcoded constant; the coverage contract is snapshotted into the
+repository (`docs/v4/V4X_LEDGER_IDS.json`) so CI and fresh clones can
+evaluate gate G42 without the gitignored prompt pack.
+
+Tests: 737 passing (1 archived-environment byte test deselected by
+policy D-V3-04). Hosted CI 10/10 green at the release commit.
 
 ## [4.1.1] — 2026-07-16
 

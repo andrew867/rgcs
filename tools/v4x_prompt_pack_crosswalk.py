@@ -309,7 +309,8 @@ AGENTS = {
     docs=[C + "HYDROGENUINE_SPATIAL_TEMPORAL_MEMORY.md"],
     tests=["tests/v4/test_v4x_consciousness.py"]),
  "T10": dict(
-    mission="consciousness programme, book spine, falsification map",
+    mission="quarantined lane: programme, book spine, falsification "
+            "map",
     coverage=["C040"],
     symbols=["consciousness_lane.theory_registry:coverage_map"],
     docs=[C + "RESONANT_STATE_CHANGE_BOOK.md",

@@ -172,11 +172,14 @@ ORPHANS = [
  ("ORPHAN-009", "'Singularity' at the cone cusp",
   "spiral-cone source notes", "REJECTED_BY_EVIDENCE", "DER",
   "rejected",
-  "REJECTED as stated: the cusp energy-concentration metric is "
-  "~1.44x, not divergent. A geometric point of high curvature is not "
-  "a physical singularity, and the FEA shows a finite, bounded "
-  "response. The G01 prompt forbids claiming a singularity; the "
-  "measurement agrees.",
+  "REJECTED as stated. The arc-length-weighted cusp concentration is "
+  "10.576x versus a uniform field: a real and useful focusing effect, "
+  "and a FINITE one. A singularity would diverge under refinement; "
+  "this does not. A geometric point of high curvature is not a "
+  "physical singularity. (An earlier unweighted metric reported "
+  "1.438x, but that number measured the theta-uniform sampling "
+  "density rather than the geometry and is superseded -- see "
+  "V4X-D-005.)",
   "docs/v4/SPIRAL_CONE_MODEL.md"),
  ("ORPHAN-010", "454 ohm non-frequency value",
   "master workbook", "NOT_APPLICABLE", "SRC", "rejected",

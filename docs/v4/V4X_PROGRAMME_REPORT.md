@@ -1,9 +1,24 @@
 # RGCS V4X — Master Research Expansion Programme report
 
 Baseline: RGCS v4.1.1 (v4.1.0 scientific baseline + documentation patch).
-Coverage contract: [V4X_COVERAGE_LEDGER.md](V4X_COVERAGE_LEDGER.md) —
-**248/248 ledger IDs disposed, gate G42 PASS**, enforced by
-`tests/v4/test_v4x_coverage_ledger.py`.
+Current release: **v4.2.1** (completeness-audited).
+
+Coverage contract: [V4X_COVERAGE_LEDGER.md](V4X_COVERAGE_LEDGER.md) +
+`V4X_COVERAGE_LEDGER_STRICT.json` — **268 items** (248 fixed ledger IDs
++ 20 orphans), gates **G42A–G42G** all PASS, enforced by
+`tests/v4/test_v4x_coverage_gates.py`.
+
+> **Audit note (v4.2.1).** An earlier version of this report led with
+> "248/248 ledger IDs disposed, gate G42 PASS". That statement was true
+> and hollow: the gate verified that each ID had an owner *string* and
+> an artifact *string*, which any nonempty text satisfies. The
+> completeness audit replaced it with gates that check that the paths
+> exist, the symbols import, the tests and documents exist, and the
+> status is legal for the depth actually delivered — then found that two
+> workstreams were registries wearing an implementation's status and
+> that the orphan sweep had never run. See
+> [V4X_QA_FINAL_VERDICT.md](V4X_QA_FINAL_VERDICT.md) and
+> [V4X_DEFECT_REGISTER.md](V4X_DEFECT_REGISTER.md).
 
 This programme translates the full post-v4.1 backlog into equations,
 observables, controls, uncertainty, failure conditions, and an honest
@@ -33,12 +48,20 @@ path is INTERFACE_ONLY. These are reference systems: an analogy in a
 polaritonic material is **not** evidence that the same mechanism occurs
 in alpha quartz, and no such mechanism has been imported.
 
-**Eye refinement (A07–A10)** — **INSUFFICIENT_RESOLUTION**. See
-[V4X_EYE_SUBMM_REFINEMENT.md](V4X_EYE_SUBMM_REFINEMENT.md). The mesh
-ladder did not resolve coincidence: the localization halfwidth
-(4.096 mm) remains comparable to the separation (4.149 mm). This neither
-refutes nor establishes distinctness from the conventional node. The
-canonical v4.1 record is preserved unchanged and is not superseded.
+**Eye refinement (A07–A10)** — **RESOLVED**:
+`NEAR_CONVENTIONAL_NODE_BUT_DISTINCT`. See
+[EYE_REFINEMENT_V5.md](EYE_REFINEMENT_V5.md). The v4.2.1 ladder
+(3.0/2.0/1.5 mm, 30 816 dof) puts the halfwidth (1.803 mm) below the
+separation (6.298 mm) by 3.5×, so the comparison finally carries
+information and the conventional model **does not explain** the
+candidate. The candidate does **not** converge on the v4.1 coordinate:
+its distance from it grows with resolution (1.375 → 2.270 → 2.476 mm),
+settling near (−0.048, −0.020, 99.78) mm. The canonical record is
+preserved unchanged (G07) and is now understood as resolution-limited
+rather than converged. Computational only; no measurement exists. The
+v4.2.0 preliminary ladder (mis-titled "sub-millimetre" at 4.5 mm) is
+retained at
+[V4X_EYE_SUBMM_REFINEMENT.md](V4X_EYE_SUBMM_REFINEMENT.md).
 
 **Harmonic family (A11, A12)** — CANDIDATE_NEW_COUPLING. L_N = 770.263671875/N
 mm for N = 5…12, with tolerance sensitivity and a prospective specimen
@@ -120,8 +143,11 @@ No consciousness record is usable as evidence in quartz computation.
 
 ## Limitations
 
-- The Eye sub-millimetre question is **open**. The refinement ladder ran
-  out of resolution before it ran out of question.
+- The Eye result is **computational**: an ideal geometry, the first
+  elastic mode, an assumed orientation (no XRD exists), a final
+  convergence shift of 0.207 mm, and a hardware ceiling at 1.5 mm
+  spacing (cl=1.25 projects to ~45–71 GB against 31.6 GB of RAM). A
+  resolvable cluster in a model is a property of the model.
 - Every experimental campaign is a protocol. None has been executed.
   There is no measured data anywhere in this programme.
 - Reference-system models (polaritons, magnons) are mathematics about

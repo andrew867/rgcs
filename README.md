@@ -4,12 +4,12 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21387947.svg)](https://doi.org/10.5281/zenodo.21387947)
 
-**Current release: [v4.2.0](https://github.com/andrew867/rgcs/releases/tag/v4.2.0)**
+**Current release: [v4.2.1](https://github.com/andrew867/rgcs/releases/tag/v4.2.1)**
 · includes RSCS 2.0 (capability-aware multiphysics) on the RSCS 1.0
 typed-mathematics layer · MIT license · Author: Andrew Green
 Frozen history: v2.0.0 (`archive/v2.0.0/`), v3.0.x, v4.0.0, v4.1.x — tags and
 records never modified. The DOI badge above is the latest **minted**
-DOI (v3.0.1); the v4.1.0 Zenodo record is pending human verification
+DOI (v3.0.1); the v4.x Zenodo records are pending human verification
 (see Citing).
 
 RGCS is a **reproducible research framework** for studying acoustic/mechanical
@@ -65,25 +65,47 @@ the project holds.
   tunnelling, nonclassical photon-statistics generation, photon creation
   from classical boundary switching, or a complete microscopic
   explanation of Eye candidates.
-- **Research expansion (v4.2.0):** the post-v4.1 backlog is translated
+- **Research expansion (v4.2.1):** the post-v4.1 backlog is translated
   into equations, protocols, controls, and honest statuses — see the
   [programme report](docs/v4/V4X_PROGRAMME_REPORT.md) and the
-  [coverage ledger](docs/v4/V4X_COVERAGE_LEDGER.md) (248/248 IDs
-  disposed). The experimental campaigns are **protocols only**: no
-  hardware was operated and no data was measured. The
+  [coverage ledger](docs/v4/V4X_COVERAGE_LEDGER.md). **268 items**
+  (248 fixed + 20 found by the orphan sweep) each carry an owner,
+  artifact, status, documentation, test-or-falsification, blocker, and
+  next action, verified mechanically by gates G42A–G42G. The
+  experimental campaigns are **protocols only**: no hardware was
+  operated and no data was measured. The
   [consciousness lane](consciousness_lane/) is a separate, quarantined
   research programme whose records may never be used as evidence in
-  quartz computation. The sub-millimetre
-  [Eye refinement](docs/v4/V4X_EYE_SUBMM_REFINEMENT.md) returned
-  **INSUFFICIENT_RESOLUTION** — it did not resolve whether the candidate
-  coincides with the conventional node, and the canonical v4.1 record
-  stands unchanged.
-- **Status at the release commit (`4c2a1cc`, v4.1.0):** 605 tests passed
+  quartz computation.
+- **Eye refinement (v4.2.1) — resolved, and the answer changed.** A
+  finer ladder (3.0/2.0/1.5 mm, 30 816 dof) puts the localization
+  halfwidth (**1.803 mm**) below the candidate-station separation
+  (**6.298 mm**) for the first time, so the comparison finally carries
+  information: `NEAR_CONVENTIONAL_NODE_BUT_DISTINCT` — **the
+  conventional model does not explain the candidate**. The candidate
+  also **does not converge on the v4.1 coordinate**: its distance from
+  (−0.295, −0.205, 102.240) mm *grows* with resolution (1.375 → 2.270 →
+  2.476 mm), settling near (−0.048, −0.020, 99.78) mm. The v4.1 record
+  is preserved unchanged (it faithfully records a ~4 mm-spacing
+  computation); what changes is its interpretation — that coordinate was
+  resolution-limited. Computational only; no measurement exists
+  ([Eye refinement V5](docs/v4/EYE_REFINEMENT_V5.md)).
+- **v4.2.1 is a completeness-audit release.** v4.2.0's "248/248
+  coverage" verified that every ID had an owner *string* — it never
+  checked that the work existed. Seven QA attacks succeeded against it:
+  two workstreams were registries wearing an implementation's status,
+  the orphan sweep had never run, and 47 required documents were
+  missing. All eleven defects are closed with regression tests
+  ([QA verdict](docs/v4/V4X_QA_FINAL_VERDICT.md),
+  [defect register](docs/v4/V4X_DEFECT_REGISTER.md)).
+- **Status at the release commit (v4.2.1):** 737 tests passed
   (1 archived-environment byte test deselected by policy D-V3-04);
   hosted CI 10/10 jobs green (Ubuntu/Windows/macOS); adversarial audit
-  19/19; proof bundle 115/115 checksums
-  ([proof bundle](proof_bundle_110mm/), regenerate with
-  `python -m rscs2_core.proofbundle`).
+  19/19 including the consciousness-lane quarantine check (G51);
+  coverage gates G42A–G42G pass over 268 rows; proof bundle 115/115
+  checksums ([proof bundle](proof_bundle_110mm/), regenerate with
+  `python -m rscs2_core.proofbundle`). The v4.1.0 scientific baseline
+  (`4c2a1cc`, 605 tests) is frozen and unchanged.
 - **iGPU:** Intel Iris Xe (fp32) parity 3.4e-05 and i5-1135G7 CPU-CL
   (fp64) parity 1.8e-14, measured on real hardware at v4.0.0 and
   unchanged; CUDA remains interface-only (no hardware).
@@ -175,7 +197,7 @@ git clone https://github.com/andrew867/rgcs && cd rgcs
 python -m pip install -e ".[dev]"
 python -m pip install "scikit-fem>=10" meshio matplotlib gmsh   # v4 solver stack
 python -m pytest -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic
-# expect: 681 passed, at the v4.2.0 release commit
+# expect: 737 passed, at the v4.2.1 release commit
 ```
 
 The v4 CLI entry point is `rgcs-v4` (or `python -m rscs2_core.cli`):
@@ -310,10 +332,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md), [SUPPORT.md](SUPPORT.md),
 
 See [`CITATION.cff`](CITATION.cff) (GitHub renders a "Cite this repository"
 button from it). Minted DOIs: 10.5281/zenodo.21387947 (v3.0.1 version DOI)
-and 10.5281/zenodo.21387946 (concept DOI, always latest). **The v4.1.0
-Zenodo record is pending human verification/publication** (see
-`docs/ZENODO_METADATA_V4.md`); its version DOI will be added to
-CITATION.cff in a follow-up commit once minted. Release provenance —
+and 10.5281/zenodo.21387946 (concept DOI, always latest). **The v4.x
+Zenodo records (v4.1.x, v4.2.0) are pending human
+verification/publication** (see `docs/ZENODO_METADATA_V4.md`); their
+version DOIs will be added to CITATION.cff in follow-up commits once
+minted. Release provenance —
 commit, environment, checksums, test evidence: the `PROVENANCE.json` and
 `SHA256SUMS.txt` assets on each GitHub release.
 

@@ -61,14 +61,46 @@ def test_wavelength_surface_and_one_pointed_translation():
     assert w["converges_to_origin"]
 
 
+def test_uniform_field_metric_equals_arclength_fraction():
+    """S008 acceptance control (V4X-D-005).
+
+    The justification for the arc-length weighting is NOT that it makes
+    the >5x test pass. It is that a UNIFORM field's concentration must
+    equal the fraction of ARC LENGTH inside the inner radius -- an
+    independent analytic target the metric cannot fit to.
+
+    The original unweighted metric failed this badly: it reported 0.695
+    for a uniform field because 69.5% of the theta-uniform SAMPLES fall
+    in the inner 10% radius, while only 9.3% of the arc length does. It
+    was measuring the sampling grid."""
+    path = sc.spiral_cone_path(40.0, 0.2, 80.0, 1.5, 6.0)
+    r = np.hypot(path[:, 0], path[:, 1])
+    inner = r <= 0.1 * r.max()
+    seg = np.linalg.norm(np.diff(path, axis=0), axis=1)
+    ds = np.zeros(len(path))
+    ds[:-1] += 0.5 * seg
+    ds[1:] += 0.5 * seg
+    arclen_fraction = ds[inner].sum() / ds.sum()
+    got = sc.cusp_response_metric(path, np.ones_like(r))
+    assert got == pytest.approx(arclen_fraction, rel=1e-9)
+    # and the sampling density is genuinely misleading: this is the
+    # trap the weighting exists to avoid
+    assert inner.mean() > 6 * arclen_fraction
+
+
 def test_cusp_overlap_and_merit():
     """S008/S009/S010."""
     path = sc.spiral_cone_path(40.0, 0.2, 80.0, 1.5, 6.0)
     r = np.hypot(path[:, 0], path[:, 1])
     concentrated = np.exp(-r / 2.0)
     uniform = np.ones_like(r)
+    # direction of effect against a matched control on the same path
     assert sc.cusp_response_metric(path, concentrated) > \
         5 * sc.cusp_response_metric(path, uniform)
+    # ...and the magnitude is FINITE: a singularity would diverge
+    ratio = sc.cusp_response_metric(path, concentrated) \
+        / sc.cusp_response_metric(path, uniform)
+    assert 5.0 < ratio < 100.0, "finite focusing, not a singularity"
     assert sc.mode_overlap(uniform, uniform) == pytest.approx(1.0)
     assert abs(sc.mode_overlap(np.sin(r), np.cos(r))) < 0.9
     merit = sc.geometry_merit(0.3, 0.8, 100.0)

@@ -83,11 +83,12 @@ def test_private_myth_orphans_stay_private():
 
 def test_rejected_orphan_cites_evidence():
     """A rejection must cite a measurement, not a preference: the cusp
-    'singularity' is rejected because the metric is finite (~1.44x)."""
+    'singularity' is rejected because the concentration is finite
+    (10.576x), not because it sounds implausible."""
     rep = sweep_mod.sweep()
     row = next(r for r in rep["rows"] if r["id"] == "ORPHAN-009")
     assert row["status"] == "REJECTED_BY_EVIDENCE"
-    assert "1.44" in row["note"]
+    assert "10.576" in row["note"] and "FINITE" in row["note"]
 
 
 def test_missing_capability_is_not_nonexistence():

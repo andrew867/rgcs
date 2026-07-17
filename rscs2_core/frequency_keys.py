@@ -18,7 +18,26 @@ from .research_records import make_record
 PHI = (1 + math.sqrt(5.0)) / 2.0
 
 
+# Kinds that are ARITHMETIC, not physical. An entry of one of these
+# kinds may be exactly true and still make no claim about any quartz
+# body. v4.2.1 audit (gate G42F): such an entry carrying
+# CORE_VALIDATED reads as "this frequency is a validated resonance",
+# which is the numerology trap wearing a status. The note below is
+# attached automatically so the record can never be quoted without it.
+ARITHMETIC_KINDS = ("arithmetic_motif", "harmonic_relation",
+                    "dimensionless_ratio",
+                    "angle_derived_numeric_motif",
+                    "non_frequency_value", "source_label")
+
+ARITHMETIC_ONLY_NOTE = (
+    "ARITHMETIC ONLY: the relation is exact by construction and is "
+    "validated AS ARITHMETIC. This is not a claim that the value is a "
+    "resonance of any quartz body, and no measurement supports one.")
+
+
 def _f(rid, title, kind, status, tags, **kw):
+    if kind in ARITHMETIC_KINDS and status == "CORE_VALIDATED":
+        kw.setdefault("arithmetic_only_note", ARITHMETIC_ONLY_NOTE)
     return make_record("FrequencyKeyRecord", rid, title,
                        "computational", status, tags,
                        frequency_kind=kind, **kw)

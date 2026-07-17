@@ -1,0 +1,69 @@
+{
+  "measured": [
+    {
+      "clmax_mm": 8.0,
+      "n_nodes": 198,
+      "n_tets": 545,
+      "dof": 594,
+      "mesh_seconds": 0.5948289999942062
+    },
+    {
+      "clmax_mm": 5.5,
+      "n_nodes": 444,
+      "n_tets": 1454,
+      "dof": 1332,
+      "mesh_seconds": 0.9299485000010463
+    },
+    {
+      "clmax_mm": 4.5,
+      "n_nodes": 728,
+      "n_tets": 2600,
+      "dof": 2184,
+      "mesh_seconds": 0.6997088000061922
+    },
+    {
+      "clmax_mm": 3.0,
+      "n_nodes": 1798,
+      "n_tets": 7309,
+      "dof": 5394,
+      "mesh_seconds": 0.8847910000040429
+    },
+    {
+      "clmax_mm": 2.0,
+      "n_nodes": 4850,
+      "n_tets": 22555,
+      "dof": 14550,
+      "mesh_seconds": 1.6060759000029066
+    },
+    {
+      "clmax_mm": 1.5,
+      "n_nodes": 10272,
+      "n_tets": 50829,
+      "dof": 30816,
+      "mesh_seconds": 3.0723154000006616
+    }
+  ],
+  "scaling_exponent": -2.7029452778364536,
+  "projection": {
+    "1.25": {
+      "projected_tets": 81049.97959319556,
+      "projected_dof": 69471.41107988192,
+      "projected_lu_memory_gb": 0.29297405558635076
+    },
+    "1.0": {
+      "projected_tets": 148147.85638664544,
+      "projected_dof": 126983.87690283895,
+      "projected_lu_memory_gb": 0.7240071514760258
+    },
+    "0.75": {
+      "projected_tets": 322402.1579351656,
+      "projected_dof": 276344.70680157054,
+      "projected_lu_memory_gb": 2.3243242228732552
+    },
+    "0.5": {
+      "projected_tets": 964634.9149181541,
+      "projected_dof": 826829.9270727035,
+      "projected_lu_memory_gb": 12.029408245714974
+    }
+  }
+}

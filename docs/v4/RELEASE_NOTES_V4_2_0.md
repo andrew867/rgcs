@@ -51,7 +51,7 @@ used anywhere; exact coincidence means the 1e-6 mm numerical tolerance.
 
 ```bash
 python -m pytest -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic
-# expect: 681 passed
+# expect: 682 passed
 python tools/v4x_coverage_ledger.py    # expect: coverage 248/248 G42=PASS
 ```
 

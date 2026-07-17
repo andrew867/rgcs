@@ -71,3 +71,23 @@ the registries.
 `ARCHITECTURE.md`, `MODEL_ASSUMPTIONS.md`, `SOURCE_DELTA_REPORT.md`,
 `MILESTONE.md` — each now carries a short "v3 Agent 08 addendum" section
 where the v3 programme extended it.
+
+## v4 documents (`docs/v4/`)
+
+The v4 programme keeps its documentation under `docs/v4/`. Current
+release: **v4.2.0**. Start with:
+
+| File | What it is |
+|---|---|
+| `v4/RELEASE_NOTES_V4_2_0.md` | (v4.2) what is in the release, and the explicit hardware/ethics blockers |
+| `v4/V4X_PROGRAMME_REPORT.md` | (v4.2) all research-expansion lanes and their honest statuses |
+| `v4/V4X_COVERAGE_LEDGER.md` | GENERATED — 248/248 backlog IDs with owner/artifact/status; regenerate via `tools/v4x_coverage_ledger.py` |
+| `v4/V4X_EYE_SUBMM_REFINEMENT.md` | (v4.2) the sub-mm Eye ladder: INSUFFICIENT_RESOLUTION, canonical record preserved |
+| `v4/WHAT_THIS_QUARTZ_MODEL_DOES_NOT_INCLUDE.md` | (binding) scope statement — read before citing any result |
+| `v4/EYE_NODE_COINCIDENCE_CORRECTION.md` | (v4.1) the V4C-D-001 uncertainty-aware node classification |
+| `v4/V4C_DECISION_LOG.md` | (living register) v4 binding decisions, DV4C-001 onward |
+| `v4/RGCS_V4_1_COMPLETION_MANUSCRIPT.md` | (v4.1) the completion manuscript |
+
+The consciousness research lane lives in `consciousness_lane/` at the
+repository root and is quarantined from quartz computation (audit check
+G51); its registry documents itself.

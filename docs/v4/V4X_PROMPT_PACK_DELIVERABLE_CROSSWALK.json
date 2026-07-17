@@ -1,10 +1,10 @@
 {
   "agents_audited": 38,
-  "complete": 1,
-  "incomplete": 37,
+  "complete": 38,
+  "incomplete": 0,
   "pack_present": true,
-  "missing_doc_count": 47,
-  "missing_symbol_count": 1,
+  "missing_doc_count": 0,
+  "missing_symbol_count": 0,
   "rows": [
     {
       "agent": "P00/P01",
@@ -20,12 +20,10 @@
         "tests/v4/test_v4c_provenance.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/V4X_PROMPT_PACK_DELIVERABLE_CROSSWALK.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "C01",
@@ -56,14 +54,10 @@
         "tests/v4/test_v4x_polariton_interfaces.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/POLARITON_MODEL.md",
-        "docs/v4/HOPFIELD_AND_RABI_CONTRACT.md",
-        "docs/v4/MAGNON_POLARITON_TRANSDUCTION.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "C02",
@@ -89,12 +83,10 @@
         "tests/v4/test_rscs2_eye.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/EYE_REFINEMENT_V5.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "C03",
@@ -117,12 +109,10 @@
         "tests/v4/test_v4x_harmonic_specimens.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/FAMILY_N5_N12.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "C04",
@@ -142,13 +132,10 @@
         "tests/v4/test_v4x_frequency_keys.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/TIMING_FAMILY_AUDIT.md",
-        "docs/v4/NUMEROLOGY_AND_LOOK_ELSEWHERE_AUDIT.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "C05",
@@ -177,13 +164,10 @@
         "tests/v4/test_v4x_depth_metrology_bvd_apparatus.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/METROLOGY_PROTOCOL.md",
-        "docs/v4/XRD_ORIENTATION_CONTRACT.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "C06",
@@ -210,12 +194,10 @@
         "tests/v4/test_v4x_depth_metrology_bvd_apparatus.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/BVD_EXTRACTION.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "C07",
@@ -243,12 +225,10 @@
         "tests/v4/test_v4x_depth_metrology_bvd_apparatus.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/APPARATUS_DIGITAL_TWIN.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "C08",
@@ -270,13 +250,10 @@
         "tests/v4/test_v4c_calibration.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/CALIBRATION_MASTER.md",
-        "docs/v4/INVERSE_DESIGN_CONTRACT.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "C13",
@@ -297,12 +274,10 @@
         "tests/v4/test_v4x_polariton_interfaces.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/FUTURE_MICROSCOPIC_SOLVERS.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "G01",
@@ -329,12 +304,10 @@
         "tests/v4/test_v4x_spiral_cymatic.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/SPIRAL_CONE_MODEL.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "G02",
@@ -360,12 +333,10 @@
         "tests/v4/test_v4x_spiral_cymatic.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/CYMATIC_PCB_MODEL.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "G03",
@@ -389,12 +360,10 @@
         "tests/v4/test_v4x_spiral_cymatic.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/FABRICATION_CONTRACT.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "E01",
@@ -414,12 +383,10 @@
         "tests/v4/test_v4x_protocols.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/experiments/ACOUSTIC_CAMPAIGN.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "E02",
@@ -439,12 +406,10 @@
         "tests/v4/test_v4x_protocols.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/experiments/ELECTRODE_PULSE_PROTOCOL.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "E03",
@@ -465,12 +430,10 @@
         "tests/v4/test_v4x_protocols.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/experiments/COIL_FIELD_CAMPAIGN.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "E04",
@@ -488,12 +451,10 @@
         "tests/v4/test_v4x_protocols.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/experiments/MATERIAL_COMPARISON.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "E05",
@@ -513,12 +474,10 @@
         "tests/v4/test_v4x_protocols.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/experiments/WATER_PROTOCOL.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "E06",
@@ -537,12 +496,10 @@
         "tests/v4/test_v4x_protocols.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/experiments/HUMAN_LOADING_MODEL.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "E07",
@@ -561,12 +518,10 @@
         "tests/v4/test_v4x_protocols.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/experiments/OPERATOR_STATE_PROTOCOL.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "E08",
@@ -587,12 +542,10 @@
         "tests/v4/test_v4x_protocols.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/experiments/BENCH_ARCHITECTURE.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "E09",
@@ -611,12 +564,10 @@
         "tests/v4/test_v4x_protocols.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/experiments/STAGED_BENCH_EXECUTION.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "T01",
@@ -637,12 +588,10 @@
         "tests/v4/test_v4x_consciousness.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/consciousness/RESONANT_STATE_CHANGE_FORMALISM.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "T02",
@@ -664,12 +613,10 @@
         "tests/v4/test_v4x_consciousness.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/consciousness/ARISAKA_AUDIT.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "T03",
@@ -688,12 +635,10 @@
         "tests/v4/test_v4x_consciousness.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/consciousness/MICROTUBULE_COHERENCE_AUDIT.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "T04",
@@ -711,12 +656,10 @@
         "tests/v4/test_v4x_consciousness.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/consciousness/THZ_INSTRUMENTATION_ROADMAP.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "T05",
@@ -743,12 +686,10 @@
         "tests/v4/test_v4x_consciousness.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/consciousness/SYNCHRONY_AND_MENTORSHIP.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "T06",
@@ -772,14 +713,10 @@
         "tests/v4/test_v4x_consciousness.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/consciousness/DREAM_WAKE_CONSTRAINT_THEORY.md",
-        "docs/v4/consciousness/OBSERVER_AND_PERMANENCE.md",
-        "docs/v4/consciousness/AURA_TRANSLATION.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "T07",
@@ -801,12 +738,10 @@
         "tests/v4/test_v4x_consciousness.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/consciousness/QUANTUM_COGNITION_AND_PHYSICS_BOUNDARY.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "T08",
@@ -827,12 +762,10 @@
         "tests/v4/test_v4x_consciousness.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/consciousness/PHENOMENOLOGY_AND_PRIVATE_MYTH_POLICY.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "T09",
@@ -851,16 +784,14 @@
         "tests/v4/test_v4x_consciousness.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/consciousness/HYDROGENUINE_SPATIAL_TEMPORAL_MEMORY.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "T10",
-      "mission": "consciousness programme, book spine, falsification map",
+      "mission": "quarantined lane: programme, book spine, falsification map",
       "coverage_ids": [
         "C040"
       ],
@@ -875,13 +806,10 @@
         "tests/v4/test_v4x_consciousness.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/consciousness/RESONANT_STATE_CHANGE_BOOK.md",
-        "docs/v4/consciousness/FALSIFICATION_MAP.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "D01",
@@ -898,12 +826,10 @@
         "tests/v4/test_v4x_records_safety.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/DATA_CONTRACT.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "S01",
@@ -920,12 +846,10 @@
         "tests/v4/test_v4x_records_safety.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/SAFETY_AND_ETHICS_MANUAL.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "R01",
@@ -960,13 +884,10 @@
         "tests/v4/test_v4x_qa_adversarial.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/V4X_QA_FINAL_VERDICT.md",
-        "docs/v4/V4X_DEFECT_REGISTER.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "R02",
@@ -980,12 +901,10 @@
         "tests/v4/test_v4x_coverage_ledger.py"
       ],
       "missing_symbols": [],
-      "missing_docs": [
-        "docs/v4/RELEASE_NOTES_V4_2_1.md"
-      ],
+      "missing_docs": [],
       "missing_tests": [],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "complete": true,
+      "status": "COMPLETE"
     },
     {
       "agent": "P02",
@@ -1001,18 +920,11 @@
       "required_tests": [
         "tests/v4/test_v4x_orphan_sweep.py"
       ],
-      "missing_symbols": [
-        "tools.v4x_orphan_sweep:sweep"
-      ],
-      "missing_docs": [
-        "docs/v4/ORPHAN_IDEA_REGISTER.md",
-        "docs/v4/V4X_NO_OMISSION_CERTIFICATE.md"
-      ],
-      "missing_tests": [
-        "tests/v4/test_v4x_orphan_sweep.py"
-      ],
-      "complete": false,
-      "status": "INCOMPLETE"
+      "missing_symbols": [],
+      "missing_docs": [],
+      "missing_tests": [],
+      "complete": true,
+      "status": "COMPLETE"
     }
   ]
 }
