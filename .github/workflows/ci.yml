@@ -57,7 +57,7 @@ jobs:
       - name: Install (declared dependencies from pyproject)
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -e ".[desktop,dev]"
+          python -m pip install -e ".[desktop,dev,workbook]"
           python -m pip install pypdf
           # v4 solver stack (tests/v4 in default testpaths; gmsh is an
           # external subprocess per DV4-006 — the pip wheel ships the
@@ -102,7 +102,7 @@ jobs:
         # (docs/V2_BASELINE_AUDIT.md: Linux/Py3.11/numpy 2.4.4).
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -e ".[desktop,dev]"
+          python -m pip install -e ".[desktop,dev,workbook]"
           python -m pip install pypdf "numpy==2.4.4" "scipy==1.17.1"
           python -m pip install "scikit-fem>=10" meshio matplotlib gmsh
       - name: Governance and schema lint
