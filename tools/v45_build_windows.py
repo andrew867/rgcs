@@ -75,12 +75,21 @@ def smoke_frozen() -> dict:
         return {"step": "smoke_frozen", "ok": False,
                 "blocker": "no frozen exe"}
     env = dict(os.environ, QT_QPA_PLATFORM="offscreen")
-    r = subprocess.run([str(exe), "--doctor"], capture_output=True,
-                       text=True, env=env, timeout=180)
-    ok = r.returncode == 0 and "RGCS Workbench diagnostics" in \
-        r.stdout
+    # --doctor: offline diagnostics; --smoke-check: constructs the full
+    # MainWindow (every panel) and runs a real background job, so it
+    # catches missing bundled data files that --doctor never touches.
+    doc = subprocess.run([str(exe), "--doctor"], capture_output=True,
+                         text=True, env=env, timeout=180)
+    smk = subprocess.run([str(exe), "--smoke-check"],
+                         capture_output=True, text=True, env=env,
+                         timeout=300)
+    ok = (doc.returncode == 0
+          and "RGCS Workbench diagnostics" in doc.stdout
+          and smk.returncode == 0
+          and "panels constructed OK" in smk.stdout)
     return {"step": "smoke_frozen", "ok": ok,
-            "doctor_tail": r.stdout[-300:]}
+            "doctor_tail": doc.stdout[-200:],
+            "smoke_tail": (smk.stdout or smk.stderr)[-400:]}
 
 
 def portable_zip(ver: str) -> dict:
@@ -119,8 +128,22 @@ def workbook_asset(ver: str) -> dict:
             "public": True}
 
 
-def inno_installer(ver: str) -> dict:
+def _find_iscc() -> str | None:
     iscc = shutil.which("iscc") or shutil.which("ISCC")
+    if iscc:
+        return iscc
+    # Inno Setup installs ISCC.exe here but does not add it to PATH.
+    for base in (os.environ.get("ProgramFiles(x86)", r"C:\Program Files (x86)"),
+                 os.environ.get("ProgramFiles", r"C:\Program Files")):
+        for ver_dir in ("Inno Setup 7", "Inno Setup 6", "Inno Setup 5"):
+            cand = Path(base) / ver_dir / "ISCC.exe"
+            if cand.exists():
+                return str(cand)
+    return None
+
+
+def inno_installer(ver: str) -> dict:
+    iscc = _find_iscc()
     if not iscc:
         return {"step": "inno_installer", "ok": False,
                 "blocker": "Inno Setup (iscc) not on PATH; the "

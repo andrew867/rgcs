@@ -1,2 +1,3 @@
-efc7b262ae47859c8460cabca816cb5d3be3e26c22b6f6e6070b257bec628b30  RGCS-Workbench-4.5.0-Windows-x64-portable.zip
-da9eaffcacbe0fcbce56d85a13c0db2ea198205375cd29415c6cff1f0b14ca8e  RGCS_Master_Evidence_Workbook.xlsx
+3feb8474f06279d8dcd0e55963b6d43cadee929f0813f432efd2d623ca3d8e67  RGCS-Workbench-4.5.0-Windows-x64-portable.zip
+21254ff0da4a22fff2663c0e5268fe38b506a45f0ad6d77a95f740686072273f  RGCS-Workbench-4.5.0-Windows-x64-Setup.exe
+b0b79139d5f3031c60d00b328d8d13e8f382333355e7f5533ff86958c7eed779  RGCS_Master_Evidence_Workbook.xlsx

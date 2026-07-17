@@ -20,10 +20,19 @@ block_cipher = None
 # anchor everything to the repo root (parent of packaging/) explicitly.
 ROOT = Path(SPECPATH).resolve().parent  # noqa: F821 (PyInstaller global)
 
-# data files the app + workbook generator need at runtime
+# data files the app + workbook generator need at runtime.
+# The desktop viewers resolve these relative to Path(__file__).parents[2],
+# which in a frozen build is the _internal dir; each dest below must
+# mirror the in-repo layout so those reads resolve.
 datas = [
     (str(ROOT / "rscs_core" / "registry"), "rscs_core/registry"),
     (str(ROOT / "rscs2_core" / "registry"), "rscs2_core/registry"),
+    # model browser + provenance graph
+    (str(ROOT / "docs" / "model_registry.yaml"), "docs"),
+    # provenance graph (equation ledger) + source/reference registries
+    (str(ROOT / "references"), "references"),
+    # experiment builder / manifest validation schemas
+    (str(ROOT / "experiments" / "schemas"), "experiments/schemas"),
 ]
 
 hiddenimports = [

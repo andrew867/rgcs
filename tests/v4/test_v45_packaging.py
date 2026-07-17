@@ -22,6 +22,23 @@ def test_pyinstaller_spec_and_entry_present():
     assert (ROOT / "packaging" / "workbench_entry.py").exists()
 
 
+def test_spec_bundles_runtime_data_the_desktop_reads():
+    """The desktop viewers read these REPO_ROOT-relative data trees at
+    runtime; the frozen build crashed on launch when they were absent
+    (model browser -> docs/model_registry.yaml). Guard that the spec
+    declares every one so a re-freeze can never silently drop them."""
+    spec = (ROOT / "packaging" / "RGCSWorkbench.spec").read_text(
+        encoding="utf-8")
+    for needed in ("model_registry.yaml", '"references"',
+                   "experiments", "rscs_core", "rscs2_core"):
+        assert needed in spec, f"spec no longer bundles {needed}"
+    # and the source files the spec points at must actually exist
+    assert (ROOT / "docs" / "model_registry.yaml").exists()
+    assert (ROOT / "references" / "equation_provenance.yaml").exists()
+    assert (ROOT / "experiments" / "schemas"
+            / "run_manifest.schema.json").exists()
+
+
 def test_inno_script_is_per_user_and_unsigned():
     iss = (ROOT / "packaging" / "RGCS_Workbench.iss").read_text(
         encoding="utf-8")

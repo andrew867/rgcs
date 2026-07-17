@@ -3,6 +3,31 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [4.5.1] — 2026-07-17
+
+Windows Workbench packaging patch on 4.5.0. No source logic or
+scientific claim changed; all prior tags untouched.
+
+The v4.5.0 portable build crashed on launch: the model-browser panel
+reads `docs/model_registry.yaml` (and the provenance graph reads
+`references/` and `experiments/schemas/`), none of which the
+PyInstaller spec bundled, so the frozen app raised `FileNotFoundError`
+while constructing its panels. `--doctor` returns before any panel is
+built, so the build check never saw it.
+
+Fixed: `packaging/RGCSWorkbench.spec` now bundles every runtime data
+tree the desktop reads (`docs/model_registry.yaml`, `references/`,
+`experiments/schemas/` alongside the two `registry/` trees), guarded by
+a new regression test; `tools/v45_build_windows.py` verifies the frozen
+exe with `--smoke-check` (constructs all 13 panels + a real background
+job), not just `--doctor`. New deliverable: a compiled per-user
+(unsigned) Inno Setup installer EXE; the silent install → launch →
+uninstall cycle was verified on a developer machine (not a clean VM —
+the clean-machine verdict is still not claimed).
+
+Tests: 939 passing (1 archived-environment byte test deselected by
+policy D-V3-04).
+
 ## [4.5.0] — 2026-07-17
 
 Windows Workbench, portable package, and Master Evidence Workbook
