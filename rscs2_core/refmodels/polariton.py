@@ -48,6 +48,41 @@ def hopfield_2x2(e_x_ev: float, e_c_ev: float, omega_rabi_ev: float,
             "hopfield_photon_fraction": [hop[1, 0], hop[1, 1]]}
 
 
+def strong_coupling_criterion(omega_rabi_ev: float,
+                              gamma_x_ev: float,
+                              gamma_c_ev: float) -> dict:
+    """C01 boundary rule: a splitting is only STRONG coupling when it
+    exceeds the losses. Two standard criteria are reported rather than
+    one, because they disagree in the intermediate regime and the
+    disagreement is the honest answer:
+
+      strict   : Omega_R > (gamma_x + gamma_c) / 2   (resolvable peaks)
+      standard : Omega_R > |gamma_x - gamma_c| / 2   (real splitting of
+                 the complex eigenvalues; the exceptional point)
+
+    At zero detuning the complex 2x2 eigenvalues split in the real axis
+    only when 4*(Omega_R/2)^2 > ((gamma_x-gamma_c)/2)^2, which is the
+    'standard' line; the peaks are only separately observable above the
+    'strict' line."""
+    gx, gc = float(gamma_x_ev), float(gamma_c_ev)
+    om = float(omega_rabi_ev)
+    strict = om > 0.5 * (gx + gc)
+    standard = om > 0.5 * abs(gx - gc)
+    if strict:
+        regime = "STRONG_COUPLING"
+    elif standard:
+        regime = "INTERMEDIATE_SPLIT_BUT_UNRESOLVED"
+    else:
+        regime = "WEAK_COUPLING"
+    return {"omega_rabi_ev": om, "gamma_x_ev": gx, "gamma_c_ev": gc,
+            "strict_criterion_met": bool(strict),
+            "standard_criterion_met": bool(standard),
+            "cooperativity": om * om / max(gx * gc, 1e-300),
+            "regime": regime,
+            "rule": "no strong-coupling claim without comparing the "
+                    "splitting to the linewidths (C01 boundary)"}
+
+
 def polariton_dispersion(material_id: str, e_x_ev: float,
                          e_c0_ev: float, omega_rabi_ev: float,
                          n_eff: float, theta_deg: np.ndarray,

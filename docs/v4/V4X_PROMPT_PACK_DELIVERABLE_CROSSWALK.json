@@ -1,0 +1,1018 @@
+{
+  "agents_audited": 38,
+  "complete": 1,
+  "incomplete": 37,
+  "pack_present": true,
+  "missing_doc_count": 47,
+  "missing_symbol_count": 1,
+  "rows": [
+    {
+      "agent": "P00/P01",
+      "mission": "repository baseline + source and equation provenance",
+      "coverage_ids": [],
+      "required_symbols": [
+        "rscs2_core.provenance_v4:ingest_file"
+      ],
+      "required_docs": [
+        "docs/v4/V4X_PROMPT_PACK_DELIVERABLE_CROSSWALK.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4c_provenance.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/V4X_PROMPT_PACK_DELIVERABLE_CROSSWALK.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "C01",
+      "mission": "exciton-photon polaritons and hybrid transduction",
+      "coverage_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06"
+      ],
+      "required_symbols": [
+        "rscs2_core.refmodels.polariton:hopfield_2x2",
+        "rscs2_core.refmodels.polariton:cavity_dispersion_ev",
+        "rscs2_core.refmodels.polariton:polariton_dispersion",
+        "rscs2_core.refmodels.polariton:hopfield_3x3",
+        "rscs2_core.refmodels.polariton:polarization_channel",
+        "rscs2_core.refmodels.polariton:strong_coupling_criterion",
+        "rscs2_core.refmodels.polariton:transduction_interface"
+      ],
+      "required_docs": [
+        "docs/v4/POLARITON_MODEL.md",
+        "docs/v4/HOPFIELD_AND_RABI_CONTRACT.md",
+        "docs/v4/MAGNON_POLARITON_TRANSDUCTION.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_polariton_interfaces.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/POLARITON_MODEL.md",
+        "docs/v4/HOPFIELD_AND_RABI_CONTRACT.md",
+        "docs/v4/MAGNON_POLARITON_TRANSDUCTION.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "C02",
+      "mission": "adaptive sub-millimetre Eye refinement",
+      "coverage_ids": [
+        "A07",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "required_symbols": [
+        "rscs2_core.eye_refinement:candidate_ladder",
+        "rscs2_core.eye_refinement:refined_verdict",
+        "rscs2_core.eye_refinement:driven_phase_diagnostics",
+        "rscs2_core.eye_refinement:frequency_sensitivity_map",
+        "rscs2_core.fem:harmonic_field"
+      ],
+      "required_docs": [
+        "docs/v4/EYE_REFINEMENT_V5.md",
+        "docs/v4/V4X_EYE_SUBMM_REFINEMENT.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_rscs2_eye.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/EYE_REFINEMENT_V5.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "C03",
+      "mission": "prospective N=5..12 crystal family",
+      "coverage_ids": [
+        "A11",
+        "A12"
+      ],
+      "required_symbols": [
+        "rscs2_core.harmonic_family:family_length_mm",
+        "rscs2_core.harmonic_family:build_family_member",
+        "rscs2_core.harmonic_family:family_table",
+        "rscs2_core.harmonic_family:tolerance_sensitivity",
+        "rscs2_core.harmonic_family:specimen_registry"
+      ],
+      "required_docs": [
+        "docs/v4/FAMILY_N5_N12.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_harmonic_specimens.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/FAMILY_N5_N12.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "C04",
+      "mission": "frequency, timing, angle, ratio, symbolic registry",
+      "coverage_ids": [
+        "A13"
+      ],
+      "required_symbols": [
+        "rscs2_core.frequency_keys:build_registry",
+        "rscs2_core.frequency_keys:coincidence_significance"
+      ],
+      "required_docs": [
+        "docs/v4/TIMING_FAMILY_AUDIT.md",
+        "docs/v4/NUMEROLOGY_AND_LOOK_ELSEWHERE_AUDIT.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_frequency_keys.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/TIMING_FAMILY_AUDIT.md",
+        "docs/v4/NUMEROLOGY_AND_LOOK_ELSEWHERE_AUDIT.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "C05",
+      "mission": "specimen metrology, orientation, material registry",
+      "coverage_ids": [
+        "G001",
+        "G015",
+        "G030"
+      ],
+      "required_symbols": [
+        "rscs2_core.metrology:specimen_record",
+        "rscs2_core.metrology:seller_vs_measured_delta",
+        "rscs2_core.metrology:mass_volume_consistency",
+        "rscs2_core.metrology:dimensional_record",
+        "rscs2_core.metrology:apex_angle_deg",
+        "rscs2_core.metrology:xrd_orientation_interface",
+        "rscs2_core.metrology:scan_to_mesh",
+        "rscs2_core.metrology:ideal_vs_scanned",
+        "rscs2_core.metrology:metrology_protocol"
+      ],
+      "required_docs": [
+        "docs/v4/METROLOGY_PROTOCOL.md",
+        "docs/v4/XRD_ORIENTATION_CONTRACT.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_depth_metrology_bvd_apparatus.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/METROLOGY_PROTOCOL.md",
+        "docs/v4/XRD_ORIENTATION_CONTRACT.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "C06",
+      "mission": "piezoelectric admittance and BVD extraction",
+      "coverage_ids": [
+        "A14",
+        "A15"
+      ],
+      "required_symbols": [
+        "rscs2_core.bvd:bvd_impedance",
+        "rscs2_core.bvd:derived_parameters",
+        "rscs2_core.bvd:extract_bvd",
+        "rscs2_core.bvd:osl_correct",
+        "rscs2_core.bvd:fit_uncertainty",
+        "rscs2_core.bvd:fit_multibranch",
+        "rscs2_core.bvd:electrode_loading",
+        "rscs2_core.bvd:to_spice"
+      ],
+      "required_docs": [
+        "docs/v4/BVD_EXTRACTION.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_bvd_apparatus.py",
+        "tests/v4/test_v4x_depth_metrology_bvd_apparatus.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/BVD_EXTRACTION.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "C07",
+      "mission": "coil, electrode, transducer, fixture, field simulation",
+      "coverage_ids": [
+        "A16"
+      ],
+      "required_symbols": [
+        "rscs2_core.apparatus:wheeler_inductance_h",
+        "rscs2_core.apparatus:crossed_coil_coupling",
+        "rscs2_core.apparatus:apparatus_registry",
+        "rscs2_core.apparatus:ordinary_artifact_model",
+        "rscs2_core.apparatus:coil_model",
+        "rscs2_core.apparatus:coil_field_map",
+        "rscs2_core.apparatus:thermal_rise_c",
+        "rscs2_core.apparatus:electrode_capacitance_f",
+        "rscs2_core.apparatus:contact_load_model",
+        "rscs2_core.apparatus:transducer_transfer",
+        "rscs2_core.apparatus:cable_loading"
+      ],
+      "required_docs": [
+        "docs/v4/APPARATUS_DIGITAL_TWIN.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_depth_metrology_bvd_apparatus.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/APPARATUS_DIGITAL_TWIN.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "C08",
+      "mission": "calibration, uncertainty, inverse design",
+      "coverage_ids": [
+        "A17"
+      ],
+      "required_symbols": [
+        "rscs2_core.calibration:fit_parameters",
+        "rscs2_core.calibration:track_drift",
+        "rscs2_core.calibration:inverse_design",
+        "rscs2_core.calibration:ObservationLedger"
+      ],
+      "required_docs": [
+        "docs/v4/CALIBRATION_MASTER.md",
+        "docs/v4/INVERSE_DESIGN_CONTRACT.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4c_calibration.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/CALIBRATION_MASTER.md",
+        "docs/v4/INVERSE_DESIGN_CONTRACT.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "C13",
+      "mission": "microscopic and quantum solver interfaces",
+      "coverage_ids": [
+        "A18",
+        "I001",
+        "I011"
+      ],
+      "required_symbols": [
+        "rscs2_core.interfaces_future:interface_record",
+        "rscs2_core.interfaces_future:request_computation"
+      ],
+      "required_docs": [
+        "docs/v4/FUTURE_MICROSCOPIC_SOLVERS.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_polariton_interfaces.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/FUTURE_MICROSCOPIC_SOLVERS.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "G01",
+      "mission": "spiral-cone mathematics, FEA, cusp diagnostics",
+      "coverage_ids": [
+        "S001",
+        "S011"
+      ],
+      "required_symbols": [
+        "rscs2_core.spiral_cone:log_spiral",
+        "rscs2_core.spiral_cone:curvature_invariant",
+        "rscs2_core.spiral_cone:spiral_cone_path",
+        "rscs2_core.spiral_cone:focus_eigenvalues",
+        "rscs2_core.spiral_cone:cusp_response_metric",
+        "rscs2_core.spiral_cone:mode_overlap",
+        "rscs2_core.spiral_cone:geometry_merit",
+        "rscs2_core.spiral_cone:openscad_text",
+        "rscs2_core.spiral_cone:motif_registry"
+      ],
+      "required_docs": [
+        "docs/v4/SPIRAL_CONE_MODEL.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_spiral_cymatic.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/SPIRAL_CONE_MODEL.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "G02",
+      "mission": "PCB cymatic disks and coupled resonance",
+      "coverage_ids": [
+        "S012",
+        "S024"
+      ],
+      "required_symbols": [
+        "rscs2_core.cymatic_disk:clamped_plate_lambdas",
+        "rscs2_core.cymatic_disk:composite_plate",
+        "rscs2_core.cymatic_disk:plate_mode_hz",
+        "rscs2_core.cymatic_disk:chladni_pattern",
+        "rscs2_core.cymatic_disk:spiral_inductance_h",
+        "rscs2_core.cymatic_disk:resonance_separation_report",
+        "rscs2_core.cymatic_disk:gerber_spiral_text",
+        "rscs2_core.cymatic_disk:motif_registry"
+      ],
+      "required_docs": [
+        "docs/v4/CYMATIC_PCB_MODEL.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_spiral_cymatic.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/CYMATIC_PCB_MODEL.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "G03",
+      "mission": "CAD, manufacturing, materials, matched controls",
+      "coverage_ids": [
+        "S016",
+        "S021"
+      ],
+      "required_symbols": [
+        "rscs2_core.spiral_cone:stl_text_from_path",
+        "rscs2_core.spiral_cone:dxf_polyline_text",
+        "rscs2_core.spiral_cone:archimedean_control",
+        "rscs2_core.cymatic_disk:control_set",
+        "rscs2_core.cymatic_disk:drill_text",
+        "rscs2_core.cymatic_disk:bom"
+      ],
+      "required_docs": [
+        "docs/v4/FABRICATION_CONTRACT.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_spiral_cymatic.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/FABRICATION_CONTRACT.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "E01",
+      "mission": "acoustic and ultrasonic bench campaign",
+      "coverage_ids": [
+        "E001",
+        "E002",
+        "E003"
+      ],
+      "required_symbols": [
+        "rscs2_core.protocols_v4x:build_protocols"
+      ],
+      "required_docs": [
+        "docs/v4/experiments/ACOUSTIC_CAMPAIGN.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_protocols.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/experiments/ACOUSTIC_CAMPAIGN.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "E02",
+      "mission": "compression-node electrode pulse programme",
+      "coverage_ids": [
+        "E005",
+        "E006",
+        "E007"
+      ],
+      "required_symbols": [
+        "rscs2_core.protocols_v4x:build_protocols"
+      ],
+      "required_docs": [
+        "docs/v4/experiments/ELECTRODE_PULSE_PROTOCOL.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_protocols.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/experiments/ELECTRODE_PULSE_PROTOCOL.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "E03",
+      "mission": "coil and field-proxy mapping",
+      "coverage_ids": [
+        "E008",
+        "E009",
+        "E010",
+        "E011"
+      ],
+      "required_symbols": [
+        "rscs2_core.apparatus:coil_field_map"
+      ],
+      "required_docs": [
+        "docs/v4/experiments/COIL_FIELD_CAMPAIGN.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_protocols.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/experiments/COIL_FIELD_CAMPAIGN.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "E04",
+      "mission": "quartz-family and specimen comparison",
+      "coverage_ids": [
+        "E021"
+      ],
+      "required_symbols": [
+        "rscs2_core.protocols_v4x:build_protocols"
+      ],
+      "required_docs": [
+        "docs/v4/experiments/MATERIAL_COMPARISON.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_protocols.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/experiments/MATERIAL_COMPARISON.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "E05",
+      "mission": "water, fluid, coil, acoustic exposure programme",
+      "coverage_ids": [
+        "W001",
+        "W017"
+      ],
+      "required_symbols": [
+        "rscs2_core.protocols_v4x:build_protocols",
+        "rscs2_core.protocols_v4x:blind_labels"
+      ],
+      "required_docs": [
+        "docs/v4/experiments/WATER_PROTOCOL.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_protocols.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/experiments/WATER_PROTOCOL.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "E06",
+      "mission": "human mechanical and capacitive loading",
+      "coverage_ids": [
+        "H001",
+        "H008"
+      ],
+      "required_symbols": [
+        "rscs2_core.apparatus:contact_load_model"
+      ],
+      "required_docs": [
+        "docs/v4/experiments/HUMAN_LOADING_MODEL.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_protocols.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/experiments/HUMAN_LOADING_MODEL.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "E07",
+      "mission": "operator state, blinded human protocols",
+      "coverage_ids": [
+        "H009",
+        "H016"
+      ],
+      "required_symbols": [
+        "rscs2_core.research_records:safety_gate"
+      ],
+      "required_docs": [
+        "docs/v4/experiments/OPERATOR_STATE_PROTOCOL.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_protocols.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/experiments/OPERATOR_STATE_PROTOCOL.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "E08",
+      "mission": "integrated bench, DAQ, automation, instrument control",
+      "coverage_ids": [
+        "E012",
+        "E017"
+      ],
+      "required_symbols": [
+        "rscs2_core.protocols_v4x:synth_ring_down",
+        "rscs2_core.protocols_v4x:analyze_ring_down",
+        "rscs2_core.protocols_v4x:blind_labels"
+      ],
+      "required_docs": [
+        "docs/v4/experiments/BENCH_ARCHITECTURE.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_protocols.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/experiments/BENCH_ARCHITECTURE.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "E09",
+      "mission": "staged bench execution and measurement release",
+      "coverage_ids": [
+        "E018",
+        "E022"
+      ],
+      "required_symbols": [
+        "rscs2_core.protocols_v4x:build_protocols"
+      ],
+      "required_docs": [
+        "docs/v4/experiments/STAGED_BENCH_EXECUTION.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_protocols.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/experiments/STAGED_BENCH_EXECUTION.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "T01",
+      "mission": "resonant state change, subjective time, coherence",
+      "coverage_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "required_symbols": [
+        "consciousness_lane.reduced_models:state_change_response",
+        "consciousness_lane.reduced_models:subjective_time"
+      ],
+      "required_docs": [
+        "docs/v4/consciousness/RESONANT_STATE_CHANGE_FORMALISM.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_consciousness.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/consciousness/RESONANT_STATE_CHANGE_FORMALISM.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "T02",
+      "mission": "Arisaka MePMoS/NHT/HAL/Q-HAL/BFFT/CAIRO/TERESA audit",
+      "coverage_ids": [
+        "C007",
+        "C008",
+        "C009",
+        "C010",
+        "C011"
+      ],
+      "required_symbols": [
+        "consciousness_lane.reduced_models:ring_attractor"
+      ],
+      "required_docs": [
+        "docs/v4/consciousness/ARISAKA_AUDIT.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_consciousness.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/consciousness/ARISAKA_AUDIT.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "T03",
+      "mission": "microtubule and cross-scale coherence bridge",
+      "coverage_ids": [
+        "C015",
+        "C016"
+      ],
+      "required_symbols": [
+        "consciousness_lane.reduced_models:microtubule_threshold"
+      ],
+      "required_docs": [
+        "docs/v4/consciousness/MICROTUBULE_COHERENCE_AUDIT.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_consciousness.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/consciousness/MICROTUBULE_COHERENCE_AUDIT.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "T04",
+      "mission": "THz/6G measurement and superheterodyne roadmap",
+      "coverage_ids": [
+        "C020",
+        "C021",
+        "C022"
+      ],
+      "required_symbols": [],
+      "required_docs": [
+        "docs/v4/consciousness/THZ_INSTRUMENTATION_ROADMAP.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_consciousness.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/consciousness/THZ_INSTRUMENTATION_ROADMAP.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "T05",
+      "mission": "synchrony, mentorship, fireflies, pendulums, gamma",
+      "coverage_ids": [
+        "C013",
+        "C023",
+        "C024",
+        "C025",
+        "C045",
+        "C048"
+      ],
+      "required_symbols": [
+        "consciousness_lane.reduced_models:kuramoto",
+        "consciousness_lane.reduced_models:kuramoto_critical_k",
+        "consciousness_lane.reduced_models:synchrony_with_surrogates",
+        "consciousness_lane.reduced_models:phase_amplitude_coupling",
+        "consciousness_lane.reduced_models:coherence_is_not_truth"
+      ],
+      "required_docs": [
+        "docs/v4/consciousness/SYNCHRONY_AND_MENTORSHIP.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_consciousness.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/consciousness/SYNCHRONY_AND_MENTORSHIP.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "T06",
+      "mission": "dream-wake constraints, permanence, observer, aura",
+      "coverage_ids": [
+        "C027",
+        "C028",
+        "C029",
+        "C041",
+        "C042"
+      ],
+      "required_symbols": [
+        "consciousness_lane.reduced_models:dream_wake_constraint"
+      ],
+      "required_docs": [
+        "docs/v4/consciousness/DREAM_WAKE_CONSTRAINT_THEORY.md",
+        "docs/v4/consciousness/OBSERVER_AND_PERMANENCE.md",
+        "docs/v4/consciousness/AURA_TRANSLATION.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_consciousness.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/consciousness/DREAM_WAKE_CONSTRAINT_THEORY.md",
+        "docs/v4/consciousness/OBSERVER_AND_PERMANENCE.md",
+        "docs/v4/consciousness/AURA_TRANSLATION.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "T07",
+      "mission": "quantum cognition, entanglement, multiverse",
+      "coverage_ids": [
+        "C031",
+        "C032",
+        "C033"
+      ],
+      "required_symbols": [
+        "consciousness_lane.reduced_models:order_effect_model",
+        "consciousness_lane.reduced_models:qq_equality",
+        "consciousness_lane.reduced_models:classical_comparator"
+      ],
+      "required_docs": [
+        "docs/v4/consciousness/QUANTUM_COGNITION_AND_PHYSICS_BOUNDARY.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_consciousness.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/consciousness/QUANTUM_COGNITION_AND_PHYSICS_BOUNDARY.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "T08",
+      "mission": "phenomenology, conduit, spirit/God layer, source lore",
+      "coverage_ids": [
+        "C037",
+        "C038",
+        "C039",
+        "C043"
+      ],
+      "required_symbols": [
+        "consciousness_lane.theory_registry:build_theory_registry"
+      ],
+      "required_docs": [
+        "docs/v4/consciousness/PHENOMENOLOGY_AND_PRIVATE_MYTH_POLICY.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_consciousness.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/consciousness/PHENOMENOLOGY_AND_PRIVATE_MYTH_POLICY.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "T09",
+      "mission": "HAL-inspired Hydrogenuine spatial-temporal memory",
+      "coverage_ids": [
+        "C049",
+        "C050",
+        "C051",
+        "C052"
+      ],
+      "required_symbols": [],
+      "required_docs": [
+        "docs/v4/consciousness/HYDROGENUINE_SPATIAL_TEMPORAL_MEMORY.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_consciousness.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/consciousness/HYDROGENUINE_SPATIAL_TEMPORAL_MEMORY.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "T10",
+      "mission": "consciousness programme, book spine, falsification map",
+      "coverage_ids": [
+        "C040"
+      ],
+      "required_symbols": [
+        "consciousness_lane.theory_registry:coverage_map"
+      ],
+      "required_docs": [
+        "docs/v4/consciousness/RESONANT_STATE_CHANGE_BOOK.md",
+        "docs/v4/consciousness/FALSIFICATION_MAP.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_consciousness.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/consciousness/RESONANT_STATE_CHANGE_BOOK.md",
+        "docs/v4/consciousness/FALSIFICATION_MAP.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "D01",
+      "mission": "data, statistics, blinding, preregistration",
+      "coverage_ids": [],
+      "required_symbols": [
+        "rscs2_core.research_records:make_record",
+        "rscs2_core.protocols_v4x:blind_labels"
+      ],
+      "required_docs": [
+        "docs/v4/DATA_CONTRACT.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_records_safety.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/DATA_CONTRACT.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "S01",
+      "mission": "electrical, acoustic, EM, water, human, data safety",
+      "coverage_ids": [],
+      "required_symbols": [
+        "rscs2_core.research_records:safety_gate",
+        "rscs2_core.research_records:SAFETY_LIMITS"
+      ],
+      "required_docs": [
+        "docs/v4/SAFETY_AND_ETHICS_MANUAL.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_records_safety.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/SAFETY_AND_ETHICS_MANUAL.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "R01",
+      "mission": "documentation, manuscripts, cross-project index",
+      "coverage_ids": [],
+      "required_symbols": [
+        "tools.v4x_coverage_ledger:build"
+      ],
+      "required_docs": [
+        "docs/v4/V4X_PROGRAMME_REPORT.md",
+        "docs/v4/V4X_COVERAGE_LEDGER.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4c_docs_closeout.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [],
+      "missing_tests": [],
+      "complete": true,
+      "status": "COMPLETE"
+    },
+    {
+      "agent": "Q01",
+      "mission": "independent scientific/coverage red team",
+      "coverage_ids": [],
+      "required_symbols": [],
+      "required_docs": [
+        "docs/v4/V4X_QA_FINAL_VERDICT.md",
+        "docs/v4/V4X_DEFECT_REGISTER.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_qa_adversarial.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/V4X_QA_FINAL_VERDICT.md",
+        "docs/v4/V4X_DEFECT_REGISTER.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "R02",
+      "mission": "integration, CI, proof bundles, releases",
+      "coverage_ids": [],
+      "required_symbols": [],
+      "required_docs": [
+        "docs/v4/RELEASE_NOTES_V4_2_1.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_coverage_ledger.py"
+      ],
+      "missing_symbols": [],
+      "missing_docs": [
+        "docs/v4/RELEASE_NOTES_V4_2_1.md"
+      ],
+      "missing_tests": [],
+      "complete": false,
+      "status": "INCOMPLETE"
+    },
+    {
+      "agent": "P02",
+      "mission": "minor ideas, orphans, contradictions, no-omission sweep",
+      "coverage_ids": [],
+      "required_symbols": [
+        "tools.v4x_orphan_sweep:sweep"
+      ],
+      "required_docs": [
+        "docs/v4/ORPHAN_IDEA_REGISTER.md",
+        "docs/v4/V4X_NO_OMISSION_CERTIFICATE.md"
+      ],
+      "required_tests": [
+        "tests/v4/test_v4x_orphan_sweep.py"
+      ],
+      "missing_symbols": [
+        "tools.v4x_orphan_sweep:sweep"
+      ],
+      "missing_docs": [
+        "docs/v4/ORPHAN_IDEA_REGISTER.md",
+        "docs/v4/V4X_NO_OMISSION_CERTIFICATE.md"
+      ],
+      "missing_tests": [
+        "tests/v4/test_v4x_orphan_sweep.py"
+      ],
+      "complete": false,
+      "status": "INCOMPLETE"
+    }
+  ]
+}
