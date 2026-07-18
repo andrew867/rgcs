@@ -16,7 +16,8 @@ def test_window_opens_and_panels_construct(main_window):
     expected = {"Workspace", "Sources", "Specimen editor", "Models",
                 "Compact-mode spectrum", "Avoided crossing",
                 "Coherence analyzer", "Pulse designer", "Experiment builder",
-                "Results", "Model vs measured", "Report / export", "Settings"}
+                "Results", "Model vs measured", "Report / export", "Settings",
+                "Evidence ledger"}
     assert expected == set(main_window.panels)
     # every panel exposes inspector info with the required keys
     for title, panel in main_window.panels.items():

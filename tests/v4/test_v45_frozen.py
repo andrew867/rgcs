@@ -79,7 +79,7 @@ def test_frozen_smoke_check_constructs_all_panels():
     r = subprocess.run([str(EXE), "--smoke-check"], capture_output=True,
                        text=True, env=_env(), timeout=300)
     assert r.returncode == 0, r.stderr
-    assert "13 panels constructed OK" in r.stdout, r.stdout
+    assert "14 panels constructed OK" in r.stdout, r.stdout
 
 
 def test_frozen_first_run_selftest_creates_workspace_and_workbook(

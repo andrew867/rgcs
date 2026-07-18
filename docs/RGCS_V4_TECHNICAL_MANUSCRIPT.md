@@ -172,7 +172,53 @@ step; `8^11 = 2^33` is thirty-three octaves, not eleven; the
 five travel-adjacent claims are recorded `UNSUPPORTED` with the
 specific evidence each would require. None of that evidence exists.
 
+## 13. Phase Memory, Worldline Channel Recovery, and the Phryll
+## Translation Hypothesis (v4.7, agents A00–A83)
+
+A typed chain — phase authority → generated state → transduction →
+propagation → observation → bounded reconstruction → evidence claim —
+with each stage a distinct type and estimation the only way back up
+(`pmwr/`). **Software verified, physical untested.** Full account in
+[PMWR findings](v4/pmwr/PMWR_FINDINGS.md).
+
+**Method.** A phase authority couples frequency to epoch, timescale, a
+nine-state synchronization machine, and a cycle count that only
+`PHASE_LOCKED` may assert. Finite-Q memory ends at the earlier of
+amplitude death and phase diffusion; beyond it the state is
+`CYCLE_COUNT_UNKNOWN` and perfect-memory claims are refusals.
+Recovery runs behind an identifiability gate (rank, conditioning,
+posterior width) and returns `REFUSED` rather than a guess.
+
+**Results.**
+
+1. *Exact closure is a delay alias.* The 1/4096 s closure window of
+   the binary family is an alias grid (4097 indistinguishable delays
+   per second); a second, coprime lattice extends the unambiguous
+   range by ×4096. The v4.6 synchronization feature and the v4.7
+   ambiguity are the same arithmetic fact.
+2. *Worldline-indexed phase is metrology.* Weak-field proper-rate
+   offsets reproduce the validated fixtures (LEO negative, GPS
+   +38.5 µs/day); receivers on different worldlines accumulate
+   different proper phase, and arrival reordering is delay geometry —
+   the audit cannot emit a "causal reversal".
+3. *The pyramid ratio is a geometry identity.* 2a/h at 51.843° is
+   1.5714157792, within ~5×10⁻⁴ of π/2 — a statement about a chosen
+   angle's tangent, carried as `GEOMETRY_IDENTITY` /
+   `ANTHROPOGENIC_STRUCTURE`, with the mechanism reading refused.
+4. *Phryll stays unresolved by construction.* The source term is
+   operationalized as a five-rung ladder in which a residual requires
+   all eleven ordinary output channels bounded plus a sham-drive
+   control (the source's own power-not-engaged episode is preserved
+   as the warning), and no detected-state exists anywhere in v4.7.
+
 ## Limitations
+
+The v4.7 programme adds these: every crystal-translation statement is
+a `SOURCE_CLAIM` with a preregistration around it — no apparatus
+exists; recovery quality is demonstrated on synthetic channels under
+the frozen evaluation contract only; the worldline channel model is
+weak-field and O(v²/c²); and the Phryll ladder's upper rungs are
+unreachable without independent replication that no one has performed.
 
 The v4.6 programme adds these: its candidate register is circular by
 construction (built from the references it is scored against) and must

@@ -391,6 +391,98 @@ def _cspc(store: CanonicalStore) -> None:
                 f"peak loss and is not a resonance."}))
 
 
+def _pmwr(store: CanonicalStore) -> None:
+    """v4.7 Phase Memory / Worldline Recovery / Phryll lane (A71).
+
+    Reads the canonical pmwr modules. Every row is arithmetic, an
+    analytic model, or a plan; the Phryll rows carry ladder states
+    with no DETECTED state anywhere.
+    """
+    from pmwr import FIREWALLS
+    from pmwr.benches import compile_benches
+    from pmwr.crystal import pyramid_ratio_audit
+    from pmwr.ingest import (NOVELTY_BOUNDARY, OPERATOR_NOTE_STATUS,
+                             operator_note_fingerprint)
+    from pmwr.recovery import closure_delay_ambiguity, dual_lattice_probe
+    from pmwr.worldline import two_geodesic_case
+
+    c = closure_delay_ambiguity(["4096", "20480", "40960"], 1.0)
+    store.add("pmwr_recovery", Record(
+        id="PMWR-CLOSURE-ALIAS", kind="ambiguity",
+        evidence_class="DERIVED_ARITHMETIC",
+        provenance="pmwr.recovery.closure_delay_ambiguity",
+        fields={"closure_window_s": c["closure_window_s"],
+                "aliases_per_second": c["aliases_within_max_delay"],
+                "statement": c["statement"]}))
+    d = dual_lattice_probe(["4096", "20480"], ["4375"])
+    store.add("pmwr_recovery", Record(
+        id="PMWR-DUAL-LATTICE", kind="probe_design",
+        evidence_class="DERIVED_ARITHMETIC",
+        provenance="pmwr.recovery.dual_lattice_probe",
+        fields={"window_a_s": d["window_a_s"],
+                "window_b_s": d["window_b_s"],
+                "combined_range_s": d["combined_unambiguous_range_s"],
+                "improvement": d["improvement_over_a"]}))
+    t = two_geodesic_case()
+    store.add("pmwr_recovery", Record(
+        id="PMWR-TWO-GEODESIC", kind="worldline_channel",
+        evidence_class="ANALYTIC_MODEL",
+        provenance="pmwr.worldline.two_geodesic_case",
+        fields={"differential_rate": t["differential_rate"],
+                "phase_cycles_per_day":
+                    t["differential_phase_cycles_per_day"],
+                "interpretation": t["not_an_interpretation"]}))
+
+    audit = pyramid_ratio_audit()
+    for label, row in audit["angles"].items():
+        store.add("pmwr_crystal", Record(
+            id=f"ANGLE-{label}", kind="geometry_candidate",
+            evidence_class="GEOMETRY_IDENTITY",
+            provenance="pmwr.crystal.pyramid_ratio_audit",
+            fields={"theta_deg": row["theta_deg"],
+                    "h_over_half_base": round(row["h_over_half_base"], 12),
+                    "full_base_over_height":
+                        round(row["full_base_over_height"], 12),
+                    "abs_diff_from_pi_over_2":
+                        round(row["abs_diff_from_pi_over_2"], 9),
+                    "mechanism_claim": "REFUSED"}))
+
+    store.add("pmwr_phryll", Record(
+        id="PHRYLL-OPERATIONALIZATION", kind="latent_definition",
+        evidence_class="SOURCE_CLAIM",
+        provenance="pack core/06; pmwr.crystal.PROMOTION_GATES",
+        fields={"ladder": " -> ".join(
+                    ("SOURCE_CLAIM", "OPERATIONAL_HYPOTHESIS",
+                     "UNEXPLAINED_INSTRUMENT_RESIDUAL",
+                     "REPLICATED_ANOMALY", "CANDIDATE_NEW_MECHANISM")),
+                "detected_state_exists": False,
+                "operator_note_sha256": operator_note_fingerprint(),
+                "note_status": ",".join(OPERATOR_NOTE_STATUS)}))
+    for key, why in FIREWALLS.items():
+        store.add("pmwr_phryll", Record(
+            id=f"FIREWALL-{key}", kind="firewall",
+            evidence_class="DERIVED_ARITHMETIC",
+            provenance="pmwr.FIREWALLS",
+            fields={"refusal": why}))
+    b = compile_benches()
+    for bid, plan in b["benches"].items():
+        store.add("pmwr_phryll", Record(
+            id=bid, kind="bench_preregistration",
+            evidence_class="ANALYTIC_MODEL",
+            provenance="pmwr.benches",
+            fields={"question": plan["question"],
+                    "apparatus_status": plan["apparatus_status"],
+                    "data_status": plan["data_status"]}))
+    store.add("pmwr_recovery", Record(
+        id="PMWR-NOVELTY", kind="novelty_boundary",
+        evidence_class="DERIVED_ARITHMETIC",
+        provenance="pmwr.ingest.NOVELTY_BOUNDARY",
+        fields={"textbook_not_novel":
+                    "; ".join(NOVELTY_BOUNDARY["textbook_not_novel"]),
+                "programme_specific":
+                    "; ".join(NOVELTY_BOUNDARY["programme_specific"])}))
+
+
 def _sources(store: CanonicalStore) -> None:
     from sources.registry.v4x2_source_registry import SOURCES
     for sid, s in SOURCES.items():
@@ -449,6 +541,7 @@ def build(version: str = "4.5.0") -> CanonicalStore:
     _experiments(store)
     _corrections(store)
     _cspc(store)
+    _pmwr(store)
     _sources(store)
     _lore(store)
     _release_meta(store)

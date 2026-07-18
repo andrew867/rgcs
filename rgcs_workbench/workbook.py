@@ -34,6 +34,15 @@ EVIDENCE_FILL = {
     # v4.6: terminal statuses, not ladder rungs. Red-grey so an
     # UNSUPPORTED row is visibly not an achievement.
     "UNSUPPORTED": "F0C8C8", "NOT_APPLICABLE": "D8D8D8",
+    # v4.7 additions
+    "METAPHOR": "E8D8F0", "GEOMETRY_IDENTITY": "D0E0F0",
+    "CALIBRATED_MEASUREMENT": "A0E8A0",
+    "ANTHROPOGENIC_STRUCTURE": "E0E0C0",
+    "REPRESENTATION_ARTIFACT": "E0D0C0",
+    "CIRCULAR_DERIVATION": "F0D0D0",
+    "UNEXPLAINED_INSTRUMENT_RESIDUAL": "F0E0A0",
+    "REPLICATED_ANOMALY": "C0E8E0",
+    "PROSPECTIVE_PREDICTION": "D0F0D0",
 }
 HEADER_FILL = PatternFill("solid", fgColor="2E3A46")
 HEADER_FONT = Font(bold=True, color="FFFFFF")
@@ -231,6 +240,9 @@ def generate(store: CanonicalStore | None = None,
         "CSCP Tetrahedron": ("cspc_tetrahedron", "CSCPTetrahedron"),
         "CSCP Spacetime": ("cspc_spacetime", "CSCPSpacetime"),
         "CSCP Experiments": ("cspc_experiments", "CSCPExperiments"),
+        "PMWR Recovery": ("pmwr_recovery", "PMWRRecovery"),
+        "PMWR Crystal": ("pmwr_crystal", "PMWRCrystal"),
+        "PMWR Phryll": ("pmwr_phryll", "PMWRPhryll"),
     }
 
     for sheet in REQUIRED_SHEETS:

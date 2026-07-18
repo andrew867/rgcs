@@ -15,6 +15,7 @@ from rgcs_desktop.app.context import AppContext
 from rgcs_desktop.app.inspector import InspectorDock
 from rgcs_desktop.app.jobs_panel import JobsPanel
 from rgcs_desktop.viewers.avoided_crossing import AvoidedCrossingPanel
+from rgcs_desktop.viewers.evidence_ledger_panel import EvidenceLedgerPanel
 from rgcs_desktop.viewers.coherence_analyzer import CoherenceAnalyzerPanel
 from rgcs_desktop.viewers.comparison_view import ComparisonPanel
 from rgcs_desktop.viewers.experiment_builder import ExperimentBuilderPanel
@@ -33,6 +34,7 @@ PANEL_CLASSES = [
     ModelEditorPanel, SpectrumPanel, AvoidedCrossingPanel,
     CoherenceAnalyzerPanel, PulseDesignerPanel, ExperimentBuilderPanel,
     ResultsBrowserPanel, ComparisonPanel, ReportPanel, SettingsPanel,
+    EvidenceLedgerPanel,
 ]
 
 SIDEBAR_SECTIONS = ["Workspaces", "Specimens", "Models", "Experiments",

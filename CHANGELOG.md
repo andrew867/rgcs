@@ -3,6 +3,46 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [4.7.0] — 2026-07-18
+
+Phase Memory, Worldline-Indexed Multipath Recovery, Causal Channel
+Reconstruction, and Phryll Translation Hypothesis (v4.7 pack, agents
+A00-A83). **SOFTWARE_VERIFIED, PHYSICAL_UNTESTED**: no apparatus was
+built, no data collected, and no Phryll-detected state exists in this
+release by construction. All prior tags untouched.
+
+New `pmwr/` package: typed phase authority with a nine-state
+synchronization machine (cycle count only while PHASE_LOCKED, no force
+flag); finite-Q phase-memory horizon with perfect-memory refusal; six
+separated signal stages (propagation always loses the cycle count);
+worldline/path schemas on the validated weak-field fixtures; the
+arrival/causal-order firewall (reordering is delay geometry; the audit
+cannot emit "causal reversal"); closure-window alias analysis (exact
+closure IS a delay alias -- 4097 indistinguishable delays per second
+for the binary family) with dual coprime lattices extending the
+unambiguous range x4096; least-squares recovery behind an
+identifiability gate that REFUSES underdetermined and ill-conditioned
+cases; the crystal-translation lane (geometry schema with mandatory
+reversed-orientation control, excitation registry where
+self-oscillation needs a loop AND an energy source, energy ledger that
+calls over-unity ACCOUNTING_ERROR); the pyramid-ratio audit (2a/h at
+51.843 deg = 1.5714157792, ~5e-4 from pi/2, GEOMETRY_IDENTITY, the
+mechanism reading refused); and the guarded Phryll ladder (a residual
+requires all eleven ordinary channels bounded plus a sham-drive
+control; the source's own power-not-engaged episode is the preserved
+warning).
+
+Gate Zero: v4.6 independently re-verified by object ID and remote
+download before branching; only CI-verified commits reached main.
+enforce_admins remains OFF pending operator action (documented).
+
+Workbench gains an Evidence-ledger panel (14 panels); workbook gains
+three PMWR sheets (24 total). Operator note and evaluation contract
+hash-pinned before estimator work.
+
+Tests: 1113 passing (1 archived-environment byte test
+deselected by policy D-V3-04).
+
 ## [4.6.0] — 2026-07-18
 
 Crystalline Spacetime Coordinate Program (v4.6 pack, agents A00-A36).

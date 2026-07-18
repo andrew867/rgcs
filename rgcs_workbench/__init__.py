@@ -28,6 +28,16 @@ EVIDENCE_CLASSES = (
     # These are NOT rungs of the ladder — they are terminal statuses.
     "UNSUPPORTED",
     "NOT_APPLICABLE",
+    # v4.7 (PMWR) additions (core/08)
+    "METAPHOR",
+    "GEOMETRY_IDENTITY",
+    "CALIBRATED_MEASUREMENT",
+    "ANTHROPOGENIC_STRUCTURE",
+    "REPRESENTATION_ARTIFACT",
+    "CIRCULAR_DERIVATION",
+    "UNEXPLAINED_INSTRUMENT_RESIDUAL",
+    "REPLICATED_ANOMALY",
+    "PROSPECTIVE_PREDICTION",
 )
 
 #: Classes that assert something about the physical world. A
@@ -60,5 +70,8 @@ REQUIRED_SHEETS = (
     "CSCP Tetrahedron",
     "CSCP Spacetime",
     "CSCP Experiments",
+    "PMWR Recovery",
+    "PMWR Crystal",
+    "PMWR Phryll",
     "Workbook Guide",
 )
