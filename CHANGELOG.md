@@ -3,6 +3,37 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [4.7.1] — 2026-07-18
+
+R3: Root-Space Resolver, Anisotropic Phase Lens, Optical Spin, HAL
+Memory, Nested Tetrahedral Atlas (v4.7.x R3 pack, 95 agents).
+**SOFTWARE_VERIFIED, PHYSICAL_UNTESTED.** All prior tags untouched.
+
+The R3 correction: a root is NOT "the first zero of the phase
+residual" -- wrap(phi)=0 admits integer-cycle aliases (4097 candidates
+per second at 4096 Hz). New `r3/` package: six typed root classes, six
+forbidden collapses as executable refusals, dual-lattice alias
+thinning, gauge orbits with mandatory representative rules, emission-
+coordinate localization from >=4 reference worldlines (relational by
+construction), and a root-lock certificate whose best status is
+ROOT_LOCK_BOUNDED with ABSOLUTE_VACUUM_ROOT_UNSUPPORTED and
+NONLOCAL_REFERENCE_FRAME_UNSUPPORTED standing. Plus: anisotropic phase
+lens (adjoint-verified Tikhonov inversion, refusal of unregularized
+solves), exact 8^d tetrahedral addressing with five declared K
+semantics and hard destination certificates, spin/torsion typing that
+never merges categories (EC torsion from a fully polarized solid
+~6e-25 1/m; a 1e-9 metric wish costs 6.7e17 kg -- REFUSED_BY_
+ARITHMETIC), optical spin with SAM/OAM separation and dose ceilings,
+synthetic-only HAL memory with a consent gate, and the nested atlas
+whose null-rotation campaign rejects grid orientations that cannot
+beat seeded random rotations. L'ou source log preserved verbatim,
+sha256-pinned. Gate Zero re-verified v4.7.0 remotely; enforce_admins
+on main is now ON (operator action) closing the R2 governance gap.
+Workbook: 26 sheets (2 new R3).
+
+Tests: 1153 passing (1 archived-environment byte test
+deselected by policy D-V3-04).
+
 ## [4.7.0] — 2026-07-18
 
 Phase Memory, Worldline-Indexed Multipath Recovery, Causal Channel

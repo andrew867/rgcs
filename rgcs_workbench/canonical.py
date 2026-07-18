@@ -483,6 +483,81 @@ def _pmwr(store: CanonicalStore) -> None:
                     "; ".join(NOVELTY_BOUNDARY["programme_specific"])}))
 
 
+def _r3(store: CanonicalStore) -> None:
+    """v4.7.x R3 lane (A94): root space, lens, addressing, spin,
+    atlas — from the canonical r3 modules."""
+    import math
+
+    from r3 import FORBIDDEN_COLLAPSES, ROOT_CLASSES
+    from r3.address import level_count
+    from r3.root_space import (dual_lattice_root_search,
+                               zero_residual_aliases)
+    from r3.spin_torsion import (einstein_cartan_torsion,
+                                 metric_actuation_verdict)
+
+    z = zero_residual_aliases(4096.0, 1.0)
+    store.add("r3_root_space", Record(
+        id="R3-ZERO-RESIDUAL-ALIASES", kind="alias_audit",
+        evidence_class="DERIVED_ARITHMETIC",
+        provenance="r3.root_space.zero_residual_aliases",
+        fields={"candidates_per_second":
+                    z["zero_residual_candidates"],
+                "status": z["status"],
+                "statement": z["statement"]}))
+    d = dual_lattice_root_search(4096.0, 4375.0, 0.001)
+    store.add("r3_root_space", Record(
+        id="R3-DUAL-LATTICE-ROOT", kind="disambiguation",
+        evidence_class="DERIVED_ARITHMETIC",
+        provenance="r3.root_space.dual_lattice_root_search",
+        fields={"beat_hz": d["beat_hz"],
+                "resolved": d["resolved_within_window"]}))
+    for rc in ROOT_CLASSES:
+        store.add("r3_root_space", Record(
+            id=f"ROOT-CLASS-{rc}", kind="root_class",
+            evidence_class="DERIVED_ARITHMETIC",
+            provenance="pack core/16",
+            fields={"note": "typed root class; none is a vacuum "
+                            "origin"}))
+    for key, why in FORBIDDEN_COLLAPSES.items():
+        store.add("r3_root_space", Record(
+            id=f"COLLAPSE-{key}", kind="forbidden_collapse",
+            evidence_class="DERIVED_ARITHMETIC",
+            provenance="r3.FORBIDDEN_COLLAPSES",
+            fields={"refusal": why}))
+
+    m = metric_actuation_verdict(1e-9, 1.0)
+    store.add("r3_lanes", Record(
+        id="R3-METRIC-BUDGET", kind="metric_source_audit",
+        evidence_class="ANALYTIC_MODEL",
+        provenance="r3.spin_torsion.metric_actuation_verdict",
+        fields={"target_h": 1e-9, "region_m": 1.0,
+                "required_mass_kg": m["required_mass_kg"],
+                "verdict": m["verdict"]}))
+    t = einstein_cartan_torsion(1e10)
+    store.add("r3_lanes", Record(
+        id="R3-EC-TORSION-SCALE", kind="spin_torsion_audit",
+        evidence_class="ANALYTIC_MODEL",
+        provenance="r3.spin_torsion.einstein_cartan_torsion",
+        fields={"spin_density": 1e10,
+                "torsion_1_per_m": t["torsion_scale_1_per_m"],
+                "verdict": t["verdict"]}))
+    store.add("r3_lanes", Record(
+        id="R3-HIERARCHY", kind="address_hierarchy",
+        evidence_class="DERIVED_ARITHMETIC",
+        provenance="r3.address.level_count",
+        fields={"levels": ", ".join(str(level_count(dd))
+                                    for dd in range(5)),
+                "formula": "N_d = 8^d = 2^(3d)"}))
+    store.add("r3_lanes", Record(
+        id="R3-ATLAS-STATUS", kind="atlas_status",
+        evidence_class="DERIVED_ARITHMETIC",
+        provenance="r3.atlas",
+        fields={"grid_status": "REPRESENTATION_ARTIFACT",
+                "portal_status": "UNSUPPORTED",
+                "note": "orientation claims must beat the seeded "
+                        "null-rotation ensemble"}))
+
+
 def _sources(store: CanonicalStore) -> None:
     from sources.registry.v4x2_source_registry import SOURCES
     for sid, s in SOURCES.items():
@@ -542,6 +617,7 @@ def build(version: str = "4.5.0") -> CanonicalStore:
     _corrections(store)
     _cspc(store)
     _pmwr(store)
+    _r3(store)
     _sources(store)
     _lore(store)
     _release_meta(store)

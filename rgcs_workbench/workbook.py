@@ -243,6 +243,8 @@ def generate(store: CanonicalStore | None = None,
         "PMWR Recovery": ("pmwr_recovery", "PMWRRecovery"),
         "PMWR Crystal": ("pmwr_crystal", "PMWRCrystal"),
         "PMWR Phryll": ("pmwr_phryll", "PMWRPhryll"),
+        "R3 Root Space": ("r3_root_space", "R3RootSpace"),
+        "R3 Lanes": ("r3_lanes", "R3Lanes"),
     }
 
     for sheet in REQUIRED_SHEETS:

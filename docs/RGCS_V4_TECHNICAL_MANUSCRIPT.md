@@ -211,7 +211,34 @@ posterior width) and returns `REFUSED` rather than a guess.
    control (the source's own power-not-engaged episode is preserved
    as the warning), and no detected-state exists anywhere in v4.7.
 
+## 14. R3: Root Space, Phase Lens, Optical Spin, HAL Memory, Atlas
+## (v4.7.x, agents A00-A96)
+
+The R3 correction: zero wrapped residual is never a root -- it admits
+integer-cycle aliases. A root is one of six typed, calibrated,
+alias-resolved, gauge-declared relational reference states (`r3/`),
+and the root-lock certificate's ceiling is a BOUNDED relational lock;
+absolute vacuum roots and non-local preferred frames carry standing
+UNSUPPORTED statuses. Supporting lanes: an adjoint-verified anisotropic
+phase lens with refusal of unregularized inversion; exact 8^d
+tetrahedral addressing whose destination certificates demand frame,
+epoch, metric, ephemeris and calibration; spin/torsion typing in which
+categories never merge and Einstein-Cartan torsion from any laboratory
+source is stated at its true ~1e-25 1/m scale; an inverse Einstein
+calculator that prices metric wishes in unpayable mass budgets;
+SAM/OAM-separated optical spin with dose ceilings and finite
+relaxation; synthetic-only HAL memory behind a consent gate; and a
+nested tetrahedral atlas whose null-rotation campaign is the standing
+refutation of grid-orientation claims. Full account:
+[R3 findings](v4/pmwr/R3_FINDINGS.md).
+
 ## Limitations
+
+The R3 programme adds these: root locks are demonstrated on synthetic
+channels against declared references only; the lens forward model is
+synthetic; the atlas campaign refutes orientation claims but cannot
+survey real landmark corpora it was never given; and the HAL memory
+lane is a synthetic model with no biological claim of any kind.
 
 The v4.7 programme adds these: every crystal-translation statement is
 a `SOURCE_CLAIM` with a preregistration around it — no apparatus

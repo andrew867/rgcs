@@ -73,5 +73,7 @@ REQUIRED_SHEETS = (
     "PMWR Recovery",
     "PMWR Crystal",
     "PMWR Phryll",
+    "R3 Root Space",
+    "R3 Lanes",
     "Workbook Guide",
 )
