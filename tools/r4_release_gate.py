@@ -9,18 +9,29 @@ artifact.
 This gate is run BEFORE tagging and refuses if any committed
 release-owned artifact is stale:
 
-- ``release/v45/RGCS_Master_Evidence_Workbook.xlsx`` must byte-match a
-  freshly generated public workbook;
-- ``release/v45/SHA256SUMS.txt`` must list the Windows assets and the
-  workbook with their current hashes.
+- ``release/v45/RGCS_Master_Evidence_Workbook.xlsx`` must match a
+  freshly generated public workbook (content-wise);
+- ``release/v45/SHA256SUMS.txt`` must list that workbook's hash.
 
-**Why the committed manifest covers only the Windows assets and the
-workbook.** The source archive is ``git archive`` of the tagged commit,
-so it CONTAINS the manifest; a committed manifest listing the source
-archive's own hash is circular and can never be satisfied. The complete
-manifest (standard bundle + Windows assets) is generated at publish
-time and uploaded as a release asset — an upload is not repository
-content, so it needs no commit and breaks no gate.
+**Two artifacts are structurally impossible to pre-commit, and saying
+so precisely is part of the gate.**
+
+1. *The source archive* is ``git archive`` of the tagged commit, so it
+   CONTAINS the manifest. A committed manifest listing the source
+   archive's own hash is circular.
+2. *The frozen Windows binaries* embed the tagged commit id in
+   ``_build_stamp.json`` (the v4.5.2 anti-stale mechanism), so they can
+   only be built AFTER the commit exists. A committed manifest listing
+   their hashes would have to predict the hash of a file that contains
+   that very commit's id.
+
+So the COMMITTED manifest covers the workbook — genuinely
+pre-committable, since the workbook is generated from source and
+embeds no commit id. The COMPLETE manifest (standard bundle + Windows
+assets + workbook) is generated at publish time and uploaded as a
+release asset. An upload is not repository content, so it requires no
+commit and leaves the tag complete in the only sense that is
+achievable.
 
     python tools/r4_release_gate.py            # verify (exit 1 on stale)
     python tools/r4_release_gate.py --write    # refresh, then verify
@@ -110,19 +121,21 @@ def manifest_is_current(version: str) -> dict:
         if "  " in line:
             h, n = line.split("  ", 1)
             listed[n.strip()] = h
-    required = windows_assets(version) + [WORKBOOK]
+    # Only the workbook is pre-committable (see module docstring):
+    # the frozen binaries embed the tagged commit id, so their hashes
+    # cannot exist before that commit does.
+    required = [WORKBOOK]
     problems = []
     for p in required:
         if p.name not in listed:
             problems.append(f"{p.name}: not listed")
         elif listed[p.name] != _sha(p.read_bytes()):
             problems.append(f"{p.name}: hash stale")
-    if not windows_assets(version):
-        problems.append(
-            f"no Windows assets for {version} found in release/v45 — "
-            "build them before the gate")
     return {"ok": not problems, "problems": problems,
-            "listed": len(listed)}
+            "listed": len(listed),
+            "note": "Windows-asset hashes are intentionally absent: "
+                    "they embed the tagged commit and are covered by "
+                    "the uploaded manifest"}
 
 
 def write_release_owned(version: str) -> dict:
@@ -130,7 +143,7 @@ def write_release_owned(version: str) -> dict:
     V45.mkdir(parents=True, exist_ok=True)
     WORKBOOK.write_bytes(generate_workbook_bytes(version))
     lines = []
-    for p in windows_assets(version) + [WORKBOOK]:
+    for p in [WORKBOOK]:
         lines.append(f"{_sha(p.read_bytes())}  {p.name}")
     MANIFEST.write_text("\n".join(lines) + "\n", encoding="utf-8",
                         newline="\n")

@@ -104,13 +104,39 @@ discrimination.
 
 v4.6, v4.7.0 and v4.7.1 each needed a commit *after* the tag to sync
 the committed workbook and manifest, so the tagged tree was never quite
-the released tree. `tools/r4_release_gate.py` now refuses to let a tag
-proceed unless the committed workbook matches a freshly generated one
-and the committed manifest lists the current Windows-asset hashes. The
-complete manifest (standard bundle + Windows assets) is generated at
-publish time and uploaded — an upload is not repository content, so it
-needs no commit. **v4.8.0 is the first release whose tag contains every
-release-owned artifact.**
+the released tree. `tools/r4_release_gate.py` refuses a tag unless the
+committed workbook matches a freshly generated one and the committed
+manifest lists its hash.
+
+**Building it surfaced a limit worth stating precisely: two artifacts
+cannot be pre-committed, for structural reasons.**
+
+1. *The source archive* is `git archive` of the tagged commit, so it
+   contains the manifest — a committed manifest listing the archive's
+   own hash is circular.
+2. *The frozen Windows binaries* embed the tagged commit id in
+   `_build_stamp.json` (the v4.5.2 anti-stale mechanism), so they can
+   only be built after that commit exists. A committed manifest would
+   have to predict the hash of a file containing that very commit's id.
+
+The first draft of the gate missed (2) and demanded binary hashes in
+the committed manifest; the first v4.8.0 tag was cut against it and
+carried stale binary hashes, so that tag was deleted and re-cut before
+any release existed. The corrected rule: the committed manifest covers
+the **workbook**, which is generated from source and embeds no commit
+id; the complete manifest (bundle + binaries + workbook) is generated
+at publish time and uploaded as a release asset.
+
+**Result: v4.8.0's tag contains every release-owned artifact that can
+exist before the commit does, and needs no post-tag sync.** That is the
+achievable form of R04/R65, and the residue is named rather than
+papered over.
+
+A second defect surfaced the same way: the gate passed immediately
+after `--write` but refused on a fresh run, because the r4 canonical
+rows used Python's `hash()` for record ids — randomized per process —
+so the workbook was not deterministic. Ids are now positional, with a
+regression test that spawns two subprocesses and compares.
 
 ## What would change any of this
 
