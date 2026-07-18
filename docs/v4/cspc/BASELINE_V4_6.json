@@ -2,9 +2,9 @@
   "programme": "RGCS-V4.6-CSCP",
   "evidence_class": "RELEASE_EVIDENCE",
   "branch": "v4.6-cspc",
-  "head_commit": "8bda6e89fece09cc90b15a10ab15c13f9f7acc07",
+  "head_commit": "18e59a0f8158d1e6d9d73cd4c6c4298d3c49f5e6",
   "base_commit": "8bda6e89fece09cc90b15a10ab15c13f9f7acc07",
-  "package_version": "4.5.2",
+  "package_version": "4.6.0",
   "latest_release_tag": "v4.5.2",
   "frozen_tags": [
     "v2.0.0",
@@ -23,13 +23,13 @@
     "v4.5.2"
   ],
   "test_command": "python -m pytest -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic",
-  "baseline_tests_passed": 945,
+  "baseline_tests_passed": 1062,
   "baseline_tests_deselected": 1,
-  "source_hash": "18b05e6b9ce942c07b3174bf6fa2bfe001bdb32987ed65f3b3bd8b685ce88a7d",
+  "source_hash": "a34c74abab499f55fa88aca560ae4cfc835ae08184dc085dc1e7a2fc7c7d8505",
   "binary_freshness": {
     "frozen_build_present": false,
     "state": "ABSENT",
-    "current_source_hash": "18b05e6b9ce942c07b3174bf6fa2bfe001bdb32987ed65f3b3bd8b685ce88a7d",
+    "current_source_hash": "a34c74abab499f55fa88aca560ae4cfc835ae08184dc085dc1e7a2fc7c7d8505",
     "note": "no frozen build in this checkout; the programme does not require one until packaging (A35)"
   },
   "physical_status": "UNTESTED",

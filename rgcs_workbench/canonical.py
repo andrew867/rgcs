@@ -284,6 +284,113 @@ def _corrections(store: CanonicalStore) -> None:
             provenance=prov, fields={"statement": stmt}))
 
 
+def _cspc(store: CanonicalStore) -> None:
+    """v4.6 Crystalline Spacetime Coordinate Program (A32).
+
+    Reads the canonical CSCP modules — never a spreadsheet — so the
+    workbook shows the same numbers the tests verify. Every row is
+    DERIVED_ARITHMETIC, ANALYTIC_MODEL, SOURCE_CLAIM or UNSUPPORTED;
+    nothing here is a measurement.
+    """
+    from cspc.exact import registry as cspc_registry
+    from cspc.experiments import compile_experiments, water_2g45_correction
+    from cspc.provenance import CORRECTIONS as CSPC_CORRECTIONS
+    from cspc.spacetime import TRAVEL_CLAIMS, energy_audit
+    from cspc.tetra import ambiguity_report, build_all, sync_summary
+
+    # frequency candidates with the exact/supported precision split
+    for cid, c in cspc_registry().items():
+        audit = c.quantity.precision_audit(c.unit)
+        store.add("cspc_candidates", Record(
+            id=cid, kind="cspc_candidate",
+            evidence_class="DERIVED_ARITHMETIC",
+            provenance=c.derivation,
+            fields={"exact_value": audit["exact"],
+                    "unit": c.unit,
+                    "physically_supported_value": audit["supported"],
+                    "significant_figures": audit["sig_figs"] or "exact",
+                    "overclaims_if_quoted_exactly":
+                        audit["overclaims_if_quoted_exactly"],
+                    "status": c.status, "note": c.note}))
+
+    # the 64-tetrahedron readings and their spectra
+    amb = ambiguity_report()
+    store.add("cspc_tetrahedron", Record(
+        id="TETRA-AMBIGUITY", kind="ambiguity",
+        evidence_class="SOURCE_CLAIM",
+        provenance="cspc.tetra.ambiguity_report",
+        fields={"source_phrase": amb["source_phrase"],
+                "status": amb["status"],
+                "n_readings": amb["n_readings"],
+                "resolution": amb["resolution"]}))
+    for name, cx in build_all().items():
+        s = sync_summary(cx)
+        store.add("cspc_tetrahedron", Record(
+            id=f"TETRA-{name}", kind="complex",
+            evidence_class="DERIVED_ARITHMETIC",
+            provenance=f"cspc.tetra reading={cx.reading}",
+            fields={"vertices": s["n_vertices"], "edges": s["n_edges"],
+                    "tetrahedral_cells": s["n_cells"],
+                    "algebraic_connectivity":
+                        round(s["algebraic_connectivity"], 6),
+                    "note": cx.note}))
+
+    # spacetime audit
+    a = energy_audit(100.0, 3600.0)
+    store.add("cspc_spacetime", Record(
+        id="ENERGY-AUDIT-100W-1H", kind="energy_audit",
+        evidence_class="ANALYTIC_MODEL",
+        provenance="cspc.spacetime.energy_audit",
+        fields={"apparatus": "100 W for 3600 s",
+                "energy_j": a["energy_j"],
+                "equivalent_mass_kg": a["equivalent_mass_kg"],
+                "schwarzschild_radius_m": a["schwarzschild_radius_m"],
+                "orders_of_magnitude_below_proton":
+                    round(a["orders_of_magnitude_below_proton"], 1),
+                "verdict": a["verdict"]}))
+    for t in TRAVEL_CLAIMS:
+        store.add("cspc_spacetime", Record(
+            id=t.id, kind="travel_claim",
+            evidence_class="UNSUPPORTED",
+            provenance="cspc.spacetime.TRAVEL_CLAIMS",
+            fields={"claim": t.claim, "status": t.status,
+                    "required_evidence": t.required_evidence,
+                    "why_unsupported":
+                        t.why_current_work_does_not_support_it}))
+
+    # preregistered experiments (plans only)
+    for eid, plan in compile_experiments()["experiments"].items():
+        store.add("cspc_experiments", Record(
+            id=eid, kind="preregistration",
+            evidence_class="ANALYTIC_MODEL",
+            provenance="cspc.experiments",
+            fields={"question": plan["question"],
+                    "n_controls": len(plan["control_hz"]),
+                    "n_per_condition": plan["n_per_condition"],
+                    "blinding": plan["blinding"],
+                    "stopping_rule": plan["stopping_rule"],
+                    "apparatus_status": plan["apparatus_status"],
+                    "data_status": plan["data_status"]}))
+
+    # CSCP corrections join the existing correction ledger
+    for c in CSPC_CORRECTIONS:
+        store.add("corrections", Record(
+            id=c.id, kind="correction",
+            evidence_class="DERIVED_ARITHMETIC",
+            provenance=c.basis,
+            fields={"statement": f"{c.subject}: {c.correction}"}))
+    w = water_2g45_correction()
+    store.add("corrections", Record(
+        id="CSPC-CORR-001-QUANT", kind="correction",
+        evidence_class="ANALYTIC_MODEL",
+        provenance="cspc.experiments.water_2g45_correction",
+        fields={"statement":
+                f"Debye loss peak {w['debye_loss_peak_ghz']:.1f} GHz; "
+                f"2.45 GHz carries "
+                f"{w['loss_at_2g45_relative_to_peak'] * 100:.0f}% of "
+                f"peak loss and is not a resonance."}))
+
+
 def _sources(store: CanonicalStore) -> None:
     from sources.registry.v4x2_source_registry import SOURCES
     for sid, s in SOURCES.items():
@@ -341,6 +448,7 @@ def build(version: str = "4.5.0") -> CanonicalStore:
     _hardware(store)
     _experiments(store)
     _corrections(store)
+    _cspc(store)
     _sources(store)
     _lore(store)
     _release_meta(store)

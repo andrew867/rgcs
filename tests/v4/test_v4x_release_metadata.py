@@ -35,7 +35,7 @@ def test_every_documented_count_agrees():
 
 
 def test_version_is_consistent_everywhere():
-    ver = "4.5.2"
+    ver = "4.6.0"
     assert f'version = "{ver}"' in (ROOT / "pyproject.toml").read_text(
         encoding="utf-8")
     cff = (ROOT / "CITATION.cff").read_text(encoding="utf-8")

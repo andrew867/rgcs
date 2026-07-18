@@ -3,6 +3,47 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [4.6.0] — 2026-07-18
+
+Crystalline Spacetime Coordinate Program (v4.6 pack, agents A00-A36).
+**SOFTWARE_VERIFIED, PHYSICAL_UNTESTED**: no apparatus was built, no
+data collected, and no physical hypothesis is supported. All prior tags
+untouched.
+
+New `cspc/` package: exact unit-aware frequency mathematics (floats
+refused; sig-figs tracked separately from exactness), a frozen
+hash-pinned simplicity metric with matched nulls and Holm/BH
+correction, the 64-tetrahedron lane (four non-isomorphic families,
+relabeling-invariant spectra, degree-matched nulls), DDS/NCO and
+phase-closure compilation, preregistered experiment definitions, a
+relativistic clock model validated against Pound-Rebka and GPS, a
+metric/energy audit, and structural RF safety with no override flag.
+
+Corrections to the source material: 2.45 GHz is not a unique resonance
+of water (Debye loss peak ~19.2 GHz; 2.45 GHz carries ~25% of peak
+loss); "0.0356521923..." retains HERTZ and is a 36-bit DDS resolution
+step; 8^11 is 33 octaves not 11; the "64-tetrahedron grid" phrase is
+underdetermined and stays so.
+
+Headline results are null or cautionary: the simplicity metric measures
+human number-choosing convention, not nature, and the programme's own
+candidates are flagged CIRCULAR; 4096 = 64^2 holds for any 64 objects;
+the ideal phase closure collapses ~175,000x on a decimal reference
+clock and is only restored by choosing a binary oscillator; a
+laboratory energy budget implies a Schwarzschild radius 23 orders of
+magnitude below a proton. All five travel-adjacent claims are
+UNSUPPORTED.
+
+Four new Master Evidence Workbook sheets read the canonical store and
+show exact vs physically-supported precision side by side.
+
+Five defects found by running the analysis honestly (CSPC-D-001..005),
+including a null model that made every corpus -- including the negative
+control -- appear significant; fixing it inverted the headline result.
+
+Tests: 1062 passing (1 archived-environment byte test
+deselected by policy D-V3-04).
+
 ## [4.5.2] — 2026-07-17
 
 Windows Workbench clean-rebuild patch. The v4.5.0 and v4.5.1 release

@@ -31,6 +31,9 @@ EVIDENCE_FILL = {
     "NUMERICAL_SIMULATION": "BFE0D8", "SYNTHETIC_RUN": "FFE0B0",
     "BENCH_MEASUREMENT": "B0F0B0", "INDEPENDENT_REPLICATION":
     "80E080",
+    # v4.6: terminal statuses, not ladder rungs. Red-grey so an
+    # UNSUPPORTED row is visibly not an achievement.
+    "UNSUPPORTED": "F0C8C8", "NOT_APPLICABLE": "D8D8D8",
 }
 HEADER_FILL = PatternFill("solid", fgColor="2E3A46")
 HEADER_FONT = Font(bold=True, color="FFFFFF")
@@ -224,6 +227,10 @@ def generate(store: CanonicalStore | None = None,
         "Lore Registry": ("lore_registry", "LoreRegistry"),
         "Installer Metadata": ("installer_metadata",
                                "InstallerMetadata"),
+        "CSCP Candidates": ("cspc_candidates", "CSCPCandidates"),
+        "CSCP Tetrahedron": ("cspc_tetrahedron", "CSCPTetrahedron"),
+        "CSCP Spacetime": ("cspc_spacetime", "CSCPSpacetime"),
+        "CSCP Experiments": ("cspc_experiments", "CSCPExperiments"),
     }
 
     for sheet in REQUIRED_SHEETS:

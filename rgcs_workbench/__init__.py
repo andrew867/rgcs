@@ -23,7 +23,17 @@ EVIDENCE_CLASSES = (
     "SYNTHETIC_RUN",
     "BENCH_MEASUREMENT",
     "INDEPENDENT_REPLICATION",
+    # v4.6 (CSCP) additions: a claim may be recorded as having no
+    # supporting mechanism, or as lying outside a model's domain.
+    # These are NOT rungs of the ladder — they are terminal statuses.
+    "UNSUPPORTED",
+    "NOT_APPLICABLE",
 )
+
+#: Classes that assert something about the physical world. A
+#: software-only lane may never emit these.
+PHYSICAL_EVIDENCE_CLASSES = ("BENCH_MEASUREMENT",
+                             "INDEPENDENT_REPLICATION")
 
 PRIVACY_CLASSES = ("PUBLIC", "PUBLIC_SAFE", "PRIVATE")
 
@@ -46,5 +56,9 @@ REQUIRED_SHEETS = (
     "Source Registry",
     "Lore Registry",
     "Installer Metadata",
+    "CSCP Candidates",
+    "CSCP Tetrahedron",
+    "CSCP Spacetime",
+    "CSCP Experiments",
     "Workbook Guide",
 )
