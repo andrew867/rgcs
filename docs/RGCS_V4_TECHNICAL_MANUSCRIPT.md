@@ -232,6 +232,44 @@ nested tetrahedral atlas whose null-rotation campaign is the standing
 refutation of grid-orientation claims. Full account:
 [R3 findings](v4/pmwr/R3_FINDINGS.md).
 
+## 15. R4: Tetrahedral Spin-Addressed Codec and Four-State Memory
+## Qualification (v4.8, agents A00-A63)
+
+An exact radix bridge (4096 = 8^4 = 4^6 = 2^12, verified exhaustively
+over all 4096 keys), a multiresolution codec with full bit accounting,
+and a physical four-state platform qualification (`r4/`).
+**Software verified, physical spin untested.** Full account:
+[R4 findings](v4/r4/R4_FINDINGS.md).
+
+*Radix conversion contributes zero compression* — the same twelve bits
+in another base — and the claim is refused in code with a
+`RAW_QUATERNARY` baseline that costs exactly what flat binary costs.
+Real compression is measured against fair baselines with topology,
+address, codebook, symbol, entropy-model and residual bits all
+counted. The honest outcome: the hierarchy beats quantizer baselines
+on piecewise-constant payloads, *loses to general-purpose DEFLATE on
+that same data*, and offers nothing on smooth, sparse or ramp
+payloads; the random-data negative control correctly shows no gain
+anywhere.
+
+*Four spin-1/2 directions are not four states.* The tetrahedral SIC
+frame (overlap −1/3, Σn_i = 0, Σn_i n_iᵀ = (4/3)I) is an
+informationally complete measurement representation, and its outcome
+object refuses to act as storage. Spin-3/2 is the strongest native
+four-level candidate, with its real limitation recorded: common optical
+readout resolves |m_s| pairs, so the readout engine returns an explicit
+ERASURE rather than guessing a sign. Quartz remains BLOCKED with all
+ten stop-matrix gates open, and no bench stage is runnable because no
+apparatus exists.
+
+## Limitations
+
+The R4 programme adds these: compression results are on synthetic
+corpora only and the codec is beaten by an off-the-shelf general
+compressor on its own best case; the digital twin is analytic with no
+fitted instrument data; the 4x4 confusion matrix is synthetic; and no
+four-state write, read, or reset has been performed in any material.
+
 ## Limitations
 
 The R3 programme adds these: root locks are demonstrated on synthetic

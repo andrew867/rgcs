@@ -558,6 +558,97 @@ def _r3(store: CanonicalStore) -> None:
                         "null-rotation ensemble"}))
 
 
+def _r4(store: CanonicalStore) -> None:
+    """v4.8 R4 lane (A60): radix bridge, codec campaign, platforms."""
+    from r4 import EXCLUDED_CLAIMS
+    from r4.bench import bench_readiness
+    from r4.benchmark import full_campaign
+    from r4.platforms import REGISTRY, decision_matrix
+    from r4.quantizer import codebook_geometry
+    from r4.radix import RADIX_IDENTITY, exhaustive_roundtrip
+
+    rt = exhaustive_roundtrip()
+    store.add("r4_codec", Record(
+        id="R4-RADIX-BRIDGE", kind="radix_identity",
+        evidence_class="DERIVED_ARITHMETIC",
+        provenance="r4.radix.exhaustive_roundtrip",
+        fields={"identity": RADIX_IDENTITY,
+                "keys_checked": rt["keys_checked"],
+                "roundtrip_ok": rt["ok"],
+                "is_compression": False,
+                "note": "exact radix conversion contributes ZERO "
+                        "compression"}))
+    g = codebook_geometry()
+    store.add("r4_codec", Record(
+        id="R4-TETRA-CODEBOOK", kind="codebook_geometry",
+        evidence_class="DERIVED_ARITHMETIC",
+        provenance="r4.quantizer.codebook_geometry",
+        fields={"pairwise_dot": "-1/3",
+                "orthogonal": g["orthogonal"],
+                "note": g["note"]}))
+
+    camp = full_campaign(n=1024)
+    for name, r in camp["results"].items():
+        won = [v["baseline"] for v in r["verdicts"]
+               if v["codec_beats_baseline"]]
+        store.add("r4_codec", Record(
+            id=f"R4-BENCH-{name}", kind="rate_distortion",
+            evidence_class="NUMERICAL_SIMULATION",
+            provenance="r4.benchmark.full_campaign",
+            fields={"negative_control": r["is_negative_control"],
+                    "beats_any_baseline": r["beats_any_baseline"],
+                    "baselines_beaten": ", ".join(won) or "none"}))
+    store.add("r4_codec", Record(
+        id="R4-NEGATIVE-CONTROL-GATE", kind="campaign_gate",
+        evidence_class="NUMERICAL_SIMULATION",
+        provenance="r4.benchmark.full_campaign",
+        fields={"gate": camp["negative_control_gate"],
+                "failures": ", ".join(camp["negative_control_failures"])
+                            or "none",
+                "structured_wins":
+                    ", ".join(camp["structured_corpora_with_wins"])
+                    or "none"}))
+
+    for pid, p in REGISTRY.items():
+        store.add("r4_platforms", Record(
+            id=pid, kind="four_state_platform",
+            evidence_class="ANALYTIC_MODEL",
+            provenance="r4.platforms.REGISTRY",
+            fields={"type": p.four_state_type,
+                    "native_levels": p.native_levels,
+                    "orthogonal": p.orthogonal_states,
+                    "coherent": p.coherent,
+                    "selectable": p.selectable,
+                    "open_gates": len(p.open_gates),
+                    "limitations": p.limitations[:180]}))
+    d = decision_matrix()
+    store.add("r4_platforms", Record(
+        id="R4-PLATFORM-DECISION", kind="decision_matrix",
+        evidence_class="ANALYTIC_MODEL",
+        provenance="r4.platforms.decision_matrix",
+        fields={"recommended_coherent":
+                    d["recommended_for_coherent_spin_memory"],
+                "recommended_classical":
+                    d["recommended_if_coherence_not_required"],
+                "quartz_status": d["quartz_status"],
+                "physical_status": d["physical_status"]}))
+    b = bench_readiness()
+    store.add("r4_platforms", Record(
+        id="R4-BENCH-READINESS", kind="honest_stop",
+        evidence_class="ANALYTIC_MODEL",
+        provenance="r4.bench.bench_readiness",
+        fields={"any_stage_runnable": b["any_stage_runnable_now"],
+                "blocker": b["blocker"][:180],
+                "physical_status": b["physical_status"]}))
+    for c in EXCLUDED_CLAIMS:
+        store.add("r4_platforms", Record(
+            id=f"R4-EXCLUDED-{abs(hash(c)) % 10000}",
+            kind="excluded_claim",
+            evidence_class="UNSUPPORTED",
+            provenance="r4.EXCLUDED_CLAIMS",
+            fields={"claim": c, "status": "MAY_NOT_BE_CLAIMED"}))
+
+
 def _sources(store: CanonicalStore) -> None:
     from sources.registry.v4x2_source_registry import SOURCES
     for sid, s in SOURCES.items():
@@ -618,6 +709,7 @@ def build(version: str = "4.5.0") -> CanonicalStore:
     _cspc(store)
     _pmwr(store)
     _r3(store)
+    _r4(store)
     _sources(store)
     _lore(store)
     _release_meta(store)

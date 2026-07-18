@@ -25,7 +25,7 @@ STAMP_NAME = "_build_stamp.json"
 # to any of these must invalidate a previously frozen dist.
 SOURCE_ROOTS = ("rgcs_desktop", "rgcs_workbench", "rgcs_core",
                 "rscs_core", "rscs2_core", "fkey_instrument",
-                "resonator_platform", "cspc", "pmwr", "r3")
+                "resonator_platform", "cspc", "pmwr", "r3", "r4")
 
 
 def repo_root() -> Path:

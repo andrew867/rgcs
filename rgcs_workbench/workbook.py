@@ -245,6 +245,8 @@ def generate(store: CanonicalStore | None = None,
         "PMWR Phryll": ("pmwr_phryll", "PMWRPhryll"),
         "R3 Root Space": ("r3_root_space", "R3RootSpace"),
         "R3 Lanes": ("r3_lanes", "R3Lanes"),
+        "R4 Codec": ("r4_codec", "R4Codec"),
+        "R4 Platforms": ("r4_platforms", "R4Platforms"),
     }
 
     for sheet in REQUIRED_SHEETS:

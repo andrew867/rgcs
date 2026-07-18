@@ -75,5 +75,7 @@ REQUIRED_SHEETS = (
     "PMWR Phryll",
     "R3 Root Space",
     "R3 Lanes",
+    "R4 Codec",
+    "R4 Platforms",
     "Workbook Guide",
 )

@@ -3,6 +3,51 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [4.8.0] — 2026-07-18
+
+R4: Tetrahedral Spin-Addressed Multiresolution Codec, Quaternary
+Memory, and Physical Spin-Memory Qualification (v4.8 R4 pack, 64
+agents). **SOFTWARE_VERIFIED, PHYSICAL_SPIN_UNTESTED.** All prior tags
+untouched.
+
+New `r4/` package: exact radix bridge 4096 = 8^4 = 4^6 = 2^12 verified
+exhaustively over all 4096 keys in three radices -- and refused as
+compression, with a RAW_QUATERNARY baseline costing exactly what flat
+binary costs. Quaternary symbols require a declared basis before any
+direction naming; the hierarchical address is stored DIGITAL_EXACT and
+storing it in a physical spin is refused (drift would corrupt the
+index). Tetrahedral codebook with exact geometry; the SIC outcome
+object REFUSES to be storage (four directions at -1/3 overlap span a
+2-dimensional space). GF(4) integrity fixture that states its own
+scope (corrects a known erasure, not an unknown error).
+
+Multiresolution codec with Lagrangian split/prune, train-split-only
+codebook, versioned container, entropy model whose transmission cost is
+counted, lossless/progressive/random-access modes, and FULL bit
+accounting. Two methodological defects found and fixed while running
+it: the rate-distortion curve swept only lambda (pinning fidelity at
+the codebook bottleneck) and the HAL ablation pinned lambda so the tree
+never split. Honest outcome after fixing both: the codec beats
+quantizer baselines on piecewise-constant data, LOSES to zlib on that
+same data, and offers nothing on smooth/sparse/ramp payloads; the
+random-data negative control correctly shows no gain.
+
+Physical lane: four-state platform registry (SiC spin-3/2 recorded with
+its |m_s|-pair readout limitation; NV+15N; classical four-domain
+separated from the spin claim; spin-1/2 tetrahedral REFUSED as memory;
+quartz BLOCKED with all ten gates open), four-level spin digital twin
+whose write compiler refuses Delta m_s != +-1 single pulses and whose
+readout returns an explicit ERASURE without sign resolution, finite
+retention/endurance, voxel crosstalk bounding addressing density, and a
+staged bench whose honest stop is BLOCKED_NO_APPARATUS.
+
+Release process: tools/r4_release_gate.py installs the no-post-tag-sync
+gate (R04/R65) -- v4.8.0 is the first release whose tag already
+contains every release-owned artifact. Workbook: 28 sheets (2 new R4).
+
+Tests: 1215 passing (1 archived-environment byte test
+deselected by policy D-V3-04).
+
 ## [4.7.1] — 2026-07-18
 
 R3: Root-Space Resolver, Anisotropic Phase Lens, Optical Spin, HAL
