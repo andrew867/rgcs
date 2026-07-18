@@ -51,12 +51,45 @@ def version() -> str:
     return m.group(1) if m else "0.0.0"
 
 
-def freeze() -> dict:
+def _write_stamp(ver: str) -> dict:
+    from rgcs_desktop.build_meta import write_stamp
+    from datetime import datetime, timezone
+    return write_stamp(ROOT, ver,
+                       datetime.now(timezone.utc).isoformat(
+                           timespec="seconds"))
+
+
+def _dist_stamp() -> dict | None:
+    stamp = DIST / "_internal" / "_build_stamp.json"
+    if not stamp.exists():
+        return None
+    return json.loads(stamp.read_text(encoding="utf-8"))
+
+
+def dist_is_current() -> tuple[bool, str]:
+    """A dist/ tree may only be packaged if its embedded source hash
+    matches the current working tree. This is the guard that makes a
+    stale --skip-freeze impossible (the v4.5.0/1 failure)."""
+    from rgcs_desktop.build_meta import compute_source_hash
+    d = _dist_stamp()
+    if d is None:
+        return False, "dist/ has no _build_stamp.json (never frozen or " \
+                      "frozen before build-info existed)"
+    cur = compute_source_hash(ROOT)
+    if d.get("source_hash") != cur:
+        return (False, f"dist/ source_hash {str(d.get('source_hash'))[:12]} "
+                f"!= current {cur[:12]} -- source changed since the "
+                f"freeze; re-freeze (do NOT --skip-freeze)")
+    return True, "dist/ matches current source"
+
+
+def freeze(ver: str) -> dict:
     try:
         import PyInstaller  # noqa: F401
     except ImportError:
         return {"step": "freeze", "ok": False,
                 "blocker": "PyInstaller not installed"}
+    stamp = _write_stamp(ver)   # bundled by the spec, read by --build-info
     r = _run([sys.executable, "-m", "PyInstaller",
               "packaging/RGCSWorkbench.spec", "--noconfirm",
               "--distpath", str(ROOT / "dist"),
@@ -64,6 +97,8 @@ def freeze() -> dict:
     exe = DIST / "RGCSWorkbench.exe"
     return {"step": "freeze", "ok": exe.exists(),
             "exe": str(exe) if exe.exists() else None,
+            "source_hash": stamp["source_hash"][:12],
+            "git_commit": stamp["git_commit"][:12],
             "returncode": r.returncode,
             "stderr_tail": r.stderr[-600:] if not exe.exists()
             else ""}
@@ -75,19 +110,35 @@ def smoke_frozen() -> dict:
         return {"step": "smoke_frozen", "ok": False,
                 "blocker": "no frozen exe"}
     env = dict(os.environ, QT_QPA_PLATFORM="offscreen")
+    from rgcs_desktop.build_meta import compute_source_hash
+    cur_hash = compute_source_hash(ROOT)
     # --doctor: offline diagnostics; --smoke-check: constructs the full
     # MainWindow (every panel) and runs a real background job, so it
-    # catches missing bundled data files that --doctor never touches.
+    # catches missing bundled data files that --doctor never touches;
+    # --build-info: proves the frozen binary was built from THIS source
+    # (source_hash match) -- the anti-stale check.
     doc = subprocess.run([str(exe), "--doctor"], capture_output=True,
                          text=True, env=env, timeout=180)
     smk = subprocess.run([str(exe), "--smoke-check"],
                          capture_output=True, text=True, env=env,
                          timeout=300)
+    bi = subprocess.run([str(exe), "--build-info"], capture_output=True,
+                        text=True, env=env, timeout=120)
+    try:
+        info = json.loads(bi.stdout)
+    except Exception:  # noqa: BLE001
+        info = {}
+    hash_ok = info.get("source_hash") == cur_hash
     ok = (doc.returncode == 0
           and "RGCS Workbench diagnostics" in doc.stdout
           and smk.returncode == 0
-          and "panels constructed OK" in smk.stdout)
+          and "panels constructed OK" in smk.stdout
+          and bi.returncode == 0 and hash_ok)
     return {"step": "smoke_frozen", "ok": ok,
+            "frozen_source_hash": info.get("source_hash", "")[:12]
+            if isinstance(info.get("source_hash"), str) else "",
+            "current_source_hash": cur_hash[:12],
+            "source_hash_match": hash_ok,
             "doctor_tail": doc.stdout[-200:],
             "smoke_tail": (smk.stdout or smk.stderr)[-400:]}
 
@@ -185,7 +236,24 @@ def main() -> int:
     ver = version()
     steps = []
     if "--skip-freeze" not in sys.argv:
-        steps.append(freeze())
+        steps.append(freeze(ver))
+    else:
+        # refuse to re-package a dist/ that no longer matches the source
+        current, why = dist_is_current()
+        steps.append({"step": "stale_guard", "ok": current,
+                      "detail": why})
+        if not current:
+            print("REFUSING --skip-freeze: " + why, file=sys.stderr)
+            report = {"version": ver, "steps": steps,
+                      "portable_zip_built": False,
+                      "installer_exe_built": False,
+                      "clean_machine_verified": False, "signed": False,
+                      "aborted": "stale dist/"}
+            OUT.mkdir(parents=True, exist_ok=True)
+            (OUT / "build_report.json").write_text(
+                json.dumps(report, indent=2), encoding="utf-8")
+            print("  stale_guard: BLOCKED (" + why + ")")
+            return 2
     steps.append(smoke_frozen())
     steps.append(portable_zip(ver))
     steps.append(workbook_asset(ver))

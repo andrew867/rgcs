@@ -33,6 +33,8 @@ datas = [
     (str(ROOT / "references"), "references"),
     # experiment builder / manifest validation schemas
     (str(ROOT / "experiments" / "schemas"), "experiments/schemas"),
+    # build provenance stamp (version/commit/source-hash) -> --build-info
+    (str(ROOT / "_build_stamp.json"), "."),
 ]
 
 hiddenimports = [

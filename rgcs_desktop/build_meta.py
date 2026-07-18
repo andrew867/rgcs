@@ -1,0 +1,107 @@
+"""Build provenance for the frozen app (v4.5.2).
+
+A single source of truth for "which source produced this binary". At
+freeze time the build tool writes ``_build_stamp.json`` (version, git
+commit, source hash, build time) and PyInstaller bundles it; the frozen
+app reads it for ``--build-info``. From a source checkout the same
+values are computed live.
+
+``compute_source_hash`` is the anti-stale mechanism: it hashes every
+packaged ``.py`` file, so the build tool can refuse to package a
+``dist/`` whose embedded hash no longer matches the working tree (the
+exact failure that shipped a stale binary in v4.5.0/v4.5.1).
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+STAMP_NAME = "_build_stamp.json"
+
+# python packages whose source defines application behaviour; a change
+# to any of these must invalidate a previously frozen dist.
+SOURCE_ROOTS = ("rgcs_desktop", "rgcs_workbench", "rgcs_core",
+                "rscs_core", "rscs2_core", "fkey_instrument",
+                "resonator_platform")
+
+
+def repo_root() -> Path:
+    return Path(__file__).resolve().parents[1]
+
+
+def compute_source_hash(repo: Path | None = None) -> str:
+    """Deterministic sha256 over every packaged .py file (path + bytes),
+    sorted by repo-relative POSIX path. Excludes caches and the stamp."""
+    repo = repo or repo_root()
+    h = hashlib.sha256()
+    for root in sorted(SOURCE_ROOTS):
+        base = repo / root
+        if not base.exists():
+            continue
+        for p in sorted(base.rglob("*.py"),
+                        key=lambda q: q.relative_to(repo).as_posix()):
+            if "__pycache__" in p.parts:
+                continue
+            rel = p.relative_to(repo).as_posix()
+            h.update(rel.encode("utf-8"))
+            h.update(b"\0")
+            h.update(p.read_bytes())
+            h.update(b"\0")
+    return h.hexdigest()
+
+
+def _pyproject_version(repo: Path) -> str:
+    import re
+    m = re.search(r'^version = "([^"]+)"',
+                  (repo / "pyproject.toml").read_text(encoding="utf-8"),
+                  re.M)
+    return m.group(1) if m else "0.0.0"
+
+
+def _git_commit(repo: Path) -> str:
+    try:
+        r = subprocess.run(["git", "rev-parse", "HEAD"], cwd=repo,
+                           capture_output=True, text=True, timeout=10)
+        return r.stdout.strip() or "unknown"
+    except Exception:  # noqa: BLE001
+        return "unknown"
+
+
+def _frozen_stamp_path() -> Path | None:
+    base = getattr(sys, "_MEIPASS", None)
+    if base:
+        return Path(base) / STAMP_NAME
+    return None
+
+
+def build_info() -> dict:
+    """Return the build provenance dict. Frozen: read the bundled stamp;
+    source: compute live."""
+    if getattr(sys, "frozen", False):
+        stamp = _frozen_stamp_path()
+        if stamp and stamp.exists():
+            data = json.loads(stamp.read_text(encoding="utf-8"))
+            data["frozen"] = True
+            return data
+        return {"frozen": True, "error": "no _build_stamp.json bundled"}
+    repo = repo_root()
+    return {"frozen": False,
+            "version": _pyproject_version(repo),
+            "git_commit": _git_commit(repo),
+            "source_hash": compute_source_hash(repo),
+            "built_at": None}
+
+
+def write_stamp(repo: Path, version: str, built_at: str | None) -> dict:
+    """Write ``_build_stamp.json`` at the repo root for the freeze to
+    bundle. Returns the stamp dict."""
+    stamp = {"version": version,
+             "git_commit": _git_commit(repo),
+             "source_hash": compute_source_hash(repo),
+             "built_at": built_at}
+    (repo / STAMP_NAME).write_text(
+        json.dumps(stamp, indent=2) + "\n", encoding="utf-8")
+    return stamp

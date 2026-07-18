@@ -75,6 +75,67 @@ def export_workbook(argv: list[str]) -> int:
     return 0
 
 
+#: option flags the launcher understands; never workspace paths
+KNOWN_FLAGS = frozenset({
+    "--first-run", "--doctor", "--export-workbook", "--smoke-check",
+    "--build-info", "--print-startup-plan", "--private",
+})
+
+
+def plan_startup(argv: list[str], last_workspace: str | None,
+                 first_run_done: bool) -> tuple[str, Path | None]:
+    """Decide what to do at launch, as a pure function so it is testable
+    without a Qt event loop.
+
+    Returns one of:
+      ("first_run", None)      -> show the first-run wizard
+      ("open", Path)           -> open an existing workspace
+      ("create", Path)         -> create a workspace at a given path
+      ("none", None)           -> start with no workspace
+
+    ``--first-run`` (and any other ``--flag``) is NEVER treated as a
+    workspace path. This is the v4.5.2 regression contract: the frozen
+    binary must not create a directory named ``--first-run``.
+    """
+    if "--first-run" in argv:
+        return ("first_run", None)
+    # only bare positionals (no leading dash) can be a workspace path
+    positional = [a for a in argv if not a.startswith("-")]
+    if positional:
+        target = Path(positional[0])
+        if (target / "workspace.db").exists():
+            return ("open", target)
+        return ("create", target)
+    if last_workspace and (Path(last_workspace) / "workspace.db").exists():
+        return ("open", Path(last_workspace))
+    if not first_run_done:
+        return ("first_run", None)
+    return ("none", None)
+
+
+def build_info_cmd() -> int:
+    """`--build-info`: print the frozen build's provenance (version, git
+    commit, source hash) as JSON. Offline, no Qt."""
+    import json
+
+    from rgcs_desktop.build_meta import build_info
+    print(json.dumps(build_info(), indent=2))
+    return 0
+
+
+def print_startup_plan_cmd(argv: list[str]) -> int:
+    """`--print-startup-plan [args...]`: print the startup decision for
+    the given args without launching the GUI. Used by the packaged
+    regression test to prove ``--first-run`` is never a workspace path."""
+    from rgcs_desktop.app.context import AppContext
+    settings = AppContext().settings
+    rest = [a for a in argv if a != "--print-startup-plan"]
+    action, path = plan_startup(rest, settings.last_workspace,
+                                settings.first_run_done)
+    print(f"{action}\t{path if path is not None else ''}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     multiprocessing.freeze_support()  # required for frozen (PyInstaller) builds
     argv = argv if argv is not None else sys.argv[1:]
@@ -82,10 +143,29 @@ def main(argv: list[str] | None = None) -> int:
     # headless subcommands (no Qt event loop, safe in the packaged EXE)
     if "--doctor" in argv:
         return doctor()
+    if "--build-info" in argv:
+        return build_info_cmd()
+    if "--print-startup-plan" in argv:
+        return print_startup_plan_cmd(argv)
     if "--export-workbook" in argv:
         return export_workbook(argv)
 
     app = create_app()
+
+    if "--first-run-selftest" in argv:
+        # headless equivalent of accepting the wizard, to a given dir;
+        # verifies workspace creation + demo + workbook without a GUI.
+        import json
+
+        from rgcs_desktop.app.first_run import first_run_selftest
+        i = argv.index("--first-run-selftest")
+        root = Path(argv[i + 1]) if i + 1 < len(argv) else \
+            _default_workspace()
+        result = first_run_selftest(root)
+        print(json.dumps(result, indent=2))
+        ok = (result["workspace_db_exists"] and result["workbook_seeded"]
+              and "--first-run" not in Path(result["workspace_root"]).name)
+        return 0 if ok else 1
 
     if "--smoke-check" in argv:
         # packaging smoke check: construct the full window, print versions,
@@ -138,27 +218,18 @@ def main(argv: list[str] | None = None) -> int:
                 return False
 
     context = AppContext()
-    # `--first-run` (used by the installer's post-install launch) forces
-    # the wizard; it is a flag, never a workspace path.
-    force_first_run = "--first-run" in argv
-    positional = [a for a in argv if not a.startswith("-")]
-    # reopen the last workspace when available
-    last = context.settings.last_workspace
-    if force_first_run:
+    action, target = plan_startup(argv, context.settings.last_workspace,
+                                  context.settings.first_run_done)
+    if action == "first_run":
+        # installer post-install launch (`--first-run`) or genuine first
+        # launch: show the wizard. `--first-run` is a flag, never a path.
         from rgcs_desktop.app.first_run import run_first_run
         run_first_run(context)
-    elif positional:
-        target = Path(positional[0])
-        if (target / "workspace.db").exists():
-            _guarded_open(context, target)
-        else:
-            context.create_workspace(target, target.name)
-    elif last and (Path(last) / "workspace.db").exists():
-        _guarded_open(context, Path(last))
-    elif not context.settings.first_run_done:
-        # first launch, no prior workspace: run the first-run wizard
-        from rgcs_desktop.app.first_run import run_first_run
-        run_first_run(context)
+    elif action == "open":
+        _guarded_open(context, target)
+    elif action == "create":
+        context.create_workspace(target, target.name)
+    # action == "none": start with no workspace
 
     window = MainWindow(context)
     window.show()

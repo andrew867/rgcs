@@ -71,6 +71,17 @@ class FirstRunWizard(QDialog):
         return self.demo_check.isChecked()
 
 
+def apply_first_run(context, root: Path, seed_demo: bool) -> Path:
+    """Create the workspace the wizard chose and optionally seed the demo
+    workbook. Pure of any dialog, so it is unit-testable and reusable by
+    the headless self-test. Returns the workspace root."""
+    root.mkdir(parents=True, exist_ok=True)
+    context.create_workspace(root, root.name)
+    if seed_demo:
+        _seed_demo(root)
+    return root
+
+
 def run_first_run(context, parent=None) -> bool:
     """Show the wizard and apply the result. Returns True if a workspace
     was created. Records that the wizard has run either way so it does
@@ -80,12 +91,28 @@ def run_first_run(context, parent=None) -> bool:
     context.settings.first_run_done = True
     if not accepted:
         return False
-    root = wiz.workspace_path
-    root.mkdir(parents=True, exist_ok=True)
-    context.create_workspace(root, root.name)
-    if wiz.seed_demo:
-        _seed_demo(root)
+    apply_first_run(context, wiz.workspace_path, wiz.seed_demo)
     return True
+
+
+def first_run_selftest(root: Path, seed_demo: bool = True) -> dict:
+    """Headless equivalent of accepting the wizard at ``root``: create the
+    workspace + optional demo seed, then report what exists. Used by the
+    packaged regression test to verify wizard creation / demo / workbook
+    without a GUI event loop. Never touches ``--first-run`` as a path."""
+    from rgcs_desktop.app.context import AppContext
+    context = AppContext()
+    apply_first_run(context, root, seed_demo)
+    wb = root / "RGCS_Master_Evidence_Workbook.xlsx"
+    result = {
+        "workspace_root": str(root),
+        "workspace_db_exists": (root / "workspace.db").exists(),
+        "workbook_seeded": wb.exists() and wb.stat().st_size > 0,
+        "workspace_name": context.workspace.name
+        if context.workspace else None,
+    }
+    context.shutdown()
+    return result
 
 
 def _seed_demo(root: Path) -> None:

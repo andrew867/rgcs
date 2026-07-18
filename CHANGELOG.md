@@ -3,6 +3,41 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [4.5.2] — 2026-07-17
+
+Windows Workbench clean-rebuild patch. The v4.5.0 and v4.5.1 release
+binaries were invalid: every build after the first freeze used
+`--skip-freeze`, which re-zipped a **stale** PyInstaller executable. The
+current source handled `--first-run` correctly, but the shipped exe was
+built before that code existed, so the installer's post-install launch
+(`RGCSWorkbench.exe --first-run`) created a workspace literally named
+`--first-run`.
+
+Fixes:
+
+- **Clean rebuild from current source** — `build/` and `dist/` deleted,
+  full freeze (no `--skip-freeze`).
+- **Build provenance embedded in the exe** (`rgcs_desktop/build_meta.py`,
+  `_build_stamp.json` bundled): version, git commit, and a source hash
+  over every packaged `.py`. New `--build-info` prints it.
+- **`--skip-freeze` now refuses a stale/mismatched `dist/`** — the build
+  aborts if the frozen tree's source hash differs from the working tree,
+  so the failure that shipped twice cannot recur.
+- **`--first-run` can never be a workspace path** — startup selection
+  moved to a pure, tested `plan_startup()`; `--first-run` (and any
+  `--flag`) maps to the wizard, never to creating/opening a directory.
+- **Source + packaged regression tests** — `plan_startup` unit tests,
+  and frozen-binary tests that run the installer's exact command and
+  assert no `--first-run` directory is ever created, plus build-info
+  hash match, 13-panel smoke, wizard/demo/workbook self-test.
+- Installer's exact post-install launch, wizard creation, demo seed,
+  workbook, all 13 panels, restart, upgrade, and uninstall verified on
+  this machine (still not a clean VM; clean-machine verdict not claimed;
+  installer still unsigned).
+
+Tests: 945 passing (1 archived-environment byte test
+deselected by policy D-V3-04).
+
 ## [4.5.1] — 2026-07-17
 
 Windows Workbench packaging patch on 4.5.0. No source logic or

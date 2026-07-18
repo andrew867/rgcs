@@ -22,6 +22,66 @@ def test_pyinstaller_spec_and_entry_present():
     assert (ROOT / "packaging" / "workbench_entry.py").exists()
 
 
+# --- v4.5.2: --first-run is never a workspace path ----------------------
+
+def test_plan_startup_first_run_flag_is_never_a_path():
+    """The v4.5.2 regression contract. `--first-run` must map to the
+    wizard, never to creating/opening a workspace literally named
+    '--first-run' (the shipped-binary bug)."""
+    from rgcs_desktop.app.main import plan_startup
+    for argv in (["--first-run"],
+                 ["--first-run", "--other"],
+                 ["--first-run", "C:/some/path"]):
+        action, path = plan_startup(argv, last_workspace=None,
+                                    first_run_done=False)
+        assert action == "first_run", argv
+        assert path is None, argv
+
+
+def test_plan_startup_never_returns_dash_prefixed_path():
+    """No argv of leading-dash flags may ever produce a workspace path."""
+    from rgcs_desktop.app.main import plan_startup
+    for argv in (["--first-run"], ["--smoke-check"], ["--doctor"],
+                 ["--build-info"], ["--print-startup-plan"],
+                 ["--first-run", "--print-startup-plan"]):
+        _, path = plan_startup(argv, None, True)
+        assert path is None or not str(path).startswith("-"), argv
+        # specifically, a directory literally named --first-run is banned
+        assert path is None or path.name != "--first-run", argv
+
+
+def test_plan_startup_positional_still_opens_or_creates(tmp_path):
+    from rgcs_desktop.app.main import plan_startup
+    action, path = plan_startup([str(tmp_path / "ws")], None, True)
+    assert action == "create" and path == tmp_path / "ws"
+    (tmp_path / "ws2").mkdir()
+    (tmp_path / "ws2" / "workspace.db").write_text("x")
+    action, path = plan_startup([str(tmp_path / "ws2")], None, True)
+    assert action == "open" and path == tmp_path / "ws2"
+
+
+def test_plan_startup_genuine_first_launch_and_none():
+    from rgcs_desktop.app.main import plan_startup
+    assert plan_startup([], None, False) == ("first_run", None)
+    assert plan_startup([], None, True) == ("none", None)
+
+
+def test_build_meta_source_hash_deterministic_and_covers_desktop():
+    from rgcs_desktop.build_meta import (SOURCE_ROOTS,
+                                         compute_source_hash)
+    h1 = compute_source_hash(ROOT)
+    h2 = compute_source_hash(ROOT)
+    assert h1 == h2 and len(h1) == 64
+    assert "rgcs_desktop" in SOURCE_ROOTS
+    assert "rgcs_workbench" in SOURCE_ROOTS
+
+
+def test_spec_bundles_build_stamp_for_build_info():
+    spec = (ROOT / "packaging" / "RGCSWorkbench.spec").read_text(
+        encoding="utf-8")
+    assert "_build_stamp.json" in spec
+
+
 def test_spec_bundles_runtime_data_the_desktop_reads():
     """The desktop viewers read these REPO_ROOT-relative data trees at
     runtime; the frozen build crashed on launch when they were absent
