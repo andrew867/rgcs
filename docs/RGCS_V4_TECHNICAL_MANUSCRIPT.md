@@ -120,7 +120,67 @@ register V4-D-001..004 (all closed, each with a regression test),
 domain audits, and the G1–G30 gate table in
 RELEASE_RECOMMENDATION.md.
 
+## 12. Crystalline Spacetime Coordinate Program (v4.6, agents A00–A36)
+
+A source-motivated programme translating 4096 / 64 / 2.45 GHz /
+visible-light relationships into exact software, statistical nulls,
+and falsification structure (`cspc/`). **Software verified, physical
+untested**: no apparatus was built and no data collected. Full account
+in [CSCP findings](v4/cspc/CSCP_FINDINGS.md); ledger and defect
+register in [programme ledger](v4/cspc/PROGRAMME_LEDGER.md).
+
+**Method.** Frequencies are exact `Fraction` quantities carrying SI
+dimension vectors, with empirical significance tracked *separately*
+from arithmetic exactness. Seventeen candidates reproduce frozen
+decimal fixtures. Statistical work uses a hash-pinned simplicity
+metric (rational complexity of the exact ratio, no free parameters),
+frozen before any corpus was evaluated, with granularity-matched nulls
+and Holm–Bonferroni / Benjamini–Hochberg correction.
+
+**Results, which are largely null.**
+
+1. *Precision does not survive its input.* `2.45e9 / 8^9` is exactly
+   18.25392246246337890625 Hz and, because 2.45 GHz is nominal at
+   three significant figures, is 18.3 Hz as physics.
+2. *The simplicity metric measures human convention.* Everything
+   surviving correction is either constructed from its own reference
+   or a table of round numbers (ISM allocations, binary clock
+   crystals). The programme's own candidate set scores "simple" and is
+   flagged circular.
+3. *4096 = 64² is counting.* Every 64-element structure has 4096
+   ordered pairs. Across four non-isomorphic constructions the
+   geometric lattices are unusually *poorly* connected against
+   degree-matched nulls; none is specially synchronizable.
+4. *Ideal phase closure is not realizable by default.* On a 100 MHz
+   reference the common closure window for 4096/20480/40960 Hz
+   degrades from 1/4096 s to ≈42.9 s; a binary reference oscillator
+   (2²⁶ Hz) restores exactness. Exactness is an engineering choice.
+5. *Spacetime.* The weak-field clock model reproduces Pound–Rebka and
+   the GPS correction (net +38.44 µs/day). Resonators are metric
+   *instruments*: an optical clock at 1e-18 resolves ~9 mm of height.
+   A 100 W, one-hour apparatus implies a Schwarzschild radius of
+   5.9e-39 m — 23 orders of magnitude below a proton radius.
+
+**Corrections carried.** 2.45 GHz is not a unique resonance of water
+(Debye loss peaks near 19.2 GHz; the ISM band carries ~25% of peak
+loss and the response is relaxation, not resonance); the supplied
+"fractal relationship" retains hertz and is a 36-bit DDS resolution
+step; `8^11 = 2^33` is thirty-three octaves, not eleven; the
+"64-tetrahedron grid" phrase remains underdetermined.
+
+**Boundaries.** Eight transfer firewalls are enforced in code, and all
+five travel-adjacent claims are recorded `UNSUPPORTED` with the
+specific evidence each would require. None of that evidence exists.
+
 ## Limitations
+
+The v4.6 programme adds these: its candidate register is circular by
+construction (built from the references it is scored against) and must
+not be cited as independent structure; the simplicity metric detects
+number-choosing convention and cannot distinguish "chosen by humans"
+from "preferred by nature"; every experiment is a preregistration with
+no apparatus and no data; and the spacetime lane establishes only
+measurement sensitivity, never metric control.
 
 See proof bundle `reports/LIMITATIONS.md`: STEP export untested
 (declared); phase diagnostics require driven complex responses;

@@ -63,15 +63,22 @@ are a success condition.
 | metadata guard consistent | **PASS** | 1062 across 3 documented sites |
 | adversarial campaign | **PASS** | 17 attacks, all refusals hold |
 | workbook integration | **PASS** | 21 sheets incl. 4 CSCP; 16 prior workbook tests still pass |
-| **hosted CI green** | **BLOCKED** | run 29640235954 stuck `queued` — GitHub hosted runners backed up; not a code failure |
-| binary freshness | **N/A** | no frozen build in this checkout (baseline reports `ABSENT`); A35 re-freeze deferred with the release |
-| tag + publish | **NOT DONE** | gated on CI |
-| remote asset verification | **NOT DONE** | gated on publish |
+| hosted CI green | **PASS** | run 29640235954, all 10 jobs success (was queued on a runner backlog, later cleared) |
+| binary freshness proven | **PASS** | frozen `--build-info` reports 4.6.0 @ `a04b910` with matching source hash |
+| installer first-run path tested | **PASS** | 6 frozen-binary tests incl. the installer's exact `--first-run` command; no `--first-run` directory created |
+| tag + publish | **PASS** | `v4.6.0-rc1` + `v4.6.0` at `a04b910`; 12 assets published |
+| remote asset verification | **PASS** | portable ZIP, Setup.exe and workbook re-downloaded — hashes match; the downloaded binary reports 4.6.0 @ `a04b910`, resolves `--first-run` to the wizard, builds 13 panels; workbook shows 21 sheets incl. 4 CSCP |
+| claim boundaries visible | **PASS** | workbook shows exact vs physically-supported precision per candidate; travel claims render `UNSUPPORTED` |
+| manuscript updated | **PASS** | `docs/RGCS_V4_TECHNICAL_MANUSCRIPT.md` §12 + extended Limitations |
 
-**Consequence: the final verdict token is NOT emitted.** The v4.6
-contract requires release artifacts to be remotely verified, and that
-gate is blocked. The programme's software gates are green locally; the
-release gates are not, and a blocked gate remains blocked.
+**All software gates are satisfied, so the final verdict token is
+emitted.** It certifies software only: every physical hypothesis in the
+programme remains UNTESTED, no apparatus was built, and no measurement
+was made.
+
+Remaining honest gaps, unchanged by the release: the installer is
+UNSIGNED, no clean-VM install cycle was run for v4.6.0, and the
+programme's own candidate register is circular by construction.
 
 ## Binary freshness
 
