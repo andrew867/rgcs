@@ -1,0 +1,37 @@
+{
+  "programme": "RGCS-V4.6-CSCP",
+  "evidence_class": "RELEASE_EVIDENCE",
+  "branch": "v4.6-cspc",
+  "head_commit": "8bda6e89fece09cc90b15a10ab15c13f9f7acc07",
+  "base_commit": "8bda6e89fece09cc90b15a10ab15c13f9f7acc07",
+  "package_version": "4.5.2",
+  "latest_release_tag": "v4.5.2",
+  "frozen_tags": [
+    "v2.0.0",
+    "v3.0.0",
+    "v3.0.1",
+    "v4.0.0",
+    "v4.0.0-alpha",
+    "v4.1.0",
+    "v4.1.1",
+    "v4.2.0",
+    "v4.2.1",
+    "v4.3.0",
+    "v4.4.0",
+    "v4.5.0",
+    "v4.5.1",
+    "v4.5.2"
+  ],
+  "test_command": "python -m pytest -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic",
+  "baseline_tests_passed": 945,
+  "baseline_tests_deselected": 1,
+  "source_hash": "18b05e6b9ce942c07b3174bf6fa2bfe001bdb32987ed65f3b3bd8b685ce88a7d",
+  "binary_freshness": {
+    "frozen_build_present": false,
+    "state": "ABSENT",
+    "current_source_hash": "18b05e6b9ce942c07b3174bf6fa2bfe001bdb32987ed65f3b3bd8b685ce88a7d",
+    "note": "no frozen build in this checkout; the programme does not require one until packaging (A35)"
+  },
+  "physical_status": "UNTESTED",
+  "claim_boundary": "Baseline is RELEASE_EVIDENCE about software state only. It asserts nothing about any physical hypothesis."
+}

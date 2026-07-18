@@ -25,7 +25,7 @@ STAMP_NAME = "_build_stamp.json"
 # to any of these must invalidate a previously frozen dist.
 SOURCE_ROOTS = ("rgcs_desktop", "rgcs_workbench", "rgcs_core",
                 "rscs_core", "rscs2_core", "fkey_instrument",
-                "resonator_platform")
+                "resonator_platform", "cspc")
 
 
 def repo_root() -> Path:
@@ -33,8 +33,18 @@ def repo_root() -> Path:
 
 
 def compute_source_hash(repo: Path | None = None) -> str:
-    """Deterministic sha256 over every packaged .py file (path + bytes),
-    sorted by repo-relative POSIX path. Excludes caches and the stamp."""
+    """Deterministic sha256 over every packaged .py file (path +
+    content), sorted by repo-relative POSIX path. Excludes caches.
+
+    Line endings are normalised to LF before hashing. Git checkouts on
+    Windows (``core.autocrlf=true``) re-materialise files with CRLF, so
+    a raw-byte hash reports a spurious mismatch for logically identical
+    source after a clone or branch switch — which would fail
+    ``--build-info`` verification for a genuinely fresh binary. The
+    hash must track logical source content, not checkout line-ending
+    policy. (It stays fail-safe either way: a real source change always
+    changes the hash.)
+    """
     repo = repo or repo_root()
     h = hashlib.sha256()
     for root in sorted(SOURCE_ROOTS):
@@ -48,7 +58,7 @@ def compute_source_hash(repo: Path | None = None) -> str:
             rel = p.relative_to(repo).as_posix()
             h.update(rel.encode("utf-8"))
             h.update(b"\0")
-            h.update(p.read_bytes())
+            h.update(p.read_bytes().replace(b"\r\n", b"\n"))
             h.update(b"\0")
     return h.hexdigest()
 
