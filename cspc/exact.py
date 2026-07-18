@@ -145,9 +145,10 @@ INTEGER_KEYS = {
 }
 
 #: Neighbour controls required for any low-frequency experiment
-#: (core/07). Controls are first-class: an effect that also appears
-#: here is not specific to the candidate.
-CONTROLS_HZ = ("18.0", "18.5", "19.8", "20.0", "21.0")
+#: (core/07 mandates 18.0, 18.5, 19.8, 20.0, 20.48 and 21.0 Hz
+#: alongside the 18.2539... candidate). Controls are first-class: an
+#: effect that also appears here is not specific to the candidate.
+CONTROLS_HZ = ("18.0", "18.5", "19.8", "20.0", "20.48", "21.0")
 
 
 def registry() -> dict:
