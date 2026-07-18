@@ -652,6 +652,12 @@ def _r4(store: CanonicalStore) -> None:
             fields={"claim": c, "status": "MAY_NOT_BE_CLAIMED"}))
 
 
+def _r6(store: CanonicalStore) -> None:
+    """v4.9 R6 lane: claims, apparatus, witness, mailbox, grid."""
+    from .r6_lane import build_r6
+    build_r6(store, Record)
+
+
 def _sources(store: CanonicalStore) -> None:
     from sources.registry.v4x2_source_registry import SOURCES
     for sid, s in SOURCES.items():
@@ -713,6 +719,7 @@ def build(version: str = "4.5.0") -> CanonicalStore:
     _pmwr(store)
     _r3(store)
     _r4(store)
+    _r6(store)
     _sources(store)
     _lore(store)
     _release_meta(store)

@@ -43,6 +43,13 @@ EVIDENCE_FILL = {
     "UNEXPLAINED_INSTRUMENT_RESIDUAL": "F0E0A0",
     "REPLICATED_ANOMALY": "C0E8E0",
     "PROSPECTIVE_PREDICTION": "D0F0D0",
+    # v4.9 (R6): remaining Phryll-ladder rungs. Deliberately pale --
+    # an OPERATIONAL_HYPOTHESIS is a plan, not a finding, and
+    # CANDIDATE_NEW_MECHANISM is the top of the ladder but is still
+    # not a detection.
+    "OPERATIONAL_HYPOTHESIS": "FFF8E0",
+    "ORDINARY_CHANNEL_RESULT": "DCEAF6",
+    "CANDIDATE_NEW_MECHANISM": "C8E0F0",
 }
 HEADER_FILL = PatternFill("solid", fgColor="2E3A46")
 HEADER_FONT = Font(bold=True, color="FFFFFF")
@@ -256,6 +263,11 @@ def generate(store: CanonicalStore | None = None,
         "R3 Lanes": ("r3_lanes", "R3Lanes"),
         "R4 Codec": ("r4_codec", "R4Codec"),
         "R4 Platforms": ("r4_platforms", "R4Platforms"),
+        "R6 Claims": ("r6_claims", "R6Claims"),
+        "R6 Apparatus": ("r6_apparatus", "R6Apparatus"),
+        "R6 Witness": ("r6_witness", "R6Witness"),
+        "R6 Mailbox": ("r6_mailbox", "R6Mailbox"),
+        "R6 Grid": ("r6_grid", "R6Grid"),
     }
 
     for sheet in REQUIRED_SHEETS:

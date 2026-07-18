@@ -38,6 +38,13 @@ EVIDENCE_CLASSES = (
     "UNEXPLAINED_INSTRUMENT_RESIDUAL",
     "REPLICATED_ANOMALY",
     "PROSPECTIVE_PREDICTION",
+    # v4.9 (R6) additions: the remaining rungs of the Phryll ladder
+    # (core/07). SOURCE_CLAIM, UNEXPLAINED_INSTRUMENT_RESIDUAL and
+    # REPLICATED_ANOMALY are already present above. There is no
+    # detection class and adding one is a test failure.
+    "OPERATIONAL_HYPOTHESIS",
+    "ORDINARY_CHANNEL_RESULT",
+    "CANDIDATE_NEW_MECHANISM",
 )
 
 #: Classes that assert something about the physical world. A
@@ -77,5 +84,10 @@ REQUIRED_SHEETS = (
     "R3 Lanes",
     "R4 Codec",
     "R4 Platforms",
+    "R6 Claims",
+    "R6 Apparatus",
+    "R6 Witness",
+    "R6 Mailbox",
+    "R6 Grid",
     "Workbook Guide",
 )
