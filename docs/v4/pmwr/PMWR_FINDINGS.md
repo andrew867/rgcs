@@ -109,6 +109,30 @@ beyond-horizon claims), universal key (privileged 4096), free energy
 missing sham control), pyramid-as-mechanism, rung-skipping promotion,
 reversal language, physical-evidence emission from software.
 
+## Public story labelling (A75 / R33)
+
+Any public retelling of the source narrative must carry the METAPHOR /
+SOURCE_CLAIM labels it carries here: "Phryll", the pyramid angle, and
+the harvesting story are source terms under investigation-by-refusal,
+not findings. The release notes' Boundary section is the public form
+of this statement, and no v4.7 artifact presents a source term as a
+result.
+
+## Security, privacy, dual-use (A79 / R35)
+
+- **Privacy:** the release processes no personal data; workbook
+  exports are public-safe filtered as before.
+- **Security:** the recovery lane's spoof check documents the real
+  attack surface of phase-based ranging — aliased path sets are
+  provably indistinguishable, so any downstream use of these
+  techniques for authentication or localisation must treat closure
+  aliases as spoofable. That disclosure is deliberate.
+- **Dual-use:** multipath estimation, phase unwrapping, and integer
+  ambiguity resolution are textbook GNSS/comms techniques; nothing in
+  v4.7 extends adversary capability beyond the published state of the
+  art, and no RF transmission capability is included (the v4.6 no-open-
+  radiator gate stands).
+
 ## What would change any of this
 
 Calibrated bench evidence under the preregistered protocols with
