@@ -640,9 +640,12 @@ def _r4(store: CanonicalStore) -> None:
         fields={"any_stage_runnable": b["any_stage_runnable_now"],
                 "blocker": b["blocker"][:180],
                 "physical_status": b["physical_status"]}))
-    for c in EXCLUDED_CLAIMS:
+    for i, c in enumerate(EXCLUDED_CLAIMS):
+        # stable id: Python's hash() on str is randomized per process
+        # (PYTHONHASHSEED), which made the workbook non-deterministic
+        # across runs and tripped the release gate.
         store.add("r4_platforms", Record(
-            id=f"R4-EXCLUDED-{abs(hash(c)) % 10000}",
+            id=f"R4-EXCLUDED-{i:02d}",
             kind="excluded_claim",
             evidence_class="UNSUPPORTED",
             provenance="r4.EXCLUDED_CLAIMS",

@@ -68,7 +68,7 @@ already contains every release-owned artifact.**
 
 ```bash
 python -m pytest -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic
-# expect: 1215 passed
+# expect: 1217 passed
 python -m pytest tests/v4/test_r4_all.py -q       # the R4 suite (62)
 python tools/r4_release_gate.py                   # TAG_MAY_PROCEED
 python tools/qa_audit_v4.py --fast                # 19/19

@@ -45,7 +45,7 @@ Release process: tools/r4_release_gate.py installs the no-post-tag-sync
 gate (R04/R65) -- v4.8.0 is the first release whose tag already
 contains every release-owned artifact. Workbook: 28 sheets (2 new R4).
 
-Tests: 1215 passing (1 archived-environment byte test
+Tests: 1217 passing (1 archived-environment byte test
 deselected by policy D-V3-04).
 
 ## [4.7.1] — 2026-07-18

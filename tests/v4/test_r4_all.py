@@ -592,3 +592,34 @@ def test_attack_sic_cannot_become_two_bits_of_memory():
     assert codebook_geometry()["orthogonal"] is False
     with pytest.raises(r4.ClaimBoundaryError):
         sic_probabilities([0.1, 0.1, 0.1]).as_storage_symbol()
+
+
+# --- R04/R65 release gate ------------------------------------------------------------
+
+def test_workbook_is_deterministic_across_processes():
+    """Regression: r4 canonical rows once used Python's hash() for
+    record ids, which is randomized per process (PYTHONHASHSEED), so
+    the workbook differed between runs and the release gate refused a
+    tag that was actually fine."""
+    import subprocess
+    import sys
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[2]
+    code = ("import sys; sys.path.insert(0, r'%s');"
+            "from rgcs_workbench.canonical import build;"
+            "s=build('4.8.0');"
+            "print('|'.join(r['id'] for r in s.rows('r4_platforms')))"
+            % str(root))
+    outs = [subprocess.run([sys.executable, "-c", code],
+                           capture_output=True, text=True,
+                           cwd=str(root)).stdout.strip()
+            for _ in range(2)]
+    assert outs[0] == outs[1], "canonical r4 ids are not deterministic"
+    assert "R4-EXCLUDED-00" in outs[0]
+
+
+def test_release_gate_refuses_a_stale_workbook(tmp_path):
+    from tools.r4_release_gate import gate
+    rep = gate()
+    assert rep["verdict"] in ("TAG_MAY_PROCEED", "REFUSE_TAG")
+    assert "no post-tag synchronization" in rep["rule"]
