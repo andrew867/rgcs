@@ -46,7 +46,32 @@ are a success condition.
 
 | agent | workstream | commit | evidence class | physical status |
 |-------|-----------|--------|----------------|-----------------|
-| A00 | Baseline, branch, release isolation | (this commit) | RELEASE_EVIDENCE | UNTESTED |
+| A00 | Baseline, branch, release isolation | `4d79b20` | RELEASE_EVIDENCE | UNTESTED |
+| A01–A03 | Provenance, dimensional/precision audit, exact fixtures | `82990d2` | SOURCE_CLAIM / DERIVED_ARITHMETIC | UNTESTED |
+| A04–A07 | Coordinates, ladder, frozen nulls, corpus decoder | `9ab26be` | NUMERICAL_SIMULATION | UNTESTED |
+| A08–A11 | 64-tetrahedron ambiguity, constructions, spectra, nulls | `f36ff50` | DERIVED_ARITHMETIC | UNTESTED |
+| A12–A17 | DDS/NCO, phase closure, clock model, RF safety | `e4eb982` | DERIVED_ARITHMETIC / ANALYTIC_MODEL | UNTESTED |
+| A18–A29 | Experiments, spacetime metrology, firewalls | `18e59a0` | ANALYTIC_MODEL | UNTESTED |
+| A30–A36 | Workbook integration, findings, adversarial, release prep | `caa15c3` | RELEASE_EVIDENCE | UNTESTED |
+
+## Release gate status
+
+| gate | state | evidence |
+|------|-------|----------|
+| all tests green | **PASS** | 1062 passed, 6 skipped, 1 deselected (local, full suite) |
+| QA audit green | **PASS** | `qa_audit_v4.py --fast` 19/19 |
+| metadata guard consistent | **PASS** | 1062 across 3 documented sites |
+| adversarial campaign | **PASS** | 17 attacks, all refusals hold |
+| workbook integration | **PASS** | 21 sheets incl. 4 CSCP; 16 prior workbook tests still pass |
+| **hosted CI green** | **BLOCKED** | run 29640235954 stuck `queued` — GitHub hosted runners backed up; not a code failure |
+| binary freshness | **N/A** | no frozen build in this checkout (baseline reports `ABSENT`); A35 re-freeze deferred with the release |
+| tag + publish | **NOT DONE** | gated on CI |
+| remote asset verification | **NOT DONE** | gated on publish |
+
+**Consequence: the final verdict token is NOT emitted.** The v4.6
+contract requires release artifacts to be remotely verified, and that
+gate is blocked. The programme's software gates are green locally; the
+release gates are not, and a blocked gate remains blocked.
 
 ## Binary freshness
 
