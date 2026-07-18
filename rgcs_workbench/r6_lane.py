@@ -285,6 +285,90 @@ def build_r6(store, Record) -> None:
             "claim_ceiling": rep["claim_ceiling"],
             "verdict": rep["verdict"]}))
 
+    # ---------------------------------------------------------------
+    # P05 — instrument matrix and the Phryll boundary
+    # ---------------------------------------------------------------
+    from r6.instrument import (INSTRUMENT_MATRIX, UNCALIBRATED_DEVICES,
+                               coverage_report)
+
+    cov = coverage_report()
+    store.add("r6_instruments", Record(
+        id="R6-INSTRUMENT-COVERAGE", kind="coverage",
+        evidence_class="DERIVED_ARITHMETIC",
+        provenance="r6.instrument.coverage_report",
+        fields={
+            "n_channels": cov["n_channels"],
+            "n_instruments": cov["n_instruments"],
+            "channels_covered": len(cov["covered"]),
+            "channels_missing": len(cov["missing"]),
+            "complete": cov["complete"],
+            "uncalibrated_devices": len(cov["uncalibrated_devices"]),
+            "note": cov["note"]}))
+
+    for d in UNCALIBRATED_DEVICES:
+        store.add("r6_instruments", Record(
+            id=d.id, kind="uncalibrated_device",
+            evidence_class="UNSUPPORTED",
+            provenance=d.provenance,
+            fields={
+                "claimed_quantity": d.claimed_quantity,
+                "calibration_status": d.calibration_status,
+                "covers_any_channel": False,
+                "reason": d.reason}))
+
+    # ---------------------------------------------------------------
+    # P13/P09 — governance and bench readiness
+    # ---------------------------------------------------------------
+    from r6.bench import bench_readiness
+    from r6.protocol import current_maturity, governance_status
+
+    gov = governance_status()
+    store.add("r6_governance", Record(
+        id="R6-PROTOCOL-GOVERNANCE", kind="governance_status",
+        evidence_class="DERIVED_ARITHMETIC",
+        provenance="r6.protocol.governance_status",
+        fields={
+            "maturity": current_maturity(),
+            "maturity_ceiling": gov["maturity_ceiling_for_this_repository"],
+            "implementations": gov["implementations"],
+            "independent_implementations":
+                gov["independent_implementations"],
+            "authors": gov["authors"],
+            "public_specification": gov["public_specification"],
+            "independent_governance_body":
+                gov["has_independent_governance_body"],
+            "governance_process": gov["governance_process"],
+            "single_vendor_lock": gov["single_vendor_lock"],
+            "adoption": gov["adoption"],
+            "security_review": gov["security_review"],
+            "note": "authority follows adoption, interoperability and "
+                    "governance; it is never asserted by authorship"}))
+
+    br = bench_readiness()
+    store.add("r6_governance", Record(
+        id="R6-BENCH-READINESS", kind="bench_readiness",
+        evidence_class="DERIVED_ARITHMETIC",
+        provenance="r6.bench.bench_readiness",
+        fields={
+            "gates_total": br["gates_total"],
+            "gates_open": br["gates_open"],
+            "gates_missing": "; ".join(br["gates_missing"]),
+            "ready_for_bench": br["ready_for_bench"],
+            "status": br["status"],
+            "hazards_refused": "; ".join(br["hazards_refused"]),
+            "statement": br["statement"],
+            "next_real_step": br["next_real_step"]}))
+
+    for name, h in br["hazards"].items():
+        store.add("r6_governance", Record(
+            id=f"R6-HAZARD-{name}", kind="hazard",
+            evidence_class="DERIVED_ARITHMETIC",
+            provenance="r6.bench.HAZARDS",
+            fields={"hazard": name,
+                    "description": h["description"],
+                    "control": h["control"],
+                    "status": h["status"]}))
+
     for l, g in ((3, "TETRAHEDRAL"), (4, "OCTAHEDRAL"),
                  (6, "ICOSAHEDRAL")):
         v = verify_projector(l, g)

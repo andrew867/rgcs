@@ -64,6 +64,9 @@ Branch protection is no longer enforceable (private repository on a
 plan without protected branches); recorded as a documented deviation
 rather than claimed.
 
+Tests: 1840 passing (1 archived-environment byte test deselected by
+policy D-V3-04); adversarial audit 19/19.
+
 ## [4.8.1] — 2026-07-18
 
 Workbook column-loss fix. No science changed.

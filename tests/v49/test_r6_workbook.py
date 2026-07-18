@@ -12,7 +12,7 @@ from rgcs_workbench.canonical import build
 from rgcs_workbench.workbook import EVIDENCE_FILL, generate
 
 R6_SHEETS = ("R6 Claims", "R6 Apparatus", "R6 Witness", "R6 Mailbox",
-             "R6 Grid")
+             "R6 Grid", "R6 Instruments", "R6 Governance")
 
 
 @pytest.fixture(scope="module")
@@ -131,9 +131,52 @@ def test_apparatus_sheet_shows_the_frequency_null(wb):
 
 # --- store ------------------------------------------------------------
 
+def test_governance_sheet_does_not_flatter_the_project(wb):
+    """A reader must see the project is governed by nobody."""
+    ws = wb["R6 Governance"]
+    header = [c.value for c in next(ws.iter_rows())]
+    gi = header.index("governance_process")
+    vals = [r[gi].value for r in ws.iter_rows(min_row=2) if r[gi].value]
+    assert "NONE" in vals
+
+    ri = header.index("ready_for_bench")
+    ready = [r[ri].value for r in ws.iter_rows(min_row=2)
+             if r[ri].value is not None]
+    assert ready and not any(ready)
+
+
+def test_governance_sheet_lists_refused_hazards(wb):
+    ws = wb["R6 Governance"]
+    header = [c.value for c in next(ws.iter_rows())]
+    si = header.index("status")
+    statuses = [r[si].value for r in ws.iter_rows(min_row=2)
+                if r[si].value]
+    assert "REFUSED_ENTIRELY" in statuses
+    assert "REFUSED_UNLESS_QUALIFIED" in statuses
+
+
+def test_instrument_sheet_shows_full_channel_coverage(wb):
+    ws = wb["R6 Instruments"]
+    header = [c.value for c in next(ws.iter_rows())]
+    ci = header.index("channels_covered")
+    vals = [r[ci].value for r in ws.iter_rows(min_row=2)
+            if r[ci].value is not None]
+    assert 18 in vals
+
+
+def test_uncalibrated_device_covers_no_channel(wb):
+    """The caduceus torsion sensor is not a measurement channel."""
+    ws = wb["R6 Instruments"]
+    header = [c.value for c in next(ws.iter_rows())]
+    idx = header.index("covers_any_channel")
+    vals = [r[idx].value for r in ws.iter_rows(min_row=2)
+            if r[idx].value is not None]
+    assert vals and not any(vals)
+
+
 def test_store_has_all_r6_tables(store):
     for t in ("r6_claims", "r6_apparatus", "r6_witness", "r6_mailbox",
-              "r6_grid"):
+              "r6_grid", "r6_instruments", "r6_governance"):
         assert store.tables.get(t), f"{t} is empty"
 
 

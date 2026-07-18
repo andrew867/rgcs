@@ -89,5 +89,7 @@ REQUIRED_SHEETS = (
     "R6 Witness",
     "R6 Mailbox",
     "R6 Grid",
+    "R6 Instruments",
+    "R6 Governance",
     "Workbook Guide",
 )

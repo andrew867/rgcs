@@ -264,14 +264,14 @@ def test_large_marginal_mi_collapses_to_zero_under_conditioning():
     quoted as evidence. Conditioning on the waveform removes all of
     it: the apparatus responded to the carrier, not to the meaning."""
     messages, waveforms, observations = [], [], []
-    for wf, n_m0 in (("WF-A", 9), ("WF-B", 3)):
+    for wf, n_m0 in (("WF-A", 11), ("WF-B", 1)):
         for k in range(12):
             messages.append("M0" if k < n_m0 else "M1")
             waveforms.append(wf)
             observations.append("Y-A" if wf == "WF-A" else "Y-B")
     res = C.semantic_information_test(
         messages, waveforms, observations, n_permutations=200)
-    assert res.mi_marginal_bits > 0.2          # looks like a result
+    assert res.mi_marginal_bits > 0.4          # looks like a result
     assert res.mi_conditional_bits == pytest.approx(0.0, abs=1e-9)
     assert res.p_value == 1.0
     assert res.status == "NO_SEMANTIC_INFORMATION_ABOVE_WAVEFORM"

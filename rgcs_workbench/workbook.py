@@ -268,6 +268,8 @@ def generate(store: CanonicalStore | None = None,
         "R6 Witness": ("r6_witness", "R6Witness"),
         "R6 Mailbox": ("r6_mailbox", "R6Mailbox"),
         "R6 Grid": ("r6_grid", "R6Grid"),
+        "R6 Instruments": ("r6_instruments", "R6Instruments"),
+        "R6 Governance": ("r6_governance", "R6Governance"),
     }
 
     for sheet in REQUIRED_SHEETS:
