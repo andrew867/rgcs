@@ -3,6 +3,26 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [4.8.1] — 2026-07-18
+
+Workbook column-loss fix. No science changed.
+
+_write_table built headers from rows[0].keys(), so any field unique to
+a later record in the same table was silently dropped from the sheet.
+The canonical store was always correct; the spreadsheet was not.
+Measured impact: 52 columns lost across ten heterogeneous sheets,
+including the R4 negative-control gate and every beats_any_baseline
+verdict (the reader could not see that the codec fails on random
+data), PMWR travel-claim reasons, and R3 root statuses. Pre-existing
+since v4.5; every release from v4.6 shipped degraded sheets.
+
+Headers are now the ordered union of all row keys, with regression
+tests asserting no sheet drops a canonical field and that the
+negative-control gate is readable from the workbook.
+
+Tests: 1219 passing (1 archived-environment byte test
+deselected by policy D-V3-04).
+
 ## [4.8.0] — 2026-07-18
 
 R4: Tetrahedral Spin-Addressed Multiresolution Codec, Quaternary

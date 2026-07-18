@@ -623,3 +623,38 @@ def test_release_gate_refuses_a_stale_workbook(tmp_path):
     rep = gate()
     assert rep["verdict"] in ("TAG_MAY_PROCEED", "REFUSE_TAG")
     assert "no post-tag synchronization" in rep["rule"]
+
+
+def test_workbook_writes_a_column_for_every_record_field():
+    """Regression: _write_table used rows[0].keys() for headers, so any
+    field unique to a later record was silently dropped -- 52 columns
+    across ten heterogeneous sheets, including the R4 negative-control
+    gate and the PMWR travel-claim reasons."""
+    from rgcs_workbench.canonical import build
+    from rgcs_workbench.workbook import generate
+    store = build("4.8.0")
+    wb = generate(version="4.8.0", include_private=False)
+    table_map = {"R4 Codec": "r4_codec", "R4 Platforms": "r4_platforms",
+                 "PMWR Recovery": "pmwr_recovery",
+                 "R3 Root Space": "r3_root_space"}
+    for sheet, table in table_map.items():
+        rows = store.rows(table)
+        union = []
+        for r in rows:
+            for k in r:
+                if k not in union:
+                    union.append(k)
+        headers = [c.value for c in next(wb[sheet].iter_rows())]
+        missing = [k for k in union if k not in headers]
+        assert not missing, f"{sheet} drops columns: {missing}"
+
+
+def test_negative_control_gate_is_visible_in_the_workbook():
+    """The gate result must be readable by a person opening the file,
+    not only by a test importing the module."""
+    from rgcs_workbench.canonical import build
+    rows = {r["id"]: r for r in build("4.8.0").rows("r4_codec")}
+    gate = rows["R4-NEGATIVE-CONTROL-GATE"]
+    assert gate["gate"] == "PASS"
+    for cid in ("R4-BENCH-RANDOM_UNIFORM", "R4-BENCH-RANDOM_GAUSSIAN"):
+        assert rows[cid]["beats_any_baseline"] is False

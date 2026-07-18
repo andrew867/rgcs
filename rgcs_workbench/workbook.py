@@ -56,7 +56,16 @@ def _write_table(ws, rows: list, table_name: str,
     if not rows:
         ws.cell(start_row, 1, "(no rows)")
         return start_row
-    cols = list(rows[0].keys())
+    # Ordered UNION of every row's keys. Using only rows[0].keys()
+    # silently dropped any field unique to a later record, which cost
+    # 52 columns across ten heterogeneous sheets (the R4
+    # negative-control gate, PMWR travel-claim reasons, R3 root
+    # statuses...). A record that carries a field must have a column.
+    cols = []
+    for row in rows:
+        for k in row:
+            if k not in cols:
+                cols.append(k)
     for j, c in enumerate(cols, 1):
         cell = ws.cell(start_row, j, c)
         cell.fill = HEADER_FILL
