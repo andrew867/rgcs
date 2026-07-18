@@ -3,6 +3,67 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [4.9.0] — 2026-07-18
+
+R6: dynamic helicity, metric-indexed witness memory, recursive
+barycentric mailbox routing, information-carrier transduction, and a
+planetary polyhedral grid audit. Software implemented, physically
+untested.
+
+**The central correction.** A decaying memory is not a spacetime
+sensor. Payload relaxation has twelve ordinary causes and a common
+environmental cause can move payload decay and clock phase together,
+so even a correlation does not license the inference. Enforced in
+code: `infer_proper_time_from_payload()` always raises, and still
+raises when all twelve causes are characterized.
+
+**Results that went against the source corpus.**
+
+- The alternating drive (copper 1-0-1-0-1-0 / silver 0-1-0-1-0-1) is
+  *not* purely differential under the unipolar mapping the source
+  describes. Every active slot carries an equal common-mode
+  component, producing a net axial field at half amplitude. Only a
+  bipolar mapping is purely differential.
+- The three source frequencies (1496, 644, 587 Hz) are not
+  significant against a granularity-matched null, p = 0.662. For any
+  laboratory-scale specimen all three fall below the fundamental
+  entirely. Tuning to a 1.9 m bar gives p = 0.531; the result did not
+  move.
+- Sovereign navigation is unsupported. A local clock-rate Jacobian is
+  rank 1 against three position unknowns and is constant over an
+  equipotential surface; separately, zero of seven signal-denied
+  methods are infrastructure-free.
+- A caesium pair cannot resolve the 1.09e-16 shift from 1 m of
+  height. Optical clocks can. The platform decides, not the
+  architecture.
+- The planetary audit ships no geophysical data and always reports
+  NO_REAL_DATA.
+
+**Source corrections.** The SI second is the caesium-133 hyperfine
+*transition*, not a decay. Photons carry no charge. A field "in
+constant movement" does not eliminate a preferred angle.
+
+**Defects found and fixed.** `tests/v49` was outside `testpaths`, so
+every R6 test would have passed locally and never run in CI.
+`ComparisonResult.consistent` reported agreement from comparisons
+that had not tested anything. The navigation rank routine used an
+absolute tolerance and reported that a clock carries no position
+information at all — overstating our own refutation. The grid
+detector was blind at every injection strength, from a fake rotation
+plus an injection that cancelled in the score; replaced with real
+Wigner D-matrices and true group projectors, which independently
+reproduce the textbook invariant degrees. A Wigner phase error passed
+unitarity, idempotency and every dimension check because it was a
+diagonal similarity — only closed forms could see it.
+
+Workbook: 33 sheets (five new R6 sheets). Protocol maturity is
+EXPERIMENTAL_SCHEMA; bench readiness is 5 of 10 gates with
+`ready_for_bench: False`.
+
+Branch protection is no longer enforceable (private repository on a
+plan without protected branches); recorded as a documented deviation
+rather than claimed.
+
 ## [4.8.1] — 2026-07-18
 
 Workbook column-loss fix. No science changed.
