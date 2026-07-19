@@ -19,9 +19,20 @@ from __future__ import annotations
 import pathlib
 import tomllib
 
-from setuptools import find_packages
+import pytest
 
 from rgcs_desktop.build_meta import SOURCE_ROOTS
+
+# R9-D-020: this module imported setuptools at top level. setuptools is
+# a build-system requirement, not a runtime or test one, and it is
+# absent from CI's portable job -- so the whole module failed to
+# collect on every platform while passing locally, where the venv
+# happens to have it. A packaging guard that cannot run in CI is not a
+# guard. Declared in the dev extra now, and imported defensively so a
+# missing build tool skips this file instead of erroring collection.
+find_packages = pytest.importorskip(
+    "setuptools", reason="setuptools needed for package-discovery parity"
+).find_packages
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 

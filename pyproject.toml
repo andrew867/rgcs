@@ -29,6 +29,12 @@ dev = [
     # (V2-PKG-01 family); experiments/schemas/validate.py needs both.
     "jsonschema>=4.21",
     "referencing>=0.33",
+    # R9-D-020: tests/v52/test_r9_packaging.py compares SOURCE_ROOTS
+    # against setuptools package discovery. setuptools is a
+    # build-system requirement and is NOT present in CI's portable
+    # job, so that module failed to collect on every platform while
+    # passing locally. Declared here so the guard actually runs.
+    "setuptools>=68",
 ]
 
 [project.scripts]
