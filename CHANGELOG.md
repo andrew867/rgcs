@@ -42,7 +42,7 @@ optically invisible; a passive crystal cannot self-oscillate; and the
 45-degree field pair gives 2cos(theta) for any theta, with 30 degrees
 giving a larger sum than 45.
 
-Workbook: 39 sheets. Tests: 2166 passing (1 archived-environment byte
+Workbook: 39 sheets. Tests: 2161 passing (1 archived-environment byte
 test deselected by policy D-V3-04); adversarial audit 19/19.
 
 ## [4.9.0] — 2026-07-18

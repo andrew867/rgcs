@@ -1,9 +1,9 @@
 {
-  "tests_passed": 2166,
+  "tests_passed": 2161,
   "tests_deselected": 1,
-  "summary_line": "2166 passed, 1 deselected",
+  "summary_line": "2161 passed, 11 skipped, 1 deselected",
   "deselect_node": "tests/regression/test_generator_determinism.py::test_generator_deterministic",
   "deselect_reason": "byte-equality test requires the archived v2.0.0 build environment; hosted CI deselects exactly this node id (policy D-V3-04)",
   "exit_code": 1,
-  "note": "the three version/count guard tests fail while the documented count disagrees with reality, so a refresh run measures 3 fewer. 2166 is the fixed point: with the docs consistent, the guards pass and the total is 2166. Verified by a clean run below."
+  "note": "Measured from a CLEAN CLONE of the tagged commit -- which is what the published test-report asset contains and what a third party reproducing from the source archive will see. A full working copy reports 2166 because five tests require optional content that is untracked: the prompt packs (3 tests), the eye corpus (1) and the reference PDFs (1). Each of those skips says 'expected on CI'. Documenting the working-copy figure would have reproduced defect V4X-D-004: release notes claiming one number while the test-report asset built from the same commit says another."
 }

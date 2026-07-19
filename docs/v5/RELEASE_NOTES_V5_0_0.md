@@ -114,10 +114,24 @@ repository is private, and not legal advice.
 ## Verification
 
 ```
-# expect: 2166 passed
+# expect: 2161 passed
 python -m pytest -q --deselect \
   tests/regression/test_generator_determinism.py::test_generator_deterministic
 ```
+
+2161 is measured from a **clean clone of the tagged commit**, which is
+what the published test-report asset contains and what anyone
+reproducing from the source archive will see.
+
+A full working copy reports **2166**, because five tests require
+optional content that is not tracked in git: the prompt packs (3
+tests), the eye corpus (1) and the reference PDFs (1). Each of those
+skips is labelled "expected on CI".
+
+The reproducible figure is documented deliberately. Publishing the
+working-copy number would have recreated defect **V4X-D-004** — release
+notes claiming one count while the test-report asset built from the
+same commit says another.
 
 Adversarial audit: 19/19.
 
