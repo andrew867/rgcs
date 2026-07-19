@@ -3,8 +3,7 @@
   "proof_bundle_sha256sums_digest": "552c11a764710e2687f5b659bd58b5024fb91ea79ca4fb73a721392efe32d1ce",
   "release_checksum_files": {
     "release/SHA256SUMS.txt": "9ebc33bd042f17907a9b5c3134f21b053bca2f4e651c8a7786af885fd632a994",
-    "release/v4/SHA256SUMS.txt": "7c674015027b2aaf0f59ff156f70b6c34fc565968679769b176b5f17573cfa7b",
-    "release/v45/SHA256SUMS.txt": "e2a6962cdb383eb08c44ee22b7b3e662d0b96150b102bbd3276035ae7f5520ea"
+    "release/v45/SHA256SUMS.txt": "be3e5c8a2dfd81a3d1140134eb28cec2c49084f6a5dee3667795fe15eed76bff"
   },
   "tag_tree_hashes": {
     "v2.0.0": "26550d8517ffb7a242fda48f5c4f1af90ca24cdf",

@@ -72,8 +72,19 @@
   },
   "v4": {
     "files": [
+      "test_cspc_baseline.py",
+      "test_cspc_p01_math.py",
+      "test_cspc_p02_coords_nulls.py",
+      "test_cspc_p03_tetra.py",
+      "test_cspc_p04_dds.py",
+      "test_cspc_p05_p06.py",
+      "test_cspc_p07_p08_adversarial.py",
       "test_fkey_device_redteam.py",
       "test_fkey_instrument.py",
+      "test_pmwr_core.py",
+      "test_pmwr_crystal_adversarial.py",
+      "test_r3_all.py",
+      "test_r4_all.py",
       "test_resonator_platform.py",
       "test_rscs2_accel.py",
       "test_rscs2_cli.py",
@@ -86,6 +97,7 @@
       "test_rscs2_refsystems.py",
       "test_rscs2_registry.py",
       "test_rscs2_solver.py",
+      "test_v45_frozen.py",
       "test_v45_packaging.py",
       "test_v4c_baseline.py",
       "test_v4c_calibration.py",
@@ -125,6 +137,64 @@
       "test_v4x_spiral_cymatic.py",
       "test_workbench.py"
     ],
+    "test_functions": 832
+  },
+  "v49": {
+    "files": [
+      "test_r6_bench.py",
+      "test_r6_carrier.py",
+      "test_r6_chirality.py",
+      "test_r6_claims.py",
+      "test_r6_controls.py",
+      "test_r6_drive.py",
+      "test_r6_grid.py",
+      "test_r6_helix.py",
+      "test_r6_instrument.py",
+      "test_r6_mailbox.py",
+      "test_r6_navigation.py",
+      "test_r6_protocol.py",
+      "test_r6_pulse.py",
+      "test_r6_witness.py",
+      "test_r6_workbook.py"
+    ],
     "test_functions": 546
+  },
+  "v50": {
+    "files": [
+      "test_r7_alignment.py",
+      "test_r7_benchr7.py",
+      "test_r7_clocklink.py",
+      "test_r7_cw.py",
+      "test_r7_excitation.py",
+      "test_r7_gravity.py",
+      "test_r7_legacy.py",
+      "test_r7_vectorfield.py",
+      "test_r7_workbook.py"
+    ],
+    "test_functions": 308
+  },
+  "v51": {
+    "files": [
+      "test_r8_dds.py",
+      "test_r8_estimators.py",
+      "test_r8_framecov.py",
+      "test_r8_framemem.py",
+      "test_r8_measurement.py",
+      "test_r8_nullcal.py",
+      "test_r8_ranging.py",
+      "test_r8_source_coverage.py"
+    ],
+    "test_functions": 243
+  },
+  "v52": {
+    "files": [
+      "test_r9_betadecay.py",
+      "test_r9_carrier.py",
+      "test_r9_cwdecode.py",
+      "test_r9_octave.py",
+      "test_r9_packaging.py",
+      "test_r9_vortex.py"
+    ],
+    "test_functions": 142
   }
 }

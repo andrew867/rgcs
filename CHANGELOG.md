@@ -3,6 +3,61 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [5.2.0] - 2026-07-19
+
+R9. Hidden neutral carrier feasibility, the omitted-antineutrino
+ledger, segment-first CW decoding, the octave relation and the 1<->8
+bridge, and the vortex grammar. Software verified, physically
+untested.
+
+Prior-art review: five for five established. Nothing in R9 is novel,
+and the modules say so. The vortex identification is standard number
+theory, the ~202-octave figure is a two-constant division published
+earlier, the beta-decay argument was settled between 1914 and 1934,
+the bench-neutrino infeasibility conclusion is decades old, and the
+preregistration methodology is textbook. The honest framing is
+replication and correct exposition.
+
+Headline results. A 100 g quartz crystal sees ~0.06 solar-neutrino
+interactions per year -- one every sixteen years -- against ~2e7
+cosmic muons, but the binding obstacle is prior to the rate: a quartz
+resonator has no channel that can register a single sub-keV recoil.
+NUCLEUS runs a 10 g target, so the barrier is readout, not mass. The
+CW vectors yield no recoverable content in any of three framings,
+while their clustering is real and is reported separately. The
+antineutrino cannot be omitted: a two-body decay predicts a
+monoenergetic electron and the measured spectrum is continuous. The
+vortex cycle is the multiplicative order of 2 mod 9 and is
+base-dependent -- base 12 excludes nothing at all.
+
+Adversarial review found nineteen defects behind a green suite, and
+three tests that could not fail. The CW bit stage was a constant
+function returning 0 for every possible input, so the published claim
+that three framings "could have disagreed and did not" was false when
+written; three more registered tests were gated behind a hardcoded
+literal or bounded below the significance threshold. Of eight
+advertised tests, five can fire, and the verdict now says five.
+Physics corrections: cross-sections were all multiplied by nucleon
+count despite having three different denominators (the module
+reported inverse beta decay in quartz, which has no free protons); the
+solar rate used a 1 MeV cross-section against a 0.267 MeV spectrum and
+was 10x high, now anchored to Borexino; the Super-K validation
+asserted raw S/B > 1 and was wrong in principle, since Super-K runs at
+~1e-4 and works by reconstruction; "four independent conservation
+laws" is cut to the honest two.
+
+Packaging: pip install of v4.9.0, v5.0.0 and v5.1.0 shipped none of
+r6, r7 or r8 -- the headline research packages of those releases. The
+include list stopped at r4 and a clone hid it, since pythonpath makes
+the tree importable regardless. The R8-D-006 coverage guard could not
+see it because it keyed on __init__.py and those were namespace
+packages. Both fixed and pinned by test.
+
+No relicensing. MIT unchanged.
+
+Tests: 2564 passing (1 archived-environment byte test deselected by
+policy D-V3-04).
+
 ## [5.1.0] — 2026-07-19
 
 Open commons release. Software verified, physically untested.
