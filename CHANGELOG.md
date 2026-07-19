@@ -75,7 +75,7 @@ in code.
 
 No relicensing. MIT unchanged.
 
-Tests: PLACEHOLDER_COUNT passing (1 archived-environment byte test
+Tests: 2708 passing (1 archived-environment byte test
 deselected by policy D-V3-04).
 
 ## [5.2.1] - 2026-07-19
