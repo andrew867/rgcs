@@ -248,3 +248,64 @@ quantity the literature names, rather than a redefinition.
 The *m* > 2 generalisation is technically unanticipated but is one
 value of *m* away from published work, which is a weak position. It
 should not carry the paper.
+
+---
+
+## 6. Open gaps recorded by the measurement lane (P11–P13)
+
+Recorded rather than quietly carried, because each would otherwise
+become an overstatement later.
+
+**R8-D-003 — MDEV and TDEV are specified but not implemented.**
+`r8.measurement.analysis_plan()` names modified Allan deviation and
+time deviation as required statistics. Only overlapping ADEV exists in
+code (`r7.clocklink.overlapping_adev`). The plan currently points at
+nothing for two of its three estimators. This is a real gap if P11 is
+ever described as analysis-complete.
+
+**R8-D-004 — "frozen" must not drift into implying registration.**
+`analysis_plan()` returns `frozen: True`, which is a statement about
+this module's content, not about registration with any third party.
+`r6.bench` already records `PREREGISTERED_ANALYSIS: ABSENT` and that
+remains true. The word is doing local work only.
+
+**Unfounded parameters, declared as such.** BOM prices are
+catalogue-class order-of-magnitude estimates with no supplier, date or
+solicited quote (`price_basis: CATALOGUE_CLASS_ESTIMATE_NOT_A_QUOTE`).
+Counter single-shot resolutions are part-category typicals, and they
+drive the instrument/oscillator crossover times, so those are
+order-of-magnitude too. The per-level referencing uncertainty in P12
+has no empirical basis and is a caller-supplied knob, not a claimed
+value.
+
+### A result worth keeping from P11
+
+No tier resolves one metre — verified independently against
+`r7.clocklink.height_resolution`, and it falls out of the flicker
+floor rather than being asserted:
+
+| Tier | Cost | Floor | Min. resolvable height |
+|---|---|---|---|
+| minimal (TCXO) | $312 | 7.07e-11 | 648 km |
+| standard (OCXO) | $2,200 | 1.41e-13 | 1.30 km |
+| good (rubidium) | $14,100 | 1.42e-14 | 130 m |
+
+All return `UNRESOLVABLE_AT_ANY_INTEGRATION_TIME`.
+
+Secondary and more actionable: the minimal tier is **instrument**
+-limited until τ ≈ 2000 s — its counter, not its oscillators, sets the
+short-τ floor. Standard crosses over at 600 s, good at 100 s. Most of
+what the upper tiers buy at short τ is counter, not clock.
+
+---
+
+## 7. Process note
+
+`tests/v51/test_r8_framemem.py` and the three P11–P13 modules were
+swept into commits by a broad `git add` from the coordinator while the
+specialist was still working. Nothing was lost and the working tree
+matched HEAD, but it crossed the pack's do-not-commit boundary in the
+wrong direction: **code was committed before it was reviewed.** The
+capability claims have since been reverified independently against
+`r7.clocklink` (table above). Narrow, explicit paths on `git add`
+would have prevented it.
