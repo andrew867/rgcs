@@ -137,7 +137,7 @@ Selected, cross-generation:
 
 ## 7. Disclosure status
 
-See `R8_RELEASE_AND_DISCLOSURE_TIMELINE.md`. In summary: **18
+See `RGCS_RELEASE_AND_DISCLOSURE_TIMELINE.md`. In summary: **18
 releases were published while the repository was public and
 MIT-licensed** between 2026-07-15 and 2026-07-18, covering CSCP,
 PMWR, R3 and R4. R6, R7 and R8.1 were released privately. This

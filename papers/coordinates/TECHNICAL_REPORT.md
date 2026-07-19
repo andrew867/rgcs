@@ -148,5 +148,5 @@ all and should be.
 The material underlying this report (CSCP v4.6.0, PMWR v4.7.0, R3
 v4.7.1) was **publicly released under MIT** between 2026-07-18 10:59Z
 and 15:40Z, while the repository was public. See
-`docs/v51/R8_RELEASE_AND_DISCLOSURE_TIMELINE.md`. This bears on any
+`docs/v51/RGCS_RELEASE_AND_DISCLOSURE_TIMELINE.md`. This bears on any
 IP decision and is not addressed by the later `PRIVATE_RC` record.
