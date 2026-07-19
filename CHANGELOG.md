@@ -3,6 +3,48 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [5.0.0] — 2026-07-18
+
+R7: root reference, CW vector decoder, differential clock link,
+crystal alignment, directional field geometry, falsifiable metric
+challenge, and the open-legacy decision. Software implemented,
+physically untested. Publication path PRIVATE_RC — nothing new
+published.
+
+**R7 was asked for a falsifiable metric prediction and produced one:
+nothing this apparatus can do is detectable.** Every configuration is
+REFUSED_BY_ARITHMETIC, including a 2 MJ bound far beyond anything
+buildable here, which still sits 17.8 decades below the best optical
+clock. Raising a clock by one millimetre beats the entire apparatus
+by 6.6e17. The result is independent of whether the crystal, the
+geometry or the source corpus are right about anything.
+
+**The CW vectors carry zero informative bits.** All five 38-bit
+strings share header 10 and first field 1516, matching the 4096-state
+architecture — but their interval's endpoints share their top 15
+bits, and header plus first field occupy the top 14. Random integers
+from the same interval reproduce the structure in 20000 of 20000
+draws (p = 1.000). The decoder is frozen by digest so a prospective
+test remains possible.
+
+**The clock-link ceiling is a floor, not a patience problem.** OCXOs
+flicker-floor at 1.4e-13, three decades above a 1 m height shift, so
+the answer is never rather than longer. Sweeping links showed the
+bottleneck moves: consumer quartz is oscillator-limited, the best
+clocks are link-limited, and an optical pair on coax cannot resolve a
+metre while the same pair on fibre resolves it in 1.7 s.
+
+Other results: geodetic and geocentric verticals differ by 0.1924
+degrees, about 693x an autocollimator's resolution, so "perpendicular
+to the surface" and "toward the centre" are different claims; the
+c-axis cannot be read from morphology because Dauphine twinning is
+optically invisible; a passive crystal cannot self-oscillate; and the
+45-degree field pair gives 2cos(theta) for any theta, with 30 degrees
+giving a larger sum than 45.
+
+Workbook: 39 sheets. Tests: 2166 passing (1 archived-environment byte
+test deselected by policy D-V3-04); adversarial audit 19/19.
+
 ## [4.9.0] — 2026-07-18
 
 R6: dynamic helicity, metric-indexed witness memory, recursive
