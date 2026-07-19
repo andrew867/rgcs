@@ -12,17 +12,71 @@ records never modified. The DOI badge above is the latest **minted**
 DOI (v3.0.1); the v4.x Zenodo records are pending human verification
 (see Citing).
 
-RGCS is a **reproducible research framework** for studying acoustic/mechanical
-resonance and phase coherence in engineered quartz geometries: a typed,
-provenance-checked mathematics library, a validated anisotropic FEM +
-piezoelectric solver stack, a capability firewall that refuses to fabricate
-results for unimplemented mechanisms, an uncertainty-aware Eye Consensus
-diagnostic engine, reduced-order reference systems for non-quartz physics,
-a desktop workbench, safety-bounded experiment schemas, and fully generated
-manuscripts — plus a pre-registered falsification plan for every hypothesis
-the project holds.
+RGCS is an **open, evidence-governed research framework** for relational
+coordinate records, periodic phase ambiguity, nested reference frames,
+uncertainty, provenance, and explicit scientific refusal — built on a
+typed, provenance-checked mathematics library and a validated
+anisotropic FEM + piezoelectric solver stack.
 
-## RGCS v4.1 at a glance
+The motivating question, and the project's actual standard:
+
+> It appears possible. Can it be proved, measured, implemented, or
+> honestly refused?
+
+So far, for every physical claim, the answer has been **refused** or
+**unmeasured**. Those results are published alongside everything else,
+because they are most of the science.
+
+## Start here
+
+| Document | What it is |
+|---|---|
+| [SCIENTIFIC_BOUNDARIES.md](SCIENTIFIC_BOUNDARIES.md) | what this project has **not** established, with the measured evidence distribution |
+| [NON_CLAIMS.md](NON_CLAIMS.md) | everything not claimed, including claims withdrawn after review |
+| [HUMANITY_COMMONS_CHARTER.md](HUMANITY_COMMONS_CHARTER.md) | the foundation is common infrastructure; evidence labels are mandatory |
+| [LICENSE_MAP.md](LICENSE_MAP.md) | MIT throughout, unchanged; third-party status |
+| [PATENT_NON_ASSERTION_INTENT.md](PATENT_NON_ASSERTION_INTENT.md) | policy intent — **not** a covenant, pending legal review |
+
+## RGCS v5.1 at a glance
+
+- **Zero bench measurements.** 271 canonical evidence records across
+  every programme generation, and **none** at `BENCH_MEASUREMENT`,
+  `INDEPENDENT_REPLICATION` or any physical class. No coil wound, no
+  crystal driven, no oscillator pair compared, no field mapped, no
+  geophysical data loaded. The software *cannot* emit a physical
+  evidence class — that is enforced in code, not policy.
+- **Coordinate and timing infrastructure** (v4.6 → v5.1): typed roots
+  with alias sets retained rather than collapsed, ordered frame chains
+  with covariance propagation, exact address transcoding, phase
+  authority and epoch declarations, and refusal as a first-class typed
+  output.
+- **Three manuscripts**, each positioned by adversarial prior-art
+  review rather than ambition:
+  [DDS closure](papers/dds/PAPER.md) (short correspondence — the
+  formula is published prior art; the surviving result is that
+  continuous and sampled phase closure differ by `odd_part(gcd K)`),
+  null calibration (tutorial — the principle is the severity
+  requirement and is **not** claimed as new), and the
+  [coordinate technical report](papers/coordinates/TECHNICAL_REPORT.md)
+  (six of seven components are textbook; the contribution is the
+  integration, and its value still needs external evaluation).
+- **The negative results**, which are the bulk of the output: metric
+  actuation refused by arithmetic at ≥17.8 decades, sovereign
+  navigation unsupported, CW vector structure carrying zero
+  informative bits, consumer quartz unable to resolve a metre at any
+  integration time.
+- **Corrections carried in the open**, including to our own earlier
+  claims — a "validation" that compared a formula against itself, a
+  covariance clamp that reported perfect knowledge for an impossible
+  input, a symmetry detector blind at every injection strength, and an
+  anti-stale hash that had covered none of the last three programmes.
+  See [docs/v51/](docs/v51/).
+
+**Review is invited, and is the point of publishing.** The most useful
+thing a reader can do is attack the integration claim: does
+covariance-aware frame chaining catch real errors, or is it ceremony?
+
+## RGCS v4.1 quartz stack at a glance
 
 - **All results are computational. No experimental confirmation exists.**
 - Validated quartz core (CORE_VALIDATED): anisotropic elasticity, modal
@@ -133,13 +187,34 @@ the project holds.
 ## Honest scope — read this first
 
 **No RGCS hypothesis has been experimentally confirmed.** The repository
-contains zero confirming measurements of real crystals. What it contains is
-the machinery to test its 30 pre-registered claims honestly: every hypothesis
-ships with an observable, matched controls, an uncertainty statement, and a
-failure condition — several directional claims are pre-registered **nulls**
-(the expected outcome is *no effect*). The project makes **no therapeutic,
-medical, cosmological, or consciousness claims**, and a forbidden-vocabulary
-lint enforces that in the test suite.
+contains zero confirming measurements of real crystals — and, as of v5.1,
+zero measurements of anything at all. The evidence distribution, measured
+from the canonical store rather than asserted:
+
+| Evidence class | Records |
+|---|---:|
+| `DERIVED_ARITHMETIC` | 140 |
+| `ANALYTIC_MODEL` | 49 |
+| `SOURCE_CLAIM` | 48 |
+| `UNSUPPORTED` | 16 |
+| `NUMERICAL_SIMULATION` | 9 |
+| `GEOMETRY_IDENTITY` | 7 |
+| `SYNTHETIC_RUN` | 1 |
+| `LORE` | 1 |
+| **`BENCH_MEASUREMENT`** | **0** |
+| **`INDEPENDENT_REPLICATION`** | **0** |
+
+What the repository contains is the machinery to test its pre-registered
+claims honestly: every hypothesis ships with an observable, matched
+controls, an uncertainty statement, and a failure condition — several
+directional claims are pre-registered **nulls** (the expected outcome is
+*no effect*). The project makes **no therapeutic, medical, cosmological,
+or consciousness claims**, and a forbidden-vocabulary lint enforces that
+in the test suite.
+
+Most published prior-art claims were **withdrawn** after adversarial
+review found them standard. That is recorded in
+[NON_CLAIMS.md](NON_CLAIMS.md) rather than quietly dropped.
 
 Every scientific statement in code, docs, UI, and manuscripts carries one of
 five machine-checked labels (`docs/SCIENTIFIC_CLASSIFICATION_POLICY.md`):
@@ -271,6 +346,19 @@ perl is available.) The v2 manuscript builds the same way in `manuscript/`.
 Every numeric table, figure, and inline value in all five documents is
 generated from the tested libraries at build time — no number is hand-typed.
 
+### v5.1 papers — positioned by prior-art review, not by ambition
+
+| Work | Status after review | Source |
+|---|---|---|
+| **Two Notions of Phase Closure in Multi-Tone DDS** | short correspondence. The closure formula is **published prior art**; the surviving result is that continuous and sampled closure differ by `odd_part(gcd K)` | [`papers/dds/PAPER.md`](papers/dds/PAPER.md) |
+| **Adversarial null calibration** | tutorial. The principle is the **severity requirement** and is not claimed as new; the contribution is an executable harness and three worked failures from this project's own history | [`r8/nullcal.py`](r8/nullcal.py) |
+| **Relational Root-Space Coordinates** | **technical report, not a research paper.** Six of seven components are textbook | [`papers/coordinates/TECHNICAL_REPORT.md`](papers/coordinates/TECHNICAL_REPORT.md) |
+
+Each was downgraded from its original framing after an adversarial
+literature search. The reviews are recorded in full — including what
+they could *not* determine — in
+[`docs/v51/R8_PRIOR_ART_REVIEW.md`](docs/v51/R8_PRIOR_ART_REVIEW.md).
+
 ## Lessons learned
 
 - Independent QA is most valuable when it is allowed to overturn the
@@ -307,19 +395,46 @@ Fuller engineering version: `docs/SOFTWARE_HARDWARE_ARCHITECTURE.md`.
 
 ## Roadmap
 
-| Tranche | Content | Status |
+**The single next step is the differential clock-link baseline** — a
+common-source split of one oscillator into two channels. It costs
+almost nothing, and it is the only way to learn what the measurement
+chain itself contributes. Every later claim depends on that number,
+and the project currently has zero measurements of any kind.
+
+A second finding worth acting on first: at the minimal budget tier the
+**counter**, not the oscillator, sets the short-τ floor until about
+2000 s. Spend on the counter before the clock. (`r8/measurement.py`)
+
+| Item | Content | Status |
 |---|---|---|
-| — | Green Linux CI run | **the only gate to final v3.0.0** |
-| T2 | Desktop Qt panels over the tested headless services | contracts fixed |
-| T3 | FEA import scripts, coupling-graph panel | scoped |
-| T4 | HG Embedded OS firmware (BSP, timing service, self-test) | contract published |
-| T5 | Timing hardware (TCXO/DDS/CPLD + interlocks) | ENG until measured |
-| T6 | Latency-calibration campaign (unblocks phase claims, gate H-29) | pre-registered |
-| — | Bench campaigns for claims H-20..H-30 | pre-registered |
+| **M1** | Clock-link baseline: common-source split, instrument floor | **specified, unbuilt — start here** |
+| M2 | Two independent oscillators; Allan/MDEV/TDEV decomposition | specified |
+| M3 | External review of the integration claim | **invited now** |
+| M4 | Covariance frame chain evaluated against a real pipeline | needs an outside user |
+| T2–T5 | Desktop panels, FEA import, embedded firmware, timing hardware | contracts published, ENG until measured |
+| — | Bench campaigns for the pre-registered crystal claims | pre-registered, unrun |
+
+No physical tranche will be marked done on modelling. `r8/bench.py`
+and `r6/bench.py` refuse to promote a synthetic result into a
+measurement.
 
 ## Limitations (honest list)
 
-1. **No bench data: nothing physical is confirmed** (see Honest scope).
+1. **No bench data anywhere: nothing physical is confirmed**, and the
+   corpus holds zero records at any physical evidence class (see
+   Honest scope).
+1a. **Almost nothing here is novel, and the documents say so.** The DDS
+   closure formula is published (Nicholas & Samueli 1987; Hwang et al.
+   2017; Fujifilm US12422666B2). The null-calibration principle is the
+   severity requirement (Mayo & Spanos) and the positive control. Six
+   of seven coordinate components are textbook — LAMBDA, wide-lane,
+   IAU/SPICE frames, Coll–Ferrando–Morales emission coordinates. The
+   one integration claim that may be useful is **unproven**: no case
+   exists where it caught an error the standard tools miss.
+1b. **The DDS prior-art search is explicitly incomplete.** `analog.com`
+   was unreachable throughout the review, so ADI AN-1396 and the full
+   FSK/PSK article were never read directly. Either could close the
+   remaining gap.
 2. Eye localization is mesh-resolution dominated (±3.08 mm at shipped
    mesh levels): whether the 3.906 mm candidate/station separation is
    real structure or discretization is an OPEN question — finer meshes
@@ -347,6 +462,30 @@ See [CONTRIBUTING.md](CONTRIBUTING.md), [SUPPORT.md](SUPPORT.md),
 [FAQ.md](FAQ.md), and — for the *why* behind the unusual discipline —
 [DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md) and
 [RESEARCH_HISTORY.md](RESEARCH_HISTORY.md).
+
+### Review is actively wanted
+
+This repository was made public to be checked, not to be admired. The
+questions that would help most:
+
+1. **Does covariance-aware frame chaining catch real errors, or is it
+   ceremony?** SPICE, astropy and ROS tf2 verifiably do not propagate
+   covariance through a frame chain — but we have no case where our
+   version caught something they would miss. That is the whole
+   integration claim and it is unproven.
+2. Are the refusal states useful in practice, or burdensome?
+3. Is the continuous/sampled DDS distinction real and worth a
+   correspondence — or did we miss prior art? **ADI AN-1396 and the
+   full Analog Dialogue FSK/PSK article were never read directly**
+   (analog.com was unreachable during review), so that search is
+   incomplete and we say so.
+4. Is [IVOA STC 1.33](https://www.ivoa.net/documents/latest/STC.html)
+   close enough to make our root certificate redundant?
+5. What should be **deleted**?
+
+Negative answers are as welcome as positive ones. Several of this
+project's most useful results came from an adversarial review
+demolishing a claim we liked.
 
 ## Citing
 
