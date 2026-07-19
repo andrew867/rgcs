@@ -23,9 +23,23 @@ STAMP_NAME = "_build_stamp.json"
 
 # python packages whose source defines application behaviour; a change
 # to any of these must invalidate a previously frozen dist.
+#: Packages covered by the anti-stale source hash.
+#:
+#: R8-D-006: this tuple stopped at ``r4`` and silently omitted r6, r7
+#: and r8 -- 30 modules across three programme generations. The
+#: consequence was that v4.9.0, v5.0.0 and v5.1.0 all carried a source
+#: hash that did not change when their own new code changed, so a
+#: stale ``dist/`` from the R4 era would have passed the freshness
+#: check. That is precisely the failure the v4.5.2 mechanism was built
+#: to prevent, reintroduced by scope drift rather than by a code bug.
+#:
+#: A test now asserts every top-level package directory containing an
+#: ``__init__.py`` is listed here, so the next programme cannot repeat
+#: it by omission.
 SOURCE_ROOTS = ("rgcs_desktop", "rgcs_workbench", "rgcs_core",
                 "rscs_core", "rscs2_core", "fkey_instrument",
-                "resonator_platform", "cspc", "pmwr", "r3", "r4")
+                "resonator_platform", "cspc", "pmwr", "r3", "r4",
+                "r6", "r7", "r8")
 
 
 def repo_root() -> Path:

@@ -80,7 +80,7 @@ Full list: `NON_CLAIMS.md`.
 ## Verification
 
 ```
-# expect: 2416 passed
+# expect: 2420 passed
 python -m pytest -q --deselect \
   tests/regression/test_generator_determinism.py::test_generator_deterministic
 ```

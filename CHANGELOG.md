@@ -28,7 +28,7 @@ INTERNAL_ANALYSIS_FREEZE.
 No relicensing. MIT unchanged. v3.0.0-v4.8.1 were public under MIT
 2026-07-15 to 2026-07-18; R6/R7/R8.1 first published here.
 
-Tests: 2416 passing (1 archived-environment byte test deselected by
+Tests: 2420 passing (1 archived-environment byte test deselected by
 policy D-V3-04); adversarial audit 19/19.
 
 ## [5.0.0] — 2026-07-18
