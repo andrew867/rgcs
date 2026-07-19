@@ -264,3 +264,81 @@ def test_report_round_trips_and_carries_no_floats_for_exact_values():
 def test_note_explains_the_cause_as_arithmetic():
     rep = dds.analyze(CANON, F100M, 32)
     assert "arithmetic, not noise" in rep.note
+
+
+# --- the two notions of closure, and where they disagree --------------
+
+def test_odd_part():
+    assert dds.odd_part(1) == 1
+    assert dds.odd_part(2 ** 18) == 1
+    assert dds.odd_part(12) == 3
+    assert dds.odd_part(175922) == 87961
+    with pytest.raises(ValueError):
+        dds.odd_part(0)
+
+
+def test_continuous_and_accumulator_closure_agree_when_gcd_is_dyadic():
+    for words in [(175922, 879609, 1759219), (262144, 1310720, 2621440),
+                  (2, 4, 8)]:
+        d = dds.closure_discrepancy(words, F100M, 32)
+        assert d["agree"]
+        assert d["odd_part_of_gcd"] == 1
+
+
+def test_they_disagree_by_exactly_the_odd_part_of_the_gcd():
+    """The result that survived prior art.
+
+    The continuous formula describes the analog phase ramp; the
+    accumulator formula describes digital state recurrence. The ramp
+    can reach 2*pi between clock ticks, so the two differ by the odd
+    part of gcd(K).
+    """
+    d = dds.closure_discrepancy((3, 6, 9), F100M, 32)
+    assert not d["agree"]
+    assert d["odd_part_of_gcd"] == 3
+    assert d["ratio_float"] == 3.0
+    assert d["predicted_ratio_is_odd_part"]
+
+
+@pytest.mark.parametrize("words,expected_odd", [
+    ((3, 6, 9), 3),
+    ((5, 10, 15), 5),
+    ((12, 18), 3),
+    ((7, 21), 7),
+    ((262144, 1310720, 2621440), 1),
+])
+def test_discrepancy_equals_odd_part_across_cases(words, expected_odd):
+    d = dds.closure_discrepancy(words, F100M, 32)
+    assert d["odd_part_of_gcd"] == expected_odd
+    assert d["predicted_ratio_is_odd_part"]
+    assert d["ratio_float"] == float(expected_odd)
+
+
+def test_continuous_figure_is_optimistic_never_pessimistic():
+    """Quoting the continuous number for a state-dependent system
+    always overstates closure quality."""
+    for words in [(3, 6, 9), (5, 10), (12, 18), (7, 21)]:
+        d = dds.closure_discrepancy(words, F100M, 32)
+        assert Fraction(d["accumulator_closure_s"]) >= \
+            Fraction(d["continuous_closure_s"])
+
+
+def test_accumulator_closure_matches_single_tone_grr():
+    """For one tone the accumulator formula must reduce to the
+    published grand repetition rate 2^N/gcd(FTW, 2^N)."""
+    import math as _m
+    for k in (3, 175922, 262144, 12345):
+        t = dds.accumulator_closure((k,), F100M, 32)
+        grr_ticks = 2 ** 32 // _m.gcd(k, 2 ** 32)
+        assert t == Fraction(grr_ticks, F100M)
+
+
+def test_tradeoff_declares_the_structural_factor_honestly():
+    """The review caught this: both effects are structurally 2^span,
+    and presenting them as near-agreeing independent quantities
+    overstates the finding."""
+    rep = dds.accuracy_closure_tradeoff(CANON, F100M)
+    assert rep["structural_factor"] == 2.0 ** 40
+    assert rep["closure_degradation"] == pytest.approx(2.0 ** 40, rel=1e-9)
+    assert "one mechanism, not a" in rep["honesty_note"]
+    assert "luck" in rep["honesty_note"]

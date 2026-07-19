@@ -311,20 +311,34 @@ def accuracy_closure_tradeoff(targets: tuple[Fraction | int, ...],
     err_gain = (first["max_frequency_error_hz"]
                 / last["max_frequency_error_hz"])
     closure_loss = last["closure_ratio"] / first["closure_ratio"]
+    span = last["accumulator_bits"] - first["accumulator_bits"]
+    structural = 2.0 ** span
     return {
         "reference_hz": str(Fraction(reference_hz)),
         "rows": rows,
         "frequency_error_improvement": err_gain,
         "closure_degradation": closure_loss,
+        "structural_factor": structural,
         "anticorrelated": err_gain > 1 and closure_loss > 1,
         "conclusion": (
             f"across {first['accumulator_bits']}.."
-            f"{last['accumulator_bits']} bits the frequency error "
-            f"improves by {err_gain:.3g}x while the common closure "
-            f"degrades by {closure_loss:.3g}x. Accuracy and phase "
-            f"closure are anti-correlated in accumulator width; "
-            f"optimizing the quoted specification degrades the "
-            f"unquoted one."),
+            f"{last['accumulator_bits']} bits ({span} bits) the "
+            f"frequency error improves by {err_gain:.3g}x while the "
+            f"common closure degrades by {closure_loss:.3g}x. "
+            f"Accuracy and phase closure are anti-correlated in "
+            f"accumulator width; optimizing the quoted specification "
+            f"degrades the unquoted one."),
+        "honesty_note": (
+            f"Both effects are STRUCTURALLY 2^{span} = "
+            f"{structural:.3g}. The closure figure matches it exactly "
+            f"because closure scales as q ~ 2^N. The frequency-error "
+            f"figure ({err_gain:.3g}) does NOT, because it is the "
+            f"realized rounding error for these particular tones, "
+            f"which depends on where each lands relative to the grid "
+            f"and is luck. Presenting the two as independently "
+            f"derived quantities that happen to nearly agree "
+            f"overstates the finding: there is one mechanism, not a "
+            f"coincidence between two."),
     }
 
 
@@ -401,4 +415,96 @@ def degradation_factor(targets: tuple[Fraction | int, ...],
         "note": ("the degradation ratio equals the unrounded tuning "
                  "word of the ideal fundamental, divided by the gcd "
                  "of the realized words"),
+    }
+
+
+# --------------------------------------------------------------------
+# Two notions of closure, and where they disagree
+# --------------------------------------------------------------------
+
+def odd_part(n: int) -> int:
+    """The largest odd divisor of n."""
+    if n <= 0:
+        raise ValueError("odd_part is defined for positive integers")
+    while n % 2 == 0:
+        n //= 2
+    return n
+
+
+def accumulator_closure(words: tuple[int, ...],
+                        reference_hz: Fraction | int,
+                        accumulator_bits: int) -> Fraction:
+    """When the phase ACCUMULATOR returns to state zero.
+
+    This is the quantity the DDS literature calls the grand repetition
+    rate, ``GRR = 2**N / gcd(FTW, 2**N)`` for a single tone, extended
+    to a tone set by taking the lcm of the per-tone recurrences.
+
+    It is **not** the same as :func:`common_closure`, which is the
+    closure of the ideal continuous phase ramp. See
+    :func:`closure_discrepancy`.
+    """
+    if not words:
+        raise DDSRefused("closure of an empty tone set is undefined")
+    if any(w <= 0 for w in words):
+        raise DDSRefused("non-positive tuning word")
+    m = 2 ** accumulator_bits
+    ticks = 1
+    for w in words:
+        per = m // math.gcd(w, m)
+        ticks = _lcm(ticks, per)
+    return Fraction(ticks) / Fraction(reference_hz)
+
+
+def closure_discrepancy(words: tuple[int, ...],
+                        reference_hz: Fraction | int,
+                        accumulator_bits: int) -> dict:
+    """Where the continuous and sampled notions of closure disagree.
+
+    This is the substantive result of the DDS work, and it survived a
+    prior-art review that found the closure formula itself already
+    published (Nicholas & Samueli 1987; Hwang et al. 2017 for the
+    multi-tone GCD rule; Fujifilm US12422666B2 for it on tuning words).
+
+    The continuous formula ``T = q/(p*gcd K)`` describes the analog
+    phase ramp: the instant at which every reconstructed tone has
+    completed a whole number of cycles. The accumulator formula
+    describes when the *digital state* returns to zero. They coincide
+    only when ``gcd(K_i)`` is a power of two, and otherwise differ by
+    exactly its odd part:
+
+        T_accumulator / T_continuous = odd_part(gcd(K_i)).
+
+    The reason is that the continuous ramp can reach 2*pi at a moment
+    that falls *between* clock ticks, so the analog phase closes while
+    the accumulator never lands on zero at that instant.
+
+    Which one is physically meaningful depends on the application. A
+    phase-coherent multi-tone measurement that cares about the
+    reconstructed analog waveform wants the continuous figure. A
+    system that latches, resets, or compares accumulator state wants
+    the sampled one. Quoting the continuous figure for a system that
+    depends on state recurrence overstates closure quality by the odd
+    part of the gcd -- a factor of three in the worked case below, and
+    unbounded in general.
+    """
+    t_cont = common_closure(words, reference_hz, accumulator_bits)
+    t_acc = accumulator_closure(words, reference_hz, accumulator_bits)
+    g = 0
+    for w in words:
+        g = math.gcd(g, w)
+    op = odd_part(g)
+    return {
+        "tuning_words": list(words),
+        "gcd": g,
+        "odd_part_of_gcd": op,
+        "continuous_closure_s": str(t_cont),
+        "accumulator_closure_s": str(t_acc),
+        "ratio": str(t_acc / t_cont),
+        "ratio_float": float(t_acc / t_cont),
+        "agree": t_acc == t_cont,
+        "predicted_ratio_is_odd_part": (t_acc / t_cont) == op,
+        "note": ("the two notions coincide iff gcd(K) is a power of "
+                 "two; otherwise the continuous figure is optimistic "
+                 "by exactly the odd part of the gcd"),
     }

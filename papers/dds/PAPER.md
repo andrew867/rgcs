@@ -1,172 +1,174 @@
-# Exact Common-Phase Closure in Multi-Tone Direct Digital Synthesis
+# Two Notions of Phase Closure in Multi-Tone Direct Digital Synthesis, and Where They Disagree
 
-**Draft — novelty positioning pending prior-art review.**
+**Status: reframed after prior-art review. The originally proposed
+contribution — a closed form for multi-tone common closure — is
+already published. What follows is what survived.**
 
 ## Abstract
 
-For an *N*-bit direct digital synthesiser driven by reference
-frequency *f_r*, we give a closed form for the least interval over
-which a set of synthesised tones returns simultaneously to its
-starting phase. Writing the synthesis quantum δ = *f_r*/2^*N* = *p*/*q*
-in lowest terms, the common phase-closure interval for integer tuning
-words *K₁…K_m* is
+Direct digital synthesis admits two distinct and non-equivalent
+notions of when a set of tones "returns to its starting phase": the
+closure of the ideal continuous phase ramps, and the recurrence of the
+phase accumulator to state zero. The literature's grand repetition
+rate is the second. Practitioners reasoning about phase-coherent
+multi-tone measurement frequently want the first.
 
-> **T = q / (p · gcd(K₁,…,K_m)).**
+We show the two coincide if and only if the greatest common divisor of
+the tuning words is a power of two, and otherwise differ by exactly
+its odd part:
 
-Two consequences follow. First, exact closure is a property of the
-*reference frequency*, not of accumulator resolution: a decimal
-reference cannot represent a dyadic tone set exactly at any width,
-because no power of two cancels a factor of 5. Second, and less
-obviously, accumulator width and phase closure are **anti-correlated**
-— widening the accumulator improves frequency accuracy geometrically
-while degrading common closure geometrically. A designer optimising
-the specification datasheets quote is degrading the one a
-phase-coherent multi-tone instrument depends on.
+> **T_accumulator / T_continuous = odd_part(gcd(K₁,…,K_m)).**
 
-We give the worked case of a 100 MHz reference with a 32-bit
-accumulator and tones {4096, 20480, 40960} Hz, where an ideal closure
-of 1/4096 s becomes 2²⁴/5⁸ = 42.94967296 s, and show that a *slower*
-2²⁶ Hz (67.108864 MHz) reference restores exact closure.
+The continuous figure is therefore never pessimistic and can overstate
+closure quality without bound. We give a worked case where it is
+optimistic by a factor of 3.
 
-## 1. Setup
+## 1. Prior art, stated first
 
-An *N*-bit phase accumulator with integer tuning word *K* driven at
-*f_r* emits
+The multi-tone closure formula itself is **not new**, and we say so
+before deriving it.
 
-    f = K · f_r / 2^N.
+Writing the synthesis quantum δ = *f_r*/2^*N* = *p*/*q* in lowest
+terms, the common closure of the continuous ramps is
+*T* = *q*/(*p*·gcd(*K_i*)). This is algebraically identical to
+*T* = 1/gcd(*f_i*) — the textbook fundamental period of a sum of
+commensurate sinusoids — rewritten on the DDS grid. It is published:
 
-Every realisable output is therefore an integer multiple of the
-**synthesis quantum**
+- **Nicholas & Samueli (1987)** established the number-theoretic
+  accumulator-period analysis; the single-tone grand repetition rate
+  GRR = 2^*N*/gcd(FTW, 2^*N*) is a named, standard quantity restated
+  in Cordesses (*IEEE Signal Processing Magazine*, 2004) and in the
+  Analog Devices DDS tutorials.
+- **Hwang et al.** (*Scientific Reports* 7:14075, 2017) publish the
+  multi-frequency GCD closure rule as a design principle for Lissajous
+  scanning — choose drive frequencies to maximise their GCD.
+- **Fujifilm US12422666B2** (2022) performs exactly this computation
+  on DDS tuning words.
 
-    δ = f_r / 2^N,
+Likewise, the observation that a power-of-two reference gives exact
+integer tuning words, and that 67.108864 MHz = 2²⁶ is therefore a
+preferred clock, is standard engineering practice with its own patent
+literature (Bruker US6411093B2; Broadcom EP1357460B1 for the negative
+case).
 
-and every question about multi-tone phase closure is a question about
-δ, not about the DAC, the reconstruction filter, or the phase noise.
+**None of that is claimed here.**
 
-We take "closure" to mean the least positive *T* such that every tone
-completes a whole number of cycles: *f_i·T* ∈ ℤ for all *i*. At that
-instant the whole tone set is back in its initial phase relationship.
+## 2. The discrepancy
 
-## 2. Theorem
+The two notions of closure answer different questions.
 
-**Theorem.** Write δ = *p*/*q* in lowest terms. For tuning words
-*K₁…K_m* the realised tones are *f_i* = *K_i p/q*, and the least
-positive *T* with *f_i T* ∈ ℤ for all *i* is
+**Continuous closure** asks when every *reconstructed analog tone* has
+completed a whole number of cycles. It is *T* = *q*/(*p·g*) with
+*g* = gcd(*K_i*).
 
-    T = q / (p · g),   g = gcd(K₁,…,K_m).
+**Accumulator closure** asks when the *digital phase accumulator*
+returns to state zero. Per tone this is 2^*N*/gcd(*K*, 2^*N*) clock
+ticks; for a tone set it is the lcm of those.
 
-*Proof.* *f_i T* ∈ ℤ means *K_i p T / q* ∈ ℤ. Write *K_i* = *g k_i*
-with gcd(*k_i*) = 1. Every *f_i* is then a multiple of *gp/q*, and
-because the *k_i* are collectively coprime, *gp/q* is the largest such
-common divisor — the tone set generates exactly the lattice (*gp/q*)ℤ.
-*T* closes the lattice iff *T* is a multiple of *q/(gp)*, and the
-least positive such value is *q/(gp)*. Since *p/q* is in lowest terms,
-gcd(*p*,*q*) = 1 and no further cancellation occurs. ∎
+These differ because the continuous ramp can reach 2π at a moment
+lying *between* clock ticks. The analog phase closes; the accumulator
+never lands on zero at that instant.
 
-The result is computed in closed form. Brute-force phase stepping over
-the canonical case below would visit 4.3 × 10⁹ accumulator states.
+**Result.** The ratio is exactly the odd part of the gcd:
 
-### 2.1 Corollary — exactness belongs to the reference
+    T_accumulator / T_continuous = odd_part(gcd(K₁,…,K_m)).
 
-A requested tone *f* is exactly representable iff *f·2^N/f_r* ∈ ℤ.
-For *f_r* = 10⁸ = 2⁸·5⁸ and dyadic *f*, this requires 5⁸ | 2^k, which
-never holds. **No accumulator width recovers exactness.** Verified for
-*N* = 8…64.
+They agree iff gcd(*K_i*) is a power of two. Since odd_part ≥ 1, the
+continuous figure is **never pessimistic** — quoting it for a system
+whose behaviour depends on accumulator state always overstates closure
+quality.
 
-### 2.2 Corollary — the degradation factor
+### Worked case
 
-    T_q / T_ideal = W_fund / g,
+*N* = 32, *f_r* = 100 MHz, tuning words {3, 6, 9}, gcd = 3:
 
-where *W_fund* is the **unrounded** tuning word of the ideal
-fundamental. This explains an otherwise puzzling near-collision in the
-worked case: the ratio is 2³⁶/5⁸ = 175921.8604…, while the tuning word
-for 4096 Hz is 175922. They are not coincidentally close — the ratio
-*is* the unrounded word, and the word is its rounding. Reporting the
-ratio as the integer 175922 is wrong, and wrong in the direction that
-looks tidier.
+| Notion | Closure |
+|---|---|
+| continuous | 2²⁴/(3·5⁸) s ≈ 14.3166 s |
+| accumulator | 2²⁴/5⁸ s ≈ 42.9497 s |
+| ratio | **3** = odd_part(3) |
 
-### 2.3 Corollary — accuracy and closure are anti-correlated
+Verified across gcd ∈ {3, 5, 6, 7, 21, 2¹⁸} — the prediction holds
+exactly in every case.
 
-Widening the accumulator halves δ, so realised tones land closer to
-requested ones and frequency error falls geometrically. But *q*
-doubles with every bit while the tuning words remain collectively
-coprime, so *T* = *q*/(*p·g*) grows geometrically.
+The canonical 100 MHz / {4096, 20480, 40960} Hz example that motivated
+this work has gcd(*K*) = 1, and the 2²⁶ Hz example has gcd(*K*) = 2¹⁸.
+Both are powers of two, so **both hide the discrepancy entirely** —
+which is how it went unnoticed.
 
-| *N* | max frequency error (Hz) | closure ratio |
-|---:|---:|---:|
-| 24 | 1.161 | 687.2 |
-| 32 | 9.210 × 10⁻³ | 1.759 × 10⁵ |
-| 40 | 3.352 × 10⁻⁵ | 4.504 × 10⁷ |
-| 48 | 1.216 × 10⁻⁷ | 1.153 × 10¹⁰ |
-| 56 | 6.547 × 10⁻¹⁰ | 2.951 × 10¹² |
-| 64 | 1.854 × 10⁻¹² | 7.556 × 10¹⁴ |
+## 3. Which notion is correct
 
-Across 24→64 bits, frequency error improves by 6.26 × 10¹¹ while
-closure degrades by 1.10 × 10¹² — near-perfectly reciprocal.
+It depends on the application, and the choice must be stated:
 
-This is the practical point of the paper. Frequency resolution is
-quoted on every datasheet; multi-tone phase closure is quoted on none.
-Optimising the first degrades the second.
+- **Continuous** is right for a measurement that observes the
+  reconstructed analog waveform and cares about relative phase between
+  tones.
+- **Accumulator** is right for any system that latches, resets,
+  synchronises, or compares accumulator state — including
+  multi-channel DDS alignment, which is where the GRR is normally
+  invoked.
 
-## 3. Worked case
+Reporting one where the other governs is an error of up to
+odd_part(gcd(*K*)), unbounded in general.
 
-*N* = 32, *f_r* = 100 MHz, ℱ = {4096, 20480, 40960} Hz.
+## 4. Secondary observations
 
-- δ = 5⁸/2²⁴ Hz
-- tuning words (rounded): 175922, 879609, 1759219
-- none exactly representable
-- ideal closure: 1/4096 s
-- realised closure: **2²⁴/5⁸ s = 42.94967296 s**
-- degradation: 2³⁶/5⁸ ≈ 175921.86×
+These are exposition of known facts, not claims.
 
-With *f_r* = 2²⁶ Hz = 67.108864 MHz — a stock part, and *slower* than
-100 MHz:
+**Exactness belongs to the reference, not the resolution.** A tone is
+exactly representable iff *f*·2^*N*/*f_r* ∈ ℤ. For *f_r* = 10⁸ =
+2⁸·5⁸ and dyadic tones this requires 5⁸ | 2^*k*, which never holds —
+no accumulator width helps. Verified for *N* = 8…64.
 
-- δ = 1/2⁶ Hz
-- tuning words: 262144, 1310720, 2621440, all exact
-- closure: **1/4096 s, ideal recovered**
-- frequency error: exactly zero
+**Accumulator width trades accuracy against closure.** Widening the
+accumulator shrinks δ, improving frequency accuracy, while *q* doubles
+and closure lengthens. Over 24→64 bits both effects are structurally
+2⁴⁰.
 
-The smallest dyadic reference satisfying a 10× oversampling floor is
-2¹⁹ = 524.288 kHz; 2²⁶ is the practical choice with ample headroom.
+*Honesty note:* an earlier draft reported these as 6.26 × 10¹¹ and
+1.10 × 10¹² and presented the near-agreement as notable. That was
+overstated. The closure figure is exactly 2⁴⁰; the frequency-error
+figure is the *realised* rounding error for three particular tones and
+depends on where each falls relative to the grid. There is one
+mechanism, not a coincidence between two.
 
-## 4. What this is not
+## 5. Errors corrected during this work
 
-The result concerns **exact rational closure only**. It says nothing
-about, and must not be confused with:
+Recorded because they are instructive:
 
-- phase truncation spurs (the accumulator's low bits driving the
-  phase-to-amplitude map);
-- DAC quantisation, images, and harmonic distortion;
-- reference phase noise and jitter;
-- analogue reconstruction;
-- the distinction between requested and realised tone sets, which the
-  analysis makes explicit but does not eliminate.
+1. The degradation factor for the canonical case was stated as
+   "exactly 175922". It is 2³⁶/5⁸ = 175921.8604…, and 175922 is the
+   *rounded tuning word* — a different quantity. The ratio is the
+   unrounded word, so the collision is structural. The error was in
+   the direction that looks tidier.
+2. A search for an exact dyadic reference returned 2 Hz for a
+   40960 Hz tone set: arithmetically valid, physically impossible.
+   Exactness constrains only *f*·2^*N*/*f_r* and says nothing about
+   whether the tone can be emitted. Now requires a declared
+   oversampling floor with Nyquist as a hard minimum.
+3. A brute-force validation searched in an order that found *T* = 1
+   before *T* = 1/3, and would have "confirmed" a wrong closed form.
 
-A binary-friendly reference preserves exact closure without being
-faster and without improving any of the above.
+## 6. Reproducibility
 
-## 5. Reproducibility
+All closure values are exact rationals (`fractions.Fraction`); no
+floating point appears in any closure computation. Implementation:
+`r8/dds.py`. Tests: `tests/v51/test_r8_dds.py` (43 tests, no tolerance
+on any closure value), including validation of the single-tone
+accumulator formula against the published GRR.
 
-All values are computed with exact rational arithmetic
-(`fractions.Fraction`); no floating point appears in any closure
-computation. A float implementation agrees to ten digits and hides
-the effect entirely — which is the failure mode this paper is about.
+## 7. Recommended disposition
 
-Implementation: `r8/dds.py`. Tests: `tests/v51/test_r8_dds.py`
-(33 tests, no tolerance on any closure value). The theorem is
-additionally validated against brute-force enumeration on a small
-case.
+Per the prior-art review, the original framing does not support a
+research paper and would be rejected on prior art. The
+continuous-versus-sampled discrepancy is real, verified, and was not
+found in the literature.
 
-## 6. Novelty statement
+Suggested venues, in order: a short correspondence in *IEEE
+Transactions on Circuits and Systems II*, or *IEEE Transactions on
+UFFC* — both carry the Nicholas/Samueli lineage and take short
+number-theoretic DDS notes. Alternatively a technical note in *Review
+of Scientific Instruments* if paired with a real instrument.
 
-*To be completed from the prior-art review. The relevant question is
-whether the multi-tone gcd result, as distinct from the well-known
-single-tone accumulator rollover ("grand repetition rate"), is already
-published — and whether the anti-correlation corollary is. If the core
-result is known, the surviving contribution is the reference-selection
-design rule and the anti-correlation framing; if that is known too,
-this becomes a technical note.*
-
-**Standing instruction: no novelty claim is retained that the review
-does not support.**
+**The reference-selection rule and the anti-correlation framing are
+exposition and should be presented as such.**
