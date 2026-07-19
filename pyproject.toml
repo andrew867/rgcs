@@ -40,6 +40,7 @@ rgcs-workbench = "rgcs_desktop.app.main:main"
 
 [tool.setuptools.packages.find]
 include = ["rgcs_core*", "rgcs_desktop*", "rscs_core*", "rscs2_core*", "cspc*", "pmwr*", "r3*", "r4*",
+           "r6*", "r7*", "r8*", "r9*",
            "rgcs_workbench*", "fkey_instrument*",
            "resonator_platform*", "consciousness_lane*"]
 

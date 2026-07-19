@@ -79,10 +79,51 @@ def test_more_mass_does_not_rescue_the_bench_case():
     assert big.verdict == "REFUSED_BY_ARITHMETIC"
 
 
-def test_scale_gap_is_eight_orders():
+def test_the_barrier_is_readout_not_mass():
+    """R9-D-006. This used to compare against Super-K and conclude
+    the barrier was mass. NUCLEUS runs a 10 g target -- a tenth of the
+    bench crystal -- so mass is demonstrably not what is missing.
+    """
     g = C.scale_gap()
-    assert g["mass_ratio"] > 1e7
-    assert "not a refinement problem" in g["note"]
+    assert g["barrier"] == "READOUT_NOT_MASS"
+    assert g["bench_is_heavier_than_smallest_detector"]
+    assert g["mass_ratio_to_smallest"] < 1.0
+
+
+def test_gram_scale_detection_is_a_real_programme():
+    b = C.DETECTOR_BENCHMARKS
+    assert b["NUCLEUS"]["mass_g"] == 10.0
+    assert b["NUCLEUS"]["threshold_eV"] <= 20.0
+    # what NUCLEUS has that the bench does not
+    assert "cryogenic" in b["NUCLEUS"]["material"]
+    assert "veto" in b["NUCLEUS"]["conditions"]
+
+
+def test_smallest_detection_is_kilogram_scale_not_gram_scale():
+    """NUCLEUS has not published a detection; CONUS+ is the record."""
+    b = C.DETECTOR_BENCHMARKS
+    assert "no detection published" in b["NUCLEUS"]["status"]
+    detected = [v for v in b.values()
+                if "no detection" not in v["status"]]
+    assert min(v["mass_g"] for v in detected) == 3_000.0
+
+
+def test_every_benchmark_carries_a_source():
+    for name, spec in C.DETECTOR_BENCHMARKS.items():
+        assert spec["source"], name
+        assert spec["threshold_eV"] > 0
+
+
+def test_miniaturisation_argument_is_credited_to_prior_art():
+    assert "Drukier" in C.COHERENT_SCATTERING_PRIOR_ART
+    assert "1974" in C.COHERENT_SCATTERING_PRIOR_ART
+    assert "theirs" in C.scale_gap()["prior_art"]
+
+
+def test_rate_is_labelled_a_zero_threshold_ceiling():
+    """Quoting ~1.2/yr without this caveat would overstate it."""
+    assert "ZERO-THRESHOLD ceiling" in C.THRESHOLD_CAVEAT
+    assert "the real one is lower" in C.THRESHOLD_CAVEAT
 
 
 # --- rate arithmetic ---------------------------------------------------

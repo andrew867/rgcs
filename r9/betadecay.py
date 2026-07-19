@@ -49,6 +49,20 @@ CONSERVATION_LAWS = (
 )
 
 
+#: The canonical sequence. Nothing in this module is novel; the
+#: argument was settled between 1914 and 1934.
+HISTORICAL_REFERENCES = (
+    ("Chadwick, J. (1914), Verh. Dtsch. Phys. Ges. 16, 383-391 -- "
+     "the beta spectrum is continuous, not discrete"),
+    ("Ellis, C. D. & Wooster, W. A. (1927) -- calorimetric proof the "
+     "continuum is real, not an instrumental artefact"),
+    ("Pauli, W., letter of 4 December 1930 ('Liebe Radioaktive Damen "
+     "und Herren') -- proposes a neutral spin-1/2 particle"),
+    ("Fermi, E. (1934), Z. Phys. 88, 161 -- theory of beta decay; "
+     "names the neutrino and treats it as created at decay"),
+)
+
+
 class ConservationViolation(RuntimeError):
     """Raised when a decay account fails a conservation law."""
 
@@ -183,10 +197,20 @@ def omitted_antineutrino_ledger() -> dict:
             "the shape of the electron energy spectrum: monoenergetic "
             "if the antineutrino is absent, continuous if present"),
         "historical_note": (
-            "this is precisely the discrepancy that led Pauli to "
-            "postulate the neutrino in 1930, before any neutrino was "
-            "detected. The spectrum had been known to be continuous "
-            "since the 1910s."),
+            "Chadwick (1914) showed the beta spectrum is continuous. "
+            "Ellis & Wooster (1927) settled by calorimetry that the "
+            "continuum is real rather than an instrumental or "
+            "secondary effect -- this is the step that made the crisis "
+            "inescapable. Pauli's letter of 4 December 1930 proposed a "
+            "neutral spin-1/2 particle in response. Fermi (1934) gave "
+            "the theory and the name."),
+        "historical_precision": (
+            "Pauli's original particle was a *nuclear constituent*, "
+            "not a decay product. The modern 'third body created at "
+            "decay' reading is Fermi's 1934 reinterpretation. Saying "
+            "'Pauli 1930 requires a third body' flattens that step, so "
+            "it is separated here."),
+        "references": HISTORICAL_REFERENCES,
         "verdict": (
             "The antineutrino cannot be omitted. Its omission is not a "
             "simplification with a free parameter; it is a prediction "

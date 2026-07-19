@@ -267,19 +267,100 @@ def assess(target_key: str, *, hypothesis: str = "ACTIVE_ANTINEUTRINO",
         verdict=verdict, note=note)
 
 
+#: Published detectors, smallest-first. Added after the R9 prior-art
+#: review, which corrected the framing of this module in a useful
+#: direction (R9-D-006).
+DETECTOR_BENCHMARKS = {
+    "NUCLEUS": {
+        "mass_g": 10.0,
+        "material": "CaWO4 / Al2O3 cryogenic calorimeter",
+        "status": "commissioning; no detection published yet",
+        "threshold_eV": 20.0,
+        "conditions": ("~10 mK cryogenics, reactor-adjacent flux, "
+                       "heavy shielding plus active muon veto"),
+        "source": "arXiv:1704.04320; commissioning arXiv:2508.02488",
+    },
+    "CONUS_PLUS": {
+        "mass_g": 3_000.0,
+        "material": "germanium diodes (4 x 1 kg)",
+        "status": ("first reactor CEvNS detection, 3.7 sigma, "
+                   "327 kg-days"),
+        "threshold_eV": 160.0,
+        "conditions": "reactor site, shielded",
+        "source": "Nature (2025); arXiv:2501.05206",
+    },
+    "COHERENT": {
+        "mass_g": 14_600.0,
+        "material": "CsI[Na]",
+        "status": "first CEvNS observation, 6.7 sigma, 2017",
+        "threshold_eV": 4_800.0,
+        "conditions": "spallation neutron source, shielded basement",
+        "source": "Science 357:1123; arXiv:1708.01294",
+    },
+}
+
+#: The miniaturisation argument is not ours and is 42 years old.
+COHERENT_SCATTERING_PRIOR_ART = (
+    "Freedman (1974) predicted coherent elastic neutrino-nucleus "
+    "scattering; Drukier & Stodolsky (1984) is the canonical proposal "
+    "that coherence permits drastically smaller neutrino detectors. "
+    "The entire small-detector argument is theirs."
+)
+
+
 def scale_gap() -> dict:
-    """How far the bench apparatus is from a real neutrino detector."""
+    """What actually separates this bench from a neutrino detector.
+
+    R9-D-006. This function used to compare the bench against
+    Super-Kamiokande and conclude the barrier was **mass** -- a factor
+    of 1e8. The prior-art review showed that framing is wrong, and
+    wrong in an informative direction: NUCLEUS runs a 10 g target,
+    one tenth of the bench crystal, and gram-scale neutrino detection
+    is an active funded programme.
+
+    So mass is not the barrier. Ten grams is enough. What NUCLEUS has
+    that the bench does not is a **readout channel** -- a cryogenic
+    calorimeter at ~10 mK with a ~20 eV threshold -- plus depth,
+    shielding and an active veto. The field solved the small-detector
+    problem by engineering transduction, which is exactly the obstacle
+    this module identifies as binding.
+
+    The corrected conclusion is stronger than the original: the bench
+    is not short of mass, it is short of a way to notice.
+    """
     bench = TARGETS["BENCH_QUARTZ_100G"]
-    real = TARGETS["SUPER_K_SCALE"]
+    smallest = DETECTOR_BENCHMARKS["NUCLEUS"]
     return {
         "bench_mass_g": bench.mass_g,
-        "reference_mass_g": real.mass_g,
-        "mass_ratio": real.mass_g / bench.mass_g,
-        "note": ("a working neutrino observatory uses of order 1e8 "
-                 "times the target mass of a bench crystal, sited "
-                 "under a kilometre of rock. The gap is not a "
-                 "refinement problem."),
+        "smallest_real_detector_g": smallest["mass_g"],
+        "mass_ratio_to_smallest": smallest["mass_g"] / bench.mass_g,
+        "bench_is_heavier_than_smallest_detector": (
+            bench.mass_g > smallest["mass_g"]),
+        "benchmarks": DETECTOR_BENCHMARKS,
+        "barrier": "READOUT_NOT_MASS",
+        "note": (
+            "the bench crystal is ten times heavier than the NUCLEUS "
+            "target. Mass is not what it lacks. It lacks a "
+            "transduction channel -- NUCLEUS uses a ~10 mK cryogenic "
+            "calorimeter with a ~20 eV threshold -- and depth, "
+            "shielding and a veto. The gap is not a refinement "
+            "problem, but it is a readout problem, not a size one."),
+        "prior_art": COHERENT_SCATTERING_PRIOR_ART,
     }
+
+
+#: The computed rate assumes every interaction counts, i.e. zero
+#: detection threshold. Real devices have thresholds, and the rate
+#: above threshold is far lower.
+THRESHOLD_CAVEAT = (
+    "the ~1.2 interactions/yr figure is a ZERO-THRESHOLD ceiling, not "
+    "an expectation. Published solar pp CEvNS rates (~16.6 events per "
+    "kg-yr in germanium, arXiv:2104.14352) are likewise quoted at zero "
+    "threshold. Recoil energies here are sub-keV; at any threshold a "
+    "quartz resonator could plausibly reach, the rate above threshold "
+    "is consistent with zero. The honest reading is that ~1.2/yr is "
+    "the most optimistic number available, and the real one is lower."
+)
 
 
 def refuse_carrier_detection_claim(*args, **kwargs):

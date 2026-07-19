@@ -89,6 +89,59 @@ def test_structure_is_not_base_independent():
     assert "BASE_DEPENDENT" in t["verdict"]
 
 
+def test_two_exclusion_mechanisms_are_distinguished():
+    """R9-D-005. Base 10 and base 8 exclude residues for completely
+    different reasons, and the first version ran them together."""
+    b10 = V.exclusion_mechanisms(10)
+    assert b10["excluded_as_non_units"] == [3, 6]
+    assert b10["excluded_as_units_outside_orbit"] == []
+
+    b8 = V.exclusion_mechanisms(8)
+    assert b8["excluded_as_non_units"] == []
+    assert b8["excluded_as_units_outside_orbit"] == [3, 5, 6]
+
+
+def test_a_prime_modulus_does_not_imply_nothing_is_excluded():
+    """The counterexample that keeps both conditions honest: 7 is
+    prime and base 8 still excludes three residues."""
+    b8 = V.exclusion_mechanisms(8)
+    assert b8["modulus_is_prime"]
+    assert not b8["two_is_primitive_root"]
+    assert b8["excluded_total"] == [3, 5, 6]
+
+
+def test_empty_exclusion_needs_both_conditions():
+    for base in V.COMPARISON_BASES:
+        m = V.exclusion_mechanisms(base)
+        empty = not m["excluded_total"]
+        both = m["modulus_is_prime"] and m["two_is_primitive_root"]
+        assert empty == both, f"base {base}"
+
+
+def test_mechanisms_partition_the_exclusion_set():
+    for base in V.COMPARISON_BASES:
+        m = V.exclusion_mechanisms(base)
+        assert set(m["excluded_total"]) == (
+            set(m["excluded_as_non_units"])
+            | set(m["excluded_as_units_outside_orbit"]))
+        assert set(m["excluded_total"]) == set(V.excluded_residues(base))
+
+
+def test_base_twelve_justification_names_both_conditions():
+    t = V.base_generality_test()
+    assert "11 is prime" in t["decisive_case"]
+    assert "primitive root" in t["decisive_case"]
+    assert "Both conditions are needed" in t["decisive_case"]
+    assert "base 8" in t["why_both_conditions"]
+
+
+def test_novelty_is_recorded_as_none():
+    """Prior-art review found both halves already published."""
+    L = V.vortex_grammar_ledger()
+    assert L["novelty"] == "NONE"
+    assert "casting out nines" in L["prior_art"]
+
+
 def test_base_twelve_excludes_nothing():
     """If 3-6-9 were fundamental it would not depend on how many
     fingers we have. In base 12 there is no trinity at all."""

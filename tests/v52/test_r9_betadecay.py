@@ -80,10 +80,28 @@ def test_verdict_says_omission_is_not_a_free_parameter():
     assert "free parameter" in L["verdict"]
 
 
-def test_historical_note_credits_pauli_1930():
-    L = B.omitted_antineutrino_ledger()
-    assert "Pauli" in L["historical_note"]
-    assert "1930" in L["historical_note"]
+def test_historical_note_gives_the_full_sequence():
+    """Not just Pauli: Chadwick measured it, and Ellis & Wooster
+    proved the continuum was not an instrumental artefact -- which is
+    the step that made the crisis inescapable."""
+    n = B.omitted_antineutrino_ledger()["historical_note"]
+    for name in ("Chadwick", "Ellis", "Wooster", "Pauli", "Fermi"):
+        assert name in n
+    assert "1914" in n and "1930" in n and "1934" in n
+
+
+def test_pauli_and_fermi_are_not_conflated():
+    """Pauli's particle was a nuclear constituent; 'created at decay'
+    is Fermi's 1934 reinterpretation."""
+    p = B.omitted_antineutrino_ledger()["historical_precision"]
+    assert "nuclear constituent" in p
+    assert "Fermi's 1934 reinterpretation" in p
+
+
+def test_references_are_carried():
+    refs = B.omitted_antineutrino_ledger()["references"]
+    assert len(refs) == 4
+    assert all(isinstance(r, str) and r for r in refs)
 
 
 def test_the_caveat_does_not_overclaim_neutrino_knowledge():

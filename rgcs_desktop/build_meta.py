@@ -39,7 +39,7 @@ STAMP_NAME = "_build_stamp.json"
 SOURCE_ROOTS = ("rgcs_desktop", "rgcs_workbench", "rgcs_core",
                 "rscs_core", "rscs2_core", "fkey_instrument",
                 "resonator_platform", "cspc", "pmwr", "r3", "r4",
-                "r6", "r7", "r8")
+                "r6", "r7", "r8", "r9")
 
 
 def repo_root() -> Path:
