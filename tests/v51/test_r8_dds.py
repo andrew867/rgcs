@@ -342,3 +342,39 @@ def test_tradeoff_declares_the_structural_factor_honestly():
     assert rep["closure_degradation"] == pytest.approx(2.0 ** 40, rel=1e-9)
     assert "one mechanism, not a" in rep["honesty_note"]
     assert "luck" in rep["honesty_note"]
+
+
+# --- validation against the published vendor worked example -----------
+
+def test_adi_grand_repetition_rate_worked_example():
+    """ADI Analog Dialogue (AD9958 FSK/PSK) quotes ~1907 Hz for a
+    1 GHz clock, 32-bit FTW, and a rightmost-nonzero-bit index giving
+    a 2^19-tick accumulator period.
+
+    Reproducing a published vendor number is the right way to show our
+    accumulator formula is the SAME quantity the literature calls the
+    grand repetition rate -- which is what makes the continuous/sampled
+    distinction meaningful rather than a redefinition.
+    """
+    fs = 10 ** 9
+    k = 2 ** 13                      # trailing zeros = 13 -> 2^19 ticks
+    t = dds.accumulator_closure((k,), fs, 32)
+    assert Fraction(1, 1) / t == pytest.approx(1907.3486328125)
+
+
+def test_adi_uses_gcd_with_2_to_the_N_not_gcd_of_words_alone():
+    """The vendor formula includes the 2^N modulus; ours does not.
+
+    That is precisely the continuous-vs-sampled difference. Where the
+    gcd of the tuning words has an odd factor, the two formulations
+    give different answers, and the vendor construction is the
+    accumulator one.
+    """
+    import math as _m
+    words = (3 * 2 ** 13, 6 * 2 ** 13)
+    g_plain = _m.gcd(*words)
+    g_vendor = _m.gcd(g_plain, 2 ** 32)
+    assert g_plain != g_vendor
+    assert g_plain // g_vendor == dds.odd_part(g_plain)
+    d = dds.closure_discrepancy(words, 10 ** 9, 32)
+    assert d["ratio_float"] == float(dds.odd_part(g_plain))

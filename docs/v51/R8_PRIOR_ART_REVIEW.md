@@ -14,7 +14,7 @@ paper at all. Two factual errors in our own material were caught.
 
 | Proposed paper | Verdict | Action |
 |---|---|---|
-| DDS closure | pending final check; core arithmetic verified independently | proceed, novelty statement to be set by the DDS review |
+| DDS closure | **formula already published**; residual is the continuous/sampled discrepancy | short correspondence, not a research paper |
 | Null calibration | **principle is NOT novel**; synthesis survives as tutorial/methods | reframe, do not claim the principle |
 | Relational coordinates | **6 of 7 components textbook** | not a research paper — software paper or technical report |
 
@@ -185,3 +185,66 @@ fully-correlated 18.0 m — understating by 3×.
   before submission. One review self-reported a miscitation of
   Gelman & Loken it had found in a source.
 - Non-English literature was not searched.
+
+---
+
+## 5. DDS vendor-documentation sweep (follow-up)
+
+A second, narrower sweep targeted vendor application notes
+specifically. It tightens the picture and does **not** overturn the
+main verdict.
+
+### ⚠ Verification caveat — this is not a clean search
+
+`analog.com` was **unreachable for the entire sweep** (ECONNRESET or
+60 s timeout on every HTML page and PDF; the r.jina.ai proxy returned
+403). Several PDFs that did download were image-only and yielded no
+extractable text.
+
+**Every ADI quotation below is a search-engine extraction, not a
+direct fetch.** They recur consistently across independent queries
+with consistent page attribution, so confidence is reasonable — but
+**AN-1396 and the full FSK/PSK article text must be read directly
+before any filing or defensive publication.** Either could close the
+remaining gap.
+
+### What the sweep found
+
+| Element | Verdict |
+|---|---|
+| Rollover/repeat period from *f_r*/2^*N* | **found decisively** — ADI states GRR via the rightmost nonzero FTW bit; Cordesses states T_ACC = 2^*N*/gcd(2^*N*, ACC) |
+| Exact representability iff integer tuning word | **found** — ubiquitous |
+| Prime-factorisation corollary (100 MHz = 2⁸·5⁸ forecloses dyadic tones at any *N*) | **not found** — ADI's "power of two" and "relatively prime integers" language approaches but stops short |
+| Binary reference as a stated design rule | **not found in any vendor document** — only circumstantial (2²⁴ Hz parts are catalogued) |
+| Multi-tone gcd closure | **partially found, closer than expected** — the ADI FSK article applies GRR across a *pair* of tuning words, which is arithmetically gcd(K₁,K₂,2^*N*). No *m* > 2 generalisation, and no q/(p·gcd) form with an arbitrary rational reference |
+| Resolution-vs-closure tradeoff | **partially found** — stated for a single tone; never framed as a multi-tone penalty or as a design warning. The literature treats larger *N* as an unqualified good |
+
+### Why this reinforces rather than threatens the salvage
+
+The ADI two-tone construction keys on `gcd(K₁, K₂, 2^N)` — **it
+includes the 2^N modulus**. That is the *sampled/accumulator* notion.
+Our continuous formula uses `gcd(K₁…K_m)` **without** the modulus.
+
+So the closest vendor prior art computes precisely the other one of
+the two quantities whose disagreement is the surviving contribution.
+Where gcd(K) carries an odd factor, ADI's construction and the
+continuous formula give different answers — by exactly odd_part(gcd K).
+
+Verified: ADI's worked example (1 GHz clock, 32-bit FTW, 2¹⁹-tick
+period) reproduces as 1907.3486 Hz against their quoted ~1907 Hz.
+`tests/v51/test_r8_dds.py` now pins this as a validation anchor,
+which is what establishes that our `accumulator_closure` is the same
+quantity the literature names, rather than a redefinition.
+
+### Revised residual for the DDS work
+
+1. The continuous-vs-sampled discrepancy and its odd-part law
+   (unchanged — still the primary contribution).
+2. The prime-factorisation framing of reference selection
+   (not found, but exposition).
+3. Inversion of the "bigger *N* is always better" assumption for
+   multi-tone closure (not found as a warning, but a corollary).
+
+The *m* > 2 generalisation is technically unanticipated but is one
+value of *m* away from published work, which is a weak position. It
+should not carry the paper.
