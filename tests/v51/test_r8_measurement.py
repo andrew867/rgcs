@@ -285,11 +285,25 @@ def test_floor_report_covers_every_tier():
 
 # --- analysis plan -----------------------------------------------------
 
-def test_analysis_plan_is_declared_frozen():
+def test_analysis_plan_freeze_is_internal_not_preregistration():
+    """R8-D-004: the freeze is in-repository only.
+
+    This test previously asserted `plan["frozen"] is True`, which read
+    as an external commitment nobody had made. The freeze is real but
+    local, and the record must say which.
+    """
     plan = measurement.analysis_plan()
-    assert plan["frozen"] is True
+    assert plan["freeze_status"] == "INTERNAL_ANALYSIS_FREEZE"
+    assert plan["externally_preregistered"] is False
     assert plan["frozen_before_data"] is True
     assert "FROZEN" in plan["freeze_statement"]
+    assert "no third-party registration" in plan["freeze_caveat"]
+
+
+def test_no_key_implies_external_preregistration():
+    """Guard against the misleading key returning."""
+    plan = measurement.analysis_plan()
+    assert "frozen" not in plan
 
 
 def test_freeze_statement_gives_the_reason():
@@ -458,4 +472,5 @@ def test_programme_summary_reports_untested_status():
     summary = measurement.programme_summary()
     assert summary["status"] == \
         "PROGRAMME_SPECIFIED_PHYSICALLY_UNTESTED"
-    assert summary["analysis_plan_frozen"] is True
+    assert summary["analysis_plan_freeze"] == "INTERNAL_ANALYSIS_FREEZE"
+    assert summary["externally_preregistered"] is False

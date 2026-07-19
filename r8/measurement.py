@@ -986,7 +986,8 @@ def programme_summary() -> dict:
         "bom": bom_report(),
         "procedure": procedure(),
         "floors": floor_report(),
-        "analysis_plan_frozen": analysis_plan()["frozen"],
+        "analysis_plan_freeze": analysis_plan()["freeze_status"],
+        "externally_preregistered": False,
         "status": "PROGRAMME_SPECIFIED_PHYSICALLY_UNTESTED",
         "statement": (
             "P11 specifies the first reachable physical measurement "
