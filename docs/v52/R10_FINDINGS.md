@@ -161,6 +161,38 @@ and R9-D-004 starting over**, one generation later, for the same reason.
 The difference is that this time the guards caught it rather than a
 release doing so — which is what those guards were added for.
 
+### R10-D-002 — the test suite mutates tracked files
+
+`tests/v4/test_v4c_baseline.py` invokes `tools/v4/baseline/scan_baseline.py`,
+which **rewrites three tracked JSON files** under `docs/v4/baseline/`.
+Running the v4 suite therefore dirties the working tree as a side effect.
+
+This is not cosmetic. A test run that modifies tracked files means:
+
+- `git status` is dirty after any test run, so "clean tree" gates become
+  unreliable and get worked around;
+- a broad `git add -A` at release time sweeps in whatever the last test
+  run happened to write;
+- the tree state depends on test *execution order*, which is the sort of
+  thing that produces a release nobody can reproduce.
+
+It was hit three times during R10 and reverted each time. **Not fixed
+here** — changing the scanner's write behaviour at release time is
+exactly the wrong moment — but recorded for the next programme.
+
+### Process note — a commit swept another agent's edits
+
+Commit `0292616` (P17/P18) picked up `build_meta.py` and `pyproject.toml`
+changes authored by the concurrent P20 phase. The changes are intact and
+the message does describe them, but they are attributed to the wrong
+phase.
+
+This is the same class of error recorded in R8.1, where a broad
+`git add` swept an unreviewed specialist's files into a commit. The pack
+rule ("stage explicit files; do not use broad `git add -A` while another
+agent may be active") exists precisely for this, and staging explicit
+paths is not sufficient when two agents touch the *same* file.
+
 ---
 
 ## What R10 does not claim
