@@ -441,3 +441,67 @@ def refuse_height_claim(oscillator: str, target_height_m: float = 1.0):
             f"{oscillator} cannot resolve {target_height_m} m: "
             f"{r.note}")
     return r
+
+
+# --------------------------------------------------------------------
+# Modified Allan and time deviation (R8-D-003)
+# --------------------------------------------------------------------
+
+def _phase_from_frequency(y: list[float], tau0_s: float) -> list[float]:
+    """Cumulative phase (time error, seconds) from fractional frequency."""
+    x = [0.0]
+    for v in y:
+        x.append(x[-1] + v * tau0_s)
+    return x
+
+
+def overlapping_mdev(y: list[float], tau0_s: float, m: int) -> float:
+    """Overlapping modified Allan deviation.
+
+    MVAR(tau) = 1 / (2 m^2 tau^2 (N - 3m + 2)) *
+                sum_j [ sum_{i=j}^{j+m-1} (x_{i+2m} - 2 x_{i+m} + x_i) ]^2
+
+    MDEV differs from ADEV by averaging the second difference over a
+    window of m samples before squaring, which is what lets it
+    separate white phase noise from flicker phase noise -- ADEV cannot,
+    because both give the same tau^-1 slope.
+
+    At m = 1 the inner sum has one term and MVAR reduces exactly to
+    AVAR, which is the validation anchor used in the tests.
+    """
+    x = _phase_from_frequency(y, tau0_s)
+    n = len(x)
+    if m < 1 or n < 3 * m + 1:
+        raise ValueError("series too short for this averaging factor")
+    tau = m * tau0_s
+    outer = 0.0
+    count = 0
+    for j in range(n - 3 * m + 1):
+        inner = 0.0
+        for i in range(j, j + m):
+            inner += x[i + 2 * m] - 2.0 * x[i + m] + x[i]
+        outer += inner * inner
+        count += 1
+    if count == 0:
+        raise ValueError("not enough data for this averaging factor")
+    mvar = outer / (2.0 * (m ** 4) * (tau0_s ** 2) * count)
+    return math.sqrt(mvar)
+
+
+def time_deviation(y: list[float], tau0_s: float, m: int) -> float:
+    """Time deviation, TDEV(tau) = tau * MDEV(tau) / sqrt(3).
+
+    This is a definition, not an estimate, so the tests assert it
+    exactly rather than approximately.
+    """
+    tau = m * tau0_s
+    return tau * overlapping_mdev(y, tau0_s, m) / math.sqrt(3.0)
+
+
+#: Which estimators actually exist in code. R8-D-003: the analysis
+#: plan previously named three and implemented one.
+IMPLEMENTED_ESTIMATORS = {
+    "ADEV": "overlapping_adev",
+    "MDEV": "overlapping_mdev",
+    "TDEV": "time_deviation",
+}

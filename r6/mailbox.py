@@ -174,11 +174,37 @@ class FrameGraph:
         if not -1.0 <= correlation <= 1.0:
             raise ValueError("correlation must lie in [-1, 1]")
         s = [t.position_uncertainty_m for t in self.transforms]
+        n = len(s)
+        if n == 0:
+            return 0.0
+
+        # R8-D-005: a uniform correlation matrix is positive
+        # semidefinite only for rho >= -1/(n-1). Below that bound the
+        # matrix is not a valid covariance and the computed variance
+        # goes negative. The previous implementation clamped it to
+        # zero, which returned 0.0 m -- i.e. it reported PERFECT
+        # knowledge of position for a physically impossible input.
+        # That is the most dangerous way this function could fail, so
+        # it refuses instead.
+        if n > 1:
+            psd_floor = -1.0 / (n - 1)
+            if correlation < psd_floor - 1e-12:
+                raise ValueError(
+                    f"uniform correlation {correlation} is not "
+                    f"positive semidefinite for {n} links: the bound "
+                    f"is rho >= -1/(n-1) = {psd_floor:.6g}. A matrix "
+                    f"below it is not a covariance, and the resulting "
+                    f"variance is negative.")
+
         var = sum(x * x for x in s)
         cross = sum(a * b for i, a in enumerate(s)
                     for j, b in enumerate(s) if i != j)
         total = var + correlation * cross
-        return max(total, 0.0) ** 0.5
+        if total < 0.0:
+            raise ValueError(
+                "negative accumulated variance; the supplied "
+                "correlation does not describe a valid covariance")
+        return total ** 0.5
 
     def worst_case_uncertainty_m(self) -> float:
         """Fully-correlated bound: uncertainties add linearly."""

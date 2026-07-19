@@ -664,7 +664,14 @@ def floor_report(taus_s: tuple[float, ...] = DEFAULT_TAUS_S) -> dict:
 # --------------------------------------------------------------------
 
 def analysis_plan(tier: str = "STANDARD") -> dict:
-    """The preregistered analysis, frozen before any data exists.
+    """The analysis plan, frozen internally before any data exists.
+
+    R8-D-004: this is an **INTERNAL_ANALYSIS_FREEZE**, not
+    preregistration. No third-party registry holds a copy, nobody
+    outside this repository can verify the freeze date independently,
+    and `r6.bench` correctly records PREREGISTERED_ANALYSIS as ABSENT.
+    The word "frozen" describes this module's content and must not be
+    read as an external commitment.
 
     Frozen, and frozen *now*, because the freeze is worthless the
     moment a single point has been seen. An Allan deviation plot is
@@ -692,7 +699,10 @@ def analysis_plan(tier: str = "STANDARD") -> dict:
     run_s = 168.0 * 3600.0        # the step 3 duration, in seconds
 
     return _stamp({
-        "frozen": True,
+        "freeze_status": "INTERNAL_ANALYSIS_FREEZE",
+        "externally_preregistered": False,
+        "freeze_caveat": (
+            "frozen in-repository only; no third-party registration exists and none is claimed"),
         "frozen_before_data": True,
         "freeze_statement": (
             "This analysis is FROZEN. It is recorded before any datum "
