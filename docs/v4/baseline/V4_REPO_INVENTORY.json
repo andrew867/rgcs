@@ -5,18 +5,20 @@
     "7962817": "commit",
     "9165594": "commit"
   },
-  "branch": "main",
+  "branch": "v52-r10",
   "dirty_files": [
-    " M CITATION.cff",
     " M README.md",
+    " M docs/v4/baseline/V4_BASELINE_TEST_MATRIX.json",
     " M docs/v4/baseline/V4_FROZEN_ARTIFACT_CHECKSUMS.json",
     " M docs/v4/baseline/V4_REPO_INVENTORY.json",
     " M pyproject.toml",
     " M tests/v4/test_v4c_docs_closeout.py",
     " M tests/v4/test_v4x_release_metadata.py",
-    "M CHANGELOG.md"
+    " M tools/v4x_release_metadata.py",
+    "?? docs/v52/RELEASE_NOTES_V5_3_0.md",
+    "M CITATION.cff"
   ],
-  "head": "b9250f56df42eadc476588d5b2036162b62f0e51",
+  "head": "b3d6153a99e6c30074b276fb5ecd8e7b7f897cfa",
   "protected_tags_present": {
     "v2.0.0": "f9fd2c20a05334e12ac9113ba86853c6591fc84e",
     "v3.0.0": "83521f73d6ad02b009ada88f3b8d33a8a00fc253",
@@ -69,9 +71,10 @@
     "v4.9.0",
     "v5.0.0",
     "v5.1.0",
-    "v5.2.0"
+    "v5.2.0",
+    "v5.2.1"
   ],
   "worktrees": [
-    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS b9250f5 [main]"
+    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS b3d6153 [v52-r10]"
   ]
 }

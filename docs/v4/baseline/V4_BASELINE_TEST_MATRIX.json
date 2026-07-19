@@ -188,6 +188,12 @@
   },
   "v52": {
     "files": [
+      "test_r10_cwarith.py",
+      "test_r10_cwontology.py",
+      "test_r10_energyledger.py",
+      "test_r10_firewall.py",
+      "test_r10_install_parity.py",
+      "test_r10_unruh.py",
       "test_r9_betadecay.py",
       "test_r9_carrier.py",
       "test_r9_cwdecode.py",
@@ -195,6 +201,6 @@
       "test_r9_packaging.py",
       "test_r9_vortex.py"
     ],
-    "test_functions": 142
+    "test_functions": 284
   }
 }

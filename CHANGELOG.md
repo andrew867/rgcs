@@ -3,6 +3,81 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [5.3.0] - 2026-07-19
+
+R10. CW ontology and exact arithmetic with a proper null hierarchy, a
+typed energy ledger, Unruh/Rindler scale calculators, the
+private/public publication firewall, and artifact-level install
+parity. Software verified, physically untested.
+
+The headline is a p-value that moves from 1e-5 to 1.0 depending on
+which null you pick. The offered CW relations -- 1516 = 1496 + 20 and
+2160 = 1516 + 644 -- are exactly true. Against five integers drawn
+uniformly they look remarkable. Against sets built as the partial-sum
+closure of three generators they are certain, and the observed set IS
+such a closure, exactly: sorted(observed) equals sorted({a, b, c, a+b,
+a+b+c}) for a=1496, b=20, c=644. So the relations restate the
+construction rather than revealing content. Verdict
+EXPLAINED_BY_CONSTRUCTION. Three relations are also only two
+independent facts, since the third follows by substitution.
+
+That is not a claim the numbers are meaningless. The arithmetic is
+exactly true and stays true; it simply carries no evidential weight
+about origin, because any three integers closed under partial sums
+produce it.
+
+CW is separated into three senses -- code word, continuous wave,
+carrier wave -- of which only the last has a frequency. TypedValue
+raises UnitCollision across dimensions, so 144 the index can never be
+silently equated with 144 Hz. The R9 CW integers stay
+DIMENSIONLESS/UNTYPED_DECIMAL because no unit was ever recorded.
+
+Energy raises on addition across heat, work, reservoir, stored and
+dissipation, so "there is energy in the reservoir" cannot be added to
+"energy available as work"; available_work_bound() requires a sink
+temperature, so an isothermal reservoir yields exactly 0 J whether it
+holds 1 J or 1e24 J.
+
+Unruh: 4.055e-21 K per m/s^2, and a conclusion we expected and did not
+get. Bulk acceleration falls short by ~2.5e14, but a single electron
+at a record laser focus reaches T_Unruh ~ 6.5e5 K, computed rather
+than asserted. That is not absurd, so the verdict is split rather than
+overstated, and the energy-source refusal is carried by the budget --
+the driving field exceeds the induced bath by 2.7e10 times.
+
+The publication firewall found 30 absolute-path disclosures already
+public. Twelve in live docs are repaired; eighteen inside the
+checksummed v2.0.0 archive are DECLARED with a severity assessment,
+because editing them would invalidate the provenance the archive
+exists to provide. Git history was not rewritten -- that breaks every
+clone and tag to remove a low-severity disclosure that is already
+public. Severity LOW: sandbox build paths and a username already in
+the package metadata. No credential, personal record or source
+material.
+
+P20 builds the real wheel and sdist, reads what is inside them, and
+imports from a virtualenv that cannot see the repository. All
+seventeen packages present in both artifacts, all importing from the
+installed copy.
+
+R10-D-001: r10 was in neither SOURCE_ROOTS nor the packaging include
+list -- R8-D-006 and R9-D-004 starting over one generation later. The
+guards caught it this time instead of a release doing so.
+
+R10-D-002, recorded not fixed: tests/v4 rewrites three tracked JSON
+files as a side effect, so a test run dirties the tree and "clean
+tree" gates become unreliable.
+
+P06 is BLOCKED and stays blocked. No source frame exists, so 144.000
+remains an untyped decimal; the locale reading 144.000 = 144000 is the
+cheapest explanation and cannot be excluded. The refusal is enforced
+in code.
+
+No relicensing. MIT unchanged.
+
+Tests: PLACEHOLDER_COUNT passing (1 archived-environment byte test
+deselected by policy D-V3-04).
+
 ## [5.2.1] - 2026-07-19
 
 R9-D-020. tests/v52/test_r9_packaging.py imported setuptools at module
