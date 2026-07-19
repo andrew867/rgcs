@@ -38,8 +38,9 @@ keeping.
 The interesting part of this result is that the rate is **not zero**.
 
 A 100 g quartz crystal under the solar neutrino flux experiences roughly
-**1.2 neutrino interactions per year**. Neutrinos are not failing to
-interact with the bench. The obstacles are two, and they are ordered:
+**one neutrino interaction every sixteen years** (0.060/yr). Neutrinos
+are not failing to interact with the bench. The obstacles are two, and
+they are ordered:
 
 **First, and binding: there is no readout channel.** A quartz resonator
 has no mechanism capable of registering a single sub-keV nuclear recoil.
@@ -49,17 +50,24 @@ integration time addresses it.
 
 **Second, granting a readout that does not exist: the background.** The
 same volume passes about 2.1 × 10⁷ cosmic muons per year at sea level.
-Signal to background is 5.9 × 10⁻⁸ — roughly one candidate per
-17 million muons.
+Signal to background is 2.9 × 10⁻⁹ — roughly one candidate per
+350 million muons.
 
 Two caveats that make this weaker than it first looks, both added after
 prior-art review:
 
-- The ~1.2/yr figure is a **zero-threshold ceiling**, not an
-  expectation. Published solar pp CEvNS rates (~16.6 events/kg·yr in
-  germanium) are quoted the same way. Recoils here are sub-keV; at any
-  threshold a quartz resonator could reach, the rate above threshold is
-  consistent with zero.
+- The 0.060/yr figure is **anchored to measurement**, not to a textbook
+  cross-section. An earlier version took the ~1 MeV neutrino-electron
+  cross-section and applied it to the total solar flux -- but 99.9% of
+  that flux is pp neutrinos at <E> ~ 0.267 MeV, and the elastic
+  cross-section falls roughly linearly with energy. That overstated the
+  rate by 10x. The figure now derives from Borexino's measured rates
+  (~186 counts/day/100 t), giving 6.33e-35 per electron per second.
+- Even so, it is a **zero-threshold ceiling**. Recoils here are sub-keV;
+  at any threshold a quartz resonator could reach, the rate above
+  threshold is consistent with zero. And at 0.060/yr a *decade* of
+  continuous running yields fewer than one candidate -- exposure is not
+  the lever.
 - The miniaturisation argument is not ours. Freedman (1974) predicted
   coherent elastic neutrino–nucleus scattering, and Drukier & Stodolsky
   (1984) is the canonical proposal that coherence permits much smaller
@@ -87,14 +95,24 @@ identified as binding above.
 The corrected conclusion is stronger than the original: **the bench is
 not short of mass, it is short of a way to notice.**
 
-### The model is validated against a working experiment
+### What the model can and cannot certify
 
-A feasibility model that refuses everything proves nothing. The same
-arithmetic applied to Super-Kamiokande's scale returns
-`CONVENTIONALLY_MEASURABLE`, which is correct — Super-K has detected
-solar neutrinos since 1996. This is pinned by
-`test_model_reproduces_a_working_experiment`, and it exists because the
-first version of the module failed it (see R9-D-001 below).
+A feasibility model that refuses everything proves nothing, so the model
+must not refuse Super-Kamiokande, which has detected solar neutrinos
+since 1996. That is pinned by test, and it exists because the first
+version of the module *did* refuse it (R9-D-001).
+
+But the original form of that test asserted raw signal-to-background
+> 1, and passed at 1.17 — a margin produced by two large errors partly
+cancelling. **That assertion was wrong in principle.** Super-K's true
+raw S/B is of order 10⁻⁴. It does not detect solar neutrinos by
+out-numbering muons; it detects them by Cherenkov event reconstruction,
+directionality back to the Sun, energy thresholds, fiducial cuts and
+muon tagging — an analysis chain this module does not model at all.
+
+So the model can distinguish *refused by arithmetic* from *requires a
+dedicated detector*. **It cannot certify that a dedicated detector
+succeeds**, and no longer claims to (R9-D-016).
 
 ### Hypothesis ordering
 
@@ -135,9 +153,32 @@ spectrum is **continuous**. That is the discrepancy Pauli resolved by
 postulating the neutrino in 1930, and it remains the cleanest single
 argument.
 
-Four conservation laws each exclude the omitted account **independently**
-— energy, momentum, angular momentum, lepton number. Any one is
-sufficient; they are not one argument restated four times.
+### Two arguments, not four (correction)
+
+An earlier version of this document and of the module claimed **four
+independent conservation laws** each excluding the omitted account.
+That overstates it, and the module's own justification strings gave it
+away: the energy and momentum entries both appealed to the *observed*
+spectrum rather than to conservation a priori.
+
+A two-body decay conserves energy and momentum **perfectly**. It simply
+predicts a different, fixed electron energy — and measurement
+contradicts that prediction. So energy and momentum are one empirical
+argument stated twice, not two independent ones.
+
+| Law | Kind of argument |
+|---|---|
+| ENERGY | empirical (the measured spectrum) |
+| MOMENTUM | empirical (the same observation) |
+| ANGULAR_MOMENTUM | **a priori** — spin ½ cannot go to ½ + ½ |
+| LEPTON_NUMBER | a priori in form, but partly circular here |
+
+Lepton number was formulated partly *in response to* this decay, so
+leaning on it as independent evidence is close to circular.
+
+**The honest count is one decisive empirical argument plus one clean
+spin argument.** The conclusion is unchanged and remains solid; the
+support for it is two-fold, not four-fold.
 
 ### What this does not say
 
@@ -168,13 +209,13 @@ any framing:
 | Test | Observed | Null mean | p |
 |---|---|---|---|
 | `BAND_CLUSTERING` | span 2,109,794 | 6.0 × 10¹¹ | **0.00005** |
-| `SEGMENT_RESIDUAL_PREFIX` | 5 digits | 4.878 | 0.859 |
+| `SEGMENT_PREFIX_GIVEN_SPAN` | 5 digits | 4.878 | 0.859 |
 | `SEGMENT_COMMON_SUFFIX` | 0 | 0.0001 | 1.000 |
 | `SEGMENT_DIGIT_PAIR_REPEAT` | 2 | 2.036 | 0.930 |
 | `DIVISOR_GLOBAL_GCD` | 1 | 1.043 | 1.000 |
 | `DIVISOR_PAIRWISE_GCD` | 39 | 105.9 | 0.143 |
 | `DIVISOR_SMALL_PRIME_EXCESS` | 2.00 | 1.337 | 0.166 |
-| `BIT_INFORMATIVE_WIDTH` | 0 | 0 | 1.000 |
+| `BIT_INFORMATIVE_WIDTH` | 15 bits | 16.97 | 0.912 |
 
 The gcd of all five is 1 and their factorisations share nothing.
 
@@ -387,6 +428,84 @@ correct exposition, not discovery**. Where this work has value it is in
 stating the mechanisms precisely — for instance separating the two
 exclusion mechanisms in §5, which the popular critiques generally do not
 do, and which the review itself got wrong.
+
+---
+
+### R9-D-007 — a test that returned the same answer for every input
+
+The CW bit stage computed "agreeing bits minus range-forced bits", with
+*forced* taken from `min(vs)` and `max(vs)`. Those **are members of the
+sample**, so any bit prefix they share is shared by everything between
+them, and both counters always stop at the same bit.
+
+The difference was **identically zero for every possible input** —
+verified over 200,000 random samples, planted prefixes, and identical
+values. It was a constant function. Its null was 20,000 zeros. And the
+test written for it asserted `observed == 0`, which nothing could
+violate.
+
+This is R9-D-002 a second time. That defect was found, fixed in the
+decimal stages, and written up — while the identical defect stood two
+functions below in the same file. The published claim that "three
+independent framings agree, and they could have disagreed" was **false
+at the time it was written**: one of the three could not disagree.
+
+### R9-D-008 / R9-D-009 — three of eight registered tests could not fire
+
+Three tests had `informative=False` as a hardcoded literal and the
+verdict filtered on it, so a result significant at p = 5 × 10⁻⁵ was
+discarded before reaching the verdict. `DIVISOR_SMALL_PRIME_EXCESS`
+works; it was being thrown away.
+
+A fourth, `SEGMENT_PREFIX_GIVEN_SPAN`, is bounded by the same span its
+null is matched on: for the observed span the largest attainable prefix
+is 6, sitting at p = 0.036 — above the corrected alpha. **No attainable
+observation could make it fire.**
+
+The register is now audited for power against planted structure. Of
+eight advertised tests, **five can actually fire**. A register that
+advertises eight and counts five overstates how well the verdict is
+supported, so the verdict now says five.
+
+The negative result survives, and arguably survives better: the divisor
+family fires reliably on planted shared factors and came back clean.
+
+### R9-D-015 — three cross-sections, three denominators, one divisor
+
+Every cross-section was multiplied by nucleon count. But elastic
+scattering is per **electron** (2× overcount in quartz), CEvNS is per
+**nucleus** (60×), and inverse beta decay is per **free proton** — of
+which SiO₂ has exactly **zero**. The module was reporting 12.34
+inverse-beta-decay events per year in a material containing no hydrogen.
+No test exercised a non-default cross-section, so nothing caught it.
+
+### R9-D-018 — a cross-section evaluated at the wrong energy
+
+The bench rate was computed from the ~1 MeV neutrino–electron
+cross-section applied to the *total* solar flux. But 99.9% of that flux
+is pp neutrinos at ⟨E⟩ ≈ 0.267 MeV, and the elastic cross-section falls
+roughly linearly with energy. The result was **10× too high**.
+
+Now anchored to Borexino's measured rates instead of a textbook value at
+an energy the solar spectrum does not have. 1.2/yr → **0.060/yr**.
+
+### Smaller corrections
+
+- **R9-D-010** — odd bases returned a tail-into-a-loop labelled a cycle
+  (base 11 gave `[1,2,4,8,6]`, which doubles to 2, not back to 1). The
+  order identification silently fails there. Now refused explicitly, and
+  checked across all even bases rather than five hand-picked ones.
+- **R9-D-011** — `octave_number` used `float(log2(...))` in a module
+  whose stated selling point is that nothing rounds at a claim boundary.
+  It gave 53 for 2⁵³−1 and raised `OverflowError` past 2¹⁰²⁴. Now exact.
+- **R9-D-013** — incoherent decay accounts (two bodies *and* an
+  antineutrino) were reported `CONSERVING`. Now refused.
+- **R9-D-014** — two-body kinematics assumed a non-relativistic
+  electron, but T/m ≈ 1.5 here; proton recoil was 2.3× low. The old test
+  window was 7.5 keV wide against a 0.4 keV error.
+- **R9-D-017** — SNOLAB muon attenuation was 10⁻⁶; measured is ~2 × 10⁻⁸.
+- **R9-D-019** — every computed artefact returned `[3, 6]` while the
+  narrative said "3, 6 and 9". 9 is a third case again (it is 0 mod 9).
 
 ---
 

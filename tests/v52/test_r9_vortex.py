@@ -231,3 +231,19 @@ def test_ledger_claims_no_measurement():
     L = V.vortex_grammar_ledger()
     assert L["measured_here"] == "nothing"
     assert L["evidence_class"] == "ARITHMETIC"
+
+
+def test_nine_is_returned_explicitly_not_only_in_prose():
+    """R9-D-019. The narrative said '3, 6 and 9 stand outside' while
+    every computed artefact returned [3, 6]."""
+    assert V.excluded_residues(10) == [3, 6]
+    assert V.excluded_including_modulus(10) == [3, 6, 9]
+
+
+def test_nine_is_excluded_for_a_third_reason():
+    """It is 0 mod 9 -- the additive identity, not a unit the orbit
+    misses. Three distinct mechanisms, not one."""
+    m = V.exclusion_mechanisms(10)
+    assert 9 not in m["excluded_as_non_units"]
+    assert 9 not in m["excluded_as_units_outside_orbit"]
+    assert "congruent to 0" in V.why_three_six_nine(10)["reason_9"]

@@ -1,9 +1,11 @@
 """P06/P10 — hidden neutral carrier feasibility.
 
 The load-bearing test is
-``test_model_reproduces_a_working_experiment``. A feasibility model
-that refuses everything proves nothing; it has to say yes where the
-answer is known to be yes.
+``test_model_does_not_refuse_a_working_experiment``. A feasibility
+model that refuses everything proves nothing, so it must not refuse
+Super-Kamiokande, which demonstrably works. It also must not claim to
+certify that a dedicated detector succeeds: raw signal-to-background
+is not what makes Super-K work (R9-D-016).
 """
 
 from __future__ import annotations
@@ -136,11 +138,41 @@ def test_unknown_target_count_kind_refused():
 
 
 def test_interactions_do_occur_the_rate_is_not_zero():
-    """The honest framing: neutrinos interact, roughly annually. The
-    problem is knowing which event it was."""
+    """The honest framing: neutrinos do interact with the bench, about
+    once every sixteen years. The problem is knowing which event it
+    was -- not that the rate vanishes."""
     r = C.assess("BENCH_QUARTZ_100G", has_readout_channel=True)
-    assert r.interactions_per_year > 0.1
-    assert r.interactions_per_year < 100
+    assert r.interactions_per_year == pytest.approx(0.060, abs=0.005)
+
+
+def test_solar_rate_is_anchored_to_measurement_not_a_textbook_sigma():
+    """R9-D-018. The old path took a 1 MeV cross-section and applied
+    it to the total solar flux, but 99.9% of that flux is 0.267 MeV pp
+    neutrinos. It overstated the rate by ~10x.
+    """
+    anchored = C.assess("BENCH_QUARTZ_100G", has_readout_channel=True)
+    unanchored = C.assess("BENCH_QUARTZ_100G", has_readout_channel=True,
+                          use_measured_solar_rate=False)
+    ratio = unanchored.interactions_per_year / anchored.interactions_per_year
+    assert 8.0 < ratio < 13.0
+    assert "Borexino" in C.SOLAR_RATE_SOURCE
+
+
+def test_measured_rate_reproduces_borexino_scale():
+    """Sanity check the anchor against the experiment it came from:
+    ~186 counts/day in 100 t of scintillator."""
+    scint = C.Target("100 t scintillator", 100e6, 1.0, 1, 1.0,
+                     electrons_per_molecule=0)
+    # 3.4e23 electrons per gram for pseudocumene
+    per_s = 100e6 * 3.4e23 * C.SOLAR_NU_E_RATE_PER_ELECTRON_PER_S
+    assert per_s * 86400 == pytest.approx(186, rel=0.05)
+
+
+def test_the_rate_is_low_enough_that_exposure_is_the_wrong_lever():
+    """One event per ~16 years means even a decade of running yields
+    fewer than one candidate."""
+    r = C.assess("BENCH_QUARTZ_100G", has_readout_channel=True)
+    assert r.interactions_per_year * 10 < 1.0
 
 
 def test_more_mass_does_not_rescue_the_bench_case():

@@ -133,9 +133,28 @@ def doubling_cycle(start: int = 1, base: int = 10) -> list[int]:
 
 
 def excluded_residues(base: int = 10) -> list[int]:
-    """Nonzero residues the doubling cycle from 1 never reaches."""
+    """Nonzero residues below the modulus that doubling never reaches.
+
+    This ranges over 1..m-1 and so can never return m itself. In base
+    10 it returns [3, 6], not [3, 6, 9]: 9 is congruent to 0 mod 9 and
+    is excluded for a third reason again, being the additive identity
+    rather than a unit the orbit misses. See
+    :func:`excluded_including_modulus` for the popular framing.
+    """
     m = base - 1
     return sorted(set(range(1, m)) - set(doubling_cycle(1, base)))
+
+
+def excluded_including_modulus(base: int = 10) -> list[int]:
+    """The popular "3, 6 and 9" list, with the modulus included.
+
+    R9-D-019: the module's narrative said "3, 6 and 9 stand outside"
+    while every computed artefact returned only [3, 6], because 9 was
+    handled in prose alone. It is a genuinely different case, so it is
+    now returned explicitly and labelled rather than left to the
+    reader to reconcile.
+    """
+    return excluded_residues(base) + [base - 1]
 
 
 def exclusion_mechanisms(base: int = 10) -> dict:

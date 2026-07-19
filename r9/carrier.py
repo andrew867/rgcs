@@ -107,6 +107,44 @@ CROSS_SECTIONS = {
 #: surfaced. Target counts are now selected by the ``per`` field.
 TARGET_COUNT_KINDS = ("ELECTRON", "FREE_PROTON", "NUCLEUS", "NUCLEON")
 
+#: R9-D-018. Measured solar neutrino-electron scattering rate, per
+#: electron per second, anchored to Borexino.
+#:
+#: The module previously took sigma = 1e-44 cm^2 (the textbook
+#: neutrino-electron value at ~1 MeV) and applied it to the *total*
+#: solar flux of 6.5e10 /cm^2/s. But 99.9% of that flux is pp
+#: neutrinos with <E> ~ 0.267 MeV, and the elastic cross-section falls
+#: roughly linearly with energy, so a 1 MeV sigma overstates the
+#: flux-weighted average by about an order of magnitude. The bench
+#: figure came out ~0.6/yr when the measurement-anchored answer is
+#: ~0.06/yr -- one interaction every sixteen years, not one a year.
+#:
+#: Derivation: Borexino/SSM see ~186 counts/day per 100 t of
+#: scintillator (pp ~131, Be-7 ~48, pep/CNO ~7). At ~3.4e23 electrons
+#: per gram that is 6.33e-35 per electron per second, which implies an
+#: effective flux-weighted sigma of 9.7e-46 cm^2 -- and that number is
+#: a measurement, not a textbook value evaluated at the wrong energy.
+SOLAR_NU_E_RATE_PER_ELECTRON_PER_S = 6.33e-35
+SOLAR_RATE_SOURCE = (
+    "Borexino measured solar neutrino-electron elastic scattering "
+    "rates (pp, Be-7, pep/CNO), ~186 counts/day/100 t; converted to a "
+    "per-electron rate. Preferred over a textbook 1 MeV cross-section "
+    "because the solar spectrum is dominated by 0.267 MeV pp "
+    "neutrinos."
+)
+
+
+def solar_interaction_rate_per_year(target: Target) -> float:
+    """Measurement-anchored solar rate for an electron target.
+
+    Uses the Borexino-derived per-electron rate directly, so no
+    cross-section is evaluated at an energy the solar spectrum does
+    not actually have (R9-D-018).
+    """
+    return (target.n_electrons * SOLAR_NU_E_RATE_PER_ELECTRON_PER_S
+            * SECONDS_PER_YEAR)
+
+
 #: Sea-level cosmic-ray muon flux, the dominant unshielded background.
 MUON_FLUX_PER_CM2_PER_MIN = 1.0     # ~1/cm^2/min, standard figure
 
@@ -308,7 +346,8 @@ class FeasibilityResult:
 def assess(target_key: str, *, hypothesis: str = "ACTIVE_ANTINEUTRINO",
            flux_per_cm2_s: float = 6.5e10,
            cross_section_key: str = "NU_E_ELASTIC_MEV",
-           has_readout_channel: bool = False) -> FeasibilityResult:
+           has_readout_channel: bool = False,
+           use_measured_solar_rate: bool = True) -> FeasibilityResult:
     """Can this target detect this carrier at all?
 
     ``flux_per_cm2_s`` defaults to the total solar neutrino flux at
@@ -330,7 +369,13 @@ def assess(target_key: str, *, hypothesis: str = "ACTIVE_ANTINEUTRINO",
     t = TARGETS[target_key]
     sigma = CROSS_SECTIONS[cross_section_key]["sigma_cm2"]
     per = CROSS_SECTIONS[cross_section_key]["per"]
-    rate = interaction_rate_per_year(t, flux_per_cm2_s, sigma, per=per)
+    if cross_section_key == "NU_E_ELASTIC_MEV" and use_measured_solar_rate:
+        # R9-D-018: prefer the Borexino-anchored per-electron rate over
+        # a 1 MeV cross-section applied to a 0.267 MeV spectrum.
+        rate = solar_interaction_rate_per_year(t)
+    else:
+        rate = interaction_rate_per_year(t, flux_per_cm2_s, sigma,
+                                         per=per)
     bg = muon_background_per_year(t)
     stb = rate / bg if bg > 0 else math.inf
 
@@ -473,7 +518,7 @@ def scale_gap() -> dict:
 #: detection threshold. Real devices have thresholds, and the rate
 #: above threshold is far lower.
 THRESHOLD_CAVEAT = (
-    "the ~1.2 interactions/yr figure is a ZERO-THRESHOLD ceiling, not "
+    "the ~0.06 interactions/yr figure is a ZERO-THRESHOLD ceiling, not "
     "an expectation. Published solar pp CEvNS rates (~16.6 events per "
     "kg-yr in germanium, arXiv:2104.14352) are likewise quoted at zero "
     "threshold. Recoil energies here are sub-keV; at any threshold a "
