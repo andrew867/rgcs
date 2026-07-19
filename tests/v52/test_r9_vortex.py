@@ -158,13 +158,49 @@ def test_cycle_lengths_differ_across_bases():
 
 
 def test_every_cycle_is_a_genuine_cycle():
-    """Whatever the base, doubling from 1 must return to 1."""
+    """For even bases, doubling from 1 must return to 1.
+
+    The stray `assert (c[-1] * 2) % m or m` that used to sit here
+    parsed as `assert (expr or m)` and, since m >= 1 is always truthy,
+    could never fail. Removed.
+    """
     for base in V.COMPARISON_BASES:
         c = V.doubling_cycle(1, base)
         m = base - 1
         assert len(set(c)) == len(c)
-        assert (c[-1] * 2) % m or m
         assert ((c[-1] * 2) % m or m) == c[0]
+
+
+def test_odd_bases_are_refused_not_answered_wrongly():
+    """R9-D-010. Base 11 returned [1,2,4,8,6] -- a tail into a loop,
+    not a cycle -- and was labelled one. gcd(2,10) = 2, so 2 is not a
+    unit and the order identification does not apply.
+    """
+    for base in (3, 5, 7, 9, 11, 13, 15, 17):
+        assert not V.is_cyclic_base(base)
+        with pytest.raises(ValueError) as e:
+            V.doubling_cycle(1, base)
+        assert "not a unit" in str(e.value)
+
+
+def test_the_raw_trajectory_is_still_available_for_odd_bases():
+    t = V.doubling_trajectory(1, 11)
+    assert t == [1, 2, 4, 8, 6]
+    # and it is demonstrably not a cycle
+    assert (t[-1] * 2) % 10 != t[0]
+
+
+def test_even_bases_are_exactly_the_cyclic_ones():
+    for base in range(2, 30):
+        assert V.is_cyclic_base(base) == (base % 2 == 0)
+
+
+def test_identification_holds_across_all_even_bases():
+    """Not just the five in COMPARISON_BASES -- the selection is what
+    hid the odd-base failure in the first place."""
+    for base in range(4, 40, 2):
+        c = V.doubling_cycle(1, base)
+        assert len(c) == V.multiplicative_order(2, base - 1), base
 
 
 # --- claim discipline --------------------------------------------------

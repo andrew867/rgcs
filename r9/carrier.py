@@ -11,11 +11,13 @@ The R9 question, stated as the pack poses it:
 This module answers the *feasibility* half, and the answer is a
 refusal — but a more interesting one than "zero".
 
-Neutrinos do interact with a bench crystal. About once a year. The
-barrier is not that the rate vanishes; it is that
+Neutrinos do interact with a bench crystal -- of order once a year,
+and at a zero detection threshold, which is the most optimistic way
+to count (see THRESHOLD_CAVEAT). The barrier is not that the rate
+vanishes; it is that
 
-1. the rate is ~1/yr against ~2e7 cosmic muons/yr through the same
-   volume, a signal-to-background of ~6e-8; and
+1. the rate is ~0.6/yr against ~2e7 cosmic muons/yr through the same
+   volume, a signal-to-background of ~3e-8; and
 2. a quartz resonator has no single-quantum readout channel, so even
    an interaction that occurred would not be registered as an event.
 
@@ -54,6 +56,7 @@ FEASIBILITY_VERDICTS = (
     "REFUSED_BY_ARITHMETIC",
     "BELOW_BACKGROUND",
     "NO_READOUT_CHANNEL",
+    "NO_TARGET_CENTRES",
     "REQUIRES_DEDICATED_DETECTOR",
     "CONVENTIONALLY_MEASURABLE",
 )
@@ -68,21 +71,41 @@ SECONDS_PER_YEAR = 3.155_695_2e7    # Julian year
 CROSS_SECTIONS = {
     "NU_E_ELASTIC_MEV": {
         "sigma_cm2": 1e-44,
+        "per": "ELECTRON",
         "process": "neutrino-electron elastic scattering at ~1 MeV",
         "source": "standard electroweak cross-section, textbook",
     },
     "INVERSE_BETA_DECAY_MEV": {
         "sigma_cm2": 1e-43,
+        "per": "FREE_PROTON",
         "process": "inverse beta decay, nu_e-bar + p -> n + e+, few MeV",
         "source": "reactor-neutrino literature, order of magnitude",
     },
     "COHERENT_CEVNS": {
         "sigma_cm2": 1e-39,
+        "per": "NUCLEUS",
         "process": "coherent elastic neutrino-nucleus scattering",
         "source": "COHERENT experiment regime; enhanced by N^2 but "
                   "deposits only sub-keV nuclear recoil",
     },
 }
+
+#: R9-D-015. Every cross-section used to be multiplied by
+#: ``target.n_nucleons``, but the three have three different
+#: denominators, so two of the three were wrong by construction:
+#:
+#: * elastic scattering is per **electron** -- quartz has 30 e per
+#:   60 nucleons, so this overcounted by ~2x;
+#: * inverse beta decay is per **free proton** -- quartz (SiO2) has
+#:   **none**, and the module cheerfully reported 12.34 IBD
+#:   interactions per year in it;
+#: * CEvNS is per **nucleus** -- using nucleon count overcounted by
+#:   ~20x, and the inflated figure stopped the verdict short of
+#:   REFUSED_BY_ARITHMETIC.
+#:
+#: No test exercised a non-default cross-section, so none of it
+#: surfaced. Target counts are now selected by the ``per`` field.
+TARGET_COUNT_KINDS = ("ELECTRON", "FREE_PROTON", "NUCLEUS", "NUCLEON")
 
 #: Sea-level cosmic-ray muon flux, the dominant unshielded background.
 MUON_FLUX_PER_CM2_PER_MIN = 1.0     # ~1/cm^2/min, standard figure
@@ -100,7 +123,13 @@ MUON_ATTENUATION = {
     100: 1e-2,
     1000: 1e-4,
     2700: 1e-5,       # Super-Kamiokande, ~2700 mwe
-    6000: 1e-6,       # SNOLAB scale
+    # R9-D-017: this entry read 1e-6 and was wrong by ~50x. SNOLAB's
+    # measured flux is 0.27 muons/m^2/day = 3.1e-10 /cm^2/s against
+    # 1.67e-2 /cm^2/s at sea level, a ratio of ~2e-8. Only the 2700
+    # mwe entry had been checked against a real site, so the deepest
+    # entry -- the one that matters most for a shielding argument --
+    # was the least constrained.
+    6000: 2e-8,       # SNOLAB, measured
 }
 
 
@@ -121,6 +150,36 @@ def muon_suppression(overburden_mwe: float) -> float:
     raise AssertionError("unreachable")
 
 
+#: R9-D-016. The Super-K validation used to assert raw
+#: signal-to-background > 1, and it passed at 1.17 -- a 17% margin
+#: produced by two large errors partly cancelling (a 1 MeV
+#: cross-section applied to the whole solar flux, 99.9% of which is
+#: sub-threshold pp neutrinos, against an inflated cross-sectional
+#: area). Correcting the electron count broke it, which is the useful
+#: part: the test was wrong in principle, not just in its numbers.
+#:
+#: Super-Kamiokande's true raw S/B is of order 1e-4. It does not
+#: detect solar neutrinos by out-numbering muons. It detects them by
+#: Cherenkov event reconstruction, directionality back to the Sun,
+#: energy thresholds, fiducial-volume cuts and muon tagging -- an
+#: analysis chain this module does not model at all.
+#:
+#: So raw S/B cannot be the criterion that validates the model. What
+#: the model can legitimately say is which targets are refused
+#: outright and which require a dedicated detector; whether a
+#: dedicated detector then succeeds is a question about its analysis
+#: chain, not its raw rate ratio.
+RAW_SB_IS_NOT_THE_DISCRIMINATOR = (
+    "raw signal-to-background does not determine whether a detector "
+    "works. Super-Kamiokande runs at a raw S/B of order 1e-4 and "
+    "detects solar neutrinos anyway, through event reconstruction, "
+    "directionality, energy thresholds and muon tagging. This module "
+    "models none of that. It can distinguish 'refused by arithmetic' "
+    "from 'requires a dedicated detector'; it cannot certify that a "
+    "dedicated detector succeeds."
+)
+
+
 class CarrierRefused(RuntimeError):
     """Raised when a carrier-detection claim is refused."""
 
@@ -136,6 +195,12 @@ class Target:
     molar_mass_g: float
     nucleons_per_molecule: int
     cross_section_cm2_area: float
+    #: Electrons and free protons per molecule. Required because
+    #: cross-sections have different denominators (R9-D-015): quartz
+    #: has 30 electrons and NO free protons per SiO2; water has 10
+    #: electrons and 2 free protons (the hydrogens) per H2O.
+    electrons_per_molecule: int = 0
+    free_protons_per_molecule: int = 0
     #: Overburden in metres water equivalent. Sea level is 0. This
     #: field exists because omitting it made the model "refute"
     #: Super-Kamiokande, which demonstrably works -- see
@@ -147,31 +212,72 @@ class Target:
             raise ValueError("mass and molar mass must be positive")
 
     @property
+    def n_molecules(self) -> float:
+        return (self.mass_g / self.molar_mass_g) * AVOGADRO
+
+    @property
     def n_nucleons(self) -> float:
-        return (self.mass_g / self.molar_mass_g) * AVOGADRO \
-            * self.nucleons_per_molecule
+        return self.n_molecules * self.nucleons_per_molecule
+
+    @property
+    def n_electrons(self) -> float:
+        return self.n_molecules * self.electrons_per_molecule
+
+    @property
+    def n_free_protons(self) -> float:
+        return self.n_molecules * self.free_protons_per_molecule
+
+    def target_count(self, kind: str) -> float:
+        """How many scattering centres of the given kind.
+
+        Getting this wrong is not a rounding error: using nucleons for
+        a per-nucleus cross-section overcounts by ~20x, and using them
+        for inverse beta decay in quartz invents 6e25 free protons
+        that do not exist.
+        """
+        if kind not in TARGET_COUNT_KINDS:
+            raise ValueError(
+                f"unknown target-count kind {kind!r}; "
+                f"expected one of {TARGET_COUNT_KINDS}")
+        return {
+            "ELECTRON": self.n_electrons,
+            "FREE_PROTON": self.n_free_protons,
+            "NUCLEUS": self.n_molecules,
+            "NUCLEON": self.n_nucleons,
+        }[kind]
 
 
 #: The apparatus this programme actually contemplates, plus the scale
 #: real experiments use, for comparison.
 TARGETS = {
+    # SiO2: 60 nucleons, 30 electrons, 0 free protons.
     "BENCH_QUARTZ_100G": Target(
-        "100 g quartz crystal", 100.0, 60.08, 60, 40.0),
+        "100 g quartz crystal", 100.0, 60.08, 60, 40.0,
+        electrons_per_molecule=30, free_protons_per_molecule=0),
     "GENEROUS_QUARTZ_10KG": Target(
         "10 kg quartz, far beyond the current apparatus",
-        10_000.0, 60.08, 60, 900.0),
+        10_000.0, 60.08, 60, 900.0,
+        electrons_per_molecule=30, free_protons_per_molecule=0),
+    # H2O: 18 nucleons, 10 electrons, 2 free protons (the hydrogens).
     "SUPER_K_SCALE": Target(
         "22.5 kilotonne water fiducial volume, ~2700 mwe overburden",
-        2.25e10, 18.015, 18, 4.5e7, overburden_mwe=2700.0),
+        2.25e10, 18.015, 18, 4.5e7, overburden_mwe=2700.0,
+        electrons_per_molecule=10, free_protons_per_molecule=2),
 }
 
 
 def interaction_rate_per_year(target: Target, flux_per_cm2_s: float,
-                              sigma_cm2: float) -> float:
-    """R = flux * N * sigma, in interactions per year."""
+                              sigma_cm2: float,
+                              per: str = "NUCLEON") -> float:
+    """R = flux * N * sigma, in interactions per year.
+
+    ``per`` selects which scattering centres N counts. It defaults to
+    NUCLEON only for backward compatibility; callers should pass the
+    ``per`` field of the cross-section in use (R9-D-015).
+    """
     if flux_per_cm2_s < 0 or sigma_cm2 <= 0:
         raise ValueError("flux must be non-negative, sigma positive")
-    return flux_per_cm2_s * target.n_nucleons * sigma_cm2 \
+    return flux_per_cm2_s * target.target_count(per) * sigma_cm2 \
         * SECONDS_PER_YEAR
 
 
@@ -223,11 +329,25 @@ def assess(target_key: str, *, hypothesis: str = "ACTIVE_ANTINEUTRINO",
 
     t = TARGETS[target_key]
     sigma = CROSS_SECTIONS[cross_section_key]["sigma_cm2"]
-    rate = interaction_rate_per_year(t, flux_per_cm2_s, sigma)
+    per = CROSS_SECTIONS[cross_section_key]["per"]
+    rate = interaction_rate_per_year(t, flux_per_cm2_s, sigma, per=per)
     bg = muon_background_per_year(t)
     stb = rate / bg if bg > 0 else math.inf
 
-    if not has_readout_channel:
+    if rate == 0.0:
+        # R9-D-015 made this reachable and it should be: quartz has no
+        # free protons, so inverse beta decay cannot occur in it at
+        # all. Previously the nucleon count was used regardless, and
+        # the module reported 12.34 IBD interactions/yr in a material
+        # containing zero free protons.
+        verdict = "NO_TARGET_CENTRES"
+        note = (
+            f"{t.label} contains no {per.lower().replace('_', ' ')} "
+            f"targets, so the process "
+            f"'{CROSS_SECTIONS[cross_section_key]['process']}' cannot "
+            f"occur in it at any rate. This is a statement about "
+            f"chemistry, not sensitivity: no exposure time changes it.")
+    elif not has_readout_channel:
         verdict = "NO_READOUT_CHANNEL"
         note = (
             f"{rate:.3g} interactions/yr would occur, but the target "

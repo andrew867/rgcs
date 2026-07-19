@@ -15,10 +15,17 @@ So the omission is not a modelling convenience with a free parameter.
 It is a claim about the shape of a spectrum that has been measured
 since the 1910s, and it is excluded.
 
-Four conservation laws each independently require the third body:
-energy, momentum, angular momentum, and lepton number. Any one of
-them is sufficient. All values are CODATA/PDG literature; nothing
-here is measured by this project.
+Four conservation laws are checked -- energy, momentum, angular
+momentum, lepton number -- but they are NOT four independent
+arguments, and an earlier version of this module wrongly said they
+were. Energy and momentum are the same empirical argument twice over
+(a two-body decay conserves both and simply predicts the wrong
+energy). Angular momentum is genuinely independent. Lepton number is
+close to circular here, since it was formulated partly in response to
+this decay. See ``INDEPENDENCE_NOTE``.
+
+All values are CODATA/PDG literature; nothing here is measured by
+this project.
 """
 
 from __future__ import annotations
@@ -111,10 +118,21 @@ def spectrum_prediction(account: DecayAccount) -> dict:
     """
     q = q_value_mev()
     if account.n_bodies == 2:
-        # Two-body: energies fixed by kinematics alone.
-        # Non-relativistic recoil approximation is ample here since
-        # the qualitative point is monoenergetic vs continuous.
-        e_electron = q * (1.0 - q / (2.0 * M_PROTON))
+        # Two-body: energies fixed exactly by kinematics.
+        #
+        # R9-D-014. This used q * (1 - q / (2 m_p)), which assumes the
+        # electron momentum is approximately Q. It is not: the
+        # electron here is relativistic (T_e / m_e ~ 1.5), so p is
+        # 1.187 MeV/c, not 0.782. The proton recoil came out 2.3x too
+        # small. The old comment said the non-relativistic
+        # approximation was "ample" -- it is ample for the *proton*,
+        # but the momentum feeding the proton has to be computed
+        # relativistically.
+        #
+        # Exact: E_e = (M_n^2 + m_e^2 - M_p^2) / (2 M_n)
+        e_total = ((M_NEUTRON ** 2 + M_ELECTRON ** 2 - M_PROTON ** 2)
+                   / (2.0 * M_NEUTRON))
+        e_electron = e_total - M_ELECTRON
         return {
             "account": account.label,
             "shape": "MONOENERGETIC",
@@ -139,8 +157,57 @@ def spectrum_prediction(account: DecayAccount) -> dict:
     }
 
 
+#: How each argument actually works. R9-D-012: the module used to
+#: present all four as "independent conservation laws", which
+#: overstates the case, and its own justification strings gave it
+#: away -- the energy and momentum entries both appeal to the
+#: *observed* spectrum rather than to conservation a priori.
+#:
+#: Energy is not violated by a two-body decay. A two-body decay
+#: conserves energy perfectly; it just predicts a different (fixed)
+#: electron energy. What excludes it is that the prediction disagrees
+#: with measurement. That is one decisive empirical argument, not two
+#: independent conservation arguments.
+ARGUMENT_KINDS = {
+    "ENERGY": "EMPIRICAL",
+    "MOMENTUM": "EMPIRICAL",
+    "ANGULAR_MOMENTUM": "A_PRIORI",
+    "LEPTON_NUMBER": "A_PRIORI_BUT_PARTLY_CIRCULAR",
+}
+
+INDEPENDENCE_NOTE = (
+    "These are not four independent arguments. Energy and momentum "
+    "are the same empirical argument stated twice: a two-body decay "
+    "conserves both perfectly and simply predicts a fixed electron "
+    "energy, which measurement contradicts. Angular momentum is a "
+    "genuinely independent a priori argument -- spin 1/2 cannot go to "
+    "spin 1/2 plus spin 1/2. Lepton number is a priori in form, but "
+    "lepton number was formulated partly in response to this very "
+    "decay, so leaning on it as independent evidence is close to "
+    "circular. The honest count is ONE decisive empirical argument "
+    "plus ONE clean spin argument."
+)
+
+
 def conservation_audit(account: DecayAccount) -> dict:
-    """Which conservation laws does this account satisfy?"""
+    """Which conservation laws does this account satisfy?
+
+    R9-D-013: this function used to branch on the single boolean
+    ``includes_antineutrino``, with no cross-check against
+    ``n_bodies``. Incoherent accounts therefore passed -- a two-body
+    decay that claimed to include an antineutrino was reported
+    CONSERVING and was not refused. The fields are now validated
+    against each other before anything else is said.
+    """
+    expected_bodies = 3 if account.includes_antineutrino else 2
+    if account.n_bodies != expected_bodies:
+        raise ConservationViolation(
+            f"incoherent account {account.label!r}: "
+            f"includes_antineutrino={account.includes_antineutrino} "
+            f"implies {expected_bodies} bodies, but products list "
+            f"{account.n_bodies}. This is not a physical claim to "
+            f"audit, it is a bookkeeping error.")
+
     failures = []
     if not account.includes_antineutrino:
         failures.append({
@@ -173,9 +240,9 @@ def conservation_audit(account: DecayAccount) -> dict:
         "conserves": not failures,
         "verdict": ("CONSERVING" if not failures
                     else "VIOLATES_CONSERVATION"),
-        "note": ("each failure is independently sufficient to exclude "
-                 "the account; they are not four ways of saying one "
-                 "thing" if failures else
+        "argument_kinds": dict(ARGUMENT_KINDS),
+        "independent_argument_count": 2,
+        "note": (INDEPENDENCE_NOTE if failures else
                  "all four conservation laws are satisfied"),
     }
 
@@ -215,8 +282,10 @@ def omitted_antineutrino_ledger() -> dict:
             "The antineutrino cannot be omitted. Its omission is not a "
             "simplification with a free parameter; it is a prediction "
             "that the electron spectrum is a line, and the spectrum is "
-            "measured to be continuous. Four independent conservation "
-            "laws each exclude the omitted account on their own."),
+            "measured to be continuous. That measurement is decisive "
+            "on its own, and the spin-1/2 counting argument excludes "
+            "the omitted account independently of it."),
+        "independence": INDEPENDENCE_NOTE,
         "what_this_does_not_say": (
             "It does not say the antineutrino is well understood. "
             "Neutrino masses, the mass ordering, whether neutrinos are "

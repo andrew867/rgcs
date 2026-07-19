@@ -155,3 +155,23 @@ def test_ledger_claims_no_measurement():
     L = O.source_octave_ledger()
     assert L["measured_here"] == "nothing"
     assert L["evidence_class"] == "ARITHMETIC_AND_LITERATURE_BOUNDS"
+
+
+def test_octave_number_is_exact_above_float_precision():
+    """R9-D-011. This used float(log2(...)) in a module whose whole
+    claim is that nothing rounds at a claim boundary."""
+    assert O.octave_number(F(2 ** 53 - 1), F(1)) == 52
+    assert O.octave_number(F(2 ** 200 - 1), F(1)) == 199
+    assert O.octave_number(F(2 ** 200), F(1)) == 200
+
+
+def test_octave_number_does_not_overflow():
+    """float conversion raised OverflowError past ~2**1024."""
+    assert O.octave_number(F(2) ** 2000, F(1)) == 2000
+    assert O.octave_number(F(1), F(2) ** 2000) == -2000
+
+
+def test_octave_number_agrees_with_repeated_doubling():
+    f = F(1)
+    for n in range(-20, 21):
+        assert O.octave_number(O.octave_up(f, n), f) == n

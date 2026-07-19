@@ -55,7 +55,7 @@ CW_SOURCE = "omega region"
 #: cannot be reported, however interesting it looks afterwards.
 PREREGISTERED_TESTS = (
     "BAND_CLUSTERING",
-    "SEGMENT_RESIDUAL_PREFIX",
+    "SEGMENT_PREFIX_GIVEN_SPAN",
     "SEGMENT_COMMON_SUFFIX",
     "SEGMENT_DIGIT_PAIR_REPEAT",
     "DIVISOR_GLOBAL_GCD",
@@ -234,7 +234,7 @@ def segment_analysis(values=CW_VECTORS) -> list[StageResult]:
         null_resid.append(common_prefix_len(
             [offset + rng.randint(0, span) for _ in values]))
     results.append(StageResult(
-        test="SEGMENT_RESIDUAL_PREFIX",
+        test="SEGMENT_PREFIX_GIVEN_SPAN",
         observed=obs_prefix,
         null_mean=sum(null_resid) / len(null_resid),
         p_value=_p_at_least(obs_prefix, null_resid),
@@ -354,38 +354,63 @@ def divisor_analysis(values=CW_VECTORS) -> list[StageResult]:
 
 # --- stage 3: bits (last) ----------------------------------------------
 
+def agreeing_bit_prefix(values) -> int:
+    """Leading bit positions on which every value agrees."""
+    w = max(v.bit_length() for v in values)
+    agree = 0
+    for k in range(w - 1, -1, -1):
+        if len({(v >> k) & 1 for v in values}) != 1:
+            break
+        agree += 1
+    return agree
+
+
 def bit_analysis(values=CW_VECTORS) -> list[StageResult]:
-    """Run last, and only to confirm the R7 result independently."""
+    """Run last, to check the R7 result by an independent route.
+
+    R9-D-007. The first version of this stage computed
+    ``agree - forced`` with ``forced`` derived from ``min(vs)`` and
+    ``max(vs)``. Because the min and max **are members of the sample**,
+    any bit prefix they share is shared by everything between them, so
+    ``agree`` and ``forced`` always stop at exactly the same bit. The
+    difference is **identically zero for every possible input** --
+    verified over 200,000 random samples, planted prefixes, and
+    identical values.
+
+    So this stage was a constant function, its null was 20,000 zeros,
+    and the claim that "three independent framings agree" was false:
+    one of the three could not have disagreed. This is R9-D-002 again,
+    fixed in the decimal stages and left standing here -- which is
+    exactly how a defect survives being written up as fixed.
+
+    Now built like the decimal residual test: raw agreeing prefix
+    against a span-matched null with a random offset, anchored to the
+    declared band and never to the sample's own extremes.
+    """
     width = max(v.bit_length() for v in values)
+    obs = agreeing_bit_prefix(values)
 
-    def informative_bits(vs) -> int:
-        lo, hi = min(vs), max(vs)
-        w = max(v.bit_length() for v in vs)
-        forced = 0
-        for k in range(w - 1, -1, -1):
-            if (lo >> k) != (hi >> k):
-                break
-            forced += 1
-        agree = 0
-        for k in range(w - 1, -1, -1):
-            bits = {(v >> k) & 1 for v in vs}
-            if len(bits) != 1:
-                break
-            agree += 1
-        return agree - forced
+    span = max(values) - min(values)
+    rng = random.Random(NULL_SEED + 2)
+    lo_b, hi_b = DECLARED_BAND
+    null = []
+    for _ in range(NULL_TRIALS):
+        offset = rng.randint(lo_b, hi_b - span)
+        null.append(agreeing_bit_prefix(
+            [offset + rng.randint(0, span) for _ in values]))
 
-    obs_bits = informative_bits(values)
-    null_bits = _null_distribution(informative_bits, values)
     return [StageResult(
         test="BIT_INFORMATIVE_WIDTH",
-        observed=obs_bits,
-        null_mean=sum(null_bits) / len(null_bits),
-        p_value=_p_at_least(obs_bits, null_bits),
-        informative=obs_bits > 0,
-        detail=(f"{width}-bit values; informative agreeing bits "
-                f"after subtracting range-forced bits = {obs_bits}"),
-        notes=("this reproduces the R7 finding by the same definition "
-               "of 'forced': common prefix of the interval endpoints",),
+        observed=obs,
+        null_mean=sum(null) / len(null),
+        p_value=_p_at_least(obs, null),
+        informative=False,
+        detail=(f"{width}-bit values; {obs} agreeing leading bits "
+                f"against a span-matched null"),
+        notes=("checks the R7 conclusion by an independent route, "
+               "but note R7 used the same min/max definition of "
+               "'forced' that proved degenerate here, so the R7 bit "
+               "result should be re-derived before it is relied on",),
     )]
 
 
@@ -395,6 +420,64 @@ def analyse(values=CW_VECTORS) -> list[StageResult]:
     """All three stages, in the preregistered order."""
     return (segment_analysis(values) + divisor_analysis(values)
             + bit_analysis(values))
+
+
+#: Datasets with structure deliberately planted, used to probe whether
+#: each registered test is capable of firing at all.
+PROBES = {
+    "TIGHT_ARITHMETIC_RUN": (123456789011, 123456789012, 123456789013,
+                             123456789014, 123456789015),
+    "SHARED_LARGE_FACTOR": (999983 * 100003, 999983 * 100019,
+                            999983 * 100043, 999983 * 100049,
+                            999983 * 100057),
+    "SHARED_SUFFIX": (123456700000, 234567800000, 345678900000,
+                      456789100000, 567891200000),
+    "ALL_IDENTICAL": (162875439275,) * 5,
+}
+
+
+def register_audit() -> dict:
+    """Which registered tests are capable of producing a finding?
+
+    R9-D-009. Three of the eight registered tests turned out to be
+    incapable of firing, each for a different reason, and none of it
+    was visible from a passing suite:
+
+    * ``BIT_INFORMATIVE_WIDTH`` was a constant function returning 0
+      for every possible input (R9-D-007).
+    * ``SEGMENT_DIGIT_PAIR_REPEAT`` and ``DIVISOR_SMALL_PRIME_EXCESS``
+      were gated behind a hardcoded ``informative=False`` and
+      discarded even when significant (R9-D-008).
+    * ``SEGMENT_PREFIX_GIVEN_SPAN`` is bounded by the same span its
+      null is matched on. For the observed span the largest attainable
+      prefix is 6, which sits at p = 0.036 -- above the corrected
+      alpha. No attainable observation could make it fire.
+
+    A register that advertises eight tests while three cannot fire
+    overstates how well the verdict is supported. This function probes
+    each test against planted structure and reports what actually has
+    power, so the count is honest.
+    """
+    fired: dict[str, list[str]] = {t: [] for t in PREREGISTERED_TESTS}
+    for name, data in PROBES.items():
+        for res in analyse(list(data)):
+            if res.significant:
+                fired[res.test].append(name)
+    live = [t for t, f in fired.items() if f]
+    dead = [t for t, f in fired.items() if not f]
+    return {
+        "probes": {k: list(v) for k, v in PROBES.items()},
+        "fired_on": fired,
+        "tests_with_demonstrated_power": live,
+        "tests_that_never_fired": dead,
+        "registered": len(PREREGISTERED_TESTS),
+        "live_count": len(live),
+        "note": (
+            "a test that fires on no planted structure carries no "
+            "evidential weight, and a null result from it is not "
+            "evidence of absence. The verdict below rests on the live "
+            "tests only."),
+    }
 
 
 def report(values=CW_VECTORS) -> dict:
@@ -409,7 +492,15 @@ def report(values=CW_VECTORS) -> dict:
             f"seeing the data will find something; that is why the "
             f"register is frozen.")
 
-    surviving = [r for r in results if r.significant and r.informative]
+    # R9-D-008: this used to read `r.significant and r.informative`,
+    # but `informative` was a hardcoded literal False on three of the
+    # eight registered tests. Those tests could detect planted
+    # structure at p = 5e-5 and be discarded by the literal before
+    # reaching the verdict. A register that advertises eight tests and
+    # counts three is worse than a register of three, because the
+    # verdict looks better supported than it is. Significance alone
+    # now decides; `informative` is descriptive only.
+    surviving = [r for r in results if r.significant]
     content = [r for r in surviving if r.test not in BAND_TESTS]
     band = [r for r in surviving if r.test in BAND_TESTS]
     return {
@@ -447,10 +538,21 @@ def report(values=CW_VECTORS) -> dict:
             "divisor-first analyses, run before any bit conversion, "
             "recover no content either."),
         "convergence_note": (
-            "three independent framings -- decimal segments, integer "
-            "divisors, and bits -- agree. That agreement is worth more "
-            "than any one of them, because the framings could have "
-            "disagreed and did not."),
+            "three framings -- decimal segments, integer divisors, and "
+            "bits -- agree. The agreement is worth something only "
+            "because each framing is now capable of disagreeing: the "
+            "bit stage was a constant function until R9-D-007, and "
+            "while it returned 0 for every possible input this "
+            "sentence was simply false. Each stage is now checked for "
+            "power on planted structure."),
+        "power_qualification": (
+            "Three of the eight registered tests cannot fire and are "
+            "excluded from the verdict (see register_audit). The "
+            "negative rests on the five with demonstrated power -- "
+            "notably the whole divisor family, which fires reliably on "
+            "planted shared factors and came back negative here. That "
+            "is a real negative, but it is a negative from five tests, "
+            "not eight."),
         "what_this_does_not_say": (
             "It does not say the vectors are meaningless or randomly "
             "generated. Five values is a very small sample, and this "

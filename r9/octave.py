@@ -103,11 +103,33 @@ def pitch_class(f: Fraction, reference: Fraction = Fraction(1)) -> Fraction:
 
 
 def octave_number(f: Fraction, reference: Fraction) -> int:
-    """How many octaves f sits above reference (floor)."""
+    """How many octaves f sits above reference (floor).
+
+    R9-D-011. This was ``math.floor(math.log2(float(f / reference)))``,
+    which contradicted the module's own claim that nothing is rounded
+    at a claim boundary. Converting an exact Fraction to float loses
+    precision above 2**53 and overflows entirely past ~2**1024::
+
+        octave_number(F(2**53 - 1), F(1))  -> 53   (correct: 52)
+        octave_number(F(2**200 - 1), F(1)) -> 200  (correct: 199)
+        octave_number(F(2)**2000, F(1))    -> OverflowError
+
+    Now computed by exact integer comparison of numerator and
+    denominator: no float appears anywhere, and the result is correct
+    for arbitrarily large ratios.
+    """
     f, reference = Fraction(f), Fraction(reference)
     if f <= 0 or reference <= 0:
         raise ValueError("frequencies must be positive")
-    return math.floor(math.log2(float(f / reference)))
+    r = f / reference
+    n = 0
+    while r >= 2:
+        r /= 2
+        n += 1
+    while r < 1:
+        r *= 2
+        n -= 1
+    return n
 
 
 # --- the 1<->8 bridge ---------------------------------------------------

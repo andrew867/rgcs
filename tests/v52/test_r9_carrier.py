@@ -15,17 +15,38 @@ from r9 import carrier as C
 
 # --- model validation against a known-working experiment --------------
 
-def test_model_reproduces_a_working_experiment():
-    """Super-Kamiokande detects solar neutrinos and has since 1996.
+def test_model_does_not_refuse_a_working_experiment():
+    """Super-Kamiokande detects solar neutrinos and has since 1996, so
+    the model must not refuse it (R9-D-001: it did, by applying
+    sea-level muon flux to a detector under 2700 mwe of rock).
 
-    The first version of this module reported it REFUSED_BY_ARITHMETIC
-    because it applied sea-level muon flux to a detector under 2700 mwe
-    of rock. A model that refutes a working experiment is wrong, and
-    this test exists so it cannot silently happen again.
+    R9-D-016: this used to assert raw signal-to-background > 1, and
+    passed at 1.17 -- a margin produced by two large errors partly
+    cancelling. Correcting the electron count broke it, which was
+    useful, because the assertion was wrong in principle. Super-K's
+    true raw S/B is of order 1e-4; it detects neutrinos through event
+    reconstruction and directionality, not by out-numbering muons.
+    The model does not simulate that chain, so it must not pretend to
+    certify it.
     """
     r = C.assess("SUPER_K_SCALE", has_readout_channel=True)
-    assert r.verdict == "CONVENTIONALLY_MEASURABLE"
-    assert r.signal_to_background > 1.0
+    assert r.verdict != "REFUSED_BY_ARITHMETIC"
+    assert r.verdict in C.FEASIBILITY_VERDICTS
+
+
+def test_raw_signal_to_background_is_disclaimed_as_a_criterion():
+    n = C.RAW_SB_IS_NOT_THE_DISCRIMINATOR
+    assert "does not determine whether a detector" in n
+    assert "cannot certify" in n
+
+
+def test_bench_and_super_k_are_separated_by_many_orders():
+    """What the model CAN say: the bench is refused, Super-K is not,
+    and the gap between them is enormous."""
+    bench = C.assess("BENCH_QUARTZ_100G", has_readout_channel=True)
+    sk = C.assess("SUPER_K_SCALE", has_readout_channel=True)
+    assert bench.verdict == "REFUSED_BY_ARITHMETIC"
+    assert sk.signal_to_background > 1e6 * bench.signal_to_background
 
 
 def test_overburden_suppresses_background():
@@ -61,6 +82,57 @@ def test_bench_quartz_refused_even_granting_readout():
     r = C.assess("BENCH_QUARTZ_100G", has_readout_channel=True)
     assert r.verdict == "REFUSED_BY_ARITHMETIC"
     assert r.signal_to_background < 1e-6
+
+
+# --- cross-section denominators (R9-D-015) ----------------------------
+
+def test_each_cross_section_declares_its_denominator():
+    for key, spec in C.CROSS_SECTIONS.items():
+        assert spec["per"] in C.TARGET_COUNT_KINDS, key
+
+
+def test_quartz_has_no_free_protons():
+    """SiO2 contains no hydrogen, so inverse beta decay cannot occur
+    in it at all -- the module used to report 12.34 events/yr."""
+    q = C.TARGETS["BENCH_QUARTZ_100G"]
+    assert q.n_free_protons == 0
+    r = C.assess("BENCH_QUARTZ_100G",
+                 cross_section_key="INVERSE_BETA_DECAY_MEV",
+                 has_readout_channel=True)
+    assert r.verdict == "NO_TARGET_CENTRES"
+    assert r.interactions_per_year == 0.0
+    assert "chemistry, not sensitivity" in r.note
+
+
+def test_water_does_have_free_protons():
+    """Control: the same code path must not zero out a target that
+    genuinely has hydrogen."""
+    w = C.TARGETS["SUPER_K_SCALE"]
+    assert w.free_protons_per_molecule == 2
+    assert w.n_free_protons > 0
+
+
+def test_electron_count_is_used_for_elastic_scattering():
+    """Quartz: 30 electrons per 60 nucleons, so using nucleons
+    overcounted the elastic rate by exactly 2x."""
+    q = C.TARGETS["BENCH_QUARTZ_100G"]
+    assert q.n_electrons == pytest.approx(q.n_nucleons / 2)
+    per_e = C.interaction_rate_per_year(q, 6.5e10, 1e-44, per="ELECTRON")
+    per_n = C.interaction_rate_per_year(q, 6.5e10, 1e-44, per="NUCLEON")
+    assert per_n == pytest.approx(2 * per_e)
+
+
+def test_nucleus_count_is_used_for_cevns():
+    """Using nucleons for a per-nucleus cross-section overcounts by
+    the nucleons-per-molecule factor, here 60x."""
+    q = C.TARGETS["BENCH_QUARTZ_100G"]
+    assert q.n_molecules == pytest.approx(q.n_nucleons / 60)
+
+
+def test_unknown_target_count_kind_refused():
+    q = C.TARGETS["BENCH_QUARTZ_100G"]
+    with pytest.raises(ValueError):
+        q.target_count("PHLOGISTON")
 
 
 def test_interactions_do_occur_the_rate_is_not_zero():

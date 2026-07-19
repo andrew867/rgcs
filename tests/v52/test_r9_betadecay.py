@@ -24,13 +24,44 @@ def test_standard_account_conserves():
     assert a["failures"] == []
 
 
-def test_omitted_account_violates_all_four_laws():
-    """Each is independently sufficient; they are not one argument
-    restated four ways."""
+def test_omitted_account_fails_all_four_checks():
     a = B.conservation_audit(B.OMITTED)
     assert not a["conserves"]
     assert {f["law"] for f in a["failures"]} == set(B.CONSERVATION_LAWS)
-    assert "not four ways of saying one thing" in a["note"]
+
+
+def test_the_four_checks_are_not_four_independent_arguments():
+    """R9-D-012. The module claimed four independent conservation
+    laws. Energy and momentum are the same empirical argument twice --
+    a two-body decay conserves both perfectly and simply predicts the
+    wrong electron energy. The honest count is two.
+    """
+    a = B.conservation_audit(B.OMITTED)
+    assert a["independent_argument_count"] == 2
+    assert B.ARGUMENT_KINDS["ENERGY"] == "EMPIRICAL"
+    assert B.ARGUMENT_KINDS["MOMENTUM"] == "EMPIRICAL"
+    assert B.ARGUMENT_KINDS["ANGULAR_MOMENTUM"] == "A_PRIORI"
+    assert "circular" in B.ARGUMENT_KINDS["LEPTON_NUMBER"].lower()
+
+
+def test_lepton_number_circularity_is_admitted():
+    assert "close to circular" in B.INDEPENDENCE_NOTE
+    assert "ONE decisive empirical argument" in B.INDEPENDENCE_NOTE
+
+
+def test_incoherent_accounts_are_refused():
+    """R9-D-013. n_bodies and includes_antineutrino were independent
+    fields with no cross-check, so a two-body decay claiming an
+    antineutrino was reported CONSERVING."""
+    bogus = B.DecayAccount("two bodies, claims a neutrino",
+                           ("proton", "electron"), True)
+    with pytest.raises(B.ConservationViolation) as e:
+        B.conservation_audit(bogus)
+    assert "incoherent account" in str(e.value)
+
+    stub = B.DecayAccount("n -> p only", ("proton",), True)
+    with pytest.raises(B.ConservationViolation):
+        B.conservation_audit(stub)
 
 
 def test_two_body_decay_predicts_a_monoenergetic_electron():
