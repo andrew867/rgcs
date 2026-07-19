@@ -48,7 +48,7 @@ rscs_core = ["registry/*.yaml"]
 rscs2_core = ["registry/*.yaml"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial", "tests/v4", "tests/v49", "tests/v50"]
+testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial", "tests/v4", "tests/v49", "tests/v50", "tests/v51"]
 pythonpath = ["."]
 markers = [
     "slow: long-running tests (dataset regeneration)",
