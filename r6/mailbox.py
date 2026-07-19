@@ -147,15 +147,42 @@ class FrameGraph:
             return False, "frames are not ordered outermost-first"
         return True, "ok"
 
-    def total_uncertainty_m(self) -> float:
-        """Uncertainties add in quadrature along the chain.
+    def total_uncertainty_m(self, correlation: float = 0.0) -> float:
+        """Accumulated position uncertainty along the chain.
 
-        This grows monotonically as frames are added: a defect site
-        addressed from the galactic frame cannot be *better* located
-        than the worst link in its chain.
+        Quadrature is the ``correlation = 0`` case and it is **not**
+        generally the right one. Adding in quadrature assumes the
+        links are independent, but a frame chain typically shares an
+        ephemeris, a time scale and a calibration across several
+        transforms, so their errors are correlated and quadrature
+        *understates* the total.
+
+        For a uniform pairwise correlation rho the variance is
+
+            sum_i s_i^2 + rho * sum_{i != j} s_i s_j
+
+        which reduces to quadrature at rho = 0 and to linear addition
+        at rho = 1. Callers that know their chain shares an ephemeris
+        should pass a positive rho; ``worst_case_uncertainty_m`` gives
+        the rho = 1 bound.
+
+        Defect R8-D-002: earlier releases offered only the rho = 0
+        form while the certificate carried a covariance field, which
+        was internally inconsistent -- the object claimed to track
+        correlation and then discarded it.
         """
-        return sum(t.position_uncertainty_m ** 2
-                   for t in self.transforms) ** 0.5
+        if not -1.0 <= correlation <= 1.0:
+            raise ValueError("correlation must lie in [-1, 1]")
+        s = [t.position_uncertainty_m for t in self.transforms]
+        var = sum(x * x for x in s)
+        cross = sum(a * b for i, a in enumerate(s)
+                    for j, b in enumerate(s) if i != j)
+        total = var + correlation * cross
+        return max(total, 0.0) ** 0.5
+
+    def worst_case_uncertainty_m(self) -> float:
+        """Fully-correlated bound: uncertainties add linearly."""
+        return sum(t.position_uncertainty_m for t in self.transforms)
 
     def epochs_consistent(self, tolerance_s: float = 1.0) -> bool:
         if not self.transforms:

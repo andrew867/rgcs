@@ -89,10 +89,21 @@ practically useful output.
 
 ### 5. Spacetime: one real capability, one decisive refutation
 
-The weak-field clock model is validated against two published
-measurements — Pound–Rebka (computed 2.4551e-15 vs published 2.45e-15)
-and the GPS correction (+45.65 gravitational, −7.21 velocity, **net
-+38.44 µs/day** vs published +38.5).
+The weak-field clock model reproduces two standard results:
+Pound–Rebka (computed 2.4551e-15) and the GPS correction (+45.65
+gravitational, −7.21 velocity, **net +38.44 µs/day**).
+
+> **Correction (R8-D-001, 2026-07-19).** An earlier version of this
+> paragraph called these "published measurements". They are not.
+> 2.45e-15 is the theoretical *prediction* gh/c² for the ~22.5 m
+> Jefferson tower, so comparing our 2.4551e-15 against it compares the
+> formula with itself — a self-consistency check carrying no
+> evidential weight. The *measured* Pound–Rebka value was
+> ≈ (2.57 ± 0.26)e-15, agreeing with prediction to ~10%, and that 10%
+> is the real empirical constraint. The third digit of the GPS figure
+> is likewise a modelling convention, not a measured quantity. The
+> claim of validation against measurement is withdrawn; correct
+> reproduction of standard formulae is what this establishes.
 
 - **Capability (real):** resonators are metric *instruments*. Quartz at
   1e-12 fractional stability resolves ~9 km of height; an optical clock
