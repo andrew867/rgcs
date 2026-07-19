@@ -91,5 +91,9 @@ REQUIRED_SHEETS = (
     "R6 Grid",
     "R6 Instruments",
     "R6 Governance",
+    "R7 CW",
+    "R7 Gravity",
+    "R7 Clock Link",
+    "R7 Governance",
     "Workbook Guide",
 )

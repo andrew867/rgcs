@@ -270,6 +270,10 @@ def generate(store: CanonicalStore | None = None,
         "R6 Grid": ("r6_grid", "R6Grid"),
         "R6 Instruments": ("r6_instruments", "R6Instruments"),
         "R6 Governance": ("r6_governance", "R6Governance"),
+        "R7 CW": ("r7_cw", "R7CW"),
+        "R7 Gravity": ("r7_gravity", "R7Gravity"),
+        "R7 Clock Link": ("r7_clocklink", "R7ClockLink"),
+        "R7 Governance": ("r7_governance", "R7Governance"),
     }
 
     for sheet in REQUIRED_SHEETS:

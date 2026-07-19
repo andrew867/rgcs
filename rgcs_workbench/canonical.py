@@ -658,6 +658,12 @@ def _r6(store: CanonicalStore) -> None:
     build_r6(store, Record)
 
 
+def _r7(store: CanonicalStore) -> None:
+    """v5.0 R7 lane: CW null, gravity arithmetic, clock link, IP."""
+    from .r7_lane import build_r7
+    build_r7(store, Record)
+
+
 def _sources(store: CanonicalStore) -> None:
     from sources.registry.v4x2_source_registry import SOURCES
     for sid, s in SOURCES.items():
@@ -720,6 +726,7 @@ def build(version: str = "4.5.0") -> CanonicalStore:
     _r3(store)
     _r4(store)
     _r6(store)
+    _r7(store)
     _sources(store)
     _lore(store)
     _release_meta(store)
