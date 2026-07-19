@@ -36,10 +36,16 @@ STAMP_NAME = "_build_stamp.json"
 #: A test now asserts every top-level package directory containing an
 #: ``__init__.py`` is listed here, so the next programme cannot repeat
 #: it by omission.
+#: R10-D-001: ``r10`` arrived during the R10 programme and was added to
+#: neither this tuple nor the packaging ``include`` list -- the R8-D-006
+#: and R9-D-004 defects starting over, one generation later, for the
+#: same reason (a new research package, added to the tree, not added to
+#: the two lists that govern hashing and distribution). The guards
+#: caught it this time instead of a release doing so.
 SOURCE_ROOTS = ("rgcs_desktop", "rgcs_workbench", "rgcs_core",
                 "rscs_core", "rscs2_core", "fkey_instrument",
                 "resonator_platform", "cspc", "pmwr", "r3", "r4",
-                "r6", "r7", "r8", "r9")
+                "r6", "r7", "r8", "r9", "r10")
 
 
 def repo_root() -> Path:
