@@ -3,6 +3,34 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [5.1.0] — 2026-07-19
+
+Open commons release. Software verified, physically untested.
+
+R8.1 closeout: DDS closure theorem with the continuous/sampled
+discrepancy, null-calibration harness with three worked failures,
+relational coordinate technical report, measurement lanes, knowledge
+audit, disclosure timeline, and the commons layer.
+
+Prior-art reviews repositioned all three manuscripts: the DDS closure
+formula is published (Nicholas & Samueli 1987; Hwang 2017; Fujifilm
+US12422666B2), the null-calibration principle is the severity
+requirement, and six of seven coordinate components are textbook.
+None of those novelty claims is retained.
+
+Corrections: the Pound-Rebka "validation" compared a formula against
+itself and is withdrawn; frame-chain quadrature contradicted the
+covariance field; a non-positive-semidefinite correlation returned
+0.0 m, reporting perfect knowledge, and now refuses; MDEV and TDEV
+implemented after being named but absent; "frozen" replaced with
+INTERNAL_ANALYSIS_FREEZE.
+
+No relicensing. MIT unchanged. v3.0.0-v4.8.1 were public under MIT
+2026-07-15 to 2026-07-18; R6/R7/R8.1 first published here.
+
+Tests: 2416 passing (1 archived-environment byte test deselected by
+policy D-V3-04); adversarial audit 19/19.
+
 ## [5.0.0] — 2026-07-18
 
 R7: root reference, CW vector decoder, differential clock link,

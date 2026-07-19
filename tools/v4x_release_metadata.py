@@ -31,7 +31,7 @@ DESELECT = ("tests/regression/test_generator_determinism.py::"
 COUNT_SITES = [
     ("README.md", r"expect:\s*(\d+)\s+passed"),
     ("README.md", r"\*\*\s*(\d+)\s+tests\s+passed"),
-    ("docs/v5/RELEASE_NOTES_V5_0_0.md", r"expect:\s*(\d+)\s+passed"),
+    ("docs/v51/RELEASE_NOTES_V5_1_0.md", r"expect:\s*(\d+)\s+passed"),
     ("CHANGELOG.md", r"Tests:\s*(\d+)\s+passing"),
 ]
 
