@@ -18,7 +18,20 @@ EXCLUDED = {
     "tests", "docs", "tools", "packaging", "archive", "internal-docs",
     "manuscript", "manuscripts", "evidence", "experiments", "release",
     "embedded", "firmware", "references", "schemas", "papers",
-    "consciousness_lane",          # quarantined lane, not shipped
+    # Quarantined lane. NOT bundled into the frozen desktop app
+    # (packaging/RGCSWorkbench.spec does not reference it), which is
+    # why it is outside the freshness hash -- but it IS matched by the
+    # packaging include list, so it ships in the wheel and sdist and
+    # is importable after pip install.
+    #
+    # The comment here previously read "not shipped", which is true of
+    # the frozen app and false of the wheel. Corrected rather than
+    # left, because the exclusion list is exactly where someone would
+    # look to find out. Whether the lane should be hashed, or should
+    # stop shipping, is an open decision recorded in
+    # docs/v52/R10_INSTALL_PARITY.md -- both fixes have release
+    # consequences and neither was taken unilaterally.
+    "consciousness_lane",
     "demo_out", "proof_bundle_110mm", "source_claims",
     # provenance registry, imported by tests only and not shipped in
     # the desktop app; surfaced when the namespace-package hole was
