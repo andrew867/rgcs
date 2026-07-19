@@ -50,8 +50,42 @@ integration time addresses it.
 **Second, granting a readout that does not exist: the background.** The
 same volume passes about 2.1 × 10⁷ cosmic muons per year at sea level.
 Signal to background is 5.9 × 10⁻⁸ — roughly one candidate per
-17 million muons. Increasing the mass a hundredfold does not close an
-eight-order gap.
+17 million muons.
+
+Two caveats that make this weaker than it first looks, both added after
+prior-art review:
+
+- The ~1.2/yr figure is a **zero-threshold ceiling**, not an
+  expectation. Published solar pp CEvNS rates (~16.6 events/kg·yr in
+  germanium) are quoted the same way. Recoils here are sub-keV; at any
+  threshold a quartz resonator could reach, the rate above threshold is
+  consistent with zero.
+- The miniaturisation argument is not ours. Freedman (1974) predicted
+  coherent elastic neutrino–nucleus scattering, and Drukier & Stodolsky
+  (1984) is the canonical proposal that coherence permits much smaller
+  detectors.
+
+### The barrier is readout, not mass (correction)
+
+The first version of this analysis compared the bench against
+Super-Kamiokande and concluded the gap was **mass** — a factor of 10⁸.
+That framing is wrong, and wrong in a useful direction:
+
+| Detector | Mass | Threshold | Status |
+|---|---|---|---|
+| NUCLEUS | **10 g** | ~20 eV | commissioning; no detection yet |
+| CONUS+ | ~3 kg | ~160 eV | first reactor CEvNS, 3.7σ (2025) |
+| COHERENT | 14.6 kg | ~4.8 keV | first CEvNS observation, 6.7σ (2017) |
+
+**NUCLEUS runs a 10 g target — one tenth of the bench crystal.** Mass is
+not what the bench lacks. What NUCLEUS has is a readout channel: a
+~10 mK cryogenic calorimeter with a ~20 eV threshold, plus depth,
+shielding and an active veto. The field solved the small-detector
+problem by *engineering transduction* — which is precisely the obstacle
+identified as binding above.
+
+The corrected conclusion is stronger than the original: **the bench is
+not short of mass, it is short of a way to notice.**
 
 ### The model is validated against a working experiment
 
@@ -226,10 +260,35 @@ would not depend on how many fingers we happen to have:
 | **12** | **11** | **1,2,4,8,5,10,9,7,3,6** | **nothing** |
 | 16 | 15 | 1,2,4,8 | ten of fourteen |
 
-**In base 12 nothing is excluded at all** — 2 is a primitive root mod 11,
-so the cycle reaches every nonzero residue. There is no trinity to find.
-The exclusion is a property of 9 = 10−1 being composite, which is a
-property of our notation.
+**In base 12 nothing is excluded at all.** There is no trinity to find.
+
+### Two exclusion mechanisms, not one (correction)
+
+The first version of this analysis said base 12 excludes nothing
+"because 2 is a primitive root mod 11". Prior-art review objected that
+the real reason is that 11 is prime. **Both statements are wrong**, and
+base 8 settles it: 7 *is* prime, and 3, 5, 6 are still excluded.
+
+There are two distinct mechanisms:
+
+1. **Non-units** — gcd(a, m) > 1, so a is not in the multiplicative
+   group at all. This is why 3 and 6 are excluded mod 9.
+2. **Units outside the orbit** — a is a unit but not in ⟨2⟩. This is why
+   3, 5, 6 are excluded mod 7.
+
+| Base | Modulus | Prime? | 2 primitive root? | Excluded as non-units | Excluded as units outside ⟨2⟩ |
+|---|---|---|---|---|---|
+| 8 | 7 | yes | no | — | 3, 5, 6 |
+| 10 | 9 | no | yes | 3, 6 | — |
+| 12 | 11 | yes | yes | — | — |
+
+Base 10 and base 8 exclude residues for **completely different reasons**.
+An empty exclusion set requires *both* a prime modulus (no non-units)
+*and* 2 a primitive root (the orbit covers every unit). Base 12 satisfies
+both; base 8 only the first.
+
+The exclusion in base 10 is a property of 9 = 10−1 being composite, which
+is a property of our notation.
 
 **What survives:** the arithmetic, completely. Digital roots, cyclic
 subgroups and multiplicative order are real tools and this is a correct
@@ -275,6 +334,59 @@ independently of the observations, and the conflated test split into two
 honest ones (clustering, and residual prefix given clustering). The
 residual test is now checked for *power* — it must fire on planted
 structure — which the original never was.
+
+---
+
+### R9-D-003 — the anti-stale guard had a hole its own shape
+
+R8-D-006 added a test requiring every shipped package to appear in
+`SOURCE_ROOTS`, so a stale build could not pass the freshness check.
+It detected packages by the presence of `__init__.py`.
+
+`r9` had no `__init__.py`. Neither did `r8`, as shipped in v5.1.0. Both
+import perfectly well as PEP 420 namespace packages — and both were
+invisible to the guard written specifically to catch this. Rewritten to
+treat any directory of `.py` files as a package. It immediately found
+`r9` and one more directory.
+
+### R9-D-004 — three public releases shipped without their research code
+
+Found by the R9-D-003 fix, and the worse of the two.
+
+`SOURCE_ROOTS` governs the build-freshness hash. The packaging `include`
+list governs what `pip install` puts on disk. **They are different lists,
+and nothing was checking that they agreed.**
+
+They did not agree. The `include` list stopped at `r4`. So
+`pip install` of **v4.9.0, v5.0.0 and v5.1.0** installed **none of r6, r7
+or r8** — the headline research packages of those very releases.
+
+Working from a clone hid this completely: `pythonpath = ["."]` makes the
+source tree importable whether or not packaging agrees, so every test and
+every local run passed. Fixed, and pinned by a test that compares the two
+lists directly rather than trusting either.
+
+---
+
+## Prior art
+
+An adversarial prior-art review was run against every headline claim.
+**Five for five came back established. Nothing in R9 is novel.**
+
+| Claim | Verdict | Key prior art |
+|---|---|---|
+| Vortex cycle = ⟨2⟩ in (ℤ/9ℤ)\*, base-dependent | ESTABLISHED | Casting out nines (centuries); RationalWiki; Chu-Carroll (2018) |
+| ~202 octaves, universe to Planck | ESTABLISHED | Camber (2017), same figure by the same method; Cousto (1978) for the method |
+| Continuous β spectrum ⇒ third body | ESTABLISHED | Chadwick 1914; Ellis & Wooster 1927; Pauli 1930; Fermi 1934 |
+| 100 g quartz ν feasibility | ESTABLISHED | Freedman 1974; Drukier & Stodolsky 1984; NUCLEUS; CONUS+; COHERENT |
+| Preregistration + matched nulls + multiplicity | ESTABLISHED | McKay et al., *Statistical Science* 14(2), 1999 — the definitive template |
+
+This is consistent with every prior review in this programme's history
+(R6, R7, R8.1), and the honest framing for R9 is **replication and
+correct exposition, not discovery**. Where this work has value it is in
+stating the mechanisms precisely — for instance separating the two
+exclusion mechanisms in §5, which the popular critiques generally do not
+do, and which the review itself got wrong.
 
 ---
 
