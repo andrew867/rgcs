@@ -5,24 +5,18 @@
     "7962817": "commit",
     "9165594": "commit"
   },
-  "branch": "v52-r9",
+  "branch": "main",
   "dirty_files": [
     " M CITATION.cff",
     " M README.md",
-    " M docs/v4/RELEASE_METADATA.json",
-    " M docs/v4/baseline/V4_BASELINE_TEST_MATRIX.json",
     " M docs/v4/baseline/V4_FROZEN_ARTIFACT_CHECKSUMS.json",
     " M docs/v4/baseline/V4_REPO_INVENTORY.json",
     " M pyproject.toml",
-    " M release/v45/RGCS_Master_Evidence_Workbook.xlsx",
-    " M release/v45/SHA256SUMS.txt",
     " M tests/v4/test_v4c_docs_closeout.py",
     " M tests/v4/test_v4x_release_metadata.py",
-    " M tools/v4x_release_metadata.py",
-    "?? docs/v52/RELEASE_NOTES_V5_2_0.md",
     "M CHANGELOG.md"
   ],
-  "head": "55f581dc2f29c30fd640dc635854a0497f7b6da7",
+  "head": "b9250f56df42eadc476588d5b2036162b62f0e51",
   "protected_tags_present": {
     "v2.0.0": "f9fd2c20a05334e12ac9113ba86853c6591fc84e",
     "v3.0.0": "83521f73d6ad02b009ada88f3b8d33a8a00fc253",
@@ -74,9 +68,10 @@
     "v4.8.1-rc1",
     "v4.9.0",
     "v5.0.0",
-    "v5.1.0"
+    "v5.1.0",
+    "v5.2.0"
   ],
   "worktrees": [
-    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS 55f581d [v52-r9]"
+    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS b9250f5 [main]"
   ]
 }

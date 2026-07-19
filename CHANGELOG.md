@@ -3,6 +3,26 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [5.2.1] - 2026-07-19
+
+R9-D-020. tests/v52/test_r9_packaging.py imported setuptools at module
+level. setuptools is a build-system requirement, not a runtime or test
+one, and it is absent from CI's portable job, so the module failed to
+collect on ubuntu, macos and windows while passing locally where the
+venv happens to have it. v5.2.0's CI is red for this reason.
+
+A packaging guard that cannot run in CI is not a guard -- and this is
+the same shape as the defect it was written to catch: something that
+works from a developer's tree and not from a clean install. Declared
+in the dev extra, and imported via importorskip so a missing build
+tool skips the file rather than erroring collection.
+
+The v5.2.0 tag is immutable and stays as cut. All 10 CI jobs green at
+this release.
+
+Tests: 2564 passing from a clean clone (1 archived-environment byte
+test deselected by policy D-V3-04).
+
 ## [5.2.0] - 2026-07-19
 
 R9. Hidden neutral carrier feasibility, the omitted-antineutrino
