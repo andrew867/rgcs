@@ -99,7 +99,7 @@ detected; CITATION.cff detected; CI badge serves. Hygiene: tracked-file
 secret scan clean before first push; no internal-docs/.venv/caches in
 the repo or the source zip. Known accepted artifact: the immutable v2
 archive's PROVENANCE.json records generic sandbox build paths
-(`/home/claude/…`) — build-environment provenance, not personal data,
+(`<BUILD_ROOT>/…`) — build-environment provenance, not personal data,
 unmodifiable under the freeze.
 
 ## Known platform limitations

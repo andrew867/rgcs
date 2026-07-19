@@ -6,10 +6,10 @@ Append-only.
 
 ## DV4C-001 — Repository path
 
-The pack states repository `/home/claude/rgcs-work/rgcs-v2`. That path
+The pack states repository `<BUILD_ROOT>/rgcs-work/rgcs-v2`. That path
 does not exist in this environment. Evidence-based resolution: the
 real repository is the working tree at
-`C:\Users\andrew\OneDrive - Green O365\Documents\GitHub\RGCS`
+`<USER_HOME>\OneDrive - Green O365\Documents\GitHub\RGCS`
 (remote `https://github.com/andrew867/rgcs`, branch `v4-dev`, HEAD
 `2fed8fd` at programme start — see
 `docs/v4/baseline/V4_REPO_INVENTORY.json`). The pack path is treated

@@ -1,6 +1,6 @@
 # RGCS v2 — Reproducibility Audit (Sub-Agent 08)
 
-Date: 2026-07-14. All commands run in a clean shell from `/home/claude/rgcs-work/rgcs-v2` (Python 3.11, TeX Live latexmk/xelatex, `QT_QPA_PLATFORM=offscreen`). Nothing in the repo was modified by these checks except the four QA-owned docs.
+Date: 2026-07-14. All commands run in a clean shell from `<BUILD_ROOT>/rgcs-work/rgcs-v2` (Python 3.11, TeX Live latexmk/xelatex, `QT_QPA_PLATFORM=offscreen`). Nothing in the repo was modified by these checks except the four QA-owned docs.
 
 ## 1. Test suite
 

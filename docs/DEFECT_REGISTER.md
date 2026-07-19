@@ -1,6 +1,6 @@
 # RGCS v2 — QA Defect Register (Sub-Agent 08, Independent Adversarial QA)
 
-Date: 2026-07-14. Environment: Python 3.11, `QT_QPA_PLATFORM=offscreen`, repo `/home/claude/rgcs-work/rgcs-v2`.
+Date: 2026-07-14. Environment: Python 3.11, `QT_QPA_PLATFORM=offscreen`, repo `<BUILD_ROOT>/rgcs-work/rgcs-v2`.
 Severity: P0 blocker / P1 major / P2 minor / P3 cosmetic. Nothing was fixed by QA; all items are open.
 
 ## P1 — Major

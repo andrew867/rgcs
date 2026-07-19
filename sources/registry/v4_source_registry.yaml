@@ -29,7 +29,7 @@ sources:
   ids:
     doi: 10.1038/s41563-026-02608-4
     arxiv: '2506.07051'
-  local_filename: C:\Users\andrew\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\2506.07051v1.pdf
+  local_filename: <USER_HOME>\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\2506.07051v1.pdf
   sha256: eec25037c54d56e030e2a8f9b24178c1fd8892467e668beab260b71566ac3744
   licence_status: NOT_APPLICABLE_NO_LOCAL_FILE
   redistribution_allowed: false
@@ -67,7 +67,7 @@ sources:
     doi: 10.1038/s41586-019-1174-7
     arxiv: '2001.06255'
     journal: Nature 569, 383-387
-  local_filename: C:\Users\andrew\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\2001.06255v1.pdf
+  local_filename: <USER_HOME>\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\2001.06255v1.pdf
   sha256: 21e1f5e076f56aabfb69af148ef8ac37cb7c6b77330dcf170f887a64c562dd2c
   licence_status: NOT_APPLICABLE_NO_LOCAL_FILE
   redistribution_allowed: false
@@ -104,7 +104,7 @@ sources:
   source_type: PEER_REVIEWED_PRIMARY
   ids:
     journal: Nature Communications (recalled)
-  local_filename: C:\Users\andrew\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\ncomms10720.pdf
+  local_filename: <USER_HOME>\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\ncomms10720.pdf
   sha256: 6c10540c5f0a3dcc179387090a82da45689e48be786e1734d25b0a961d6f7606
   licence_status: NOT_APPLICABLE_NO_LOCAL_FILE
   redistribution_allowed: false
@@ -116,7 +116,7 @@ sources:
 - source_id: SRC-V4-06
   topic: excitons in van der Waals magnetic materials (exciton-magnon coupling)
   source_type: UNRESOLVED_TOPIC
-  local_filename: C:\Users\andrew\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\Excitons
+  local_filename: <USER_HOME>\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\Excitons
     in van der Waals magnetic materials.pdf
   sha256: cb2bb56a18e7e1a3bd0888bbfedc3bea7e1c11a9e5449a6a05e1cb9a9777ae6c
   access_status: FULL_TEXT_LOCAL
@@ -182,7 +182,7 @@ sources:
 - source_id: SRC-V4-13
   topic: spin-orbit-exciton-induced phonon chirality
   source_type: UNRESOLVED_TOPIC
-  local_filename: C:\Users\andrew\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\lujan-et-al-2024-spin-orbit-exciton-induced-phonon-chirality-in-a-quantum-magnet.pdf
+  local_filename: <USER_HOME>\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\lujan-et-al-2024-spin-orbit-exciton-induced-phonon-chirality-in-a-quantum-magnet.pdf
   sha256: 59ad60f781fd9679b0b1c644362453f419c83640564fd73c913a02486ac705eb
   access_status: FULL_TEXT_LOCAL
   citation_status: TOPIC_ONLY
@@ -190,7 +190,7 @@ sources:
   topic: transverse and longitudinal angular momentum of light
   source_type: UNRESOLVED_TOPIC
   candidate_reference: Bliokh & Nori, Phys. Rep. 592, 1 (2015) [recalled, unverified]
-  local_filename: C:\Users\andrew\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\spin-momentum-locking-in-the-near-field-of-metal-nanoparticles.pdf
+  local_filename: <USER_HOME>\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\spin-momentum-locking-in-the-near-field-of-metal-nanoparticles.pdf
   sha256: fa00033fb4a94e0e833f21529d8715abd8613ad2f1c2cb86641f7723ef64dedb
   access_status: FULL_TEXT_LOCAL
   citation_status: TOPIC_ONLY
@@ -224,7 +224,7 @@ sources:
 - source_id: SRC-V4-18
   title: FDT interpretation (independent theory essay)
   source_type: INDEPENDENT_THEORY_ESSAY
-  local_filename: C:\Users\andrew\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\fdt-analysis-inverse-optical-magnetoelectric-effect.pdf
+  local_filename: <USER_HOME>\OneDrive - Green O365\Documents\GitHub\RGCS\internal-docs\plans-v4\references\fdt-analysis-inverse-optical-magnetoelectric-effect.pdf
   sha256: b7342fa180f1ce4f58261b64022fa63fc0cb6632a33c78153078ded7f418be97
   access_status: FULL_TEXT_LOCAL
   citation_status: PACK_ENUMERATED
