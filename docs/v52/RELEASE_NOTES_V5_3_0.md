@@ -107,7 +107,7 @@ at v5.2.1.
 git clone https://github.com/andrew867/rgcs && cd rgcs
 pip install -e ".[dev]"
 pytest -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic
-# expect: 2709 passed
+# expect: 2710 passed
 ```
 
 The deselected node is a byte-equality test requiring the archived

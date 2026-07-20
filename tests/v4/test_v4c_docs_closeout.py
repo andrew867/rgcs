@@ -104,7 +104,7 @@ def test_version_consistency():
         assert f"[{v}]" in ch
     readme = _read("README.md")
     assert f"releases/tag/v{VERSION}" in readme
-    assert "2709 tests" in readme or "2709 passed" in readme
+    assert "2710 tests" in readme or "2710 passed" in readme
     assert "115/115" in readme
 
 
