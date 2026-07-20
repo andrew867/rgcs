@@ -17,7 +17,12 @@ package lists equal. Nothing to reconcile.
 
 ## Most of this pack is blocked, and for the same reason as last time
 
-`RGCS-private/sources/` contains **0 files**. The checkpoint describes a
+> Note: this document deliberately avoids naming the private repository's
+> path. An earlier draft spelled it out and tripped the publication
+> firewall on its own rule — which is the firewall working, so the
+> wording was changed rather than the rule.
+
+The private source root's `sources/` tree contains **0 files**. The checkpoint describes a
 working concordance of 65 transcript files, 48 byte-unique texts, and 17
 duplicate groups — **none of that material is present on this machine.**
 
