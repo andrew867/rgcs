@@ -1309,11 +1309,20 @@ def inverse_report(seed=None) -> dict:
         "prior_art": {
             "described_as": "2018 method-of-moments simplex estimator",
             "source": "operator-supplied",
-            "verified": False,
+            # R10.2: the paper (Vilcu & Vilcu 2018,
+            # doi:10.1007/s10231-017-0688-6) was supplied with the
+            # private corpus and is now confirmed. See r10.priorart.
+            # The derivation here remains independent and
+            # simulation-checked; verifying the citation does not
+            # change the mathematics, only its provenance.
+            "verified": True,
+            "doi": "10.1007/s10231-017-0688-6",
+            "reference_key": "vilcu_2018_tetrahedron",
             "note": (
-                "the citation could not be checked in this environment, "
-                "so no result is attributed to it. The derivation here "
-                "is independent and is checked against simulation"),
+                "citation confirmed against the supplied paper. The "
+                "derivation here is independent and simulation-checked; "
+                "the reproduction is a reproduction, and the paper's "
+                "guarantee covers the uniform interior case only"),
         },
         "measured_here": "nothing",
         "what_this_is": (

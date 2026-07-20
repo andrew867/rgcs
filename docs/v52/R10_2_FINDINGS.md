@@ -1,7 +1,7 @@
 # RGCS R10.2 — Chronology, Node Alignment, Public Evidence: Findings
 
 **Status:** `SOFTWARE_VERIFIED_PHYSICAL_UNTESTED`
-**Baseline:** v5.3.1 (`3fb6874`)
+**Baseline:** v5.4.0 (`41537be`)
 **Evidence class:** `DERIVED_MATHEMATICS`
 **Hardware:** deferred by the pack. **No apparatus has been built.**
 
@@ -15,35 +15,95 @@ package lists equal. Nothing to reconcile.
 
 ---
 
-## Most of this pack is blocked, and for the same reason as last time
+## The corpus arrived, and the import verified clean
 
-> Note: this document deliberately avoids naming the private repository's
-> path. An earlier draft spelled it out and tripped the publication
-> firewall on its own rule — which is the firewall working, so the
-> wording was changed rather than the rule.
+The private corpus was supplied and imported into the private source
+root. **70 files in, 53 byte-unique canonical files copied, every one
+of the 53 SHA-256 hashes matching the bundle manifest, 17 exact
+duplicates skipped.** Exact duplicates are not independent
+corroboration and were not counted as such. The import lives in the
+private repository (no remote, outside the public worktree); the public
+firewall reports zero findings against the public tree.
 
-The private source root's `sources/` tree contains **0 files**. The checkpoint describes a
-working concordance of 65 transcript files, 48 byte-unique texts, and 17
-duplicate groups — **none of that material is present on this machine.**
+Two of the 70 files are **public academic papers**, and those are the
+part that produces public results. The other 68 are private
+source-media transcripts and reference inputs, which stay private.
 
-Blocked outright, because they operate on corpus bytes that do not exist:
+### Blocked phases now unblocked
 
-| Phase | Needs |
-|---|---|
-| S01 | private corpus to ingest |
-| S02 | the 65 files, to deduplicate |
-| S03 | source items, to build a metadata registry |
-| S06 | dated source messages, for earliest-claim precedence |
-| S07 | sighting records with timestamps and media hashes |
-| S08 | the corpus, to model contamination and independence |
-| S10 | differently-worded source concepts, to concord |
-| S22 | all of the above, to attack |
+- **S05 / S09** — a public conventional-science chronology and the two
+  prior-art papers below.
+- **Q19 prior art** — the 2018 tetrahedron paper was in the corpus, so
+  the "could not verify" caveat from R10.1 is closed.
 
-Partially blocked: S04, S05, S11, S12 (schemas are implementable; the
-content that would populate them is not).
+### Still blocked, and why
 
-**No metadata was fabricated for any of it.** The pack forbids it, and it
-is the same discipline that kept `144.000` an untyped decimal.
+The source-message concordance (S06), the sighting/media ledger (S07),
+and the contamination graph (S08 over source authors) all operate on
+private transcript content. Their **engines** are built and public; the
+**rows** that would encode private material are kept in the private
+repository and never enter the public tree. That is not a limitation to
+be worked around -- it is the publication boundary working as intended.
+
+---
+
+## Two public papers, both correcting an overestimate
+
+**Module:** [`r10/priorart.py`](../../r10/priorart.py)
+
+**The firefly paper** (Silver 2026, *Am. J. Phys.* 94, 520-524,
+doi:10.1119/5.0325834) is titled "Resolving a century of
+overestimation", and that is its result. A firefly flash contains
+roughly **10⁸ to 10¹¹ photons — far fewer than the 10¹³ to 10¹⁴** implied
+by Coblentz's 1912 figure: a downward correction of two to six orders of
+magnitude. The honest number is a *range*, not a point, and it is
+smaller than the famous one. Quoting the old figure, or the top of the
+new range, would repeat the error the paper exists to correct.
+
+**The tetrahedron paper** (Vîlcu & Vîlcu 2018, *Annali di Matematica*
+197, 487-500, doi:10.1007/s10231-017-0688-6) is the exact prior art for
+the R10.1 inverse estimator. Q19 reproduced it but could not fetch the
+paper and recorded `prior_art.verified = False`. **The paper is now in
+hand and the citation is confirmed.** The reproduction stays a
+reproduction — the constants 20 and 60 were derived independently — so
+the mathematics does not change, only the provenance. And the paper's
+guarantee covers the uniform-interior case *only*, which is exactly the
+regime R10.1 showed the estimator needs and the pack's conditions
+violate.
+
+Neither citation authenticates any source claim. A source assertion that
+mentions fireflies, tetrahedra, or photons is not supported by a paper
+that merely shares its vocabulary; `refuse_lore_promotion()` enforces
+that.
+
+---
+
+## A public chronology, with the dates kept apart
+
+**Module:** [`r10/chronology.py`](../../r10/chronology.py)
+
+The chronology policy is strict that a "date" is nine separate fields —
+event start, observer-local, recording, publication, repost, retrieval,
+conventional-discovery, project-derivation, and more. The ledger keeps
+them separate and admits only **exact-timestamp or exact-date** items
+into the strict timeline.
+
+Populated with **public conventional-science events only** — Coblentz
+1912, the Chadwick→Pauli→Fermi beta-decay sequence, the
+Freedman→Drukier-Stodolsky→COHERENT CEvNS lineage, the two papers above.
+Of ten events, only **one** — Pauli's exactly-dated letter of 4 December
+1930 — has a strict date and enters the strict timeline. The other nine
+are year-only: real, searchable, but not strictly ordered, because a
+year is not a strict date. The sparse strict timeline is the discipline
+visible in the output.
+
+**Chronology is not causality.** 45 possible-access edges record who
+*could* have read what, by publication year — opportunity, never
+influence. `refuse_causal_claim()` refuses to turn precedence into
+causation, plagiarism, secrecy, or transfer.
+
+The source-message chronology, which would encode private material, is
+built in the private repository and never appears here.
 
 ---
 
@@ -138,8 +198,8 @@ that either frequency is physically privileged.**
 
 - No apparatus built, no crystal measured, no baseline exists.
 - No breach observed. `refuse_breach_claim()` raises unconditionally.
-- No chronology, concordance, or precedence result — the corpus is
-  absent.
+- No source-message concordance or precedence result is public — those
+  rows stay in the private repository.
 - **No person is classified as nonhuman or as any lore species**, and no
   personal encounter record, resemblance, or private journal content
   appears anywhere in this repository. The pack forbids it; so does
@@ -149,6 +209,6 @@ that either frequency is physically privileged.**
 
 ## Not executed
 
-S01–S08, S10–S16, S19–S23. That is most of the pack. The corpus-dependent
-phases are blocked; the remainder was not reached in this tranche and is
-not claimed as done.
+S12–S16 (node/topology embedding beyond R10.1), S19–S21, S23. The
+source-content phases (S06–S08, S10) have public engines but private
+rows by policy. Hardware remains deferred.

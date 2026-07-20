@@ -639,7 +639,16 @@ def test_report_does_not_claim_a_measurement():
 def test_report_carries_the_disclaimer():
     r = V.inverse_report(seed=1003)
     assert "hidden object is a tetrahedron" in r["what_this_does_not_say"]
-    assert r["prior_art"]["verified"] is False
+
+
+def test_prior_art_is_now_verified_against_the_supplied_paper():
+    """R10.2: the 2018 paper arrived with the private corpus, so the
+    Q19 'could not verify' caveat is closed. The reproduction stays a
+    reproduction; only the citation's status changed."""
+    r = V.inverse_report(seed=1003)
+    assert r["prior_art"]["verified"] is True
+    assert r["prior_art"]["doi"] == "10.1007/s10231-017-0688-6"
+    assert "reproduction is a reproduction" in r["prior_art"]["note"]
 
 
 def test_degradation_report_admits_the_undetected_failures():

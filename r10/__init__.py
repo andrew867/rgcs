@@ -13,11 +13,13 @@ from __future__ import annotations
 
 __all__ = [
     "breach",
+    "chronology",
     "cwarith",
     "cwontology",
     "energyledger",
     "firewall",
     "hcm",
     "inverse",
+    "priorart",
     "unruh",
 ]
