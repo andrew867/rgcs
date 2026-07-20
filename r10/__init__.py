@@ -11,5 +11,13 @@ explicit refusal for the claim it does not license.
 
 from __future__ import annotations
 
-__all__ = ["cwarith", "cwontology", "energyledger", "firewall", "hcm",
-           "inverse", "unruh"]
+__all__ = [
+    "breach",
+    "cwarith",
+    "cwontology",
+    "energyledger",
+    "firewall",
+    "hcm",
+    "inverse",
+    "unruh",
+]
