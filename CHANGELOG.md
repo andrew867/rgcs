@@ -52,7 +52,7 @@ Not executed: Q06, Q07, Q09-Q12, Q16, Q18, Q20-Q23.
 
 No relicensing. MIT unchanged.
 
-Tests: PLACEHOLDER passing (1 archived-environment byte test deselected
+Tests: 2808 passing (1 archived-environment byte test deselected
 by policy D-V3-04).
 
 ## [5.3.0] - 2026-07-19
