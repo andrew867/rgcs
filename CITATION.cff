@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 title: "RGCS v4 / RSCS 2.0: Resonant Geometry Computational System"
-version: 5.4.0
+version: 5.4.1
 date-released: "2026-07-19"
 license: MIT
 doi: 10.5281/zenodo.21387946
@@ -13,7 +13,7 @@ identifiers:
     value: 10.5281/zenodo.21387947
     description: "Zenodo archive of release v3.0.1 (previous version)"
   - type: url
-    value: https://github.com/andrew867/rgcs/releases/tag/v5.4.0
+    value: https://github.com/andrew867/rgcs/releases/tag/v5.4.1
     description: "GitHub release"
 authors:
   - family-names: Green

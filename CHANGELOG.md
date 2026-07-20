@@ -3,6 +3,42 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [5.4.1] - 2026-07-20
+
+R10.2 corpus import. The private source corpus was supplied and
+imported into the private source root: 70 files in, 53 byte-unique
+canonical files copied, all 53 SHA-256 hashes matching the manifest,
+17 exact duplicates skipped. The import is private (no remote, outside
+the public worktree); the public firewall reports zero findings.
+
+Two of the files are public academic papers and produce the public
+results. r10/priorart.py records both as CONVENTIONAL_LITERATURE, and
+both correct an overestimate. The firefly paper (Silver 2026) puts a
+flash at 1e8-1e11 photons, far fewer than the 1e13-1e14 of Coblentz
+1912 -- a downward correction of two to six orders, reported as a
+range. The tetrahedron paper (Vilcu & Vilcu 2018) is the exact prior
+art for the R10.1 inverse estimator, so the Q19 "could not verify"
+caveat is now closed; the reproduction stays independent and the
+mathematics is unchanged.
+
+r10/chronology.py keeps nine date roles separate and admits only exact
+dates into the strict timeline. Populated with public
+conventional-science events; of ten, only Pauli's exactly-dated 1930
+letter enters the strict timeline. 45 possible-access edges record
+opportunity, never influence, and refuse_causal_claim() refuses to
+turn precedence into causation.
+
+The 68 private transcripts stay private. No date, quotation, name or
+provenance derived from them appears in the public repository, and no
+real person is named, characterised, or classified as nonhuman or any
+lore species anywhere public. The source-content phases have public
+engines but private rows by policy.
+
+No relicensing. MIT unchanged.
+
+Tests: PLACEHOLDER passing (1 archived-environment byte test deselected
+by policy D-V3-04).
+
 ## [5.4.0] - 2026-07-20
 
 R10.2. Crystal breach as a measurable resonance shift, and typed
