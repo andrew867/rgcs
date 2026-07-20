@@ -45,7 +45,17 @@ STAMP_NAME = "_build_stamp.json"
 SOURCE_ROOTS = ("rgcs_desktop", "rgcs_workbench", "rgcs_core",
                 "rscs_core", "rscs2_core", "fkey_instrument",
                 "resonator_platform", "cspc", "pmwr", "r3", "r4",
-                "r6", "r7", "r8", "r9", "r10")
+                "r6", "r7", "r8", "r9", "r10",
+                # Q02 / R10-D-004: the inverse of R8-D-006. This lane
+                # ships in the wheel and sdist and is importable after
+                # pip install, but was outside the freshness hash, so a
+                # change to it would not invalidate a frozen dist. The
+                # asymmetry was defensible (it is not bundled into the
+                # frozen exe) but implicit, and the operator's standing
+                # decision is that a publicly shipped package must be
+                # hashed unless it is removed from every public
+                # artifact. It ships, so it is hashed.
+                "consciousness_lane")
 
 
 def repo_root() -> Path:

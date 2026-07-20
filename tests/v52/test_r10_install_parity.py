@@ -63,8 +63,8 @@ find_namespace_packages = setuptools.find_namespace_packages
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 
-#: Packages that are distributed but deliberately outside the
-#: build-freshness hash.
+#: Packages distributed but deliberately outside the build-freshness
+#: hash. **Empty since Q02** -- see R10-D-004 below.
 #:
 #: ``consciousness_lane`` is the quarantined theory lane. It is matched
 #: by the packaging ``include`` list, so ``pip install rgcs`` does put
@@ -76,7 +76,12 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 #: comment on the ``EXCLUDED`` entry in
 #: ``tests/v51/test_r8_source_coverage.py`` describes this lane as "not
 #: shipped", which is true of the frozen app and false of the wheel.
-DISTRIBUTED_NOT_HASHED = {"consciousness_lane"}
+#: Q02 / R10-D-004 resolved this. The operator's standing decision is
+#: that a publicly shipped package must be hashed unless it is removed
+#: from every public artifact. consciousness_lane ships, so it is now
+#: in SOURCE_ROOTS and this set is empty. An entry added here in future
+#: needs an explicit operator decision recorded alongside it.
+DISTRIBUTED_NOT_HASHED: set[str] = set()
 
 BUILD_PARITY_ENV = "RGCS_R10_BUILD_PARITY"
 
@@ -312,3 +317,37 @@ def test_built_wheel_declares_every_source_root_as_top_level(tmp_path):
     declared = set(zf.read(name).decode("utf-8").split())
     missing = _existing_roots() - declared
     assert not missing, f"absent from wheel top_level.txt: {sorted(missing)}"
+
+
+# --- Q02: the inverse defect (R10-D-004) ------------------------------
+
+def test_every_distributed_package_is_also_hashed():
+    """R10-D-004, the mirror of R8-D-006.
+
+    R8-D-006 was "hashed but not shipped". This is "shipped but not
+    hashed": consciousness_lane reached the wheel, the sdist and
+    top_level.txt, and was importable after pip install, while sitting
+    outside SOURCE_ROOTS -- so changing it could not invalidate a
+    frozen dist.
+
+    The operator's standing decision is that a publicly shipped
+    package must be hashed unless it is removed from every public
+    artifact. This asserts that direction, which the pre-existing
+    test_every_hashed_package_is_also_distributed does not.
+    """
+    shipped = {q for q in _discovered() if "." not in q}
+    missing = shipped - set(SOURCE_ROOTS)
+    assert not missing, (
+        f"packages distributed by pip but absent from SOURCE_ROOTS: "
+        f"{sorted(missing)}. A shipped package outside the freshness "
+        f"hash means changing it cannot invalidate a frozen dist.")
+
+
+def test_the_two_lists_are_now_exactly_equal():
+    """Neither direction may drift again."""
+    shipped = {q for q in _discovered() if "." not in q}
+    hashed = {r for r in SOURCE_ROOTS if (ROOT / r).exists()}
+    assert shipped == hashed, {
+        "shipped_not_hashed": sorted(shipped - hashed),
+        "hashed_not_shipped": sorted(hashed - shipped),
+    }
