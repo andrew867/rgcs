@@ -172,7 +172,7 @@ covariance-aware frame chaining catch real errors, or is it ceremony?
   and six SYNTHETIC simulator demos
   ([fkey docs](docs/v4/fkey/FKEY_INSTRUMENT.md)). The specimen is an
   eBay listing; all six hypotheses are UNTESTED.
-- **Status at the release commit (v5.4.0):** 2808 tests passed
+- **Status at the release commit (v5.4.0):** 2837 tests passed
   (1 archived-environment byte test deselected by policy D-V3-04);
   hosted CI 10/10 jobs green (Ubuntu/Windows/macOS); adversarial audit
   19/19 including the consciousness-lane quarantine check (G51);

@@ -41,7 +41,7 @@ Not executed: S01-S08, S10-S16, S19-S23.
 
 No relicensing. MIT unchanged.
 
-Tests: PLACEHOLDER passing (1 archived-environment byte test deselected
+Tests: 2837 passing (1 archived-environment byte test deselected
 by policy D-V3-04).
 
 ## [5.3.1] - 2026-07-20
