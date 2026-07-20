@@ -55,9 +55,42 @@ def test_findings_never_quote_the_leak():
 
 # --- the real repository ----------------------------------------------
 
-def test_public_working_tree_is_clean():
-    findings = F.scan_working_tree(ROOT)
+def test_committed_tree_is_clean():
+    """R10-D-003. The gate scans what is COMMITTED, because that is
+    what publication means. The working tree is the developer's disk
+    and carries transient state -- including files that tests/v4
+    rewrites mid-run (R10-D-002), which is exactly how this failed on
+    Linux CI while passing on Windows and macOS.
+    """
+    findings = F.scan_committed(ROOT)
     assert findings == [], [f.as_record() for f in findings]
+
+
+def test_the_gate_is_immune_to_test_suite_tree_mutation(tmp_path):
+    """The regression test for the CI failure itself.
+
+    A tracked file that is clean in the commit but dirtied on disk
+    must NOT trip the gate -- and must still trip the working-tree
+    scanner, so the pre-commit check keeps its teeth.
+    """
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+    subprocess.run(["git", "config", "user.email", "t@e.st"],
+                   cwd=repo, check=True)
+    subprocess.run(["git", "config", "user.name", "t"],
+                   cwd=repo, check=True)
+    f = repo / "inventory.json"
+    f.write_text('{"clean": true}\n')
+    subprocess.run(["git", "add", "inventory.json"], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-qm", "clean"], cwd=repo, check=True)
+
+    # a test run stamps a runner path into the tracked file
+    f.write_text('{"root": "/home/runner/work/repo/repo"}\n')
+
+    assert F.scan_committed(repo) == []          # gate: unaffected
+    assert F.scan_working_tree(repo) != []       # pre-commit: still bites
+    assert F.enforce(repo, check_history=False)["clean"]
 
 
 def test_public_git_history_carries_a_declared_residual():
@@ -86,7 +119,7 @@ def test_no_credentials_or_personal_identity_anywhere_in_history():
     assert serious == [], [f.as_record() for f in serious]
 
 
-def test_enforce_passes_on_the_live_tree():
+def test_enforce_passes_on_the_committed_tree():
     report = F.enforce(ROOT, check_history=False)
     assert report["clean"]
     assert report["finding_count"] == 0
@@ -104,8 +137,8 @@ def test_frozen_surface_exposure_is_declared_not_hidden():
 
 
 def test_frozen_surfaces_are_skipped_by_default_but_reachable():
-    default = F.scan_working_tree(ROOT)
-    with_frozen = F.scan_working_tree(ROOT, include_frozen=True)
+    default = F.scan_committed(ROOT)
+    with_frozen = F.scan_committed(ROOT, include_frozen=True)
     assert len(with_frozen) > len(default)
     assert default == []
 
@@ -114,8 +147,15 @@ def test_enforce_raises_when_something_is_found(tmp_path):
     repo = tmp_path / "repo"
     repo.mkdir()
     subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+    subprocess.run(["git", "config", "user.email", "t@e.st"],
+                   cwd=repo, check=True)
+    subprocess.run(["git", "config", "user.name", "t"],
+                   cwd=repo, check=True)
     (repo / "leak.md").write_text("the chosen one transcript\n")
     subprocess.run(["git", "add", "leak.md"], cwd=repo, check=True)
+    # must be committed: the gate scans the committed surface, and a
+    # staged-but-uncommitted file is not yet published (R10-D-003)
+    subprocess.run(["git", "commit", "-qm", "leak"], cwd=repo, check=True)
     with pytest.raises(F.LeakDetected) as e:
         F.enforce(repo, check_history=False)
     assert "Publication is blocked" in str(e.value)

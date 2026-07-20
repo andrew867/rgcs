@@ -127,22 +127,74 @@ def _is_frozen(rel: str, frozen=FROZEN_SURFACES) -> bool:
     return any(rel.startswith(f) for f in frozen)
 
 
-def scan_working_tree(root: Path, allowlist=POLICY_ALLOWLIST,
-                      include_frozen: bool = False) -> list[Finding]:
-    """Scan tracked text files in the working tree.
-
-    Frozen surfaces are skipped by default and reported separately by
-    :func:`frozen_surface_exposure`, so that a declared residual
-    exposure is never quietly counted as a clean pass.
-    """
-    out = []
+def _tracked(root: Path) -> list[str]:
     try:
-        tracked = subprocess.run(
+        return subprocess.run(
             ["git", "ls-files"], cwd=root, capture_output=True,
             text=True, check=True).stdout.splitlines()
     except (subprocess.CalledProcessError, FileNotFoundError):
-        return out
-    for rel in tracked:
+        return []
+
+
+def scan_committed(root: Path, allowlist=POLICY_ALLOWLIST,
+                   include_frozen: bool = False,
+                   ref: str = "HEAD") -> list[Finding]:
+    """Scan tracked files **as committed**, not as they sit on disk.
+
+    R10-D-003. This is the correct surface for a publication gate, and
+    the working-tree version was wrong in a way that took a red CI run
+    to expose.
+
+    ``tests/v4`` rewrites three tracked JSON files under
+    ``docs/v4/baseline/`` as a side effect of running (R10-D-002). On a
+    Linux CI runner those rewrites stamp in ``/home/runner/work/...``,
+    so the firewall — running later in the same session — found a
+    PRIVATE_PATH that **exists in no commit**. The committed files are
+    clean. It failed only on Linux, because Windows runners use
+    ``D:\\a\\`` and macOS ``/Users/``, neither of which the patterns
+    match.
+
+    Two lessons, and the second is the important one:
+
+    * a test suite that mutates tracked files will eventually be
+      mutating them underneath another test;
+    * "what is published" is what is **committed**. Scanning the
+      working tree measures the developer's disk, which is not the
+      thing being published and is full of transient state.
+
+    Use :func:`scan_working_tree` for a pre-commit check on local
+    edits; use this for the gate.
+    """
+    out = []
+    for rel in _tracked(root):
+        if rel in allowlist:
+            continue
+        if not include_frozen and _is_frozen(rel):
+            continue
+        if Path(rel).suffix.lower() not in TEXT_SUFFIXES:
+            continue
+        try:
+            text = subprocess.run(
+                ["git", "show", f"{ref}:{rel}"], cwd=root,
+                capture_output=True, text=True, check=True,
+                errors="ignore").stdout
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            continue
+        out.extend(scan_text(text, rel, "COMMITTED"))
+    return out
+
+
+def scan_working_tree(root: Path, allowlist=POLICY_ALLOWLIST,
+                      include_frozen: bool = False) -> list[Finding]:
+    """Scan tracked text files as they currently sit on disk.
+
+    Useful before committing local edits. **Not** the release gate --
+    see :func:`scan_committed` and R10-D-003: the working tree carries
+    transient state, including files that the test suite itself
+    rewrites mid-run.
+    """
+    out = []
+    for rel in _tracked(root):
         if rel in allowlist:
             continue
         if not include_frozen and _is_frozen(rel):
@@ -219,7 +271,7 @@ def frozen_surface_exposure(root: Path) -> dict:
     declared historical exposure is an honest state; a clean live tree
     with the history quietly excluded is not.
     """
-    all_findings = scan_working_tree(root, include_frozen=True)
+    all_findings = scan_committed(root, include_frozen=True)
     frozen = [f for f in all_findings if _is_frozen(f.path)]
     return {
         "frozen_surfaces": list(FROZEN_SURFACES),
@@ -266,9 +318,15 @@ def sanitized_export_record(private_hash: str, public_hash: str,
     }
 
 
-def enforce(root: Path, check_history: bool = True) -> dict:
-    """Full scan. Raises on any finding."""
-    findings = scan_working_tree(root)
+def enforce(root: Path, check_history: bool = True,
+            surface: str = "COMMITTED") -> dict:
+    """Full scan. Raises on any finding.
+
+    Defaults to the COMMITTED surface: that is what publication means,
+    and the working tree carries transient state (R10-D-003).
+    """
+    findings = (scan_committed(root) if surface == "COMMITTED"
+                else scan_working_tree(root))
     if check_history:
         findings += scan_git_history(root)
     report = {
