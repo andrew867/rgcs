@@ -152,6 +152,65 @@ of bookkeeping.**
 
 ---
 
+## Q19 — the estimator works, and its failures are confident
+
+**Module:** [`r10/inverse.py`](../../r10/inverse.py)
+
+Moment-based recovery of a tetrahedron's vertices from points sampled
+uniformly inside it, with the algebra derived rather than cited. The
+constants 20 and 60 fall out of `Cov(W) = (4I−J)/80` and the collapse of
+the third central moment (the cross terms each carry a factor `Σcᵢ = 0`);
+both are checked in `Fraction`.
+
+Recovery is clean N^(−1/2): 11.3% at N=100, 1.2% at 10k, 0.22% at 300k.
+Below ~300 points the method is unusable, which is reported rather than
+omitted.
+
+### The result that matters: the errors are biases, not noise
+
+| Broken assumption | Error | Diagnostics catch it? |
+|---|---|---|
+| Non-uniform density (α=2) | **25.5%** | **No** |
+| Non-uniform density (α=4) | 45.8% | No |
+| Rotation 22.5° | **19.6%** | **No** |
+| Translation drift ≈ 1 scale | **95.2%** | **No** |
+| Density against one face | — | Yes |
+| Shell inside the insphere | — | Yes |
+
+At α=2 the error is 25.1% / 25.6% / 25.5% at N = 10⁴ / 10⁵ / 10⁶.
+**More data makes the wrong answer more precise.** Three of six broken
+assumptions produce confident wrong answers with healthy-looking
+diagnostics.
+
+### Two constructive non-identifiability results
+
+**Second moments never identify a tetrahedron.** `M = S^(1/2) R S^(−1/2)`
+preserves mean, covariance *and* volume while changing the shape. Three
+familiar summary statistics agreeing is not identification — which is
+exactly why the third moment is required.
+
+**Shell-confined observations are non-identifiable outright.** Two
+tetrahedra with volume ratio 1.42 share an insphere; shell samples from
+them agree to 1e-9, while an independent control differs. Tetrahedra have
+12 degrees of freedom and spheres have 4, so the equivalence class is an
+**8-parameter family**. This is impossibility, not difficulty.
+
+### What it does not license
+
+Classed `LITERATURE_REPRODUCTION`. Per the pack's own firewall, *a
+tetrahedral inverse estimator is not proof that the hidden object is
+tetrahedral*. The estimator does reject a box, a Gaussian and a square
+pyramid — so "it returns a tetrahedron for anything" is false — but those
+alternatives were hand-chosen from an unbounded model space, and the
+failure modes it does **not** detect are precisely the pack's conditions:
+non-uniform density, shell support, and motion.
+
+The 2018 prior art could not be fetched in this environment. Nothing is
+attributed to it, and `inverse_report()["prior_art"]["verified"]` is
+`False`.
+
+---
+
 ## Still open
 
 - Q06, Q07, Q09–Q12, Q16, Q18, Q20–Q23 not executed.

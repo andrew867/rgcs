@@ -3,6 +3,58 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [5.3.1] - 2026-07-20
+
+R10.1. Hedron coordinate mapping -- roots, topology, address, shells --
+and the tetrahedron inverse estimator. Software verified, physically
+untested.
+
+The addressing arithmetic is exact: 4096**3 == 8**12 == 2**36, so
+twelve levels of one-to-eight refinement is exactly thirty-six bits and
+three 12-bit words, reaching 1.5554 km from a 6371.0088 km mean radius.
+
+Three refusals carry the phase. "Twenty regions" does not specify a
+topology, because twenty icosahedral faces and twenty dodecahedral
+vertices both give twenty and their adjacency graphs differ; both are
+implemented and neither assumed. Twelve levels is a RETROSPECTIVE_FIT,
+chosen because it reaches the target scale rather than predicted -- and
+the tidiness of 8**12 == 2**36 is a property of the radix, not a
+discovery about Earth. The 2500-statute-mile shell converts to
+4023.36 km exactly, and that exactness belongs to the 1959 definition
+of the mile rather than the source, so the honestly reportable figure
+is 4000 km.
+
+Q19 reproduces moment-based recovery of a tetrahedron's vertices, with
+the constants 20 and 60 derived in Fraction rather than fitted.
+Recovery is clean N^(-1/2). The result that matters is the failure
+analysis: under non-uniform density the error is a bias, not noise --
+25.1%, 25.6%, 25.5% at N = 1e4, 1e5, 1e6, so more data makes the wrong
+answer more precise. Three of six broken assumptions produce confident
+wrong answers with healthy diagnostics.
+
+Two constructive non-identifiability results. Second moments never
+identify a tetrahedron: a similarity transform preserves mean,
+covariance and volume while changing shape. Shell-confined observations
+are non-identifiable outright: two tetrahedra with volume ratio 1.42
+share an insphere and their shell samples agree to 1e-9, an
+8-parameter equivalence class. Impossibility, not difficulty.
+
+Q02 closes R10-D-004, the inverse of R8-D-006. consciousness_lane
+shipped in the wheel while outside SOURCE_ROOTS, so changing it could
+not invalidate a frozen dist. Per the operator's standing decision a
+publicly shipped package must be hashed; both directions are now
+asserted and the two lists must be exactly equal.
+
+Q04 remains BLOCKED. No 144.000 source frame exists and the pack
+forbids fabricating metadata for it.
+
+Not executed: Q06, Q07, Q09-Q12, Q16, Q18, Q20-Q23.
+
+No relicensing. MIT unchanged.
+
+Tests: PLACEHOLDER passing (1 archived-environment byte test deselected
+by policy D-V3-04).
+
 ## [5.3.0] - 2026-07-19
 
 R10. CW ontology and exact arithmetic with a proper null hierarchy, a
