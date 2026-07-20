@@ -3,6 +3,47 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [5.4.0] - 2026-07-20
+
+R10.2. Crystal breach as a measurable resonance shift, and typed
+separation of the pump branches. Software verified, physically
+untested, hardware deferred.
+
+Breach now has an operational definition -- a persistent change in a
+crystal's resonant frequency -- which is an improvement because it can
+be wrong. The module's job is to make that hard to fake. A quartz
+resonator drifts for six ordinary reasons totalling 12.5 ppm typical
+and 153 ppm worst case with nothing controlled, falling to 2.0 ppm
+once everything controllable is controlled, with aging irreducible.
+
+No exotic verdict exists on any code path, enforced by test: no
+verdict may contain BREACH, CONFIRMED, EXOTIC or ANOMAL. The best
+available outcome is UNEXPLAINED_BY_THIS_BUDGET, which names what was
+not controlled and disclaims itself -- the commonest explanation for a
+shift outside a budget is a cause missing from the budget. A claim
+with no baseline is refused outright rather than scored, because
+aging guarantees the frequency was already drifting.
+
+8 Hz * 2**9 = 4096 Hz exactly; 20.48 = 512/25 and 20.48 * 200 = 4096
+exactly. The three low branches differ by 2.4-5%, and whether that
+matters is decided from Q rather than taste: inside one linewidth at
+Q=10, and 2400 linewidths apart at the Q a quartz crystal actually
+has. Nine doublings from 8 reaches 4096 the way nine from 7 reaches
+3584 -- a property of the radix, not a privileged frequency.
+
+Most of the pack is BLOCKED: the private corpus contains zero files,
+so the chronology, concordance, precedence and contamination phases
+cannot run. No metadata was fabricated. No person is classified as
+nonhuman or as any lore species, and no personal encounter record or
+private journal content appears in this repository.
+
+Not executed: S01-S08, S10-S16, S19-S23.
+
+No relicensing. MIT unchanged.
+
+Tests: PLACEHOLDER passing (1 archived-environment byte test deselected
+by policy D-V3-04).
+
 ## [5.3.1] - 2026-07-20
 
 R10.1. Hedron coordinate mapping -- roots, topology, address, shells --
