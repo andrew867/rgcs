@@ -3,6 +3,50 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [5.5.0] - 2026-07-21
+
+R10.3. Five typed engines from a lore pack on a nine-density ontology,
+a toroidal-Source cosmology, geographic node/gateway sites, and coil
+quadrature. Software verified, physically untested, hardware deferred.
+PHYSICAL_VALIDATION_NOT_CLAIMED.
+
+The headline is the node look-elsewhere null (r10/nodes.py), the CW
+EXPLAINED_BY_CONSTRUCTION result in geography. Fitting a few sites to a
+polyhedron gives five solids, a 3-DOF orientation, free vertex
+assignment and a chosen tolerance, so a handful of points fits
+something almost always. alignment_pvalue() runs the same search on
+random sites: 4 random fit to 13.5 deg (null median 13.5, p=0.51), 8
+random to 17.2 (p=0.24). It has power -- an exact rotated cube scores
+p=0.003 -- so the null is meaningful. Public registry holds public
+heritage coordinates only; Antarctica and a Bahamas crystal-sphere
+narrative stay LOCATION_UNKNOWN, gateway/stargate pinned UNSUPPORTED.
+
+r10/density.py enforces that source "density" is not mathematical
+dimension and not mass density. Only two numbers are supplied (0.5 at
+step 6, Source at 9), so steps 1-5 are UNSUPPLIED and 7-8 are
+model-derived bands, not point values.
+
+r10/polarity.py: four channels at 0/90/180/270 make a constant-
+magnitude rotating field (ripple 3e-16); four spatial poles are not
+four charge polarities. Six-phase and dual-three-phase are identical;
+alternating triads step rather than rotate.
+
+r10/toroid.py: a torus is ordinary geometry and the zero-point is a
+hole. Toroidal EM is not spacetime torsion, and no channel beats light
+-- a 0-second latency over 1 AU (floor 499 s) is PHYSICALLY_IMPOSSIBLE.
+
+The private hypothesis delta, source transcripts, and named-site rows
+stay private. No real person is named or classified. Operator-specific
+site hypotheses are tested privately with the public engine.
+
+Not executed: P01, P06 beyond the causality firewall, P09-P14, P16,
+P18-P23. Apparatus phases remain deferred hardware.
+
+No relicensing. MIT unchanged.
+
+Tests: PLACEHOLDER passing (1 archived-environment byte test deselected
+by policy D-V3-04).
+
 ## [5.4.1] - 2026-07-20
 
 R10.2 corpus import. The private source corpus was supplied and
