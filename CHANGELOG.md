@@ -44,7 +44,7 @@ P18-P23. Apparatus phases remain deferred hardware.
 
 No relicensing. MIT unchanged.
 
-Tests: PLACEHOLDER passing (1 archived-environment byte test deselected
+Tests: 2948 passing (1 archived-environment byte test deselected
 by policy D-V3-04).
 
 ## [5.4.1] - 2026-07-20
