@@ -3,6 +3,51 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [5.6.0] - 2026-07-21
+
+R10.6. The Vortex Opening Key pack: base-10 unpacking, the exact phase
+frames, and the fading-memory crystal hypothesis. Software verified,
+physically untested, hardware deferred. PHYSICAL_VALIDATION_NOT_CLAIMED.
+
+"You have to unpack it from your base 10 system" is treated as a
+reversible-view search, not an octal assumption -- octal is not even
+well defined here since the vectors contain 8s and 9s. Five reversible
+views round-trip the five twelve-digit vectors byte-for-byte, and the
+result is NO_DECODER_IDENTIFIED for the structural reason that a
+reversible codec relocates information but cannot create it. The shared
+16287 prefix is band clustering (p=0.0001), not content
+(span-matched null p=0.86). The R9 lesson again.
+
+The phase frames are exact rational arithmetic: 4096 = 2^12,
+20.48 = 512/25, periods 244.140625 us and 48.828125 ms, q = 925/4096.
+The one honesty hinge is the ratio match -- q^-1 = 4096/925 is close to
+8300/1876 but NOT equal, residual 1649/433825 exactly, about 0.086%,
+and refuse_exact_ratio_claim() refuses to call it an identity.
+
+The fading-memory crystal is a typed hypothesis, and the firewall is
+its point: a decaying trace has the same functional form as ordinary
+relaxation, and over 65 stage-times the two curves are point-for-point
+identical (max difference 0). Only ordered delayed readout separates a
+memory from a passive ringdown, and that needs a bench test that does
+not exist. Dispersion strictly costs stages, making the register worse
+than a single cell.
+
+The Tier-A sources SRC_JH (Jen Han) and SRC_LS (The L's) are
+registered privately with public alias OMEGA_REGION_SOURCE; the
+twelve-word Vortex Opening Key and the private delta are preserved
+byte-for-byte in the private repository with SHA-256 provenance. No
+name, key word, or journal text appears in the public tree.
+
+Not executed: the astronomy/route phases (roots-first Sun/Earth/Moon/
+Mars, solar-emission centroid, slate photogrammetry, density-layer
+routing), the apparatus phases, and the holdout reveals (no future
+vector or measurement exists yet to reveal against). Hardware deferred.
+
+No relicensing. MIT unchanged.
+
+Tests: PLACEHOLDER passing (1 archived-environment byte test deselected
+by policy D-V3-04).
+
 ## [5.5.0] - 2026-07-21
 
 R10.3. Five typed engines from a lore pack on a nine-density ontology,
