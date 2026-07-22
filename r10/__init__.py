@@ -12,6 +12,7 @@ explicit refusal for the claim it does not license.
 from __future__ import annotations
 
 __all__ = [
+    "base10",
     "breach",
     "chronology",
     "cwarith",
@@ -22,6 +23,7 @@ __all__ = [
     "hcm",
     "inverse",
     "nodes",
+    "phaseframes",
     "polarity",
     "priorart",
     "toroid",
