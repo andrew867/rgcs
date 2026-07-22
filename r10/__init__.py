@@ -15,6 +15,7 @@ __all__ = [
     "base10",
     "breach",
     "chronology",
+    "crystalmem",
     "cwarith",
     "cwontology",
     "density",
