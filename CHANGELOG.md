@@ -45,7 +45,7 @@ vector or measurement exists yet to reveal against). Hardware deferred.
 
 No relicensing. MIT unchanged.
 
-Tests: PLACEHOLDER passing (1 archived-environment byte test deselected
+Tests: 3014 passing (1 archived-environment byte test deselected
 by policy D-V3-04).
 
 ## [5.5.0] - 2026-07-21
