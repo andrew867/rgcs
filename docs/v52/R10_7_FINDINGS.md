@@ -163,19 +163,19 @@ Nothing is measured; no apparatus exists.
 ## Private records (never public)
 
 Two records were written to the **private repository only** (0 remotes,
-outside the public worktree, OneDrive-synchronized):
+outside the public worktree, OneDrive-synchronized). Their particulars —
+which concern a real named individual and personal observation — are
+**not reproduced here**; only their handling is described:
 
-- **San Antonio provenance trail** — the particulars are recorded
-  verbatim (the date window, the locale, the address *as given* with no
-  "Blvd" invented, and the named person *as given*). **Every item after
-  the source message is a lead, not a fact.** No independent verification
-  was performed, and none was fabricated — this environment has no
-  authorized archive access. Prior exposure is left `UNKNOWN`, chronology
-  tension is preserved rather than smoothed, and **no claim is made about
-  any real person.** Overall verdict `ASSOCIATIVE_TRAIL / UNRESOLVED`.
-- **Field-observation record** — the raw narrative (≈2 am, a steady bright
-  light, 8–10 s, silent) is immutable. With no estimable angular span the
-  engine returns `INSUFFICIENT_GEOMETRY`; the classification is withheld,
+- A **source-provenance trail** records the source's particulars
+  verbatim, treats **every item after the source message as a lead, not
+  a fact**, performs (and fabricates) **no independent verification**,
+  leaves prior exposure `UNKNOWN`, preserves chronology tension rather
+  than smoothing it, and **makes no claim about any real person**.
+  Overall verdict `ASSOCIATIVE_TRAIL / UNRESOLVED`.
+- A **field-observation record** holds one personal observation with its
+  raw narrative immutable. With no estimable angular span the engine
+  returns `INSUFFICIENT_GEOMETRY`; the classification is withheld,
   neither ordinary nor exotic asserted or excluded. Status
   `UNIDENTIFIED_OBSERVATION`.
 

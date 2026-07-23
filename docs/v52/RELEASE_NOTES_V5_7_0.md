@@ -72,10 +72,12 @@ Tier-A private sources** under the single public alias
 `OMEGA_REGION_SOURCE`. The five twelve-digit CW vectors and the
 twelve-word Vortex Opening Key are preserved **byte-for-byte**
 (integrity re-verified against the R10.6 SHA-256 receipt — all match).
-A San Antonio provenance trail and a field-observation record were
-written to the **private repository only**: recorded verbatim, every
-post-message item a lead, **no independent verification performed or
-fabricated**, and no claim about any real person.
+A source-provenance trail and a field-observation record — whose
+particulars concern a real named individual and a personal observation —
+were written to the **private repository only** and are not reproduced
+publicly: recorded verbatim, every post-message item a lead, **no
+independent verification performed or fabricated**, and no claim about
+any real person.
 
 ## Verification
 

@@ -38,10 +38,11 @@ The Tier-A private sources SRC_JH (Jen Han) and SRC_LS (The L's) carry
 forward as distinct records under the single public alias
 OMEGA_REGION_SOURCE; the five twelve-digit CW vectors and the twelve-
 word Vortex Opening Key are preserved byte-for-byte (integrity
-re-verified). The San Antonio provenance trail and the field-observation
-record are held privately only, verbatim, with every post-message item
-a lead, no independent verification performed or fabricated, and no
-claim about any real person.
+re-verified). A source-provenance trail and a field-observation record,
+whose particulars concern a real named individual and a personal
+observation, are held privately only (not reproduced publicly),
+verbatim, with every post-message item a lead, no independent
+verification performed or fabricated, and no claim about any real person.
 
 Not executed: density-layer routing, the apparatus/field-solver phases,
 the blinded/prospective harness run (no future vector, slate angle, or
