@@ -3,6 +3,65 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [6.0.0] - 2026-07-23
+
+R11. A new top-level research package (r11) covering body-specific
+planetary magnetic roots, a South-Up Earth face frame with a face-local
+magnetic-gradient zero, moving-shell observations and compressed
+binary-to-octal address envelopes, a four-fraction phase alphabet,
+crystal-derived carrier searches, Cs-137/Ba-137 coarse ages with Cs-133
+fine phase, a dynamical-boundary photon lane, atomic-clock architecture,
+orbital-versus-atomic scaling nulls, an exhaustive numeric corpus, and
+decoder identifiability. Major version because r11 is a new public
+package and tests/v6 a new suite root. Software verified, physically
+untested. PHYSICAL_VALIDATION_NOT_CLAIMED.
+
+Final verdict: R11_GREEN_MODELS_IMPLEMENTED_DECODER_NOT_IDENTIFIED.
+
+Gate Zero: the required start state (commit, tag, clean worktree, suite of
+record, private files ignored) verified. One condition could not be met --
+alleged-communicator identity strings exist in the public tree and in
+immutable history back to the frozen v2.0.0 baseline. Removing them would
+require rewriting published history and re-cutting released tags, which
+release policy forbids. Per operator decision it is WAIVED and recorded as
+a DECLARED_RESIDUAL_EXPOSURE (r11/sources.py), by category rather than by
+restating the strings, following the precedent already used for the frozen
+v2.0.0 absolute-path residual. R11 adds no new identity strings and
+refuses to.
+
+Twelve modules, 577 new tests. Highlights, all of them negative or
+bounded: a single quadratic channel maps 240 and 300 degrees to the same
+value, so it cannot carry the four-symbol alphabet (computed, not
+asserted); the crystal-carrier candidate scores look-elsewhere p = 0.35,
+NO_BETTER_THAN_CHANCE; the random order-statistic null is competitive with
+every structured orbital-spacing law (p = 0.16); Cs-133 aliasing falls from
+about 1.6e19 to 1.7e10 with a second carrier and still leaves no unique
+epoch; a time-dependent boundary yields a multimode Bogoliubov state, not a
+broken photon and not a new particle, and the instantaneous-switching
+divergence is an unphysical idealization rather than free energy; and no
+decoder beat chance on any null while the power control separates cleanly
+on planted data.
+
+Two corrections to the source pack's own arithmetic, recorded rather than
+adopted: the exact base for 9192 (13788 Hz) sits 15.72 Hz ABOVE the finest
+computed mode, not "0.03 Hz below" (wrong in sign and about 500x in
+magnitude); and the reference shell radii require R_E = 6371.0087455872 km,
+not 6371.0.
+
+Red team: 16 named attacks, each failing with a typed reason. The new r11
+package is registered in BOTH packaging lists (pyproject include and
+build_meta SOURCE_ROOTS), closing the trap that silently shipped nothing
+in v4.9.0-v5.1.0.
+
+Not established: no ship, no external transmission, no new particle, no
+decoded location, no unique epoch, no planetary terraforming system, no
+physical crystal effect. Hosted CI remains unavailable (free-tier Actions
+minutes exhausted); the local full suite on the exact commit is the
+verification of record. No relicensing. MIT unchanged.
+
+Tests: 4062 passing (1 archived-environment byte test deselected
+by policy D-V3-04).
+
 ## [5.9.0] - 2026-07-23
 
 R10.10. Natural-geological-quartz source requirement, the verified postwar
