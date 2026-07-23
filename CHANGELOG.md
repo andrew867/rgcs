@@ -3,6 +3,54 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [5.8.0] - 2026-07-23
+
+R10.8. A handshake protocol, an EMI survey, a 13 MHz microcrystal model,
+atomic-time standards, and the 1604/1644 numeric cues, all from a private
+source session. Software verified, physically untested, hardware
+deferred. PHYSICAL_VALIDATION_NOT_CLAIMED.
+
+The firewalls come first. The session contained claims that would be
+dangerous if acted on -- alleged differential viral effects on hidden
+groups, hidden hybrid/genetically-modified populations, medical
+predictions, and investment tips. r10/claimfirewall.py preserves each as
+a source record and refuses to do more: no person classified as nonhuman/
+hybrid/genetic, no biology inferred from group, no pathogen or group-
+targeted medical analysis, no medical advice, no accusation, no financial
+action. Every quarantined claim is UNSUPPORTED and cannot be promoted.
+Human exposure is prohibited throughout: the 925 Hz handshake
+(r10/handshake.py) is software-only with no pineal/brain/subliminal/RF/
+optical/acoustic/electrical path; grounding never overrides electrical
+safety (r10/txline.py); financial cues are paper-trading only
+(r10/prospective.py).
+
+Eighteen new r10 modules (261 new tests): session, nolookahead, numcue
+(provenance); cue1604 (1604 vs 925*sqrt(3) is APPROXIMATE_NOT_EXACT and
+NO_BETTER_THAN_CHANCE, look-elsewhere p=1.0; 1644-1604=40 no meaning);
+handshake; microcrystal (13 MHz BVD, refuses free-space wavelength in
+quartz); multiframe (exact closures 15.625 ms / 40 ms / 1 s); timebase
+(cesium 9192631770 Hz definition, Allan deviation; live data blocked);
+emisurvey (blinded ABAB, measured data blocked); txline; envlog; pcemi
+(refocus degrades monotonically under EMI); routebind (no retrofit);
+memhandshake; extcompare (publication-time discipline); skycorr
+(UNIDENTIFIED_CORRELATION_ONLY); prospective (paper-trading only, failures
+retained).
+
+The private 2026-07-22 session archive and the quarantined claims are held
+in the private repository only; no name, session text, opening-key word,
+or CW vector digit enters the public tree.
+
+Not executed: measured EMI spectra, environmental captures, live atomic-
+time data, apparatus/bench, prospective outcomes, and real external-corpus
+ingestion. Hardware and future-data phases deferred.
+
+CI note: the free-tier GitHub Actions minutes are exhausted; this release
+was verified by the full local suite on the exact release commit, not by
+hosted CI. No relicensing. MIT unchanged.
+
+Tests: 3340 passing (1 archived-environment byte test deselected
+by policy D-V3-04).
+
 ## [5.7.0] - 2026-07-23
 
 R10.7. Rooted interbody routing, solar/slate calibration roots, a
