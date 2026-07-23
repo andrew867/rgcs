@@ -3,6 +3,55 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [5.9.0] - 2026-07-23
+
+R10.10. Natural-geological-quartz source requirement, the verified postwar
+quartz-growth patent timeline, a natural-vs-synthetic matched experiment,
+CW codec V2, nonlinear optics, nonlinear inverse estimation, and bus-
+factor-zero continuity. Software verified, physically untested, hardware
+deferred. PHYSICAL_VALIDATION_NOT_CLAIMED.
+
+The verified history (r10/quartzhistory.py): the postwar synthetic-quartz
+patent timeline through Brush, Clevite, and Bell Labs is
+POSTWAR_QUARTZ_INDUSTRIAL_TIMELINE_VERIFIED and the defense-company overlap
+is DEFENSE_COMPANY_OVERLAP_VERIFIED -- but CLASSIFIED_TECHNOLOGY_LINK_NOT_
+ESTABLISHED. Corporate/defense adjacency is ordinary industrial history,
+not a hidden lineage; chronology is not causation. Patent dates are
+HISTORICAL_FACT as sourced, not independently re-verified against a patent
+office.
+
+Natural quartz (r10/naturalsource.py, natsynth.py, specimen.py,
+characterize.py): the private "natural quartz is required" hypothesis is
+translated publicly to a single disciplined statement -- geological growth
+history is an independent experimental variable, SOURCE_REQUIRED_
+EXPERIMENTALLY_UNRESOLVED. Consciousness is never published as materials
+science; synthetic quartz, fused silica, and glass are mandatory controls.
+The matched protocol is blinded, preregistered, with a label-shuffle null
+(power proven), multiplicity correction, and ordinary differentiators
+explaining any difference first. A seller label is not provenance (origin
+VERIFIED only with chain of custody); real specimens BLOCKED_NO_SPECIMENS.
+
+Ten new r10 modules (143 new tests): quartzhistory, naturalsource,
+natsynth, specimen, characterize, cwcodec2 (40-bit packed decimal, null
+windows, collision audit, no retrofit; NO_DECODER_IDENTIFIED carried
+forward), codecbind (a number is not a coordinate without frame+epoch+
+uncertainty), nlinverse (non-identifiability detection + coverage-
+calibrated uncertainty), nlo (quartz SHG real but NOT_PHASE_MATCHABLE_IN_
+BULK_QUARTZ), continuity (deterministic manifest, export/restore, clean-
+room successor drill).
+
+The required 30-document public documentation set is delivered under
+docs/v59/, each with authority, scope, last-verified commit, prerequisites,
+related code/tests/schemas, known limitations, and next-review trigger. The
+private natural-quartz interpretation is kept in the private repository.
+
+Not executed: the matched experiment (no specimens), any characterization
+measurement, hosted CI (free-tier Actions minutes exhausted -- local suite
+is the verification of record). No relicensing. MIT unchanged.
+
+Tests: 3485 passing (1 archived-environment byte test deselected
+by policy D-V3-04).
+
 ## [5.8.0] - 2026-07-23
 
 R10.8. A handshake protocol, an EMI survey, a 13 MHz microcrystal model,
