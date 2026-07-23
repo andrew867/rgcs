@@ -234,7 +234,12 @@ class CorrectionReceipt:
 #: Path fragments that mark the ignored private area. Public generation
 #: must never read from these.
 PRIVATE_MARKERS = ("internal-docs", "private_operator_delta",
-                   "PRIVATE_OPERATOR_DELTA")
+                   "PRIVATE_OPERATOR_DELTA",
+                   # R11.1: the pack ships its own private directory, and
+                   # Gate Zero forbids reading or committing it. The R11.1
+                   # red team found this marker missing -- the guard did
+                   # not recognise the very path it was meant to block.
+                   "private_do_not_commit")
 
 
 def is_private_path(path: str | Path) -> bool:
