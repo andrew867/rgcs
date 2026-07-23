@@ -3,6 +3,69 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [6.2.0] - 2026-07-23
+
+R11.1. Exact N=7 acoustic geometry and its one-seventh phase identity, a
+multiscale mode-mixing layer with five typed domains, a frozen
+pi-correction registry, a historical angle-reconstruction audit, a
+preregistered rotating-field experiment, and an energy ledger. Eight new
+r11 modules; additive only, no completed R11 work reset and no public
+history rewritten. PHYSICAL_VALIDATION_NOT_CLAIMED.
+
+Final verdict:
+R11_1_GREEN_MODELS_AND_EXPERIMENTS_IMPLEMENTED_NO_NEW_PHYSICS_CLAIM.
+
+The critical identity. Under L = v/(2Nf) the acoustic round trip takes
+2L/v = 1/(Nf), so the drive phase accumulated is f*2L/v = 1/N turn --
+for N=7 exactly 1/7 turn = 360/7 = 51.428571428571 degrees. Proved with
+Fraction and parametrized over 24 N x 3 f x 3 v; v and f cancel
+identically. That invariance is also the reason it is not evidence: a
+relation that holds for every N, f and v cannot fail, so it is a
+definition rather than a discovery and says nothing about quartz or about
+4096 Hz. refuse_identity_as_evidence() enforces that. The lengths
+(L = 110.0376674 mm, round trip 34.877232 us) come from a scalar model
+with a proxy velocity and are a control, not a specimen prediction.
+
+The 51.843 degree reconstruction is registered as
+RETROSPECTIVE_NUMERIC_MATCH and capped there. atan(sqrt(phi)) + pi/200 =
+51.843000336 degrees, residual 3.36e-07 -- but 51.843 is quoted to three
+decimals and so carries +/-0.0005 degrees of slack, making the agreement
+about 1487x finer than the input's own precision; 60 simple c/N
+corrections fit inside that slack. Within the FROZEN pi/k family only
+k=200 fits (runner-up k=192 is 1948x worse), and both facts are reported.
+pi/200 is radian-flavoured but used as degrees, so the relation is
+UNIT_CATEGORY_MIXED. Historical evidence status is BLOCKED_MISSING_DATA:
+no primary source documenting a derivation was located, a slide rule
+cannot single the expression out, and 51 deg 51 min 51 sec = 51.8641667 is
+a different number. The pi-denominator family is frozen before scoring.
+
+Mode mixing: one shared coupled-mode core with five typed adapters
+(III-V lattice, macroscopic quartz elastic, BVD electrical, optical
+cavity, dynamic boundary). Every ordered cross-domain transfer is refused.
+The teeth are rotation-versus-squeeze: both 2x2 with unit determinant, but
+conserving x^2+y^2 and x^2-y^2 respectively -- identical algebra,
+different physics.
+
+The rotating-field interruption experiment is preregistered and NOT run
+(14 observables BLOCKED_MISSING_DATA, eight controls required, prediction
+set SHA-256 frozen). The energy ledger refuses to call transferred energy
+loss, catches hidden-basis energy, requires switching work, and reports
+E_unclosed as an interval that is currently vacuous because every term is
+uncalibrated.
+
+Red team: 16 mandated attacks, each failing with a typed reason. Attack 16
+found a real hole -- refuse_private_delta_read did not recognise
+private_do_not_commit/, the directory this pack's Gate Zero forbids. The
+marker was added and the guard now blocks it.
+
+Not established: no new particle, no transport, no unknown-energy channel,
+no bench measurement, no historical authorship. Hosted CI remains
+unavailable; the local suite on the exact commit is the verification of
+record. No relicensing. MIT unchanged.
+
+Tests: 4936 passing (1 archived-environment byte test deselected
+by policy D-V3-04).
+
 ## [6.1.0] - 2026-07-23
 
 R11 delta. Exact timing, classical dynamic boundaries, a truncated-photon
