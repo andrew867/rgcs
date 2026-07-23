@@ -121,12 +121,27 @@ SOURCE_REGISTRY: tuple[SourceRecord, ...] = (
                  "quantum-optics literature",
                  SourceKind.CONVENTIONAL_LITERATURE,
                  "Superconducting-circuit dynamical Casimir observations"),
-    SourceRecord("SRC_TRUNCPHOTON", "Time-dependent-boundary photon paper (2026) "
-                 "and supplementary material", "cited preprint/paper",
-                 SourceKind.BLOCKED_MISSING_DATA,
-                 "Referenced by the R11 pack (citation only)",
-                 notes="full text not ingested in this environment, so its "
-                       "claims are not independently verified here"),
+    SourceRecord("SRC_TRUNCPHOTON",
+                 "A truncated photon (Rukan, Gulla & Skaar, Univ. of Oslo)",
+                 "arXiv:2510.21636v2, dated 26 May 2026",
+                 SourceKind.ESTABLISHED_SOURCE,
+                 "arXiv:2510.21636v2 'A truncated photon', main text and "
+                 "supplemental material",
+                 notes="INGESTED in the R11 delta and hash-verified; its "
+                       "equations are REGISTERED in r11/photonadapter.py, "
+                       "not re-derived. No QFT solver exists here, so no "
+                       "quantum result is reproduced or bench-validated"),
+    SourceRecord("SRC_CAVITY_MODEMIX",
+                 "Efficient operator method for modelling mode mixing in "
+                 "misaligned optical cavities (Hughes, Doherty, Blackmore, "
+                 "Horak & Goodwin)",
+                 "arXiv:2306.05929v2, Oxford / Southampton",
+                 SourceKind.CONVENTIONAL_LITERATURE,
+                 "arXiv:2306.05929v2, Fabry-Perot mode mixing under "
+                 "transverse mirror misalignment",
+                 notes="supplied alongside the R11 delta. Conventional "
+                       "cavity optics; registered for the optical detector "
+                       "lane. No R11 claim depends on it"),
     SourceRecord("SRC_ORBITS", "Planetary orbital dynamics and hydrogenic "
                  "orbital scaling", "standard texts",
                  SourceKind.CONVENTIONAL_LITERATURE,
@@ -134,6 +149,40 @@ SOURCE_REGISTRY: tuple[SourceRecord, ...] = (
 )
 
 _BY_ID = {s.source_id: s for s in SOURCE_REGISTRY}
+
+#: SHA-256 of reference PDFs ingested in the R11 delta, verified by
+#: re-hashing the actual files. The documents themselves are NOT in the
+#: public tree; only their identity and digest are recorded here.
+REFERENCE_HASHES: dict[str, str] = {
+    "SRC_TRUNCPHOTON":
+        "b9e54ac8b1f7a4f7a1d00f98d540d1941684f3483bc4b96648337a6693f6472e",
+    "SRC_CAVITY_MODEMIX":
+        "e6cf53234d6b99a23d63caffbe79e0e0b755de88d30078d0cad5559747a3cfd6",
+}
+
+#: A provenance note the delta forced into the open. The R11 delta named
+#: the truncated-photon paper and gave its digest, but the file actually
+#: attached to the request was a DIFFERENT paper (the cavity mode-mixing
+#: one). Both were located and hashed: the named paper's digest matched
+#: exactly, and the attachment was registered separately on its own
+#: merits. Recorded rather than glossed, because "the attachment is the
+#: paper" is precisely the kind of assumption this registry exists to stop.
+ATTACHMENT_DISCREPANCY = {
+    "named_in_request": "SRC_TRUNCPHOTON (arXiv:2510.21636v2)",
+    "named_digest_status": "VERIFIED_MATCH",
+    "actually_attached": "SRC_CAVITY_MODEMIX (arXiv:2306.05929v2)",
+    "resolution": ("both documents located and hashed; the named paper's "
+                   "equations are the ones registered, and the attachment "
+                   "is registered separately as conventional cavity optics"),
+    "status": "RESOLVED_BOTH_REGISTERED",
+}
+
+
+def verify_reference_hash(source_id: str, digest: str) -> bool:
+    """True iff ``digest`` matches the recorded digest for the source."""
+    if source_id not in REFERENCE_HASHES:
+        raise SourceError(f"no reference digest recorded for {source_id!r}")
+    return REFERENCE_HASHES[source_id] == digest
 
 
 def get_source(source_id: str) -> SourceRecord:
@@ -267,6 +316,8 @@ def sources_report() -> dict:
             "receipts, and the privacy scan with its declared residual"),
         "registered_sources": len(SOURCE_REGISTRY),
         "traced_equations": len(TRACEABILITY),
+        "reference_digests": len(REFERENCE_HASHES),
+        "attachment_discrepancy": ATTACHMENT_DISCREPANCY["status"],
         "blocked_sources": [s.source_id for s in SOURCE_REGISTRY
                             if s.kind is SourceKind.BLOCKED_MISSING_DATA],
         "declared_residual": DECLARED_RESIDUAL["status"],
@@ -275,8 +326,10 @@ def sources_report() -> dict:
         "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
         "verdict": "SOURCES_REGISTERED_PRIVACY_RESIDUAL_DECLARED",
         "what_this_does_not_say": (
-            "It does not say the referenced 2026 photon paper was read or "
-            "verified here (it is BLOCKED_MISSING_DATA), and it does not "
-            "claim the public tree is free of historical identity strings "
-            "— that exposure is declared, not repaired."),
+            "The truncated-photon paper was read and its PDF digest "
+            "verified, but that means its equations are REGISTERED, not "
+            "re-derived: no QFT solver exists here and no quantum result "
+            "is reproduced or bench-validated. It also does not claim the "
+            "public tree is free of historical identity strings — that "
+            "exposure is declared, not repaired."),
     }

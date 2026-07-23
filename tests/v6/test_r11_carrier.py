@@ -240,3 +240,28 @@ def test_report_carries_the_null_the_power_and_the_fitted_flag():
     assert rep["candidate"]["target_fitted"] is True
     assert rep["candidate"]["residual_exact"] == "262/25"
     assert "15.72" in rep["what_this_does_not_say"]
+
+
+# --- R11 delta: the mandatory "0.03 Hz below" correction ---------------
+
+def test_the_003_hz_below_candidate_is_13772_25_not_13788():
+    """Mandatory delta correction. 13788 is NOT 0.03 Hz below the
+    computed mode; 13772.25 is."""
+    from fractions import Fraction
+    assert C.NEAR_MODE_DIFFERENCE == Fraction(3, 100)          # exactly 0.03
+    assert C.NEAR_MODE_CANDIDATE_HZ == Fraction(1377225, 100)  # 13772.25
+    # and the old claim stays refuted, with its true value retained
+    assert C.BASE_DIFFERENCE == Fraction(393, 25)              # 15.72
+    assert C.BASE_DIFFERENCE != Fraction(3, 100)
+
+
+def test_audit_carries_both_the_refutation_and_the_resolution():
+    a = C.audit_high_priority_candidate()
+    assert a["near_mode_candidate_hz"].startswith("13772.25")
+    assert a["near_mode_difference_hz"].startswith("0.03")
+    assert a["base_difference_hz"].startswith("15.72")
+    assert a["base_difference_sign"] == "EXACT_BASE_IS_ABOVE_COMPUTED_MODE"
+    assert a["pack_discrepancy_status"] == \
+        "RESOLVED_CORRECTED_CANDIDATE_REGISTERED"
+    # a 0.03 Hz step from a computed mode is rounding, not a carrier
+    assert "rounding" in a["near_mode_note"]

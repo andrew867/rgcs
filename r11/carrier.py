@@ -18,19 +18,27 @@ The high-priority candidate, audited exactly:
     9181.52 + 63/6       =  9192.02 Hz
     9192 * 3/2           = 13788.00 Hz     (the exact base for 9192)
 
-**A discrepancy in the source pack, stated plainly.** The pack describes
-13788.00 Hz as "0.03 Hz below the finest computational result". It is
-not. Computed here exactly,
+**A discrepancy in the source pack, stated plainly -- and its
+resolution.** The pack originally described 13788.00 Hz as "0.03 Hz below
+the finest computational result". It is not. Computed here exactly,
 
     13788.00 - 13772.28 = 15.72 Hz
 
 so the exact base for 9192 sits **15.72 Hz ABOVE** the finest computed
 mode, not 0.03 Hz below it -- a sign error and a factor of ~500 in
-magnitude. The 0.03 Hz figure appears to be a misreading of the
-9192.02 - 9192 = 0.02 Hz gap at the other end of the chain. The true
-difference is reported by ``pack_discrepancy`` and never quietly fixed:
-15.72 Hz is 0.114% of 13788, which is exactly the size of the residual
-the candidate is asking to be forgiven.
+magnitude. That correction was reported rather than quietly absorbed, and
+the R11 delta then **confirmed and resolved it**: the frequency that
+really is 0.03 Hz below the computed mode is a different number
+altogether,
+
+    13772.28 - 13772.25 = 0.03 Hz     (exact)
+
+so ``NEAR_MODE_CANDIDATE_HZ = 13772.25`` is the registered 0.03-Hz-below
+candidate, and 13788.00 is **not**. Both facts are carried:
+``base_difference_hz`` (15.72, the exact base for 9192) and
+``near_mode_difference_hz`` (0.03, the 13772.25 candidate). Neither is a
+result -- 13772.25 is an arbitrary 0.03 Hz step away from a computed
+mode, which is a statement about rounding, not about physics.
 
 **The candidate is target-fitted.** ``2/3`` was chosen after 9192 was in
 view. ``is_target_fitted`` records that, ``refuse_carrier_selected_after_
@@ -395,8 +403,16 @@ SIXTY_THREE_SIXTHS = Fraction(63, 6)
 CORRECTED_SUM = F_TIMES_TWO_THIRDS + SIXTY_THREE_SIXTHS
 #: 9192 * 3/2 = 13788 exactly -- the base that would give 9192 exactly.
 EXACT_BASE_FOR_9192 = Fraction(GROUPED_9192) * Fraction(3, 2)
-#: 13788 - 13772.28 = 15.72 exactly. The pack says "0.03 Hz below".
+#: 13788 - 13772.28 = 15.72 exactly. The pack originally said the exact
+#: base was "0.03 Hz below" the computed mode; it is 15.72 Hz ABOVE.
 BASE_DIFFERENCE = EXACT_BASE_FOR_9192 - F_CRYSTAL_N7_HZ
+
+#: The R11 delta resolved the "0.03 Hz below" figure: it belongs to a
+#: different frequency entirely. 13772.28 - 13772.25 = 0.03 exactly.
+#: Registered as arithmetic only -- a 0.03 Hz step from a computed mode
+#: is a statement about rounding, not a physical carrier.
+NEAR_MODE_CANDIDATE_HZ = Fraction(1377225, 100)          # 13772.25
+NEAR_MODE_DIFFERENCE = F_CRYSTAL_N7_HZ - NEAR_MODE_CANDIDATE_HZ   # 3/100
 
 #: Observed relative residual of the candidate against grouped 9192.
 OBSERVED_REL_RESIDUAL = float(RESIDUAL_TO_9192 / Fraction(GROUPED_9192))
@@ -429,6 +445,15 @@ def audit_high_priority_candidate() -> dict:
         "base_difference_hz": _decimal_str(BASE_DIFFERENCE),      # 15.72
         "base_difference_exact": str(BASE_DIFFERENCE),            # 393/25
         "base_difference_sign": "EXACT_BASE_IS_ABOVE_COMPUTED_MODE",
+        # the R11 delta's resolution of the "0.03 Hz below" figure
+        "near_mode_candidate_hz": _decimal_str(NEAR_MODE_CANDIDATE_HZ),
+        "near_mode_difference_hz": _decimal_str(NEAR_MODE_DIFFERENCE),
+        "near_mode_difference_exact": str(NEAR_MODE_DIFFERENCE),   # 3/100
+        "near_mode_note": (
+            "13772.25 Hz is the frequency that really is 0.03 Hz below the "
+            "computed mode 13772.28 Hz; 13788.00 Hz is not. Registered as "
+            "arithmetic only: a 0.03 Hz step from a computed mode is a "
+            "statement about rounding, not a physical carrier"),
         "relative_residual": OBSERVED_REL_RESIDUAL,
         "relative_residual_percent": OBSERVED_REL_RESIDUAL * 100,
         "target_fitted": True,
@@ -440,7 +465,11 @@ def audit_high_priority_candidate() -> dict:
             "by a factor of about 500 in magnitude. The 0.03 figure most "
             "closely resembles the 9192.02 - 9192 = 0.02 Hz overshoot at "
             "the other end of the chain. The pack figure is not adopted; "
-            "15.72 Hz is the value this module reports"),
+            "15.72 Hz is the value this module reports. RESOLVED by the "
+            "R11 delta: the frequency that really is 0.03 Hz below the "
+            "computed mode is 13772.25 Hz (see near_mode_candidate_hz), "
+            "not 13788.00 Hz"),
+        "pack_discrepancy_status": "RESOLVED_CORRECTED_CANDIDATE_REGISTERED",
         "note": (
             "every step above is exact rational arithmetic and every step "
             "reproduces. That is all it is: 2/3 was chosen after 9192 was "

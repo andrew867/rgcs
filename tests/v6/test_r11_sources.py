@@ -47,10 +47,31 @@ def test_every_implemented_equation_traces_to_an_authority():
         S.trace("an_equation_nobody_registered")
 
 
-def test_the_photon_paper_is_declared_blocked_not_verified():
+def test_the_photon_paper_is_ingested_and_hash_verified():
+    """R11 delta: the paper was located, read and hash-verified, so it is
+    no longer BLOCKED_MISSING_DATA -- but its equations are REGISTERED,
+    not re-derived, and nothing quantum is bench-validated."""
     p = S.get_source("SRC_TRUNCPHOTON")
-    assert p.kind is S.SourceKind.BLOCKED_MISSING_DATA
-    assert "not independently verified" in p.notes
+    assert p.kind is S.SourceKind.ESTABLISHED_SOURCE
+    assert "2510.21636v2" in p.authority
+    assert "not re-derived" in p.notes
+    assert S.verify_reference_hash(
+        "SRC_TRUNCPHOTON",
+        "b9e54ac8b1f7a4f7a1d00f98d540d1941684f3483bc4b96648337a6693f6472e")
+    assert not S.verify_reference_hash("SRC_TRUNCPHOTON", "0" * 64)
+
+
+def test_the_attached_paper_was_a_different_one_and_is_recorded():
+    """The request named one paper and attached another. Both were hashed
+    and registered; the discrepancy is recorded, not glossed."""
+    d = S.ATTACHMENT_DISCREPANCY
+    assert d["named_digest_status"] == "VERIFIED_MATCH"
+    assert d["status"] == "RESOLVED_BOTH_REGISTERED"
+    cav = S.get_source("SRC_CAVITY_MODEMIX")
+    assert cav.kind is S.SourceKind.CONVENTIONAL_LITERATURE
+    assert S.verify_reference_hash(
+        "SRC_CAVITY_MODEMIX",
+        "e6cf53234d6b99a23d63caffbe79e0e0b755de88d30078d0cad5559747a3cfd6")
 
 
 def test_source_digest_is_stable_and_sensitive():
@@ -111,4 +132,6 @@ def test_report_claims_no_measurement():
     r = S.sources_report()
     assert r["measured_here"] == "nothing"
     assert r["physical_validation"] == "PHYSICAL_VALIDATION_NOT_CLAIMED"
-    assert "SRC_TRUNCPHOTON" in r["blocked_sources"]
+    # the photon paper is no longer blocked -- it was ingested and hashed
+    assert "SRC_TRUNCPHOTON" not in r["blocked_sources"]
+    assert r["reference_digests"] >= 2
