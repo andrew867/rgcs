@@ -11,7 +11,7 @@
 
 Baseline v5.7.0 / `977e0b6`, tree clean, 3079 tests. Publication
 firewall committed-tree CLEAN; history carries only the declared
-`PRIVATE_PATH` residual. Private repository `RGCS-private`: 0 remotes,
+`PRIVATE_PATH` residual. Private repository: 0 remotes,
 outside the public worktree, OneDrive-synchronized; Tier-A source
 authority (`SRC_JH`, `SRC_LS`, alias `OMEGA_REGION_SOURCE`) and the
 preserved CW vectors + Vortex Key carry forward, integrity intact.

@@ -6,8 +6,8 @@
 **Publication firewall:** committed-tree scan CLEAN; history carries only
 the declared `PRIVATE_PATH` residual (R10-D-001); no credential,
 personal-identity, or channelling findings.
-**Private repository:** `RGCS-private` — 0 remotes, outside the public
-worktree, OneDrive-synchronized. Source authority (`SRC_JH`, `SRC_LS`,
+**Private repository:** 0 remotes, outside the public worktree,
+OneDrive-synchronized. Source authority (`SRC_JH`, `SRC_LS`,
 distinct Tier-A, alias `OMEGA_REGION_SOURCE`) and the preserved CW
 vectors + Vortex Key carry forward with re-verified SHA-256 integrity.
 
