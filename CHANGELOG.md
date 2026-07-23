@@ -3,6 +3,56 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [6.1.0] - 2026-07-23
+
+R11 delta. Exact timing, classical dynamic boundaries, a truncated-photon
+adapter, a hybrid rotor, a geometry inverse, a Mars frame pilot and a
+detector matrix. Seven new r11 modules; nothing existing was reset.
+Software verified, physically untested. PHYSICAL_VALIDATION_NOT_CLAIMED.
+
+Mandatory corrections. The "0.03 Hz below 13772.28" figure is RESOLVED:
+it belongs to 13772.25 Hz (13772.28 - 13772.25 = 0.03 exactly), not to
+13788 Hz, which remains 15.72 Hz ABOVE the computed mode. Both facts are
+carried and the candidate is registered as arithmetic only -- a 0.03 Hz
+step from a computed mode is a statement about rounding, not a physical
+carrier. NO_DECODER_IDENTIFIED is preserved. The historical-name exposure
+remains a DECLARED_RESIDUAL_EXPOSURE and no history was rewritten.
+
+Paper ingest, with a provenance catch. The request named arXiv:2510.21636v2
+("A truncated photon") and supplied a digest, but the attached file was a
+different paper, arXiv:2306.05929v2 (cavity mode mixing). Both were located
+and hashed: the named paper's digest matched exactly and its equations are
+now registered as ESTABLISHED_SOURCE; the attachment is registered
+separately as conventional cavity optics. Recorded as
+ATTACHMENT_DISCREPANCY / RESOLVED_BOTH_REGISTERED.
+
+Results, all bounded or negative: 552.001953125 ms is exactly 2261/4096 s
+= 2261 cycles at 4096 Hz, and the registered -1/125 cycle residue is
+PROVABLY unrealisable by any integer-hertz carrier over that macrocycle
+(gcd(2261,4096)=1 fixes the residue lattice at multiples of 1/4096, and
+4096/125 is not an integer) -- retained, not fitted. A sudden mechanical
+boundary change scatters 37-52% of a mode's energy while a long ramp
+recovers the adiabatic limit, and damping is an honest null for mode
+mixing because it never moves the basis. The truncated-photon paper's
+optical example reproduces at <n> <= 1.43 for T = 1e-14 s, with Eq. 31's
+upper inequality reported as marginal there rather than smoothed; only a
+classical analogue is implemented because no QFT solver exists here.
+192 teeth at 1280 RPM is exactly 4096 passages per second. atan(sqrt(phi))
+= 51.8272923... degrees is NOT 51.843 degrees (gap 0.0157 deg, one decimal
+place of agreement), and a centroid plus one frequency leaves a rank-2
+Jacobian with deficiency 3 and a solution family. The Mars frame completes
+and its magnetic root does not: the MAG/ER grid is BLOCKED_MISSING_DATA.
+No detector in the matrix couples to phonons at all, so the CCD refusal
+does not rest on an overclaim elsewhere.
+
+Not established: no ship, transmission, new particle, decoded location,
+unique epoch, terraforming system or physical crystal effect. Hosted CI
+remains unavailable; the local suite on the exact commit is the
+verification of record. No relicensing. MIT unchanged.
+
+Tests: 4412 passing (1 archived-environment byte test deselected
+by policy D-V3-04).
+
 ## [6.0.0] - 2026-07-23
 
 R11. A new top-level research package (r11) covering body-specific
