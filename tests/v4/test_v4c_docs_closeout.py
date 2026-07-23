@@ -90,7 +90,7 @@ def test_no_physical_nonexistence_claims():
         assert "MECHANISM_NOT_IMPLEMENTED_FOR_MATERIAL" in _read(rel)
 
 
-VERSION = "5.6.0"
+VERSION = "5.7.0"
 
 
 def test_version_consistency():
@@ -104,7 +104,7 @@ def test_version_consistency():
         assert f"[{v}]" in ch
     readme = _read("README.md")
     assert f"releases/tag/v{VERSION}" in readme
-    assert "3014 tests" in readme or "3014 passed" in readme
+    assert "3079 tests" in readme or "3079 passed" in readme
     assert "115/115" in readme
 
 

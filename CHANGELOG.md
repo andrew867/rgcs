@@ -3,6 +3,57 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [5.7.0] - 2026-07-23
+
+R10.7. Rooted interbody routing, solar/slate calibration roots, a
+phase-conjugate return path, and a sky-observation reconstruction
+engine. Software verified, physically untested, hardware deferred.
+PHYSICAL_VALIDATION_NOT_CLAIMED.
+
+Six new r10 modules, each defaulting to a refusal or a null. The
+transcription correction 8300 -> 8.300 and 1876 -> 1.876 is
+append-only: the ratio is scale-invariant (2075/469), the residual
+against 4096/925 is unchanged (~0.086%), the mapping stays
+PhysicalMappingUnresolved, and no unit is invented. Body frames are
+built roots-first: two non-parallel directions determine a proper
+rotation, a single direction is ROOT_UNDERDETERMINED (a latitude and a
+longitude are calibration, not a frame). The rooted route compiler
+carries a light-time floor (~1.28 s Earth-Moon) and raises
+CausalityViolation on any zero-time transit across distance -- no route
+beats the floor, no gateway.
+
+The solar root is the weighted centroid of emission directions, shown
+to have power against planted structure; the real catalog is declared
+BLOCKED_NO_DATA_SOURCE, not faked (ROOT_CANDIDATE_ONLY). The sky engine
+ranks ordinary candidates from kinematics but never identifies without a
+catalog match; the default verdict is UNIDENTIFIED_OBSERVATION and it
+holds no specific observation. The phase-conjugate return is ordinary
+DSP: a reciprocal channel refocuses a phase-conjugated pulse (shown with
+power), while a sign flip, a bare time reversal, and a pointwise
+conjugate all fail; reciprocity is required, the causal round-trip books
+the full light-time delay, and the carrier/key/LO/clock roles are kept
+separate.
+
+The Tier-A private sources SRC_JH (Jen Han) and SRC_LS (The L's) carry
+forward as distinct records under the single public alias
+OMEGA_REGION_SOURCE; the five twelve-digit CW vectors and the twelve-
+word Vortex Opening Key are preserved byte-for-byte (integrity
+re-verified). The San Antonio provenance trail and the field-observation
+record are held privately only, verbatim, with every post-message item
+a lead, no independent verification performed or fabricated, and no
+claim about any real person.
+
+Not executed: density-layer routing, the apparatus/field-solver phases,
+the blinded/prospective harness run (no future vector, slate angle, or
+emission interval exists yet to reveal against), the private narrative
+archive, real slate-image ingestion, and the real solar catalog.
+Hardware deferred.
+
+No relicensing. MIT unchanged.
+
+Tests: 3079 passing (1 archived-environment byte test deselected
+by policy D-V3-04).
+
 ## [5.6.0] - 2026-07-21
 
 R10.6. The Vortex Opening Key pack: base-10 unpacking, the exact phase
