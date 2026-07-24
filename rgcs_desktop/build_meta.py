@@ -45,7 +45,7 @@ STAMP_NAME = "_build_stamp.json"
 SOURCE_ROOTS = ("rgcs_desktop", "rgcs_workbench", "rgcs_core",
                 "rscs_core", "rscs2_core", "fkey_instrument",
                 "resonator_platform", "cspc", "pmwr", "r3", "r4",
-                "r6", "r7", "r8", "r9", "r10", "r11",
+                "r6", "r7", "r8", "r9", "r10", "r11", "r12",
                 # Q02 / R10-D-004: the inverse of R8-D-006. This lane
                 # ships in the wheel and sdist and is importable after
                 # pip install, but was outside the freshness hash, so a
