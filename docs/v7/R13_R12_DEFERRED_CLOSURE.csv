@@ -1,0 +1,39 @@
+r12_prompt,r13_phases,required_closure,release_blocking,closure_status,evidence
+01_R12_MASTER_ORCHESTRATOR.md,"01,02,47",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/01_*.md; docs/v7/receipts/02_*.md; docs/v7/receipts/47_*.md
+02_AGENT_GATE_ZERO_AND_STATE_IMPORT.md,"01,02,47",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/01_*.md; docs/v7/receipts/02_*.md; docs/v7/receipts/47_*.md
+03_AGENT_VECTOR30_OCTAL_CODEC.md,"37,42",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/37_*.md; docs/v7/receipts/42_*.md
+04_AGENT_COMMON_PREFIX_AND_ADDRESS_LAYOUT.md,"01,02,47",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/01_*.md; docs/v7/receipts/02_*.md; docs/v7/receipts/47_*.md
+05_AGENT_EIGHT_SHELL_ATOMIC_RADIAL_AUDIT.md,39,REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/39_*.md
+06_AGENT_BODY_FIXED_SURFACE_LOCK.md,39,REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/39_*.md
+07_AGENT_PLANETARY_MAGNETIC_ROOTS.md,"38,40",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/38_*.md; docs/v7/receipts/40_*.md
+08_AGENT_TIME_SCALES_T0_AND_TIMESTAMP_CODEC.md,41,REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/41_*.md
+09_AGENT_BARIUM_XENON_CESIUM_CHRONOMETRY.md,"01,02,47",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/01_*.md; docs/v7/receipts/02_*.md; docs/v7/receipts/47_*.md
+10_AGENT_RECIPROCAL_TX_RX_CHANNELS.md,"05,06,30",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/05_*.md; docs/v7/receipts/06_*.md; docs/v7/receipts/30_*.md
+11_AGENT_CRYSTAL_RX_TX_HARMONIC_CARRIER.md,"01,02,47",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/01_*.md; docs/v7/receipts/02_*.md; docs/v7/receipts/47_*.md
+12_AGENT_DISK192_AND_8688_AUDIT.md,19,REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/19_*.md
+13_AGENT_QCM_RINGDOWN_AND_MULTIFREQUENCY.md,21,REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/21_*.md
+14_AGENT_PHOTOELASTIC_CAMERA_DETECTION.md,23,REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/23_*.md
+15_AGENT_THERMAL_QUARTZ_AND_8688.md,"20,23,25",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/20_*.md; docs/v7/receipts/23_*.md; docs/v7/receipts/25_*.md
+16_AGENT_PLANT_STEM_RF_CLAIM_AUDIT.md,"03,43,46",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/03_*.md; docs/v7/receipts/43_*.md; docs/v7/receipts/46_*.md
+17_AGENT_TIMESTAMP_UNIT_AND_MESSAGE_FIELDS.md,41,REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/41_*.md
+18_AGENT_IDENTIFIABILITY_AND_HOLDOUTS.md,"37,38,39,40,41,42,44",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/37_*.md; docs/v7/receipts/38_*.md; docs/v7/receipts/39_*.md; docs/v7/receipts/40_*.md; docs/v7/receipts/41_*.md; docs/v7/receipts/42_*.md; docs/v7/receipts/44_*.md
+19_AGENT_TESTS_AND_REDTEAM.md,"43,44,47",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/43_*.md; docs/v7/receipts/44_*.md; docs/v7/receipts/47_*.md
+20_AGENT_MANUSCRIPT_PROOF_AND_RELEASE.md,"46,47,48",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/46_*.md; docs/v7/receipts/47_*.md; docs/v7/receipts/48_*.md
+21_AGENT_NEUTRON_PHONON_THEORY.md,"31,32,33,34,35",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/31_*.md; docs/v7/receipts/32_*.md; docs/v7/receipts/33_*.md; docs/v7/receipts/34_*.md; docs/v7/receipts/35_*.md
+22_AGENT_CHIRAL_PHONON_INS.md,"12,22,28,32",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/12_*.md; docs/v7/receipts/22_*.md; docs/v7/receipts/28_*.md; docs/v7/receipts/32_*.md
+23_AGENT_NEUTRON_FACILITY_REALITY_AND_SAFETY.md,"31,32,33,34,35",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/31_*.md; docs/v7/receipts/32_*.md; docs/v7/receipts/33_*.md; docs/v7/receipts/34_*.md; docs/v7/receipts/35_*.md
+24_AGENT_EUPHONIC_SIMULATION.md,"31,32",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/31_*.md; docs/v7/receipts/32_*.md
+25_AGENT_BEAMTIME_PROPOSAL.md,34,REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/34_*.md
+26_AGENT_HOME_LAB_PHONON_DETECTOR.md,"19,20,21,22,23,24,25,26,27,28,29,30",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/19_*.md; docs/v7/receipts/20_*.md; docs/v7/receipts/21_*.md; docs/v7/receipts/22_*.md; docs/v7/receipts/23_*.md; docs/v7/receipts/24_*.md; docs/v7/receipts/25_*.md; docs/v7/receipts/26_*.md; docs/v7/receipts/27_*.md; docs/v7/receipts/28_*.md; docs/v7/receipts/29_*.md; docs/v7/receipts/30_*.md
+27_AGENT_CQ_VECTOR_EXPLORATORY_DECODE.md,"37,42",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/37_*.md; docs/v7/receipts/42_*.md
+28_AGENT_RECIPROCAL_SPACE_QUARTZ_CRYSTAL_FRAME.md,"07,08,09,31,32",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/07_*.md; docs/v7/receipts/08_*.md; docs/v7/receipts/09_*.md; docs/v7/receipts/31_*.md; docs/v7/receipts/32_*.md
+29_AGENT_ICOSAHEDRAL_FACE_REFINEMENT.md,"37,38,39,42",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/37_*.md; docs/v7/receipts/38_*.md; docs/v7/receipts/39_*.md; docs/v7/receipts/42_*.md
+30_AGENT_NORTH_SOUTH_DOUBLE_INVERSION_AUDIT.md,"01,02,47",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/01_*.md; docs/v7/receipts/02_*.md; docs/v7/receipts/47_*.md
+31_AGENT_MAGNETIC_ROOT_BARIUM_EPOCH_OPERATIONALIZATION.md,"38,40",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/38_*.md; docs/v7/receipts/40_*.md
+32_AGENT_TYPED_CROSS_DOMAIN_BRIDGE_REGISTRY.md,"05,06,30,36,43",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/05_*.md; docs/v7/receipts/06_*.md; docs/v7/receipts/30_*.md; docs/v7/receipts/36_*.md; docs/v7/receipts/43_*.md
+33_AGENT_ROTATION_SQUEEZE_SYMPLECTIC_PARENT.md,"13,27",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/13_*.md; docs/v7/receipts/27_*.md
+34_AGENT_DYNAMIC_QPM_FLOQUET_CONVERTER.md,"15,16",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/15_*.md; docs/v7/receipts/16_*.md
+35_AGENT_AVOIDED_CROSSING_TRANSFER_OF_CHARACTER.md,"11,26",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/11_*.md; docs/v7/receipts/26_*.md
+36_AGENT_SIX_ANGLE_CIRCULAR_MODE_BENCH.md,"22,28",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/22_*.md; docs/v7/receipts/28_*.md
+37_AGENT_RESPONSE_FUNCTIONS_GREEN_S_MATRIX.md,"05,36",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/05_*.md; docs/v7/receipts/36_*.md
+38_AGENT_R13_DISCOVERY_HANDOFF.md,"01,02,47",REVERIFY_OR_COMPLETE,YES,CLOSED,docs/v7/receipts/01_*.md; docs/v7/receipts/02_*.md; docs/v7/receipts/47_*.md

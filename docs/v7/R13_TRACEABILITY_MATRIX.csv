@@ -1,0 +1,49 @@
+phase_id,tranche,title,module,test_file,verdict,claim_class,status
+01,T1,Gate Zero and R12 State Import,(verification),(packaging/privacy guards),GATE_ZERO_VERIFIED,REPOSITORY_COMPUTATIONAL_RESULT,COMPLETE
+02,T1,Deferred Backlog Closure and Requirement Traceability,(traceability),(this matrix),BACKLOG_CLOSED_TRACEABLE,REPOSITORY_COMPUTATIONAL_RESULT,COMPLETE
+03,T1,Source Normalization and Equation Registry,r13/srcregistry.py,test_r13_srcregistry.py,SOURCE_CORPUS_REGISTERED_BY_HASH,CONVENTIONAL_LITERATURE,COMPLETE
+04,T1,"Typed State Variables, Units, and Claim Semantics",r13/claimtypes.py,test_r13_claimtypes.py,CLAIM_SEMANTICS_TYPED_NO_PROMOTION,EXACT_IDENTITY,COMPLETE
+05,T1,"Response Functions, Green Functions, and S-Matrix Core",r13/response.py,test_r13_response.py,LINEAR_RESPONSE_CORE_IMPLEMENTED,ANALYTIC_MODEL,COMPLETE
+06,T1,Bridge Certificates and Coupling Graph Search,r13/bridgegraph.py,test_r13_bridgegraph.py,COUPLING_GRAPH_SEARCH_CERTIFICATE_GATED,ENGINEERING_CANDIDATE,COMPLETE
+07,T2,Quartz Direct and Reciprocal Crystal Frame,r13/crystalframe.py,test_r13_crystalframe.py,DIRECT_AND_RECIPROCAL_FRAME_CONSISTENT,SOURCE_ESTABLISHED_PHYSICS,COMPLETE
+08,T2,Atomistic Alpha-Quartz Phonon Model,r13/atomistic.py,test_r13_atomistic.py,ATOMISTIC_PHONON_MODEL_ANALYTIC,ANALYTIC_MODEL,COMPLETE (real FC blocked)
+09,T2,Long-Wavelength Homogenization to Continuum Elasticity,r13/homogenize.py,test_r13_homogenize.py,ATOMISTIC_TO_CONTINUUM_HOMOGENIZED_ANALYTIC,ANALYTIC_MODEL,COMPLETE
+10,T2,Piezoelectric Continuum to BVD Electrical Bridge,r13/piezobridge.py,test_r13_piezobridge.py,PIEZO_TO_BVD_CERTIFICATE_ENGINEERING_CANDIDATE,ENGINEERING_CANDIDATE,COMPLETE
+11,T2,Avoided Crossings and Transfer of Modal Character,r13/avoided.py,test_r13_avoided.py,AVOIDED_CROSSING_MODEL_ANALYTIC,ANALYTIC_MODEL,COMPLETE
+12,T2,Chiral Phonons and Magnetic Splitting in Quartz,r13/chiral.py,test_r13_chiral.py,CHIRAL_PHONON_MODEL_ANALYTIC,ANALYTIC_MODEL,COMPLETE
+13,T3,"Symplectic Rotation, Squeezing, and Shear",r13/symplectic.py,test_r13_symplectic.py,SYMPLECTIC_TRANSFORMS_ROTATION_SQUEEZE_SHEAR,ANALYTIC_MODEL,COMPLETE
+14,T3,Two-Channel Quadrature Field and Transducer Model,r13/quadfield.py,test_r13_quadfield.py,TWO_CHANNEL_QUADRATURE_TRANSDUCTION_MODEL,NUMERICAL_SIMULATION,COMPLETE
+15,T3,Dynamic Quasi-Phase Matching,r13/qpm.py,test_r13_qpm.py,DYNAMIC_QUASI_PHASE_MATCHING_MODEL,NUMERICAL_SIMULATION,COMPLETE
+16,T3,Floquet and Parametric Conversion,r13/floquet.py,test_r13_floquet.py,FLOQUET_PARAMETRIC_MODEL_ANALYTIC,ANALYTIC_MODEL,COMPLETE
+17,T3,Dynamic Boundary and Truncated-State Energy Accounting,r13/boundaryenergy.py,test_r13_boundaryenergy.py,DYNAMIC_BOUNDARY_ENERGY_LEDGER_CLOSES_NO_NEW_ENERGY,ANALYTIC_MODEL,COMPLETE
+18,T3,Heterodyne Two-Mode Cavity and Leakage Suppression,r13/heterodyne.py,test_r13_heterodyne.py,HETERODYNE_CAVITY_READOUT_MODEL,ANALYTIC_MODEL,COMPLETE
+19,T4,192-Feature Hybrid Mechanical Disk Final Design,r13/diskdrive.py,test_r13_diskdrive.py,FEATURE_DISK_FINALIZED_192_DIMENSIONS,REPOSITORY_COMPUTATIONAL_RESULT,COMPLETE
+20,T4,"Coils, Transducers, Electrodes, and Sample Fixture",r13/apparatus.py,test_r13_apparatus.py,APPARATUS_DESIGN_PREREGISTERED_NOT_BUILT,ENGINEERING_CANDIDATE,COMPLETE (not built)
+21,T4,"QCM, BVD, Ringdown, and Multi-Frequency Stack",r13/qcmstack.py,test_r13_qcmstack.py,QCM_BVD_RINGDOWN_STACK_MODEL,NUMERICAL_SIMULATION,COMPLETE (synthetic)
+22,T4,Six-Angle Sensor Ring,r13/sixangle.py,test_r13_sixangle.py,SIX_ANGLE_RING_PLANAR_NOT_ISOTROPIC,ANALYTIC_MODEL,COMPLETE
+23,T4,"Speckle, Interferometric, and Photoelastic Imaging",r13/imaging.py,test_r13_imaging.py,IMAGING_RECONSTRUCTION_MODEL,NUMERICAL_SIMULATION,COMPLETE
+24,T4,"Synchronized DAQ, Calibration, and Energy Ledger",r13/daq.py,test_r13_daq.py,SYNCHRONIZED_DAQ_ENERGY_LEDGER_MODEL,NUMERICAL_SIMULATION,COMPLETE
+25,T5,Baseline Modal Survey,r13/experiments.py + qcmstack,test_r13_experiments.py,PROSPECTIVE_EXPERIMENT_REGISTRY_PREREGISTERED,PROSPECTIVE_PREDICTION,PREREGISTERED_NOT_RUN
+26,T5,Avoided-Crossing Sweep Experiment,r13/experiments.py + avoided,test_r13_experiments.py,PROSPECTIVE_EXPERIMENT_REGISTRY_PREREGISTERED,PROSPECTIVE_PREDICTION,PREREGISTERED_NOT_RUN
+27,T5,Rotation Versus Squeezing Experiment,r13/experiments.py + symplectic,test_r13_experiments.py,PROSPECTIVE_EXPERIMENT_REGISTRY_PREREGISTERED,PROSPECTIVE_PREDICTION,PREREGISTERED_NOT_RUN
+28,T5,"Linear, Elliptical, and Circular Mode Test",r13/experiments.py + sixangle + chiral,test_r13_experiments.py,PROSPECTIVE_EXPERIMENT_REGISTRY_PREREGISTERED,PROSPECTIVE_PREDICTION,PREREGISTERED_NOT_RUN
+29,T5,Cutoff Phase and Acoustic Reflection Timing,r13/experiments.py + daq + boundaryenergy,test_r13_experiments.py,PROSPECTIVE_EXPERIMENT_REGISTRY_PREREGISTERED,PROSPECTIVE_PREDICTION,PREREGISTERED_NOT_RUN
+30,T5,Cross-Domain Transfer Benchmark,r13/experiments.py + bridgegraph + piezobridge,test_r13_experiments.py,PROSPECTIVE_EXPERIMENT_REGISTRY_PREREGISTERED,PROSPECTIVE_PREDICTION / ENGINEERING_CANDIDATE,PREREGISTERED_NOT_RUN
+31,T6,Euphonic and Force-Constant Pipeline,r13/euphonic.py,test_r13_euphonic.py,FORCE_CONSTANT_INTERFACE_BLOCKED_ON_DFT,ANALYTIC_MODEL,COMPLETE (DFT blocked)
+32,T6,Synthetic INS and IXS Experiments,r13/scattering.py,test_r13_scattering.py,SYNTHETIC_INS_IXS_PREDICTION_PROSPECTIVE,PROSPECTIVE_PREDICTION,COMPLETE (beamtime blocked)
+33,T6,"Neutron Facility Reality, Safety, and Licensing",(safety receipt),(none),BLOCKED_MISSING_INPUT,BLOCKED_MISSING_INPUT,BLOCKED_MISSING_INPUT
+34,T6,Beam-Time and Collaboration Proposal,(proposal draft),(none),BLOCKED_MISSING_INPUT,BLOCKED_MISSING_INPUT,BLOCKED_MISSING_INPUT
+35,T6,"Raman, RIXS, IXS, and Electron-Scattering Alternatives",(method ranking),(none),METHOD_RANKING_LITERATURE,CONVENTIONAL_LITERATURE,COMPLETE
+36,T6,Published Response-Function Transfer Validation,r13/response.py,test_r13_response.py,LINEAR_RESPONSE_CORE_IMPLEMENTED,ANALYTIC_MODEL,COMPLETE
+37,T7,Icosahedral Packet Finalizer and Decoder Holdout,r13/coordfinal.py + holdout.py,test_r13_coordfinal.py + test_r13_holdout.py,COORDINATE_CODEC_FINALIZED_ALIAS_SET_ONLY,REPOSITORY_COMPUTATIONAL_RESULT,COMPLETE
+38,T7,IGRF Root and Planetary Orientation Matrix,r13/magroot.py,test_r13_magroot.py,IGRF_ROOT_AND_ORIENTATION_ALIAS_LIMITED,ANALYTIC_MODEL,COMPLETE
+39,T7,Eight-Shell Mapping and Surface-Locked Trajectory,r13/shellmap.py,test_r13_shellmap.py,EIGHT_SHELL_MAPPING_MODEL,ANALYTIC_MODEL,COMPLETE
+40,T7,"Barium, Cesium, Crystal Carrier, and Epoch Solver",r13/epochsolve.py,test_r13_epochsolve.py,EPOCH_SOLVER_ALIAS_LIMITED,DERIVED_ARITHMETIC,COMPLETE
+41,T7,"Timestamp, Unit, and Packet Serialization",r13/serialize.py,test_r13_serialize.py,DETERMINISTIC_SERIALIZATION_HASHED,REPOSITORY_COMPUTATIONAL_RESULT,COMPLETE
+42,T7,Independent Vector and Known-Destination Protocol,r13/holdout.py + coordfinal.py,test_r13_holdout.py + test_r13_coordfinal.py,DECODER_FALSIFICATION_PROTOCOL,REPOSITORY_COMPUTATIONAL_RESULT,COMPLETE (positive decode blocked)
+43,T8,Cross-Domain Red Team,tests/v6/test_r13_redteam.py,test_r13_redteam.py,RED_TEAM_ALL_ATTACKS_REFUSED,REPOSITORY_COMPUTATIONAL_RESULT,COMPLETE
+44,T8,"Preregistration, Blinding, and Statistical Control",r13/preregister.py,test_r13_preregister.py,PREREGISTRATION_AND_BLINDING_SEALED,PROSPECTIVE_PREDICTION,COMPLETE
+45,T8,"Bench Build Pack, BOM, and Acceptance Tests",r13/apparatus.py,test_r13_apparatus.py,APPARATUS_DESIGN_PREREGISTERED_NOT_BUILT,ENGINEERING_CANDIDATE,COMPLETE (build blocked)
+46,T8,"Manuscripts, Research Archive, and Public Documentation",docs/v7/R13_FINDINGS.md + R13_NON_CLAIMS.md,(48 receipts),MANUSCRIPT_AGREES_WITH_CODE,REPOSITORY_COMPUTATIONAL_RESULT,COMPLETE
+47,T8,"Full Regression, Packaging, Firewall, and Proof Bundle",(verification),(full suite),REGRESSION_PACKAGING_FIREWALL_GREEN,REPOSITORY_COMPUTATIONAL_RESULT,COMPLETE
+48,T8,v7 Release and R14 Handoff,docs/v7/RELEASE_NOTES_V7_0_0.md + R14_HANDOFF.md,(release guards),R13_GREEN_COMPLETE_SOFTWARE_SIMULATION_AND_EXPERIMENT_ARCHITECTURE_NO_BENCH_CLAIM,REPOSITORY_COMPUTATIONAL_RESULT,COMPLETE

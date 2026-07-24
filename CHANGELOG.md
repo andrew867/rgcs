@@ -3,6 +3,29 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [7.0.0] - 2026-07-24
+
+R13. A new r13 package executing the full 48-phase discovery-and-experiment
+pack: 32 modules, 32 test files, and 48 phase receipts (docs/v7/receipts/).
+A typed governance core (the claim ladder and seven forbidden promotions); a
+common linear-response core (Green functions, Kramers-Kronig, S-matrix) with
+a certificate-gated coupling-graph search extending R12's bridge rule; the
+atomistic-to-continuum-to-electrical quartz chain; the symplectic / Floquet /
+quasi-phase-matching transform layer; a fully preregistered (unbuilt)
+apparatus and detector stack; synthetic INS/IXS predictions with real DFT
+force constants blocked; and the finalized icosahedral coordinate codec that
+decodes only to a 32-member alias set with a blinded decoder holdout. A
+cross-domain red team mounts 16 attacks on the permissive bridge
+architecture; all are refused. Bench, DFT force constants, neutron facility,
+and beam time are BLOCKED_MISSING_INPUT and stated as such. Additive; no
+prior work reset, no public history rewritten. PHYSICAL_VALIDATION_NOT_CLAIMED.
+
+Final verdict:
+R13_GREEN_COMPLETE_SOFTWARE_SIMULATION_AND_EXPERIMENT_ARCHITECTURE_NO_BENCH_CLAIM.
+
+Tests: 5638 passing (1 archived-environment byte test deselected
+by policy D-V3-04).
+
 ## [6.3.0] - 2026-07-24
 
 R12. A new r12 package: the icosahedral packet grammar (F5 | Q22 | S3),
