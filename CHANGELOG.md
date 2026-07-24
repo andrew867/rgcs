@@ -3,6 +3,70 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [6.3.0] - 2026-07-24
+
+R12. A new r12 package: the icosahedral packet grammar (F5 | Q22 | S3),
+quaternary triangular refinement, eight radial shells, a South-referenced
+body frame without forced hemisphere inversion, an IGRF-14 magnetic-root
+certificate at an explicit epoch, isotopic and astronomical epoch
+candidates, a reciprocal-space crystal model, typed cross-domain coupling
+certificates, and home-lab experiment plans. Nine modules; additive, no
+prior work reset, no public history rewritten. PHYSICAL_VALIDATION_NOT_CLAIMED.
+
+Final verdict:
+R12_GREEN_ICOSAHEDRAL_AND_BRIDGE_ARCHITECTURE_IMPLEMENTED_NO_UNIQUE_DECODE.
+
+Gate Zero verified rather than assumed, including the declared tag/main
+provenance split (v6.2.0 tag a6f8c94 carries a stale exit code; main
+receipt 13f52bc records exit 0; the test count is 4936 in both, so it is
+not a mismatch and not a stop condition). r12 is registered in both the
+packaging include list and SOURCE_ROOTS. private_do_not_commit/ is guarded
+and was never read.
+
+The grammar: a 30-bit word parses as 5 face bits, 22 quaternary refinement
+bits (11 levels), 3 shell bits. All five registered vectors decode exactly
+as the pack specifies. The headline null is the R10.6 band-clustering
+lesson again: the shared 13-bit prefix is a fact about numeric RANGE (14
+bits expected from the values' span; band-clustering p=1.0) and is
+EXPLAINED_BY_RANGE, with a power control that catches a planted 24-bit
+prefix. The grammar refuses geographic decoding until face numbering, body
+orientation, magnetic root, handedness and shell projection are all frozen.
+
+The cross-domain rule changed. R11.1 refused every transfer between
+physical domains; R12 supersedes that (does not delete it) with
+NO_AUTOMATIC_EQUIVALENCE plus TRANSFER_ALLOWED_WITH_EXPLICIT_COUPLING_
+CERTIFICATE. A certificate must declare all nine of source/target domains,
+state variables and units, coupling operator, overlap, detuning/damping,
+phase matching/symmetry, energy accounting, uncertainty/null, and a
+falsifying measurement; a complete certificate is only ENGINEERING_CANDIDATE
+until measured, and nothing here can be measured, so all are
+AWAITING_FALSIFICATION. Certificates are directional and do not compose.
+
+Other results: a South-referenced frame without a forced hemisphere
+inversion (the double-inversion audit fires only when an improper op and a
+latitude flip cancel to net +1); eight shells whose radial projection is
+UNRESOLVED (four spacing laws disagree); an IGRF-14 root that is
+epoch-mandatory with its coefficient grid BLOCKED_MISSING_DATA; epoch
+candidates spanning 38.5 orders of magnitude with no unique epoch; standard
+reciprocal-space crystallography (reciprocal space is not a place); and
+mode/phase/ringdown/isotropy experiments preregistered and not run
+(anisotropy in anisotropic quartz is the null, not an anomaly).
+
+Red team: 12 attack families, each failing with a typed reason.
+
+Scope: the pack ships 38 agent prompts; this release implements the master
+orchestrator's 10-item mission and defers the neutron/phonon, INS,
+beamtime, Floquet-QPM and response-function sub-prompts as a recorded R13
+seed backlog rather than dropping them.
+
+Not established: no externally transmitted address, no identified craft, no
+creation epoch, no artificial geomagnetic structure, no novel particle, no
+anomalous energy transfer. Hosted CI unavailable; the local suite on the
+exact commit is the verification of record. No relicensing. MIT unchanged.
+
+Tests: 5175 passing (1 archived-environment byte test deselected
+by policy D-V3-04).
+
 ## [6.2.0] - 2026-07-23
 
 R11.1. Exact N=7 acoustic geometry and its one-seventh phase identity, a
