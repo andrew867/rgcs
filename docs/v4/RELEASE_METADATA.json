@@ -1,8 +1,8 @@
 {
   "tests_passed": 5175,
   "tests_deselected": 1,
-  "summary_line": "pending re-measurement on the fully green suite",
+  "summary_line": "5175 passed, 8 skipped, 1 deselected, 7 warnings in 736.10s (0:12:16)",
   "deselect_node": "tests/regression/test_generator_determinism.py::test_generator_deterministic",
   "deselect_reason": "byte-equality test requires the archived v2.0.0 build environment; hosted CI deselects exactly this node id (policy D-V3-04)",
-  "exit_code": 1
+  "exit_code": 0
 }
