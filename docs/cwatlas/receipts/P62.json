@@ -1,0 +1,39 @@
+{
+  "phase_id": "P62",
+  "tranche": "T08",
+  "title": "Master Documentation and Manuscript Update",
+  "status": "COMPLETE",
+  "note": "browser frontend is spec-level, backend API tested; this is the master documentation / manuscript phase",
+  "outputs": [
+    "docs/cwatlas/R10_8_1_MANUSCRIPT.md",
+    "docs/cwatlas/receipts/P62.json"
+  ],
+  "tests": [],
+  "tests_note": "documentation/spec phase",
+  "negative_results": [
+    "No cwatlas code, tests, schemas, __init__, claims, pyproject, or build_meta were modified; documentation only.",
+    "No source vector has earned the CALIBRATED_MAPPING class; it is evidence-gated and unreachable without a prospective known-destination challenge that has not been passed.",
+    "The manuscript records what round-trips exactly (CW-GEO-1, CW-HCM-ICO in System 1) and what stays alias-only or refuses (the legacy codecs in System 2); it claims nothing physical."
+  ],
+  "claims": [
+    {"statement": "The CW Atlas is a bidirectional geocoder whose two systems are firewalled: a canonical reversible geocoder (CANONICAL_ROUND_TRIP) and a source-vector hypothesis decoder (at most MATHEMATICAL_TRANSLATION), with no promotion between them.", "claim_class": "CANONICAL_ROUND_TRIP"},
+    {"statement": "A source vector does not identify a real location (claims.refuse_source_as_geographic).", "claim_class": "REFUSAL"},
+    {"statement": "Stonehenge or any other named site has not been decoded from the vector family (claims.refuse_site_decoded).", "claim_class": "REFUSAL"},
+    {"statement": "The coordinate system does not control gravity, portals, craft, or consciousness (claims.refuse_control_claim).", "claim_class": "REFUSAL"},
+    {"statement": "A close arithmetic match does not establish intended encoding (claims.refuse_close_match_as_intent).", "claim_class": "REFUSAL"},
+    {"statement": "A public patent does not validate a secret craft programme (claims.refuse_patent_as_craft_validation).", "claim_class": "REFUSAL"},
+    {"statement": "A legacy alias set is not forced to one pin (claims.refuse_alias_as_unique).", "claim_class": "REFUSAL"},
+    {"statement": "A reversible canonical round-trip does not prove a source vector's meaning (claims.refuse_synthetic_codec_as_source_meaning).", "claim_class": "REFUSAL"},
+    {"statement": "A map pin is not produced without a declared CRS and epoch (claims.refuse_pin_without_crs_epoch).", "claim_class": "REFUSAL"}
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P62_MASTER_DOCUMENTATION_AND_MANUSCRIPT_UPDATE",
+  "terminal_verdict": [
+    "RGCS_R10_8_1_GREEN_CW_ATLAS_READY",
+    "CANONICAL_ROUND_TRIP_VERIFIED",
+    "SOURCE_VECTOR_GEOGRAPHIC_SEMANTICS_NOT_CLAIMED",
+    "PHYSICAL_VALIDATION_NOT_CLAIMED"
+  ],
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED"
+}

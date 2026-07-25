@@ -1,0 +1,40 @@
+{
+  "phase_id": "P24",
+  "tranche": "T03",
+  "title": "Codec Plugin and Alias-Set API",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/codec_registry.py",
+    "tests/cwatlas/test_codec_registry.py",
+    "docs/cwatlas/receipts/P24.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_codec_registry.py -q",
+    "test_file": "tests/cwatlas/test_codec_registry.py",
+    "count": 15,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "require_unique_pin refuses a multi-candidate alias set (invariant 4) by delegating to claims.refuse_alias_as_unique",
+    "require_unique_pin refuses an empty alias set (nothing to pin)",
+    "an empty alias set is a legal result when no legacy codec admits the raw input",
+    "register refuses a non-conforming object (missing encode/decode) and a duplicate codec id",
+    "absent codec modules (codec_pack40, codec_pack38) are skipped by discovery, not required"
+  ],
+  "claims": [
+    {
+      "statement": "CodecRegistry registers any codec exposing codec_id, version, encode, decode; the default registry discovers available modules with per-module try/except and is decoupled from specific codec imports.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "decode_all runs every registered legacy codec and returns an AliasSet of 0..N LEGACY_ALIAS_CANDIDATE decodes, each with a score, an uncertainty, and a search-space count.",
+      "claim_class": "LEGACY_ALIAS_CANDIDATE"
+    },
+    {
+      "statement": "The API never forces one pin: a single pin requested from a multi-candidate or empty set is refused (System Contract invariant 4).",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P24_CODEC_PLUGIN_AND_ALIAS_SET_API"
+}

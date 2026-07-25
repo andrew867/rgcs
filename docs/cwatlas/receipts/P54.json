@@ -1,0 +1,40 @@
+{
+  "phase_id": "P54",
+  "tranche": "T07",
+  "title": "Prospective Known-Destination Challenge Protocol",
+  "status": "COMPLETE",
+  "software_commit": "2f49122",
+  "outputs": [
+    "cwatlas/challenge.py",
+    "tests/cwatlas/test_challenge.py",
+    "docs/cwatlas/receipts/P54.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_challenge.py -q",
+    "test_file": "tests/cwatlas/test_challenge.py",
+    "count": 14,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a reveal at or before the commit epoch is temporally retrospective and is refused (SealError)",
+    "an opening that does not reproduce the sealed commitment (prediction altered after the truth) is refused; a wrong salt also breaks the commitment",
+    "a seen (non-unseen) target cannot be sealed; a target may be sealed only once (no revision)",
+    "a retrospective calibration fit remains OPERATOR_HYPOTHESIS and never promotes",
+    "a missed challenge stays OPERATOR_HYPOTHESIS; non-positive tolerance and empty salt fail safely"
+  ],
+  "claims": [
+    {
+      "statement": "A sealed decode of an unseen target, committed before the truth is revealed and scored within tolerance afterward, is promoted to CALIBRATED_MAPPING (POWER); this is the only path to that class.",
+      "claim_class": "CALIBRATED_MAPPING"
+    },
+    {
+      "statement": "Retrospective fits and post-hoc predictions never promote; the commit-before-reveal order is enforced cryptographically and temporally.",
+      "claim_class": "OPERATOR_HYPOTHESIS"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic anchors and salts only, no private inputs, no real coordinates",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P54_PROSPECTIVE_KNOWN_DESTINATION_CHALLENGE_PROTOCOL"
+}

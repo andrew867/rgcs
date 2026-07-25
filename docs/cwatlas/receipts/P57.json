@@ -1,0 +1,40 @@
+{
+  "phase_id": "P57",
+  "tranche": "T08",
+  "title": "Backend API and CLI",
+  "status": "COMPLETE",
+  "software_commit": "2f49122",
+  "outputs": [
+    "cwatlas/service.py",
+    "cwatlas/cli.py",
+    "tests/cwatlas/test_service.py",
+    "tests/cwatlas/test_cli.py",
+    "docs/cwatlas/receipts/P57.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_service.py tests/cwatlas/test_cli.py -q",
+    "test_files": [
+      "tests/cwatlas/test_service.py",
+      "tests/cwatlas/test_cli.py"
+    ],
+    "count": 34,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "an unsupported codec, a missing uncertainty, and a missing epoch are all typed ServiceError refusals",
+    "a malformed, unknown-codec, or non-string vector decodes to a typed REFUSAL (never a crash, never a guessed point)",
+    "a private token routed into an export receipt is refused before the bundle is sealed",
+    "malformed CLI args exit 2 (argparse); a rejected request exits 1 with a typed error object; decode of garbage is a typed refusal at exit 0"
+  ],
+  "claims": [
+    {
+      "statement": "A framework-agnostic service layer (encode_point, decode_vector, legacy_search, round_trip, export_bundle, verify_vector) and a cw-atlas argparse CLI expose the reversible codecs and the legacy candidate search; every result carries CRS + epoch + claim class; no web framework is imported (POWER).",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic inputs only; exports privacy-scanned before sealing; no FastAPI/Flask imported; service asserts no geographic/physical claim",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P57_BACKEND_API_AND_CLI"
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Codec Result",
+  "type": "object",
+  "required": [
+    "status",
+    "codec_id",
+    "candidates",
+    "receipt_id"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "OK_POINT",
+        "OK_REGION",
+        "OK_ALIAS_SET",
+        "INVALID",
+        "NO_UNIQUE_GEOGRAPHIC_DECODE",
+        "CALIBRATION_REQUIRED"
+      ]
+    },
+    "codec_id": {
+      "type": "string"
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "receipt_id": {
+      "type": "string"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

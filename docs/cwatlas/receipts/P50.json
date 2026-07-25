@@ -1,0 +1,38 @@
+{
+  "phase_id": "P50",
+  "tranche": "T07",
+  "title": "Planted-Signal Recovery and Power Tests",
+  "status": "COMPLETE",
+  "software_commit": "2f49122",
+  "outputs": [
+    "cwatlas/power.py",
+    "tests/cwatlas/test_power.py",
+    "docs/cwatlas/receipts/P50.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_power.py -q",
+    "test_file": "tests/cwatlas/test_power.py",
+    "count": 12,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a method with no power on planted data (noise or constant decoder) is refused as vacuous (refuse_vacuous_method); its null result may not be reported as a negative finding",
+    "a noise decoder stays within the null margin of the chance rate on planted data (the null control), so a positive power result is meaningful",
+    "power_test on a non-PlantedDataset, and a planted_label with num_classes < 2, are refused"
+  ],
+  "claims": [
+    {
+      "statement": "The decoder that knows a planted deterministic mapping recovers it on TRAIN (recovery 1.0, well above the 1/num_classes chance rate), so the pipeline has power: it can detect a signal known to be present (POWER).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "A pure-noise decoder does not recover the planted mapping (stays at chance), so a null result from a method that HAS power is a finding about the material rather than blindness in the pipeline.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic opaque ids and integer labels only, no private inputs, no real coordinates",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P50_PLANTED_SIGNAL_RECOVERY_AND_POWER_TESTS"
+}

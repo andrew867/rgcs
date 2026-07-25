@@ -1,0 +1,39 @@
+{
+  "phase_id": "P22",
+  "tranche": "T03",
+  "title": "Nine-Digit Triplet and Shell Candidates",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/codec_triplet9.py",
+    "tests/cwatlas/test_codec_triplet9.py",
+    "docs/cwatlas/receipts/P22.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_codec_triplet9.py -q",
+    "test_file": "tests/cwatlas/test_codec_triplet9.py",
+    "count": 15,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "CW-TRIPLET9-1 refuses non-nine-digit input (INVALID) and out-of-range or wrong-arity groups (ClaimError)",
+    "CW-SHELL9-LEGACY is marked LEGACY_CONDITIONAL and does NOT round-trip cleanly: a shell digit of 8 decodes to 0 (lossy conditional 8->0 closure)",
+    "CW-SHELL9-LEGACY refuses malformed input and out-of-range groups; shell digit must be in [0, 8]",
+    "neither reading is promoted over the other; both are MATHEMATICAL_TRANSLATION candidates"
+  ],
+  "claims": [
+    {
+      "statement": "CW-TRIPLET9-1 reads a nine-digit string as a symmetric fixed triplet XXX|YYY|ZZZ and round-trips exactly.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "CW-SHELL9-LEGACY reads a nine-digit string as an asymmetric triplet/triplet/pair/shell XXX|YYY|ZZ|S; it is retained for provenance only and does not round-trip cleanly.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "A nine-digit string is re-expressed arithmetically; no geographic meaning, source intent, or unique partition is asserted.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P22_NINE_DIGIT_TRIPLET_AND_SHELL_CANDIDATES"
+}

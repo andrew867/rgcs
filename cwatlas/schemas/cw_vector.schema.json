@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CW Vector",
+  "type": "object",
+  "required": [
+    "raw",
+    "codec_id",
+    "codec_version",
+    "provenance"
+  ],
+  "properties": {
+    "raw": {
+      "type": "string",
+      "minLength": 1
+    },
+    "normalized": {
+      "type": "string"
+    },
+    "codec_id": {
+      "type": "string"
+    },
+    "codec_version": {
+      "type": "string"
+    },
+    "tokens": {
+      "type": "array",
+      "items": {
+        "type": [
+          "integer",
+          "string"
+        ]
+      }
+    },
+    "checksum": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "provenance": {
+      "$ref": "provenance_event.schema.json"
+    },
+    "private": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

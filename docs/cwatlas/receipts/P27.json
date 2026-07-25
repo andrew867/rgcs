@@ -1,0 +1,35 @@
+{
+  "phase_id": "P27",
+  "tranche": "T04",
+  "title": "Inverse Cell Centroid and Barycentric Localization",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/localize.py",
+    "tests/cwatlas/test_localize.py"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_localize.py -q",
+    "count": 13,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "localize_cell refuses a face_id outside 0..19 and an octal digit outside 0..7",
+    "localization is deterministic across repeated calls"
+  ],
+  "claims": [
+    {
+      "statement": "localize_cell maps an address (face, octal path) to the spherical cell it names, returning the cell corners, the unit centroid direction, and the cell diameter, without inventing sub-cell point precision.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "refine_then_localize returns a cell that contains the original direction (POWER), and the cell diameter shrinks by a factor between 0.4 and 0.6 (~1/2) per refinement depth.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "A cell centroid is a representative of a synthetic cell, not a decoded destination. SOURCE_VECTOR_GEOGRAPHIC_SEMANTICS_NOT_CLAIMED; PHYSICAL_VALIDATION_NOT_CLAIMED.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P27_INVERSE_CELL_CENTROID_AND_BARYCENTRIC_LOCALIZATION"
+}

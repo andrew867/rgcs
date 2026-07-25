@@ -1,0 +1,36 @@
+{
+  "phase_id": "P32",
+  "tranche": "T04",
+  "title": "Coordinate Uncertainty and Error Regions",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/uncertainty.py",
+    "tests/cwatlas/test_uncertainty.py",
+    "docs/cwatlas/receipts/P32.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_uncertainty.py -q",
+    "test_file": "tests/cwatlas/test_uncertainty.py",
+    "count": 16,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a region collapsed to a point (zero area) without justification is refused as invented precision",
+    "refuse_invented_precision() always raises",
+    "a negative input sigma is refused",
+    "a non-positive cell size is refused",
+    "an out-of-range centre latitude is refused"
+  ],
+  "claims": [
+    {
+      "statement": "Quantization (step/sqrt(12)) and input sigma propagate into circular, elliptical, or cell-polygon error regions, each carrying an area and a search-space count; region area scales with sigma (POWER).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "A vector->map decode without calibration returns a region or heatmap, never invented precision; a point-sized region requires an explicit justification.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P32_COORDINATE_UNCERTAINTY_AND_ERROR_REGIONS"
+}

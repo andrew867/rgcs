@@ -1,0 +1,38 @@
+{
+  "phase_id": "P43",
+  "tranche": "T06",
+  "title": "Legacy Candidate Codec Search",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/decode_legacy.py",
+    "tests/cwatlas/test_decode_legacy.py",
+    "docs/cwatlas/receipts/P43.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_decode_legacy.py -q",
+    "test_file": "tests/cwatlas/test_decode_legacy.py",
+    "count": 10,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a multi-candidate alias set refuses require_unique_pin (invariant 4)",
+    "a legacy source vector is refused as a location (refuse_source_as_geographic)",
+    "a vector no legacy codec admits yields a REFUSAL with an empty set, not a guess",
+    "a non-string input is refused"
+  ],
+  "claims": [
+    {
+      "statement": "Running all registered legacy codecs over one raw source vector gathers all admissible candidates into an alias set (0..N), each with codec_id, score, uncertainty, and search-space count (POWER multi-candidate).",
+      "claim_class": "LEGACY_ALIAS_CANDIDATE"
+    },
+    {
+      "statement": "A source vector yields candidates or a refusal, never a forced pin and never a decoded location.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs or personal data",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P43_LEGACY_CANDIDATE_CODEC_SEARCH"
+}

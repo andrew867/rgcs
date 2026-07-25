@@ -1,0 +1,28 @@
+{
+  "phase_id": "P58",
+  "tranche": "T08",
+  "title": "MapLibre Web Application",
+  "status": "COMPLETE",
+  "note": "browser frontend is spec-level, backend API tested",
+  "outputs": [
+    "docs/cwatlas/UI_SPEC_MAPLIBRE_WEB_APP.md",
+    "docs/cwatlas/receipts/P58.json"
+  ],
+  "tests": [],
+  "tests_note": "documentation/spec phase",
+  "negative_results": [
+    "The browser frontend (TypeScript/React/Vite/MapLibre GL JS) is NOT built in this Python repository's pytest gate; it is delivered as a precise UI specification against the P57 backend service API.",
+    "No cwatlas code, tests, schemas, __init__, claims, pyproject, or build_meta were modified; docs only.",
+    "No service.py exists yet in cwatlas; the spec references the P57 service API as a thin JSON wrapper over the tested cwatlas module functions, naming each underlying call."
+  ],
+  "claims": [
+    {"statement": "The 2D map app renders the tested engine's results and receipts; every UI action maps to a named P57 endpoint and a tested cwatlas function, adding no independent transform.", "claim_class": "MATHEMATICAL_TRANSLATION"},
+    {"statement": "A map pin is never produced without a declared CRS and epoch (invariant 9); the UI surfaces refuse_pin_without_crs_epoch rather than defaulting.", "claim_class": "REFUSAL"},
+    {"statement": "A legacy vector is never forced to one pin; a single uncalibrated candidate renders as a REGION via vector_to_pin_ux.decide_pin_state.", "claim_class": "LEGACY_ALIAS_CANDIDATE"},
+    {"statement": "A pasted source vector does not identify a real location; it yields a pin, alias set, region, heatmap, or refusal.", "claim_class": "REFUSAL"}
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P58_MAPLIBRE_WEB_APPLICATION_SPEC",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED"
+}

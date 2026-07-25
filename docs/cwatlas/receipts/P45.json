@@ -1,0 +1,41 @@
+{
+  "phase_id": "P45",
+  "tranche": "T06",
+  "title": "Known-Anchor Calibration Mode",
+  "status": "COMPLETE",
+  "software_commit": "2f49122",
+  "outputs": [
+    "cwatlas/calibration.py",
+    "tests/cwatlas/test_calibration.py",
+    "docs/cwatlas/receipts/P45.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_calibration.py -q",
+    "test_file": "tests/cwatlas/test_calibration.py",
+    "count": 16,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "geographic labels are sealed during transform selection; revealing them before the calibration is frozen is refused (invariant 5)",
+    "a retrospective fit stays OPERATOR_HYPOTHESIS and never reaches CALIBRATED_MAPPING",
+    "refuse_retrospective_fit_as_calibrated() always raises",
+    "a prospective challenge that reuses a training anchor is refused as non-prospective",
+    "an underdetermined affine fit (fewer than dim+1 anchors) is refused",
+    "an out-of-range anchor latitude, an empty anchor set, and a non-positive tolerance are refused"
+  ],
+  "claims": [
+    {
+      "statement": "A synthetic affine source-semantics transform is fitted to (source_vector, known_point) anchors with geographic labels sealed during selection, and a well-posed calibration reproduces a clean linear anchor mapping (POWER).",
+      "claim_class": "OPERATOR_HYPOTHESIS"
+    },
+    {
+      "statement": "A calibration is promoted to CALIBRATED_MAPPING only after a prospective known-destination challenge passes within tolerance; retrospective fit alone is not calibrated.",
+      "claim_class": "CALIBRATED_MAPPING"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic anchors only, no private inputs, no real coordinates",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P45_KNOWN_ANCHOR_CALIBRATION_MODE"
+}

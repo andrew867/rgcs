@@ -1,0 +1,39 @@
+{
+  "phase_id": "P21",
+  "tranche": "T03",
+  "title": "CW-BASE100 Variable-Depth Token Codec",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/codec_base100.py",
+    "tests/cwatlas/test_codec_base100.py",
+    "docs/cwatlas/receipts/P21.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_codec_base100.py -q",
+    "test_file": "tests/cwatlas/test_codec_base100.py",
+    "count": 19,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "an odd-length token string is refused (decode_to_path raises; decode returns INVALID)",
+    "a non-ASCII-digit token (including unicode superscript digits) is refused",
+    "a non-str raw is refused",
+    "encode refuses a token value outside [0, 99], a bool, or a string passed as a path"
+  ],
+  "claims": [
+    {
+      "statement": "CW-BASE100-1 is a variable-depth grammar of two-decimal-digit tokens (00..99); a string of N tokens decodes to a depth-N path and encode/decode round-trip exactly.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "The exact round-trip is a verified property of the codec, not evidence that any decoded path identifies a real location; source-vector geographic semantics remain NOT_CLAIMED.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "A malformed token string (odd length or non-ASCII-digit) yields an explicit INVALID result or a ClaimError, never a silent repair.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P21_CW_BASE100_VARIABLE_DEPTH_TOKEN_CODEC"
+}

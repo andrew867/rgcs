@@ -1,0 +1,41 @@
+{
+  "phase_id": "P49",
+  "tranche": "T07",
+  "title": "No-Look-Ahead and Sealed Holdout Framework",
+  "status": "COMPLETE",
+  "software_commit": "2f49122",
+  "outputs": [
+    "cwatlas/holdout.py",
+    "tests/cwatlas/test_holdout.py",
+    "docs/cwatlas/receipts/P49.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_holdout.py -q",
+    "test_file": "tests/cwatlas/test_holdout.py",
+    "count": 15,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a decode/score attempted before the holdout is sealed is refused (refuse_decode_before_seal; invariant 5)",
+    "scoring a sealed holdout more than once is refused (refuse_multiple_scoring)",
+    "a holdout item leaked into the training set is refused (refuse_holdout_in_training)",
+    "holdout labels that do not match the seal are refused at scoring time",
+    "a tampered holdout (one label changed) fails to reproduce the seal while the true holdout matches",
+    "a split of fewer than two items, or an out-of-range holdout fraction, or an empty seal is refused"
+  ],
+  "claims": [
+    {
+      "statement": "A deterministic salted-hash train/holdout split is disjoint and covers every item, the holdout ids and geographic labels are sealed under SHA-256 before transform selection (invariant 5), and a decoder is scored once against the sealed labels (POWER: seal machinery verified, true holdout matches and a tampered one does not).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "No transform may look ahead: a decode before the seal, a holdout item leaked into training, or a second scoring is refused, so a held-out score is evidence rather than a chosen result.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic opaque ids and integer labels only, no private inputs, no real coordinates",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P49_NO_LOOK_AHEAD_AND_SEALED_HOLDOUT_FRAMEWORK"
+}

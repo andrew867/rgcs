@@ -1,0 +1,38 @@
+{
+  "phase_id": "P20",
+  "tranche": "T03",
+  "title": "CW-PACK38 2-Bit Header Plus Three 12-Bit Fields",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/codec_pack38.py",
+    "tests/cwatlas/test_codec_pack38.py",
+    "docs/cwatlas/receipts/P20.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_codec_pack38.py -q",
+    "test_file": "tests/cwatlas/test_codec_pack38.py",
+    "count": 38,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a header value exceeding the 2-bit field (0..3) is refused, not truncated",
+    "any of the three 12-bit fields exceeding 4095 is refused, not truncated",
+    "a wrong number of fields (not exactly three) is refused",
+    "negative header or field values are refused",
+    "booleans and non-integers are refused (not silently coerced)",
+    "a packed word outside the 38-bit range is refused",
+    "refuse_as_geographic() always raises: a packed word is never a location"
+  ],
+  "claims": [
+    {
+      "statement": "CW-PACK38-1 reversibly packs a 2-bit header and three 12-bit fields (2+36=38 bits) into a single word; encode/decode is an exact round-trip.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "The earlier 38-bit candidate is retained as a separate named version; its output is an arithmetic re-expression and never a geographic decode, and it never forces a single pin.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P20_CW_PACK38_2_BIT_HEADER_PLUS_THREE_12_BIT_FIELDS"
+}

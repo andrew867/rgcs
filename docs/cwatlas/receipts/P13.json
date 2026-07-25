@@ -1,0 +1,32 @@
+{
+  "phase_id": "P13",
+  "tranche": "T02",
+  "title": "Spherical Icosahedron Construction",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/icosahedron.py",
+    "tests/cwatlas/test_icosahedron.py"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_icosahedron.py -q",
+    "count": 11,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a zero / non-direction vector is refused by classify_point",
+    "a non-finite (NaN/inf) direction is refused",
+    "a face_area index outside 0..19 is refused"
+  ],
+  "claims": [
+    {
+      "statement": "A deterministic 20-face spherical icosahedron is built from the golden ratio with V-E+F=2, unit-sphere vertices, stable 0..19 face numbering, point->face classification returning exactly one face, and face areas summing to 4*pi.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "A face id is a cell of a synthetic tessellation, not a place. SOURCE_VECTOR_GEOGRAPHIC_SEMANTICS_NOT_CLAIMED; PHYSICAL_VALIDATION_NOT_CLAIMED.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P13_SPHERICAL_ICOSAHEDRON_CONSTRUCTION"
+}

@@ -1,0 +1,39 @@
+{
+  "phase_id": "P31",
+  "tranche": "T04",
+  "title": "Cross-Body Scale Portability",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/portability.py",
+    "tests/cwatlas/test_portability.py",
+    "docs/cwatlas/receipts/P31.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_portability.py -q",
+    "test_file": "tests/cwatlas/test_portability.py",
+    "count": 12,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "cross-body mixing of two coordinates from different bodies is refused",
+    "to_bodyfixed refuses when the coordinate's body_id does not match the target body",
+    "a coordinate without a body_id is refused",
+    "scale_cell_size_m refuses a non-positive cell size"
+  ],
+  "claims": [
+    {
+      "statement": "The same addressing/codec API operates on Earth and Mars via BodyModel, differing only by declared constants and IAU convention (System Contract invariant 7).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "A metric cell size maps between bodies by the equatorial-radius ratio scale factor, reversibly.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "A coordinate carries its body_id and is never silently reused across bodies; crossing requires an explicit recorded conversion (MATHEMATICAL_TRANSLATION), which asserts nothing geographic.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P31_CROSS_BODY_SCALE_PORTABILITY"
+}

@@ -1,0 +1,38 @@
+{
+  "phase_id": "P44",
+  "tranche": "T06",
+  "title": "Alias Ranking, Regions, and Heatmaps",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/alias_regions.py",
+    "tests/cwatlas/test_alias_regions.py",
+    "docs/cwatlas/receipts/P44.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_alias_regions.py -q",
+    "test_file": "tests/cwatlas/test_alias_regions.py",
+    "count": 11,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "collapsing a region to a point without a justification is refused as invented precision",
+    "an empty alias set yields no heatmap (nothing to map)",
+    "a non-positive per_alias_sigma_m is refused",
+    "rank_aliases refuses a non-AliasSet"
+  ],
+  "claims": [
+    {
+      "statement": "Aliases are ranked only by predeclared rules (score, then description length in bits = log2(search_space_count), then codec id); region area scales with uncertainty and each region carries an area plus a search-space count (POWER).",
+      "claim_class": "LEGACY_ALIAS_CANDIDATE"
+    },
+    {
+      "statement": "Where a unique point is unavailable the ambiguity is expressed as a region or heatmap, never invented precision; a region is not collapsed to a point without an explicit justification, and ranking never consults a known destination.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs or personal data",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P44_ALIAS_RANKING_REGIONS_AND_HEATMAPS"
+}

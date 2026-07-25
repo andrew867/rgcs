@@ -1,0 +1,22 @@
+{
+  "phase_id": "P07",
+  "tranche": "T01",
+  "title": "Dependency, Prior-Art, and Claim Map",
+  "status": "COMPLETE",
+  "outputs": [
+    "docs/cwatlas/DEPENDENCY_PRIOR_ART_AND_CLAIM_MAP.md",
+    "docs/cwatlas/receipts/P07.json"
+  ],
+  "tests": [],
+  "note": "documentation phase",
+  "negative_results": [
+    "No dependency edge runs from the RF, plasmonic, or crystal lanes into a coordinate result; the physics lanes are research-archive context only.",
+    "Every forbidden cross-lane promotion (RF cue to authority, close match to intent, analogue to physical validation, patent to craft validation, source to location) is refused."
+  ],
+  "claims": [
+    {"statement": "Lane dependencies are one-way into the coordinate lane, gated by the claim firewall; every supporting source is classified by claim class.", "claim_class": "MATHEMATICAL_TRANSLATION"}
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "DEPENDENCY_MAP_ONE_WAY_INTO_COORDINATE_LANE_ALL_SOURCES_CLAIM_CLASSED",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+}

@@ -1,0 +1,22 @@
+{
+  "phase_id": "P03",
+  "tranche": "T01",
+  "title": "R10.8, R10.10, R14, and R15 Reconciliation",
+  "status": "COMPLETE",
+  "outputs": [
+    "docs/cwatlas/R10_8_1_RECONCILIATION.md",
+    "docs/cwatlas/receipts/P03.json"
+  ],
+  "tests": [],
+  "note": "documentation phase",
+  "negative_results": [
+    "Three prior requirements are CONTRADICTION-FLAGGED (R10.8 mechanism claim, R10.10 patent-as-craft-validation, R14 single forced pin); they are recorded, not adopted.",
+    "No completed prior work is reopened; superseded items are retained as named history, not overwritten."
+  ],
+  "claims": [
+    {"statement": "Prior R10.8/R10.10/R14/R15 requirements are each given an explicit disposition (carried / superseded / contradiction-flagged) without silently discarding contradictions.", "claim_class": "MATHEMATICAL_TRANSLATION"}
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "R10_8_1_RECONCILIATION_COMPLETE_NO_COMPLETED_WORK_REOPENED",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+}

@@ -1,0 +1,36 @@
+{
+  "phase_id": "P35",
+  "tranche": "T05",
+  "title": "Advanced Icosahedral Vector Generation",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/ico_vector.py",
+    "tests/cwatlas/test_ico_vector.py",
+    "docs/cwatlas/receipts/P35.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_ico_vector.py -q",
+    "test_file": "tests/cwatlas/test_ico_vector.py",
+    "count": 18,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "an IcoVector whose checksum does not bind its payload is refused on decode",
+    "a corrupted decodable token string is refused on parse",
+    "a negative refinement depth is refused",
+    "a depth beyond the reused subdivision numerical floor is refused",
+    "an unknown body is refused on encode"
+  ],
+  "claims": [
+    {
+      "statement": "A GeospatialAddress is mapped (via the ellipsoid outward-normal direction) into a canonical CW-HCM-ICO vector carrying face, octal path, continuous residual, shell/height, and checksum, and is inverted back to the same address to full floating-point precision (POWER); at depth 12 the octal path packs into 36 bits, PACK40-aligned. Generation is deterministic and the token string serializes and re-parses bit-identically.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "A face id, an octal path, and a residual are selectors in a synthetic tessellation, not a place; their exact round-trip is a property of the codec, not evidence any source vector identifies a real location.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P35_ADVANCED_ICOSAHEDRAL_VECTOR_GENERATION"
+}

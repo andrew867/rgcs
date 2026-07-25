@@ -1,0 +1,45 @@
+{
+  "phase_id": "P11",
+  "tranche": "T02",
+  "title": "Earth Body-Fixed Root and Orientation Profiles",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/earth_frame.py",
+    "tests/cwatlas/test_earth_frame.py",
+    "docs/cwatlas/receipts/P11.json"
+  ],
+  "tests": [
+    "tests/cwatlas/test_earth_frame.py (9 test cases, all pass)"
+  ],
+  "negative_results": [
+    "a zero rotation axis or zero prime-meridian direction is rejected (OrientationError)",
+    "an unknown orientation profile key is rejected",
+    "a vector that is not three finite floats is rejected"
+  ],
+  "claims": [
+    {
+      "statement": "The Earth body-fixed root fixes geocentre/rotation-axis/prime-meridian conventions with an optional crustal anchor; switching versioned OrientationProfile changes the ECEF mapping deterministically and the switch is recorded.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "The orientation mapping is a pure rotation and is exactly reversible; profiles are versioned records, legacy versions retained.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    }
+  ],
+  "sha256_manifest": {
+    "cwatlas/earth_frame.py": "sha256:7b4b8ad4826b5bbce1893964be17d76e9bdc33a4fdbf4774ead4e9f2b06d685f",
+    "tests/cwatlas/test_earth_frame.py": "sha256:d42bcd8364990436b035aff322d07c240154d983245ddbbd2b92e109f8528f3d"
+  },
+  "software_commit": "2f49122a771a399f5bb462851bb27c6c60540d9c",
+  "runlog": {
+    "repository_head": "2f49122 (branch r1081-cwatlas)",
+    "inputs": "none; orientation offsets and vectors passed in, no wall-clock read",
+    "assumptions": "polar motion in arcsec, prime-meridian offset in degrees; identity profile is the identity rotation",
+    "boundary": "public code, synthetic orientation profiles only",
+    "unresolved_questions": [
+      "full IERS Earth-orientation-parameter time series and s' term are out of scope; static per-profile offsets only"
+    ]
+  },
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P11_EARTH_BODY_FIXED_ROOT_AND_ORIENTATION_PROFILES"
+}

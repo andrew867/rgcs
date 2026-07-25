@@ -1,0 +1,38 @@
+{
+  "phase_id": "P36",
+  "tranche": "T05",
+  "title": "Body, Epoch, Shell, and Altitude UI Selection Logic",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/atlas_params.py",
+    "tests/cwatlas/test_atlas_params.py",
+    "docs/cwatlas/receipts/P36.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_atlas_params.py -q",
+    "test_file": "tests/cwatlas/test_atlas_params.py",
+    "count": 19,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a parameter set without a declared CRS (frame) is refused (invariant 9)",
+    "a parameter set without an epoch is refused (invariant 9)",
+    "a frame not valid for the chosen body is refused (e.g. ITRF2020 on MARS)",
+    "an unknown codec or unknown height convention is refused",
+    "an out-of-range shell state is refused",
+    "an icosahedral codec without an explicit depth is refused (no hidden default)",
+    "a depth supplied to a non-depth codec, or an out-of-range depth, is refused"
+  ],
+  "claims": [
+    {
+      "statement": "The body/frame/epoch/shell/altitude/codec/depth selection is validated into a typed AtlasParams, the allowed values for each field are enumerable, and default_params returns a fully-populated, inspectable set; validate_params fills nothing silently, so a signed receipt carries no hidden default. Validation is deterministic.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "Selecting a parameter set declares the conventions a downstream codec will operate under and asserts nothing geographic about any source vector.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P36_BODY_EPOCH_SHELL_AND_ALTITUDE_UI"
+}

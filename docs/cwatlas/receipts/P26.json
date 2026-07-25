@@ -1,0 +1,40 @@
+{
+  "phase_id": "P26",
+  "tranche": "T04",
+  "title": "Recursive Eight-Way Refinement",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/addressing.py",
+    "tests/cwatlas/test_addressing.py"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_addressing.py -q",
+    "count": 18,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "encode_path refuses a negative depth and a depth beyond MAX_REFINEMENT_DEPTH",
+    "path_cell refuses an octal digit outside 0..7",
+    "a depth-0 path decodes back to the whole face triangle"
+  ],
+  "claims": [
+    {
+      "statement": "encode_path maps a direction to (face, octal path) by descending the reused one-to-eight refinement; the path is a tuple of octal digits 0..7 of the requested depth, and a depth-12 path packs into exactly 36 bits (the CW-PACK40-1 path field).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "The forward map is deterministic and stable, and path_cell decodes the path back to the spherical cell it names; the decoded cell contains the original direction (barycentric coordinates non-negative within tolerance).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "Face selection and child location use a scale-invariant barycentric so descent stays exact at CW-PACK40 depth; deeper than the reused construction's numerical floor is a clean refusal.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "An octal path is a cell selector in a synthetic tessellation, not a place. SOURCE_VECTOR_GEOGRAPHIC_SEMANTICS_NOT_CLAIMED; PHYSICAL_VALIDATION_NOT_CLAIMED.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P26_RECURSIVE_EIGHT_WAY_REFINEMENT"
+}

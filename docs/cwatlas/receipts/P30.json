@@ -1,0 +1,40 @@
+{
+  "phase_id": "P30",
+  "tranche": "T04",
+  "title": "Root Orientation Calibration",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/orientation_cal.py",
+    "tests/cwatlas/test_orientation_cal.py",
+    "docs/cwatlas/receipts/P30.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_orientation_cal.py -q",
+    "test_file": "tests/cwatlas/test_orientation_cal.py",
+    "count": 12,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "fewer than three control points is refused (underdetermined)",
+    "collinear control points are refused (rank < 3, intrinsic ambiguity)",
+    "coplanar control points are refused (rank < 3, intrinsic ambiguity)",
+    "mismatched source/target shapes are refused",
+    "calibrate_orientation without an OrientationProfile is refused (provenance required)"
+  ],
+  "claims": [
+    {
+      "statement": "A Kabsch/Wahba best-fit proper rotation solved from synthetic control points recovers a planted OrientationProfile rotation exactly (POWER), up to the intrinsic ambiguity of a degenerate configuration.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "The frozen calibration scores holdout control points without retuning; which OrientationProfile and version were used is recorded for provenance.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "The solve uses control points only and never consults the orientation profile's rotation to choose the transform (System Contract invariant 5).",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P30_ROOT_ORIENTATION_CALIBRATION"
+}

@@ -1,0 +1,34 @@
+{
+  "phase_id": "P61",
+  "tranche": "T08",
+  "title": "Import, Export, and Interchange Packages",
+  "status": "COMPLETE",
+  "software_commit": "2f49122",
+  "outputs": [
+    "cwatlas/interchange.py",
+    "tests/cwatlas/test_interchange.py",
+    "docs/cwatlas/receipts/P61.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_interchange.py -q",
+    "test_file": "tests/cwatlas/test_interchange.py",
+    "count": 19,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a private token in a point label or in imported package text is refused",
+    "malformed JSON, a wrong CSV header, a non-cw:// URI, and an empty package all fail safely as typed InterchangeError",
+    "an empty bundle is refused at build time"
+  ],
+  "claims": [
+    {
+      "statement": "A single interchange bundle round-trips a batch of declared points across JSON, GeoJSON, KML, CSV, and CW-URI and imports back to the same points; each point carries its CRS + epoch; the bundle records provenance and a content hash and is privacy-scanned on build, export, and import (POWER).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic points only; every label and serialized text privacy-scanned; reuses io_geo + share; no geographic meaning attached to any source vector",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P61_IMPORT_EXPORT_AND_INTERCHANGE_PACKAGES"
+}

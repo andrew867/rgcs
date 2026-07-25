@@ -1,0 +1,39 @@
+{
+  "phase_id": "P48",
+  "tranche": "T06",
+  "title": "Vector-to-Pin UX and Refusal States",
+  "status": "COMPLETE",
+  "software_commit": "2f49122",
+  "outputs": [
+    "cwatlas/vector_to_pin_ux.py",
+    "tests/cwatlas/test_vector_to_pin_ux.py",
+    "docs/cwatlas/receipts/P48.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_vector_to_pin_ux.py -q",
+    "test_file": "tests/cwatlas/test_vector_to_pin_ux.py",
+    "count": 13,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a single candidate without calibration falls to REGION, never a forced UNIQUE_POINT, with a why-unavailable message naming the missing calibration",
+    "a missing CRS or epoch yields a REFUSAL state (invariant 9)",
+    "an empty candidate set yields a REFUSAL state (NO_UNIQUE_GEOGRAPHIC_DECODE, a normal successful result)",
+    "a negative candidate count is refused"
+  ],
+  "claims": [
+    {
+      "statement": "The vector-to-pin state machine selects UNIQUE_POINT / ALIAS_SET / REGION / HEATMAP / REFUSAL from the decode result and calibration availability; each state is reachable and the boundary between ALIAS_SET and HEATMAP is tested (POWER).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "A single pin is produced only with a prospective calibration and a declared CRS and epoch; otherwise the UX returns a region, alias set, heatmap, or refusal, never a forced pin.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - no inputs, synthetic CRS/epoch literals only, no private data",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P48_VECTOR_TO_PIN_UX_AND_REFUSAL_STATES"
+}

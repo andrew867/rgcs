@@ -1,0 +1,38 @@
+{
+  "phase_id": "P19",
+  "tranche": "T03",
+  "title": "CW-PACK40 4-Bit Header Plus 36-Bit Path",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/codec_pack40.py",
+    "tests/cwatlas/test_codec_pack40.py",
+    "docs/cwatlas/receipts/P19.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_codec_pack40.py -q",
+    "test_file": "tests/cwatlas/test_codec_pack40.py",
+    "count": 55,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a header value exceeding the 4-bit field (0..15) is refused, not truncated",
+    "a path value exceeding the 36-bit field (0..2**36-1) is refused, not truncated",
+    "negative header or path values are refused",
+    "booleans and non-integers are refused (not silently coerced)",
+    "a packed word outside the 40-bit range is refused",
+    "an octal path string that is not exactly twelve base-8 digits is refused",
+    "refuse_as_geographic() always raises: a packed word is never a location"
+  ],
+  "claims": [
+    {
+      "statement": "CW-PACK40-1 reversibly packs a 4-bit header and a 36-bit path (twelve octal digits) into a 40-bit word; encode/decode is an exact POWER round-trip.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "The codec output is an arithmetic re-expression of two integers and never a geographic decode; a legacy decode yields zero, one, or many candidates, never a forced pin.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P19_CW_PACK40_4_BIT_HEADER_PLUS_36_BIT_PATH"
+}

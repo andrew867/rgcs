@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Stonehenge synthetic baseline",
+    "lat": 51.178882,
+    "lon": -1.826215,
+    "body": "EARTH",
+    "codec": "CW-GEO-1"
+  },
+  {
+    "name": "Giza synthetic baseline",
+    "lat": 29.979235,
+    "lon": 31.134202,
+    "body": "EARTH",
+    "codec": "CW-GEO-1"
+  },
+  {
+    "name": "Null Island",
+    "lat": 0.0,
+    "lon": 0.0,
+    "body": "EARTH",
+    "codec": "CW-GEO-1"
+  },
+  {
+    "name": "Dateline west",
+    "lat": 10.0,
+    "lon": -179.99999,
+    "body": "EARTH",
+    "codec": "CW-GEO-1"
+  },
+  {
+    "name": "North pole",
+    "lat": 90.0,
+    "lon": 0.0,
+    "body": "EARTH",
+    "codec": "CW-GEO-1"
+  }
+]

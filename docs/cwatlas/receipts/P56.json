@@ -1,0 +1,35 @@
+{
+  "phase_id": "P56",
+  "tranche": "T07",
+  "title": "Evidence Receipts and Audit Bundles",
+  "status": "COMPLETE",
+  "software_commit": "2f49122",
+  "outputs": [
+    "cwatlas/audit_bundle.py",
+    "tests/cwatlas/test_audit_bundle.py",
+    "docs/cwatlas/receipts/P56.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_audit_bundle.py -q",
+    "test_file": "tests/cwatlas/test_audit_bundle.py",
+    "count": 13,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "tampering with a receipt's content breaks verification (verify_bundle returns False)",
+    "altering a recorded chain hash, reordering receipts, or tampering with the chain head all break verification",
+    "a private token in a receipt is refused at seal time before it can enter the signed chain",
+    "a non-ReceiptType kind, an empty receipt_id, and an off-shape (schema-violating) event all fail safely"
+  ],
+  "claims": [
+    {
+      "statement": "A hash-chained audit bundle of decode receipts, search-space accounting, holdout seals, and challenge results assembles, verifies, and projects each receipt to a provenance_event.schema.json event; tampering breaks verification (POWER).",
+      "claim_class": "SOURCE_CLAIM"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic receipts only; private tokens refused before sealing; bundle asserts no geographic/physical claim",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P56_EVIDENCE_RECEIPTS_AND_AUDIT_BUNDLES"
+}

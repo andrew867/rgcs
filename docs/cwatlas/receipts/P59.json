@@ -1,0 +1,29 @@
+{
+  "phase_id": "P59",
+  "tranche": "T08",
+  "title": "Three-Dimensional Globe and Shell Viewer",
+  "status": "COMPLETE",
+  "note": "browser frontend is spec-level, backend API tested",
+  "outputs": [
+    "docs/cwatlas/UI_SPEC_3D_GLOBE_AND_SHELL_VIEWER.md",
+    "docs/cwatlas/receipts/P59.json"
+  ],
+  "tests": [],
+  "tests_note": "documentation/spec phase",
+  "negative_results": [
+    "The 3D globe frontend (CesiumJS/React) is NOT built in the pytest gate; it is delivered as a UI specification against the shared P57 backend service API (same contract as P58).",
+    "No cwatlas code, tests, or schemas were modified; docs only.",
+    "The viewer adds only view-layer concerns (camera, shell layers, face overlays); it holds no geodesy, codec, or claim logic."
+  ],
+  "claims": [
+    {"statement": "The globe reuses the P48 vector-to-pin state machine and the P57 service unchanged; shells 0..8 render with nonliteral SOURCE-ontology labels, not measured altitudes.", "claim_class": "SOURCE_CLAIM"},
+    {"statement": "An icosahedral face or recursive cell is a synthetic tessellation cell, not a place; face ids and dodecahedron vertex ids are distinct graphs and are not conflated.", "claim_class": "MATHEMATICAL_TRANSLATION"},
+    {"statement": "Radial bands and effective-potential ordinals are nonliteral re-expressions of shell index, never physical potentials (refuse_effective_potential_as_physical).", "claim_class": "SOURCE_CLAIM"},
+    {"statement": "The 8<->0 shell closure is source ontology and is never auto-applied; the viewer draws it only on explicit opt-in.", "claim_class": "SOURCE_CLAIM"},
+    {"statement": "Uncertainty regions render by RegionKind (CIRCLE/ELLIPSE/CELL_POLYGON); no zero-area point is drawn for an uncalibrated decode.", "claim_class": "REFUSAL"}
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P59_THREE_DIMENSIONAL_GLOBE_AND_SHELL_VIEWER_SPEC",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED"
+}

@@ -1,0 +1,37 @@
+{
+  "phase_id": "P37",
+  "tranche": "T05",
+  "title": "Terra, Sol, and Variable-Depth Route Prefixes",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/route_prefix.py",
+    "tests/cwatlas/test_route_prefix.py",
+    "docs/cwatlas/receipts/P37.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_route_prefix.py -q",
+    "test_file": "tests/cwatlas/test_route_prefix.py",
+    "count": 18,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "an unknown namespace is refused unless allow_custom=True",
+    "an uppercase or non-identifier namespace is refused",
+    "a d<depth> token that disagrees with the segment count is refused",
+    "a missing colon, missing depth token, or bad depth token is refused",
+    "a route segment with whitespace or a delimiter is refused",
+    "a vector containing the prefix delimiter is refused"
+  ],
+  "claims": [
+    {
+      "statement": "A namespace (terra:/sol:) and a variable-depth route path (d<N>/seg.../) label a CW vector and round-trip through format/parse and wrap/split; strip() and rewrap() recover the underlying numeric address byte-for-byte (POWER: label-only, numeric address never changes across namespaces).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "A malformed namespace, depth, or route path is a typed refusal, never a silent guess.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - label-only string logic on synthetic vectors, no private inputs",
+  "verdict": "GREEN_R10_8_1_P37_TERRA_SOL_AND_VARIABLE_DEPTH_ROUTE_PREFIXES"
+}

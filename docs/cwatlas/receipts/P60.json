@@ -1,0 +1,28 @@
+{
+  "phase_id": "P60",
+  "tranche": "T08",
+  "title": "Offline Mode and Map Data Strategy",
+  "status": "COMPLETE",
+  "note": "browser frontend is spec-level, backend API tested",
+  "outputs": [
+    "docs/cwatlas/UI_SPEC_OFFLINE_AND_MAP_DATA.md",
+    "docs/cwatlas/receipts/P60.json"
+  ],
+  "tests": [],
+  "tests_note": "documentation/spec phase",
+  "negative_results": [
+    "Offline mode and the tile/terrain data strategy are delivered as a specification for the P58/P59 frontends; no browser or tile-bundling code ships in the pytest gate.",
+    "No cwatlas code, tests, or schemas were modified; docs only.",
+    "The app ships no default basemap; the tile source is operator-configured, and there is no baked-in provider."
+  ],
+  "claims": [
+    {"statement": "The coordinate engine is basemap-independent: all coordinate operations run fully offline against a locally hosted P57 service; the basemap degrades to a graticule without breaking any result.", "claim_class": "MATHEMATICAL_TRANSLATION"},
+    {"statement": "No private data leaves the device: coordinates, vectors, and receipts never enter an off-device request; tile requests carry only {z}/{x}/{y}; a fetch allowlist blocks all other origins.", "claim_class": "REFUSAL"},
+    {"statement": "No telemetry, analytics, or third-party CDN assets are enabled by default; exports pass export_separation.build_public_export / assert_export_clean and refuse records that scan as private.", "claim_class": "REFUSAL"},
+    {"statement": "A rendered basemap is a backdrop, not evidence; drawing a pin on imagery does not make a source vector's location real.", "claim_class": "REFUSAL"}
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P60_OFFLINE_MODE_AND_MAP_DATA_STRATEGY_SPEC",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED"
+}

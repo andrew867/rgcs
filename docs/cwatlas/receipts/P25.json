@@ -1,0 +1,36 @@
+{
+  "phase_id": "P25",
+  "tranche": "T04",
+  "title": "Face Selection and Edge Tie-Breaking",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/addressing.py",
+    "tests/cwatlas/test_addressing.py"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_addressing.py -q",
+    "count": 18,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "select_face refuses a zero, non-finite, or wrong-shaped direction",
+    "face_triangle refuses a face_id outside 0..19",
+    "an interior point reports on_boundary=False with a single tied face"
+  ],
+  "claims": [
+    {
+      "statement": "select_face returns the icosahedral face whose unit centre is nearest the direction; a direction exactly on a shared edge or vertex is a reported tie resolved deterministically to the lowest-id adjacent face.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "Face selection is deterministic and single-valued: an edge point ties exactly two faces, a vertex point ties exactly five, and in every case the lowest tied id wins.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "A face id is a cell selector in a synthetic tessellation, not a place. SOURCE_VECTOR_GEOGRAPHIC_SEMANTICS_NOT_CLAIMED; PHYSICAL_VALIDATION_NOT_CLAIMED.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P25_FACE_SELECTION_AND_EDGE_TIE_BREAKING"
+}

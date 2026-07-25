@@ -1,0 +1,38 @@
+{
+  "phase_id": "P33",
+  "tranche": "T05",
+  "title": "Map Click to Geospatial Address",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/map_to_address.py",
+    "tests/cwatlas/test_map_to_address.py",
+    "docs/cwatlas/receipts/P33.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_map_to_address.py -q",
+    "test_file": "tests/cwatlas/test_map_to_address.py",
+    "count": 16,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "an address without a declared CRS (frame) is refused (invariant 9)",
+    "an address without an epoch is refused (invariant 9)",
+    "an unknown body (not EARTH/MARS) is refused",
+    "an out-of-range latitude or shell is refused",
+    "a negative uncertainty is refused",
+    "a pixel click outside the viewport is refused, not clamped",
+    "a degenerate viewport (min >= max extent) is refused"
+  ],
+  "claims": [
+    {
+      "statement": "A direct geodetic click, or a pixel click projected through a declared equirectangular viewport, becomes a typed GeospatialAddress conforming to geospatial_address.schema.json and carrying body, CRS (frame), and epoch; the pixel projection round-trips exactly (POWER).",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "No pin/address exists without a declared CRS and epoch, and no precision is invented: the direct-click uncertainty is an explicit input and the pixel-click uncertainty is computed from the pixel footprint, never a hidden default.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P33_MAP_CLICK_TO_GEOSPATIAL_ADDRESS"
+}

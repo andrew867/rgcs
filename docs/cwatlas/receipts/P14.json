@@ -1,0 +1,37 @@
+{
+  "phase_id": "P14",
+  "tranche": "T02",
+  "title": "Dodecahedral Dual Topology",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/dodecahedron.py",
+    "tests/cwatlas/test_dodecahedron.py"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_dodecahedron.py -q",
+    "count": 12,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "require_dodeca_vertex refuses a bare int",
+    "require_dodeca_vertex refuses an IcosaFaceId (face is not a vertex)",
+    "dual_vertex_of_face refuses a bare int and refuses a DodecaVertexId",
+    "IcosaFaceId / DodecaVertexId reject out-of-range ids"
+  ],
+  "claims": [
+    {
+      "statement": "The 20-vertex dodecahedral dual is a distinct graph (12 pentagon faces, 20 vertices, 30 edges) with correct dual incidence (icosa faces<->dodeca vertices, icosa vertices<->dodeca faces, edges preserved) and V-E+F=2.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "Icosa face ids and dodeca vertex ids are distinct types; treating a face id as a vertex id without the dual map is a typed refusal (ConflationError).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "Neither a vertex id nor a face id denotes a place. SOURCE_VECTOR_GEOGRAPHIC_SEMANTICS_NOT_CLAIMED; PHYSICAL_VALIDATION_NOT_CLAIMED.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P14_DODECAHEDRAL_DUAL_TOPOLOGY"
+}

@@ -1,0 +1,38 @@
+{
+  "phase_id": "P46",
+  "tranche": "T06",
+  "title": "Stonehenge and Synthetic Anchor Tests",
+  "status": "COMPLETE",
+  "software_commit": "2f49122",
+  "outputs": [
+    "cwatlas/anchor_tests.py",
+    "tests/cwatlas/test_anchor_tests.py",
+    "docs/cwatlas/receipts/P46.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_anchor_tests.py -q",
+    "test_file": "tests/cwatlas/test_anchor_tests.py",
+    "count": 9,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "asserting a real site (Stonehenge) was decoded is refused via claims.refuse_site_decoded",
+    "a close arithmetic match to the named synthetic control is refused as intent via claims.refuse_close_match_as_intent",
+    "the Stonehenge anchor is a NAMED SYNTHETIC CONTROL with invented coordinates, not a decode of any real site"
+  ],
+  "claims": [
+    {
+      "statement": "A hidden synthetic source_vector->point mapping is planted and the P45 calibration pipeline recovers its coefficients within tolerance under zero noise (POWER); recovery degrades with added noise.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "No real site is decoded from the vector family; Stonehenge is a named synthetic control only and a close arithmetic proximity is not intended encoding.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic anchors and invented coordinates only, no private inputs, no real site coordinates",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P46_STONEHENGE_AND_SYNTHETIC_ANCHOR_TESTS"
+}

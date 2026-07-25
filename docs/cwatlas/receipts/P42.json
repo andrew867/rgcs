@@ -1,0 +1,39 @@
+{
+  "phase_id": "P42",
+  "tranche": "T06",
+  "title": "Deterministic Canonical Decode",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/decode_canonical.py",
+    "tests/cwatlas/test_decode_canonical.py",
+    "docs/cwatlas/receipts/P42.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_decode_canonical.py -q",
+    "test_file": "tests/cwatlas/test_decode_canonical.py",
+    "count": 12,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a bad-checksum vector yields an explicit INVALID result (REFUSAL claim), never a guess",
+    "a malformed or legacy nine-digit string decodes to INVALID, never an alias set",
+    "require_point raises on an invalid decode",
+    "refuse_alias_for_canonical always raises: a canonical vector never yields aliases",
+    "a GeographicPoint without a CRS and epoch is refused (invariant 9)"
+  ],
+  "claims": [
+    {
+      "statement": "A canonical CW-GEO-1 vector decodes deterministically to exactly one GeographicPoint carrying its CRS (frame) and epoch (POWER round-trip).",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "A checksum failure, version mismatch, or malformed payload yields an explicit INVALID result; a canonical vector never yields an alias set.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs or personal data",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P42_DETERMINISTIC_CANONICAL_DECODE"
+}

@@ -1,0 +1,38 @@
+{
+  "phase_id": "P64",
+  "tranche": "T08",
+  "title": "v8.1 Release and Demonstration Bundle",
+  "status": "COMPLETE",
+  "outputs": [
+    "docs/cwatlas/RELEASE_NOTES_V8_1_0.md",
+    "docs/cwatlas/ACCEPTANCE_MATRIX.md",
+    "docs/cwatlas/demo_cw_atlas.py",
+    "docs/cwatlas/R10_8_1_MANUSCRIPT.md",
+    "pyproject.toml / CITATION.cff / README.md / CHANGELOG.md (version 8.1.0)",
+    "docs/cwatlas/receipts/P64.json"
+  ],
+  "tests": [
+    "full cwatlas suite (859 passed)",
+    "version-consistency guards (10 passed)",
+    "runnable demo docs/cwatlas/demo_cw_atlas.py (canonical round-trip + alias-set + verdict)"
+  ],
+  "release": {
+    "version": "8.1.0",
+    "predecessor": "v8.0.0 (2f49122)",
+    "package": "cwatlas (55 modules, 5 schemas)",
+    "phases_complete": "P01-P64 (63 engine receipts + this release)",
+    "count_site": "docs/cwatlas/RELEASE_NOTES_V8_1_0.md",
+    "browser_frontend": "spec-level (MapLibre/Cesium/offline) over the tested backend service+CLI; not in the pytest gate"
+  },
+  "negative_results": [
+    "Cutting a release packages the atlas and its receipts; it validates no geographic or physical claim.",
+    "The canonical geocoder round-trips exactly; the source-vector decoder returns alias sets or refusals only. SOURCE_VECTOR_GEOGRAPHIC_SEMANTICS_NOT_CLAIMED.",
+    "The v8.1.0 tag is local; public push is a separate, explicitly-authorized step."
+  ],
+  "claims": [
+    {"statement": "The CW Atlas is released as v8.1.0 with 63 engine phase receipts, a runnable demo, and the required terminal verdict; no geographic or physical claim is advanced.", "claim_class": "MATHEMATICAL_TRANSLATION"}
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "RGCS_R10_8_1_GREEN_CW_ATLAS_READY / CANONICAL_ROUND_TRIP_VERIFIED / LEGACY_ALIAS_SET_PIPELINE_VERIFIED / SOURCE_VECTOR_GEOGRAPHIC_SEMANTICS_NOT_CLAIMED / PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+}

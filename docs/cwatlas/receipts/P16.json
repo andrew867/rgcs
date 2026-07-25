@@ -1,0 +1,42 @@
+{
+  "phase_id": "P16",
+  "tranche": "T02",
+  "title": "Body-Relative Shell and Effective-Potential Registry",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/shells.py",
+    "tests/cwatlas/test_shells.py",
+    "docs/cwatlas/receipts/P16.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_shells.py -q",
+    "test_file": "tests/cwatlas/test_shells.py",
+    "count": 18,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "the 8 <-> 0 shell closure is stored as SOURCE ontology and is NOT auto-applied; apply_shell_closure(8) refuses by default",
+    "refuse_auto_closure() always raises",
+    "the closure resolves 8 -> 0 only with an explicit apply_closure=True opt-in",
+    "an unknown shell index (9, -1, or wrong type) is refused",
+    "a shell state with an out-of-range index is refused",
+    "a shell definition marked literal=True is refused (labels are nonliteral)",
+    "a shell labelled with a non-source claim class is refused"
+  ],
+  "claims": [
+    {
+      "statement": "Shells 0..8 are represented with surface semantics and altitude bands as SOURCE ontology; shell labels are nonliteral.",
+      "claim_class": "SOURCE_CLAIM"
+    },
+    {
+      "statement": "The 8 <-> 0 shell closure is stored as source ontology and is never silently applied to a codec (System Contract invariant 8).",
+      "claim_class": "SOURCE_CLAIM"
+    },
+    {
+      "statement": "A shell ontology label is at most SOURCE_CLAIM or MATHEMATICAL_TRANSLATION and is never a physical or geographic claim.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P16_BODY_RELATIVE_SHELL_AND_EFFECTIVE_POTENTIAL_REGISTRY"
+}

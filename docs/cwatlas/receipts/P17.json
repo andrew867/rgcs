@@ -1,0 +1,45 @@
+{
+  "phase_id": "P17",
+  "tranche": "T03",
+  "title": "Canonical CW Object Schema",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/canonical.py",
+    "tests/cwatlas/test_canonical.py",
+    "docs/cwatlas/receipts/P17.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_canonical.py -q",
+    "test_file": "tests/cwatlas/test_canonical.py",
+    "count": 16,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a CanonicalCoordinate with an empty frame_id is refused (invariant 9, ClaimError)",
+    "a CanonicalCoordinate with an empty epoch is refused (invariant 9, ClaimError)",
+    "an out-of-range latitude (> 90) is refused (CanonicalError)",
+    "an out-of-range shell_state (not in 0..8) is refused",
+    "a non-finite coordinate (NaN) is refused",
+    "a CanonicalCWAddress with no raw vector is refused (invariant 1)",
+    "a negative uncertainty is refused",
+    "a corrupted raw vector makes verify_checksum() return False",
+    "an OK_POINT CodecResult with no candidate is refused",
+    "a non-CodecStatus status is refused"
+  ],
+  "claims": [
+    {
+      "statement": "CanonicalCWAddress carries all architecture fields (version, namespace, body_id, frame_id, epoch, horizontal_coordinate, radial_coordinate, shell_state, local_residual, codec_id, checksum, uncertainty, provenance) and projects to cw_vector.schema.json; CodecResult projects to codec_result.schema.json.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "A canonical address requires a declared CRS (frame) and epoch; a raw vector string is immutable and bound by a checksum.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "A typed canonical object says nothing about whether any operator-reported source vector identifies a real location.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P17_CANONICAL_CW_OBJECT_SCHEMA"
+}

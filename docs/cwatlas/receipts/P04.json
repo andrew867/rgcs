@@ -1,0 +1,27 @@
+{
+  "phase_id": "P04",
+  "tranche": "T01",
+  "title": "Full Communications and Correction Ledger Integration",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/provenance_ledger.py",
+    "tests/cwatlas/test_provenance_ledger.py",
+    "docs/cwatlas/receipts/P04.json"
+  ],
+  "tests": ["tests/cwatlas/test_provenance_ledger.py (12 passed)"],
+  "negative_results": [
+    "A raw string is immutable: the event is frozen and its raw_hash binds the exact original bytes; raw cannot be reassigned in place.",
+    "A CORRECTION must link to an event already in the ledger and never overwrites it; correcting an unknown id, or a correction without a link, is refused.",
+    "The ledger is a hash chain: tampering a past event's raw string, kind, or epoch makes verify_chain() return False.",
+    "Import is deterministic: identical synthetic entries yield identical chain hashes and head."
+  ],
+  "claims": [
+    {"statement": "Comms, corrections, mundane controls, and source timestamps import as typed, hash-chained provenance events; corrections link without overwriting.", "claim_class": "SOURCE_CLAIM"},
+    {"statement": "That the ledger is internally consistent says nothing about whether any reported location, prediction, or source vector is real.", "claim_class": "SOURCE_CLAIM"}
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "COMMS_CORRECTION_LEDGER_TYPED_HASH_CHAINED",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "acceptance_token": "GREEN_R10_8_1_P04_FULL_COMMUNICATIONS_AND_CORRECTION_LEDGER_INTEGRATION"
+}

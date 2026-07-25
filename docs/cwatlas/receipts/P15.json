@@ -1,0 +1,38 @@
+{
+  "phase_id": "P15",
+  "tranche": "T02",
+  "title": "Barycentric and Tetrahedral Subdivision",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/subdivision.py",
+    "tests/cwatlas/test_subdivision.py"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_subdivision.py -q",
+    "count": 13,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "from_barycentric refuses coordinates that do not sum to 1",
+    "child_index refuses a point outside the parent triangle",
+    "child refuses an index outside 0..7",
+    "SphericalTriangle.of refuses a degenerate (collinear) triangle",
+    "to_barycentric refuses a direction that does not radially intersect the triangle plane"
+  ],
+  "claims": [
+    {
+      "statement": "Local barycentric coordinates on a spherical triangle round-trip exactly (point<->barycentric) via radial projection and affine reconstruction.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "One-to-eight (octal) refinement splits a triangle into 8 children (indices 0..7) that tile the parent exactly; child_index is the exact inverse of refine (refine-then-locate returns the same child), and both are deterministic.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "A barycentric coordinate and a child index are positions within a synthetic tessellation. SOURCE_VECTOR_GEOGRAPHIC_SEMANTICS_NOT_CLAIMED; PHYSICAL_VALIDATION_NOT_CLAIMED.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P15_BARYCENTRIC_AND_TETRAHEDRAL_SUBDIVISION"
+}

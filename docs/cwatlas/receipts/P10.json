@@ -1,0 +1,47 @@
+{
+  "phase_id": "P10",
+  "tranche": "T02",
+  "title": "ITRS, ITRF, Epoch, and Plate-Motion Semantics",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/frames.py",
+    "tests/cwatlas/test_frames.py",
+    "docs/cwatlas/receipts/P10.json"
+  ],
+  "tests": [
+    "tests/cwatlas/test_frames.py (11 test cases, all pass)"
+  ],
+  "negative_results": [
+    "an EpochStampedPoint cannot be built without an epoch (TypeError)",
+    "an unknown ITRF realization is rejected (FrameError)",
+    "a plate-motion velocity that is not three finite components is rejected",
+    "make_certificate rejects an unknown frame or an empty orientation_profile_id"
+  ],
+  "claims": [
+    {
+      "statement": "An Earth coordinate is epoch-stamped; the same point at epoch t1 differs from epoch t2 by exactly the modelled linear plate drift, and the propagation is reversible.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "Named ITRF realizations (ITRF2008/2014/2020) are preserved as versioned interpretations; the plate-motion model is a declared MODEL, not a measurement.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    }
+  ],
+  "sha256_manifest": {
+    "cwatlas/frames.py": "sha256:d238ac2002ade7ba6a27700dcd50df5dfed2ce596a56eb96cbdb9b58379f4816",
+    "tests/cwatlas/test_frames.py": "sha256:61b8faf1b00c6a4ce5786dcc52b87ad741915991201eb975e67c274dbc71724d"
+  },
+  "software_commit": "2f49122a771a399f5bb462851bb27c6c60540d9c",
+  "runlog": {
+    "repository_head": "2f49122 (branch r1081-cwatlas)",
+    "inputs": "none; epochs and velocities passed in as decimal years / metres-per-year, no wall-clock read",
+    "assumptions": "epoch is decimal-year, time scale TT_DECIMAL_YEAR; linear constant-velocity plate motion",
+    "boundary": "public code, synthetic plate velocities only",
+    "schema_validation": "FrameEpochCertificate validated against cwatlas/schemas/frame_epoch.schema.json via jsonschema",
+    "unresolved_questions": [
+      "a real ITRF-to-ITRF Helmert transform (14 parameters) is out of scope; only the epoch/drift semantics are modelled here"
+    ]
+  },
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P10_ITRS_ITRF_EPOCH_AND_PLATE_MOTION_SEMANTICS"
+}

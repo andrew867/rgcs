@@ -1,0 +1,39 @@
+{
+  "phase_id": "P41",
+  "tranche": "T06",
+  "title": "Raw Vector Ingest and Byte Preservation",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/ingest.py",
+    "tests/cwatlas/test_ingest.py",
+    "docs/cwatlas/receipts/P41.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_ingest.py -q",
+    "test_file": "tests/cwatlas/test_ingest.py",
+    "count": 15,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a content_hash that does not bind the raw bytes is refused (invariant 1)",
+    "an ingested raw vector may only be a SOURCE_CLAIM; other claim classes are refused",
+    "raw_bytes are immutable (frozen dataclass); reassignment raises",
+    "empty input and empty ingest_id are refused",
+    "digits_only / stripped_of refuse a non-text (binary) vector"
+  ],
+  "claims": [
+    {
+      "statement": "A raw vector is ingested with its exact original bytes preserved and immutable, bound by a content hash; normalized, digit-only, and separator-stripped views are derived beside the original, never in place of it (POWER).",
+      "claim_class": "SOURCE_CLAIM"
+    },
+    {
+      "statement": "Ingest assigns no unit, coordinate, or geographic meaning; the vector stays a SOURCE_CLAIM.",
+      "claim_class": "SOURCE_CLAIM"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs or personal data",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P41_RAW_VECTOR_INGEST_AND_BYTE_PRESERVATION"
+}

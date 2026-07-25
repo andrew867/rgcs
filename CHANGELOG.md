@@ -3,6 +3,33 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [8.1.0] - 2026-07-25
+
+R10.8.1 CW Atlas and bidirectional geocoder. A new cwatlas package: a full
+64-phase implementation (P01-P64, 8 tranches) of a versioned coordinate atlas.
+Two firewalled systems: a CANONICAL synthetic geocoder (CW-GEO-1 direct
+geodetic + CW-HCM-ICO 20-face icosahedral with recursive 8-way path) that
+round-trips a declared coordinate<->vector exactly; and a SOURCE-VECTOR
+hypothesis decoder (legacy codec plugins PACK40/PACK38/BASE100/TRIPLET9/
+SHELL9) that returns an alias set, region, heatmap, or refusal -- never a
+forced pin. Earth (WGS84/ITRF/epoch) and Mars (IAU) frames, shell 0..8
+registry, sealed-anchor calibration, prospective known-destination challenge,
+search-space accounting, MDL/multiplicity scoring, selection-bias firewall,
+audit bundles, a cw-atlas CLI + framework-agnostic service, and GeoJSON/KML/
+CSV/JSON/CW-URI interchange. Pure numpy (no pyproj/GeographicLib). The
+browser UI (MapLibre/Cesium/offline) is delivered as a spec over the tested
+backend API. 55 modules, 63 phase receipts, 859 cwatlas tests. Additive; no
+prior work reset, no public history rewritten. PHYSICAL_VALIDATION_NOT_CLAIMED;
+SOURCE_VECTOR_GEOGRAPHIC_SEMANTICS_NOT_CLAIMED.
+
+Final verdict:
+RGCS_R10_8_1_GREEN_CW_ATLAS_READY / CANONICAL_ROUND_TRIP_VERIFIED /
+LEGACY_ALIAS_SET_PIPELINE_VERIFIED /
+SOURCE_VECTOR_GEOGRAPHIC_SEMANTICS_NOT_CLAIMED / PHYSICAL_VALIDATION_NOT_CLAIMED.
+
+Tests: 7392 passing (1 archived-environment byte test deselected by policy
+D-V3-04).
+
 ## [8.0.0] - 2026-07-25
 
 R15. A new r15 package turning the R13 architecture into an instrument-ready,

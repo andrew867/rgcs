@@ -1,0 +1,34 @@
+{
+  "phase_id": "P34",
+  "tranche": "T05",
+  "title": "Geospatial Address to CW-GEO-1",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/address_to_vector.py",
+    "tests/cwatlas/test_address_to_vector.py",
+    "docs/cwatlas/receipts/P34.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_address_to_vector.py -q",
+    "test_file": "tests/cwatlas/test_address_to_vector.py",
+    "count": 10,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a checksum-corrupted CW-GEO-1 vector is refused on decode, not silently accepted",
+    "a malformed/garbage vector is refused with an explicit error",
+    "a non-address input is refused"
+  ],
+  "claims": [
+    {
+      "statement": "A GeospatialAddress encodes to the versioned, checksummed CW-GEO-1 baseline vector (carrying body, frame, epoch, and quantized coordinate) and decodes back to the same address exactly within the codec's declared quantization grid; the map -> vector -> map round-trip is exact (POWER), and is deterministic across runs.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "A reversible CW-GEO-1 round-trip is a verified property of the codec and asserts nothing geographic about any operator-reported source vector.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P34_GEOSPATIAL_ADDRESS_TO_CW_GEO_1"
+}

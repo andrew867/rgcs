@@ -1,0 +1,46 @@
+{
+  "phase_id": "P40",
+  "tranche": "T05",
+  "title": "Forward Precision and Round-Trip Test Campaign",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/forward_campaign.py",
+    "tests/cwatlas/test_forward_campaign.py",
+    "docs/cwatlas/receipts/P40.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_forward_campaign.py -q",
+    "test_file": "tests/cwatlas/test_forward_campaign.py",
+    "count": 15,
+    "result": "PASS"
+  },
+  "measurements": {
+    "config": "bodies=(EARTH,MARS), lat_steps=7, lon_steps=9, ico_depth=12, fuzz_count=20",
+    "total_points": 180,
+    "CW-GEO-1": {"max_error_m": 0.00061, "tolerance_m": 0.01, "passed": true},
+    "CW-HCM-ICO-1": {"max_error_m": 1148.05, "tolerance_m": 2000.0, "passed": true, "refused": 0}
+  },
+  "negative_results": [
+    "an unknown body is refused in CampaignConfig",
+    "an ico_depth with no declared tolerance is refused",
+    "lat_steps/lon_steps < 2 are refused",
+    "ico_tolerance_m for an undeclared depth is refused",
+    "exact-boundary directions (pole/edge/vertex) are safely refused by the ico codec and counted, not treated as failures"
+  ],
+  "claims": [
+    {
+      "statement": "Over a synthetic point grid (lattice + poles/dateline/Null-Island edge cases + seeded fuzz) across bodies and depths, map->vector->map round-trip error stays under the declared tolerance for CW-GEO-1 (sub-mm) and for the icosahedral codec (per-depth, per-body cell bound), and the icosahedral error decreases monotonically with refinement depth (POWER).",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "The campaign is deterministic: identical config yields identical measured maxima and point sets.",
+      "claim_class": "SOFTWARE"
+    },
+    {
+      "statement": "An invalid campaign configuration is a typed refusal.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic grid and seeded fuzz only, no wall-clock, no private inputs",
+  "verdict": "GREEN_R10_8_1_P40_FORWARD_PRECISION_AND_ROUND_TRIP_TEST_CAMPAIGN"
+}

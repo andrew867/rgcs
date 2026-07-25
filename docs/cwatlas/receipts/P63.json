@@ -1,0 +1,34 @@
+{
+  "phase_id": "P63",
+  "tranche": "T08",
+  "title": "CI, Fuzzing, Clean Clone, Security, and Reproducibility",
+  "status": "COMPLETE",
+  "software_commit": "2f49122",
+  "outputs": [
+    "cwatlas/fuzz.py",
+    "tests/cwatlas/test_reproducibility.py",
+    "docs/cwatlas/receipts/P63.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_reproducibility.py -q",
+    "test_file": "tests/cwatlas/test_reproducibility.py",
+    "count": 11,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "arbitrary fuzzed input (digits, dashes, unicode, punctuation, empty, canonical-looking, garbage) never crashes ingest + decode; every input yields a typed FuzzOutcome (DECODE, ALIAS_SET, or REFUSAL) and never a forced pin",
+    "bad generator arguments (non-int seed, negative n) are typed FuzzError refusals",
+    "no public cwatlas module source contains a private path/identity token"
+  ],
+  "claims": [
+    {
+      "statement": "A seeded fuzz harness generates arbitrary raw vector strings that always yield a typed result through ingest + decode and never crash; the same seed produces identical inputs and outcomes across two runs (determinism); and every cwatlas module imports cleanly from a fresh clone (POWER).",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - seeded synthetic inputs only; a source-wide scan asserts no public module leaks a private token; the harness asserts no geographic/physical claim",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P63_CI_FUZZING_CLEAN_CLONE_SECURITY_AND_REPRODUCIBILITY"
+}

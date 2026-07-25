@@ -1,0 +1,43 @@
+{
+  "phase_id": "P29",
+  "tranche": "T04",
+  "title": "Radial Shell, Altitude, and Effective-Potential Mapping",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/radial.py",
+    "tests/cwatlas/test_radial.py",
+    "docs/cwatlas/receipts/P29.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_radial.py -q",
+    "test_file": "tests/cwatlas/test_radial.py",
+    "count": 17,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "an unknown radial profile key is refused",
+    "a radial profile with a non-source claim class is refused (labels are nonliteral)",
+    "a radial profile with a non-positive band_width is refused",
+    "a radial value mapping outside the [0, 8] shell range is refused",
+    "a mapping without a body_id is refused",
+    "shell_to_radial refuses altitude_in_band outside [0, 1] and a non-zero altitude for shell 0",
+    "refuse_effective_potential_as_physical() always raises: effective potential is a nonliteral label, not a physical potential",
+    "the 8 <-> 0 closure is refused by default and resolves only with an explicit apply_closure=True opt-in"
+  ],
+  "claims": [
+    {
+      "statement": "A radial coordinate maps reversibly to a shell band and within-band altitude under four declared radial conventions (surface, atmosphere, orbit, dimensionless), reusing the shell registry.",
+      "claim_class": "SOURCE_CLAIM"
+    },
+    {
+      "statement": "'Effective potential' is a nonliteral SOURCE-ontology re-expression of the shell ordinal and is never a physical potential.",
+      "claim_class": "REFUSAL"
+    },
+    {
+      "statement": "The 8 <-> 0 shell closure remains opt-in and is never silently applied (System Contract invariant 8).",
+      "claim_class": "SOURCE_CLAIM"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P29_RADIAL_SHELL_ALTITUDE_AND_EFFECTIVE_POTENTIAL_MAPPING"
+}

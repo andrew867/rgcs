@@ -1,0 +1,22 @@
+{
+  "phase_id": "P08",
+  "tranche": "T01",
+  "title": "Architecture Decision Record and Release Plan",
+  "status": "COMPLETE",
+  "outputs": [
+    "docs/cwatlas/ADR_AND_RELEASE_PLAN.md",
+    "docs/cwatlas/receipts/P08.json"
+  ],
+  "tests": [],
+  "note": "documentation phase",
+  "negative_results": [
+    "This ADR does not authorize a push; release is prepared locally and pushing to a public remote requires explicit operator authorization.",
+    "No prior release is reset and no public history is rewritten; rollback removes only the additive cwatlas package."
+  ],
+  "claims": [
+    {"statement": "Design decisions are frozen (package = cwatlas, pure-numpy geodesy, canonical-vs-legacy firewall, authority registry, synthetic-only fixtures) with a v8.1.0 release target and an additive rollback strategy.", "claim_class": "MATHEMATICAL_TRANSLATION"}
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "RGCS_R10_8_1_GREEN_CW_ATLAS_READY",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+}

@@ -1,0 +1,43 @@
+{
+  "phase_id": "P23",
+  "tranche": "T03",
+  "title": "Checksums, Versioning, and Error Detection",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/checksums.py",
+    "tests/cwatlas/test_checksums.py",
+    "docs/cwatlas/receipts/P23.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_checksums.py -q",
+    "test_file": "tests/cwatlas/test_checksums.py",
+    "count": 15,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a single-character corruption of the payload makes verify_vector() return False",
+    "a corrupted checksum tag fails verify()",
+    "a vector with no checksum separator is not verifiable and split_checksum() raises",
+    "a tag written under a different checksum version (cwck0) is rejected",
+    "a codec/version mismatch is detected by require_version() (ChecksumError)",
+    "a vector missing its codec=/v= version marker is refused",
+    "a single-digit error is detected by the Damm check digit",
+    "an adjacent transposition is detected by the Damm check digit"
+  ],
+  "claims": [
+    {
+      "statement": "checksum()/verify() bind a CW vector with a version-tagged deterministic SHA-256 digest; a corrupted vector fails verification.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "require_version() detects a codec-id or codec-version mismatch; a Damm check digit detects single-digit and adjacent-transposition typos. All utilities are deterministic (hashlib only, no wall-clock).",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "A passing checksum means a string is intact; it says nothing about what the string means or whether any source vector is geographic.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P23_CHECKSUMS_VERSIONING_AND_ERROR_DETECTION"
+}

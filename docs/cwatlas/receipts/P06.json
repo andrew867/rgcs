@@ -1,0 +1,25 @@
+{
+  "phase_id": "P06",
+  "tranche": "T01",
+  "title": "Frame, Epoch, and Root Authority Registry",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/authority.py",
+    "tests/cwatlas/test_authority.py",
+    "docs/cwatlas/receipts/P06.json"
+  ],
+  "tests": ["tests/cwatlas/test_authority.py (8 passed)"],
+  "negative_results": [
+    "An unregistered body/root/frame/epoch/orientation/ephemeris is refused (AuthorityError); no hidden default.",
+    "A version-less lookup is refused when more than one version is registered; legacy versions are preserved side by side.",
+    "A FRAME/EPOCH certificate payload missing a schema-required field (frame_epoch.schema.json) is refused.",
+    "A tampered certificate fails its hash check on registration and on lookup."
+  ],
+  "claims": [
+    {"statement": "The registry names body/root/frame/epoch/time-scale/orientation/ephemeris authorities by typed id + version + hash so a decode records exactly which ones it used (contract invariant 2).", "claim_class": "MATHEMATICAL_TRANSLATION"},
+    {"statement": "Certificate hashes are deterministic and stable across builds; tampering is detected.", "claim_class": "MATHEMATICAL_TRANSLATION"}
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P06_FRAME_EPOCH_AND_ROOT_AUTHORITY_REGISTRY",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+}

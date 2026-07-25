@@ -1,0 +1,39 @@
+{
+  "phase_id": "P18",
+  "tranche": "T03",
+  "title": "CW-GEO-1 Reversible Baseline Codec",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/codec_geo1.py",
+    "tests/cwatlas/test_codec_geo1.py",
+    "docs/cwatlas/receipts/P18.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_codec_geo1.py -q",
+    "test_file": "tests/cwatlas/test_codec_geo1.py",
+    "count": 20,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a corrupted vector is refused by decode() (Geo1Error) and yields an INVALID CodecResult",
+    "a codec-version mismatch (v=2.0.0) is refused",
+    "encode() rejects a non-CanonicalCoordinate input",
+    "decode() rejects an empty vector"
+  ],
+  "claims": [
+    {
+      "statement": "CW-GEO-1 round-trips every case in docs/cwatlas/fixtures/synthetic_round_trip_cases.json to within its declared quantization (1e-8 deg lat/lon, 1e-4 m height), and encode(decode(vector)) is byte-for-byte identical (POWER).",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "CW-GEO-1 encodes only a declared canonical coordinate and is independent of any source-vector semantics; every vector is versioned and checksummed.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "That the codec is reversible is no evidence about what any operator-reported source vector meant.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P18_CW_GEO_1_REVERSIBLE_BASELINE_CODEC"
+}

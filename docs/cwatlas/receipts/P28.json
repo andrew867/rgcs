@@ -1,0 +1,36 @@
+{
+  "phase_id": "P28",
+  "tranche": "T04",
+  "title": "Continuous Local Residual Coordinates",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/localize.py",
+    "tests/cwatlas/test_localize.py"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_localize.py -q",
+    "count": 13,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "inverse refuses a non-ExactAddress argument",
+    "inverse refuses a non-finite residual",
+    "forward refuses a depth beyond the construction floor"
+  ],
+  "claims": [
+    {
+      "statement": "forward(point, depth) returns (face, path, residual) where residual is the point's barycentric offset from the terminal cell centroid (its three components sum to zero); inverse reconstructs the direction as cell_centroid (+) residual.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "The reversible CW-HCM-ICO core round-trips a synthetic point through (face, path, residual) and back to full floating-point precision (observed error <= 1e-9, typically ~1e-16) over a synthetic sweep and across depths 0..13.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "A zero residual reconstructs the terminal cell centroid exactly. An exact canonical round-trip is a verified property of the codec, not evidence about any source vector. SOURCE_VECTOR_GEOGRAPHIC_SEMANTICS_NOT_CLAIMED; PHYSICAL_VALIDATION_NOT_CLAIMED.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P28_CONTINUOUS_LOCAL_RESIDUAL_COORDINATES"
+}

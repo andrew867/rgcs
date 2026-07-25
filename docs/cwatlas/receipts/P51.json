@@ -1,0 +1,38 @@
+{
+  "phase_id": "P51",
+  "tranche": "T07",
+  "title": "Search-Space Accounting",
+  "status": "COMPLETE",
+  "software_commit": "2f49122",
+  "outputs": [
+    "cwatlas/search_space.py",
+    "tests/cwatlas/test_search_space.py",
+    "docs/cwatlas/receipts/P51.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_search_space.py -q",
+    "test_file": "tests/cwatlas/test_search_space.py",
+    "count": 12,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a candidate or match reported without a positive search-space count is refused (refuse_match_without_search_space), whether a dict or an object",
+    "a zero, negative, or non-integer dimension, and an empty search space, are refused",
+    "an out-of-range per-comparison probability or alpha is refused"
+  ],
+  "claims": [
+    {
+      "statement": "The total number of hypotheses considered is the exact product over named dimensions (codecs x frames x depths x catalogue x transforms x orientations x shells x epochs x anchors x destinations), and it is reported with every candidate (POWER: product verified; a rare hit in a small space is surprising, a hit in a huge space is expected by chance).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "A match is interpreted against the size of the space searched via the Sidak family-wise adjusted probability and the expected number of chance hits; a match without its search-space denominator is refused.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - illustrative integer counts only, no inputs, no private data, no real coordinates",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P51_SEARCH_SPACE_ACCOUNTING"
+}

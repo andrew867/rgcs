@@ -1,0 +1,39 @@
+{
+  "phase_id": "P52",
+  "tranche": "T07",
+  "title": "Multiple-Hypothesis and Description-Length Scoring",
+  "status": "COMPLETE",
+  "software_commit": "2f49122",
+  "outputs": [
+    "cwatlas/mdl.py",
+    "tests/cwatlas/test_mdl.py",
+    "docs/cwatlas/receipts/P52.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_mdl.py -q",
+    "test_file": "tests/cwatlas/test_mdl.py",
+    "count": 13,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a significance claim made without a multiplicity correction is refused (refuse_uncorrected_multiplicity)",
+    "a raw p-value that looks significant (p=0.002) does not survive a Bonferroni correction over a large search space; the best raw match becomes a look-everywhere artefact with no surviving explanation",
+    "negative or non-finite description-length bits, and an out-of-range p-value, are refused",
+    "routing Benjamini-Hochberg through the single-value correct_pvalue is refused; an empty candidate set is refused"
+  ],
+  "claims": [
+    {
+      "statement": "A candidate is scored by minimum description length (codec_bits + param_bits + residual_bits); the compact mapping that survives the multiple-comparison correction is the best explanation even though an ornate codec has the smaller raw residual (POWER: best_raw != best_explanation).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "The raw p-value of a match is corrected for the number of hypotheses searched via Bonferroni, Sidak, or Benjamini-Hochberg over the search space; the best raw match is not the best explanation once complexity and multiplicity are charged.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    }
+  ],
+  "privacy_check": "CLEAN - illustrative bit counts and p-values only, no inputs, no private data, no real coordinates",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P52_MULTIPLE_HYPOTHESIS_AND_DESCRIPTION_LENGTH_SCORING"
+}

@@ -1,0 +1,39 @@
+{
+  "phase_id": "P47",
+  "tranche": "T06",
+  "title": "Geographic Catalogue and Selection-Bias Firewall",
+  "status": "COMPLETE",
+  "software_commit": "2f49122",
+  "outputs": [
+    "cwatlas/catalogue_firewall.py",
+    "tests/cwatlas/test_catalogue_firewall.py",
+    "docs/cwatlas/receipts/P47.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_catalogue_firewall.py -q",
+    "test_file": "tests/cwatlas/test_catalogue_firewall.py",
+    "count": 14,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "inflating the search space (many candidates x catalogue entries) raises the look-everywhere adjusted probability toward chance",
+    "a match significant after correction but lacking a prospective test is only an OPERATOR_HYPOTHESIS, never evidence",
+    "treating a catalogue match as evidence without a prospective test is refused via refuse_catalogue_match_as_evidence",
+    "an empty catalogue, a non-positive match radius, and n_candidates < 1 are refused"
+  ],
+  "claims": [
+    {
+      "statement": "Scoring a candidate against a catalogue reports the search-space size (n_candidates x catalogue size) and a Sidak family-wise adjusted probability; a tight match in a small space is significant while the same match in a huge space is expected by chance.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "A match to a famous catalogue site is refused as evidence of intended encoding without a passed prospective test.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic catalogue with invented coordinates only, no private inputs",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P47_GEOGRAPHIC_CATALOGUE_AND_SELECTION_BIAS_FIREWALL"
+}

@@ -1,0 +1,37 @@
+{
+  "phase_id": "P01",
+  "tranche": "T01",
+  "title": "Gate Zero and Repository Truth",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/__init__.py",
+    "cwatlas/claims.py",
+    "cwatlas/schemas/ (5 pack schemas copied)",
+    "docs/cwatlas/receipts/P01.json"
+  ],
+  "tests": ["tests/cwatlas/test_claims.py (14 passed)"],
+  "repository_truth": {
+    "head": "2f49122",
+    "tag_at_head": "v8.0.0",
+    "worktree": "clean at branch cut",
+    "branch": "r1081-cwatlas",
+    "main_in_sync_with_origin": true,
+    "dependency_probe": {
+      "present": ["numpy", "scipy", "pydantic"],
+      "missing": ["pyproj", "geographiclib", "fastapi", "shapely"],
+      "node": "present"
+    },
+    "consequence": "geodesy implemented in pure numpy (no pyproj/GeographicLib); browser UI (MapLibre/Cesium/React) delivered as spec + serving API, not built in the pytest gate"
+  },
+  "negative_results": [
+    "No prior CW Atlas package existed; cwatlas created fresh on top of v8.0.0.",
+    "pyproj/GeographicLib/FastAPI/shapely are not installed; the engine avoids them.",
+    "This is a verification/foundation phase: it validates repository state and claims nothing physical."
+  ],
+  "claims": [
+    {"statement": "Repository state, tags, and dependency availability were verified before any mutation.", "claim_class": "MATHEMATICAL_TRANSLATION"}
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GATE_ZERO_VERIFIED_CW_ATLAS_FOUNDATION_CREATED",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+}

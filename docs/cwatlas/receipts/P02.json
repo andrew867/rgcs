@@ -1,0 +1,24 @@
+{
+  "phase_id": "P02",
+  "tranche": "T01",
+  "title": "Private and Public Corpus Boundary",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/privacy.py",
+    "tests/cwatlas/test_privacy.py",
+    ".gitignore (cwatlas_private/, *.private.json)",
+    "docs/cwatlas/receipts/P02.json"
+  ],
+  "tests": ["tests/cwatlas/test_privacy.py (5 passed)"],
+  "negative_results": [
+    "With CWATLAS_PRIVATE_DIR unset, the private adapter yields nothing; public runs touch no private data.",
+    "A PRIVATE-tagged record cannot be exported to a public artifact (assert_exportable raises).",
+    "Public export is redacted; private paths/identities are refused by scan."
+  ],
+  "claims": [
+    {"statement": "Private corpora load only via an ignored local path and never enter public artifacts; public fixtures are synthetic.", "claim_class": "SOURCE_CLAIM"}
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "PRIVATE_PUBLIC_BOUNDARY_ENFORCED",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+}

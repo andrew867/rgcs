@@ -1,0 +1,28 @@
+{
+  "phase_id": "P05",
+  "tranche": "T01",
+  "title": "Numeric Source Registry and Normalization",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/source_registry.py",
+    "tests/cwatlas/test_source_registry.py",
+    "docs/cwatlas/receipts/P05.json"
+  ],
+  "tests": ["tests/cwatlas/test_source_registry.py (15 passed)"],
+  "negative_results": [
+    "Leading zeros are never discarded: '007' stays three characters, the leading-zero count is recorded, and the integer value sits beside the exact original.",
+    "A unitless value stays unitless: normalization never fills a unit, and forcing a unit onto a NO_UNIT value is refused (refuse_forced_interpretation).",
+    "The raw string is immutable: the RawVector is frozen and its raw_hash binds the original.",
+    "No geographic promotion: a registered value must be SOURCE_CLAIM or MATHEMATICAL_TRANSLATION; a CALIBRATED_MAPPING (or any geographic) class is refused.",
+    "Malformed input fails safely: empty values and duplicate ids are refused; normalization is deterministic."
+  ],
+  "claims": [
+    {"statement": "Raw numeric vectors, dial values, grouped numbers, timestamps, and no-unit values register with the exact original string preserved beside a non-coercive normalized parse.", "claim_class": "SOURCE_CLAIM"},
+    {"statement": "A close arithmetic re-expression of a source value asserts no unit the source did not state and no geographic location.", "claim_class": "MATHEMATICAL_TRANSLATION"}
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "NUMERIC_SOURCE_REGISTRY_NON_COERCIVE_NORMALIZATION",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "acceptance_token": "GREEN_R10_8_1_P05_NUMERIC_SOURCE_REGISTRY_AND_NORMALIZATION"
+}

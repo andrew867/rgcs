@@ -1,0 +1,45 @@
+{
+  "phase_id": "P09",
+  "tranche": "T02",
+  "title": "WGS84 Geodetic and ECEF Core",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/geodesy.py",
+    "tests/cwatlas/test_geodesy.py",
+    "docs/cwatlas/receipts/P09.json"
+  ],
+  "tests": [
+    "tests/cwatlas/test_geodesy.py (22 test cases, all pass)"
+  ],
+  "negative_results": [
+    "latitude outside [-90, 90] is rejected (GeodesyError)",
+    "non-finite (NaN/Inf) geodetic or ECEF inputs are rejected",
+    "the exact geocentre (0,0,0) is underdetermined and refused rather than guessed"
+  ],
+  "claims": [
+    {
+      "statement": "WGS84 geodetic<->ECEF forward (closed form) and inverse (Bowring-seeded refinement) round-trip within 1e-6 m across pole, dateline (+/-180), and negative-height boundaries.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "No geographic meaning is asserted for any source-reported vector; the transform is arithmetic on a declared WGS84 convention.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    }
+  ],
+  "sha256_manifest": {
+    "cwatlas/geodesy.py": "sha256:d92241dc9a6dc50f8ef4987f761c67dc0f460f03d8aae44cb4850a5b6d8c944f",
+    "tests/cwatlas/test_geodesy.py": "sha256:bb4db80531cece5363a024826a8a57435558b2c4a5abf928920dff1ca7c1d0a3"
+  },
+  "software_commit": "2f49122a771a399f5bb462851bb27c6c60540d9c",
+  "runlog": {
+    "repository_head": "2f49122 (branch r1081-cwatlas)",
+    "inputs": "none; all coordinates passed in, no wall-clock read",
+    "assumptions": "WGS84 defining constants a=6378137.0, f=1/298.257223563; ellipsoidal height convention",
+    "boundary": "public code, synthetic fixtures only",
+    "unresolved_questions": [
+      "geoid/orthometric height conversion is out of scope for this phase (ellipsoidal height only)"
+    ]
+  },
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P09_WGS84_GEODETIC_AND_ECEF_CORE"
+}

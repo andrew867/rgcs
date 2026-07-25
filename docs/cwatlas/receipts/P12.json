@@ -1,0 +1,46 @@
+{
+  "phase_id": "P12",
+  "tranche": "T02",
+  "title": "Mars IAU Body-Fixed Frame",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/mars_frame.py",
+    "tests/cwatlas/test_mars_frame.py",
+    "docs/cwatlas/receipts/P12.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_mars_frame.py -q",
+    "test_file": "tests/cwatlas/test_mars_frame.py",
+    "count": 28,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "areoid (Mars) height into ellipsoid Cartesian math is refused without a declared separation model",
+    "geoid (Earth) height into ellipsoid Cartesian math is refused without a declared separation model",
+    "a BodyModel with no declared IAU/geodetic convention is refused (invariant 7)",
+    "a body whose polar radius exceeds its equatorial radius is refused",
+    "unknown body id is refused",
+    "out-of-range latitude is refused",
+    "non-finite (NaN/inf) coordinate input is refused"
+  ],
+  "claims": [
+    {
+      "statement": "Mars uses a declared IAU body-fixed convention (equatorial radius a=3396190 m, polar radius b=3376200 m, planetographic latitude, Airy-0 prime meridian).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "The geodetic <-> body-fixed Cartesian transform round-trips exactly within its declared quantization for both Earth and Mars.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "The areoid is an equipotential vertical datum, not the reference ellipsoid; the height convention is declared and never assumed.",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "No frame conversion asserts that any source-reported vector identifies a real location.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "verdict": "GREEN_R10_8_1_P12_MARS_IAU_BODY_FIXED_FRAME"
+}

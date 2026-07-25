@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Geospatial Address",
+  "type": "object",
+  "required": [
+    "body_id",
+    "frame_id",
+    "epoch",
+    "latitude_deg",
+    "longitude_deg",
+    "uncertainty_m"
+  ],
+  "properties": {
+    "body_id": {
+      "type": "string"
+    },
+    "frame_id": {
+      "type": "string"
+    },
+    "epoch": {
+      "type": "string"
+    },
+    "latitude_deg": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "longitude_deg": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180
+    },
+    "height_m": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "shell_state": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 8
+    },
+    "uncertainty_m": {
+      "type": "number",
+      "minimum": 0
+    },
+    "coordinate_convention": {
+      "type": "string"
+    }
+  }
+}

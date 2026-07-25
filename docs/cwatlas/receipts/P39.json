@@ -1,0 +1,40 @@
+{
+  "phase_id": "P39",
+  "tranche": "T05",
+  "title": "CW URI, QR, Clipboard, and Share Format",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/share.py",
+    "tests/cwatlas/test_share.py",
+    "docs/cwatlas/receipts/P39.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_share.py -q",
+    "test_file": "tests/cwatlas/test_share.py",
+    "count": 16,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a private token in the vector, namespace, note, or a percent-encoded URI component is refused (personal data never in a URL)",
+    "a wrong URI scheme is refused",
+    "a URI missing the frame or epoch query parameter is refused",
+    "a path that is not /<codec>/<vector> is refused",
+    "a CwUri without a CRS (frame) or epoch is refused at construction (invariant 9)"
+  ],
+  "claims": [
+    {
+      "statement": "cw://<namespace>/<codec>/<vector>?frame=..&epoch=.. round-trips through format_cw_uri/parse_cw_uri with the payload preserved through percent-encoding; the CRS and epoch travel with the link; the clipboard block is deterministic and carries no tracking parameter (POWER).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "QR is optional: make_qr emits a QR only if the third-party 'qrcode' package imports, otherwise returns available=False with the URI string and a QR_UNAVAILABLE note; no hard dependency is added.",
+      "claim_class": "SOFTWARE"
+    },
+    {
+      "statement": "Any share string carrying personal/private data is refused before emission.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - URIs scanned raw and decoded, no tracking parameters, no private inputs; qrcode not installed in the build (QR path degrades gracefully)",
+  "verdict": "GREEN_R10_8_1_P39_CW_URI_QR_CLIPBOARD_AND_SHARE_FORMAT"
+}

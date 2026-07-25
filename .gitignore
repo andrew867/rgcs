@@ -46,3 +46,7 @@ demo_out/
 cli_work/
 
 docs/v4/proof/C02/scratch/
+
+# CW Atlas private corpus (R10.8.1) — never committed
+cwatlas_private/
+*.private.json

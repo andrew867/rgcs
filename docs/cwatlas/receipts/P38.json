@@ -1,0 +1,42 @@
+{
+  "phase_id": "P38",
+  "tranche": "T05",
+  "title": "Batch GeoJSON and KML Import",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/io_geo.py",
+    "tests/cwatlas/test_io_geo.py",
+    "docs/cwatlas/receipts/P38.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_io_geo.py -q",
+    "test_file": "tests/cwatlas/test_io_geo.py",
+    "count": 18,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "malformed JSON is refused",
+    "a root that is not a FeatureCollection is refused",
+    "a non-Point geometry (LineString/Polygon) is refused by this points importer",
+    "missing or short coordinate arrays are refused",
+    "an out-of-range or non-finite latitude/longitude is refused",
+    "malformed KML XML and a Placemark without a Point are refused",
+    "a private token in a point label is refused"
+  ],
+  "claims": [
+    {
+      "statement": "A batch of points round-trips points->GeoJSON->points and points->KML->points; GeoJSON uses [lon,lat,height] axis order; every export (GeoJSON/KML/CSV) carries body, frame (CRS), and epoch; ordering is preserved and output is deterministic (POWER).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    },
+    {
+      "statement": "Points encode to CW-GEO-1 vectors via the existing reversible codec; the round-trip is a property of the codec, not a geographic claim.",
+      "claim_class": "CANONICAL_ROUND_TRIP"
+    },
+    {
+      "statement": "Malformed or underdetermined interchange input is a typed refusal.",
+      "claim_class": "REFUSAL"
+    }
+  ],
+  "privacy_check": "CLEAN - pure-Python parsers, synthetic points only, labels privacy-scanned, no shapely/GDAL",
+  "verdict": "GREEN_R10_8_1_P38_BATCH_GEOJSON_AND_KML_IMPORT"
+}

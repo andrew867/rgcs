@@ -1,0 +1,35 @@
+{
+  "phase_id": "P55",
+  "tranche": "T07",
+  "title": "Privacy, Narrative, and Public Export Separation",
+  "status": "COMPLETE",
+  "software_commit": "2f49122",
+  "outputs": [
+    "cwatlas/export_separation.py",
+    "tests/cwatlas/test_export_separation.py",
+    "docs/cwatlas/receipts/P55.json"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/cwatlas/test_export_separation.py -q",
+    "test_file": "tests/cwatlas/test_export_separation.py",
+    "count": 9,
+    "result": "PASS"
+  },
+  "negative_results": [
+    "a PRIVATE record is refused from a public export bundle (ExportError)",
+    "a private path/identity token in any field, including nested dicts and lists, is refused by the recursive scan",
+    "the exported payload never carries a private field (narrative, prediction, personal_location, operator_name, raw_vector_string, ...)",
+    "assert_export_clean rejects any bundle item that is not PUBLIC_SYNTHETIC"
+  ],
+  "claims": [
+    {
+      "statement": "A public export/audit bundle carries only synthetic/public, redacted content; assembly reuses privacy.assert_exportable and privacy.refuse_private_in_public and scans every field (POWER).",
+      "claim_class": "MATHEMATICAL_TRANSLATION"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic public fixtures only; private records and private tokens are refused, not shipped",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_vector_geographic_semantics": "NOT_CLAIMED",
+  "verdict": "GREEN_R10_8_1_P55_PRIVACY_NARRATIVE_AND_PUBLIC_EXPORT_SEPARATION"
+}
