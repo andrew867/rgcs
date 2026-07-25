@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SourceRouteCore",
+  "type": "object",
+  "required": [
+    "raw",
+    "tokens",
+    "codec_id"
+  ],
+  "properties": {
+    "raw": {
+      "type": "string",
+      "pattern": "^[0-9]+$"
+    },
+    "tokens": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 99
+      }
+    },
+    "codec_id": {
+      "const": "CW_BASE100_ROUTE_V2"
+    },
+    "leading_zero_policy": {
+      "enum": [
+        "LEFT_PAD_TO_EVEN",
+        "EXPLICIT"
+      ]
+    },
+    "variable_depth": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

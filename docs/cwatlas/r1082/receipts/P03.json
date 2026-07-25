@@ -1,0 +1,30 @@
+{
+  "phase_id": "P03",
+  "tranche": "T01",
+  "title": "Private Provenance and Source Registry Import",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/r1082/source_import.py",
+    "docs/cwatlas/r1082/receipts/P03.json"
+  ],
+  "tests": [
+    "tests/cwatlas/r1082/test_source_import.py (7 passed)"
+  ],
+  "negative_results": [
+    "Private data loads only via cwatlas.privacy (ignored CWATLAS_PRIVATE_DIR); absent the env var the adapter yields an empty import.",
+    "A record's narrative field (narrative/notes/label/prediction) is never exported; public projections carry only opaque id, raw_hash, tokens, body status/use.",
+    "The raw source string is never exported (assert_exportable refuses if 'raw' would appear).",
+    "A PRIVATE-tagged record refuses public export outright (privacy.PrivacyError).",
+    "The Stonehenge training anchor is referenced by the opaque id STONEHENGE_PRIVATE_001 only; neither 'Stonehenge' nor 165876523 appears in any projection.",
+    "Vectors register with body status UNKNOWN unless a body is explicitly assigned (unlabeled vectors are not guessed).",
+    "Provenance is typed onto the existing hash-chained cwatlas.provenance_ledger; verify_chain() holds and the ledger head is deterministic for identical synthetic inputs."
+  ],
+  "claims": [
+    {"statement": "The communications-derived source-vector registry and its anchor records are imported as typed, hash-chained provenance without exposing any private narrative.", "claim_class": "SOURCE"},
+    {"statement": "Public tests use synthetic vectors referenced by opaque fixture ids; no *.private.example.json is read.", "claim_class": "SOURCE"}
+  ],
+  "privacy_check": "CLEAN - synthetic/public fixtures only, no private inputs",
+  "verdict": "PRIVATE_PROVENANCE_IMPORTED_NO_NARRATIVE_EXPOSED",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

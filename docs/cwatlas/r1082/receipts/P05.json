@@ -1,0 +1,40 @@
+{
+  "phase_id": "P05",
+  "tranche": "T02",
+  "title": "Wilkes Fixed Anchor Profile Registry",
+  "status": "COMPLETE",
+  "objective": "Represent the Wilkes gravity-anomaly root as a versioned centroid-and-uncertainty ensemble bound to the root icosahedral face centre.",
+  "outputs": [
+    "cwatlas/r1082/wilkes.py",
+    "tests/cwatlas/r1082/test_wilkes.py",
+    "docs/cwatlas/r1082/receipts/P05.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_wilkes.py (16 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.geodesy", "cwatlas.icosahedron", "cwatlas.r1082.claims"]
+  },
+  "artifacts": {
+    "wilkes_ensemble_hash": "sha256:462b8c6a3e45cc05172ae80f08613ccb2747c85ddef19fa9063823a624b77d28",
+    "profile_version": "WILKES_CENTROID_ENSEMBLE_V1",
+    "candidate_count": 3,
+    "selected_candidate": "WILKES_A_PLACEHOLDER",
+    "root_face_id": 4
+  },
+  "negative_results": [
+    "The placeholder centroid (~66.5S, 135E) is a CONVENTIONAL OPERATOR_SELECTION, not a measured gravity-anomaly centroid.",
+    "Uncertainty is never collapsed to a point: zero / non-positive-definite / asymmetric covariance is refused (refuse_point_uncertainty).",
+    "Multiple defensible candidate centroids are returned as an ensemble rather than selecting the prettiest downstream map."
+  ],
+  "claims": [
+    {"statement": "The Wilkes fixed anchor is a versioned centroid-and-uncertainty ensemble whose selected centroid direction binds to one icosahedral face centre.", "claim_class": "OPERATOR_SELECTION"}
+  ],
+  "privacy_check": "CLEAN - synthetic/public placeholder constants only; no private reads, no personal names or paths.",
+  "verdict": "WILKES_FIXED_ANCHOR_VERSIONED_ENSEMBLE_NO_INVENTED_PRECISION",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED",
+  "terminal_token": "GREEN_R10_8_2_P05_WILKES_FIXED_ANCHOR_PROFILE_REGISTRY"
+}

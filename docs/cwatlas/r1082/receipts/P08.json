@@ -1,0 +1,42 @@
+{
+  "phase_id": "P08",
+  "tranche": "T02",
+  "title": "Root Certificate and Time-Varying Frame API",
+  "status": "COMPLETE",
+  "objective": "Expose the complete fixed-plus-dynamic root as one typed, cacheable, auditable frame certificate.",
+  "outputs": [
+    "cwatlas/r1082/root_certificate.py",
+    "tests/cwatlas/r1082/test_root_certificate.py",
+    "docs/cwatlas/r1082/receipts/P08.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_root_certificate.py (15 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.r1082.wilkes (P05)", "cwatlas.r1082.saa (P06)", "cwatlas.r1082.southup (P07)", "cwatlas.r1082.claims"]
+  },
+  "artifacts": {
+    "profile_id": "EARTH_ROOT_D_V1",
+    "certificate_version": "1.0.0",
+    "example_certificate_hash": "sha256:b46712fa171ed8aeb5a3fb242abfabefe002e8de9846247f079e0d9a6e226f3e",
+    "example_key": "epoch=2020.0, shell=6",
+    "cache_key": ["field_model_version", "epoch_bucket", "epoch_exact", "shell_index", "radius_m", "wilkes_ensemble_hash"],
+    "schema_validated": "cwatlas/r1082/schemas/earth_root_profile.schema.json"
+  },
+  "negative_results": [
+    "The certificate is a SOFTWARE_RESULT / CANDIDATE_CALIBRATED_POINT under a declared calibration — not a measured fact, and it validates no source origin.",
+    "resolve(epoch, shell) is deterministic and cached; the cache bucket does NOT erase the exact requested epoch/radius, which the certificate preserves.",
+    "Requests outside the SAA model validity return a typed RootRefusal (ResultClass.INVALID) via resolve_or_refuse, or raise SAAError via resolve.",
+    "Every input and derived basis vector (South-Up basis, root face-centre direction, SAA direction) is hashed."
+  ],
+  "claims": [
+    {"statement": "The two-layer EARTH_ROOT_D_V1 root (Wilkes fixed + SAA dynamic at (epoch,shell) + South-Up orientation + face-centre root) is assembled as one hashed, cacheable, deterministic certificate.", "claim_class": "SOFTWARE_RESULT"}
+  ],
+  "privacy_check": "CLEAN - synthetic/public inputs only; no private reads, no personal names or paths.",
+  "verdict": "ROOT_CERTIFICATE_TWO_LAYER_DETERMINISTIC_CACHEABLE_AUDITED",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED",
+  "terminal_token": "GREEN_R10_8_2_P08_ROOT_CERTIFICATE_AND_TIME-VARYING_FRAME_API"
+}

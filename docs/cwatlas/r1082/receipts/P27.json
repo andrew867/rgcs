@@ -1,0 +1,48 @@
+{
+  "phase_id": "P27",
+  "tranche": "T07",
+  "title": "Search-Space and Description-Length Ledger",
+  "status": "COMPLETE",
+  "objective": "Count the actual freedom used to obtain every candidate map: the families tried (4), the continuous parameter fitted (orientation angle), the Wilkes centroid / epoch / codec profile alternatives, and the total bits of selection freedom; give a per-candidate description length; and compare the degrees of freedom against the 2 sealed anchors so an honest reader sees how weak the constraint is.",
+  "outputs": [
+    "cwatlas/r1082/search_ledger.py",
+    "docs/cwatlas/r1082/receipts/P27.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_search_ledger.py (9 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.r1082.spatialization (FAMILIES, FAMILY_COUNT, route/token constants); cwatlas.r1082.wilkes.default_ensemble; cwatlas.r1082.candidate_ensemble.DEFAULT_EPOCH_PROFILES - NOT reimplemented"]
+  },
+  "implementation": {
+    "ledger_id": "CW-R1082-SEARCH-LEDGER",
+    "ledger_version": "1.0.0",
+    "family_count": 4,
+    "distinguishable_families": 3,
+    "continuous_params": 1,
+    "wilkes_candidates": 3,
+    "epoch_profiles": 3,
+    "codec_profile_alternatives": 1,
+    "sealed_anchors": 2,
+    "degrees_of_freedom": 4,
+    "dof_at_least_anchors": true,
+    "constraint_is_weak": true,
+    "angle_quantisation_deg": 1.0,
+    "description_length_bits_per_candidate": 46.88
+  },
+  "tests_summary": {"passed": 9, "skipped": 0},
+  "claims": [
+    {"statement": "The ledger counts the search space (families, continuous orientation angle, Wilkes/epoch/codec alternatives), computes the total bits of selection freedom and a per-candidate description length, and compares the degrees of freedom against the 2 sealed anchors; it separates exact arithmetic (0 fitted bits), calibration fit, holdout prediction, and destination-catalogue proximity (never rewarded).", "claim_class": "SOFTWARE_RESULT"}
+  ],
+  "negative_results": [
+    "The degrees of freedom (4 free axes plus a fitted continuous angle) exceed the 2 sealed anchors, so the map is weakly constrained: an honest reader cannot treat any candidate as a measured fact.",
+    "Two of the four nominal spatialization families (F1 and F3) are indistinguishable at the default root, so the effective family search is even smaller and no family is uniquely selected by the anchors.",
+    "Proximity to an unsealed famous-place catalogue contributes zero evidence and is never scored."
+  ],
+  "privacy_check": "CLEAN - counts synthetic/public search-space cardinalities and bit figures only; no private path literals, no personal identity tokens, no raw private narrative",
+  "verdict": "R1082_SEARCH_LEDGER_FREEDOM_COUNTED_DOF_GE_ANCHORS_SURFACED",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

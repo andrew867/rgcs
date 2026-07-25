@@ -1,0 +1,27 @@
+{
+  "phase_id": "P04",
+  "tranche": "T01",
+  "title": "Claim State and Candidate Map Result Migration",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/r1082/result_states.py",
+    "docs/cwatlas/r1082/receipts/P04.json"
+  ],
+  "tests": [
+    "tests/cwatlas/r1082/test_result_states.py (12 passed)"
+  ],
+  "negative_results": [
+    "No result class carries MEASURED or REPLICATED evidence; a candidate is at most CALIBRATED_CANDIDATE (the evidence firewall as a table and as a guard in evidence_for).",
+    "A candidate result refuses to be serialized as measured: assert_not_measured() and to_serializable(as_measured=True) raise R1082ClaimError via claims.refuse_candidate_as_measured.",
+    "The legacy NO_UNIQUE_GEOGRAPHIC_DECODE refusal migrates into bounded CANDIDATE_CALIBRATED_POINT / CANDIDATE_REGION / CANDIDATE_ALIAS_SET / UNDERDETERMINED states, never inventing precision and never breaking the firewall.",
+    "A lone candidate without calibration falls to CANDIDATE_REGION, not a forced point; a missing CRS/epoch falls to CALIBRATION_REQUIRED."
+  ],
+  "claims": [
+    {"statement": "The seven non-negotiable result classes are implemented as a deterministic state machine with per-class evidence classes and API error codes; candidate outputs are firewalled from measurement.", "claim_class": "SOFTWARE_RESULT"},
+    {"statement": "The R10.8.1 bare refusal is migrated into richer candidate states while preserving the evidence firewall (candidate never becomes MEASURED).", "claim_class": "DERIVED_MATHEMATICS"}
+  ],
+  "privacy_check": "CLEAN - synthetic/public fixtures only, no private inputs",
+  "verdict": "CANDIDATE_RESULT_STATES_WITH_EVIDENCE_FIREWALL",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

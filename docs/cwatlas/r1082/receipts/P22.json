@@ -1,0 +1,43 @@
+{
+  "phase_id": "P22",
+  "tranche": "T06",
+  "title": "Map Selection to Source-Style Vector",
+  "status": "COMPLETE",
+  "objective": "Click a body location and generate a source-style candidate address under a named frozen profile - the five-token display when representable, else an extended variable-depth packet with the nearest-encodable point and its quantization error.",
+  "outputs": [
+    "cwatlas/r1082/geocode_inverse.py",
+    "docs/cwatlas/r1082/receipts/P22.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_geocode_inverse.py (21 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.r1082.local_coord.inverse (via safe_family_inverse) + wire_format; cwatlas.icosahedron - NOT reimplemented"]
+  },
+  "implementation": {
+    "codec_id": "CW-R1082-GEOCODE-INV",
+    "codec_version": "1.0.0",
+    "named_profile_required": true,
+    "five_token_display": "01|65|87|65|23 when exactly representable",
+    "extended_packet": "self-describing wire packet (SHELL_ONLY | SHELL_PLUS_COARSE | FULL) via wire_format; shell supplies the radius",
+    "nearest_encodable_when_quantized": true,
+    "shows_quantization_and_non_uniqueness": true,
+    "shell_supplies_radius": true
+  },
+  "tests_summary": {"passed": 21, "skipped": 0},
+  "claims": [
+    {"statement": "The inverse geocoder maps a body location (lat, lon, shell) under a named frozen profile to a source-style five-token candidate address, returning the nearest-encodable point with an explicit quantization residual and the other retained families' addresses as aliases.", "claim_class": "CALIBRATED_CANDIDATE"}
+  ],
+  "negative_results": [
+    "The source codec is quantized: an arbitrary click is generally NOT exactly representable, so the nearest-encodable point and its residual are returned and exactness is not claimed (representable_exact=False). Quantization is shown before the operator copies the vector.",
+    "Non-uniqueness is surfaced: under an un-narrowed ensemble different token-order families emit different source vectors for the same click (non_unique=True with the alias set).",
+    "The shell supplies the radius; altitude is never reported missing. A named frozen profile is required (a bare inverse with no calibration is refused).",
+    "A recovered address is at most a CALIBRATED_CANDIDATE; assert_not_measured() raises. No source origin is validated."
+  ],
+  "privacy_check": "CLEAN - synthetic/public coordinates and vectors only; no private path literals, no personal identity tokens, no raw private narrative",
+  "verdict": "R1082_INVERSE_GEOCODER_SOURCE_STYLE_NEAREST_ENCODABLE",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

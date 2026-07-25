@@ -1,0 +1,50 @@
+{
+  "phase_id": "P18",
+  "tranche": "T05",
+  "title": "Two-Anchor Orientation and Token Calibration",
+  "status": "COMPLETE",
+  "objective": "Fit the remaining low-parameter calibration (orientation angle + family selection) using ONLY the Wilkes fixed root and the Stonehenge training anchor.",
+  "outputs": [
+    "cwatlas/r1082/calibration_fit.py",
+    "docs/cwatlas/r1082/receipts/P18.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_calibration_fit.py (10 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.r1082.spatialization (bounded 4-family ensemble F1..F4), cwatlas.r1082.wilkes (fixed-root ensemble), cwatlas.r1082.stonehenge_anchor (P17), cwatlas.r1082.partition - NOT reimplemented; pure numpy closed-form solve, no scipy.optimize"]
+  },
+  "implementation": {
+    "codec_id": "CW-R1082-CALFIT",
+    "codec_version": "1.0.0",
+    "continuous_parameter": "orientation angle theta about the body mean-rotation axis (South-Up +Z)",
+    "discrete_parameter": "spatialization family selection (F1..F4)",
+    "solve": "closed-form single-axis Wahba: theta* = atan2(B, A) with A=sum(cx*tx+cy*ty), B=sum(cx*ty-cy*tx); conditioning = hypot(A,B)",
+    "correspondences": ["WILKES_FIXED_ROOT (root face-centre vs selected Wilkes centroid)", "STONEHENGE_PRIVATE_001 (family-mapped route centroid vs synthetic public direction)"],
+    "residuals_reported_per_family": true,
+    "f1_f3_indistinguishable": "with the default root face, ROOT_RELATIVE == DIRECT, so F1 and F3 fit identically - two anchors cannot separate them"
+  },
+  "degrees_of_freedom": {
+    "continuous_parameters_fitted": 1,
+    "discrete_family_choices": 4,
+    "anchor_count": 2,
+    "scalar_constraints": 4,
+    "continuous_determination": "OVER_DETERMINED",
+    "family_determination": "UNDER_DETERMINED"
+  },
+  "negative_results": [
+    "Two anchors under-determine the discrete family choice: the fit NEVER silently picks one. It returns the whole ranked, retained alias set (result_class = CANDIDATE_ALIAS_SET).",
+    "refuse_single_measured_pick() raises via claims.refuse_candidate_as_measured - the top-ranked family may not be promoted to a measured selection.",
+    "refuse_overparameterized() rejects any fit requesting more free parameters than the 4 scalar constraints the two anchors supply.",
+    "A fitted orientation angle is a CALIBRATED_CANDIDATE parameter under a declared family, not a measured fact and not a validated source origin."
+  ],
+  "claims": [
+    {"statement": "One orientation angle is fit against the Wilkes and Stonehenge correspondences for each of the four families (over-determined continuous fit), while the discrete family selection remains under-determined by only two anchors and is retained as a ranked alias set.", "claim_class": "CALIBRATED_CANDIDATE"}
+  ],
+  "privacy_check": "CLEAN - synthetic/public anchors and route shapes only; no private path literals, no personal identity tokens, no raw private vector or narrative",
+  "verdict": "TWO_ANCHOR_FIT_RANKED_RETAINED_SET_NO_SILENT_PICK",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

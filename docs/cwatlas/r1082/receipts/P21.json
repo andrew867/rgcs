@@ -1,0 +1,43 @@
+{
+  "phase_id": "P21",
+  "tranche": "T06",
+  "title": "Source Vector to Pin, Cell, or Region",
+  "status": "COMPLETE",
+  "objective": "Decode every eligible source vector under the frozen candidate ensemble into a pin, cell, region, or alias set - always a pin or region, never a bare refusal, never invented precision.",
+  "outputs": [
+    "cwatlas/r1082/geocode_forward.py",
+    "docs/cwatlas/r1082/receipts/P21.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_geocode_forward.py (33 passed, 1 integration path)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.r1082.route_core (parse_five_token) -> spatialization / local_coord -> result_states; cwatlas.icosahedron, cwatlas.uncertainty - NOT reimplemented"]
+  },
+  "implementation": {
+    "codec_id": "CW-R1082-GEOCODE-FWD",
+    "codec_version": "1.0.0",
+    "bodies_in_scope": ["EARTH", "TERRA"],
+    "foreign_body_force_decoded": false,
+    "result_classes": ["CANDIDATE_CALIBRATED_POINT", "CANDIDATE_REGION", "CANDIDATE_ALIAS_SET", "UNDERDETERMINED", "CALIBRATION_REQUIRED", "INVALID"],
+    "frozen_profile_injected": true,
+    "t05_imported_lazily": true,
+    "shell_supplies_radius": true,
+    "always_pin_or_region": "a lone calibrated family gives CANDIDATE_CALIBRATED_POINT; the un-narrowed ensemble gives CANDIDATE_ALIAS_SET; no calibration gives CANDIDATE_REGION; a diffuse set gives an UNDERDETERMINED bounded heatmap region"
+  },
+  "tests_summary": {"passed": 33, "skipped": 0, "integration_path": "T05 real FrozenCalibration exercised via fit_all -> freeze_calibration; falls back to FrozenProfileStub when absent"},
+  "claims": [
+    {"statement": "The forward geocoder decodes an Earth/Terra source vector under the frozen candidate ensemble into a candidate pin, cell, region, or bounded alias set with an uncertainty footprint derived from the source-codec terminal-cell quantization.", "claim_class": "CALIBRATED_CANDIDATE"}
+  ],
+  "negative_results": [
+    "A foreign-body source vector is typed OUT OF SCOPE (INVALID + body_scope=FOREIGN_BODY_OUT_OF_SCOPE) and is NOT force-decoded - no pin is invented for a body this root does not describe.",
+    "The five-token base-100 codec carries 10**10 states but a family's depth-10 address space is 20*8**10 (larger); more than half of each face's terminal cells are unaddressable by any source vector - an honest resolution limit, not a defect.",
+    "A geocoded pin is at most a CALIBRATED_CANDIDATE (a software result under a declared calibration); assert_not_measured() and to_serializable(as_measured=True) raise R1082ClaimError. It is never a measured fact and validates no source origin."
+  ],
+  "privacy_check": "CLEAN - opaque public/synthetic source-vector ids only (sanitized 165876523 route shape and synthetic vectors); no private path literals, no personal identity tokens, no raw private vectors or narrative",
+  "verdict": "R1082_FORWARD_GEOCODER_PIN_CELL_REGION_OR_ALIAS_NEVER_BARE",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

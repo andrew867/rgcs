@@ -1,0 +1,40 @@
+{
+  "phase_id": "P14",
+  "tranche": "T04",
+  "title": "Dodecahedral-Dual Route Graph",
+  "status": "COMPLETE",
+  "objective": "Use the dual graph for adjacency without conflating vertices and faces.",
+  "outputs": [
+    "cwatlas/r1082/route_graph.py",
+    "docs/cwatlas/r1082/receipts/P14.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_route_graph.py (8 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.dodecahedron (dual, IcosaFaceId/DodecaVertexId, dual_vertex_of_face, require_dodeca_vertex, ConflationError) - NOT reimplemented"]
+  },
+  "implementation": {
+    "graph_id": "CW-R1082-DODECA-DUAL",
+    "graph_version": "1.0.0",
+    "num_dual_vertices": 20,
+    "num_dual_edges": 30,
+    "degree_set": [3],
+    "queries": "neighbors, degree, deterministic BFS shortest_path with route certificates and a graph digest",
+    "bridge": "root_vertex_for_face reuses dual_vertex_of_face (icosa face -> dual root vertex)"
+  },
+  "negative_results": [
+    "An IcosaFaceId is not a DodecaVertexId: vertex-space queries refuse a face id or a bare int (require_dodeca_vertex / ConflationError).",
+    "A dodecahedral pentagon FACE is never the root: refuse_dodeca_face_as_root refuses it (the root is a face centre == dual vertex).",
+    "A vertex id, a path, and a hop count are combinatorial objects; a route length is not a physical distance and validates no source origin."
+  ],
+  "claims": [
+    {"statement": "Adjacency and shortest-path routing run on the dodecahedral-dual vertex graph, wrapping the reused engine, with typed refusals against face/vertex conflation.", "claim_class": "DERIVED_MATHEMATICS"}
+  ],
+  "privacy_check": "CLEAN - synthetic/public geometry only; no private reads, no personal names or filesystem literals",
+  "verdict": "R1082_DODECA_DUAL_ROUTE_GRAPH_NO_CONFLATION",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

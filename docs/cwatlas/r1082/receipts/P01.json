@@ -1,0 +1,35 @@
+{
+  "phase_id": "P01",
+  "tranche": "T01",
+  "title": "Gate Zero and Repository Reconciliation",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/r1082/__init__.py",
+    "cwatlas/r1082/claims.py",
+    "cwatlas/r1082/schemas/ (6 pack schemas)",
+    "cwatlas/r1082/fixtures/earth_root_D_v1.json (public config)",
+    "docs/cwatlas/r1082/receipts/P01.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_r1082_claims.py (13 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "tag_at_head": "v8.1.0",
+    "worktree": "clean at branch cut",
+    "branch": "r1082-locked-root",
+    "main_ahead_of_origin": 1,
+    "predecessor": "R10.8.1 CW Atlas (v8.1.0) present: cwatlas package with 55 modules — reused, not rebuilt",
+    "reused_engine": ["icosahedron", "dodecahedron", "subdivision", "geodesy", "frames", "earth_frame", "mars_frame", "shells", "calibration", "uncertainty", "codec_geo1", "codec_registry", "claims"]
+  },
+  "negative_results": [
+    "R10.8.1 CW Atlas exists; R10.8.2 extends it as the cwatlas.r1082 subpackage rather than a disconnected package (System Contract).",
+    "Only the public earth_root_D_v1.json config and the 6 public schemas were copied; the *.private.example.json fixtures were NOT copied.",
+    "Verification/foundation phase: it establishes repository state and claims nothing physical or source-validated."
+  ],
+  "claims": [
+    {"statement": "Repository state and the existing CW Atlas engine were verified before applying R10.8.2 as an additive subpackage.", "claim_class": "DERIVED_MATHEMATICS"}
+  ],
+  "privacy_check": "CLEAN - synthetic/public fixtures only, no private inputs; private example fixtures deliberately excluded",
+  "verdict": "GATE_ZERO_VERIFIED_R1082_FOUNDATION_CREATED",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

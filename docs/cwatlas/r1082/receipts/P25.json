@@ -1,0 +1,45 @@
+{
+  "phase_id": "P25",
+  "tranche": "T07",
+  "title": "Holdout Vector Registry and Body-Scope Firewall",
+  "status": "COMPLETE",
+  "objective": "Separate Earth/Terra candidates from vectors reported for other planets or stars: build a sealed holdout vector registry with train/dev/holdout partitions, enforce train/holdout disjointness, keep sealed fit anchors out of the holdout set, type foreign bodies out of scope (never force-decoded), and reference every vector by an opaque public id.",
+  "outputs": [
+    "cwatlas/r1082/holdout_registry.py",
+    "docs/cwatlas/r1082/receipts/P25.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_holdout_registry.py (13 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.r1082.geocode_forward.BODY_IN_SCOPE (Earth/Terra scope); cwatlas.r1082.source_import.STONEHENGE_FIXTURE_ID; cwatlas.r1082.spatialization route constants; cwatlas.r1082.claims - NOT reimplemented"]
+  },
+  "implementation": {
+    "registry_id": "CW-R1082-HOLDOUT",
+    "registry_version": "1.0.0",
+    "partitions": ["train", "dev", "holdout", "foreign_out_of_scope"],
+    "bodies_in_scope": ["EARTH", "TERRA"],
+    "fit_used_anchor_ids": ["STONEHENGE_PRIVATE_001", "WILKES_FIXED_ROOT"],
+    "train_holdout_disjoint": true,
+    "foreign_bodies_force_decoded": false,
+    "holdouts_used_in_fit": false,
+    "opaque_ids_only": true,
+    "holdout_sealed_with_sha256_digest": true
+  },
+  "tests_summary": {"passed": 13, "skipped": 0},
+  "claims": [
+    {"statement": "A source vector registry splits vectors into sealed train/dev/holdout partitions; a vector cannot appear in two partitions (train/holdout disjointness), the two sealed T05 fit anchors may never be registered as holdouts, foreign-body vectors are typed out of scope and routed to FOREIGN (not force-decoded onto Earth), and every vector is referenced by an opaque public id; the holdout partition is sealed with a deterministic SHA-256 digest.", "claim_class": "SOURCE"}
+  ],
+  "negative_results": [
+    "A vector reported for MARS or a star that shares the 01|65 prefix with Stonehenge is NOT force-decoded onto Earth: it is typed FOREIGN_OUT_OF_SCOPE and excluded from the Earth-root partitions.",
+    "Registering the same opaque id into both training and holdout is refused; the train and holdout id sets are provably disjoint.",
+    "A sealed calibration anchor (Wilkes fixed root or the Stonehenge training anchor) is refused as a holdout - a fit anchor is not an unseen holdout.",
+    "Registration stores only an opaque id, the sanitised route shape, and a route hash; no raw private vector or narrative is ever stored or exported."
+  ],
+  "privacy_check": "CLEAN - synthetic/public opaque-id fixtures only; no private path literals, no personal identity tokens, no raw private vectors or narrative",
+  "verdict": "R1082_HOLDOUT_REGISTRY_DISJOINT_SEALED_BODY_SCOPE_FIREWALL",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

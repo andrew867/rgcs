@@ -1,0 +1,44 @@
+{
+  "phase_id": "P24",
+  "tranche": "T06",
+  "title": "Dynamic Globe, Shell, and Magnetic Overlay",
+  "status": "COMPLETE",
+  "objective": "Make the two-layer root visible and debuggable via a deterministic, serializable rendering-contract spec (no DOM/canvas): build_overlay_state(epoch, shell) yields the layers a globe view would draw.",
+  "outputs": [
+    "cwatlas/r1082/overlay_spec.py",
+    "docs/cwatlas/r1082/receipts/P24.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_overlay_spec.py (11 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.r1082.root_certificate.resolve (cached fixed+dynamic root) + southup (viewpoint-safe handedness); wilkes / saa via the certificate - NOT reimplemented"]
+  },
+  "implementation": {
+    "contract_id": "CW-R1082-OVERLAY",
+    "contract_version": "1.0.0",
+    "layers": ["FIXED_ROOT_MARKER", "DYNAMIC_SAA_PHASE_ZERO", "ORIENTATION_FRAME", "SHELL_SURFACE", "CANDIDATE_OUTPUTS"],
+    "fixed_root_epoch_independent": true,
+    "dynamic_saa_epoch_and_shell_dependent": true,
+    "viewpoint_safe_arrows": "clockwise-positive from the Antarctic external viewpoint; anticlockwise from the North-down inverse view (same physical rotation)",
+    "shell_supplies_radius": true,
+    "refuses_outside_validity": true,
+    "serializable": true,
+    "browser_ui": "OUT_OF_SCOPE_SPEC_LEVEL_ONLY - node exists but the browser UI is untestable in this environment"
+  },
+  "tests_summary": {"passed": 11, "skipped": 0},
+  "claims": [
+    {"statement": "build_overlay_state(epoch, shell) generates the serializable layered state of the locked two-layer root - a fixed epoch-independent Wilkes root marker, a dynamic SAA phase-zero direction at (epoch, shell), a South-Up orientation frame with viewpoint-safe arrows, the shell radius, and candidate pins/regions.", "claim_class": "SOFTWARE_RESULT"}
+  ],
+  "negative_results": [
+    "The FIXED Wilkes root marker is epoch-independent: animating the epoch never rotates it (verified across an epoch series); only the DYNAMIC SAA layer moves with epoch and shell.",
+    "Out of field-model validity the overlay returns a typed MODEL_VALIDITY_REFUSAL layer, never an invented direction.",
+    "The overlay renders no pixels, measures nothing, and asserts no physical effect; candidate pins are software results under a declared calibration (CALIBRATED_CANDIDATE at most), validating no source origin."
+  ],
+  "privacy_check": "CLEAN - synthetic/public epochs, shells, and candidate outputs only; no private path literals, no personal identity tokens, no raw private narrative",
+  "verdict": "R1082_OVERLAY_RENDERING_CONTRACT_TWO_LAYER_ROOT_VISIBLE",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

@@ -1,0 +1,42 @@
+{
+  "phase_id": "P19",
+  "tranche": "T05",
+  "title": "Calibration Freeze and Cryptographic Receipt",
+  "status": "COMPLETE",
+  "objective": "Freeze the retained calibration with a SHA-256 receipt before any holdout is scored; refuse post-freeze retuning.",
+  "outputs": [
+    "cwatlas/r1082/calibration_freeze.py",
+    "docs/cwatlas/r1082/receipts/P19.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_calibration_freeze.py (10 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.r1082.claims (FROZEN_PARAMETERS, refuse_post_output_retuning), cwatlas.r1082.config_authority (locked ADR freeze_hash), cwatlas.r1082.calibration_fit (P18), cwatlas.r1082.wilkes, cwatlas.r1082.partition (digest) - NOT reimplemented"],
+    "schema": "cwatlas/r1082/schemas/calibration_receipt.schema.json (validated via jsonschema Draft202012)"
+  },
+  "implementation": {
+    "profile_id": "EARTH_ROOT_D_V1",
+    "receipt_version": "1.0.0",
+    "seals": "the 7 FROZEN_PARAMETERS (grid_rotation, handedness, root_feature, topology, tokenization, destination_label_split, epoch_choice) + profile id + two training-anchor hashes + fitted orientation angles per retained family",
+    "freeze_hash": "SHA-256 over the canonical seal (deterministic; a clean checkout reproduces it)",
+    "created_at": "passed-in ISO-8601 timestamp (never a wall-clock read)",
+    "retuning_forbidden": true,
+    "decoder_requires_receipt": "require_valid_receipt() gates source-map mode"
+  },
+  "negative_results": [
+    "Freeze precedes holdout scoring: CalibrationSession.score_holdout raises CalibrationOrderError until freeze() has been called (no reverse-fitting to holdouts).",
+    "Post-freeze retuning is refused: FrozenCalibration.refuse_retune and CalibrationSession.retune (once frozen) route through claims.refuse_post_output_retuning (no result shopping); a different configuration is only expressible as a new profile id.",
+    "Tampering with a frozen parameter breaks the recomputed freeze hash (verify() returns False).",
+    "require_valid_receipt refuses source-map mode without a receipt naming EARTH_ROOT_D_V1, forbidding retuning, and carrying a freeze_hash."
+  ],
+  "claims": [
+    {"statement": "The retained calibration is sealed with a deterministic SHA-256 receipt over the seven frozen parameters, the training-anchor hashes, and the fitted angles; freeze precedes holdout scoring and post-freeze retuning is refused.", "claim_class": "CALIBRATED_CANDIDATE"}
+  ],
+  "privacy_check": "CLEAN - opaque anchor ids and content hashes only; no private path literals, no personal identity tokens, no raw private vector or narrative",
+  "verdict": "CALIBRATION_FROZEN_SHA256_RECEIPT_NO_RESULT_SHOPPING",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

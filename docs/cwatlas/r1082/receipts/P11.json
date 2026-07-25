@@ -1,0 +1,35 @@
+{
+  "phase_id": "P11",
+  "tranche": "T03",
+  "title": "Packed Shell-Epoch and Variable-Depth Wire Format",
+  "status": "COMPLETE",
+  "dependencies": ["P10"],
+  "outputs": [
+    "cwatlas/r1082/wire_format.py",
+    "tests/cwatlas/r1082/test_wire_format.py",
+    "docs/cwatlas/r1082/receipts/P11.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_wire_format.py (18 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root"
+  },
+  "reused": ["cwatlas.codec_base100", "cwatlas.shells (8<->0 closure ontology)", "cwatlas.r1082.semantic_expand (shell radius)", "cwatlas.r1082.claims"],
+  "what_it_does": "Versioned variable-depth wire grammar (CW_WIRE_V1) with three packet depths: SHELL_ONLY, SHELL_PLUS_COARSE, FULL. Shell and epoch share a compressed composite token (coarse*9 + shell); short packets omit unused epoch components, extended packets carry them; exact encode/decode round-trip at every depth. The shell supplies the radius (resolve_shell_radius_m), so a decoded packet never reports altitude missing. 8<->0 is an explicit shell_closure_transition flag, not integer equality. Ambiguous untagged legacy packets return a typed CANDIDATE_ALIAS_SET. to_shell_epoch conforms to shell_epoch.schema.json.",
+  "negative_results": [
+    "The 8<->0 closure is stored source ontology and surfaced as an explicit flag; shell 8 is never silently treated as equal to shell 0.",
+    "An untagged legacy token string that admits more than one depth is returned as an alias set, not forced to one packet.",
+    "A decoded packet is a reversible codec result, not a measured altitude or a proven epoch."
+  ],
+  "claims": [
+    {"statement": "The packed shell-epoch wire format serializes and inverts exactly at every variable depth, with the shell supplying the radius.", "claim_class": "MATHEMATICAL_TRANSLATION", "evidence_class": "DERIVED_MATHEMATICS"}
+  ],
+  "input_hashes": {"full_packet_example": "shell=8,coarse=2,fine=23"},
+  "output_hashes": {"full_packet_wire": "032623", "wire_format_report_verdict": "GREEN_R10_8_2_P11_PACKED_SHELL-EPOCH_AND_VARIABLE-DEPTH_WIRE_FORMAT"},
+  "privacy_check": "CLEAN - synthetic/public packets only; no private source narrative.",
+  "verdict": "GREEN_R10_8_2_P11_PACKED_SHELL-EPOCH_AND_VARIABLE-DEPTH_WIRE_FORMAT",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

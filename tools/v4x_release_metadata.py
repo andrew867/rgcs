@@ -36,7 +36,7 @@ COUNT_SITES = [
     # that was true when they shipped -- v5.1.0's notes still say 2420
     # because 2420 was correct at v5.1.0. Repoint this line at each new
     # release rather than rewriting history to satisfy the guard.
-    ("docs/cwatlas/RELEASE_NOTES_V8_1_0.md", r"expect:\s*(\d+)\s+passed"),
+    ("docs/cwatlas/RELEASE_NOTES_V8_2_0.md", r"expect:\s*(\d+)\s+passed"),
     ("CHANGELOG.md", r"Tests:\s*(\d+)\s+passing"),
 ]
 

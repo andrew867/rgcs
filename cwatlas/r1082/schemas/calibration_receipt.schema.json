@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CalibrationReceipt",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "root_profile",
+    "training_anchors",
+    "codec_family",
+    "parameters",
+    "freeze_hash",
+    "created_at"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string"
+    },
+    "root_profile": {
+      "const": "EARTH_ROOT_D_V1"
+    },
+    "training_anchors": {
+      "type": "array"
+    },
+    "codec_family": {
+      "type": "string"
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "freeze_hash": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "retuning_forbidden": {
+      "const": true
+    }
+  }
+}

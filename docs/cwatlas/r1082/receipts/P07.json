@@ -1,0 +1,40 @@
+{
+  "phase_id": "P07",
+  "tranche": "T02",
+  "title": "South-Up Basis and Viewpoint-Safe Handedness",
+  "status": "COMPLETE",
+  "objective": "Implement the locked South-Up orientation without north/south or viewpoint sign confusion.",
+  "outputs": [
+    "cwatlas/r1082/southup.py",
+    "tests/cwatlas/r1082/test_southup.py",
+    "docs/cwatlas/r1082/receipts/P07.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_southup.py (13 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.r1082.claims"]
+  },
+  "artifacts": {
+    "pole": "SOUTH_UP",
+    "positive_rotation": "CLOCKWISE",
+    "positive_rotation_viewpoint": "EXTERNAL_ABOVE_ANTARCTICA",
+    "viewpoints": ["EXTERNAL_ABOVE_ANTARCTICA", "NORTH_DOWN"],
+    "south_up_basis_determinant": 1.0
+  },
+  "negative_results": [
+    "A rotation applied without a declared viewpoint is refused (refuse_rotation_without_viewpoint): a bare 'clockwise' is ambiguous.",
+    "The SAME physical rotation is clockwise from the Antarctic external viewpoint and anticlockwise from North-down; equivalent descriptions round-trip to the identical matrix.",
+    "Orientation is a declared operator convention realized as rotation arithmetic (DERIVED_MATHEMATICS); it validates nothing physical."
+  ],
+  "claims": [
+    {"statement": "Viewpoint is a mandatory part of every rotation, so the handedness sign is never ambiguous across the two locked viewpoints.", "claim_class": "DERIVED_MATHEMATICS"}
+  ],
+  "privacy_check": "CLEAN - pure rotation arithmetic; no private reads, no personal names or paths.",
+  "verdict": "SOUTH_UP_VIEWPOINT_SAFE_HANDEDNESS_NO_AMBIGUOUS_SIGN",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED",
+  "terminal_token": "GREEN_R10_8_2_P07_SOUTH-UP_BASIS_AND_VIEWPOINT-SAFE_HANDEDNESS"
+}

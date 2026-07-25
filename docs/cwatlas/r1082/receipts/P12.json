@@ -1,0 +1,35 @@
+{
+  "phase_id": "P12",
+  "tranche": "T03",
+  "title": "Cs-Ba Epoch Profile Registry",
+  "status": "COMPLETE",
+  "dependencies": ["P11"],
+  "outputs": [
+    "cwatlas/r1082/epoch_profiles.py",
+    "tests/cwatlas/r1082/test_epoch_profiles.py",
+    "docs/cwatlas/r1082/receipts/P12.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_epoch_profiles.py (19 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root"
+  },
+  "reused": ["cwatlas.claims", "cwatlas.r1082.claims"],
+  "what_it_does": "A registry of five typed, SEPARATE candidate epoch transforms: CS133_FINE_PHASE (SI hyperfine 9192631770 Hz, fractional phase, wraps per cycle), CS137_DECAY_ENVELOPE (half-life 30.17 yr, remaining fraction 0.5 at one half-life), BA137_DAUGHTER_RATIO (daughter/parent accumulation, =1 at one parent half-life), BA130_PARENT_FULL (creation-scale, parent fraction ~1 on human scales), and COMPOSITE_VARIABLE_DEPTH. Isotope constants and source ontology are separate fields. Conventional UTC/TAI/TT/TDB timestamps stay mandatory in build_certificate even with a compressed epoch. compare_profiles reports all lanes side by side with selected=None.",
+  "negative_results": [
+    "No isotope lane is pretended proven (EpochProfile.proven cannot be set True) and none is silently selected (refuse_lane_selected).",
+    "build_certificate refuses a missing conventional timestamp or a timescale outside UTC/TAI/TT/TDB.",
+    "Each lane is a candidate transform (OPERATOR_HYPOTHESIS / DERIVED_MATHEMATICS); the source epoch origin remains NOT_VALIDATED."
+  ],
+  "claims": [
+    {"statement": "Four isotope epoch lanes plus a composite are implemented as distinct candidate transforms with their own constants, uncertainty, and claim class; none is discriminated or proven.", "claim_class": "OPERATOR_HYPOTHESIS", "evidence_class": "DERIVED_MATHEMATICS"}
+  ],
+  "input_hashes": {"cs137_half_life_s": "30.17 * 31557600", "cs133_hyperfine_hz": "9192631770.0"},
+  "output_hashes": {"epoch_profiles_report_verdict": "GREEN_R10_8_2_P12_CS-BA_EPOCH_PROFILE_REGISTRY"},
+  "privacy_check": "CLEAN - public isotope physical constants only; no private source narrative.",
+  "verdict": "GREEN_R10_8_2_P12_CS-BA_EPOCH_PROFILE_REGISTRY",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

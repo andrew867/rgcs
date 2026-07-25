@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CandidateMapResult",
+  "type": "object",
+  "required": [
+    "result_type",
+    "profile_id",
+    "input",
+    "geometry",
+    "receipt"
+  ],
+  "properties": {
+    "result_type": {
+      "enum": [
+        "CANONICAL_EXACT_POINT",
+        "CANDIDATE_CALIBRATED_POINT",
+        "CANDIDATE_REGION",
+        "CANDIDATE_ALIAS_SET",
+        "CALIBRATION_REQUIRED",
+        "UNDERDETERMINED",
+        "INVALID"
+      ]
+    },
+    "profile_id": {
+      "type": "string"
+    },
+    "input": {
+      "type": "object"
+    },
+    "geometry": {
+      "type": [
+        "object",
+        "array",
+        "null"
+      ]
+    },
+    "uncertainty": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "receipt": {
+      "type": "object"
+    }
+  }
+}

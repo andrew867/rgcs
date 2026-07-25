@@ -1,0 +1,44 @@
+{
+  "phase_id": "P15",
+  "tranche": "T04",
+  "title": "Recursive Eight-Way Spatialization Families",
+  "status": "COMPLETE",
+  "objective": "Implement the bounded candidate mappings from base-100 routes into recursive one-to-eight refinement.",
+  "outputs": [
+    "cwatlas/r1082/spatialization.py",
+    "docs/cwatlas/r1082/receipts/P15.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_spatialization.py (8 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.addressing (path_cell), cwatlas.subdivision (one-to-eight refinement), cwatlas.localize (cell_centroid) - NOT reimplemented"]
+  },
+  "implementation": {
+    "codec_id": "CW-R1082-SPATIALIZE",
+    "codec_version": "1.0.0",
+    "family_count": 4,
+    "families": ["F1_CANONICAL_DIRECT_BE", "F2_REVERSED_DIRECT_BE", "F3_CANONICAL_ROOTREL_BE", "F4_ROTATED_DIRECT_LE"],
+    "route_core": "five-token base-100 (Locked Decision 13)",
+    "path_depth": 10,
+    "route_space_per_family": 10000000000,
+    "address_capacity_per_family": 21474836480,
+    "uses_hash_or_catalogue": false,
+    "planted_route_count": 6,
+    "family_conventions": "token_order (significance) x face_entry (DIRECT | ROOT_RELATIVE) x digit_order (BIG_ENDIAN | LITTLE_ENDIAN); each a pure arithmetic bijection route <-> (face, octal path)"
+  },
+  "negative_results": [
+    "No hash and no destination catalogue: each family is a pure arithmetic bijection (required work #3).",
+    "A spatialization is a CALIBRATED_CANDIDATE at most - one member of a bounded ensemble, not a measured location, not a decoded destination, no validated source origin.",
+    "The correct family, if any, is chosen only by sealed-anchor calibration, never by result shopping."
+  ],
+  "claims": [
+    {"statement": "The bounded four-family ensemble maps five-token base-100 routes to (face, octal path) with deterministic cell polygons and centroids, each family invertible and counted for the search-space ledger.", "claim_class": "CALIBRATED_CANDIDATE"}
+  ],
+  "privacy_check": "CLEAN - synthetic/public planted routes only (sanitized 165876523 route shape); no private narrative, no personal names or filesystem literals",
+  "verdict": "R1082_SPATIALIZATION_FAMILIES_BOUNDED_INVERTIBLE_NO_CATALOGUE",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

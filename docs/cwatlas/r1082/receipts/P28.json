@@ -1,0 +1,50 @@
+{
+  "phase_id": "P28",
+  "tranche": "T07",
+  "title": "Prospective Bidirectional Challenge",
+  "status": "COMPLETE",
+  "objective": "Define a test that can FAIL CLEANLY after the release is frozen: a sealed, bidirectional (vector-to-place and place-to-vector) prospective challenge that freezes profile/software/scoring/tolerance and commits to a held-back actual before reveal, predicts a future anchor's pin/address with the frozen profile, records predicted-vs-actual against a pass/fail criterion, and grades SUCCESS / PARTIAL_SUCCESS / ALIAS_SET_SUCCESS / FAILURE.",
+  "outputs": [
+    "cwatlas/r1082/prospective_challenge.py",
+    "docs/cwatlas/r1082/receipts/P28.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_prospective_challenge.py (11 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.r1082.geocode_forward.geocode + single_family_stub; cwatlas.r1082.geocode_inverse.inverse_geocode; cwatlas.r1082.route_core.parse_five_token; cwatlas.r1082.claims - NOT reimplemented"]
+  },
+  "implementation": {
+    "module_id": "CW-R1082-CHALLENGE",
+    "module_version": "1.0.0",
+    "directions": ["VECTOR_TO_PLACE", "PLACE_TO_VECTOR"],
+    "outcomes": ["SUCCESS", "PARTIAL_SUCCESS", "ALIAS_SET_SUCCESS", "FAILURE"],
+    "scoring": "GREAT_CIRCLE_KM_VS_TOLERANCE",
+    "default_tolerance_km": 50.0,
+    "sealed_before_reveal": true,
+    "swapped_actual_refused": true,
+    "falsifiable": true,
+    "signed_bundles": true,
+    "synthetic_suite_outcomes": {
+      "CHALLENGE_SYN_V2P_PASS": "SUCCESS",
+      "CHALLENGE_SYN_V2P_FAIL": "FAILURE",
+      "CHALLENGE_SYN_P2V_PASS": "SUCCESS",
+      "CHALLENGE_SYN_P2V_FAIL": "FAILURE"
+    }
+  },
+  "tests_summary": {"passed": 11, "skipped": 0},
+  "claims": [
+    {"statement": "A sealed challenge commits to the frozen profile, software version, scoring rule, tolerance, and a cryptographic hash of the held-back actual before reveal; run_challenge verifies the commitment (a swapped actual is refused), predicts the future anchor's pin (vector-to-place) or source vector (place-to-vector) with the frozen profile, and grades SUCCESS/PARTIAL_SUCCESS/ALIAS_SET_SUCCESS/FAILURE - the outcome CAN be a clean FAILURE.", "claim_class": "CALIBRATED_CANDIDATE"}
+  ],
+  "negative_results": [
+    "The synthetic held-back suite contains fixtures that FAIL: a vector-to-place prediction whose actual sits at the antipode, and a place-to-vector prediction whose held-back vector is wrong, both yield a clean FAILURE. The challenge is genuinely falsifiable, not rigged to pass.",
+    "Revealing an actual that differs from the sealed commitment is refused (ChallengeError) - the scoring, tolerance, and answer are frozen before reveal.",
+    "A passing challenge does not promote any predicted pin or route: it is a CALIBRATED_CANDIDATE at most, never a measured fact; proximity to any famous place is never rewarded."
+  ],
+  "privacy_check": "CLEAN - synthetic/public future anchors, opaque challenge ids, and public coordinates only; no private path literals, no personal identity tokens, no raw private vectors or narrative",
+  "verdict": "R1082_PROSPECTIVE_BIDIRECTIONAL_CHALLENGE_FALSIFIABLE_SEALED",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

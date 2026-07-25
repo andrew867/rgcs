@@ -1,0 +1,45 @@
+{
+  "phase_id": "P17",
+  "tranche": "T05",
+  "title": "Stonehenge Training Anchor Authority",
+  "status": "COMPLETE",
+  "objective": "Import and validate the user-reported Stonehenge training anchor as the second calibration correspondence, under the privacy firewall.",
+  "outputs": [
+    "cwatlas/r1082/stonehenge_anchor.py",
+    "docs/cwatlas/r1082/receipts/P17.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_stonehenge_anchor.py (10 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.geodesy (geodetic_to_ecef), cwatlas.uncertainty (propagate_circle), cwatlas.provenance_ledger (hash chain), cwatlas.r1082.route_core (parse_five_token), cwatlas.r1082.source_import (opaque fixture id) - NOT reimplemented"]
+  },
+  "implementation": {
+    "stonehenge_fixture_id": "STONEHENGE_PRIVATE_001",
+    "tokenization": "01|65|87|65|23",
+    "tokens": [1, 65, 87, 65, 23],
+    "public_coordinate_deg": [51.1789, -1.8262],
+    "coordinate_status": "SYNTHETIC_PUBLIC_ANCHOR",
+    "positional_sigma_m": 5000.0,
+    "uncertainty_collapsed_to_point": false,
+    "evidence_class": "OPERATOR_SELECTION",
+    "source_status": "SOURCE",
+    "use": "training_anchor",
+    "bound_to_provenance_ledger": true
+  },
+  "negative_results": [
+    "The anchor is a user-reported OPERATOR_SELECTION over a SOURCE claim; it is NEVER MEASURED. refuse_as_measured() and promote_to(MEASURED/REPLICATED) both raise via claims.refuse_candidate_as_measured.",
+    "A zero-area (point) uncertainty region is refused at construction: a training anchor is a region, never invented precision.",
+    "The public projection carries only the opaque id, the sanitised public route shape, the synthetic public coordinate, and the uncertainty footprint - never a private label or narrative.",
+    "A training anchor is never scored as a holdout prediction."
+  ],
+  "claims": [
+    {"statement": "The user-reported Stonehenge correspondence (route 01|65|87|65|23) is imported as a training anchor bound to a synthetic public coordinate with non-zero positional uncertainty, referenced by an opaque id and bound to the hash-chained provenance ledger.", "claim_class": "OPERATOR_SELECTION"}
+  ],
+  "privacy_check": "CLEAN - opaque fixture id + synthetic public coordinate only; no private path literals, no personal identity tokens, no raw private vector or narrative; privacy.scan_for_private clean",
+  "verdict": "STONEHENGE_TRAINING_ANCHOR_IMPORTED_OPAQUE_ID_NEVER_MEASURED",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

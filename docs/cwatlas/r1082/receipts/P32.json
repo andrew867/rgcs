@@ -1,0 +1,43 @@
+{
+  "phase_id": "P32",
+  "tranche": "T08",
+  "title": "R10.8.2 Release and Demonstration Bundle",
+  "status": "COMPLETE_LOCAL_TAG_ONLY",
+  "outputs": [
+    "docs/cwatlas/RELEASE_NOTES_V8_2_0.md",
+    "docs/cwatlas/r1082/DEMO_CLI_TRANSCRIPT.md",
+    "docs/cwatlas/r1082/receipts/P01.json .. P32.json (32 receipts)",
+    "docs/cwatlas/r1082/SHA256_MANIFEST.txt",
+    "version bump 8.1.0 -> 8.2.0 (pyproject, CITATION, README, CHANGELOG, two v4 guards)",
+    "COUNT_SITES repointed to RELEASE_NOTES_V8_2_0.md"
+  ],
+  "tests": [
+    "tests/cwatlas/r1082/ (411 passed, import-mode=importlib)",
+    "full repo regression (default import mode, 1 deselected by policy D-V3-04)"
+  ],
+  "release_actions": {
+    "authorized": "tag locally, do NOT push (operator decision)",
+    "performed": ["version bump", "count refresh", "release gate", "firewall scan", "commit", "merge --ff-only to main", "tag v8.2.0"],
+    "deliberately_not_performed": ["git push", "GitHub release creation", "publish v8.1.0"],
+    "note": "v8.1.0 and v8.2.0 both remain LOCAL-ONLY at the operator's instruction; publishing is a separate, explicit future authorization."
+  },
+  "correctness_finding_at_release": {
+    "summary": "The two-anchor fitted per-family orientation was computed and sealed but not applied by the forward geocoder (identity fallback), making the calibration cosmetic.",
+    "fix": "cwatlas/r1082/geocode_forward.py now applies each retained family's sealed azimuth (rot_z about +Z, matching calibration_fit); cwatlas/r1082/calibration_freeze.py exposes orientation_matrix_by_family(). Locked in by tests/cwatlas/r1082/test_orientation_wiring.py (3 tests).",
+    "effect": "Best family F4 for vector 165876523 moved from (46.53, -125.75) to (46.53, -7.19) -- rotated toward the Stonehenge training anchor, landing 648.8 km away, consistent with its 5.69-degree sealed residual. Calibration is now non-cosmetic."
+  },
+  "negative_results": [
+    "NULL RESULT: even with the fit correctly applied, the coordinate system does NOT decode 165876523 to Stonehenge. The best family reproduces the training anchor only to ~649 km; the other retained families are 7,431 and 8,948 km away. A single fitted azimuth (1 DOF) cannot align two arbitrary anchor directions (4 scalar constraints); this is structural, not a bug.",
+    "The application therefore renders a CANDIDATE_ALIAS_SET with per-family uncertainty and an agreement/disagreement surface -- a pin or region always, never a bare refusal, and never invented precision.",
+    "A guard test refuses any future family placement within 100 km of the training anchor as a probable overfit / famous-place reward."
+  ],
+  "claims": [
+    {"statement": "A candidate pin is a CALIBRATED_CANDIDATE SOFTWARE_RESULT under a declared, frozen calibration; it is not a measured fact.", "claim_class": "SOFTWARE_RESULT"},
+    {"statement": "The two sealed training anchors do not select a mapping that places the source vectors at their claimed Earth locations.", "claim_class": "DERIVED_MATHEMATICS"}
+  ],
+  "final_verdict": "RGCS_R10_8_2_GREEN_LOCKED_SOURCE_MAP_READY / EARTH_ROOT_D_V1_LOCKED / WILKES_FIXED_ROOT_RESOLVED / SAA_DYNAMIC_ZERO_RESOLVED_FROM_SHELL_AND_EPOCH / STONEHENGE_TRAINING_ANCHOR_APPLIED / SOURCE_VECTOR_CANDIDATE_PINS_RENDERED / MAP_TO_SOURCE_STYLE_VECTOR_IMPLEMENTED / ROUND_TRIP_PROFILE_VERIFIED / NO_POST_OUTPUT_RETUNING / SOURCE_ORIGIN_NOT_VALIDATED",
+  "privacy_check": "CLEAN - synthetic/public data only; Stonehenge referenced by opaque id against a synthetic public coordinate; no private paths, identities, or raw vectors",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

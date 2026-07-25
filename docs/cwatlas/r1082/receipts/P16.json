@@ -1,0 +1,41 @@
+{
+  "phase_id": "P16",
+  "tranche": "T04",
+  "title": "Barycentric Local Coordinate and Inverse",
+  "status": "COMPLETE",
+  "objective": "Represent local terminal position and enable profile-specific map-to-vector inversion.",
+  "outputs": [
+    "cwatlas/r1082/local_coord.py",
+    "docs/cwatlas/r1082/receipts/P16.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_local_coord.py (7 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.addressing (encode_path, barycentric, face_triangle), cwatlas.subdivision, cwatlas.localize (cell_centroid, localize_cell) - NOT reimplemented"]
+  },
+  "implementation": {
+    "codec_id": "CW-R1082-LOCALCOORD",
+    "codec_version": "1.0.0",
+    "local_coordinate": "BARYCENTRIC (Locked Decision 12)",
+    "forward": "(route, family) -> point (terminal-cell centroid)",
+    "inverse": "point -> (route, family) via family arithmetic inverse of the encoded address",
+    "nearest_encodable_when_quantized": true,
+    "path_depth": 10,
+    "boundary_handling": "near an edge/vertex the local coordinate is reported as an interval/region, not a crisp point"
+  },
+  "negative_results": [
+    "The source route core is quantized: an arbitrary point is generally NOT exactly representable, so the inverse returns the nearest encodable point and does NOT claim exactness unless the residual is within tolerance (no invented precision).",
+    "A recovered route is a CALIBRATED_CANDIDATE under a declared family, not a measured fact; no source origin is validated.",
+    "Round-trip route -> point -> route is a verified property of the codec, not evidence any source vector identifies a real location."
+  ],
+  "claims": [
+    {"statement": "Barycentric local coordinates and a profile-specific inverse recover a five-token route under a named family, with a nearest-encodable-point where the quantized codec cannot represent the point exactly.", "claim_class": "CALIBRATED_CANDIDATE"}
+  ],
+  "privacy_check": "CLEAN - synthetic/public points and routes only; no private reads, no personal names or filesystem literals",
+  "verdict": "R1082_BARYCENTRIC_LOCAL_COORD_INVERSE_NEAREST_ENCODABLE",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

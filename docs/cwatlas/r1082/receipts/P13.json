@@ -1,0 +1,40 @@
+{
+  "phase_id": "P13",
+  "tranche": "T04",
+  "title": "Icosahedral 20-Face Partition Authority",
+  "status": "COMPLETE",
+  "objective": "Generate and version the spherical icosahedral partition used by the locked profile EARTH_ROOT_D_V1.",
+  "outputs": [
+    "cwatlas/r1082/partition.py",
+    "docs/cwatlas/r1082/receipts/P13.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_partition.py (7 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.icosahedron (classify_point, face_normals, 20 faces) - NOT reimplemented"]
+  },
+  "implementation": {
+    "partition_id": "CW-R1082-ICOSA20",
+    "partition_version": "1.0.0",
+    "partition_kind": "SPHERICAL_ICOSAHEDRON_20_FACES",
+    "root_feature": "ICOSAHEDRAL_FACE_CENTER",
+    "num_faces": 20,
+    "digest": "sha256 over versioned, rounded, numbered geometry (deterministic, no wall-clock)",
+    "root_binding": "select_root(direction) classifies an operator-supplied root direction to a face centre and the matching dodeca-dual vertex id"
+  },
+  "negative_results": [
+    "A face id is a cell of a synthetic tessellation, not a place; the partition asserts nothing geographic.",
+    "Binding a root face to a direction is an operator selection, not a measured coordinate and not a validated source origin.",
+    "Bumping the partition version mints a new digest/id: a post-freeze regrid is not silent (no result shopping)."
+  ],
+  "claims": [
+    {"statement": "The 20-face partition and its face-centre root selection are versioned and content-hashed over the reused, deterministic engine icosahedron.", "claim_class": "DERIVED_MATHEMATICS"}
+  ],
+  "privacy_check": "CLEAN - synthetic/public geometry only; no private reads, no personal names or filesystem literals",
+  "verdict": "R1082_ICOSA20_PARTITION_AUTHORITY_VERSIONED_HASHED",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

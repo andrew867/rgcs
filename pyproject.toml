@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rgcs"
-version = "8.1.0"
+version = "8.2.0"
 description = "RGCS v4.1 / RSCS 2.0: typed resonant-coordinate framework (rscs_core), the deterministic RGCS crystal-application core (rgcs_core), and the capability-aware v4 multiphysics stack (rscs2_core: anisotropic FEM, piezoelectricity, projections, uncertainty-aware Eye Consensus, reduced-order reference systems, quarantined source hypotheses, proof bundles)."
 requires-python = ">=3.11"
 license = { text = "MIT" }
@@ -55,7 +55,8 @@ include = ["rgcs_core*", "rgcs_desktop*", "rscs_core*", "rscs2_core*", "cspc*", 
 rscs_core = ["registry/*.yaml"]
 rscs2_core = ["registry/*.yaml"]
 r15 = ["schemas/*.json"]
-cwatlas = ["schemas/*.json"]
+cwatlas = ["schemas/*.json", "fixtures/*.json"]
+"cwatlas.r1082" = ["schemas/*.json", "fixtures/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial", "tests/v4", "tests/v49", "tests/v50", "tests/v51", "tests/v52", "tests/v6", "tests/v8", "tests/cwatlas"]

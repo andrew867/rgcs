@@ -1,0 +1,29 @@
+{
+  "profile_id": "EARTH_ROOT_D_V1",
+  "origin": "EARTH_CENTER_OF_MASS",
+  "axis": "MEAN_ROTATION_AXIS_SOUTH_UP",
+  "partition": "SPHERICAL_ICOSAHEDRON_20_FACES",
+  "dual_graph": "DODECAHEDRAL_20_VERTEX_DUAL",
+  "root_feature": "ICOSAHEDRAL_FACE_CENTER",
+  "fixed_anchor": {
+    "type": "WILKES_GRAVITY_ANOMALY_CENTROID",
+    "profile_version": "WILKES_CENTROID_ENSEMBLE_V1",
+    "uncertainty": {
+      "representation": "candidate-centroid ensemble or covariance region",
+      "must_be_versioned": true
+    }
+  },
+  "dynamic_zero": {
+    "type": "SAA_FIELD_MAGNITUDE_MINIMUM",
+    "field_model": "VERSIONED_IGRF_OR_WMM_ADAPTER",
+    "epoch": "FROM_PACKET",
+    "shell": "FROM_PACKET",
+    "multiple_minima_policy": "RETURN_ALIAS_SET_OR_REGION"
+  },
+  "orientation": {
+    "pole": "SOUTH_UP",
+    "viewpoint": "EXTERNAL_ABOVE_ANTARCTICA",
+    "positive_rotation": "CLOCKWISE"
+  },
+  "training_anchor": "STONEHENGE_PRIVATE_001"
+}

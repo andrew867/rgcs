@@ -1,0 +1,28 @@
+{
+  "phase_id": "P02",
+  "tranche": "T01",
+  "title": "Locked Decision ADR and Configuration Authority",
+  "status": "COMPLETE",
+  "outputs": [
+    "cwatlas/r1082/config_authority.py",
+    "docs/cwatlas/r1082/LOCKED_DECISION_ADR.md",
+    "docs/cwatlas/r1082/receipts/P02.json"
+  ],
+  "tests": [
+    "tests/cwatlas/r1082/test_config_authority.py (8 passed)"
+  ],
+  "negative_results": [
+    "A locked decision cannot be changed: refuse_change() routes through claims.refuse_post_output_retuning and raises R1082ClaimError.",
+    "The ConfigurationAuthority is a frozen dataclass; attribute assignment raises dataclasses.FrozenInstanceError (no in-place edit path for the UI).",
+    "A fixture that silently drifts from the ADR (e.g. root_feature changed) is rejected by validate() with ConfigAuthorityError.",
+    "Unknown decision keys are rejected rather than silently accepted."
+  ],
+  "claims": [
+    {"statement": "The fifteen operator-selected EARTH_ROOT_D_V1 decisions are encoded as an immutable, versioned, deterministically hashed ADR-in-code and validated against the public fixture.", "claim_class": "OPERATOR_SELECTION"},
+    {"statement": "Changing any locked decision changes freeze_hash() and therefore mints a new profile id, invalidating prior-holdout comparison.", "claim_class": "DERIVED_MATHEMATICS"}
+  ],
+  "privacy_check": "CLEAN - synthetic/public fixtures only, no private inputs",
+  "verdict": "LOCKED_DECISION_ADR_HASHED_AND_IMMUTABLE",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

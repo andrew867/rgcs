@@ -1,0 +1,48 @@
+{
+  "phase_id": "P30",
+  "tranche": "T08",
+  "title": "Atlas UI and Operator Workflow",
+  "status": "COMPLETE",
+  "objective": "Deliver the usable map-to-vector and vector-to-map product as a code-backed UI contract: a serializable view-model the browser UI binds to, plus the operator-workflow spec. The live browser UI is untestable in this environment, so it stays spec-level.",
+  "outputs": [
+    "cwatlas/r1082/ui_state.py",
+    "docs/cwatlas/r1082/ATLAS_UI_SPEC.md",
+    "tests/cwatlas/r1082/test_ui_state.py",
+    "docs/cwatlas/r1082/receipts/P30.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_ui_state.py (12 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.r1082.overlay_spec.build_overlay_state (two-layer-root globe layers) + candidate_ensemble.build_candidate_map (agreement surface / alias set) + geocode_forward (decoded candidate) - NOT reimplemented"]
+  },
+  "implementation": {
+    "contract_id": "CW-R1082-UISTATE",
+    "contract_version": "1.0.0",
+    "entrypoint": "cwatlas.r1082.ui_state.build_view_model(epoch, shell, source_vector=..., profile_kind=...)",
+    "panels": ["controls", "control_values", "assumptions", "overlay", "candidate_panel", "agreement_surface", "export"],
+    "overlay_layers": ["FIXED_ROOT_MARKER", "DYNAMIC_SAA_PHASE_ZERO", "ORIENTATION_FRAME", "SHELL_SURFACE", "CANDIDATE_OUTPUTS"],
+    "modes": ["MAP_TO_VECTOR", "VECTOR_TO_MAP"],
+    "hidden_defaults": false,
+    "assumptions_shown_before_execution": true,
+    "one_click_export": true,
+    "browser_ui": "OUT_OF_SCOPE_SPEC_LEVEL_ONLY - node exists but the live browser UI is untestable; the UI contract is code-backed and tested via the view-model"
+  },
+  "tests_summary": {"passed": 12, "skipped": 0},
+  "claims": [
+    {"statement": "build_view_model(epoch, shell) produces the deterministic, serializable view-model the Atlas UI binds to: controls with their domains, assumptions stated before execution, the two-layer-root globe overlay, a decoded-candidate panel (pins/region/alias set), and the agreement/alias-set surface across the retained families - with no hidden defaults.", "claim_class": "SOFTWARE_RESULT"}
+  ],
+  "negative_results": [
+    "The live browser UI is untestable here and is delivered as a spec (ATLAS_UI_SPEC.md); the testable deliverable is the code-backed view-model.",
+    "No hidden defaults: every control value is in control_values and every assumption in assumptions, shown before any encode/decode runs.",
+    "Ambiguity is always a region or alias set with an agreement surface (per-cell variance / angular dispersion), never collapsed to a false-exact point; candidate_panel.rendered_as_measured is always false.",
+    "The FIXED Wilkes root layer is epoch-independent; out of field-model validity the overlay yields a typed MODEL_VALIDITY_REFUSAL, never an invented direction.",
+    "Training anchors (Wilkes fixed root, Stonehenge) are surfaced distinctly and are never scored as holdout predictions; locked decisions are not reopened."
+  ],
+  "privacy_check": "CLEAN - synthetic/public epochs, shells, routes and the synthetic public Stonehenge coordinate only; opaque anchor id only; no private path literals, no identity tokens, no raw private narrative",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED",
+  "verdict": "R1082_UI_VIEW_MODEL_CODE_BACKED_NO_HIDDEN_DEFAULTS",
+  "measured_here": "nothing",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED"
+}

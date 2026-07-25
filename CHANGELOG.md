@@ -3,6 +3,55 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [8.2.0] - 2026-07-25
+
+R10.8.2 Locked Two-Layer Earth Root and Source-Map Calibration. A new
+cwatlas.r1082 subpackage (31 modules, 32 phase receipts P01-P32, 8 tranches)
+that locks the operator-selected EARTH_ROOT_D_V1 configuration and turns the
+source-map experiment into candidate pins/regions/alias sets instead of a
+generic NO_UNIQUE_GEOGRAPHIC_DECODE. Two-layer Earth root: a FIXED spatial
+anchor (Wilkes Land gravity-anomaly centroid, versioned centroid+covariance)
+plus a DYNAMIC phase-zero direction (South Atlantic Anomaly magnetic minimum
+resolved from the packet's encoded epoch AND the body-relative shell radius --
+the shell supplies the radius, so altitude is never reported missing).
+South-Up with viewpoint-safe handedness (clockwise-from-Antarctica ==
+anticlockwise-from-North-down), icosahedral face-centre root, dodecahedral-dual
+adjacency, five-token base-100 route core, seven semantic fields, packed
+shell+epoch wire format, and Cs-133/Cs-137/Ba-137/Ba-130 epoch lanes kept
+typed and separate with mandatory UTC/TAI/TT/TDB in the certificate.
+Calibration is fit ONLY against the two sealed training anchors (Wilkes fixed
+root + the user-reported 165876523=Stonehenge anchor, referenced by opaque id
+against a synthetic public coordinate), frozen with a SHA-256 receipt before
+any holdout is scored, with no post-output retuning (any change to the seven
+frozen parameters mints a new profile id and is refused). Two anchors
+under-determine the four candidate mapping families, so the app renders the
+bounded CANDIDATE_ALIAS_SET and a per-cell agreement/disagreement surface --
+pins or regions, never a bare refusal, and never invented precision (the
+five-token codec cannot address a family's full depth-10 space, so the inverse
+reports an honest nearest-encodable residual). Bidirectional: source vector ->
+pin/cell/region and map click -> source-style vector, with a body-scope
+firewall (foreign-body vectors typed out of scope, not force-decoded), a
+search-space/description-length ledger surfacing DOF>=anchors, and a
+falsifiable prospective bidirectional challenge. A stdlib CLI (root/
+calibration/encode/decode/inspect/batch/receipt) with an output firewall that
+refuses to emit any MEASURED or source-origin-validated result; the globe/
+shell/magnetic overlay and Atlas UI are delivered as a code-backed view-model
+plus spec over the tested backend. A candidate pin is a CALIBRATED_CANDIDATE
+SOFTWARE_RESULT under a declared, frozen calibration -- NOT a measured fact.
+Additive; no prior work reset, no public history rewritten.
+SOURCE_ORIGIN_NOT_VALIDATED; PHYSICAL_EFFECTS_NOT_CLAIMED;
+PHYSICAL_VALIDATION_NOT_CLAIMED.
+
+Final verdict:
+RGCS_R10_8_2_GREEN_LOCKED_SOURCE_MAP_READY / EARTH_ROOT_D_V1_LOCKED /
+WILKES_FIXED_ROOT_RESOLVED / SAA_DYNAMIC_ZERO_RESOLVED_FROM_SHELL_AND_EPOCH /
+STONEHENGE_TRAINING_ANCHOR_APPLIED / SOURCE_VECTOR_CANDIDATE_PINS_RENDERED /
+MAP_TO_SOURCE_STYLE_VECTOR_IMPLEMENTED / ROUND_TRIP_PROFILE_VERIFIED /
+NO_POST_OUTPUT_RETUNING / SOURCE_ORIGIN_NOT_VALIDATED.
+
+Tests: 7803 passing (1 archived-environment byte test deselected by policy
+D-V3-04).
+
 ## [8.1.0] - 2026-07-25
 
 R10.8.1 CW Atlas and bidirectional geocoder. A new cwatlas package: a full

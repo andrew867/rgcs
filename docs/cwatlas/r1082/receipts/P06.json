@@ -1,0 +1,39 @@
+{
+  "phase_id": "P06",
+  "tranche": "T02",
+  "title": "Shell-Resolved SAA Magnetic Minimum",
+  "status": "COMPLETE",
+  "objective": "Resolve the dynamic magnetic phase zero using the encoded epoch and the shell-provided radius.",
+  "outputs": [
+    "cwatlas/r1082/saa.py",
+    "tests/cwatlas/r1082/test_saa.py",
+    "docs/cwatlas/r1082/receipts/P06.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_saa.py (14 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.geodesy", "cwatlas.shells", "cwatlas.uncertainty", "cwatlas.r1082.claims"]
+  },
+  "artifacts": {
+    "field_model": "CW-SAA-PARAMETRIC",
+    "field_model_version": "1.0.0",
+    "epoch_validity_year": [1900.0, 2100.0],
+    "radius_validity_m": [3000000.0, 50000000.0]
+  },
+  "negative_results": [
+    "The parametric SAA minimum is DERIVED_MATHEMATICS over an OPERATOR_SELECTION parameter set — a modelled candidate region, not a measured geomagnetic field value.",
+    "The shell supplies the radius; altitude is never reported missing when a shell is present (reuses claims.refuse_altitude_missing_when_shell_present).",
+    "Outputs carry a non-zero uncertainty region (never invented precision); requests outside model validity are refused rather than extrapolated."
+  ],
+  "claims": [
+    {"statement": "The SAA minimum position drifts with epoch AND shifts with the shell-supplied radius; both dependencies are live (POWER).", "claim_class": "DERIVED_MATHEMATICS"}
+  ],
+  "privacy_check": "CLEAN - synthetic/public model constants only; no private reads, no personal names or paths.",
+  "verdict": "SAA_SHELL_RESOLVED_MINIMUM_EPOCH_AND_RADIUS_DEPENDENT",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED",
+  "terminal_token": "GREEN_R10_8_2_P06_SHELL-RESOLVED_SAA_MAGNETIC_MINIMUM"
+}

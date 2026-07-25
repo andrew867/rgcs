@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CWSemanticAddress",
+  "type": "object",
+  "required": [
+    "namespace",
+    "stellar_system",
+    "body",
+    "root_face",
+    "recursive_path",
+    "barycentric",
+    "shell_epoch"
+  ],
+  "properties": {
+    "namespace": {
+      "type": [
+        "string",
+        "integer",
+        "object"
+      ]
+    },
+    "stellar_system": {
+      "type": [
+        "string",
+        "integer",
+        "object"
+      ]
+    },
+    "body": {
+      "type": [
+        "string",
+        "integer",
+        "object"
+      ]
+    },
+    "root_face": {
+      "type": [
+        "integer",
+        "object"
+      ],
+      "minimum": 0,
+      "maximum": 19
+    },
+    "recursive_path": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 7
+      }
+    },
+    "barycentric": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "shell_epoch": {
+      "$ref": "shell_epoch.schema.json"
+    }
+  }
+}

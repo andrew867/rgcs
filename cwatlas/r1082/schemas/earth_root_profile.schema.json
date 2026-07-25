@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EarthRootProfile",
+  "type": "object",
+  "required": [
+    "profile_id",
+    "origin",
+    "axis",
+    "partition",
+    "dual_graph",
+    "fixed_anchor",
+    "dynamic_zero",
+    "orientation"
+  ],
+  "properties": {
+    "profile_id": {
+      "const": "EARTH_ROOT_D_V1"
+    },
+    "origin": {
+      "const": "EARTH_CENTER_OF_MASS"
+    },
+    "axis": {
+      "const": "MEAN_ROTATION_AXIS_SOUTH_UP"
+    },
+    "partition": {
+      "const": "SPHERICAL_ICOSAHEDRON_20_FACES"
+    },
+    "dual_graph": {
+      "const": "DODECAHEDRAL_20_VERTEX_DUAL"
+    },
+    "root_feature": {
+      "const": "ICOSAHEDRAL_FACE_CENTER"
+    },
+    "fixed_anchor": {
+      "type": "object",
+      "required": [
+        "type",
+        "profile_version",
+        "uncertainty"
+      ],
+      "properties": {
+        "type": {
+          "const": "WILKES_GRAVITY_ANOMALY_CENTROID"
+        },
+        "profile_version": {
+          "type": "string"
+        },
+        "uncertainty": {
+          "type": "object"
+        }
+      }
+    },
+    "dynamic_zero": {
+      "type": "object",
+      "required": [
+        "type",
+        "field_model",
+        "epoch",
+        "shell"
+      ],
+      "properties": {
+        "type": {
+          "const": "SAA_FIELD_MAGNITUDE_MINIMUM"
+        },
+        "field_model": {
+          "type": "string"
+        },
+        "epoch": {
+          "type": "object"
+        },
+        "shell": {
+          "type": "object"
+        }
+      }
+    },
+    "orientation": {
+      "type": "object",
+      "required": [
+        "pole",
+        "viewpoint",
+        "positive_rotation"
+      ],
+      "properties": {
+        "pole": {
+          "const": "SOUTH_UP"
+        },
+        "viewpoint": {
+          "const": "EXTERNAL_ABOVE_ANTARCTICA"
+        },
+        "positive_rotation": {
+          "const": "CLOCKWISE"
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

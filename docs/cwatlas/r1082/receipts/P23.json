@@ -1,0 +1,42 @@
+{
+  "phase_id": "P23",
+  "tranche": "T06",
+  "title": "Profile-Specific Round Trip and Nearest Encodable Point",
+  "status": "COMPLETE",
+  "objective": "Prove forward and inverse behavior without claiming exactness where the source codec is quantized; separate the canonical exact round trip from the source-style calibrated round trip; return the nearest-encodable point and error region for arbitrary map points.",
+  "outputs": [
+    "cwatlas/r1082/round_trip.py",
+    "docs/cwatlas/r1082/receipts/P23.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_round_trip.py (17 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.r1082.local_coord (forward / inverse / local_barycentric) + spatialization; cwatlas.icosahedron - NOT reimplemented"]
+  },
+  "implementation": {
+    "codec_id": "CW-R1082-ROUNDTRIP",
+    "codec_version": "1.0.0",
+    "canonical_exact_round_trip": "route -> point -> route through the codec alone (CANONICAL_EXACT_POINT); exact by construction",
+    "source_style_calibrated_round_trip": "route -> body location -> route through the fitted orientation + shell (CANDIDATE_CALIBRATED_POINT)",
+    "nearest_encodable_when_quantized": true,
+    "region_near_boundary_not_false_exact": true,
+    "shell_supplies_radius": true,
+    "test_coverage": "global random, pole, dateline, per-shell (0..8), epoch, and cell-boundary cases"
+  },
+  "tests_summary": {"passed": 17, "skipped": 0},
+  "claims": [
+    {"statement": "Forward-inverse and inverse-forward are consistent per family: canonical route<->point<->route is exact by codec property, the calibrated round trip is exact under an orthonormal orientation, and arbitrary points return the nearest-encodable point with an explicit quantization error.", "claim_class": "CALIBRATED_CANDIDATE"}
+  ],
+  "negative_results": [
+    "The canonical exact round trip is a DERIVED_MATHEMATICS property of the codec, NOT a measured coordinate; it is kept separate from the source-style calibrated round trip which is only a CALIBRATED_CANDIDATE.",
+    "For an arbitrary map point exactness is not claimed: the nearest-encodable point and residual (quantization_error) are returned; near a terminal-cell edge/vertex the barycentric coordinate is reported as an interval/region, not a false-exact point.",
+    "The shell supplies the radius: with a shell present altitude is never missing - refuse_altitude_missing(shell) raises R1082ClaimError."
+  ],
+  "privacy_check": "CLEAN - synthetic/public routes and coordinates only; no private path literals, no personal identity tokens, no raw private narrative",
+  "verdict": "R1082_ROUND_TRIP_NEAREST_ENCODABLE_NO_FALSE_EXACTNESS",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

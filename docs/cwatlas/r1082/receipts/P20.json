@@ -1,0 +1,44 @@
+{
+  "phase_id": "P20",
+  "tranche": "T05",
+  "title": "Candidate Map Ensemble and Agreement Surface",
+  "status": "COMPLETE",
+  "objective": "Produce candidate maps across the unresolved centroid / epoch / codec-family profiles instead of collapsing uncertainty, with a disagreement/agreement surface.",
+  "outputs": [
+    "cwatlas/r1082/candidate_ensemble.py",
+    "docs/cwatlas/r1082/receipts/P20.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_candidate_ensemble.py (11 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.r1082.calibration_freeze (P19 frozen calibration), cwatlas.r1082.calibration_fit (P18), cwatlas.r1082.spatialization (families), cwatlas.r1082.wilkes (centroid candidates), cwatlas.r1082.stonehenge_anchor (P17), cwatlas.r1082.partition - NOT reimplemented"],
+    "schema": "cwatlas/r1082/schemas/candidate_map_result.schema.json (validated via jsonschema Draft202012)"
+  },
+  "implementation": {
+    "codec_id": "CW-R1082-CANDMAP",
+    "codec_version": "1.0.0",
+    "profile_id": "EARTH_ROOT_D_V1",
+    "one_layer_per": "retained family x Wilkes centroid candidate x epoch profile",
+    "agreement_surface": "greedy angular clustering of candidate directions + per-component variance (per-cell variance across retained families) + max pairwise dispersion + largest-cluster agreement fraction",
+    "result_type": "CANDIDATE_ALIAS_SET when >1 cluster; else CANDIDATE_CALIBRATED_POINT (still a region)",
+    "training_anchors_rendered_distinctly": true,
+    "exports": ["GeoJSON (FeatureCollection)", "KML", "JSON"]
+  },
+  "negative_results": [
+    "Uncertainty is NEVER zero-collapsed: the result carries the complete bounded alias set plus an agreement surface (collapsed_to_point = false throughout).",
+    "A candidate map member is at most a CALIBRATED_CANDIDATE / SOFTWARE_RESULT: refuse_candidate_as_measured() raises via claims.refuse_candidate_as_measured.",
+    "Landing near an unsealed famous-place catalogue is never rewarded: refuse_famous_place_reward() raises - only the two sealed training anchors calibrate the map.",
+    "F1 and F3 map identically, so their members share a cluster - the ensemble surfaces the genuine indistinguishability rather than hiding it.",
+    "Training anchors (Wilkes centroid, Stonehenge) are rendered distinctly from holdout candidates (is_training_anchor flag)."
+  ],
+  "claims": [
+    {"statement": "For a query route the ensemble emits one candidate map layer per unresolved profile combination and an agreement/disagreement surface, returning the complete bounded alias set instead of a single collapsed pin.", "claim_class": "CALIBRATED_CANDIDATE"}
+  ],
+  "privacy_check": "CLEAN - synthetic/public routes, opaque anchor ids, and public coordinates only; no private path literals, no personal identity tokens, no raw private vector or narrative",
+  "verdict": "CANDIDATE_MAP_ENSEMBLE_ALIAS_SET_WITH_AGREEMENT_SURFACE",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

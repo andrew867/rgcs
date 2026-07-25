@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ShellEpoch",
+  "type": "object",
+  "required": [
+    "shell",
+    "conventional_epoch"
+  ],
+  "properties": {
+    "shell": {
+      "type": "object",
+      "required": [
+        "index",
+        "profile_id"
+      ],
+      "properties": {
+        "index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 8
+        },
+        "profile_id": {
+          "type": "string"
+        },
+        "radius_m": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "altitude_m": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "effective_potential": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "conventional_epoch": {
+      "type": "object",
+      "required": [
+        "timescale",
+        "value"
+      ],
+      "properties": {
+        "timescale": {
+          "enum": [
+            "UTC",
+            "TAI",
+            "TT",
+            "TDB"
+          ]
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "compressed_epoch": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "profile": {
+          "enum": [
+            "CS133_FINE_PHASE",
+            "CS137_DECAY_ENVELOPE",
+            "BA137_DAUGHTER_RATIO",
+            "BA130_PARENT_FULL",
+            "COMPOSITE_VARIABLE_DEPTH"
+          ]
+        },
+        "payload": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "phase_id": "P26",
+  "tranche": "T07",
+  "title": "No-Retune Enforcement",
+  "status": "COMPLETE",
+  "objective": "Make post-output profile adjustment technically visible and testably forbidden: given a frozen profile's receipt and a proposed parameter set, detect ANY change to a frozen parameter, treat moving a label between training and holdout as a retune, route every change through claims.refuse_post_output_retuning(frozen=True) with a red RETUNED_AFTER_REVEAL verdict, and invalidate the holdout comparison after any mutation.",
+  "outputs": [
+    "cwatlas/r1082/no_retune.py",
+    "docs/cwatlas/r1082/receipts/P26.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_no_retune.py (10 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.r1082.claims.FROZEN_PARAMETERS + refuse_post_output_retuning; cwatlas.r1082.calibration_freeze receipt (parameters.frozen) - NOT reimplemented"]
+  },
+  "implementation": {
+    "module_id": "CW-R1082-NO-RETUNE",
+    "module_version": "1.0.0",
+    "frozen_parameters": ["grid_rotation", "handedness", "root_feature", "topology", "tokenization", "destination_label_split", "epoch_choice"],
+    "label_membership_parameter": "training_holdout_membership",
+    "violation_verdict": "RETUNED_AFTER_REVEAL",
+    "clean_verdict": "NO_RETUNE_DETECTED",
+    "label_move_is_retune": true,
+    "post_freeze_retuning": "REFUSED",
+    "new_profile_required_on_change": true,
+    "holdout_comparison_invalidated_on_mutation": true
+  },
+  "tests_summary": {"passed": 10, "skipped": 0},
+  "claims": [
+    {"statement": "detect_retune(before_receipt, after_params) diffs the seven frozen parameters, returns the specific parameter(s) that changed, treats moving a label between the training and holdout sets as a retune, and routes any change through claims.refuse_post_output_retuning(frozen=True), raising a RetuneError (an R1082ClaimError) with the RETUNED_AFTER_REVEAL verdict; a clean after-set returns a NO_RETUNE_DETECTED report and any change mints a new profile id.", "claim_class": "SOFTWARE_RESULT"}
+  ],
+  "negative_results": [
+    "Every one of the seven frozen parameters (grid rotation, handedness, root feature, topology, tokenization, destination label split, epoch choice) is individually detected and refused when changed after the freeze.",
+    "Moving a label between the training and holdout sets is detected and refused as a retune even when no frozen parameter value changed - it re-partitions the sealed data.",
+    "Any frozen-parameter change or label move invalidates a prior holdout comparison (holdout_comparison_status returns INVALIDATED)."
+  ],
+  "privacy_check": "CLEAN - operates on frozen-parameter names and opaque label ids only; no private path literals, no personal identity tokens, no raw private narrative",
+  "verdict": "R1082_NO_RETUNE_ENFORCED_FROZEN_CHANGES_DETECTED_REFUSED",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

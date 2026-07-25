@@ -1,0 +1,34 @@
+{
+  "phase_id": "P09",
+  "tranche": "T03",
+  "title": "Five-Token Base-100 Parser and Prefix Tree",
+  "status": "COMPLETE",
+  "dependencies": ["P08"],
+  "outputs": [
+    "cwatlas/r1082/route_core.py",
+    "tests/cwatlas/r1082/test_route_core.py",
+    "docs/cwatlas/r1082/receipts/P09.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_route_core.py (24 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root"
+  },
+  "reused": ["cwatlas.codec_base100 (base-100 grammar)", "cwatlas.claims", "cwatlas.r1082.claims"],
+  "what_it_does": "Exact five-token base-100 route parser: parses '165876523' and '01|65|87|65|23' into tokens [1,65,87,65,23]; LEFT_PAD_TO_EVEN vs EXPLICIT leading-zero policy; lossless reconstruction; variable depth 1..N; prefix-tree insert/lookup/common-prefix/ancestry/siblings/compare; the three 01|65|89|27|{43,63,83} vectors verified line-like (terminal step 20). Conforms to source_route_core.schema.json.",
+  "negative_results": [
+    "Malformed input is refused (wrong token count, non-digit, odd length under EXPLICIT), never silently repaired.",
+    "A parsed route is an exact arithmetic re-expression of the operator's digit string, not a decoded location."
+  ],
+  "claims": [
+    {"statement": "The five-token base-100 route parses, reconstructs, and supports prefix operations exactly and reversibly.", "claim_class": "MATHEMATICAL_TRANSLATION", "evidence_class": "DERIVED_MATHEMATICS"}
+  ],
+  "input_hashes": {"canonical_route_example": "0165876523"},
+  "output_hashes": {"route_core_report_verdict": "GREEN_R10_8_2_P09_FIVE-TOKEN_BASE-100_PARSER_AND_PREFIX_TREE"},
+  "privacy_check": "CLEAN - synthetic/public routes only; no private source narrative, no personal identifiers.",
+  "verdict": "GREEN_R10_8_2_P09_FIVE-TOKEN_BASE-100_PARSER_AND_PREFIX_TREE",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

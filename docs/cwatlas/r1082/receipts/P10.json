@@ -1,0 +1,35 @@
+{
+  "phase_id": "P10",
+  "tranche": "T03",
+  "title": "Seven-Field Semantic Expansion",
+  "status": "COMPLETE",
+  "dependencies": ["P09"],
+  "outputs": [
+    "cwatlas/r1082/semantic_expand.py",
+    "tests/cwatlas/r1082/test_semantic_expand.py",
+    "docs/cwatlas/r1082/receipts/P10.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_semantic_expand.py (16 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root"
+  },
+  "reused": ["cwatlas.r1082.route_core (P09)", "cwatlas.claims", "cwatlas.r1082.claims"],
+  "what_it_does": "Expands the compact route into seven logical fields (namespace, stellar_system, body, root_face, recursive_path, barycentric, shell_epoch) via TokenSemanticResolver plugins with explicit token counts (one token != one field: recursive_path consumes 3 tokens -> 9 octal steps; namespace/system/body/barycentric consume 0). A full certificate expands every field; variable-depth packets omit the compressed epoch. Lossless expand<->compact round-trip. Conforms to semantic_address.schema.json (with shell_epoch $ref).",
+  "negative_results": [
+    "Body and system prefixes may be absent in short local addresses; absent fields take declared defaults and are listed in 'unresolved', never invented.",
+    "barycentric is a derived display coordinate, not a measured position; it is not consulted when compacting.",
+    "A root_face token outside 0..19 is refused; the conventional epoch metadata is mandatory."
+  ],
+  "claims": [
+    {"statement": "The seven-field semantic address is an exact, reversible re-expression of the compact route.", "claim_class": "MATHEMATICAL_TRANSLATION", "evidence_class": "DERIVED_MATHEMATICS"}
+  ],
+  "input_hashes": {"canonical_route_example": "0165876523"},
+  "output_hashes": {"semantic_expand_report_verdict": "GREEN_R10_8_2_P10_SEVEN-FIELD_SEMANTIC_EXPANSION"},
+  "privacy_check": "CLEAN - synthetic/public routes only; default namespace/system/body labels carry no private narrative.",
+  "verdict": "GREEN_R10_8_2_P10_SEVEN-FIELD_SEMANTIC_EXPANSION",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED"
+}

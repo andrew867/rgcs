@@ -1,0 +1,46 @@
+{
+  "phase_id": "P29",
+  "tranche": "T08",
+  "title": "Backend API and CLI Integration",
+  "status": "COMPLETE",
+  "objective": "Expose the R10.8.2 engine (root, calibration, encode, decode, inspect, batch, receipt) through the real application boundary: a pure-stdlib argparse CLI printing deterministic JSON and returning a process exit code (no web framework; fastapi/flask unavailable).",
+  "outputs": [
+    "cwatlas/r1082/cli.py",
+    "tests/cwatlas/r1082/test_r1082_cli.py",
+    "docs/cwatlas/r1082/receipts/P29.json"
+  ],
+  "tests": ["tests/cwatlas/r1082/test_r1082_cli.py (24 passed)"],
+  "repository_truth": {
+    "head": "de620bb",
+    "branch": "r1082-locked-root",
+    "reused_engine": ["cwatlas.r1082.root_certificate / calibration_freeze / geocode_forward / geocode_inverse / result_states / overlay_spec - NOT reimplemented"],
+    "t07_imported_lazily": true,
+    "t07_modules_present": ["holdout_registry", "no_retune", "search_ledger", "prospective_challenge"]
+  },
+  "implementation": {
+    "cli_id": "CW-R1082-CLI",
+    "cli_version": "1.0.0",
+    "entrypoint": "cwatlas.r1082.cli.main(argv=None) -> int (0 success, 2 bad-args, 3 governance-refusal)",
+    "subcommands": ["root", "calibration", "encode", "decode", "inspect", "batch", "receipt"],
+    "web_framework": "NONE (CLI-only application boundary; no network, no server)",
+    "output": "deterministic JSON (sort_keys) with governance seals on every payload",
+    "output_firewall": "cli._guard_no_measured_leak refuses to emit any payload whose evidence_class is MEASURED/REPLICATED or containing SOURCE_ORIGIN_VALIDATED"
+  },
+  "tests_summary": {"passed": 24, "skipped": 0},
+  "claims": [
+    {"statement": "A pure-stdlib argparse CLI exposes the locked-root engine (root certificate, frozen calibration, forward/inverse source geocoders, structural inspect, batch decode, evidence receipts); every subcommand prints deterministic JSON, carries the governance seals, and returns a process exit code.", "claim_class": "SOFTWARE_RESULT"}
+  ],
+  "negative_results": [
+    "No web framework is used or required: fastapi/flask are unavailable and out of scope; the backend API is the CLI boundary.",
+    "The CLI never emits a candidate as MEASURED or REPLICATED and never emits a validated source origin; the output firewall routes any such leak through claims.refuse_candidate_as_measured / refuse_source_origin_validated.",
+    "A candidate is at most CALIBRATED_CANDIDATE: an uncalibrated decode yields a region or alias set, never a false single pin; a foreign-body vector is typed out of scope, not force-decoded; a malformed vector is a typed INVALID, not a crash.",
+    "Tranche T07 modules are imported lazily and guarded, so the CLI runs and its tests pass whether or not the sibling tranche has landed.",
+    "Locked decisions are not reopened and no frozen parameter is retuned in the CLI."
+  ],
+  "privacy_check": "CLEAN - synthetic/public routes (e.g. 165876523), the synthetic public Stonehenge coordinate, and opaque ids only; no private path literals, no identity tokens, no raw private vectors or narrative",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "source_origin": "SOURCE_ORIGIN_NOT_VALIDATED",
+  "verdict": "R1082_CLI_APPLICATION_BOUNDARY_CANDIDATE_NEVER_MEASURED",
+  "measured_here": "nothing",
+  "physical_effects": "PHYSICAL_EFFECTS_NOT_CLAIMED"
+}
