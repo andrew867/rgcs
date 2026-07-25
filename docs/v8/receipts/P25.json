@@ -1,0 +1,41 @@
+{
+  "phase_id": "P25",
+  "status": "COMPLETE",
+  "inputs": [
+    "Gate Zero",
+    "r15.claims",
+    "r15/schemas/*"
+  ],
+  "outputs": [
+    "r15/dds_recipes.py",
+    "tests/v8/test_dds_recipes.py",
+    "docs/v8/R15_DDS_RECIPE_COMPILER.md",
+    "docs/v8/receipts/P25.json"
+  ],
+  "tests": [
+    "tests/v8/test_dds_recipes.py (7 passed)"
+  ],
+  "negative_results": [
+    "Over-Nyquist and out-of-range targets are refused before emission.",
+    "A dyadic target compiles to an exact FTW (zero residual); an approximate target round-trips within one LSB.",
+    "Running a recipe on real DDS hardware is PREREGISTERED_NOT_RUN."
+  ],
+  "reopening_test": "Re-run tests/v8/test_dds_recipes.py; reopen if FTW round-trip drifts beyond one LSB or the recipe seal stops changing on edit.",
+  "acceptance_checklist": [
+    "implementation complete",
+    "focused tests pass",
+    "package/source-root parity",
+    "privacy clean",
+    "synthetic/physical distinction preserved",
+    "claim cap respected"
+  ],
+  "claims": [
+    {
+      "statement": "A frozen protocol/sweep compiles to a deterministic DDS tuning-word sequence with bounded quantization error.",
+      "claim_class": "SOFTWARE_IMPLEMENTED"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

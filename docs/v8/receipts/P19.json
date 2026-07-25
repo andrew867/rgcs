@@ -1,0 +1,84 @@
+{
+  "phase_id": "P19",
+  "status": "COMPLETE",
+  "inputs": [
+    "r15/claims.py (ClaimClass.MODEL_PREDICTION, EvidenceLevel.E0)",
+    "r13/preregister.py (Preregistration, seal, is_sealed, PROSPECTIVE_PREDICTION, power discipline)",
+    "r13/experiments.py (planted_signal_power_check, MEASUREMENT_CLAIM_CLASSES)",
+    "r13/serialize.py (content_hash, new_chain, append_record, verify_chain, Record)",
+    "r15/schemas/phase_receipt.schema.json",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T6_P19_PROSPECTIVE_PREDICTION_REGISTRY.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_CLAIM_TAXONOMY.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_EVIDENCE_LADDER.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_PRIVACY_POLICY.md"
+  ],
+  "outputs": [
+    "r15/predictions.py",
+    "tests/v8/test_predictions.py",
+    "docs/v8/R15_PREDICTION_REGISTRY.md",
+    "docs/v8/receipts/P19.json"
+  ],
+  "tests": [
+    "test_seal_is_deterministic",
+    "test_sealed_prediction_verifies",
+    "test_any_input_change_alters_the_hash",
+    "test_changing_a_predicted_quantity_alters_the_hash",
+    "test_changing_the_model_fingerprint_alters_the_hash",
+    "test_power_on_planted_check_present_and_passes",
+    "test_powerless_detector_has_no_power",
+    "test_registry_registers_and_validates",
+    "test_sealed_analysis_is_confirmatory_unsealed_is_exploratory",
+    "test_prediction_without_null_is_refused",
+    "test_refuse_prediction_without_null_direct",
+    "test_prediction_without_power_is_refused",
+    "test_quantity_without_null_expectation_is_refused",
+    "test_prediction_cannot_carry_a_measurement_claim_class",
+    "test_edit_after_seal_is_detected_as_harking",
+    "test_edit_before_seal_is_allowed",
+    "test_result_without_prior_seal_is_exploratory_not_confirmatory",
+    "test_sealed_prediction_is_never_a_result",
+    "test_stale_prediction_detected_after_model_change",
+    "test_fresh_prediction_is_not_refused_as_stale",
+    "test_sealed_bundle_verifies_on_hash_chain",
+    "test_tampered_bundle_chain_fails_verification",
+    "test_base_preregistration_is_a_genuine_r13_prereg",
+    "test_report_is_deterministic_and_claims_nothing",
+    "test_report_uses_only_r13_and_r15_claims_no_sibling_phases",
+    "test_receipt_conforms_to_phase_receipt_schema",
+    "26 tests total, all passing"
+  ],
+  "negative_results": [
+    "A prediction with no null model is refused at construction (refuse_prediction_without_null): a hypothesis with nothing to be tested against confirms itself.",
+    "A prediction that does not prove power on planted data is refused at construction (refuse_prediction_without_power): a null result from a design that could never detect a real effect is empty (the R10.6 band-clustering lesson).",
+    "A predicted quantity with no null expectation is refused: a negative result on that quantity would be uninterpretable.",
+    "An edit to any load-bearing field (hypothesis, predicted signature, analysis plan, decision rule, null model, quantities, fingerprint) after the seal is detected as HARKing (refuse_edit_after_seal): the sealed and proposed commitments differ.",
+    "A confirmatory claim with no prior sealed prediction is refused (refuse_result_without_prior_seal): an analysis with no seal is EXPLORATORY, not confirmatory; classify_analysis returns EXPLORATORY for an unsealed commitment.",
+    "A prediction sealed against a model/code/data/parameter fingerprint that has since changed is detected as stale (is_stale) and refused (refuse_stale_prediction): running it would confirm a prediction the current model never made.",
+    "A sealed prediction is never a measured outcome (refuse_prediction_as_result): its claim class is PROSPECTIVE_PREDICTION and its evidence level is E0.",
+    "A RegisteredPrediction cannot carry a measurement claim class (BENCH_MEASUREMENT / INDEPENDENTLY_REPLICATED are refused at construction).",
+    "No physical measurement was performed; measured_here is nothing and PHYSICAL_VALIDATION_NOT_CLAIMED."
+  ],
+  "reopening_test": "Reopen the prediction registry if: a seal is not deterministic for a fixed prediction and epoch; any change to the hypothesis, a predicted quantity, the analysis plan, the decision rule, the null model, or the model/code/data/parameter fingerprint fails to change the commitment; a prediction with no null model or no proven power on planted data is accepted; an edit to a load-bearing field after the seal is not detected as HARKing; a confirmatory result is accepted with no prior sealed prediction; a prediction sealed against a changed model is not detected as stale; a sealed prediction is ever reported at a class above PROSPECTIVE_PREDICTION or as a measured result; or a sealed bundle passes hash-chain verification after a record is tampered with. A physical run is reopened only when a built, calibrated apparatus with a captured raw artifact, a clock binding, an environment log, and an uncertainty budget exists and the sealed analysis has been run against real data.",
+  "acceptance_checklist": [
+    "Focused tests pass (seal deterministic; sealed prediction verifies; any input change alters the hash; power-on-planted check present and passes): PASS",
+    "Negative and refusal paths pass (no-null refused; no-power refused; edit after seal detected as HARKing; result without prior seal is exploratory; stale prediction detected after model change; sealed prediction is never a result; measurement claim class refused): PASS",
+    "Package/source-root parity: module imports as r15.predictions; extends only r13 (preregister, experiments, serialize) and r15.claims; no sibling r15 phase module imported: PASS",
+    "Privacy scan: synthetic fixtures only, no private inputs, DO_NOT_COMMIT never read: PASS",
+    "This receipt conforms to phase_receipt.schema.json (validated with jsonschema): PASS",
+    "Determinism: same prediction and epoch yield a byte-identical seal; the report is reproducible: PASS",
+    "Sealed bundle: the prediction commitment is appended to an R13 hash chain that verifies end to end and fails after tampering: PASS"
+  ],
+  "claims": [
+    {
+      "claim_class": "MODEL_PREDICTION",
+      "statement": "A prospective prediction registry: a prediction (hypothesis, predicted quantities with tolerances, modes, frequencies, directions and null expectations, a null model, a decision rule, an analysis plan, and proven power on planted data) is sealed with a passed-in epoch and a SHA-256 commitment over the plan and a fingerprint of the model, code, data and parameters, before any run. Edits after the seal are detected as HARKing, results with no prior seal are exploratory not confirmatory, and predictions sealed against a changed model are detected as stale. Every prediction is PROSPECTIVE_PREDICTION and nothing is measured.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    }
+  ],
+  "claim_cap": "MODEL_PREDICTION",
+  "verdict": "PROSPECTIVE_PREDICTION_REGISTRY_SEALED",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

@@ -1,0 +1,73 @@
+{
+  "phase_id": "P07",
+  "status": "COMPLETE",
+  "tranche": "T3",
+  "title": "Executable Protocol Engine",
+  "inputs": [
+    "r15/schemas/protocol_record.schema.json",
+    "r15/schemas/experiment_run.schema.json",
+    "r15/schemas/phase_receipt.schema.json",
+    "r15/claims.py",
+    "r13/serialize.py",
+    "r13/preregister.py",
+    "r13/experiments.py"
+  ],
+  "outputs": [
+    "r15/protocols.py",
+    "r15/protocol_runner.py",
+    "tests/v8/test_protocols.py",
+    "docs/v8/R15_PROTOCOL_ENGINE.md",
+    "docs/v8/receipts/P07.json"
+  ],
+  "tests": [
+    "tests/v8/test_protocols.py (31 tests, all passing)",
+    "focused: frozen protocol compiles and runs deterministically on synthetic devices",
+    "focused: dry_run validates without acquiring; compiled plan is ordered",
+    "focused: protocol_record and experiment_run records validate against their JSON schemas",
+    "modes: REAL is PREREGISTERED_NOT_RUN with no artifacts; FAULT_INJECTION stops on fault; REPLAY re-emits frames",
+    "stop conditions: MAX_ACQUISITIONS terminates the run (limit of 2 and of 1)",
+    "determinism: same seal + config + seed yields byte-identical run hash; different seed changes readings; freeze is deterministic",
+    "negative: post-seal edit produces a new hash and is refused; a tampered SealedProtocol fails verify() and is refused at compile time",
+    "negative: unauthorized configuration and unavailable capability refused before acquisition; missing calibration refused",
+    "negative: measurement-class claim cap refused; acquisition without maneuver refused; synthetic run not readable as a measurement"
+  ],
+  "negative_results": [
+    "No protocol was executed against a real device; every REAL-mode run is recorded as PREREGISTERED_NOT_RUN with zero raw artifacts.",
+    "No physical measurement was produced. A SYNTHETIC or REPLAY run yields a SYNTHETIC_OBSERVATION, reproducible from the seed, never a PHYSICAL_MEASUREMENT.",
+    "A protocol may not cap its claim at a measurement class; Protocol._validate_claim_cap refuses PHYSICAL_MEASUREMENT and every other measurement class at construction.",
+    "An edited protocol cannot masquerade as the frozen one: refuse_edit_after_seal detects the changed hash, and compile_plan refuses a broken seal.",
+    "A configuration not authorized for a step's capability is refused before any acquisition; no acquisition occurs under an unheld authority."
+  ],
+  "reopening_test": "python -m pytest tests/v8/test_protocols.py -q  # this phase reopens if any of the 31 tests fails, if a synthetic/replay ExperimentRun ever carries a measurement-class claim_class, if a REAL-mode run produces raw artifacts or a status other than PREREGISTERED_NOT_RUN, if compile_plan executes against a broken seal, or if a Protocol accepts a measurement-class claim_cap.",
+  "acceptance_checklist": [
+    "Focused tests pass: PASS (31/31)",
+    "Required outputs r15/protocols.py and r15/protocol_runner.py present: PASS",
+    "Protocol is frozen (seal + hash) before execution and edits after seal are detected: PASS",
+    "Execution against synthetic devices is deterministic under a seed: PASS",
+    "A REAL run is PREREGISTERED_NOT_RUN: PASS",
+    "Execution refused if the config is unauthorized or the protocol seal is broken: PASS",
+    "REAL, REPLAY, SYNTHETIC, and FAULT_INJECTION modes kept distinct: PASS",
+    "Records conform to protocol_record.schema.json and experiment_run.schema.json: PASS",
+    "Receipt conforms to phase_receipt.schema.json: PASS",
+    "Privacy scan passes (synthetic fixtures only, no private inputs): PASS",
+    "Reuses R13 authorities (serialize, preregister, experiments); no duplicate truth systems: PASS"
+  ],
+  "claims": [
+    {
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "statement": "The protocol engine compiles a frozen, hash-sealed protocol into an ordered, deterministic sequence of authorized steps.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    },
+    {
+      "claim_class": "SYNTHETIC_OBSERVATION",
+      "statement": "Executing a frozen protocol against synthetic devices under a seed produces a reproducible ExperimentRun of synthetic observations.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    }
+  ],
+  "claim_cap": "SYNTHETIC_OBSERVATION",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

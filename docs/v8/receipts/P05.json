@@ -1,0 +1,76 @@
+{
+  "phase_id": "P05",
+  "status": "COMPLETE",
+  "inputs": [
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T2_P05_LOW_COST_ORIENTATION_SOLVER.md",
+    "r15/claims.py",
+    "r13/crystalframe.py",
+    "r13/magroot.py",
+    "r15/schemas/error_budget.schema.json",
+    "r15/schemas/phase_receipt.schema.json"
+  ],
+  "outputs": [
+    "r15/orientation.py",
+    "tests/v8/test_orientation.py",
+    "docs/v8/R15_LOW_COST_ORIENTATION_METHOD.md",
+    "docs/v8/receipts/P05.json"
+  ],
+  "tests": [
+    {
+      "file": "tests/v8/test_orientation.py",
+      "count": 27,
+      "result": "PASS",
+      "command": "pytest tests/v8/test_orientation.py -q"
+    }
+  ],
+  "negative_results": [
+    "refuse_orientation_as_unique: the point-group-32 symmetry leaves a six-member alias set with identical cheap-bench observations, so a unique orientation is refused (test_refuse_orientation_as_unique_raises).",
+    "refuse_optic_axis_polarity: the optic axis is an undirected line; +c and -c are indistinguishable, so the 180-degree ambiguity is intrinsic and the c-axis sign is refused (test_optic_axis_is_a_line_both_signs_in_alias_set, test_refuse_optic_axis_polarity_always_raises).",
+    "refuse_handedness_from_geometry: P3_121 and P3_221 share all achiral observables, so handedness is returned UNDETERMINED regardless of the plant and cannot be inferred from the c-axis (test_handedness_is_never_recovered_regardless_of_plant, test_enantiomorphs_are_indistinguishable_on_the_bench).",
+    "solve_orientation out-of-budget refusal: a fit whose residual exceeds the k=2 expanded uncertainty (~3.742 deg) is refused; noise of 12 deg per facet yields no orientation (test_noise_beyond_budget_is_refused).",
+    "refuse_certificate_confirmed_without_xrd and confidence cap: a no-diffraction certificate is capped at PRESUMPTIVE; an XRD_CONFIRMED request is refused (test_certificate_confidence_is_capped_without_xrd, test_refuse_confirmed_certificate_without_xrd_raises).",
+    "AcquisitionMode.REAL refused: no physical goniometer exists here (test_real_acquisition_mode_is_refused)."
+  ],
+  "reopening_test": "tests/v8/test_orientation.py::test_planted_orientation_is_recovered_within_budget — re-running the POWER test (a planted orientation recovered within the error budget) reopens and re-verifies the phase; failure signals the forward/inverse model or error budget has regressed.",
+  "acceptance_checklist": [
+    "Focused tests pass: pytest tests/v8/test_orientation.py -q -> 27 passed.",
+    "Full v8 suite green: pytest tests/v8 -q -> 349 passed (no regressions).",
+    "Required output r15/orientation.py created; extends r13/crystalframe (point-group-32 symmetry ops, reciprocal frame) and r13/magroot (orientation-from-vector, alias-set idea); imports r15.claims; no sibling r15 phase module imported.",
+    "Required output tests/v8/test_orientation.py created: POWER (planted recovered), negatives (symmetry alias not unique, 180-degree ambiguity explicit, handedness not inferred, noise beyond budget refused), and determinism.",
+    "Required output docs/v8/R15_LOW_COST_ORIENTATION_METHOD.md created.",
+    "Represents c-axis, a-axis azimuth, handedness, optical axis, facet normals, and uncertainty separately (OrientationState + error budget).",
+    "Implements polarization, extinction, conoscopic, geometry, and certificate evidence types (EvidenceType).",
+    "Provides synthetic polarizer/camera datasets and a solver (forward_observation, solve_orientation).",
+    "Generates an orientation certificate with aliases and confidence (generate_orientation_certificate).",
+    "States the exact additional evidence required to upgrade confidence (additional_evidence_to_upgrade), each PREREGISTERED_NOT_RUN.",
+    "REAL/REPLAY/SYNTHETIC/FAULT_INJECTION modes kept distinct; deterministic (seeded numpy Generator, no wall-clock).",
+    "Error budget conforms to r15/schemas/error_budget.schema.json (validated in test_error_budget_conforms_to_schema).",
+    "Governance: measured_here='nothing', PHYSICAL_VALIDATION_NOT_CLAIMED; recovered orientation is MODEL_PREDICTION, observations are SYNTHETIC_OBSERVATION; no promotion to a measurement class.",
+    "Privacy scan: synthetic fixtures only, no private inputs; the pack DO_NOT_COMMIT directory was not read.",
+    "This receipt validates against r15/schemas/phase_receipt.schema.json (jsonschema)."
+  ],
+  "claims": [
+    {
+      "statement": "A planted crystal orientation is recovered from cheap synthetic optical/goniometric observations within a stated error budget.",
+      "claim_class": "MODEL_PREDICTION",
+      "evidence_level": "E2",
+      "justification": "Deterministic synthetic-observation inverse over a simulator forward model; no instrument, calibration, specimen, fixture, clock, environment or raw artifact is bound, so evidence caps below a physical measurement (E4)."
+    },
+    {
+      "statement": "The cheap-bench solution is a point-group-32 alias class including both signs of the optic-axis line, and its handedness is UNDETERMINED.",
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "evidence_level": "E1",
+      "justification": "The symmetry alias set (6 members) and the achiral-observation handedness cap are structural facts of the model, verified by tests."
+    },
+    {
+      "statement": "A no-diffraction orientation certificate is capped at PRESUMPTIVE; XRD-confirmed and replicated levels are unreachable here.",
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "evidence_level": "E1",
+      "justification": "cap_confidence_without_xrd and refuse_certificate_confirmed_without_xrd enforce the cap; the upgrades are PREREGISTERED_NOT_RUN."
+    }
+  ],
+  "claim_cap": "MODEL_PREDICTION is the strongest class reached: the recovered orientation is a model prediction over a SYNTHETIC_OBSERVATION dataset. No PHYSICAL_MEASUREMENT is made; a real goniometer/polarizer/conoscopy run is PREREGISTERED_NOT_RUN. Nothing is measured; PHYSICAL_VALIDATION_NOT_CLAIMED.",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

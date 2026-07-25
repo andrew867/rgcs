@@ -1,0 +1,79 @@
+{
+  "phase_id": "P22",
+  "status": "COMPLETE",
+  "inputs": [
+    "r15/claims.py (ClaimClass, SOFTWARE_IMPLEMENTED, refuse_model_as_measurement, refuse_phryll_detected)",
+    "r13/holdout.py (refuse_holdout_in_training: the train/holdout disjointness authority)",
+    "r13/serialize.py (content_hash: deterministic audit fingerprint)",
+    "r15/schemas/phase_receipt.schema.json",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T6_P22_CIRCULARITY_AND_LEAKAGE_AUDIT.md"
+  ],
+  "outputs": [
+    "r15/circularity.py",
+    "tests/v8/test_circularity.py",
+    "docs/v8/R15_CIRCULARITY_AUDIT.md",
+    "docs/v8/receipts/P22.json"
+  ],
+  "tests": [
+    "test_planted_leak_is_caught_by_its_detector[all 5 LeakKind]",
+    "test_planted_leak_flags_pipeline_as_circular[all 5 LeakKind]",
+    "test_train_test_leakage_planted_id_overlap",
+    "test_train_test_leakage_label_derived_feature",
+    "test_double_dipping_selection_on_full_data",
+    "test_target_leakage_proxy_predictor",
+    "test_preprocessing_before_split_full_fold",
+    "test_preprocessing_before_split_by_order",
+    "test_temporal_leakage_train_after_test",
+    "test_clean_pipeline_passes_every_detector[all 5 LeakKind]",
+    "test_clean_pipeline_audit_is_not_circular",
+    "test_clean_pipeline_target_leakage_negative_with_declared_targets",
+    "test_only_the_planted_kind_fires",
+    "test_refuse_circular_result_as_confirmatory_raises",
+    "test_every_circular_audit_is_refused_as_confirmatory[all 5 LeakKind]",
+    "test_clean_result_is_not_refused_as_confirmatory",
+    "test_refuse_model_as_measurement_raises",
+    "test_refuse_phryll_detected_raises",
+    "test_audit_is_deterministic",
+    "test_planted_audit_is_deterministic",
+    "test_clean_and_leaky_hashes_differ",
+    "test_empty_pipeline_refused",
+    "test_non_step_element_refused",
+    "test_step_needs_a_name",
+    "test_report_claims_nothing",
+    "test_report_reuses_r13_authorities",
+    "test_audit_serializes_to_schema_shaped_dict",
+    "test_receipt_conforms_to_phase_receipt_schema",
+    "44 tests total, all passing"
+  ],
+  "negative_results": [
+    "The clean split-before-fit pipeline (clean_pipeline) passes all five detectors: train and test folds are disjoint, the split precedes every fitting step, preprocessing and selection are fit on the train fold only, no predictor is a label proxy, and every training item precedes every test item in time.",
+    "A clean, non-circular audit is NOT refused as confirmatory: refuse_circular_result_as_confirmatory passes silently on it. The audit is a necessary, not sufficient, condition for evidence: a clean audit does not assert the result is true, replicated, or physically measured.",
+    "A single planted leak fires exactly one detector, not the others (test_only_the_planted_kind_fires): the detectors are independent and do not cross-trip.",
+    "A circular result is refused as confirmatory for every one of the five leak kinds (refuse_circular_result_as_confirmatory raises): a result that already contains its own inputs measures nothing new.",
+    "A MODEL_PREDICTION is never a physical measurement (refuse_model_as_measurement) and there is no PHRYLL_DETECTED state (refuse_phryll_detected); both raise.",
+    "No physical measurement was performed; measured_here is nothing and PHYSICAL_VALIDATION_NOT_CLAIMED. The audit operates no apparatus and types only the pipeline it is given."
+  ],
+  "reopening_test": "Reopen the circularity audit if any pipeline step changes fold, selection fold, label-derivation, or timestamp ordering: re-run every detector. A pipeline flagged circular is reopened to CLEAN only when the offending step is re-run on a strictly disjoint, split-before-fit, label-blind, time-ordered fold, and no result from a circular pipeline may be offered as confirmatory until then. Reopen the whole lane if any detector ever passes a pipeline with a planted leak of its kind, if the clean split-before-fit pipeline is ever flagged circular, or if a circular result is ever emitted at a class above MODEL_PREDICTION or offered as confirmatory.",
+  "acceptance_checklist": [
+    "Focused/POWER tests pass (each of the five planted leak kinds -- train/test leakage, double-dipping, target leakage, preprocessing-before-split, temporal leakage -- is caught by its own detector and flags the pipeline circular): PASS",
+    "Negative and refusal paths pass (clean split-before-fit pipeline passes every detector; only the planted kind fires; a circular result is refused as confirmatory for all five kinds; a clean result is not refused; model-as-measurement and phryll-detected refused): PASS",
+    "Package/source-root parity: module imports as r15.circularity; reuses only r13 (holdout, serialize) and r15.claims; no sibling r15 phase module imported: PASS",
+    "Privacy scan: synthetic fixtures only (opaque ids, small-integer features/labels, integer timestamps), no private inputs, DO_NOT_COMMIT never read: PASS",
+    "Determinism: same pipeline yields a byte-identical audit content hash (via r13.serialize.content_hash); clean and leaky pipelines hash differently: PASS",
+    "Audit versioned: AUDIT_VERSION stamped on every PipelineAudit: PASS",
+    "This receipt conforms to phase_receipt.schema.json (validated with jsonschema): PASS"
+  ],
+  "claims": [
+    {
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "statement": "A circularity and leakage audit: five detectors (train/test leakage, double-dipping, target leakage, preprocessing-before-split, temporal leakage) each returning whether an analysis pipeline is circular by that mechanism; audit_pipeline() runs them all over a list of typed PipelineStep records and flags the circular steps with a deterministic content hash; and refuse_circular_result_as_confirmatory() refuses to offer a circular result as confirmation of a hypothesis. A planted leak of each kind is caught; a clean split-before-fit pipeline passes.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    }
+  ],
+  "claim_cap": "MODEL_PREDICTION",
+  "verdict": "CIRCULARITY_AUDIT_NO_CIRCULAR_RESULT_IS_CONFIRMATORY",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

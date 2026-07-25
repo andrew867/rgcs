@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "residual_id",
+    "observation_ids",
+    "ordinary_explanation_attacks",
+    "combined_uncertainty",
+    "classification",
+    "reopening_test"
+  ],
+  "properties": {
+    "residual_id": {
+      "type": "string"
+    },
+    "observation_ids": {
+      "type": "array"
+    },
+    "ordinary_explanation_attacks": {
+      "type": "array"
+    },
+    "combined_uncertainty": {
+      "type": "object"
+    },
+    "classification": {
+      "type": "string"
+    },
+    "reopening_test": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "phase_id": "P27",
+  "status": "COMPLETE",
+  "inputs": [
+    "Gate Zero",
+    "r15.claims",
+    "r15/schemas/*"
+  ],
+  "outputs": [
+    "r15/sweeps.py",
+    "tests/v8/test_sweeps.py",
+    "docs/v8/R15_AUTOMATED_SWEEP_CONTROLLER.md",
+    "docs/v8/receipts/P27.json"
+  ],
+  "tests": [
+    "tests/v8/test_sweeps.py (7 passed)"
+  ],
+  "negative_results": [
+    "The plan is frozen (hashed) before execution; the seal verifies.",
+    "Safety bounds refuse out-of-range setpoints.",
+    "A real sweep over physical lanes is PREREGISTERED_NOT_RUN; no point is silently dropped."
+  ],
+  "reopening_test": "Re-run tests/v8/test_sweeps.py; reopen if plan_hash is non-deterministic or a safety bound stops rejecting out-of-range.",
+  "acceptance_checklist": [
+    "implementation complete",
+    "focused tests pass",
+    "package/source-root parity",
+    "privacy clean",
+    "synthetic/physical distinction preserved",
+    "claim cap respected"
+  ],
+  "claims": [
+    {
+      "statement": "A pre-declared, safety-bounded parameter sweep over synthetic lanes is deterministic and sealed before it runs.",
+      "claim_class": "SOFTWARE_IMPLEMENTED"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

@@ -1,0 +1,41 @@
+{
+  "phase_id": "P34",
+  "status": "COMPLETE",
+  "inputs": [
+    "Gate Zero",
+    "r15.claims",
+    "phase reports"
+  ],
+  "outputs": [
+    "r15/nonclaims.py",
+    "tests/v8/test_nonclaims.py",
+    "docs/v8/R15_NON_CLAIMS.md",
+    "docs/v8/receipts/P34.json"
+  ],
+  "tests": [
+    "tests/v8/test_nonclaims.py (4 passed)"
+  ],
+  "negative_results": [
+    "Every registered non-claim maps to a refusal in r15.claims that raises; there is no PHRYLL_DETECTED state.",
+    "Asserting any registered non-claim is refused.",
+    "The residual ceiling is UNEXPLAINED_INSTRUMENT_RESIDUAL."
+  ],
+  "reopening_test": "Re-run tests/v8/test_nonclaims.py; reopen if any non-claim loses its raising refusal or a PHRYLL_DETECTED state appears.",
+  "acceptance_checklist": [
+    "implementation complete",
+    "focused tests pass",
+    "package/source-root parity",
+    "privacy clean",
+    "synthetic/physical distinction preserved",
+    "claim cap respected"
+  ],
+  "claims": [
+    {
+      "statement": "R15 advances no physical claim; every non-claim is enforced by a raising refusal.",
+      "claim_class": "SOFTWARE_IMPLEMENTED"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

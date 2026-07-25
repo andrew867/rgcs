@@ -1,0 +1,75 @@
+{
+  "phase_id": "P26",
+  "status": "COMPLETE",
+  "tranche": "T7",
+  "title": "ESP32 and Embedded Experiment Runner",
+  "inputs": [
+    "r15/claims.py (ClaimClass.SYNTHETIC_OBSERVATION, MEASUREMENT_CLASSES, refuse_synthetic_as_physical)",
+    "r13/serialize.py (content_hash: deterministic recipe/run fingerprint)",
+    "r15/schemas/experiment_run.schema.json",
+    "r15/schemas/phase_receipt.schema.json",
+    "fkey_instrument/device.py (the existing ESP32-CYD fail-off twin whose pattern this extends: arm leases, latched faults, hash-chained log)",
+    "r15/protocol_runner.py (P07: REAL/SYNTHETIC/REPLAY/FAULT_INJECTION mode discipline, reused as a pattern)",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T7_P26_ESP32_AND_EMBEDDED_EXPERIMENT_RUNNER.md"
+  ],
+  "outputs": [
+    "r15/embedded_runner.py",
+    "tests/v8/test_embedded_runner.py",
+    "docs/v8/R15_EMBEDDED_RUNNER_SPEC.md",
+    "docs/v8/receipts/P26.json"
+  ],
+  "tests": [
+    "tests/v8/test_embedded_runner.py (33 tests, all passing)",
+    "focused: the twin executes an in-bounds DDS recipe to completion, one artifact per segment; a synthetic observation, not a measurement",
+    "focused: a twin run is a pure function of (recipe, seed, epoch); same inputs yield a byte-identical run hash; a different seed changes the realized setpoints; the recipe compile-hash is stable and content-addressed",
+    "focused: fail-off on a lost heartbeat -- check_watchdog fires past the watchdog window, output goes off, HEARTBEAT_LOST latches; a heartbeat inside the window keeps RUNNING",
+    "focused: over-temperature interlock trips to FAULT_LATCHED with output off; emergency stop latches; faults clear only by explicit acknowledgement while off",
+    "focused: output is off at boot and can be on only in RUNNING (off in RECIPE_VALID and ARMED, on after start, off after stop)",
+    "focused: the hash-chained event log verifies intact; a tampered payload is detected at the tampered sequence number",
+    "negative: an out-of-range output command is refused (UnsafeOutputError) before the output stage is engaged and the run faults; refuse_unsafe_output names the violations; an in-bounds setpoint is accepted",
+    "negative: an out-of-band recipe faults at load rather than half-loading (recipe stays None); a recipe over max-continuous is invalid",
+    "negative: a run without a valid single-use arm lease is refused (ArmLeaseError) -- no arm, no recipe, expired lease, wrong token all refuse; refuse_run_without_arm_lease enforces the ARMED+lease precondition; the lease is single-use",
+    "negative: a twin run is not a hardware run (refuse_twin_as_hardware_run raises TwinAsHardwareError); a twin run never carries a measurement class",
+    "negative: a REAL-mode run is BLOCKED_MISSING_INPUT with zero artifacts (NO_BOARD_TO_FLASH); deploy_to_board is blocked; self-test reports firmware_compiled=false and board_flashed=false",
+    "modes: FAULT_INJECTION drives the first segment out of band and stops on the over-range interlock; REPLAY re-emits supplied frames; both remain SYNTHETIC_OBSERVATION",
+    "schema: a TwinRun record conforms to experiment_run.schema.json; this receipt conforms to phase_receipt.schema.json (validated with jsonschema)"
+  ],
+  "negative_results": [
+    "No firmware was compiled and no board was flashed. There is no ESP32/embedded board and no build toolchain in this environment; the runner is a deterministic software twin only. A real deployment (deploy_to_board and RunMode.REAL) is recorded as BLOCKED_MISSING_INPUT with zero artifacts and the reason NO_BOARD_TO_FLASH.",
+    "No physical measurement was produced. A twin recipe run yields a SYNTHETIC_OBSERVATION reproducible from the seed, never a PHYSICAL_MEASUREMENT; refuse_twin_as_hardware_run refuses any promotion of a twin run to a hardware measurement, and a twin run never carries a measurement class.",
+    "The output stage is never engaged outside its conservative, configurable limits: an out-of-band setpoint command is refused before the output is touched and the run faults OVER_RANGE, and an out-of-band recipe faults INVALID_RECIPE at load rather than half-loading.",
+    "The output cannot stay on without a live heartbeat: once the gap since the last heartbeat exceeds the watchdog window the watchdog fires, the output goes off, and a HEARTBEAT_LOST fault latches. Over-temperature and emergency-stop drive the same fail-off.",
+    "There is no auto-arm and no override: the output can be engaged only from ARMED with a fresh, matching, unexpired, single-use arm lease. A run without an arm lease, with an expired lease, or with a wrong token is refused, and the lease is consumed on start.",
+    "measured_here is nothing and PHYSICAL_VALIDATION_NOT_CLAIMED; the twin operates no apparatus."
+  ],
+  "reopening_test": "python -m pytest tests/v8/test_embedded_runner.py -q  # this phase reopens if any of the 33 tests fails, if a twin/replay/fault-injection TwinRun ever carries a measurement-class claim_class, if a RunMode.REAL run produces raw artifacts or a status other than BLOCKED_MISSING_INPUT, if the output flag is ever True in any state other than RUNNING, if the watchdog fails to fail-off on a lost heartbeat, if an out-of-range setpoint or recipe reaches the output stage, or if a run reaches RUNNING without a fresh single-use arm lease. Real board deployment reopens from BLOCKED_MISSING_INPUT to a physical class only when an actual board, a build toolchain, a flashing record, and a calibration/specimen/fixture binding exist -- none of which are present here.",
+  "acceptance_checklist": [
+    "Focused tests pass (the twin executes a recipe deterministically; fail-off triggers on a lost heartbeat and on over-temperature; the hash-chained log verifies and detects tampering): PASS (33/33)",
+    "Negative and refusal paths pass (out-of-range output refused; run without an arm lease refused; twin run is not a hardware run; real deployment BLOCKED_MISSING_INPUT): PASS",
+    "Package/source-root parity: module imports as r15.embedded_runner; reuses only r13 (serialize) and r15.claims, and extends the fkey_instrument fail-off pattern; no sibling r15 phase module is imported: PASS",
+    "Privacy scan: synthetic fixtures only (opaque ids, small bounded numeric setpoints, integer epochs), no private inputs, DO_NOT_COMMIT never read: PASS",
+    "Determinism: a twin run is seeded and epoch-driven (no wall clock); same recipe + seed + epoch yields a byte-identical run hash; the recipe compile-hash is content-addressed via r13.serialize.content_hash: PASS",
+    "REAL, TWIN, REPLAY, and FAULT_INJECTION modes kept distinct; REAL is never run: PASS",
+    "A TwinRun record conforms to experiment_run.schema.json: PASS",
+    "This receipt conforms to phase_receipt.schema.json (validated with jsonschema): PASS"
+  ],
+  "claims": [
+    {
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "statement": "A deterministic software twin of an ESP32/embedded controller that executes a compiled DDS recipe under a fail-off state machine (output off at boot, single-use arm lease to arm, explicit start to run) with a heartbeat watchdog, over-range and over-temperature interlocks, latched faults, bounded outputs, and a SHA-256 hash-chained event log. No firmware is compiled and no board is flashed.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    },
+    {
+      "claim_class": "SYNTHETIC_OBSERVATION",
+      "statement": "Executing a compiled recipe against the twin under a seed produces a reproducible TwinRun of synthetic realized setpoints. It is never a physical measurement and a real board deployment is BLOCKED_MISSING_INPUT.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    }
+  ],
+  "claim_cap": "SYNTHETIC_OBSERVATION",
+  "verdict": "EMBEDDED_RUNNER_TWIN_FAIL_OFF_NO_HARDWARE",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": "Real ESP32/embedded board deployment is BLOCKED_MISSING_INPUT: no board and no build toolchain are present, so no firmware is compiled and no board is flashed. All nonphysical work (twin, safety interlocks, recipe/DDS protocol, tests, docs) is COMPLETE; only the physical deployment is blocked.",
+  "commit": null
+}

@@ -1,0 +1,91 @@
+{
+  "phase_id": "P20",
+  "status": "COMPLETE",
+  "inputs": [
+    "r15/claims.py (ClaimClass.SOFTWARE_IMPLEMENTED, EvidenceLevel.E6, PHYSICAL_VALIDATION_NOT_CLAIMED)",
+    "r13/holdout.py (make_split, commit_holdout, verify_commitment, score_holdout, power_check, planted_label, planted_decoder, constant_decoder, synthetic_ids, HoldoutProtocol, refuse_holdout_in_training, refuse_decode_before_commit, refuse_overfit_as_generalization) - REUSED DIRECTLY",
+    "r13/serialize.py (content_hash for the model freeze)",
+    "r15/schemas/phase_receipt.schema.json",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T6_P20_HOLDOUT_DATASET_AUTHORITY.md"
+  ],
+  "outputs": [
+    "r15/holdouts.py",
+    "tests/v8/test_holdouts.py",
+    "docs/v8/R15_HOLDOUT_POLICY.md",
+    "docs/v8/receipts/P20.json"
+  ],
+  "tests": [
+    "test_partition_is_disjoint_and_covers_all_items",
+    "test_partition_is_deterministic",
+    "test_partition_fractions_are_approximately_honoured",
+    "test_partition_rejects_bad_fractions",
+    "test_partition_needs_at_least_five_items",
+    "test_commitment_matches_true_holdout",
+    "test_commitment_rejects_tampered_holdout",
+    "test_manifest_carries_source_and_epoch",
+    "test_external_physical_holdout_source_supported",
+    "test_score_after_freeze_uses_committed_labels",
+    "test_score_rejects_labels_that_break_the_seal",
+    "test_power_rule_aware_decoder_detected_on_development",
+    "test_power_null_decoder_not_detected",
+    "test_holdout_in_training_is_refused",
+    "test_clean_split_has_no_leakage",
+    "test_score_before_model_frozen_is_refused",
+    "test_refuse_score_before_model_frozen_direct",
+    "test_second_one_shot_score_is_refused",
+    "test_refuse_multiple_holdout_scoring_direct",
+    "test_development_cannot_be_relabelled_holdout",
+    "test_any_seen_partition_cannot_become_holdout[DEVELOPMENT|CALIBRATION|CONTROL]",
+    "test_holdout_staying_holdout_is_allowed",
+    "test_unauthorized_access_is_refused[TRAINING|MODEL_SELECTION]",
+    "test_authorized_access_is_granted_and_logged",
+    "test_every_score_attempt_is_logged",
+    "test_sequential_scoring_spends_the_error_budget",
+    "test_sequential_budget_exhaustion_refuses_further_looks",
+    "test_sequential_score_requires_declared_alpha",
+    "test_sequential_policy_needs_a_budget",
+    "test_alpha_budget_rejects_non_positive_spend",
+    "test_overfit_is_not_generalization",
+    "test_decode_before_commit_is_refused",
+    "test_model_freeze_is_content_bound",
+    "test_report_is_deterministic_and_claims_nothing",
+    "test_report_uses_only_r13_and_r15_claims_no_sibling_phases",
+    "test_receipt_conforms_to_phase_receipt_schema",
+    "39 tests total (38 functions; parametrization expands to 39), all passing"
+  ],
+  "negative_results": [
+    "A holdout item that has leaked into the training set is refused (refuse_holdout_in_training, reused from r13): a leaked item turns the holdout score into a training score in disguise.",
+    "A holdout score attempted before the model is frozen is refused (refuse_score_before_model_frozen): a model still free to change can be tuned until the holdout flatters it.",
+    "A second score of a ONE_SHOT holdout is refused (refuse_multiple_holdout_scoring): a re-used holdout is no longer a holdout because any later model choice is informed by the first look.",
+    "Development, calibration, and control data cannot be relabelled HOLDOUT after the fact (refuse_relabel_partition_as_holdout): an item already seen is no longer blind.",
+    "Unauthorized access to the sealed holdout for TRAINING or MODEL_SELECTION is refused and logged (refuse_unauthorized_access): a model built or picked against the holdout labels has been fitted to them.",
+    "A SEQUENTIAL policy spends a fixed error budget per look and refuses further looks once the budget is exhausted (AlphaBudget): extra looks would spend error the analysis has not reserved.",
+    "A decode attempted before the holdout is committed is refused (refuse_decode_before_commit, reused from r13).",
+    "Training performance is never generalization (refuse_overfit_as_generalization, reused from r13): only the sealed, disjoint holdout speaks to generalization.",
+    "A tampered holdout (a substituted set or one altered label) fails to match the SHA-256 commitment while the true holdout matches.",
+    "No physical measurement was performed; measured_here is nothing and PHYSICAL_VALIDATION_NOT_CLAIMED. A null on the holdout is meaningful only because the power check shows a rule-aware model recovers a PLANTED signal on DEVELOPMENT."
+  ],
+  "reopening_test": "Reopen the holdout dataset authority if: a partition assignment stops being a deterministic function of the ids, salt, and fractions (cherry-picking becomes possible); development, calibration, or control data can be relabelled HOLDOUT; the sealed holdout can be scored without the model being frozen first; a ONE_SHOT holdout is scored more than once, or a SEQUENTIAL holdout is scored past its error budget; the holdout is scored against labels that do not match the sealed commitment; the holdout is read for TRAINING or MODEL_SELECTION without refusal; an access to the holdout goes unlogged; a training score is presented as generalization; or any result here is emitted at a class above SOFTWARE_IMPLEMENTED. A physical holdout run is reopened only when externally acquired holdout labels arrive with a calibration, a raw artifact, a clock binding, an environment log, and an uncertainty budget.",
+  "acceptance_checklist": [
+    "Focused tests pass (deterministic disjoint five-way partition; commitment matches true holdout, rejects tampered; power recovers planted signal on DEVELOPMENT): PASS",
+    "Negative and refusal paths pass (leakage refused; score before freeze refused; second one-shot score refused; development cannot be relabelled holdout; unauthorized access detected and logged; sequential testing spends an error budget; overfit is not generalization): PASS",
+    "Package/source-root parity: module imports as r15.holdouts; reuses only r13 (holdout, serialize) and r15.claims; no sibling r15 phase module imported: PASS",
+    "Privacy scan: synthetic fixtures only (opaque item ids, planted class-index labels), no private inputs, DO_NOT_COMMIT never read: PASS",
+    "This receipt conforms to phase_receipt.schema.json (validated with jsonschema): PASS",
+    "Determinism: partition, seal, and holdouts_report() are byte-stable across runs (hash-based, clock-free, epochs passed in): PASS",
+    "Sealed holdout manifests, one-shot and sequential policies, planted and external-physical holdout sources, and a complete access log implemented: PASS"
+  ],
+  "claims": [
+    {
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "statement": "A holdout dataset authority: a deterministic hash-based partition into DEVELOPMENT, CALIBRATION, CONTROL, HOLDOUT, and FUTURE_MEASUREMENT partitions; a sealed holdout manifest committing the holdout ids and labels under SHA-256 before any modeling; a content-hash model freeze gating the score; one-shot and sequential (error-budget) scoring policies; a complete access log with unauthorized-purpose refusal; and a planted-data power check that makes a holdout null meaningful. Reuses the R13 holdout authority directly for the split, commit/verify, scoring, and power primitives.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    }
+  ],
+  "claim_cap": "SOFTWARE_IMPLEMENTED",
+  "verdict": "HOLDOUT_DATASET_AUTHORITY_SEALED",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

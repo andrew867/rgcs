@@ -1,0 +1,102 @@
+{
+  "phase_id": "P03",
+  "status": "COMPLETE",
+  "title": "Environmental Ledger",
+  "tranche": "T1",
+  "verdict": "R15_ENVIRONMENTAL_LEDGER_SYNTHETIC_NO_MEASUREMENT",
+  "inputs": [
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T1_P03_ENVIRONMENTAL_LEDGER.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_ERROR_BUDGET_POLICY.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_PRIVACY_POLICY.md",
+    "r15/claims.py",
+    "r15/schemas/error_budget.schema.json",
+    "r15/schemas/observation_record.schema.json",
+    "r15/schemas/phase_receipt.schema.json",
+    "r13/daq.py",
+    "r11/detectors.py"
+  ],
+  "outputs": [
+    "r15/environment.py",
+    "tests/v8/test_environment.py",
+    "docs/v8/R15_ENVIRONMENTAL_LEDGER.md",
+    "docs/v8/receipts/P03.json"
+  ],
+  "tests": [
+    "tests/v8/test_environment.py::test_channel_carries_units_uncertainty_and_a_verifying_hash",
+    "tests/v8/test_environment.py::test_editing_a_trace_breaks_its_hash",
+    "tests/v8/test_environment.py::test_mismatched_trace_lengths_are_rejected",
+    "tests/v8/test_environment.py::test_nonincreasing_timestamps_are_rejected",
+    "tests/v8/test_environment.py::test_negative_uncertainty_is_rejected",
+    "tests/v8/test_environment.py::test_synthetic_channels_are_deterministic_under_a_seed",
+    "tests/v8/test_environment.py::test_synthetic_ledger_is_reproducible",
+    "tests/v8/test_environment.py::test_synthetic_drift_appears_in_drift_rate",
+    "tests/v8/test_environment.py::test_drift_override_flows_through_the_ledger",
+    "tests/v8/test_environment.py::test_clock_misalignment_is_detected",
+    "tests/v8/test_environment.py::test_trace_lag_recovers_a_sample_shift",
+    "tests/v8/test_environment.py::test_realign_moves_the_origin_to_the_experiment_clock",
+    "tests/v8/test_environment.py::test_missing_required_channel_invalidates_the_run",
+    "tests/v8/test_environment.py::test_missing_channel_caps_evidence_below_a_full_synthetic_ledger",
+    "tests/v8/test_environment.py::test_evidence_never_reaches_physical_even_when_complete",
+    "tests/v8/test_environment.py::test_manual_declaration_has_lower_authority_than_sensor",
+    "tests/v8/test_environment.py::test_authoritative_channel_prefers_the_sensor_trace",
+    "tests/v8/test_environment.py::test_manual_note_typed_as_source_claim_not_observation",
+    "tests/v8/test_environment.py::test_allow_manual_policy_lets_a_note_substitute",
+    "tests/v8/test_environment.py::test_error_budget_combines_in_quadrature_and_matches_schema_keys",
+    "tests/v8/test_environment.py::test_all_eleven_budget_components_exist",
+    "tests/v8/test_environment.py::test_duplicate_budget_component_is_rejected",
+    "tests/v8/test_environment.py::test_environment_component_folds_channel_uncertainties",
+    "tests/v8/test_environment.py::test_residual_within_budget_is_not_anomalous",
+    "tests/v8/test_environment.py::test_refuse_subbudget_as_anomaly_always_raises",
+    "tests/v8/test_environment.py::test_manual_as_sensor_is_refused",
+    "tests/v8/test_environment.py::test_synthetic_env_as_measured_is_refused",
+    "tests/v8/test_environment.py::test_every_forbidden_promotion_is_registered_and_raises",
+    "tests/v8/test_environment.py::test_real_mode_is_blocked",
+    "tests/v8/test_environment.py::test_report_claims_nothing",
+    "tests/v8/test_environment.py::test_nuisance_correlation_flags_a_shared_trend"
+  ],
+  "test_count": 31,
+  "test_result": "31 passed",
+  "negative_results": [
+    "Synthetic environmental channels are SYNTHETIC_OBSERVATION, not physical measurements; the REAL-mode ledger is BLOCKED_MISSING_INPUT because no sensor was operated.",
+    "A residual within the combined quadrature uncertainty is not anomalous (is_within_budget) and refuse_subbudget_as_anomaly always raises; no anomaly, signal, or new effect is claimed.",
+    "A manual declaration is a SOURCE_CLAIM with the lowest source authority and cannot substitute for a sensor trace (refuse_manual_as_sensor); authoritative() prefers the sensor trace.",
+    "A run missing a required environmental channel is invalidated (INVALIDATE) or degraded (DEGRADE); a complete synthetic ledger reaches at most E2 and never the physical level E4."
+  ],
+  "reopening_test": "Re-run pytest tests/v8/test_environment.py. The phase reopens if a synthetic channel stops being deterministic under its seed, a within-budget residual is reported as anomalous, a manual declaration gains authority over a sensor trace, a missing required channel no longer invalidates the run, the error budget stops combining in quadrature or drifts out of conformance with error_budget.schema.json, or any channel claims a class stronger than SYNTHETIC_OBSERVATION without real artifacts.",
+  "acceptance_checklist": [
+    "Required output r15/environment.py implemented (nine nuisance channels; REAL/REPLAY/SYNTHETIC/FAULT_INJECTION modes distinct).",
+    "Required output tests/v8/test_environment.py implemented; 31 focused, negative, and determinism tests green.",
+    "Required output docs/v8/R15_ENVIRONMENTAL_LEDGER.md written.",
+    "Terminal receipt docs/v8/receipts/P03.json conforms to r15/schemas/phase_receipt.schema.json (validated with jsonschema).",
+    "Synthetic drift appears in drift_rate output (required test).",
+    "Clock misalignment is detected via clock offset and cross-correlation lag (required test).",
+    "Missing required environment invalidates the run (required test).",
+    "Manual declarations have lower authority than sensor traces (required test).",
+    "Error budget decomposes into eleven components and combines in quadrature per error_budget.schema.json.",
+    "is_within_budget and refuse_subbudget_as_anomaly implemented; a sub-budget residual is not anomalous.",
+    "Synthetic channels deterministic under a seed; timestamps passed in, never wall-clock.",
+    "Imports r15.claims; reuses r13.daq; no sibling r15 phase module hard-imported.",
+    "environment_report() returns claim_class, measured_here=nothing, physical_validation, verdict.",
+    "Privacy scan clean: synthetic fixtures only, no private inputs."
+  ],
+  "claims": [
+    {
+      "statement": "An environmental ledger records ambient nuisance conditions as hashed, clock-aligned synthetic time-series channels and feeds an eleven-component quadrature error budget.",
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "evidence": "E2",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    },
+    {
+      "statement": "Synthetic environmental channels are deterministic observations, not measurements; the strongest class reached is SYNTHETIC_OBSERVATION at evidence E2.",
+      "claim_class": "SYNTHETIC_OBSERVATION",
+      "evidence": "E2",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    }
+  ],
+  "claim_cap": "SYNTHETIC_OBSERVATION",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

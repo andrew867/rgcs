@@ -1,0 +1,40 @@
+{
+  "phase_id": "P33",
+  "status": "COMPLETE",
+  "inputs": [
+    "Gate Zero",
+    "r15.claims",
+    "phase reports"
+  ],
+  "outputs": [
+    "r15/appendices.py",
+    "tests/v8/test_appendices.py",
+    "docs/v8/R15_STATISTICAL_APPENDICES.md",
+    "docs/v8/receipts/P33.json"
+  ],
+  "tests": [
+    "tests/v8/test_appendices.py (3 passed)"
+  ],
+  "negative_results": [
+    "Every appendix entry references a declared null model; an entry with no null is refused.",
+    "The appendix performs no test on physical data."
+  ],
+  "reopening_test": "Re-run tests/v8/test_appendices.py; reopen if an appendix entry with no null model is accepted.",
+  "acceptance_checklist": [
+    "implementation complete",
+    "focused tests pass",
+    "package/source-root parity",
+    "privacy clean",
+    "synthetic/physical distinction preserved",
+    "claim cap respected"
+  ],
+  "claims": [
+    {
+      "statement": "The methods appendix is assembled from the statistical-firewall phases, every entry backed by a null model.",
+      "claim_class": "SOFTWARE_IMPLEMENTED"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

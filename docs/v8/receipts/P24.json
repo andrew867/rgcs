@@ -1,0 +1,86 @@
+{
+  "phase_id": "P24",
+  "status": "COMPLETE",
+  "inputs": [
+    "r15/claims.py (ClaimClass.UNEXPLAINED_INSTRUMENT_RESIDUAL, REPLICATED_ANOMALY, INDEPENDENT_REPLICATION, SYNTHETIC_OBSERVATION, EvidenceLevel E7, refuse_residual_as_new_physics, refuse_phryll_detected)",
+    "r13/serialize.py (new_chain, append_record, verify_chain, verify_chain_report, Record — the tamper-evident hash chain)",
+    "r15/schemas/phase_receipt.schema.json",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T6_P24_INDEPENDENT_REPLICATION_RECEIPTS.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_CLAIM_TAXONOMY.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_EVIDENCE_LADDER.md"
+  ],
+  "outputs": [
+    "r15/replication.py",
+    "tests/v8/test_replication.py",
+    "docs/v8/R15_REPLICATION_POLICY.md",
+    "docs/v8/receipts/P24.json"
+  ],
+  "tests": [
+    "test_two_independent_confirmations_reach_replicated_anomaly",
+    "test_replicated_anomaly_is_still_not_new_physics",
+    "test_single_independent_confirmation_stays_unexplained",
+    "test_empty_bundle_stays_unexplained",
+    "test_same_lab_rerun_does_not_count_as_second_replication",
+    "test_rerun_of_origin_setup_is_not_independent_of_origin",
+    "test_independence_levels_are_distinct",
+    "test_refuse_same_lab_as_independent_raises",
+    "test_skipped_firewall_confirmation_does_not_count",
+    "test_firewall_not_survived_does_not_count",
+    "test_residual_within_budget_is_not_a_confirmation",
+    "test_refuse_confirmation_bias_raises",
+    "test_reanalysis_is_not_replication",
+    "test_refuse_promotion_without_replication_raises",
+    "test_wrong_protocol_hash_does_not_count",
+    "test_synthetic_replication_is_not_physical",
+    "test_all_four_modes_are_distinct_and_only_real_is_physical",
+    "test_failed_and_contradicting_replications_are_recorded",
+    "test_failed_replication_lowers_status_from_replicated",
+    "test_bundle_is_hash_chained_and_verifies",
+    "test_tampering_breaks_chain_verification",
+    "test_report_claims_nothing",
+    "test_verdict_is_versioned",
+    "test_bundle_is_deterministic",
+    "test_confirmation_count_is_order_independent",
+    "test_lab_identity_requires_ids",
+    "test_receipt_requires_protocol_hash",
+    "test_receipt_rejects_negative_residual",
+    "test_bundle_needs_an_epoch",
+    "test_add_receipt_needs_an_epoch",
+    "test_receipt_conforms_to_phase_receipt_schema",
+    "31 tests total, all passing"
+  ],
+  "negative_results": [
+    "Reanalysis is not replication: re-running the same code on the same data is a RERUN that reproduces an analysis, not the phenomenon. refuse_reanalysis_as_replication raises.",
+    "A single laboratory's residual stays at the UNEXPLAINED_INSTRUMENT_RESIDUAL ceiling: fewer than two mutually independent confirmations cannot promote it. refuse_promotion_without_replication raises.",
+    "A same-lab re-run is not an independent replication: two confirmations sharing an operator, apparatus, or site are not mutually independent, so only one counts. refuse_same_lab_as_independent raises.",
+    "A skipped-firewall confirmation does not count: a replication that did not run the ordinary-explanation attacks, did not survive them, or did not exceed its own error budget is not a confirmation. refuse_confirmation_bias raises.",
+    "Synthetic implementation replication differs from physical lab replication: is_physical_replication requires a REAL acquisition with a raw artifact, and no such artifact exists here, so every receipt is a SYNTHETIC_OBSERVATION.",
+    "Failed and contradicting replications are preserved in the hash-chained bundle, never discarded; retracting one of two confirmations drops the status back to the ceiling.",
+    "A REPLICATED_ANOMALY is still not new physics and there is no PHRYLL_DETECTED state (refuse_residual_as_new_physics, refuse_phryll_detected).",
+    "No physical measurement was performed; measured_here is nothing and PHYSICAL_VALIDATION_NOT_CLAIMED."
+  ],
+  "reopening_test": "Reopen a REPLICATED_ANOMALY if any contributing replication is retracted, found non-independent (a shared operator, apparatus, or site), or found to have skipped the ordinary-explanation firewall, dropping the mutually independent confirming count below 2. Reopen a residual toward promotion ONLY via at least 2 mutually independent replications — distinct operator AND apparatus AND site, distinct from the origin and from each other — each following the frozen protocol hash, producing a residual that exceeds its own error budget, and surviving the full firewall. A same-lab re-run or a reanalysis of the same data cannot reopen it, and it is never new physics. A physical replication is reopened only when a built, calibrated apparatus at a distinct site, operated by a distinct operator, produces a captured raw artifact with a clock and environment binding and an uncertainty budget.",
+  "acceptance_checklist": [
+    "Focused tests pass (2 mutually independent firewall-surviving confirmations promote a single-lab UNEXPLAINED_INSTRUMENT_RESIDUAL to REPLICATED_ANOMALY): PASS",
+    "Negative and refusal paths pass (single lab stays at ceiling; same-lab re-run not independent; reanalysis is not replication; skipped-firewall confirmation rejected; wrong protocol does not count; phryll/new-physics refused): PASS",
+    "Package/source-root parity: module imports as r15.replication; reuses only r13.serialize and r15.claims; no sibling r15 phase module imported: PASS",
+    "Privacy scan: synthetic fixtures only, no private inputs, DO_NOT_COMMIT never read: PASS",
+    "The replication bundle is a tamper-evident hash chain (r13.serialize): mutating any past record breaks verification downstream: PASS",
+    "This receipt conforms to phase_receipt.schema.json (validated with jsonschema): PASS",
+    "Determinism: the same receipts yield a byte-identical bundle and an identical verdict; the confirmation count is order-independent: PASS",
+    "Promotion versioned: REPLICATION_VERSION stamped on every verdict: PASS"
+  ],
+  "claims": [
+    {
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "statement": "An independent-replication receipting layer: typed replication receipts (originating and replicating lab identity across the operator/apparatus/site independence axes, the frozen protocol hash followed, the replica's own residual and error budget, its ordinary-explanation firewall pass, and its CONFIRMS/FAILS_TO_CONFIRM/CONTRADICTS outcome), assembled into a hash-chained blinded replication bundle that promotes a single-lab UNEXPLAINED_INSTRUMENT_RESIDUAL to a REPLICATED_ANOMALY only with at least two mutually independent firewall-surviving confirmations.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    }
+  ],
+  "claim_cap": "SYNTHETIC_OBSERVATION",
+  "verdict": "REPLICATION_RECEIPTS_TYPED_CEILING_AT_UNEXPLAINED_RESIDUAL",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

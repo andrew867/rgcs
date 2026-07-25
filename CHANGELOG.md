@@ -3,6 +3,27 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [8.0.0] - 2026-07-25
+
+R15. A new r15 package turning the R13 architecture into an instrument-ready,
+calibration-bound, uncertainty-aware experimental platform: 36 phases across 8
+tranches (instrument/specimen/execution/evidence authorities, six cross-domain
+measurement lanes, a statistical firewall, hardware automation, and
+publication/release), 33 modules, 11 JSON schemas, and 36 schema-conformant
+terminal receipts (docs/v8/receipts/). Every hardware-facing lane ships a
+REAL/REPLAY/SYNTHETIC/FAULT_INJECTION interface, an error budget, tests, and a
+protocol; only physical acquisition is blocked (no-purchase rule). The evidence
+ladder caps any observation missing a binding below a physical measurement; the
+strongest unreplicated residual is UNEXPLAINED_INSTRUMENT_RESIDUAL and there is
+no PHRYLL_DETECTED state. Additive; no prior work reset, no public history
+rewritten. PHYSICAL_VALIDATION_NOT_CLAIMED.
+
+Final verdict:
+R15_GREEN_EXPERIMENTAL_INFRASTRUCTURE_READY_NO_PHYSICAL_CLAIMS_ADVANCED.
+
+Tests: 6533 passing (1 archived-environment byte test deselected by policy
+D-V3-04).
+
 ## [7.0.0] - 2026-07-24
 
 R13. A new r13 package executing the full 48-phase discovery-and-experiment

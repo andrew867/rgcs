@@ -1,0 +1,73 @@
+{
+  "phase_id": "P09",
+  "status": "COMPLETE",
+  "inputs": [
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T3_P09_BLIND_OPERATOR_MODE.md",
+    "r15/claims.py",
+    "r13/preregister.py (blind_labels, unblind, Blinding, seal, EXAMPLE_PREREG)",
+    "r13/holdout.py (commit/blind/unblind discipline reused as reference)",
+    "r13/serialize.py (content_hash for the data lock)"
+  ],
+  "outputs": [
+    "r15/blinding.py",
+    "tests/v8/test_blinding.py",
+    "docs/v8/R15_BLINDING_POLICY.md",
+    "docs/v8/receipts/P09.json"
+  ],
+  "tests": [
+    "tests/v8/test_blinding.py::test_operator_packet_contains_no_assignment",
+    "tests/v8/test_blinding.py::test_ui_payload_is_free_of_assignment",
+    "tests/v8/test_blinding.py::test_blinding_hides_assignment_property",
+    "tests/v8/test_blinding.py::test_authorized_unblind_after_lock_reveals_labels",
+    "tests/v8/test_blinding.py::test_unblind_requires_the_sealed_commitment",
+    "tests/v8/test_blinding.py::test_unblinder_role_is_authorized",
+    "tests/v8/test_blinding.py::test_unblind_before_lock_is_refused",
+    "tests/v8/test_blinding.py::test_refuse_unblind_before_lock_direct",
+    "tests/v8/test_blinding.py::test_tampered_commitment_is_rejected",
+    "tests/v8/test_blinding.py::test_wrong_commitment_on_raw_unblind_rejected",
+    "tests/v8/test_blinding.py::test_empty_commitment_rejected",
+    "tests/v8/test_blinding.py::test_unauthorized_roles_cannot_unblind",
+    "tests/v8/test_blinding.py::test_only_custodian_and_unblinder_are_authorized",
+    "tests/v8/test_blinding.py::test_emergency_unblind_is_logged_and_downgrades_evidence",
+    "tests/v8/test_blinding.py::test_emergency_unblind_needs_authority",
+    "tests/v8/test_blinding.py::test_accidental_disclosure_is_logged_and_downgrades",
+    "tests/v8/test_blinding.py::test_exploratory_cannot_be_relabelled_confirmatory",
+    "tests/v8/test_blinding.py::test_confirmatory_can_be_downgraded_to_exploratory",
+    "tests/v8/test_blinding.py::test_refuse_relabel_confirmatory_direct",
+    "tests/v8/test_blinding.py::test_codes_are_deterministic",
+    "tests/v8/test_blinding.py::test_data_lock_is_deterministic_and_content_bound",
+    "tests/v8/test_blinding.py::test_report_is_deterministic_and_claims_nothing",
+    "tests/v8/test_blinding.py::test_report_uses_only_r13_and_r15_claims_no_sibling_phases"
+  ],
+  "negative_results": [
+    "Unblinding before the acquired data are locked is refused (peeking): refuse_unblind_before_lock raises.",
+    "A wrong or tampered sealed commitment reveals nothing: unblind re-raises the commitment mismatch as BlindingError.",
+    "An analyst, operator, or auditor has no unblinding authority: refuse_unauthorized_unblind raises for any role outside {CUSTODIAN, UNBLINDER}.",
+    "An exploratory run cannot be relabelled confirmatory after the fact: refuse_relabel_confirmatory raises.",
+    "A broken blind (accidental disclosure or emergency unblind) downgrades the affected run's evidence from E6 blinded support to the E1 exploratory floor.",
+    "Nothing is measured: every label, facet, and dataset is a synthetic fixture; no physical validation is claimed and there is no PHRYLL_DETECTED state."
+  ],
+  "reopening_test": "This phase reopens if an operator packet or UI payload contains a real assignment value; if an unblind succeeds without an authorized role, a locked dataset, and the exact sealed commitment; if a broken blind is not logged or does not downgrade the affected run's evidence; or if an exploratory run can be relabelled confirmatory.",
+  "acceptance_checklist": [
+    "r15/blinding.py implements OPERATOR/CUSTODIAN/ANALYST/AUDITOR/UNBLINDER roles, masked run packets and UI payloads, a lock-gated unblind, accidental-disclosure and emergency-unblind logging with evidence downgrade, and exploratory/confirmatory separation.",
+    "Reuses r13.preregister, r13.holdout, r13.serialize and r15.claims; no sibling R15 phase module is imported.",
+    "Operator payload contains no assignment (required test passes).",
+    "Analyst cannot unblind without authority (required test passes).",
+    "Emergency unblinding is logged and downgrades evidence (required test passes).",
+    "Exploratory runs cannot be relabelled confirmatory (required test passes).",
+    "Focused, negative, and determinism tests pass: tests/v8/test_blinding.py, 25 tests green.",
+    "Receipt conforms to phase_receipt.schema.json (validated with jsonschema); privacy scan clean."
+  ],
+  "claims": [
+    {
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+      "verdict": "BLIND_OPERATOR_MODE_ENFORCED",
+      "claim_cap": "The strongest class this phase produces is SOFTWARE_IMPLEMENTED. Blinding is a statement about what the operator can see and when the blind may be lifted; it measures nothing and claims no physical validation."
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

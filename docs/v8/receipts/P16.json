@@ -1,0 +1,110 @@
+{
+  "phase_id": "P16",
+  "status": "COMPLETE",
+  "inputs": [
+    "r15/claims.py (ClaimClass, EvidenceLevel, MEASUREMENT_CLASSES, refuse_synthetic_as_physical)",
+    "r13/daq.py (cross_correlation_lag, reused for sensor-lag estimation)",
+    "r13/crystalframe.py (QUARTZ_A_ANGSTROM, QUARTZ_C_ANGSTROM, LatticeFrame; quartz thermal expansion as literature)",
+    "r11/detectors.py (select_detectors, Observable.STRAIN; thermal-expansion artifact principle)",
+    "r15/schemas/observation_record.schema.json",
+    "r15/schemas/error_budget.schema.json",
+    "r15/schemas/phase_receipt.schema.json",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T5_P16_THERMAL_MEASUREMENT_LANE.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/*.md"
+  ],
+  "outputs": [
+    "r15/thermal.py",
+    "tests/v8/test_thermal.py",
+    "docs/v8/R15_THERMAL_LANE.md",
+    "docs/v8/receipts/P16.json"
+  ],
+  "tests": [
+    "test_thermistor_beta_model_returns_reference_at_r0",
+    "test_rtd_callendar_model_inverts_resistance",
+    "test_thermocouple_seebeck_model_uses_reference_junction",
+    "test_a_nonpositive_thermistor_resistance_is_refused",
+    "test_sensor_is_bound_to_a_location_and_a_response_time",
+    "test_a_sensor_without_a_location_is_refused",
+    "test_a_manual_sensor_is_typed_as_a_source_claim",
+    "test_planted_thermal_coefficient_of_frequency_is_recovered (POWER)",
+    "test_planted_ambient_drift_rate_is_recovered (POWER)",
+    "test_a_quadratic_tcf_term_is_recovered_too",
+    "test_a_pure_delay_is_recovered_exactly (sensor lag estimated)",
+    "test_first_order_response_produces_a_lag_that_grows_with_tau (sensor lag estimated)",
+    "test_mismatched_lengths_refused_when_estimating_lag",
+    "test_self_heating_offset_is_corrected",
+    "test_self_heating_as_specimen_output_is_refused (self-heating is not specimen output)",
+    "test_injected_self_heating_raises_the_trace_but_not_the_ambient (self-heating is not specimen output)",
+    "test_thermal_frequency_shift_matches_the_tcf_model",
+    "test_thermal_phase_shift_scales_with_expansion_and_temperature",
+    "test_expansion_frequency_coefficient_reads_crystalframe_quartz",
+    "test_thermal_drift_read_as_a_signal_is_refused (KNOWN_ORDINARY_EFFECT, not signal)",
+    "test_a_temperature_driven_shift_is_a_known_ordinary_effect",
+    "test_real_device_acquires_nothing (REAL acquires nothing, PREREGISTERED_NOT_RUN)",
+    "test_replay_device_reads_back_the_recorded_trace_byte_for_byte",
+    "test_replay_cannot_exceed_the_recorded_length",
+    "test_four_modes_are_distinct",
+    "test_every_fault_mode_alters_the_trace[CLIPPING|DRIFT|SATURATION|PACKET_LOSS|MISSING_SAMPLES|SELF_HEATING]",
+    "test_fault_injection_needs_at_least_one_fault",
+    "test_synthetic_acquisition_is_deterministic_under_a_seed (determinism)",
+    "test_fault_injection_is_deterministic_under_a_seed (determinism)",
+    "test_error_budget_combines_in_quadrature",
+    "test_duplicate_budget_component_is_refused",
+    "test_default_thermal_budget_conforms_to_schema (error_budget.schema.json)",
+    "test_within_budget_residual_is_not_anomalous",
+    "test_thermal_observation_record_conforms_to_schema (observation_record.schema.json)",
+    "test_synthetic_thermal_as_measured_is_refused",
+    "test_manual_note_as_sensor_is_refused",
+    "test_acquisition_cannot_be_a_measurement_class",
+    "test_every_forbidden_promotion_is_registered_and_raises",
+    "test_real_mode_is_preregistered_not_run",
+    "test_report_claims_nothing",
+    "45 tests total, all passing (6 parametrized fault-mode cases counted individually)"
+  ],
+  "negative_results": [
+    "REAL_DEVICE acquires NOTHING: RealThermalDevice.acquire raises NoThermalHardwareError and the physical run is PREREGISTERED_NOT_RUN; no thermistor, RTD, thermocouple, IR camera, oven or reference bath was operated.",
+    "A temperature-induced frequency or phase shift is a KNOWN_ORDINARY_EFFECT (the thermal coefficient of frequency), not a signal; refuse_thermal_drift_as_signal raises.",
+    "Sensor self-heating is a sensor artifact (dT = R_theta * P), never the specimen's output; refuse_self_heating_as_specimen raises and an injected self-heating fault shifts the indicated trace without changing the ambient.",
+    "All six fault modes (clipping, drift, saturation, packet loss, missing samples, self-heating) demonstrably alter the trace.",
+    "Synthetic thermal data is a SYNTHETIC_OBSERVATION, not a measurement; a manual note is a SOURCE_CLAIM, not a sensor reading; both promotions are refused.",
+    "An acquisition tagged with a measurement claim class is refused via the governance core (refuse_synthetic_as_physical).",
+    "No physical measurement was performed; measured_here is nothing and PHYSICAL_VALIDATION_NOT_CLAIMED."
+  ],
+  "reopening_test": "Reopen the thermal lane if: a REAL_DEVICE read returns samples instead of raising NoThermalHardwareError / PREREGISTERED_NOT_RUN; a planted thermal coefficient of frequency or ambient drift rate is not recovered by the fits; a sensor lag is not recovered by cross-correlation; sensor self-heating is ever read as specimen output; a temperature-driven frequency or phase shift is classified as anything other than a KNOWN_ORDINARY_EFFECT; or any synthetic/replay reading is promoted to a PHYSICAL_MEASUREMENT. The physical thermal run is reopened only by a built, calibrated thermometer on a real specimen with an immutable raw artifact, a clock binding, an environment log, and an uncertainty budget - none of which exists in this repository.",
+  "acceptance_checklist": [
+    "Focused tests pass (transducer conversion, planted TCf and drift recovered, sensor lag estimated, self-heating not specimen output): PASS",
+    "Four device modes kept distinct; REAL acquires nothing and is PREREGISTERED_NOT_RUN; all fault modes exercised: PASS",
+    "Negative and refusal paths pass (thermal drift not a signal; self-heating not specimen; synthetic not measured; manual not sensor): PASS",
+    "Package/source-root parity: module imports as r15.thermal; reuses r15.claims + r13.daq + r13.crystalframe + r11.detectors; no sibling R15 phase import: PASS",
+    "Privacy scan: synthetic fixtures only, no private inputs, DO_NOT_COMMIT never read: PASS",
+    "Thermal error budget conforms to error_budget.schema.json (validated with jsonschema): PASS",
+    "Thermal observation conforms to observation_record.schema.json (validated with jsonschema): PASS",
+    "This receipt conforms to phase_receipt.schema.json (validated with jsonschema): PASS",
+    "Determinism: same seed and clock yield an identical trace (byte-for-byte hash): PASS"
+  ],
+  "claims": [
+    {
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "statement": "A thermal measurement lane that converts thermistor/RTD/thermocouple/IR/manual/synthetic inputs to temperature, binds sensors to a location and response time, corrects self-heating and ambient drift, and explains frequency/phase drift via the thermal coefficient of frequency and quartz thermal expansion, across four distinct device modes.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    },
+    {
+      "claim_class": "SYNTHETIC_OBSERVATION",
+      "statement": "Deterministic synthetic temperature (and co-drifting frequency) time-series with a planted thermal-drift coefficient and thermal coefficient of frequency that the fits recover.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    },
+    {
+      "claim_class": "KNOWN_ORDINARY_EFFECT",
+      "statement": "A temperature-induced frequency or phase shift is an ordinary, expected effect (the thermal coefficient of frequency), refused as a signal.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    }
+  ],
+  "claim_cap": "SYNTHETIC_OBSERVATION",
+  "verdict": "R15_THERMAL_LANE_SYNTHETIC_NO_MEASUREMENT",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

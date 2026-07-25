@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "budget_id",
+    "quantity",
+    "components",
+    "combination_method",
+    "combined_uncertainty",
+    "coverage_factor"
+  ],
+  "properties": {
+    "budget_id": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "string"
+    },
+    "components": {
+      "type": "array"
+    },
+    "combination_method": {
+      "type": "string"
+    },
+    "combined_uncertainty": {
+      "type": "number"
+    },
+    "coverage_factor": {
+      "type": "number"
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "phase_id": "P08",
+  "status": "COMPLETE",
+  "inputs": [
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T3_P08_RANDOMIZATION_ENGINE.md",
+    "r15/claims.py",
+    "r13/holdout.py",
+    "r13/serialize.py",
+    "r15/schemas/phase_receipt.schema.json",
+    "r15/schemas/experiment_run.schema.json"
+  ],
+  "outputs": [
+    "r15/randomization.py",
+    "tests/v8/test_randomization.py",
+    "docs/v8/R15_RANDOMIZATION_METHODS.md",
+    "docs/v8/receipts/P08.json"
+  ],
+  "tests": [
+    "tests/v8/test_randomization.py::test_same_seed_reproduces_the_same_order",
+    "tests/v8/test_randomization.py::test_different_seed_generally_gives_a_different_order",
+    "tests/v8/test_randomization.py::test_randomize_is_a_permutation",
+    "tests/v8/test_randomization.py::test_per_factor_orders_are_reproducible_and_independent",
+    "tests/v8/test_randomization.py::test_full_plan_reproduces_from_one_master_seed",
+    "tests/v8/test_randomization.py::test_random_blocks_are_balanced",
+    "tests/v8/test_randomization.py::test_latin_square_is_balanced",
+    "tests/v8/test_randomization.py::test_latin_square_rejects_duplicate_symbols",
+    "tests/v8/test_randomization.py::test_a_non_latin_grid_fails_the_check",
+    "tests/v8/test_randomization.py::test_manifest_seals_and_verifies_its_own_schedule",
+    "tests/v8/test_randomization.py::test_a_swapped_schedule_fails_the_commitment",
+    "tests/v8/test_randomization.py::test_design_hash_changes_with_the_seed",
+    "tests/v8/test_randomization.py::test_resealing_is_refused",
+    "tests/v8/test_randomization.py::test_reading_the_schedule_before_the_seal_is_refused",
+    "tests/v8/test_randomization.py::test_post_commit_reorder_is_refused",
+    "tests/v8/test_randomization.py::test_reorder_before_seal_is_allowed",
+    "tests/v8/test_randomization.py::test_unblinding_invalidates_confirmatory_status",
+    "tests/v8/test_randomization.py::test_analysis_status_tracks_seal_and_blind",
+    "tests/v8/test_randomization.py::test_empty_condition_set_is_refused",
+    "tests/v8/test_randomization.py::test_restart_derives_a_new_seed_and_logs_a_deviation",
+    "tests/v8/test_randomization.py::test_restart_is_deterministic",
+    "tests/v8/test_randomization.py::test_recorded_deviations_survive",
+    "tests/v8/test_randomization.py::test_report_claims_nothing_and_is_consistent",
+    "tests/v8/test_randomization.py::test_report_claim_class_is_a_software_class_not_a_measurement"
+  ],
+  "negative_results": [
+    "A schedule read before the manifest is sealed is refused (refuse_read_before_seal): premature access to the assignment is detected and blocked.",
+    "A reorder of the schedule after the commit is refused (refuse_post_commit_reorder): post-hoc cherry-picking of run order is blocked.",
+    "A swapped or altered schedule fails its commitment (verify returns False), while the true schedule reproduces it.",
+    "Re-sealing an already-sealed manifest is refused, so a schedule cannot be swapped and re-committed.",
+    "A confirmatory claim after unblinding is refused (refuse_confirmatory_after_unblind); analysis_status collapses to EXPLORATORY_ONLY once the assignment is seen.",
+    "Empty condition sets and duplicate Latin-square symbols are refused; a non-Latin grid fails is_latin_square.",
+    "No physical measurement, acquisition, or run is performed or claimed; the module tops out at SOFTWARE_IMPLEMENTED, a non-measurement class."
+  ],
+  "reopening_test": "Regenerate any sealed schedule from its committed seed and design hash and confirm commit_schedule reproduces the stored commitment; then alter one element of the schedule and confirm RandomizationManifest.verify returns False. If a regenerated true schedule fails to match its commitment, or an altered schedule matches, or refuse_read_before_seal / refuse_post_commit_reorder stops raising, reopen the phase. Run: pytest tests/v8/test_randomization.py -q.",
+  "acceptance_checklist": [
+    "Focused tests pass: 24 passed in tests/v8/test_randomization.py.",
+    "randomize(conditions, seed) is reproducible: same seed => identical order; different seed => different order.",
+    "Balanced designs verified: random_blocks balanced (each condition once per block); latin_square valid (each symbol once per row and column).",
+    "Schedule is pre-committed: RandomizationManifest.seal() takes a SHA-256 commitment over seed + design hash + schedule; the committed seed plus design hash makes the assignment tamper-evident.",
+    "Premature access detected: refuse_read_before_seal blocks reading the assignment before the seal.",
+    "Post-hoc reordering refused: refuse_post_commit_reorder blocks any reorder after commit.",
+    "Unblinding invalidates confirmatory status: refuse_confirmatory_after_unblind raises; analysis_status returns EXPLORATORY_ONLY.",
+    "Restart and deviation policy: restart derives a deterministic new seed and logs a Deviation; deviations are recorded and never dropped.",
+    "Deterministic and clock-free: numpy default_rng(seed) and derived sub-seeds only; no wall-clock reads.",
+    "Reuses r13.serialize (canonical hash) and r15.claims; no sibling r15 phase module hard-imported; no duplicate truth system.",
+    "randomization_report() carries claim_class, measured_here='nothing', physical_validation, and verdict.",
+    "Privacy scan clean: synthetic fixtures only; no private inputs read; the pack DO_NOT_COMMIT directory was not accessed.",
+    "Receipt validated against r15/schemas/phase_receipt.schema.json with jsonschema."
+  ],
+  "claims": [
+    {
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "statement": "A pre-committed, reproducible, balanced randomization engine for experiment order and condition assignment was implemented.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+      "evidence_level": "E1",
+      "claim_cap": "MODEL_PREDICTION",
+      "verdict": "RANDOMIZATION_PRECOMMITTED_REPRODUCIBLE_BALANCED"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

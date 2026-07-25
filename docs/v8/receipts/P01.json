@@ -1,0 +1,65 @@
+{
+  "phase_id": "P01",
+  "status": "COMPLETE",
+  "inputs": [
+    "r15/claims.py",
+    "r15/schemas/instrument_record.schema.json",
+    "r15/schemas/phase_receipt.schema.json",
+    "r11/detectors.py",
+    "r13/apparatus.py",
+    "r13/qcmstack.py",
+    "r10/received.py"
+  ],
+  "outputs": [
+    "r15/instruments.py",
+    "r15/synthetic_instruments.py",
+    "tests/v8/test_instruments.py",
+    "docs/v8/R15_INSTRUMENT_REGISTRY.md",
+    "docs/v8/receipts/P01.json"
+  ],
+  "tests": [
+    "tests/v8/test_instruments.py (45 tests, all pass)"
+  ],
+  "negative_results": [
+    "expired calibration refused before any sample is taken",
+    "missing calibration refused before acquisition",
+    "unsupported capability refused before acquisition",
+    "quarantined instrument refused acquisition",
+    "REAL_DEVICE acquires nothing without hardware: NoHardwareError, blocked not faked",
+    "an Acquisition cannot be constructed in any measurement class"
+  ],
+  "reopening_test": "re-run tests/v8/test_instruments.py; reopen if a synthetic device stops being deterministic under its seed, if a fault mode stops injecting, if a REAL_DEVICE acquisition stops being blocked, or if any calibration/capability/quarantine refusal stops firing before acquisition",
+  "acceptance_checklist": [
+    "r15/instruments.py: typed InstrumentRecord matches instrument_record.schema.json",
+    "one interface with four distinct modes: REAL_DEVICE, REPLAY_DEVICE, SYNTHETIC_DEVICE, FAULT_INJECTION_DEVICE",
+    "REAL_DEVICE raises typed NoHardwareError and offers a BLOCKED receipt; acquires nothing",
+    "InstrumentRegistry refuses expired calibration and unsupported capability before acquisition; supports register/lookup/quarantine",
+    "r15/synthetic_instruments.py: nine deterministic drivers (source, digitizer, impedance, microphone, accelerometer, photodiode, thermal, magnetic, clock) under numpy.random.default_rng(seed)",
+    "fault injection covers clipping, drift, saturation, packet loss, missing samples",
+    "imports r15.claims; measured_here=nothing; claim ceiling SYNTHETIC_OBSERVATION; no promotion to PHYSICAL_MEASUREMENT",
+    "tests/v8/test_instruments.py passes (45 tests)",
+    "docs/v8/R15_INSTRUMENT_REGISTRY.md describes registry, four modes, drivers, refusal paths",
+    "receipt validates against r15/schemas/phase_receipt.schema.json"
+  ],
+  "claims": [
+    {
+      "statement": "The instrument registry provides a typed InstrumentRecord and one acquisition interface behind four distinct modes with register/lookup/quarantine and pre-acquisition refusals.",
+      "claim_class": "SOFTWARE_IMPLEMENTED"
+    },
+    {
+      "statement": "Nine synthetic drivers produce deterministic waveforms under a numpy seed; same seed yields identical output and different seed yields different output.",
+      "claim_class": "SOFTWARE_IMPLEMENTED"
+    },
+    {
+      "statement": "Each synthetic or replay reading is a SYNTHETIC_OBSERVATION generated from a known model or a recorded synthetic artifact; nothing is transduced from a specimen.",
+      "claim_class": "SYNTHETIC_OBSERVATION"
+    },
+    {
+      "statement": "Fault injection deterministically applies clipping, drift, saturation, packet loss and missing samples to synthetic readings.",
+      "claim_class": "SYNTHETIC_OBSERVATION"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

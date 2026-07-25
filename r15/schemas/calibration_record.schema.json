@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "calibration_id",
+    "instrument_id",
+    "method",
+    "performed_at",
+    "coefficients",
+    "uncertainty",
+    "raw_artifact_hashes",
+    "status"
+  ],
+  "properties": {
+    "calibration_id": {
+      "type": "string"
+    },
+    "instrument_id": {
+      "type": "string"
+    },
+    "method": {
+      "type": "string"
+    },
+    "performed_at": {
+      "type": "string"
+    },
+    "coefficients": {
+      "type": "object"
+    },
+    "uncertainty": {
+      "type": "object"
+    },
+    "raw_artifact_hashes": {
+      "type": "array"
+    },
+    "status": {
+      "enum": [
+        "VALID",
+        "EXPIRED",
+        "SUPERSEDED",
+        "REJECTED"
+      ]
+    }
+  }
+}

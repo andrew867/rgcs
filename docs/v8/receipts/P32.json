@@ -1,0 +1,40 @@
+{
+  "phase_id": "P32",
+  "status": "COMPLETE",
+  "inputs": [
+    "Gate Zero",
+    "r15.claims",
+    "phase reports"
+  ],
+  "outputs": [
+    "r15/figures.py",
+    "tests/v8/test_figures.py",
+    "docs/v8/R15_FIGURE_PACKAGE.md",
+    "docs/v8/receipts/P32.json"
+  ],
+  "tests": [
+    "tests/v8/test_figures.py (4 passed)"
+  ],
+  "negative_results": [
+    "A figure with no data provenance is refused; a caption not stating the data are synthetic is refused.",
+    "No figure depicts a physical measurement."
+  ],
+  "reopening_test": "Re-run tests/v8/test_figures.py; reopen if a figure without provenance or a non-synthetic caption is accepted.",
+  "acceptance_checklist": [
+    "implementation complete",
+    "focused tests pass",
+    "package/source-root parity",
+    "privacy clean",
+    "synthetic/physical distinction preserved",
+    "claim cap respected"
+  ],
+  "claims": [
+    {
+      "statement": "Figure descriptors are built from synthetic data, each with traceable provenance and a synthetic-data caption.",
+      "claim_class": "SOFTWARE_IMPLEMENTED"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

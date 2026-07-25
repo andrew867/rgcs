@@ -1,0 +1,11 @@
+closure_id,R13_obligation,R15_phases,status,evidence
+R13-C01,Claim and bridge discipline,P11;P12;P34,CLOSED,docs/v8/receipts/P11.json; docs/v8/receipts/P12.json; docs/v8/receipts/P34.json
+R13-C02,Source and provenance registry,P02;P10,CLOSED,docs/v8/receipts/P02.json; docs/v8/receipts/P10.json
+R13-C03,Quartz material and geometry,P04-P06,CLOSED,docs/v8/receipts/P04-P06.json
+R13-C04,Directional calculations,P13;P14;P18,CLOSED,docs/v8/receipts/P13.json; docs/v8/receipts/P14.json; docs/v8/receipts/P18.json
+R13-C05,Transform and phase architecture,P07;P25-P29,CLOSED,docs/v8/receipts/P07.json; docs/v8/receipts/P25-P29.json
+R13-C06,Coordinate privacy,P10;P19-P24;P34,CLOSED,docs/v8/receipts/P10.json; docs/v8/receipts/P19-P24.json; docs/v8/receipts/P34.json
+R13-C07,Preregistered experiments,P07-P09;P19-P24,CLOSED,docs/v8/receipts/P07-P09.json; docs/v8/receipts/P19-P24.json
+R13-C08,Neutron and beamtime blockers,P35,CLOSED,docs/v8/receipts/P35.json
+R13-C09,Physical build blocker,P30;P35,CLOSED,docs/v8/receipts/P30.json; docs/v8/receipts/P35.json
+R13-C10,Findings and non-claims,P31-P36,CLOSED,docs/v8/receipts/P31-P36.json

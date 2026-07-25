@@ -1,0 +1,96 @@
+{
+  "phase_id": "P04",
+  "status": "COMPLETE",
+  "title": "Crystal and Specimen Registry",
+  "tranche": "T2",
+  "inputs": [
+    "r15/schemas/specimen_record.schema.json",
+    "r15/schemas/phase_receipt.schema.json",
+    "r15/claims.py",
+    "r13/crystalframe.py",
+    "r13/atomistic.py",
+    "r10/microcrystal.py"
+  ],
+  "outputs": [
+    "r15/specimens.py",
+    "tests/v8/test_specimens.py",
+    "docs/v8/R15_SPECIMEN_REGISTRY.md",
+    "docs/v8/receipts/P04.json"
+  ],
+  "tests": [
+    "tests/v8/test_specimens.py::test_unknown_remains_unknown",
+    "tests/v8/test_specimens.py::test_nominal_cannot_masquerade_as_measured",
+    "tests/v8/test_specimens.py::test_only_measured_carries_uncertainty",
+    "tests/v8/test_specimens.py::test_finite_value_required_for_known_class",
+    "tests/v8/test_specimens.py::test_registered_is_not_measured",
+    "tests/v8/test_specimens.py::test_refuse_specimen_as_measured_always_raises",
+    "tests/v8/test_specimens.py::test_promotion_without_artifacts_is_refused",
+    "tests/v8/test_specimens.py::test_real_acquisition_is_blocked",
+    "tests/v8/test_specimens.py::test_missing_dimension_refuses_promotion",
+    "tests/v8/test_specimens.py::test_synthetic_promotion_stays_non_physical",
+    "tests/v8/test_specimens.py::test_synthetic_specimen_is_visibly_synthetic",
+    "tests/v8/test_specimens.py::test_real_material_specimen_is_not_flagged_synthetic",
+    "tests/v8/test_specimens.py::test_damage_creates_a_new_state_and_revision",
+    "tests/v8/test_specimens.py::test_quarantine_and_retire_and_terminal",
+    "tests/v8/test_specimens.py::test_revision_history_preserves_prior_records",
+    "tests/v8/test_specimens.py::test_duplicate_registration_refused",
+    "tests/v8/test_specimens.py::test_content_hash_is_deterministic",
+    "tests/v8/test_specimens.py::test_hash_tamper_is_detected",
+    "tests/v8/test_specimens.py::test_hash_changes_when_any_field_changes",
+    "tests/v8/test_specimens.py::test_missing_hash_fails_verification",
+    "tests/v8/test_specimens.py::test_quartz_orientation_reuses_lattice_frame",
+    "tests/v8/test_specimens.py::test_zero_plane_is_refused",
+    "tests/v8/test_specimens.py::test_amorphous_orientation_has_no_lattice_frame",
+    "tests/v8/test_specimens.py::test_density_is_inferred_not_measured",
+    "tests/v8/test_specimens.py::test_density_unknown_when_inputs_unknown",
+    "tests/v8/test_specimens.py::test_record_conforms_to_specimen_schema",
+    "tests/v8/test_specimens.py::test_report_claims_nothing_measured",
+    "tests/v8/test_specimens.py::test_report_is_deterministic",
+    "tests/v8/test_specimens.py::test_specimen_id_is_deterministic_and_immutable"
+  ],
+  "test_summary": "29 passed",
+  "negative_results": [
+    "A registered specimen (metadata only) is never a physical measurement; refuse_specimen_as_measured raises unconditionally on a described specimen.",
+    "A NOMINAL, INFERRED or UNKNOWN quantity cannot be read as measured; require_measured raises for anything but MEASURED.",
+    "An UNKNOWN quantity carries no value and none can be smuggled in.",
+    "promote_to_measured refuses without bound artifacts, refuses a missing dimension, and refuses an unknown mass.",
+    "The REAL acquisition mode is BLOCKED_MISSING_INPUT: no hardware or real specimen exists in this environment, so a real physical measurement is blocked, not produced.",
+    "A content-hash tamper with any field is detected (verify_record returns False); a record without a hash fails verification.",
+    "The (0,0,0) cut plane is refused; an amorphous specimen has no crystallographic lattice frame.",
+    "No specimen record reaches a measurement claim class; the strongest is SYNTHETIC_FIXTURE / SYNTHETIC_OBSERVATION / SOURCE_CLAIM."
+  ],
+  "reopening_test": "Reopen P04 if real physical artifacts and a REAL acquisition path become available (hardware present), so that promote_to_measured must produce a PHYSICAL_MEASUREMENT-class record bound to instrument, calibration, fixture, clock, environment and uncertainty per r15.claims; or if the specimen_record schema gains newly required fields not serialized by SpecimenRecord.to_record().",
+  "acceptance_checklist": [
+    {"item": "r15/specimens.py implemented (typed dataclasses/enums, numpy, hashlib, typed exceptions, deterministic/seeded)", "status": "PASS"},
+    {"item": "tests/v8/test_specimens.py focused + negative + determinism tests green", "status": "PASS"},
+    {"item": "docs/v8/R15_SPECIMEN_REGISTRY.md written", "status": "PASS"},
+    {"item": "Reuses r13.crystalframe for the quartz lattice frame/orientation and r15.claims for the taxonomy; no sibling r15 phase module imported", "status": "PASS"},
+    {"item": "SpecimenRecord.to_record() conforms to r15/schemas/specimen_record.schema.json (validated with jsonschema)", "status": "PASS"},
+    {"item": "Registered vs measured distinguished; refuse_specimen_as_measured present; REGISTERED specimen is SOURCE_CLAIM/SYNTHETIC_FIXTURE, never PHYSICAL_MEASUREMENT", "status": "PASS"},
+    {"item": "REAL/REPLAY/SYNTHETIC/FAULT_INJECTION modes kept distinct; synthetic specimens visibly synthetic", "status": "PASS"},
+    {"item": "Immutable specimen ids + revision history + content hash with tamper detection", "status": "PASS"},
+    {"item": "measured/nominal/inferred/unknown field separation enforced", "status": "PASS"},
+    {"item": "damaged/quarantined/retired states implemented (retired terminal)", "status": "PASS"},
+    {"item": "Report carries claim_class, measured_here='nothing', physical_validation, verdict", "status": "PASS"},
+    {"item": "Receipt conforms to phase_receipt.schema.json (validated with jsonschema)", "status": "PASS"}
+  ],
+  "claims": [
+    {
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "statement": "A typed, immutable, content-hashed specimen registry with revision history and a registered/measured/damaged/quarantined/retired lifecycle was implemented in software.",
+      "evidence": "E1"
+    },
+    {
+      "claim_class": "SOURCE_CLAIM",
+      "statement": "The alpha-quartz lattice constants a~4.913 A and c~5.405 A and the P3_121/P3_221 space-group pair are CONVENTIONAL_LITERATURE values reused from r13.crystalframe, not measured here.",
+      "evidence": "E0"
+    }
+  ],
+  "claim_cap": "MODEL_PREDICTION",
+  "measured_here": "nothing",
+  "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED",
+  "verdict": "SPECIMEN_REGISTRY_TYPED_NO_SPECIMEN_MEASURED",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

@@ -1,0 +1,71 @@
+{
+  "phase_id": "P10",
+  "status": "COMPLETE",
+  "inputs": [
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T4_P10_IMMUTABLE_MEASUREMENT_LEDGER.md",
+    "r13/serialize.py",
+    "r15/claims.py",
+    "r15/schemas/measurement_artifact.schema.json",
+    "r15/schemas/observation_record.schema.json",
+    "r15/schemas/phase_receipt.schema.json"
+  ],
+  "outputs": [
+    "r15/measurement_ledger.py",
+    "tests/v8/test_measurement_ledger.py",
+    "docs/v8/R15_MEASUREMENT_LEDGER.md",
+    "docs/v8/receipts/P10.json"
+  ],
+  "tests": [
+    "tests/v8/test_measurement_ledger.py::test_appends_grow_the_ledger_and_verify",
+    "tests/v8/test_measurement_ledger.py::test_empty_ledger_verifies_trivially",
+    "tests/v8/test_measurement_ledger.py::test_tip_hash_advances_and_links",
+    "tests/v8/test_measurement_ledger.py::test_raw_artifact_is_content_addressed",
+    "tests/v8/test_measurement_ledger.py::test_artifact_manifest_conforms_to_schema_shape",
+    "tests/v8/test_measurement_ledger.py::test_derivation_links_fit_to_exact_source_and_code",
+    "tests/v8/test_measurement_ledger.py::test_mutating_a_past_record_breaks_verification_downstream",
+    "tests/v8/test_measurement_ledger.py::test_raw_artifact_is_immutable_and_rehashes_differently_on_change",
+    "tests/v8/test_measurement_ledger.py::test_immutable_false_is_refused",
+    "tests/v8/test_measurement_ledger.py::test_missing_binding_caps_observation_below_physical",
+    "tests/v8/test_measurement_ledger.py::test_cap_helper_leaves_full_bindings_untouched",
+    "tests/v8/test_measurement_ledger.py::test_ledger_records_only_the_capped_class",
+    "tests/v8/test_measurement_ledger.py::test_external_pointer_verifies_correct_bytes_only",
+    "tests/v8/test_measurement_ledger.py::test_derivation_requires_source_and_software",
+    "tests/v8/test_measurement_ledger.py::test_same_inputs_give_identical_content_addresses",
+    "tests/v8/test_measurement_ledger.py::test_two_ledgers_same_inputs_same_record_hashes",
+    "tests/v8/test_measurement_ledger.py::test_report_measures_nothing_and_detects_tamper",
+    "tests/v8/test_measurement_ledger.py::test_report_epoch_is_passed_in_never_wallclock"
+  ],
+  "negative_results": [
+    "Mutating any past record makes verify_chain return False for that record and every record downstream of it; the tamper is detected, not repaired.",
+    "An observation missing evidence bindings is capped below PHYSICAL_MEASUREMENT (collapses to MODEL_PREDICTION) and below evidence level E4; only the capped class enters the record.",
+    "A raw Artifact is a frozen dataclass: it cannot be mutated in place, immutable=False is refused, and any changed content produces a different SHA-256 address.",
+    "An ExternalArtifactPointer rejects wrong bytes and same-size wrong-hash bytes; an external store is trusted only through a verified hash.",
+    "A Derivation with no source artifact or no software name/version is refused.",
+    "Nothing is measured: measured_here is 'nothing' and PHYSICAL_VALIDATION_NOT_CLAIMED; a matching hash is integrity, not authentication and not physics."
+  ],
+  "reopening_test": "tests/v8/test_measurement_ledger.py::test_mutating_a_past_record_breaks_verification_downstream re-runs the full append/verify/tamper cycle deterministically; re-executing the suite (pytest tests/v8/test_measurement_ledger.py -q) reopens and re-checks the phase.",
+  "acceptance_checklist": [
+    "Focused tests pass (18 passed).",
+    "Content-addressed manifests implemented (Artifact.from_bytes + SHA-256 content_hash).",
+    "RAW, CALIBRATED, FILTERED, FITTED, INTERPRETED artifact stages separated (ArtifactKind).",
+    "Software and parameters recorded for every derivation (Derivation).",
+    "Tamper detection implemented via r13.serialize.verify_chain (reused, not duplicated).",
+    "External large-file stores supported through verified hashes (ExternalArtifactPointer.verify).",
+    "Observations bound to instrument/calibration/specimen/fixture/protocol/clock/environment/uncertainty and capped when incomplete (r15.claims).",
+    "Epochs passed in, never wall-clock; deterministic and seeded.",
+    "Report exposes claim_class, measured_here='nothing', physical_validation, verdict.",
+    "Privacy scan passes: synthetic fixtures only, no private inputs.",
+    "Receipt conforms to phase_receipt.schema.json (validated with jsonschema)."
+  ],
+  "claims": [
+    {
+      "statement": "An append-only, hash-chained measurement ledger with content-addressed immutable artifacts, hash-verified external pointers, recorded derivations, and binding-driven claim capping is implemented and tested.",
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "evidence_level": "E1",
+      "claim_cap": "MODEL_PREDICTION is the software ceiling; observations missing evidence bindings are capped below PHYSICAL_MEASUREMENT and below E4. No physical measurement, device, specimen, or calibration is asserted; measured_here is 'nothing'."
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

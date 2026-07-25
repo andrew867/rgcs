@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "instrument_id",
+    "instrument_type",
+    "mode",
+    "firmware",
+    "clock_source",
+    "capabilities",
+    "uncertainty_model"
+  ],
+  "properties": {
+    "instrument_id": {
+      "type": "string"
+    },
+    "instrument_type": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "REAL_DEVICE",
+        "REPLAY_DEVICE",
+        "SYNTHETIC_DEVICE",
+        "FAULT_INJECTION_DEVICE"
+      ]
+    },
+    "firmware": {
+      "type": "string"
+    },
+    "clock_source": {
+      "type": "string"
+    },
+    "capabilities": {
+      "type": "array"
+    },
+    "uncertainty_model": {
+      "type": "object"
+    },
+    "calibration_ids": {
+      "type": "array"
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}

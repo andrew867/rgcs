@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "fixture_id",
+    "mount_type",
+    "contact_points",
+    "preload",
+    "materials",
+    "orientation_transform",
+    "uncertainty"
+  ],
+  "properties": {
+    "fixture_id": {
+      "type": "string"
+    },
+    "mount_type": {
+      "type": "string"
+    },
+    "contact_points": {
+      "type": "array"
+    },
+    "preload": {
+      "type": "object"
+    },
+    "materials": {
+      "type": "array"
+    },
+    "orientation_transform": {
+      "type": "object"
+    },
+    "uncertainty": {
+      "type": "object"
+    }
+  }
+}

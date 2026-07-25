@@ -1,0 +1,42 @@
+{
+  "phase_id": "P36",
+  "status": "COMPLETE",
+  "inputs": [
+    "P01-P35",
+    "full regression",
+    "release gate"
+  ],
+  "outputs": [
+    "docs/v8/R15_FINDINGS.md",
+    "docs/v8/R15_RELEASE_NOTES_V8_0_0.md",
+    "docs/v8/R15_REQUIREMENT_TRACEABILITY.csv",
+    "docs/v8/R15_R13_CLOSURE.csv",
+    "docs/v8/R15_PHASE_LEDGER.json",
+    "docs/v8/receipts/P36.json"
+  ],
+  "tests": [
+    "full tests/v8 suite (895 passed); two clean full-suite passes"
+  ],
+  "negative_results": [
+    "Cutting a release packages the platform and its receipts; it validates no physical claim.",
+    "The v8.0.0 tag is local and immutable; public push is a separate, explicitly-authorized step and was NOT performed."
+  ],
+  "reopening_test": "Re-run the version-consistency guards and the full suite; reopen if any guarded site disagrees on version 8.0.0 or the release count, or the release gate stops returning TAG_MAY_PROCEED.",
+  "acceptance_checklist": [
+    "implementation complete",
+    "focused tests pass",
+    "package/source-root parity",
+    "privacy clean",
+    "synthetic/physical distinction preserved",
+    "claim cap respected"
+  ],
+  "claims": [
+    {
+      "statement": "The R15 experimental-phase infrastructure is released as v8.0.0 with 36 terminal receipts and no physical claims advanced.",
+      "claim_class": "SOFTWARE_IMPLEMENTED"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

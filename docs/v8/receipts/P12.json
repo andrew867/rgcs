@@ -1,0 +1,78 @@
+{
+  "phase_id": "P12",
+  "status": "COMPLETE",
+  "inputs": [
+    "r15/claims.py (ClaimClass, forbidden promotions, refuse_phryll_detected)",
+    "r15/schemas/residual_record.schema.json",
+    "r15/schemas/phase_receipt.schema.json",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_CLAIM_TAXONOMY.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_EVIDENCE_LADDER.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_ERROR_BUDGET_POLICY.md",
+    "ordinary-explanation attack results (P11 concept) passed in as inputs; P11 not imported"
+  ],
+  "outputs": [
+    "r15/residuals.py",
+    "tests/v8/test_residuals.py",
+    "docs/v8/R15_RESIDUAL_CLASSIFICATION.md",
+    "docs/v8/receipts/P12.json"
+  ],
+  "tests": [
+    "test_within_budget_is_known_ordinary_effect_not_anomalous",
+    "test_residual_below_uncertainty_is_never_anomalous_even_surviving_attacks",
+    "test_a_fired_ordinary_attack_yields_its_cause[KNOWN_ORDINARY_EFFECT|MODEL_ERROR|CALIBRATION_ERROR|FIXTURE_EFFECT]",
+    "test_multiple_fired_attacks_use_deterministic_precedence",
+    "test_missing_calibration_forces_calibration_error_invalid",
+    "test_inadequate_model_forces_model_error",
+    "test_survives_all_and_exceeds_and_unreplicated_is_the_ceiling",
+    "test_ceiling_reopening_test_demands_independent_replication",
+    "test_two_independent_labs_reach_replicated_anomaly",
+    "test_one_lab_repeated_cannot_reach_replicated_anomaly",
+    "test_non_independent_replication_cannot_reach_replicated_anomaly",
+    "test_ceiling_is_not_promoted_to_new_physics",
+    "test_ceiling_is_not_replicated_without_replication",
+    "test_there_is_no_phryll_detected_state",
+    "test_report_claims_nothing",
+    "test_classification_is_versioned",
+    "test_classification_is_deterministic",
+    "test_empty_error_budget_is_refused",
+    "test_unknown_budget_component_is_refused",
+    "test_negative_residual_is_refused",
+    "test_residual_needs_an_observation",
+    "test_attack_cause_must_be_an_ordinary_cause",
+    "test_residual_record_conforms_to_schema",
+    "26 tests total, all passing"
+  ],
+  "negative_results": [
+    "A residual below combined uncertainty is never anomalous; it is a KNOWN_ORDINARY_EFFECT even when it survives every attack.",
+    "Missing or invalid calibration forces CALIBRATION_ERROR (invalid) before any anomaly is considered, regardless of residual size.",
+    "An inadequate model forces MODEL_ERROR.",
+    "The ceiling for an unreplicated residual that survives every ordinary-explanation attack is UNEXPLAINED_INSTRUMENT_RESIDUAL; it is not new physics and not a detection.",
+    "One run, one lab, or non-independent replication cannot reach REPLICATED_ANOMALY (requires >=2 distinct independent, confirming labs).",
+    "refuse_residual_as_new_physics, refuse_unexplained_as_replicated_without_replication, and refuse_phryll_detected all raise; there is no PHRYLL_DETECTED state.",
+    "No physical measurement was performed; measured_here is nothing and PHYSICAL_VALIDATION_NOT_CLAIMED."
+  ],
+  "reopening_test": "Reopen the residual classifier if: a residual below combined uncertainty is ever classified as anomalous; an uncalibrated residual escapes CALIBRATION_ERROR; a residual that survives every attack and exceeds combined uncertainty is classified as anything other than UNEXPLAINED_INSTRUMENT_RESIDUAL when unreplicated; or any single lab / single run reaches REPLICATED_ANOMALY. An UNEXPLAINED_INSTRUMENT_RESIDUAL is reopened only by independent replication in at least 2 distinct laboratories, each confirming the residual survives the full ordinary-explanation battery.",
+  "acceptance_checklist": [
+    "Focused tests pass (within-budget, each ordinary cause, the ceiling): PASS",
+    "Negative and refusal paths pass (no promotion to new physics / replicated anomaly; phryll refused): PASS",
+    "Package/source-root parity: module imports as r15.residuals; reuses only r15.claims; no sibling phase import: PASS",
+    "Privacy scan: synthetic fixtures only, no private inputs, DO_NOT_COMMIT never read: PASS",
+    "ResidualRecord conforms to residual_record.schema.json (validated with jsonschema): PASS",
+    "This receipt conforms to phase_receipt.schema.json (validated with jsonschema): PASS",
+    "Classification changes are versioned (classifier_version carried on every record): PASS",
+    "Determinism: same inputs yield an identical dossier: PASS"
+  ],
+  "claims": [
+    {
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "statement": "A residual classifier that types a residual into exactly one ClaimClass, capping an unreplicated residual at UNEXPLAINED_INSTRUMENT_RESIDUAL.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    }
+  ],
+  "claim_cap": "UNEXPLAINED_INSTRUMENT_RESIDUAL",
+  "verdict": "RESIDUAL_CLASSIFIER_TYPED_CEILING_AT_UNEXPLAINED_RESIDUAL",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

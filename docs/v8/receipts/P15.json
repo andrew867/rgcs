@@ -1,0 +1,92 @@
+{
+  "phase_id": "P15",
+  "status": "COMPLETE",
+  "inputs": [
+    "r15/claims.py (ClaimClass, EvidenceBindings, evidence_cap, refuse_synthetic_as_physical)",
+    "r13/imaging.py (forward_project, reconstruct, reconstruction_error, refuse_reconstruction_as_measured)",
+    "r13/heterodyne.py (tone_amplitude, interferometric/cavity readout)",
+    "r13/sixangle.py (AngleRing planar angular sampling)",
+    "r15/schemas/observation_record.schema.json",
+    "r15/schemas/error_budget.schema.json",
+    "r15/schemas/phase_receipt.schema.json",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T5_P15_OPTICAL_MEASUREMENT_LANE.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_ERROR_BUDGET_POLICY.md",
+    "no physical optical hardware, laser, detector, or specimen (none exists in this repository)"
+  ],
+  "outputs": [
+    "r15/optical.py",
+    "tests/v8/test_optical.py",
+    "docs/v8/R15_OPTICAL_LANE.md",
+    "docs/v8/receipts/P15.json"
+  ],
+  "tests": [
+    "test_power_interferometric_recovers_planted_displacement",
+    "test_power_across_several_planted_displacements",
+    "test_power_photoelastic_recovers_planted_retardation",
+    "test_power_synthetic_device_recovers_displacement_end_to_end",
+    "test_reconstruction_round_trip_recovers_phantom",
+    "test_photodiode_is_phase_blind",
+    "test_refuse_intensity_as_phase_raises",
+    "test_readout_families_are_disjoint",
+    "test_real_device_acquires_nothing",
+    "test_real_device_blocked_receipt_is_preregistered",
+    "test_four_modes_present_and_distinct",
+    "test_replay_reads_back_recorded_trace",
+    "test_every_fault_mode_alters_the_trace[all 7 OpticalFault modes]",
+    "test_fringe_washout_collapses_visibility",
+    "test_speckle_decorrelation_drops_correlation",
+    "test_fault_injection_requires_a_fault",
+    "test_optical_specific_faults_named",
+    "test_dark_and_flat_corrections_are_traceable",
+    "test_reference_and_drift_corrections_are_traceable",
+    "test_flat_correction_rejects_zero_gain",
+    "test_thermal_load_is_a_distinct_budget_component",
+    "test_error_budget_combines_in_quadrature",
+    "test_error_budget_conforms_to_schema",
+    "test_observation_conforms_to_schema",
+    "test_observation_is_bound_and_capped_below_physical",
+    "test_observation_cannot_be_a_measurement_class",
+    "test_refuse_reconstruction_as_measured_raises",
+    "test_refuse_synthetic_as_physical_raises",
+    "test_synthetic_same_seed_identical",
+    "test_synthetic_different_seed_differs",
+    "test_fault_injection_is_deterministic",
+    "test_report_claims_nothing",
+    "test_polarization_rosette_is_synthetic_angular_pattern",
+    "39 tests total, all passing"
+  ],
+  "negative_results": [
+    "A REAL_DEVICE optical acquisition acquires NOTHING: OpticalRealDevice.acquire raises NoOpticalHardwareError and the physical run is PREREGISTERED_NOT_RUN; no laser, interferometer, photodetector, polarizer, or specimen exists here.",
+    "A photodiode is intensity-only and phase-blind: a surface displacement leaves the trace unchanged and is not recoverable from it; refuse_intensity_as_phase raises. Displacement is recoverable only from a phase-sensitive (interferometric or photoelastic) readout.",
+    "Each of the seven fault modes (clipping, drift, saturation, packet loss, missing samples, and the optical-specific fringe wash-out and speckle decorrelation) demonstrably alters the trace; fringe wash-out collapses fringe visibility and speckle decorrelation drops the correlation.",
+    "A reconstruction of a synthetic phantom/fringe is a SYNTHETIC_OBSERVATION, never an image of a real source: refuse_reconstruction_as_measured (delegating to r13.imaging) raises.",
+    "A synthetic observation is capped at evidence level E3 (calibrated self-test); it never reaches E4 (physical measurement) because the specimen, fixture, and raw physical artifact bindings are absent, and OpticalObservation refuses any measurement-class label.",
+    "No physical measurement was performed; measured_here is nothing and PHYSICAL_VALIDATION_NOT_CLAIMED."
+  ],
+  "reopening_test": "Reopen the optical lane if: a REAL_DEVICE acquisition ever returns samples instead of raising NoOpticalHardwareError; a displacement is ever recovered from an intensity-only (photodiode) readout; a synthetic trace or reconstructed fringe is labelled a PHYSICAL_MEASUREMENT or an image of a real source; any synthetic observation reaches evidence level E4 or above; or a fault mode leaves the trace unchanged. The physical optical run is reopened only by a built, calibrated optical bench with a mounted specimen, a raw artifact, a clock binding, and an environment log.",
+  "acceptance_checklist": [
+    "Focused tests pass (POWER: planted displacement/fringe/retardation recovered; reconstruction round trip): PASS",
+    "Negative and refusal paths pass (REAL acquires nothing; every fault mode; intensity-only cannot yield phase; synthetic recon not measured): PASS",
+    "Four modes distinct (REAL_DEVICE, SYNTHETIC_DEVICE, REPLAY_DEVICE, FAULT_INJECTION_DEVICE): PASS",
+    "Package/source-root parity: module imports as r15.optical; reuses only r15.claims + r13 (imaging, heterodyne, sixangle); no sibling r15 phase import: PASS",
+    "Privacy scan: synthetic fixtures only, no private inputs, DO_NOT_COMMIT never read: PASS",
+    "OpticalObservation record conforms to observation_record.schema.json (validated with jsonschema): PASS",
+    "Optical error budget conforms to error_budget.schema.json, thermal load a distinct component, combined in quadrature (validated with jsonschema): PASS",
+    "This receipt conforms to phase_receipt.schema.json (validated with jsonschema): PASS",
+    "Dark/flat/reference/drift corrections are traceable (each records what was removed): PASS",
+    "Determinism: same seed yields an identical trace; different seed differs; fault injection reproducible: PASS"
+  ],
+  "claims": [
+    {
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "statement": "An optical measurement lane (photodiode, interferometric, speckle, photoelastic readout) with four honest device modes, a full optical error budget, traceable dark/flat/reference/drift corrections, and a POWER control that recovers a planted displacement/fringe/retardation from a deterministic synthetic signal.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    }
+  ],
+  "claim_cap": "SYNTHETIC_OBSERVATION",
+  "verdict": "OPTICAL_MEASUREMENT_LANE_SYNTHETIC_NO_HARDWARE",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

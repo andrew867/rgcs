@@ -1,0 +1,40 @@
+{
+  "phase_id": "P31",
+  "status": "COMPLETE",
+  "inputs": [
+    "Gate Zero",
+    "r15.claims",
+    "phase reports"
+  ],
+  "outputs": [
+    "r15/manuscript.py",
+    "tests/v8/test_manuscript.py",
+    "docs/v8/R15_MANUSCRIPT_GENERATOR.md",
+    "docs/v8/receipts/P31.json"
+  ],
+  "tests": [
+    "tests/v8/test_manuscript.py (4 passed)"
+  ],
+  "negative_results": [
+    "Every section carries a claim class; a section claiming a measurement class is refused (ceiling is the software class).",
+    "Results sections state their numbers are synthetic; nothing measured."
+  ],
+  "reopening_test": "Re-run tests/v8/test_manuscript.py; reopen if a manuscript section can carry a measurement claim class or the assembly is non-deterministic.",
+  "acceptance_checklist": [
+    "implementation complete",
+    "focused tests pass",
+    "package/source-root parity",
+    "privacy clean",
+    "synthetic/physical distinction preserved",
+    "claim cap respected"
+  ],
+  "claims": [
+    {
+      "statement": "A manuscript is assembled deterministically from phase reports, every section within the software claim ceiling.",
+      "claim_class": "SOFTWARE_IMPLEMENTED"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

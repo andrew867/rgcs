@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "artifact_id",
+    "run_id",
+    "kind",
+    "media_type",
+    "hash",
+    "bytes",
+    "instrument_id",
+    "calibration_id",
+    "immutable"
+  ],
+  "properties": {
+    "artifact_id": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "media_type": {
+      "type": "string"
+    },
+    "hash": {
+      "type": "string"
+    },
+    "bytes": {
+      "type": "integer"
+    },
+    "instrument_id": {
+      "type": "string"
+    },
+    "calibration_id": {
+      "type": "string"
+    },
+    "immutable": {
+      "const": true
+    }
+  }
+}

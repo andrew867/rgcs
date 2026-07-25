@@ -1,0 +1,41 @@
+{
+  "phase_id": "P29",
+  "status": "COMPLETE",
+  "inputs": [
+    "Gate Zero",
+    "r13.avoided",
+    "r15.claims"
+  ],
+  "outputs": [
+    "r15/mode_tracker.py",
+    "tests/v8/test_mode_tracker.py",
+    "docs/v8/R15_MODE_TRACKER.md",
+    "docs/v8/receipts/P29.json"
+  ],
+  "tests": [
+    "tests/v8/test_mode_tracker.py (6 passed)"
+  ],
+  "negative_results": [
+    "At an avoided crossing the branches repel by exactly 2|g| and never touch; a branch hop is a tracking error, not a new mode.",
+    "A peak outside the search window / below the quality floor is a lock loss, not a signal.",
+    "The tracked trajectory is a SYNTHETIC_OBSERVATION over a synthetic spectrum; nothing is measured."
+  ],
+  "reopening_test": "Re-run tests/v8/test_mode_tracker.py; reopen if the avoided-crossing minimum gap stops equalling 2|g|, or a lock loss is no longer detected when the peak leaves the window.",
+  "acceptance_checklist": [
+    "implementation complete",
+    "focused tests pass",
+    "package/source-root parity",
+    "privacy clean",
+    "synthetic/physical distinction preserved",
+    "claim cap respected"
+  ],
+  "claims": [
+    {
+      "statement": "A real-time tracker follows a synthetic mode and stays on the correct adiabatic branch through an avoided crossing.",
+      "claim_class": "SYNTHETIC_OBSERVATION"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

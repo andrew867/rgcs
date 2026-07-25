@@ -1,0 +1,302 @@
+{
+  "pack": "RGCS R15 Experimental Phase Infrastructure",
+  "release_target": "v8.0.0",
+  "predecessor": {
+    "tag": "v7.0.0",
+    "commit": "59667f9",
+    "count": 5638
+  },
+  "verdict_target": "R15_GREEN_EXPERIMENTAL_INFRASTRUCTURE_READY_NO_PHYSICAL_CLAIMS_ADVANCED",
+  "phases": [
+    {
+      "phase_id": "P01",
+      "tranche": "T1",
+      "title": "Instrument Registry",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P01.json",
+      "module": "r15/instruments.py"
+    },
+    {
+      "phase_id": "P02",
+      "tranche": "T1",
+      "title": "Measurement Provenance",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P02.json",
+      "module": "r15/provenance.py"
+    },
+    {
+      "phase_id": "P03",
+      "tranche": "T1",
+      "title": "Environmental Ledger",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P03.json",
+      "module": "r15/environment.py"
+    },
+    {
+      "phase_id": "P04",
+      "tranche": "T2",
+      "title": "Crystal and Specimen Registry",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P04.json",
+      "module": "r15/specimens.py"
+    },
+    {
+      "phase_id": "P05",
+      "tranche": "T2",
+      "title": "Low-Cost Orientation Solver",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P05.json",
+      "module": "r15/orientation.py"
+    },
+    {
+      "phase_id": "P06",
+      "tranche": "T2",
+      "title": "Fixture Registry and Boundary Conditions",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P06.json",
+      "module": "r15/fixtures.py"
+    },
+    {
+      "phase_id": "P07",
+      "tranche": "T3",
+      "title": "Executable Protocol Engine",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P07.json",
+      "module": "r15/protocols.py"
+    },
+    {
+      "phase_id": "P08",
+      "tranche": "T3",
+      "title": "Randomization Engine",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P08.json",
+      "module": "r15/randomization.py"
+    },
+    {
+      "phase_id": "P09",
+      "tranche": "T3",
+      "title": "Blind Operator Mode",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P09.json",
+      "module": "r15/blinding.py"
+    },
+    {
+      "phase_id": "P10",
+      "tranche": "T4",
+      "title": "Immutable Measurement Ledger",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P10.json",
+      "module": "r15/measurement_ledger.py"
+    },
+    {
+      "phase_id": "P11",
+      "tranche": "T4",
+      "title": "Ordinary Explanation Engine",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P11.json",
+      "module": "r15/ordinary_explanations.py"
+    },
+    {
+      "phase_id": "P12",
+      "tranche": "T4",
+      "title": "Residual Classifier",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P12.json",
+      "module": "r15/residuals.py"
+    },
+    {
+      "phase_id": "P13",
+      "tranche": "T5",
+      "title": "Mechanical Measurement Lane",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P13.json",
+      "module": "r15/mechanical.py"
+    },
+    {
+      "phase_id": "P14",
+      "tranche": "T5",
+      "title": "Electrical Measurement Lane",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P14.json",
+      "module": "r15/electrical.py"
+    },
+    {
+      "phase_id": "P15",
+      "tranche": "T5",
+      "title": "Optical Measurement Lane",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P15.json",
+      "module": "r15/optical.py"
+    },
+    {
+      "phase_id": "P16",
+      "tranche": "T5",
+      "title": "Thermal Measurement Lane",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P16.json",
+      "module": "r15/thermal.py"
+    },
+    {
+      "phase_id": "P17",
+      "tranche": "T5",
+      "title": "Magnetic and RF Measurement Lane",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P17.json",
+      "module": "r15/magnetic_rf.py"
+    },
+    {
+      "phase_id": "P18",
+      "tranche": "T5",
+      "title": "Clock and Phase Measurement Lane",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P18.json",
+      "module": "r15/clock_phase.py"
+    },
+    {
+      "phase_id": "P19",
+      "tranche": "T6",
+      "title": "Prospective Prediction Registry",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P19.json",
+      "module": "r15/predictions.py"
+    },
+    {
+      "phase_id": "P20",
+      "tranche": "T6",
+      "title": "Holdout Dataset Authority",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P20.json",
+      "module": "r15/holdouts.py"
+    },
+    {
+      "phase_id": "P21",
+      "tranche": "T6",
+      "title": "Null Model Registry",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P21.json",
+      "module": "r15/nulls.py"
+    },
+    {
+      "phase_id": "P22",
+      "tranche": "T6",
+      "title": "Circularity and Leakage Audit",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P22.json",
+      "module": "r15/circularity.py"
+    },
+    {
+      "phase_id": "P23",
+      "tranche": "T6",
+      "title": "Multiple Comparisons and Sequential Analysis",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P23.json",
+      "module": "r15/multiple_testing.py"
+    },
+    {
+      "phase_id": "P24",
+      "tranche": "T6",
+      "title": "Independent Replication Receipts",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P24.json",
+      "module": "r15/replication.py"
+    },
+    {
+      "phase_id": "P25",
+      "tranche": "T7",
+      "title": "DDS Recipe Compiler",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P25.json",
+      "module": "r15/dds_recipes.py"
+    },
+    {
+      "phase_id": "P26",
+      "tranche": "T7",
+      "title": "ESP32 and Embedded Experiment Runner",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P26.json",
+      "module": "r15/embedded_runner.py"
+    },
+    {
+      "phase_id": "P27",
+      "tranche": "T7",
+      "title": "Automated Sweep Controller",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P27.json",
+      "module": "r15/sweeps.py"
+    },
+    {
+      "phase_id": "P28",
+      "tranche": "T7",
+      "title": "Live Impedance and BVD Fitting",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P28.json",
+      "module": "r15/live_bvd.py"
+    },
+    {
+      "phase_id": "P29",
+      "tranche": "T7",
+      "title": "Real-Time Mode Tracker",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P29.json",
+      "module": "r15/mode_tracker.py"
+    },
+    {
+      "phase_id": "P30",
+      "tranche": "T7",
+      "title": "Laser-Trim Planning Simulator",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P30.json",
+      "module": "r15/trim_planner.py"
+    },
+    {
+      "phase_id": "P31",
+      "tranche": "T8",
+      "title": "Experiment Manuscript Generator",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P31.json",
+      "module": "r15/manuscript.py"
+    },
+    {
+      "phase_id": "P32",
+      "tranche": "T8",
+      "title": "Figure and Evidence Package Generator",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P32.json",
+      "module": "r15/figures.py"
+    },
+    {
+      "phase_id": "P33",
+      "tranche": "T8",
+      "title": "Statistical and Methods Appendices",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P33.json",
+      "module": "r15/appendices.py"
+    },
+    {
+      "phase_id": "P34",
+      "tranche": "T8",
+      "title": "Negative Results and Non-Claims",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P34.json",
+      "module": "r15/nonclaims.py"
+    },
+    {
+      "phase_id": "P35",
+      "tranche": "T8",
+      "title": "Replication Package and External Handoff",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P35.json",
+      "module": "r15/replication_package.py"
+    },
+    {
+      "phase_id": "P36",
+      "tranche": "T8",
+      "title": "Release Ritual and Final Verdict",
+      "status": "COMPLETE",
+      "receipt": "docs/v8/receipts/P36.json",
+      "module": "(release ritual)"
+    }
+  ],
+  "all_complete": true,
+  "phase_count": 36
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "protocol_id",
+    "version",
+    "hypotheses",
+    "controls",
+    "randomization",
+    "blinding",
+    "steps",
+    "stop_conditions",
+    "analysis_plan",
+    "claim_cap"
+  ],
+  "properties": {
+    "protocol_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "hypotheses": {
+      "type": "array"
+    },
+    "controls": {
+      "type": "array"
+    },
+    "randomization": {
+      "type": "object"
+    },
+    "blinding": {
+      "type": "object"
+    },
+    "steps": {
+      "type": "array"
+    },
+    "stop_conditions": {
+      "type": "array"
+    },
+    "analysis_plan": {
+      "type": "object"
+    },
+    "claim_cap": {
+      "type": "string"
+    },
+    "preregistration_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

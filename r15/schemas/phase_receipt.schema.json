@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "phase_id",
+    "status",
+    "inputs",
+    "outputs",
+    "tests",
+    "negative_results",
+    "reopening_test",
+    "acceptance_checklist",
+    "claims",
+    "privacy_check"
+  ],
+  "properties": {
+    "phase_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "COMPLETE",
+        "PREREGISTERED_NOT_RUN",
+        "BLOCKED_MISSING_INPUT",
+        "REJECTED",
+        "SUPERSEDED"
+      ]
+    },
+    "inputs": {
+      "type": "array"
+    },
+    "outputs": {
+      "type": "array"
+    },
+    "tests": {
+      "type": "array"
+    },
+    "negative_results": {
+      "type": "array"
+    },
+    "reopening_test": {
+      "type": "string"
+    },
+    "acceptance_checklist": {
+      "type": "array"
+    },
+    "claims": {
+      "type": "array"
+    },
+    "privacy_check": {
+      "type": "string"
+    },
+    "blocked_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "commit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

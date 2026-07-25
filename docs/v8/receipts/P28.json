@@ -1,0 +1,41 @@
+{
+  "phase_id": "P28",
+  "status": "COMPLETE",
+  "inputs": [
+    "Gate Zero",
+    "r15.claims",
+    "r15/schemas/*"
+  ],
+  "outputs": [
+    "r15/live_bvd.py",
+    "tests/v8/test_live_bvd.py",
+    "docs/v8/R15_LIVE_IMPEDANCE_BVD.md",
+    "docs/v8/receipts/P28.json"
+  ],
+  "tests": [
+    "tests/v8/test_live_bvd.py (5 passed)"
+  ],
+  "negative_results": [
+    "An unconverged live fit raises NotConvergedError and is not a result.",
+    "A Hampel filter rejects an injected outlier without wrecking the fit.",
+    "A real impedance stream acquires nothing (BLOCKED); a live synthetic fit is never a measured crystal."
+  ],
+  "reopening_test": "Re-run tests/v8/test_live_bvd.py; reopen if the streaming fit stops converging to planted BVD params or an unconverged fit is returned.",
+  "acceptance_checklist": [
+    "implementation complete",
+    "focused tests pass",
+    "package/source-root parity",
+    "privacy clean",
+    "synthetic/physical distinction preserved",
+    "claim cap respected"
+  ],
+  "claims": [
+    {
+      "statement": "A streaming BVD fit converges to planted parameters and rejects outliers; the fit on synthetic data is a SYNTHETIC_OBSERVATION.",
+      "claim_class": "SYNTHETIC_OBSERVATION"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

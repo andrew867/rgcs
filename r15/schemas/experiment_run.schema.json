@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "run_id",
+    "protocol_id",
+    "specimen_id",
+    "fixture_id",
+    "instrument_bindings",
+    "environment",
+    "clock",
+    "raw_artifacts",
+    "status"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "protocol_id": {
+      "type": "string"
+    },
+    "specimen_id": {
+      "type": "string"
+    },
+    "fixture_id": {
+      "type": "string"
+    },
+    "instrument_bindings": {
+      "type": "array"
+    },
+    "environment": {
+      "type": "object"
+    },
+    "clock": {
+      "type": "object"
+    },
+    "raw_artifacts": {
+      "type": "array"
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}

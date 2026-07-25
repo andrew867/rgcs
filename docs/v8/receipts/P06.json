@@ -1,0 +1,96 @@
+{
+  "phase_id": "P06",
+  "status": "COMPLETE",
+  "tranche": "T2",
+  "title": "Fixture Registry and Boundary Conditions",
+  "inputs": [
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T2_P06_FIXTURE_REGISTRY_AND_BOUNDARY_CONDITIONS.md",
+    "r15/claims.py",
+    "r15/schemas/fixture_record.schema.json",
+    "r15/schemas/error_budget.schema.json",
+    "r15/schemas/phase_receipt.schema.json",
+    "r13/boundaryenergy.py",
+    "r11/mechboundary.py",
+    "r13/apparatus.py"
+  ],
+  "outputs": [
+    "r15/fixtures.py",
+    "tests/v8/test_fixtures.py",
+    "docs/v8/R15_FIXTURE_AUTHORITY.md",
+    "docs/v8/receipts/P06.json"
+  ],
+  "tests": [
+    "tests/v8/test_fixtures.py::test_every_registered_record_conforms_to_schema",
+    "tests/v8/test_fixtures.py::test_registry_covers_the_six_mount_types",
+    "tests/v8/test_fixtures.py::test_error_budget_conforms_to_schema",
+    "tests/v8/test_fixtures.py::test_boundary_condition_shifts_modal_frequency_as_modelled",
+    "tests/v8/test_fixtures.py::test_changing_support_changes_synthetic_modes",
+    "tests/v8/test_fixtures.py::test_fixture_modal_shift_reports_a_nonzero_fractional_shift",
+    "tests/v8/test_fixtures.py::test_fixture_change_is_booked_as_ordinary_boundary_work",
+    "tests/v8/test_fixtures.py::test_fixture_shift_is_classified_as_a_fixture_effect",
+    "tests/v8/test_fixtures.py::test_refuse_fixture_effect_as_signal_raises",
+    "tests/v8/test_fixtures.py::test_fixture_effect_is_an_ordinary_explanation_class_not_measurement",
+    "tests/v8/test_fixtures.py::test_a_specimen_id_cannot_be_used_as_a_fixture_id",
+    "tests/v8/test_fixtures.py::test_a_fixture_id_cannot_be_used_as_a_specimen_id",
+    "tests/v8/test_fixtures.py::test_mounting_refuses_a_fixture_id_in_the_specimen_slot",
+    "tests/v8/test_fixtures.py::test_a_record_with_a_specimen_shaped_id_is_refused_at_construction",
+    "tests/v8/test_fixtures.py::test_missing_preload_blocks_a_precision_claim",
+    "tests/v8/test_fixtures.py::test_recorded_preload_supports_a_precision_claim",
+    "tests/v8/test_fixtures.py::test_error_budget_flags_whether_the_preload_is_known",
+    "tests/v8/test_fixtures.py::test_remounting_generates_a_distinct_run_binding",
+    "tests/v8/test_fixtures.py::test_remount_must_use_the_same_fixture",
+    "tests/v8/test_fixtures.py::test_binding_hash_is_deterministic",
+    "tests/v8/test_fixtures.py::test_modal_frequencies_are_deterministic",
+    "tests/v8/test_fixtures.py::test_content_hash_is_deterministic",
+    "tests/v8/test_fixtures.py::test_reversal_plan_alternates_reversal_and_is_not_executed",
+    "tests/v8/test_fixtures.py::test_sensor_permutation_plan_is_deterministic_and_capped",
+    "tests/v8/test_fixtures.py::test_sensor_permutation_plan_refuses_duplicate_labels",
+    "tests/v8/test_fixtures.py::test_report_claims_nothing_measured"
+  ],
+  "tests_passed": 26,
+  "tests_failed": 0,
+  "negative_results": [
+    "A fixture-induced modal shift is classified as a FIXTURE_EFFECT (a known ordinary effect), never a specimen signal; refuse_fixture_effect_as_signal always raises.",
+    "A specimen id cannot be used where a fixture id is required, and a fixture id cannot be used where a specimen id is required; a specimen-shaped id is refused at record construction and in the mount specimen slot.",
+    "A fixture with an unrecorded preload cannot support a precision claim: assert_precision_claim raises BLOCKED_MISSING_INPUT because the contact stiffness and hence the modal frequency are unconstrained.",
+    "A boundary change is booked through the R13 energy ledger as ordinary boundary work; the ledger closes with residual_is_new_energy = false, so a fixture shift is never a new energy channel.",
+    "No fixture, specimen, mount, or measurement exists: every record is a SYNTHETIC_FIXTURE and every frequency is a declared model number in the R11 chain's own units."
+  ],
+  "reopening_test": "Re-run `pytest tests/v8/test_fixtures.py -q`. Reopen P06 if any record in FIXTURE_REGISTRY stops conforming to fixture_record.schema.json, if fixture_shift_is_ordinary stops classifying a boundary-change shift as FIXTURE_EFFECT, if refuse_fixture_effect_as_signal stops raising, if a specimen id becomes usable as a fixture id (or vice versa), if a missing preload stops blocking a precision claim, or if a remount stops producing a distinct binding hash.",
+  "acceptance_checklist": [
+    {"item": "Focused tests pass", "status": "PASS", "detail": "26 passed, 0 failed"},
+    {"item": "Required output r15/fixtures.py present", "status": "PASS"},
+    {"item": "Required output tests/v8/test_fixtures.py present", "status": "PASS"},
+    {"item": "Required output docs/v8/R15_FIXTURE_AUTHORITY.md present", "status": "PASS"},
+    {"item": "Changing support changes synthetic modes", "status": "PASS", "detail": "FREE < SPRING < FIXED fundamental via r11.mechboundary"},
+    {"item": "Fixture and specimen IDs cannot swap", "status": "PASS"},
+    {"item": "Missing preload blocks precision claims", "status": "PASS"},
+    {"item": "Remounting generates a distinct run binding", "status": "PASS"},
+    {"item": "FixtureRecord conforms to fixture_record.schema.json", "status": "PASS", "detail": "all six registry records validated with jsonschema"},
+    {"item": "Fixture repeatability enters the error budget (error_budget.schema.json)", "status": "PASS"},
+    {"item": "Reversal and sensor-permutation plans generated", "status": "PASS"},
+    {"item": "REAL/REPLAY/SYNTHETIC/FAULT_INJECTION provenance kept distinct", "status": "PASS", "detail": "FixtureProvenance enum; only SYNTHETIC reachable"},
+    {"item": "Privacy scan passes", "status": "PASS", "detail": "synthetic fixtures only, no private inputs read"},
+    {"item": "Receipt conforms to phase_receipt.schema.json", "status": "PASS"}
+  ],
+  "claims": [
+    {
+      "claim_class": "SYNTHETIC_FIXTURE",
+      "claim_cap": "MODEL_PREDICTION",
+      "statement": "The fixture registry, boundary-condition modal model, error-budget contribution, run bindings, and reversal/permutation plans are software artifacts over declared model values.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    },
+    {
+      "claim_class": "FIXTURE_EFFECT",
+      "claim_cap": "KNOWN_ORDINARY_EFFECT",
+      "statement": "A modal shift produced by changing the fixture boundary condition is a known ordinary effect, one of the explanations a residual must survive, and is refused as a specimen signal.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    }
+  ],
+  "claim_cap": "MODEL_PREDICTION",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

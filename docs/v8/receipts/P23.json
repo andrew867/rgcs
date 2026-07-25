@@ -1,0 +1,89 @@
+{
+  "phase_id": "P23",
+  "status": "COMPLETE",
+  "inputs": [
+    "r15/claims.py (ClaimClass.SOFTWARE_IMPLEMENTED, ClaimClass.SYNTHETIC_OBSERVATION)",
+    "r13/preregister.py (Preregistration, refuse_optional_stopping, refuse_result_without_prereg) - EXTENDED for the stopping rule and optional-stopping refusal",
+    "r13/serialize.py (content_hash) - EXTENDED for the deterministic family digest",
+    "r15/schemas/phase_receipt.schema.json",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T6_P23_MULTIPLE_COMPARISONS_AND_SEQUENTIAL_ANALYSIS.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_CLAIM_TAXONOMY.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_EVIDENCE_LADDER.md"
+  ],
+  "outputs": [
+    "r15/multiple_testing.py",
+    "tests/v8/test_multiple_testing.py",
+    "docs/v8/R15_MULTIPLE_COMPARISON_POLICY.md",
+    "docs/v8/receipts/P23.json"
+  ],
+  "tests": [
+    "test_bh_recovers_all_planted_effects",
+    "test_holm_recovers_effects_and_controls_fwer",
+    "test_bh_is_more_powerful_than_bonferroni_with_many_effects",
+    "test_correction_controls_familywise_error_under_global_null",
+    "test_look_elsewhere_probability_matches_formula",
+    "test_uncorrected_min_p_is_inflated_far_above_alpha",
+    "test_correction_removes_the_inflation",
+    "test_hidden_retries_increase_trials",
+    "test_hidden_retries_change_the_correction",
+    "test_alpha_spending_is_monotonic_and_sums_to_alpha",
+    "test_spending_boundary_controls_sequential_fpr",
+    "test_naive_peeking_matches_look_elsewhere",
+    "test_sequential_stops_at_first_crossing",
+    "test_sequential_no_crossing_does_not_reject",
+    "test_obrien_fleming_spends_less_early_than_pocock",
+    "test_refuse_uncorrected_multiple_comparisons",
+    "test_refuse_counts_hidden_retries_even_for_one_reported_test",
+    "test_single_test_needs_no_correction",
+    "test_refuse_optional_stopping_without_rule",
+    "test_preregistered_stopping_rule_is_allowed",
+    "test_exploratory_scan_cannot_yield_confirmatory_pvalue",
+    "test_pvalue_out_of_range_refused",
+    "test_alpha_out_of_range_refused",
+    "test_correction_cannot_use_fewer_trials_than_reported",
+    "test_diagnose_flags_extreme_z_and_low_null_variance",
+    "test_diagnose_clean_input_flags_nothing",
+    "test_planted_family_is_deterministic_under_seed",
+    "test_different_seed_differs",
+    "test_simulations_are_deterministic_under_seed",
+    "test_report_claims_nothing_measured",
+    "test_report_shows_inflation_and_control",
+    "test_fixture_class_is_synthetic_observation",
+    "test_receipt_conforms_to_phase_receipt_schema",
+    "33 tests total, all passing"
+  ],
+  "negative_results": [
+    "A family of more than one test (counting hidden retries) with no correction is refused: refuse_uncorrected_multiple_comparisons raises because the smallest raw p-value is small by construction and the true false-positive rate is the look-elsewhere probability 1-(1-alpha)^m, not alpha.",
+    "The look-elsewhere inflation is demonstrated on synthetic null data: reporting the smallest of m=20 uncorrected p-values fires at ~0.64 (matching 1-0.95^20), while the same families corrected by Bonferroni fire at <= alpha.",
+    "Hidden retries increase the trial count and the correction: a p-value of 0.004 that passes Bonferroni against 3 reported tests fails once 40 undisclosed retries are counted (43 trials).",
+    "Optional stopping is refused: stopping on significance with no preregistered stopping rule raises via the R13 authority (refuse_optional_stopping); peeking at four looks with the full alpha inflates the false-positive rate above 0.10 while the alpha-spending boundary holds it at alpha.",
+    "Exploratory scans cannot yield confirmatory p-values: refuse_exploratory_as_confirmatory raises without a sealed preregistration, because the top hit of a ranked family was chosen after seeing the data and was never predicted.",
+    "Diagnostics fire on pathological inputs: an implausible |z| (> 6) and a collapsed null variance (< 1e-6) are flagged as prompts to check the null model, never as detections.",
+    "No physical measurement was performed; measured_here is nothing and PHYSICAL_VALIDATION_NOT_CLAIMED. Correcting p-values and spending alpha remove inflation but confirm nothing."
+  ],
+  "reopening_test": "Reopen the multiple-comparisons/sequential-analysis firewall if: a family of more than one test (including hidden retries) ever reports an uncorrected smallest p as significant; a stop on significance is ever accepted with no preregistered stopping rule or alpha-spending boundary; an exploratory top hit is ever read as a confirmatory p-value; an alpha-spending schedule's cumulative spend ever exceeds the target alpha or fails to be monotonic to exactly alpha at the final look; a Benjamini-Hochberg or Holm correction fails to recover planted true effects while controlling error on the synthetic fixture; the naive full-alpha peeking rate fails to exceed the spent-boundary rate; or any result here is emitted above SOFTWARE_IMPLEMENTED / SYNTHETIC_OBSERVATION. A physical confirmatory run is reopened only when a preregistered contrast is sealed before the data and real calibrated acquisition with a raw artifact, a clock binding, an environment log and an uncertainty budget exists.",
+  "acceptance_checklist": [
+    "Focused tests pass (BH/Holm recover planted effects while controlling FDR/FWER; BH at least as powerful as Bonferroni with many effects; family-wise error controlled under the global null): PASS",
+    "Look-elsewhere inflation shown for uncorrected reporting and removed by correction (simulated min-p FPR matches 1-(1-alpha)^m; corrected FPR <= alpha): PASS",
+    "Sequential control paths pass (alpha spend monotonic to exactly alpha; naive full-alpha peeking inflated; spent boundary holds at alpha; sequential stops at first crossing; OBF spends less early than Pocock): PASS",
+    "Negative and refusal paths pass (uncorrected multiple comparisons refused; hidden retries counted; optional stopping refused via R13; exploratory-as-confirmatory refused; out-of-range p/alpha refused): PASS",
+    "Package/source-root parity: module imports as r15.multiple_testing; reuses only r13 (preregister, serialize) and r15.claims; no sibling r15 phase module imported: PASS",
+    "Privacy scan: synthetic fixtures only, no private inputs, DO_NOT_COMMIT never read: PASS",
+    "This receipt conforms to phase_receipt.schema.json (validated with jsonschema): PASS",
+    "Determinism: same seed reproduces the planted family (digest match) and the Monte-Carlo estimates exactly: PASS",
+    "Analysis versioned: ANALYSIS_VERSION stamped on families, corrections, schedules and diagnostics: PASS"
+  ],
+  "claims": [
+    {
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "statement": "A multiple-comparisons and sequential-analysis firewall: family-wise (Bonferroni, Holm) and false-discovery (Benjamini-Hochberg) correction over a trial family that counts hidden retries; an alpha-spending sequential boundary (linear, Pocock, O'Brien-Fleming) whose cumulative spend reaches exactly alpha; deterministic Monte-Carlo demonstrations of the look-elsewhere and optional-stopping inflations and their removal; and refusals of uncorrected multiple comparisons, optional stopping, and exploratory-as-confirmatory.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    }
+  ],
+  "claim_cap": "SYNTHETIC_OBSERVATION",
+  "verdict": "MULTIPLE_COMPARISONS_CORRECTED_AND_STOPPING_PREREGISTERED",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

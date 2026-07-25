@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "observation_id",
+    "run_id",
+    "source_artifacts",
+    "analysis_version",
+    "quantity",
+    "value",
+    "units",
+    "uncertainty",
+    "claim_class"
+  ],
+  "properties": {
+    "observation_id": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "source_artifacts": {
+      "type": "array"
+    },
+    "analysis_version": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "string"
+    },
+    "value": {},
+    "units": {
+      "type": "string"
+    },
+    "uncertainty": {
+      "type": "object"
+    },
+    "claim_class": {
+      "type": "string"
+    },
+    "derivation_graph": {
+      "type": "array"
+    }
+  }
+}

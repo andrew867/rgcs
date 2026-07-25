@@ -1,0 +1,98 @@
+{
+  "phase_id": "P02",
+  "status": "COMPLETE",
+  "inputs": [
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T1_P02_MEASUREMENT_PROVENANCE.md",
+    "r15/claims.py",
+    "r15/schemas/measurement_artifact.schema.json",
+    "r15/schemas/observation_record.schema.json",
+    "r15/schemas/phase_receipt.schema.json",
+    "r13/serialize.py",
+    "r13/srcregistry.py",
+    "r11/sources.py"
+  ],
+  "outputs": [
+    "r15/artifacts.py",
+    "r15/provenance.py",
+    "tests/v8/test_measurement_provenance.py",
+    "docs/v8/R15_MEASUREMENT_PROVENANCE.md",
+    "docs/v8/receipts/P02.json"
+  ],
+  "tests": [
+    "tests/v8/test_measurement_provenance.py::test_artifact_manifest_conforms_to_schema",
+    "tests/v8/test_measurement_provenance.py::test_manifest_is_immutable_flag_true",
+    "tests/v8/test_measurement_provenance.py::test_empty_artifact_is_refused",
+    "tests/v8/test_measurement_provenance.py::test_missing_binding_on_artifact_is_refused",
+    "tests/v8/test_measurement_provenance.py::test_one_byte_change_alters_artifact_hash",
+    "tests/v8/test_measurement_provenance.py::test_identical_bytes_hash_identically",
+    "tests/v8/test_measurement_provenance.py::test_replay_does_not_mutate_original",
+    "tests/v8/test_measurement_provenance.py::test_synthetic_artifact_is_not_physical",
+    "tests/v8/test_measurement_provenance.py::test_synthetic_acquisition_is_deterministic",
+    "tests/v8/test_measurement_provenance.py::test_refuse_mutation_raises",
+    "tests/v8/test_measurement_provenance.py::test_observation_record_conforms_to_schema",
+    "tests/v8/test_measurement_provenance.py::test_derived_data_require_source_artifacts",
+    "tests/v8/test_measurement_provenance.py::test_record_carries_every_source_hash",
+    "tests/v8/test_measurement_provenance.py::test_lineage_verifies_for_untampered_artifacts",
+    "tests/v8/test_measurement_provenance.py::test_tamper_of_any_artifact_breaks_lineage",
+    "tests/v8/test_measurement_provenance.py::test_tamper_of_first_artifact_breaks_lineage",
+    "tests/v8/test_measurement_provenance.py::test_fully_bound_synthetic_is_not_physical",
+    "tests/v8/test_measurement_provenance.py::test_missing_clock_caps_evidence_below_physical",
+    "tests/v8/test_measurement_provenance.py::test_missing_calibration_caps_evidence_below_physical",
+    "tests/v8/test_measurement_provenance.py::test_classify_incomplete_bindings_caps_below_physical",
+    "tests/v8/test_measurement_provenance.py::test_classify_real_complete_would_be_physical_in_principle",
+    "tests/v8/test_measurement_provenance.py::test_no_record_built_here_is_physical",
+    "tests/v8/test_measurement_provenance.py::test_replay_reproduces_observation_deterministically",
+    "tests/v8/test_measurement_provenance.py::test_lineage_hash_is_stable_across_builds",
+    "tests/v8/test_measurement_provenance.py::test_wallclock_timestamp_is_refused",
+    "tests/v8/test_measurement_provenance.py::test_artifacts_report_claims_nothing",
+    "tests/v8/test_measurement_provenance.py::test_provenance_report_claims_nothing"
+  ],
+  "negative_results": [
+    "An observation with no source artifacts is refused: derived data must name the immutable raw artifacts they were derived from (ProvenanceError).",
+    "A one-byte change to any source artifact shifts its content hash, so the recomputed lineage hash no longer matches and verify_lineage returns False.",
+    "A missing clock binding caps evidence at E3 (software ceiling), below a physical measurement (E4), and keeps the claim class out of the measurement classes.",
+    "A missing calibration binding caps evidence below E4 the same way.",
+    "An artifact with empty raw bytes, or without an instrument_id or calibration_id, is refused at construction.",
+    "Every artifact and observation built here is software-mode, so none is a PHYSICAL_MEASUREMENT; refuse_synthetic_observation_as_physical raises for every record built by this phase.",
+    "A live wall-clock stamp is refused; epochs must be passed in, keeping the lineage hash reproducible."
+  ],
+  "reopening_test": "Reopen P02 if a MeasurementArtifact can be mutated in place without changing its content_hash, if verify_lineage returns True for a tampered source artifact, if build_observation accepts an empty source-artifact set, if any observation built from software-mode artifacts is classified as a PHYSICAL_MEASUREMENT (evidence E4), or if a record can be stamped from a live clock read.",
+  "acceptance_checklist": [
+    "r15/artifacts.py and r15/provenance.py implemented, extending r13.serialize and r15.claims (no duplicate truth systems).",
+    "MeasurementArtifact manifest conforms to measurement_artifact.schema.json; ObservationRecord conforms to observation_record.schema.json (validated in tests).",
+    "Content hash over raw bytes: one-byte change alters the hash; identical bytes hash identically; replay does not mutate the original.",
+    "Derivation lineage graph built from raw artifacts to observation; lineage hash reproducible; tamper of any artifact breaks it.",
+    "Missing any required binding caps evidence below PHYSICAL_MEASUREMENT via r15.claims.evidence_cap / EvidenceBindings.",
+    "Timestamps and epochs are passed in, never read from a clock; wall-clock stamping is refused.",
+    "REAL, REPLAY, SYNTHETIC, and FAULT_INJECTION modes are distinct; no synthetic artifact is ever a physical measurement.",
+    "Each module exposes a <name>_report() with claim_class, measured_here='nothing', physical_validation, verdict.",
+    "27 focused, negative, and determinism tests pass.",
+    "Privacy scan clean: synthetic fixtures only, no private inputs, no personal names or absolute paths.",
+    "Receipt validates against phase_receipt.schema.json."
+  ],
+  "claims": [
+    {
+      "statement": "A MeasurementArtifact carries its raw bytes and a SHA-256 content hash over exactly those bytes; it is immutable and its manifest conforms to measurement_artifact.schema.json.",
+      "claim_class": "SOFTWARE_IMPLEMENTED"
+    },
+    {
+      "statement": "An ObservationRecord binds a reported value to its instrument, calibration, specimen, fixture, protocol, clock, environment, timestamps, uncertainty, immutable raw artifacts, and a hashed derivation lineage.",
+      "claim_class": "SOFTWARE_IMPLEMENTED"
+    },
+    {
+      "statement": "A one-byte change to any source artifact breaks the observation's lineage hash, and derived data with no source artifacts are refused.",
+      "claim_class": "SOFTWARE_IMPLEMENTED"
+    },
+    {
+      "statement": "Missing any required binding (calibration, clock, raw artifact, and so on) caps the evidence below a physical measurement via r15.claims.evidence_cap.",
+      "claim_class": "SOFTWARE_IMPLEMENTED"
+    },
+    {
+      "statement": "Every artifact and observation produced here is a deterministic synthetic fixture, capped at SYNTHETIC_OBSERVATION; no physical measurement is performed and no PHYSICAL_MEASUREMENT is claimed.",
+      "claim_class": "SYNTHETIC_OBSERVATION"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

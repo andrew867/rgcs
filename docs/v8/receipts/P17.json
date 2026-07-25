@@ -1,0 +1,88 @@
+{
+  "phase_id": "P17",
+  "status": "COMPLETE",
+  "inputs": [
+    "r15/claims.py (ClaimClass, MEASUREMENT_CLASSES, refuse_synthetic_as_physical, refuse_noise_as_resonance)",
+    "r11/detectors.py (DetectorKind.HALL capability and bandwidth_ok)",
+    "r13/magroot.py (orientation_from_field orientation reference, root_alias_set alias limits)",
+    "r13/chiral.py (Helicity reversal-sign sense)",
+    "r15/schemas/observation_record.schema.json",
+    "r15/schemas/error_budget.schema.json",
+    "r15/schemas/phase_receipt.schema.json",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T5_P17_MAGNETIC_AND_RF_MEASUREMENT_LANE.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_ORDINARY_EXPLANATION_FIREWALL.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_ERROR_BUDGET_POLICY.md"
+  ],
+  "outputs": [
+    "r15/magnetic_rf.py",
+    "tests/v8/test_magnetic_rf.py",
+    "docs/v8/R15_MAGNETIC_RF_LANE.md",
+    "docs/v8/receipts/P17.json"
+  ],
+  "tests": [
+    "test_power_planted_rf_line_is_recovered",
+    "test_power_magnetic_field_shift_is_recovered",
+    "test_line_freq_shift_is_linear_in_field",
+    "test_synthetic_spectrum_is_deterministic",
+    "test_synthetic_bfield_is_deterministic_and_seed_sensitive",
+    "test_replay_device_returns_recorded_artifact_unchanged",
+    "test_real_device_acquires_nothing",
+    "test_time_domain_fault_corrupts_the_trace[CLIPPING|DRIFT|SATURATION|PACKET_LOSS|MISSING_SAMPLES]",
+    "test_spectral_fault_adds_an_ordinary_line[EMI_INGRESS|INTERMOD|SPUR]",
+    "test_time_fault_refuses_spectral_use_and_vice_versa",
+    "test_mains_harmonic_is_ordinary_not_a_signal",
+    "test_drive_harmonic_is_ordinary",
+    "test_intermodulation_product_is_ordinary",
+    "test_clean_line_with_no_ordinary_match_is_a_candidate",
+    "test_refuse_emi_as_signal_always_raises",
+    "test_line_below_budget_is_noise_not_a_resonance",
+    "test_known_rf_interference_is_localized",
+    "test_reversal_signs_propagate_and_cancel_pickup",
+    "test_dummy_load_exposes_pickup",
+    "test_antenna_geometry_orientation_reference_has_axis_ambiguity",
+    "test_bad_antenna_geometry_is_refused",
+    "test_clock_binding_binds_bandwidth",
+    "test_magnetometer_bandwidth_reuses_r11_hall",
+    "test_observation_record_conforms_to_schema",
+    "test_error_budget_conforms_to_schema",
+    "test_error_budget_requires_ambient_rf_background",
+    "test_observation_refuses_a_measurement_claim_class",
+    "test_synthetic_is_not_physical",
+    "test_report_claims_nothing",
+    "35 tests total, all passing"
+  ],
+  "negative_results": [
+    "A REAL_DEVICE acquisition raises NoHardwareError and acquires nothing; the physical run is PREREGISTERED_NOT_RUN.",
+    "A mains harmonic (multiple of 60 Hz), a drive harmonic, and an intermodulation product (m*f1 +/- n*f2) are each classified as a KNOWN_ORDINARY_EFFECT, never a SIGNAL_CANDIDATE.",
+    "A spectral line that does not exceed the expanded combined uncertainty is refused as noise, not a resonance (refuse_noise_as_resonance).",
+    "refuse_emi_as_signal always raises: ambient EMI / an RF spur / a mains harmonic is a KNOWN_ORDINARY_EFFECT and may not be promoted to a signal.",
+    "An observation may not carry a measurement claim class; refuse_synthetic_as_physical raises. The strongest class this lane reaches is SYNTHETIC_OBSERVATION.",
+    "The eight fault modes (clipping, drift, saturation, packet loss, missing samples, EMI ingress, intermod, spur) each corrupt the trace or spectrum deterministically and are kept distinct.",
+    "No physical measurement was performed; measured_here is nothing and PHYSICAL_VALIDATION_NOT_CLAIMED."
+  ],
+  "reopening_test": "Reopen the magnetic/RF lane if: a synthetic trace is ever labelled a PHYSICAL_MEASUREMENT; an RF spur, mains harmonic or ambient background is classified as a SIGNAL_CANDIDATE; a line below the combined uncertainty is called a resonance; a coil reversal fails to flip the sign of the field-linear response; a dummy-load run fails to expose a shared pickup line; or a REAL_DEVICE acquisition returns data. Physical acquisition is reopened only when real magnetometer/probe/antenna/analyser artifacts (instrument, calibration, specimen, fixture, protocol, clock, environment, raw traces) are supplied.",
+  "acceptance_checklist": [
+    "Focused tests pass (planted RF line recovered, planted field shift recovered, four modes distinct): PASS",
+    "Negative and refusal paths pass (REAL acquires nothing; every fault mode; EMI/spur/mains ordinary not signal; noise not resonance; no measurement claim): PASS",
+    "Known RF interference is localized; reversal signs propagate; dummy loads expose pickup: PASS",
+    "Package/source-root parity: module imports as r15.magnetic_rf; reuses only r15.claims + r11/r13 authorities; no sibling R15 phase import: PASS",
+    "Privacy scan: synthetic fixtures only, no private inputs, DO_NOT_COMMIT never read: PASS",
+    "MagneticRFObservation.to_record() conforms to observation_record.schema.json (validated with jsonschema): PASS",
+    "MagneticRFBudget.to_record() conforms to error_budget.schema.json (validated with jsonschema): PASS",
+    "This receipt conforms to phase_receipt.schema.json (validated with jsonschema): PASS",
+    "Determinism: same seed yields identical B-field and spectrum; different seed differs: PASS"
+  ],
+  "claims": [
+    {
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "statement": "A magnetic and RF measurement lane in four distinct device modes (REAL/SYNTHETIC/REPLAY/FAULT_INJECTION) with a magnetometer trace, an RF spectrum, a magnetic-field-dependent frequency shift, a full error budget including the ambient RF background, and an ordinary-explanation firewall that refuses EMI/spurs/mains harmonics as signals.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    }
+  ],
+  "claim_cap": "SYNTHETIC_OBSERVATION",
+  "verdict": "MAGNETIC_RF_LANE_FOUR_MODES_NO_PROMOTION",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

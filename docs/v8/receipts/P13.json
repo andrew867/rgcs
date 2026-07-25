@@ -1,0 +1,109 @@
+{
+  "phase_id": "P13",
+  "status": "COMPLETE",
+  "inputs": [
+    "r15/claims.py (ClaimClass, EvidenceBindings, refuse_synthetic_as_physical, refuse_noise_as_resonance, refuse_model_as_measurement)",
+    "r15/instruments.py (InstrumentMode, Capability, FaultMode, Instrument/RealDevice/SyntheticDevice/ReplayDevice/FaultInjectionDevice, Acquisition, NoHardwareError)",
+    "r15/synthetic_instruments.py (BaseSyntheticDriver, SyntheticDriver protocol)",
+    "r13/qcmstack.py (ringdown_Q, refuse_model_Q_as_device_Q) - the R13 ring-down authority, reused not duplicated",
+    "r13/homogenize.py (sound_speed_from_chain) - the R13 elastic / sound-speed authority, reused for modal-frequency prediction",
+    "r11/detectors.py (bandwidth_ok, DetectorKind.PIEZOELECTRIC) - the R11 detector-domain authority",
+    "r15/schemas/observation_record.schema.json",
+    "r15/schemas/error_budget.schema.json",
+    "r15/schemas/phase_receipt.schema.json",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T5_P13_MECHANICAL_MEASUREMENT_LANE.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_ERROR_BUDGET_POLICY.md"
+  ],
+  "outputs": [
+    "r15/mechanical.py",
+    "tests/v8/test_mechanical.py",
+    "docs/v8/R15_MECHANICAL_LANE.md",
+    "docs/v8/receipts/P13.json"
+  ],
+  "tests": [
+    "test_planted_ringdown_mode_recovered_within_budget",
+    "test_planted_frequency_recovered_within_budget",
+    "test_synthetic_lane_planted_mode_recovered",
+    "test_damping_ratio_is_one_over_two_q",
+    "test_two_modes_identified",
+    "test_fixture_motion_is_not_assigned_to_specimen",
+    "test_aliasing_mode_above_nyquist_is_refused",
+    "test_aliasing_risk_flags_above_nyquist",
+    "test_clipping_is_detected[clipping|saturation]",
+    "test_clean_reading_is_not_flagged_clipped",
+    "test_real_lane_acquires_nothing",
+    "test_real_lane_blocked_receipt_is_preregistered_not_run",
+    "test_each_fault_mode_alters_the_reading[all 5 FaultModes]",
+    "test_missing_samples_reading_refuses_a_fit",
+    "test_packet_loss_zero_fills",
+    "test_a_fit_within_noise_is_not_a_mode",
+    "test_assert_mode_above_noise_refuses_noise",
+    "test_replay_lane_replays_recorded_artifact",
+    "test_four_modes_stay_distinct",
+    "test_synthetic_same_seed_identical",
+    "test_synthetic_different_seed_differs",
+    "test_fault_injection_is_deterministic",
+    "test_fit_cannot_be_a_measurement_class",
+    "test_refuse_fit_as_measurement_raises",
+    "test_refuse_synthetic_q_as_device_q_raises",
+    "test_refuse_prediction_as_measurement_raises",
+    "test_predicted_rod_mode_is_a_model_prediction",
+    "test_coherence_of_identical_signals_is_one",
+    "test_coherence_is_bounded",
+    "test_frf_of_identical_signals_is_near_unity",
+    "test_double_integration_preserves_tone_frequency",
+    "test_channel_band_check_uses_detector_authority",
+    "test_empty_error_budget_is_refused",
+    "test_error_budget_record_conforms_to_schema",
+    "test_observation_record_conforms_to_schema",
+    "test_report_claims_nothing",
+    "test_receipt_conforms_to_phase_receipt_schema",
+    "42 tests total, all passing"
+  ],
+  "negative_results": [
+    "A REAL_DEVICE mechanical read acquires NOTHING: no accelerometer, microphone, shaker or vibrometer exists here, so RealDevice.acquire raises NoHardwareError and the physical acquisition is PREREGISTERED_NOT_RUN.",
+    "A planted mode at or above the Nyquist frequency is refused (aliasing) before any sample is produced; a folded artifact is never returned as a mode.",
+    "A record carrying missing samples (NaN, from a FAULT_INJECTION missing-samples reading) is refused for fitting; a gapped record is not silently fitted.",
+    "A spectral feature whose prominence does not clear the noise floor is not a mode: refuse_noise_as_resonance raises, and fit_modal_frequencies returns nothing for a pure-noise record.",
+    "Fixture-band modes are attributed to the fixture, not the specimen; fixture motion is never assigned to specimen motion.",
+    "A fitted modal frequency, Q and damping ratio are SYNTHETIC_OBSERVATION (a fit to synthetic data); a predicted modal frequency is a MODEL_PREDICTION; neither is a PHYSICAL_MEASUREMENT. refuse_fit_as_measurement, refuse_synthetic_Q_as_device_Q and refuse_prediction_as_measurement all raise.",
+    "No physical measurement was performed; measured_here is nothing and PHYSICAL_VALIDATION_NOT_CLAIMED. The software lane is COMPLETE; the physical mechanical run is PREREGISTERED_NOT_RUN (blocked_reason is null because all non-physical work is complete)."
+  ],
+  "reopening_test": "Reopen the mechanical lane if: a REAL_DEVICE read ever returns samples without physical hardware and a raw artifact; a mode at/above Nyquist is fitted rather than refused; a record with missing samples is fitted; a within-noise spectral feature is classified as a mode; a fixture-band mode is assigned to the specimen; or any fitted/predicted modal value is labelled a PHYSICAL_MEASUREMENT. The physical acquisition is reopened only by a specimen mounted on a calibrated fixture, driven and captured on a calibrated transducer with a clock binding, an environment log, an immutable raw artifact and an uncertainty budget.",
+  "acceptance_checklist": [
+    "Focused tests pass (planted mode recovered within budget on ring-down and via the synthetic lane): PASS",
+    "Fixture motion is not assigned to specimen; aliasing and clipping are detected: PASS",
+    "Negative and refusal paths pass (REAL acquires nothing; all five fault modes; a fit within noise is not a mode; no promotion to measurement): PASS",
+    "Determinism: same seed yields identical samples and identical fits; different seed differs: PASS",
+    "Package/source-root parity: module imports as r15.mechanical; reuses only r15.claims, r15.instruments, r15.synthetic_instruments and R10-R13/R11 authorities; no sibling r15 phase module imported: PASS",
+    "Privacy scan: synthetic fixtures only, no private inputs, DO_NOT_COMMIT never read: PASS",
+    "Error budget carries the full component set (instrument resolution, calibration, clock, environment, fixture repeatability, specimen geometry, DSP window/leakage, numerical, model residual) and conforms to error_budget.schema.json: PASS",
+    "A modal observation conforms to observation_record.schema.json (SYNTHETIC_OBSERVATION): PASS",
+    "This receipt conforms to phase_receipt.schema.json (validated with jsonschema): PASS"
+  ],
+  "claims": [
+    {
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "statement": "A mechanical measurement lane: one interface over four device modes (REAL/SYNTHETIC/REPLAY/FAULT_INJECTION), acquiring accelerometer / microphone / ring-down records and fitting modal frequency, Q and damping, with a full error budget.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    },
+    {
+      "claim_class": "SYNTHETIC_OBSERVATION",
+      "statement": "A modal frequency, Q and damping ratio recovered from a deterministic synthetic mechanical record with a planted mode. A fit to synthetic data, not a specimen measurement.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    },
+    {
+      "claim_class": "MODEL_PREDICTION",
+      "statement": "A longitudinal rod modal frequency predicted from an elastic sound speed via r13.homogenize. A model prediction, not a measured resonance.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    }
+  ],
+  "claim_cap": "SYNTHETIC_OBSERVATION",
+  "verdict": "MECHANICAL_LANE_FOUR_MODES_FIT_IS_SYNTHETIC_NOT_MEASURED",
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

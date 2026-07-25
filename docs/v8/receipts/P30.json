@@ -1,0 +1,41 @@
+{
+  "phase_id": "P30",
+  "status": "COMPLETE",
+  "inputs": [
+    "Gate Zero",
+    "r15.claims",
+    "r15/schemas/*"
+  ],
+  "outputs": [
+    "r15/trim_planner.py",
+    "tests/v8/test_trim_planner.py",
+    "docs/v8/R15_LASER_TRIM_PLANNER.md",
+    "docs/v8/receipts/P30.json"
+  ],
+  "tests": [
+    "tests/v8/test_trim_planner.py (6 passed)"
+  ],
+  "negative_results": [
+    "Ablation is irreversible: an overshoot plan is refused; the target is approached from the safe side.",
+    "Keep-out zones around electrodes/mounts refuse a site.",
+    "A plan is not an executed trim; a real laser trim is BLOCKED_MISSING_INPUT (no laser hardware)."
+  ],
+  "reopening_test": "Re-run tests/v8/test_trim_planner.py; reopen if the planner overshoots the target or a keep-out zone stops blocking a site.",
+  "acceptance_checklist": [
+    "implementation complete",
+    "focused tests pass",
+    "package/source-root parity",
+    "privacy clean",
+    "synthetic/physical distinction preserved",
+    "claim cap respected"
+  ],
+  "claims": [
+    {
+      "statement": "A conservative mass-removal plan converges a synthetic resonator to a target frequency without overshoot; a plan is not an executed trim.",
+      "claim_class": "SOFTWARE_IMPLEMENTED"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

@@ -1,0 +1,83 @@
+{
+  "phase_id": "P11",
+  "status": "COMPLETE",
+  "inputs": [
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/03_PHASE_PROMPTS/T4_P11_ORDINARY_EXPLANATION_ENGINE.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_ORDINARY_EXPLANATION_FIREWALL.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_ERROR_BUDGET_POLICY.md",
+    "internal-docs/plans-v5/RGCS_R15_EXPERIMENTAL_PHASE_INFRASTRUCTURE_PROMPT_PACK/02_ARCHITECTURE/R15_CLAIM_TAXONOMY.md",
+    "r15/claims.py",
+    "r13/daq.py",
+    "r15/schemas/residual_record.schema.json"
+  ],
+  "outputs": [
+    "r15/ordinary_explanations.py",
+    "tests/v8/test_ordinary_explanations.py",
+    "docs/v8/R15_ORDINARY_EXPLANATION_ENGINE.md",
+    "docs/v8/receipts/P11.json"
+  ],
+  "tests": [
+    "tests/v8/test_ordinary_explanations.py::test_there_are_eleven_attacks",
+    "tests/v8/test_ordinary_explanations.py::test_clean_residual_survives_every_attack",
+    "tests/v8/test_ordinary_explanations.py::test_planted_artifact_is_caught_by_its_attack[raw_data_defect]",
+    "tests/v8/test_ordinary_explanations.py::test_planted_artifact_is_caught_by_its_attack[clock_error]",
+    "tests/v8/test_ordinary_explanations.py::test_planted_artifact_is_caught_by_its_attack[calibration_drift]",
+    "tests/v8/test_ordinary_explanations.py::test_planted_artifact_is_caught_by_its_attack[clipping]",
+    "tests/v8/test_ordinary_explanations.py::test_planted_artifact_is_caught_by_its_attack[aliasing]",
+    "tests/v8/test_ordinary_explanations.py::test_planted_artifact_is_caught_by_its_attack[spectral_leakage]",
+    "tests/v8/test_ordinary_explanations.py::test_planted_artifact_is_caught_by_its_attack[environmental_coupling]",
+    "tests/v8/test_ordinary_explanations.py::test_planted_artifact_is_caught_by_its_attack[fixture_effect]",
+    "tests/v8/test_ordinary_explanations.py::test_planted_artifact_is_caught_by_its_attack[cross_talk]",
+    "tests/v8/test_ordinary_explanations.py::test_planted_artifact_is_caught_by_its_attack[specimen_mismatch]",
+    "tests/v8/test_ordinary_explanations.py::test_planted_artifact_is_caught_by_its_attack[model_inadequacy]",
+    "tests/v8/test_ordinary_explanations.py::test_multiple_faults_coexist",
+    "tests/v8/test_ordinary_explanations.py::test_no_attack_has_exclusive_authority",
+    "tests/v8/test_ordinary_explanations.py::test_failed_explanations_are_preserved",
+    "tests/v8/test_ordinary_explanations.py::test_inapplicable_attacks_are_recorded_not_dropped",
+    "tests/v8/test_ordinary_explanations.py::test_residual_within_uncertainty_is_not_anomalous",
+    "tests/v8/test_ordinary_explanations.py::test_refuse_residual_before_attacks",
+    "tests/v8/test_ordinary_explanations.py::test_refuse_residual_as_new_physics",
+    "tests/v8/test_ordinary_explanations.py::test_empty_signal_is_refused",
+    "tests/v8/test_ordinary_explanations.py::test_classification_is_deterministic",
+    "tests/v8/test_ordinary_explanations.py::test_record_conforms_to_schema",
+    "tests/v8/test_ordinary_explanations.py::test_report_claims_nothing"
+  ],
+  "negative_results": [
+    "A residual whose peak amplitude is within the combined-uncertainty coverage (k*u) is classified NOISE_WITHIN_UNCERTAINTY, not anomalous.",
+    "Attacks lacking their required context are recorded as applicable=false and never fire; failed and inapplicable explanations are preserved in the battery, not dropped.",
+    "refuse_residual_before_attacks([]) and (None) raise OrdinaryExplanationError: the UNEXPLAINED label cannot precede the attack battery.",
+    "refuse_residual_as_new_physics raises ClaimError: an UNEXPLAINED_INSTRUMENT_RESIDUAL is never new physics.",
+    "No apparatus was operated and nothing was measured; every fixture is a seeded synthetic waveform."
+  ],
+  "reopening_test": "If a residual is claimed UNEXPLAINED_INSTRUMENT_RESIDUAL, re-run run_all_attacks with the full acquisition context (raw artifact, clock/timebase, calibration reference, environment and aggressor channels, blank-fixture record, declared specimen band, and model prediction); any newly-available ordinary explanation that fires reopens the classification and demotes it out of the ceiling. Independent replication on a different apparatus and operator is required before it is anything more than the ceiling.",
+  "acceptance_checklist": [
+    "Focused tests pass: pytest tests/v8/test_ordinary_explanations.py -q => 24 passed.",
+    "Required outputs present: r15/ordinary_explanations.py, tests/v8/test_ordinary_explanations.py, docs/v8/R15_ORDINARY_EXPLANATION_ENGINE.md, docs/v8/receipts/P11.json.",
+    "Eleven ordinary-explanation attacks implemented (raw-data defect, clock error, calibration drift, clipping, aliasing, spectral leakage, environmental coupling, fixture effect, cross-talk, specimen mismatch, model inadequacy).",
+    "Power demonstrated both ways: each planted artifact is caught by its own attack, and a clean genuine-looking residual survives every attack (non-vacuous).",
+    "Multiple faults can coexist; no diagnostic has exclusive authority (union verdict).",
+    "Failed and inapplicable explanations remain recorded.",
+    "Reuses r13.daq and r15.claims; no sibling r15 phase module is hard-imported.",
+    "Residual record conforms to residual_record.schema.json (validated with jsonschema).",
+    "Deterministic (seeded synthetic fixtures; no wall-clock).",
+    "Privacy scan clean: synthetic fixtures only, no private inputs.",
+    "Claim cap enforced: strongest module class SOFTWARE_IMPLEMENTED; residual ceiling UNEXPLAINED_INSTRUMENT_RESIDUAL, never new physics."
+  ],
+  "claims": [
+    {
+      "claim_class": "SOFTWARE_IMPLEMENTED",
+      "statement": "The ordinary-explanation firewall is implemented as eleven attack detectors plus a union classifier over a candidate residual.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    },
+    {
+      "claim_class": "UNEXPLAINED_INSTRUMENT_RESIDUAL",
+      "statement": "The strongest label any residual reaches here is UNEXPLAINED_INSTRUMENT_RESIDUAL, the ceiling for an unreplicated residual that survived the attacks. It is never a resonance, a particle, a new energy, or new physics.",
+      "measured_here": "nothing",
+      "physical_validation": "PHYSICAL_VALIDATION_NOT_CLAIMED"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}

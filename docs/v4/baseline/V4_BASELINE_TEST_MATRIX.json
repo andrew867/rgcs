@@ -323,5 +323,46 @@
       "test_r13_symplectic.py"
     ],
     "test_functions": 1694
+  },
+  "v8": {
+    "files": [
+      "test_appendices.py",
+      "test_blinding.py",
+      "test_circularity.py",
+      "test_clock_phase.py",
+      "test_dds_recipes.py",
+      "test_electrical.py",
+      "test_embedded_runner.py",
+      "test_environment.py",
+      "test_figures.py",
+      "test_fixtures.py",
+      "test_holdouts.py",
+      "test_instruments.py",
+      "test_live_bvd.py",
+      "test_magnetic_rf.py",
+      "test_manuscript.py",
+      "test_measurement_ledger.py",
+      "test_measurement_provenance.py",
+      "test_mechanical.py",
+      "test_mode_tracker.py",
+      "test_multiple_testing.py",
+      "test_nonclaims.py",
+      "test_nulls.py",
+      "test_optical.py",
+      "test_ordinary_explanations.py",
+      "test_orientation.py",
+      "test_predictions.py",
+      "test_protocols.py",
+      "test_r15_claims.py",
+      "test_randomization.py",
+      "test_replication.py",
+      "test_replication_package.py",
+      "test_residuals.py",
+      "test_specimens.py",
+      "test_sweeps.py",
+      "test_thermal.py",
+      "test_trim_planner.py"
+    ],
+    "test_functions": 795
   }
 }

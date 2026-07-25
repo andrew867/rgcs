@@ -1,0 +1,40 @@
+{
+  "phase_id": "P35",
+  "status": "COMPLETE",
+  "inputs": [
+    "Gate Zero",
+    "r15.claims",
+    "phase reports"
+  ],
+  "outputs": [
+    "r15/replication_package.py",
+    "tests/v8/test_replication_package.py",
+    "docs/v8/R15_REPLICATION_PACKAGE.md",
+    "docs/v8/receipts/P35.json"
+  ],
+  "tests": [
+    "tests/v8/test_replication_package.py (4 passed)"
+  ],
+  "negative_results": [
+    "A package file containing private content is refused; only public, synthetic-fixture code, schemas, receipts, and seeds ship.",
+    "The manifest is a deterministic content hash; it carries no physical result."
+  ],
+  "reopening_test": "Re-run tests/v8/test_replication_package.py; reopen if the manifest hashes drift or private content passes the scan.",
+  "acceptance_checklist": [
+    "implementation complete",
+    "focused tests pass",
+    "package/source-root parity",
+    "privacy clean",
+    "synthetic/physical distinction preserved",
+    "claim cap respected"
+  ],
+  "claims": [
+    {
+      "statement": "A deterministic, public-only replication manifest (module hashes, schemas, receipts, seeds) is assembled for external replication.",
+      "claim_class": "SOFTWARE_IMPLEMENTED"
+    }
+  ],
+  "privacy_check": "CLEAN - synthetic fixtures only, no private inputs",
+  "blocked_reason": null,
+  "commit": null
+}
