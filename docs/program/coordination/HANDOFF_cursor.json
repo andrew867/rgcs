@@ -52,5 +52,8 @@
     "Then merge this branch",
     "Do not weaken failing tests or alter golden fixtures to force EOD green"
   ],
-  "verdict": "RGCS_RECURSIVE_INFRASTRUCTURE_YELLOW_CORE_DEMONSTRATORS_READY_PHYSICS_LANES_UNDERDETERMINED"
+  "verdict": "RGCS_RECURSIVE_INFRASTRUCTURE_YELLOW_CORE_DEMONSTRATORS_READY_PHYSICS_LANES_UNDERDETERMINED",
+  "handoff_commits": [
+    "6aabd7ccb142414195299cd2a35190e1c2251472"
+  ]
 }
