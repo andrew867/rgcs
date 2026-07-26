@@ -37,12 +37,13 @@
     "frozen": true
   },
   "warnings": [
-    "Pending measurement \u2014 protocol frozen, mechanism not validated"
+    "Pending measurement \u2014 protocol frozen, mechanism not validated",
+    "backend=rgcs_lab.reference.predictions (hub demo; authority contract: rgcs_lab.authority.prediction_registry)"
   ],
   "receipt": {
     "module": "predictions",
     "version": "0.1.0.dev0",
-    "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+    "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
     "status": "YELLOW",
     "claim_class": [
       "PROSPECTIVE_PREDICTION",
@@ -80,14 +81,15 @@
       "frozen": true
     },
     "warnings": [
-      "Pending measurement \u2014 protocol frozen, mechanism not validated"
+      "Pending measurement \u2014 protocol frozen, mechanism not validated",
+      "backend=rgcs_lab.reference.predictions (hub demo; authority contract: rgcs_lab.authority.prediction_registry)"
     ],
     "tests": [
       "prediction_freeze_hash",
       "prediction_immutable_after_measure"
     ],
     "artifacts": [],
-    "receipt_sha256": "317e7e9b2ff6eb5f7c427ab657294577371fd2be438e43d45353c85cf7112f0f"
+    "receipt_sha256": "142ebfb90321986fd624f30a9670b2938bc55deb6cb7f7296884919a0e4c35e0"
   },
   "does": "Freeze prospective predictions and null controls before measurement.",
   "does_not": "Does not validate a mechanism merely because one outcome matches.",

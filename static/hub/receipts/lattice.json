@@ -1,7 +1,7 @@
 {
   "module": "lattice",
   "version": "0.1.0.dev0",
-  "source_commit": "f06a4a8428d4a43c0af1bbb1de92967c262cae17",
+  "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
   "status": "GREEN",
   "claim_class": [
     "IMPLEMENTED_SOFTWARE",
@@ -115,5 +115,5 @@
     "tests/rgcs_lab/test_lattice.py"
   ],
   "artifacts": [],
-  "receipt_sha256": "5ad3fb57bc96c3f33d6a9395e646659cac62b335f63c2cb9e3a2626e3a2acbb8"
+  "receipt_sha256": "069bdb8369b08b9c8657627d21711fe600bd4a08564feb303af346193e77aa8f"
 }

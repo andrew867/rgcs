@@ -1,7 +1,7 @@
 {
   "module": "frames",
   "version": "0.1.0.dev0",
-  "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+  "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
   "status": "GREEN",
   "claim_class": [
     "EXACT_ARITHMETIC",
@@ -14,61 +14,78 @@
     "unit-quaternion-hamilton-v1"
   ],
   "result": {
-    "example": "earth-south-up",
-    "from_frame": "earth-enu-candidate",
-    "to_frame": "earth-south-up-candidate",
-    "composition_order": "q_total = q_conventional_body * ... * q_local (rightmost applied first)",
+    "from_frame": "earth-east-north-up",
+    "to_frame": "earth-south-up",
     "quaternion": [
       6.123233995736766e-17,
-      1.0,
       0.0,
-      0.0
+      0.0,
+      1.0
+    ],
+    "axis": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "angle_rad": 3.141592653589793,
+    "angle_degrees": 180.0,
+    "matrix": [
+      [
+        -1.0,
+        -1.2246467991473532e-16,
+        0.0
+      ],
+      [
+        1.2246467991473532e-16,
+        -1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
     ],
     "inverse": [
       6.123233995736766e-17,
-      -1.0,
       -0.0,
-      -0.0
+      -0.0,
+      -1.0
     ],
-    "axis": [
+    "normalization_error": 0.0,
+    "composition_order": "Hamilton product; q_total = q_next * q_previous; active column-vector rotation",
+    "input_vector": [
       1.0,
       0.0,
       0.0
     ],
-    "angle_rad": 3.141592653589793,
-    "matrix": [
-      [
-        1.0,
-        0.0,
-        0.0
-      ],
-      [
-        0.0,
-        -1.0,
-        -1.2246467991473532e-16
-      ],
-      [
-        0.0,
-        1.2246467991473532e-16,
-        -1.0
-      ]
+    "rotated_vector": [
+      -1.0,
+      1.2246467991473532e-16,
+      0.0
     ],
-    "normalization_error": 0.0,
+    "round_trip_vector": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "round_trip_error": 0.0,
+    "example": "earth-south-up",
     "basis_out": {
       "e1": [
-        1.0,
-        0.0,
+        -1.0,
+        1.2246467991473532e-16,
         0.0
       ],
       "e2": [
-        0.0,
+        -1.2246467991473532e-16,
         -1.0,
-        1.2246467991473532e-16
+        0.0
       ],
       "e3": [
         0.0,
-        -1.2246467991473532e-16,
-        -1.0
+        0.0,
+        1.0
       ]
     },
     "round_trip_basis": {
@@ -87,17 +104,18 @@
         0.0,
         1.0
       ]
-    },
-    "sign_alias_equivalent": true
+    }
   },
   "warnings": [
-    "PHYSICAL FIELD EFFECT: YELLOW \u2014 not demonstrated"
+    "PHYSICAL FIELD EFFECT: YELLOW \u2014 not demonstrated",
+    "backend=rgcs_lab.frames"
   ],
   "tests": [
     "frames_identity",
     "frames_inverse",
-    "frames_roundtrip"
+    "frames_roundtrip",
+    "tests/rgcs_lab/test_frames.py"
   ],
   "artifacts": [],
-  "receipt_sha256": "3256cc788f2b7d56c4d899c72b009f30bede366856d5ee81032b57baef28ddf1"
+  "receipt_sha256": "da2e2bcc10ce82a644175e795ab3ebea0ddc2b164430bbafc985783d03664e92"
 }

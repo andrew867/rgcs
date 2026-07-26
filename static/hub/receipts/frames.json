@@ -1,7 +1,7 @@
 {
   "module": "frames",
   "version": "0.1.0.dev0",
-  "source_commit": "f06a4a8428d4a43c0af1bbb1de92967c262cae17",
+  "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
   "status": "GREEN",
   "claim_class": [
     "EXACT_ARITHMETIC",
@@ -117,5 +117,5 @@
     "tests/rgcs_lab/test_frames.py"
   ],
   "artifacts": [],
-  "receipt_sha256": "019cf6a40d589f5e3bcdbd2885e3bad316ecdd3f50616ef0462f184c6244554a"
+  "receipt_sha256": "da2e2bcc10ce82a644175e795ab3ebea0ddc2b164430bbafc985783d03664e92"
 }

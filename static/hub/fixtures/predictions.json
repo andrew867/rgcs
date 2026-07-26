@@ -43,7 +43,7 @@
   "receipt": {
     "module": "predictions",
     "version": "0.1.0.dev0",
-    "source_commit": "f06a4a8428d4a43c0af1bbb1de92967c262cae17",
+    "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
     "status": "YELLOW",
     "claim_class": [
       "PROSPECTIVE_PREDICTION",
@@ -89,7 +89,7 @@
       "prediction_immutable_after_measure"
     ],
     "artifacts": [],
-    "receipt_sha256": "2fb48f9004c5806da6744be746b5d5580f324d7e46e43179e9067005b9b90794"
+    "receipt_sha256": "142ebfb90321986fd624f30a9670b2938bc55deb6cb7f7296884919a0e4c35e0"
   },
   "does": "Freeze prospective predictions and null controls before measurement.",
   "does_not": "Does not validate a mechanism merely because one outcome matches.",

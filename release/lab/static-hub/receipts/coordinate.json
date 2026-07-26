@@ -1,7 +1,7 @@
 {
   "module": "coordinate",
   "version": "0.1.0.dev0",
-  "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+  "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
   "status": "GREEN",
   "claim_class": [
     "EXACT_ARITHMETIC",
@@ -76,5 +76,5 @@
     "golden_vectors"
   ],
   "artifacts": [],
-  "receipt_sha256": "f3d469c96c1c5f08e5da335a9ea2c8d32dfa16454682425b7c80ca3c10954772"
+  "receipt_sha256": "b3a4872472cb8ce3f30a95ac608e5840baefe9303fd66a74730d5cc5d890c9e0"
 }

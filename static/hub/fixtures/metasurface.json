@@ -158,7 +158,7 @@
   "receipt": {
     "module": "metasurface",
     "version": "0.1.0.dev0",
-    "source_commit": "f06a4a8428d4a43c0af1bbb1de92967c262cae17",
+    "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
     "status": "YELLOW",
     "claim_class": [
       "IMPLEMENTED_SOFTWARE",
@@ -319,7 +319,7 @@
       "tests/rgcs_lab/test_metasurface.py"
     ],
     "artifacts": [],
-    "receipt_sha256": "fad23a7b5bc2a51bb71072129024cac024fe51fbd01b68adc6a76c2534a16eef"
+    "receipt_sha256": "48413b252751fb6f8d90a92a81cc6cc8757516fab896bb9007a732a0c223733a"
   },
   "does": "Passive reduced-order spoof-SPP cell with energy accounting.",
   "does_not": "Does not modify gravity.",

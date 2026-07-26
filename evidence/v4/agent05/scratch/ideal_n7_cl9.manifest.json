@@ -32,7 +32,7 @@
   },
   "clmax_mm": 9.0,
   "order": 1,
-  "gmsh_cmd": "C:\\Users\\andrew\\OneDrive - Green O365\\Documents\\GitHub\\RGCS\\.venv\\Scripts\\gmsh -3 evidence\\v4\\agent05\\scratch\\ideal_n7_cl9.geo -o evidence\\v4\\agent05\\scratch\\ideal_n7_cl9.msh -format msh2 -order 1 -v 2",
+  "gmsh_cmd": "-3 evidence\\v4\\agent05\\scratch\\ideal_n7_cl9.geo -o evidence\\v4\\agent05\\scratch\\ideal_n7_cl9.msh -format msh2 -order 1 -v 2",
   "n_nodes": 167,
   "n_tets": 439,
   "quality": {

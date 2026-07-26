@@ -1,6 +1,6 @@
 {
   "module": "dual_pole",
-  "status": "GREEN",
+  "status": "YELLOW",
   "claim_class": [
     "IMPLEMENTED_SOFTWARE",
     "EXPLORATORY_MODEL"
@@ -27,37 +27,31 @@
       "PROPOSE",
       "EVIDENCE_BIND",
       "ATTACK",
-      "ACCEPT_GREEN",
+      "REATTACK",
+      "ACCEPT_YELLOW",
       "RECEIPT"
     ],
-    "terminal_state": "ACCEPT_GREEN",
-    "decision": "ACCEPT_GREEN",
-    "status": "GREEN",
-    "attacks": [],
-    "attack_families_available": [
-      "unsupported_factual_assertion",
-      "circular_training_validation",
-      "dimensional_error",
-      "energy_or_momentum_violation",
-      "codec_projection_conflation",
-      "data_leakage",
-      "stale_authority",
-      "hidden_parameter_tuning",
-      "alternative_ordinary_explanation",
-      "citation_mismatch",
-      "irreproducible_result"
+    "proposal": "exact structural decode of 165876523",
+    "claim_class": [
+      "EXACT_ARITHMETIC"
     ],
-    "statement": "exact structural decode of 165876523",
+    "evidence_count": 1,
+    "findings": [],
+    "operator_waiver_recorded": false,
+    "verdict": "ACCEPT_YELLOW",
+    "decision": "ACCEPT_YELLOW",
+    "attacks": [],
     "critic_bypassed": false
   },
   "warnings": [
-    "Independent witness status: not established"
+    "Independent witness status: not established",
+    "backend=rgcs_lab.dual_pole"
   ],
   "receipt": {
     "module": "dual_pole",
     "version": "0.1.0.dev0",
-    "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
-    "status": "GREEN",
+    "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
+    "status": "YELLOW",
     "claim_class": [
       "IMPLEMENTED_SOFTWARE",
       "EXPLORATORY_MODEL"
@@ -84,42 +78,38 @@
         "PROPOSE",
         "EVIDENCE_BIND",
         "ATTACK",
-        "ACCEPT_GREEN",
+        "REATTACK",
+        "ACCEPT_YELLOW",
         "RECEIPT"
       ],
-      "terminal_state": "ACCEPT_GREEN",
-      "decision": "ACCEPT_GREEN",
-      "status": "GREEN",
-      "attacks": [],
-      "attack_families_available": [
-        "unsupported_factual_assertion",
-        "circular_training_validation",
-        "dimensional_error",
-        "energy_or_momentum_violation",
-        "codec_projection_conflation",
-        "data_leakage",
-        "stale_authority",
-        "hidden_parameter_tuning",
-        "alternative_ordinary_explanation",
-        "citation_mismatch",
-        "irreproducible_result"
+      "proposal": "exact structural decode of 165876523",
+      "claim_class": [
+        "EXACT_ARITHMETIC"
       ],
-      "statement": "exact structural decode of 165876523",
+      "evidence_count": 1,
+      "findings": [],
+      "operator_waiver_recorded": false,
+      "verdict": "ACCEPT_YELLOW",
+      "decision": "ACCEPT_YELLOW",
+      "attacks": [],
       "critic_bypassed": false
     },
     "warnings": [
-      "Independent witness status: not established"
+      "Independent witness status: not established",
+      "backend=rgcs_lab.dual_pole"
     ],
     "tests": [
-      "dual_pole_critic_not_bypassed"
+      "dual_pole_critic_not_bypassed",
+      "tests/rgcs_lab/test_memory_dual.py"
     ],
     "artifacts": [],
-    "receipt_sha256": "6fb17d78a7ee0efb19958984eb173f385c217b19531ada687b077cc667596f78"
+    "receipt_sha256": "72491097cf18d18ff8abb18c5343ccccebb6b993134491ecb9dc451111174ad2"
   },
   "does": "Proposer/critic loop with typed attack families.",
   "does_not": "Does not make two models independent witnesses.",
   "tests": [
-    "dual_pole_critic_not_bypassed"
+    "dual_pole_critic_not_bypassed",
+    "tests/rgcs_lab/test_memory_dual.py"
   ],
-  "source": "rgcs_lab.reference.dual_pole"
+  "source": "rgcs_lab.dual_pole"
 }

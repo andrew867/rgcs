@@ -1,7 +1,7 @@
 {
   "module": "proofs",
   "version": "0.1.0.dev0",
-  "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+  "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
   "status": "GREEN",
   "claim_class": [
     "IMPLEMENTED_SOFTWARE"
@@ -14,7 +14,7 @@
     "coordinate": {
       "module": "coordinate",
       "version": "0.1.0.dev0",
-      "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+      "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -89,12 +89,12 @@
         "golden_vectors"
       ],
       "artifacts": [],
-      "receipt_sha256": "f3d469c96c1c5f08e5da335a9ea2c8d32dfa16454682425b7c80ca3c10954772"
+      "receipt_sha256": "b3a4872472cb8ce3f30a95ac608e5840baefe9303fd66a74730d5cc5d890c9e0"
     },
     "golay": {
       "module": "golay",
       "version": "0.1.0.dev0",
-      "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+      "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -105,175 +105,66 @@
         "seed": 1
       },
       "models": [
-        "rgcs.golay.g24.cyclic-v1"
+        "rgcs.golay.g24.systematic-v1"
       ],
       "result": {
-        "convention": "rgcs.golay.g24.cyclic-v1",
-        "bit_order": "msb-first-within-block",
-        "generator_poly": "1+x+x^5+x^6+x^7+x^9+x^11",
+        "convention": "rgcs.golay.g24.systematic-v1",
+        "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+        "generator_polynomial_binary": "101011100011",
+        "address36": 165876523,
         "blocks_in": [
-          2650,
-          1475,
-          241
+          9,
+          3633,
+          811
         ],
         "codewords": [
-          10855660,
-          6043418,
-          988988
+          36987,
+          14882258,
+          3324316
         ],
         "corruption": [
-          10855596,
-          14432026,
-          923452
+          168059,
+          14882259,
+          3324188
         ],
         "decoded_blocks": [
-          2650,
-          1475,
-          241
+          9,
+          3633,
+          811
         ],
         "correction_status": [
           "corrected",
           "corrected",
           "corrected"
         ],
-        "syndrome": [
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            1,
-            0,
-            1,
-            0,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            1
-          ],
-          [
-            1,
-            0,
-            1,
-            1,
-            0,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0
-          ]
-        ],
         "correction_mask": [
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
+          131072,
+          1,
+          128
+        ],
+        "distances": [
+          1,
+          1,
+          1
         ],
         "exact_round_trip": true
       },
       "warnings": [
         "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
-        "backend=rgcs_lab.reference.golay"
+        "backend=rgcs_lab.golay"
       ],
       "tests": [
         "golay_roundtrip",
-        "golay_flip_demo"
+        "golay_flip_demo",
+        "tests/rgcs_lab/test_golay.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "3bd7a4cd7a0895925248d868ac591d40319ed27e7ba9e7a08a455d1d829d0a90"
+      "receipt_sha256": "d849499a213add09d742784f105c0ef7c1b2c3ad2d38dcfba03f98ccf0defd7c"
     },
     "frames": {
       "module": "frames",
       "version": "0.1.0.dev0",
-      "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+      "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -286,61 +177,78 @@
         "unit-quaternion-hamilton-v1"
       ],
       "result": {
-        "example": "earth-south-up",
-        "from_frame": "earth-enu-candidate",
-        "to_frame": "earth-south-up-candidate",
-        "composition_order": "q_total = q_conventional_body * ... * q_local (rightmost applied first)",
+        "from_frame": "earth-east-north-up",
+        "to_frame": "earth-south-up",
         "quaternion": [
           6.123233995736766e-17,
-          1.0,
           0.0,
-          0.0
+          0.0,
+          1.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "angle_rad": 3.141592653589793,
+        "angle_degrees": 180.0,
+        "matrix": [
+          [
+            -1.0,
+            -1.2246467991473532e-16,
+            0.0
+          ],
+          [
+            1.2246467991473532e-16,
+            -1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
         ],
         "inverse": [
           6.123233995736766e-17,
-          -1.0,
           -0.0,
-          -0.0
+          -0.0,
+          -1.0
         ],
-        "axis": [
+        "normalization_error": 0.0,
+        "composition_order": "Hamilton product; q_total = q_next * q_previous; active column-vector rotation",
+        "input_vector": [
           1.0,
           0.0,
           0.0
         ],
-        "angle_rad": 3.141592653589793,
-        "matrix": [
-          [
-            1.0,
-            0.0,
-            0.0
-          ],
-          [
-            0.0,
-            -1.0,
-            -1.2246467991473532e-16
-          ],
-          [
-            0.0,
-            1.2246467991473532e-16,
-            -1.0
-          ]
+        "rotated_vector": [
+          -1.0,
+          1.2246467991473532e-16,
+          0.0
         ],
-        "normalization_error": 0.0,
+        "round_trip_vector": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "round_trip_error": 0.0,
+        "example": "earth-south-up",
         "basis_out": {
           "e1": [
-            1.0,
-            0.0,
+            -1.0,
+            1.2246467991473532e-16,
             0.0
           ],
           "e2": [
-            0.0,
+            -1.2246467991473532e-16,
             -1.0,
-            1.2246467991473532e-16
+            0.0
           ],
           "e3": [
             0.0,
-            -1.2246467991473532e-16,
-            -1.0
+            0.0,
+            1.0
           ]
         },
         "round_trip_basis": {
@@ -359,19 +267,20 @@
             0.0,
             1.0
           ]
-        },
-        "sign_alias_equivalent": true
+        }
       },
       "warnings": [
-        "PHYSICAL FIELD EFFECT: YELLOW \u2014 not demonstrated"
+        "PHYSICAL FIELD EFFECT: YELLOW \u2014 not demonstrated",
+        "backend=rgcs_lab.frames"
       ],
       "tests": [
         "frames_identity",
         "frames_inverse",
-        "frames_roundtrip"
+        "frames_roundtrip",
+        "tests/rgcs_lab/test_frames.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "3256cc788f2b7d56c4d899c72b009f30bede366856d5ee81032b57baef28ddf1"
+      "receipt_sha256": "da2e2bcc10ce82a644175e795ab3ebea0ddc2b164430bbafc985783d03664e92"
     },
     "catalog": [
       {
@@ -494,5 +403,5 @@
     "receipt_schema"
   ],
   "artifacts": [],
-  "receipt_sha256": "0319746995770b8e061da87bc67ff8632b5bfb92084be003c82a6c82ebdbf5ad"
+  "receipt_sha256": "27de8f127c245d19280689250b1a7ebc801aac343f6a8f4c833db39b7e84ec11"
 }

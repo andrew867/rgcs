@@ -11,168 +11,58 @@
       "seed": 1
     },
     "models": [
-      "rgcs.golay.g24.cyclic-v1"
+      "rgcs.golay.g24.systematic-v1"
     ],
     "result": {
-      "convention": "rgcs.golay.g24.cyclic-v1",
-      "bit_order": "msb-first-within-block",
-      "generator_poly": "1+x+x^5+x^6+x^7+x^9+x^11",
+      "convention": "rgcs.golay.g24.systematic-v1",
+      "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+      "generator_polynomial_binary": "101011100011",
+      "address36": 165876523,
       "blocks_in": [
-        2650,
-        1475,
-        241
+        9,
+        3633,
+        811
       ],
       "codewords": [
-        10855660,
-        6043418,
-        988988
+        36987,
+        14882258,
+        3324316
       ],
       "corruption": [
-        10855660,
-        6043418,
-        988988
+        36987,
+        14882258,
+        3324316
       ],
       "decoded_blocks": [
-        2650,
-        1475,
-        241
+        9,
+        3633,
+        811
       ],
       "correction_status": [
         "ok",
         "ok",
         "ok"
       ],
-      "syndrome": [
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ]
-      ],
       "correction_mask": [
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ]
+        0,
+        0,
+        0
+      ],
+      "distances": [
+        0,
+        0,
+        0
       ],
       "exact_round_trip": true
     },
     "warnings": [
       "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
-      "backend=rgcs_lab.reference.golay"
+      "backend=rgcs_lab.golay"
     ],
     "receipt": {
       "module": "golay",
       "version": "0.1.0.dev0",
-      "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+      "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -183,178 +73,70 @@
         "seed": 1
       },
       "models": [
-        "rgcs.golay.g24.cyclic-v1"
+        "rgcs.golay.g24.systematic-v1"
       ],
       "result": {
-        "convention": "rgcs.golay.g24.cyclic-v1",
-        "bit_order": "msb-first-within-block",
-        "generator_poly": "1+x+x^5+x^6+x^7+x^9+x^11",
+        "convention": "rgcs.golay.g24.systematic-v1",
+        "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+        "generator_polynomial_binary": "101011100011",
+        "address36": 165876523,
         "blocks_in": [
-          2650,
-          1475,
-          241
+          9,
+          3633,
+          811
         ],
         "codewords": [
-          10855660,
-          6043418,
-          988988
+          36987,
+          14882258,
+          3324316
         ],
         "corruption": [
-          10855660,
-          6043418,
-          988988
+          36987,
+          14882258,
+          3324316
         ],
         "decoded_blocks": [
-          2650,
-          1475,
-          241
+          9,
+          3633,
+          811
         ],
         "correction_status": [
           "ok",
           "ok",
           "ok"
         ],
-        "syndrome": [
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
-        ],
         "correction_mask": [
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
+          0,
+          0,
+          0
+        ],
+        "distances": [
+          0,
+          0,
+          0
         ],
         "exact_round_trip": true
       },
       "warnings": [
         "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
-        "backend=rgcs_lab.reference.golay"
+        "backend=rgcs_lab.golay"
       ],
       "tests": [
         "golay_roundtrip",
-        "golay_flip_demo"
+        "golay_flip_demo",
+        "tests/rgcs_lab/test_golay.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "9ea706094662abc9971257102f74eab8cacbef0a26f7773a9f53b7bdb23e36b2"
+      "receipt_sha256": "e62fb2d17eccacfd4ce81d37c3bb3ed0f99bd02b33cff79cbd445a8f51c90ec4"
     },
     "does": "Encode/decode a 36-bit address with extended binary Golay G24 blocks.",
     "does_not": "Does not show that an external civilization uses Golay coding.",
     "tests": [
       "golay_roundtrip",
-      "golay_flip_demo"
+      "golay_flip_demo",
+      "tests/rgcs_lab/test_golay.py"
     ],
-    "source": "rgcs_lab.reference.golay"
+    "source": "rgcs_lab.golay"
   },
   "1": {
     "module": "golay",
@@ -368,168 +150,58 @@
       "seed": 1
     },
     "models": [
-      "rgcs.golay.g24.cyclic-v1"
+      "rgcs.golay.g24.systematic-v1"
     ],
     "result": {
-      "convention": "rgcs.golay.g24.cyclic-v1",
-      "bit_order": "msb-first-within-block",
-      "generator_poly": "1+x+x^5+x^6+x^7+x^9+x^11",
+      "convention": "rgcs.golay.g24.systematic-v1",
+      "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+      "generator_polynomial_binary": "101011100011",
+      "address36": 165876523,
       "blocks_in": [
-        2650,
-        1475,
-        241
+        9,
+        3633,
+        811
       ],
       "codewords": [
-        10855660,
-        6043418,
-        988988
+        36987,
+        14882258,
+        3324316
       ],
       "corruption": [
-        10855596,
-        14432026,
-        923452
+        168059,
+        14882259,
+        3324188
       ],
       "decoded_blocks": [
-        2650,
-        1475,
-        241
+        9,
+        3633,
+        811
       ],
       "correction_status": [
         "corrected",
         "corrected",
         "corrected"
       ],
-      "syndrome": [
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          1,
-          0,
-          1,
-          0,
-          1,
-          1,
-          1,
-          0,
-          0,
-          0,
-          1
-        ],
-        [
-          1,
-          0,
-          1,
-          1,
-          0,
-          1,
-          1,
-          1,
-          1,
-          0,
-          0
-        ]
-      ],
       "correction_mask": [
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ]
+        131072,
+        1,
+        128
+      ],
+      "distances": [
+        1,
+        1,
+        1
       ],
       "exact_round_trip": true
     },
     "warnings": [
       "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
-      "backend=rgcs_lab.reference.golay"
+      "backend=rgcs_lab.golay"
     ],
     "receipt": {
       "module": "golay",
       "version": "0.1.0.dev0",
-      "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+      "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -540,178 +212,70 @@
         "seed": 1
       },
       "models": [
-        "rgcs.golay.g24.cyclic-v1"
+        "rgcs.golay.g24.systematic-v1"
       ],
       "result": {
-        "convention": "rgcs.golay.g24.cyclic-v1",
-        "bit_order": "msb-first-within-block",
-        "generator_poly": "1+x+x^5+x^6+x^7+x^9+x^11",
+        "convention": "rgcs.golay.g24.systematic-v1",
+        "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+        "generator_polynomial_binary": "101011100011",
+        "address36": 165876523,
         "blocks_in": [
-          2650,
-          1475,
-          241
+          9,
+          3633,
+          811
         ],
         "codewords": [
-          10855660,
-          6043418,
-          988988
+          36987,
+          14882258,
+          3324316
         ],
         "corruption": [
-          10855596,
-          14432026,
-          923452
+          168059,
+          14882259,
+          3324188
         ],
         "decoded_blocks": [
-          2650,
-          1475,
-          241
+          9,
+          3633,
+          811
         ],
         "correction_status": [
           "corrected",
           "corrected",
           "corrected"
         ],
-        "syndrome": [
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            1,
-            0,
-            1,
-            0,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            1
-          ],
-          [
-            1,
-            0,
-            1,
-            1,
-            0,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0
-          ]
-        ],
         "correction_mask": [
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
+          131072,
+          1,
+          128
+        ],
+        "distances": [
+          1,
+          1,
+          1
         ],
         "exact_round_trip": true
       },
       "warnings": [
         "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
-        "backend=rgcs_lab.reference.golay"
+        "backend=rgcs_lab.golay"
       ],
       "tests": [
         "golay_roundtrip",
-        "golay_flip_demo"
+        "golay_flip_demo",
+        "tests/rgcs_lab/test_golay.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "3bd7a4cd7a0895925248d868ac591d40319ed27e7ba9e7a08a455d1d829d0a90"
+      "receipt_sha256": "d849499a213add09d742784f105c0ef7c1b2c3ad2d38dcfba03f98ccf0defd7c"
     },
     "does": "Encode/decode a 36-bit address with extended binary Golay G24 blocks.",
     "does_not": "Does not show that an external civilization uses Golay coding.",
     "tests": [
       "golay_roundtrip",
-      "golay_flip_demo"
+      "golay_flip_demo",
+      "tests/rgcs_lab/test_golay.py"
     ],
-    "source": "rgcs_lab.reference.golay"
+    "source": "rgcs_lab.golay"
   },
   "2": {
     "module": "golay",
@@ -725,168 +289,58 @@
       "seed": 1
     },
     "models": [
-      "rgcs.golay.g24.cyclic-v1"
+      "rgcs.golay.g24.systematic-v1"
     ],
     "result": {
-      "convention": "rgcs.golay.g24.cyclic-v1",
-      "bit_order": "msb-first-within-block",
-      "generator_poly": "1+x+x^5+x^6+x^7+x^9+x^11",
+      "convention": "rgcs.golay.g24.systematic-v1",
+      "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+      "generator_polynomial_binary": "101011100011",
+      "address36": 165876523,
       "blocks_in": [
-        2650,
-        1475,
-        241
+        9,
+        3633,
+        811
       ],
       "codewords": [
-        10855660,
-        6043418,
-        988988
+        36987,
+        14882258,
+        3324316
       ],
       "corruption": [
-        10856108,
-        14448410,
-        399164
+        184443,
+        14882771,
+        3324172
       ],
       "decoded_blocks": [
-        2650,
-        1475,
-        241
+        9,
+        3633,
+        811
       ],
       "correction_status": [
         "corrected",
         "corrected",
         "corrected"
       ],
-      "syndrome": [
-        [
-          0,
-          0,
-          1,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          1,
-          1,
-          1,
-          0
-        ],
-        [
-          0,
-          1,
-          1,
-          1,
-          1,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0
-        ]
-      ],
       "correction_mask": [
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ]
+        147456,
+        513,
+        144
+      ],
+      "distances": [
+        2,
+        2,
+        2
       ],
       "exact_round_trip": true
     },
     "warnings": [
       "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
-      "backend=rgcs_lab.reference.golay"
+      "backend=rgcs_lab.golay"
     ],
     "receipt": {
       "module": "golay",
       "version": "0.1.0.dev0",
-      "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+      "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -897,178 +351,70 @@
         "seed": 1
       },
       "models": [
-        "rgcs.golay.g24.cyclic-v1"
+        "rgcs.golay.g24.systematic-v1"
       ],
       "result": {
-        "convention": "rgcs.golay.g24.cyclic-v1",
-        "bit_order": "msb-first-within-block",
-        "generator_poly": "1+x+x^5+x^6+x^7+x^9+x^11",
+        "convention": "rgcs.golay.g24.systematic-v1",
+        "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+        "generator_polynomial_binary": "101011100011",
+        "address36": 165876523,
         "blocks_in": [
-          2650,
-          1475,
-          241
+          9,
+          3633,
+          811
         ],
         "codewords": [
-          10855660,
-          6043418,
-          988988
+          36987,
+          14882258,
+          3324316
         ],
         "corruption": [
-          10856108,
-          14448410,
-          399164
+          184443,
+          14882771,
+          3324172
         ],
         "decoded_blocks": [
-          2650,
-          1475,
-          241
+          9,
+          3633,
+          811
         ],
         "correction_status": [
           "corrected",
           "corrected",
           "corrected"
         ],
-        "syndrome": [
-          [
-            0,
-            0,
-            1,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            0
-          ],
-          [
-            0,
-            1,
-            1,
-            1,
-            1,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0
-          ]
-        ],
         "correction_mask": [
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
+          147456,
+          513,
+          144
+        ],
+        "distances": [
+          2,
+          2,
+          2
         ],
         "exact_round_trip": true
       },
       "warnings": [
         "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
-        "backend=rgcs_lab.reference.golay"
+        "backend=rgcs_lab.golay"
       ],
       "tests": [
         "golay_roundtrip",
-        "golay_flip_demo"
+        "golay_flip_demo",
+        "tests/rgcs_lab/test_golay.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "59e717cf7f8a0f5ff8121232c68bafac6fc29e0ddc575932091af92a4fa5997b"
+      "receipt_sha256": "8ca94273fb407c96a6fb79ad30ba1cfef171726b1e77ef9a7589a7ac5eba71c4"
     },
     "does": "Encode/decode a 36-bit address with extended binary Golay G24 blocks.",
     "does_not": "Does not show that an external civilization uses Golay coding.",
     "tests": [
       "golay_roundtrip",
-      "golay_flip_demo"
+      "golay_flip_demo",
+      "tests/rgcs_lab/test_golay.py"
     ],
-    "source": "rgcs_lab.reference.golay"
+    "source": "rgcs_lab.golay"
   },
   "3": {
     "module": "golay",
@@ -1082,168 +428,58 @@
       "seed": 1
     },
     "models": [
-      "rgcs.golay.g24.cyclic-v1"
+      "rgcs.golay.g24.systematic-v1"
     ],
     "result": {
-      "convention": "rgcs.golay.g24.cyclic-v1",
-      "bit_order": "msb-first-within-block",
-      "generator_poly": "1+x+x^5+x^6+x^7+x^9+x^11",
+      "convention": "rgcs.golay.g24.systematic-v1",
+      "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+      "generator_polynomial_binary": "101011100011",
+      "address36": 165876523,
       "blocks_in": [
-        2650,
-        1475,
-        241
+        9,
+        3633,
+        811
       ],
       "codewords": [
-        10855660,
-        6043418,
-        988988
+        36987,
+        14882258,
+        3324316
       ],
       "corruption": [
-        10856364,
-        14447898,
-        398140
+        151675,
+        14899155,
+        3315980
       ],
       "decoded_blocks": [
-        2650,
-        1475,
-        241
+        9,
+        3633,
+        811
       ],
       "correction_status": [
         "corrected",
         "corrected",
         "corrected"
       ],
-      "syndrome": [
-        [
-          0,
-          0,
-          1,
-          1,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          1,
-          0,
-          1,
-          0,
-          0,
-          0,
-          1,
-          1,
-          1,
-          1,
-          0
-        ],
-        [
-          0,
-          0,
-          1,
-          1,
-          1,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0
-        ]
-      ],
       "correction_mask": [
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          1,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ]
+        180224,
+        16897,
+        8336
+      ],
+      "distances": [
+        3,
+        3,
+        3
       ],
       "exact_round_trip": true
     },
     "warnings": [
       "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
-      "backend=rgcs_lab.reference.golay"
+      "backend=rgcs_lab.golay"
     ],
     "receipt": {
       "module": "golay",
       "version": "0.1.0.dev0",
-      "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+      "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -1254,178 +490,70 @@
         "seed": 1
       },
       "models": [
-        "rgcs.golay.g24.cyclic-v1"
+        "rgcs.golay.g24.systematic-v1"
       ],
       "result": {
-        "convention": "rgcs.golay.g24.cyclic-v1",
-        "bit_order": "msb-first-within-block",
-        "generator_poly": "1+x+x^5+x^6+x^7+x^9+x^11",
+        "convention": "rgcs.golay.g24.systematic-v1",
+        "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+        "generator_polynomial_binary": "101011100011",
+        "address36": 165876523,
         "blocks_in": [
-          2650,
-          1475,
-          241
+          9,
+          3633,
+          811
         ],
         "codewords": [
-          10855660,
-          6043418,
-          988988
+          36987,
+          14882258,
+          3324316
         ],
         "corruption": [
-          10856364,
-          14447898,
-          398140
+          151675,
+          14899155,
+          3315980
         ],
         "decoded_blocks": [
-          2650,
-          1475,
-          241
+          9,
+          3633,
+          811
         ],
         "correction_status": [
           "corrected",
           "corrected",
           "corrected"
         ],
-        "syndrome": [
-          [
-            0,
-            0,
-            1,
-            1,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            1,
-            0,
-            1,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            0
-          ],
-          [
-            0,
-            0,
-            1,
-            1,
-            1,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0
-          ]
-        ],
         "correction_mask": [
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
+          180224,
+          16897,
+          8336
+        ],
+        "distances": [
+          3,
+          3,
+          3
         ],
         "exact_round_trip": true
       },
       "warnings": [
         "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
-        "backend=rgcs_lab.reference.golay"
+        "backend=rgcs_lab.golay"
       ],
       "tests": [
         "golay_roundtrip",
-        "golay_flip_demo"
+        "golay_flip_demo",
+        "tests/rgcs_lab/test_golay.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "01bc0268793a443043a4b5d78576025bdba1cb852f53d244eb6eb42d3dd36597"
+      "receipt_sha256": "1a3806a1a604a62c5ea2dcc96b45e01ffcf0d4a230e6e48ecf2a1ea1b4d7c03a"
     },
     "does": "Encode/decode a 36-bit address with extended binary Golay G24 blocks.",
     "does_not": "Does not show that an external civilization uses Golay coding.",
     "tests": [
       "golay_roundtrip",
-      "golay_flip_demo"
+      "golay_flip_demo",
+      "tests/rgcs_lab/test_golay.py"
     ],
-    "source": "rgcs_lab.reference.golay"
+    "source": "rgcs_lab.golay"
   },
   "4": {
     "module": "golay",
@@ -1439,170 +567,60 @@
       "seed": 1
     },
     "models": [
-      "rgcs.golay.g24.cyclic-v1"
+      "rgcs.golay.g24.systematic-v1"
     ],
     "result": {
-      "convention": "rgcs.golay.g24.cyclic-v1",
-      "bit_order": "msb-first-within-block",
-      "generator_poly": "1+x+x^5+x^6+x^7+x^9+x^11",
+      "convention": "rgcs.golay.g24.systematic-v1",
+      "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+      "generator_polynomial_binary": "101011100011",
+      "address36": 165876523,
       "blocks_in": [
-        2650,
-        1475,
-        241
+        9,
+        3633,
+        811
       ],
       "codewords": [
-        10855660,
-        6043418,
-        988988
+        36987,
+        14882258,
+        3324316
       ],
       "corruption": [
-        10858412,
-        14447899,
-        406332
+        147579,
+        6510547,
+        3317004
       ],
       "decoded_blocks": [
-        2650,
-        3527,
-        99
+        null,
+        null,
+        null
       ],
       "correction_status": [
         "uncorrectable",
         "uncorrectable",
         "uncorrectable"
       ],
-      "syndrome": [
-        [
-          1,
-          0,
-          1,
-          1,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          1,
-          0,
-          1,
-          0,
-          0,
-          0,
-          1,
-          1,
-          1,
-          1,
-          0
-        ],
-        [
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          1,
-          1,
-          0
-        ]
-      ],
       "correction_mask": [
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ]
+        0,
+        0,
+        0
+      ],
+      "distances": [
+        4,
+        4,
+        4
       ],
       "exact_round_trip": true
     },
     "warnings": [
       "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
-      "backend=rgcs_lab.reference.golay",
+      "backend=rgcs_lab.golay",
       "four or more flips may be uncorrectable or miscorrected",
       "at least one block reported uncorrectable"
     ],
     "receipt": {
       "module": "golay",
       "version": "0.1.0.dev0",
-      "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+      "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -1613,179 +631,71 @@
         "seed": 1
       },
       "models": [
-        "rgcs.golay.g24.cyclic-v1"
+        "rgcs.golay.g24.systematic-v1"
       ],
       "result": {
-        "convention": "rgcs.golay.g24.cyclic-v1",
-        "bit_order": "msb-first-within-block",
-        "generator_poly": "1+x+x^5+x^6+x^7+x^9+x^11",
+        "convention": "rgcs.golay.g24.systematic-v1",
+        "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+        "generator_polynomial_binary": "101011100011",
+        "address36": 165876523,
         "blocks_in": [
-          2650,
-          1475,
-          241
+          9,
+          3633,
+          811
         ],
         "codewords": [
-          10855660,
-          6043418,
-          988988
+          36987,
+          14882258,
+          3324316
         ],
         "corruption": [
-          10858412,
-          14447899,
-          406332
+          147579,
+          6510547,
+          3317004
         ],
         "decoded_blocks": [
-          2650,
-          3527,
-          99
+          null,
+          null,
+          null
         ],
         "correction_status": [
           "uncorrectable",
           "uncorrectable",
           "uncorrectable"
         ],
-        "syndrome": [
-          [
-            1,
-            0,
-            1,
-            1,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            1,
-            0,
-            1,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            0
-          ],
-          [
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            1,
-            1,
-            0
-          ]
-        ],
         "correction_mask": [
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
+          0,
+          0,
+          0
+        ],
+        "distances": [
+          4,
+          4,
+          4
         ],
         "exact_round_trip": true
       },
       "warnings": [
         "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
-        "backend=rgcs_lab.reference.golay",
+        "backend=rgcs_lab.golay",
         "four or more flips may be uncorrectable or miscorrected",
         "at least one block reported uncorrectable"
       ],
       "tests": [
         "golay_roundtrip",
-        "golay_flip_demo"
+        "golay_flip_demo",
+        "tests/rgcs_lab/test_golay.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "925879fae9f35f3d9116983cb1f807d6afc3f2fb97d7a73e9ead0c2a5579462a"
+      "receipt_sha256": "bb062a66515eef5f4d0cde02b689f01fd8e51648f66e7624f72a47b37014036e"
     },
     "does": "Encode/decode a 36-bit address with extended binary Golay G24 blocks.",
     "does_not": "Does not show that an external civilization uses Golay coding.",
     "tests": [
       "golay_roundtrip",
-      "golay_flip_demo"
+      "golay_flip_demo",
+      "tests/rgcs_lab/test_golay.py"
     ],
-    "source": "rgcs_lab.reference.golay"
+    "source": "rgcs_lab.golay"
   }
 }
