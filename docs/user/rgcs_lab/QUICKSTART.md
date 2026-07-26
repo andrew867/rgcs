@@ -30,10 +30,10 @@ Open `static/hub/index.html` in a browser (`file://` works). Module pages load g
 ```bash
 rgcs-lab coordinate decode 165876523
 rgcs-lab golay demo --random-flips 3
-rgcs-lab frames earth-south-up
+rgcs-lab frames example earth-south-up
 rgcs-lab memory benchmark --query "golay transport"
 rgcs-lab dual-pole audit examples/lab/claim.json
-rgcs-lab lattice run counterrotating-ring
+rgcs-lab lattice run --directed-phase-rad 0.3
 rgcs-lab metasurface sweep
 rgcs-lab predictions freeze examples/lab/prediction.json
 rgcs-lab predictions verify examples/lab/prediction_frozen.json

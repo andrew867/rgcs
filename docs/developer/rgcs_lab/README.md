@@ -23,9 +23,12 @@ tests/rgcs_lab/
 
 ## Receipts
 
-Every adapter returns a `ModuleResult` with a receipt matching
-`schemas/lab/receipt.schema.json` (module, version, source_commit, status,
-claim_class, inputs, models, result, tests, receipt_sha256).
+Every adapter returns a `ModuleResult` with a receipt matching the canonical
+packaged schema `rgcs_lab/common/receipt_schema.json` (module, version,
+source_commit, status, claim_class, inputs, models, result, tests,
+receipt_sha256); `schemas/lab/receipt.schema.json` is a byte-identical
+distribution mirror for external tooling. Both builders validate through
+`rgcs_lab.common.status_schema.validate_receipt` before returning.
 
 ## Privacy
 

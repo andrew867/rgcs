@@ -46,6 +46,11 @@ def build_receipt(
         "tests": tests or [],
         "artifacts": artifacts or [],
     }
+    # One receipt contract program-wide: a receipt that violates the
+    # canonical schema must never be written silently (AA-01).
+    from rgcs_lab.common.status_schema import validate_receipt
+
+    validate_receipt(body)
     body["receipt_sha256"] = receipt_sha256(
         {k: v for k, v in body.items() if k != "receipt_sha256"}
     )

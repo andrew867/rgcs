@@ -105,7 +105,13 @@ def create_app() -> FastAPI:
 
     @app.post("/api/dual_pole/audit")
     def api_dual(body: DualPoleBody) -> dict[str, Any]:
-        return services.dual_pole_audit(body.claim).to_dict()
+        from rgcs_lab.common.status_schema import SchemaError
+
+        try:
+            return services.dual_pole_audit(body.claim).to_dict()
+        except SchemaError as exc:
+            # Authority Lock refusal — refused input, not a server fault.
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
 
     @app.post("/api/lattice/run")
     def api_lattice(body: LatticeBody) -> dict[str, Any]:

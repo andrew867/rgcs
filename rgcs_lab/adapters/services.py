@@ -79,13 +79,40 @@ _DECISION_MAP = {
 }
 
 
+def _redact_banned(obj: Any) -> Any:
+    """Replace banned public wording in echoed text (Authority Lock).
+
+    The dual-pole audit must be able to REJECT a claim that quotes
+    banned wording without echoing that wording into its own result
+    payload or receipt — otherwise the envelope's SchemaError refusal
+    fires and no REJECT receipt can be produced (audit finding AA-02).
+    The critic still sees the ORIGINAL text; only the echo is redacted.
+    """
+    from rgcs_lab.common.status_schema import BANNED_WORDING
+
+    if isinstance(obj, str):
+        low = obj.lower()
+        for banned in BANNED_WORDING:
+            idx = low.find(banned)
+            while idx != -1:
+                obj = obj[:idx] + "[REDACTED-BANNED-WORDING]" + obj[idx + len(banned):]
+                low = obj.lower()
+                idx = low.find(banned)
+        return obj
+    if isinstance(obj, dict):
+        return {k: _redact_banned(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_redact_banned(v) for v in obj]
+    return obj
+
+
 def dual_pole_audit(claim: dict[str, Any]) -> ModuleResult:
     core, backend = resolve_core("rgcs_lab.dual_pole", "rgcs_lab.reference.dual_pole")
     if backend == "codex":
         codex_claim = dict(claim)
         if "proposal" not in codex_claim and "statement" in codex_claim:
             codex_claim["proposal"] = codex_claim["statement"]
-        raw = core.audit_claim(codex_claim)
+        raw = _redact_banned(core.audit_claim(codex_claim))
         verdict = str(raw["verdict"])
         payload = dict(raw)
         payload["decision"] = _DECISION_MAP.get(verdict, "REJECT")
@@ -102,7 +129,7 @@ def dual_pole_audit(claim: dict[str, Any]) -> ModuleResult:
             status = Status.YELLOW
         source = core.__name__
     else:  # labelled reference fallback (never GREEN)
-        payload = core.audit_claim(claim)
+        payload = _redact_banned(core.audit_claim(claim))
         status = Status[payload.get("status", "YELLOW")]
         source = core.__name__
     warnings = ["Independent witness status: not established",
@@ -112,7 +139,7 @@ def dual_pole_audit(claim: dict[str, Any]) -> ModuleResult:
         module="dual_pole",
         status=status.value,
         claim_class=["IMPLEMENTED_SOFTWARE", "EXPLORATORY_MODEL"],
-        inputs={"claim": claim},
+        inputs={"claim": _redact_banned(claim)},
         models=["dual-pole-state-machine-v1"],
         result=payload,
         tests=["dual_pole_critic_not_bypassed",
@@ -123,7 +150,7 @@ def dual_pole_audit(claim: dict[str, Any]) -> ModuleResult:
         module="dual_pole",
         status=status,
         claim_class=["IMPLEMENTED_SOFTWARE", "EXPLORATORY_MODEL"],
-        input={"claim": claim},
+        input={"claim": _redact_banned(claim)},
         models=receipt["models"],
         result=payload,
         warnings=receipt["warnings"],
