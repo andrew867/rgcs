@@ -1,7 +1,7 @@
 {
   "module": "proofs",
   "version": "0.1.0.dev0",
-  "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
+  "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
   "status": "GREEN",
   "claim_class": [
     "IMPLEMENTED_SOFTWARE"
@@ -14,7 +14,7 @@
     "coordinate": {
       "module": "coordinate",
       "version": "0.1.0.dev0",
-      "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
+      "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -89,12 +89,12 @@
         "golden_vectors"
       ],
       "artifacts": [],
-      "receipt_sha256": "b3a4872472cb8ce3f30a95ac608e5840baefe9303fd66a74730d5cc5d890c9e0"
+      "receipt_sha256": "13e96440f288d8137a2138898bca29d092f505f5bf7058b48547004e03f1013e"
     },
     "golay": {
       "module": "golay",
       "version": "0.1.0.dev0",
-      "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
+      "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -159,12 +159,12 @@
         "tests/rgcs_lab/test_golay.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "d849499a213add09d742784f105c0ef7c1b2c3ad2d38dcfba03f98ccf0defd7c"
+      "receipt_sha256": "b307697c2fc7acdb316e98bc242f025dfe51bbc4ca4d245bd1096928c03309a6"
     },
     "frames": {
       "module": "frames",
       "version": "0.1.0.dev0",
-      "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
+      "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -280,7 +280,7 @@
         "tests/rgcs_lab/test_frames.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "da2e2bcc10ce82a644175e795ab3ebea0ddc2b164430bbafc985783d03664e92"
+      "receipt_sha256": "93702ab146e800e603f4ff18e5c476ae6f15e86dc5f5be161f61bf7b35c8534d"
     },
     "catalog": [
       {
@@ -403,5 +403,5 @@
     "receipt_schema"
   ],
   "artifacts": [],
-  "receipt_sha256": "27de8f127c245d19280689250b1a7ebc801aac343f6a8f4c833db39b7e84ec11"
+  "receipt_sha256": "a81046b5d886d5f7d4fbdb227dccd09a98e7654ea08a38e7a02faf0a2bdbc0b7"
 }

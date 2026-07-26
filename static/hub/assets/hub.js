@@ -1,16 +1,11 @@
 "use strict";
 
-const FALLBACK_MODULES = [
-  {id:"coordinate",title:"Coordinate",status:"GREEN",physical_status:"YELLOW",purpose:"Exact Federation/Terra 30-bit F5|Q22|S3 structural codec.",does_not:"Does not yet establish a unique physical source map."},
-  {id:"golay",title:"Golay",status:"GREEN",physical_status:"YELLOW",purpose:"Extended binary Golay G24 transport wrapper for a 36-bit address.",does_not:"Does not show that an external civilization uses Golay coding."},
-  {id:"frames",title:"Frames",status:"GREEN",physical_status:"YELLOW",purpose:"Ordered quaternion frame compositions with round-trip checks.",does_not:"Does not demonstrate a physical field effect."},
-  {id:"memory",title:"Memory",status:"GREEN",physical_status:"YELLOW",purpose:"Reproducible provenance-memory retrieval benchmark harness.",does_not:"Does not demonstrate consciousness."},
-  {id:"dual_pole",title:"Dual-Pole",status:"GREEN",physical_status:"YELLOW",purpose:"Proposer/critic research loop with typed attack families.",does_not:"Does not make two models independent witnesses."},
-  {id:"lattice",title:"Lattice",status:"GREEN",physical_status:"YELLOW",purpose:"64-state synthetic resonant lattice with an energy ledger.",does_not:"Does not transport matter."},
-  {id:"metasurface",title:"Metasurface",status:"YELLOW",physical_status:"YELLOW",purpose:"Passive reduced-order spoof-SPP cell with energy accounting.",does_not:"Does not modify gravity."},
-  {id:"predictions",title:"Predictions",status:"YELLOW",physical_status:"YELLOW",purpose:"Freeze prospective predictions and null controls before measurement.",does_not:"Does not validate a mechanism merely because one outcome matches."},
-  {id:"proofs",title:"Proofs",status:"GREEN",physical_status:"YELLOW",purpose:"Aggregate receipts, hashes, and claim-boundary audit surface.",does_not:"Does not convert a green UI into a physical proof."}
-];
+// The badge catalog is NEVER hand-written here (audit AA-03): static
+// mode reads window.RGCS_CATALOG from assets/catalog.data.js, which
+// build_static_hub.py generates from the canonical module registry
+// (rgcs_lab.common.status.module_catalog). Server mode asks /api/modules.
+const FALLBACK_MODULES =
+  (typeof window !== "undefined" && window.RGCS_CATALOG) || [];
 
 function detectMode() {
   // Static file:// or missing API → static fixtures. Server mode uses /api.

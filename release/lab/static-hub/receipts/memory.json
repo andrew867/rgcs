@@ -1,7 +1,7 @@
 {
   "module": "memory",
   "version": "0.1.0.dev0",
-  "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
+  "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
   "status": "GREEN",
   "claim_class": [
     "IMPLEMENTED_SOFTWARE",
@@ -158,5 +158,5 @@
     "tests/rgcs_lab/test_memory_dual.py"
   ],
   "artifacts": [],
-  "receipt_sha256": "42e09764c6b53a459d62852e2d2d9dada64ae2c03eb7352a208c3b6c7a80b9ca"
+  "receipt_sha256": "346a212843f17ee741098ba42bb91186d6e00e640e2a035ed531c798585056ab"
 }

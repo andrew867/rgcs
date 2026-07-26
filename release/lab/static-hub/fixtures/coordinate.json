@@ -71,7 +71,7 @@
   "receipt": {
     "module": "coordinate",
     "version": "0.1.0.dev0",
-    "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
+    "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
     "status": "GREEN",
     "claim_class": [
       "EXACT_ARITHMETIC",
@@ -146,7 +146,7 @@
       "golden_vectors"
     ],
     "artifacts": [],
-    "receipt_sha256": "b3a4872472cb8ce3f30a95ac608e5840baefe9303fd66a74730d5cc5d890c9e0"
+    "receipt_sha256": "13e96440f288d8137a2138898bca29d092f505f5bf7058b48547004e03f1013e"
   },
   "does": "Exact structural decode/encode of the Federation/Terra 30-bit packet.",
   "does_not": "Does not yet establish a unique physical source map.",

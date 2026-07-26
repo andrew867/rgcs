@@ -1,7 +1,7 @@
 {
   "module": "golay",
   "version": "0.1.0.dev0",
-  "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
+  "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
   "status": "GREEN",
   "claim_class": [
     "EXACT_ARITHMETIC",
@@ -66,5 +66,5 @@
     "tests/rgcs_lab/test_golay.py"
   ],
   "artifacts": [],
-  "receipt_sha256": "d849499a213add09d742784f105c0ef7c1b2c3ad2d38dcfba03f98ccf0defd7c"
+  "receipt_sha256": "b307697c2fc7acdb316e98bc242f025dfe51bbc4ca4d245bd1096928c03309a6"
 }

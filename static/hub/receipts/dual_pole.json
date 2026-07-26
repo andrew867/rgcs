@@ -1,7 +1,7 @@
 {
   "module": "dual_pole",
   "version": "0.1.0.dev0",
-  "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
+  "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
   "status": "YELLOW",
   "claim_class": [
     "IMPLEMENTED_SOFTWARE",
@@ -54,5 +54,5 @@
     "tests/rgcs_lab/test_memory_dual.py"
   ],
   "artifacts": [],
-  "receipt_sha256": "72491097cf18d18ff8abb18c5343ccccebb6b993134491ecb9dc451111174ad2"
+  "receipt_sha256": "f253e412c1f345c9270f5aecfe21e5e0c0f529a6ee6c2fec085b8bc1321eef55"
 }

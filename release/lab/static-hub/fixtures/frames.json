@@ -111,7 +111,7 @@
   "receipt": {
     "module": "frames",
     "version": "0.1.0.dev0",
-    "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
+    "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
     "status": "GREEN",
     "claim_class": [
       "EXACT_ARITHMETIC",
@@ -227,7 +227,7 @@
       "tests/rgcs_lab/test_frames.py"
     ],
     "artifacts": [],
-    "receipt_sha256": "da2e2bcc10ce82a644175e795ab3ebea0ddc2b164430bbafc985783d03664e92"
+    "receipt_sha256": "93702ab146e800e603f4ff18e5c476ae6f15e86dc5f5be161f61bf7b35c8534d"
   },
   "does": "Compose ordered unit-quaternion frame transforms with round-trip checks.",
   "does_not": "Does not demonstrate a physical field effect.",

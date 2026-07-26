@@ -92,14 +92,29 @@ def cmd_modules(_args) -> int:
 def cmd_coordinate(args) -> int:
     from rgcs_lab.adapters import coordinate
 
-    if args.action == "decode":
-        _print_result(coordinate.decode(args.value))
-        return 0
-    if args.action == "roundtrip":
-        result = coordinate.roundtrip(args.value)
-        _print_result(result)
-        return 0 if result.status.value == "GREEN" else 5
-    return 2
+    try:
+        if args.action == "decode":
+            _print_result(coordinate.decode(args.value))
+            return 0
+        if args.action == "roundtrip":
+            result = coordinate.roundtrip(args.value)
+            _print_result(result)
+            return 0 if result.status.value == "GREEN" else 5
+        return 2
+    except Exception as exc:  # noqa: BLE001 — narrowed by name below
+        # Typed refusal, never a stack trace: the frozen parser refuses
+        # out-of-family vectors (e.g. 31-34-bit words) rather than
+        # truncating or padding them; surface that refusal as data.
+        if type(exc).__name__ not in ("PacketError", "ValueError"):
+            raise
+        _print_result({
+            "module": "coordinate",
+            "status": "RED",
+            "refusal": str(exc),
+            "note": "refused input — the 30-bit packet family parser "
+                    "never truncates or pads longer vectors",
+        })
+        return 4
 
 
 def cmd_pred(args) -> int:
