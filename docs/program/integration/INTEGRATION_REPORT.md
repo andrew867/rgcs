@@ -53,7 +53,7 @@ Pre-merge inventory: `PREMERGE_INVENTORY.md`; file-level decisions:
 | `pytest tests/rgcs_lab` (post-Codex) | 36 passed, normal exit (hang not reproduced; see investigation) |
 | `pytest tests/rgcs_lab` (post-Cursor reconciliation) | 55 passed (25 Claude + 11 Codex + 19 Cursor) |
 | `pytest tests/rgcs_coordinate -q` | 30 passed (frozen codec untouched) |
-| `pytest tests -q` (full repository) | see TEST_RECEIPT.json (completed with normal exit) |
+| `pytest tests -q` (full repository, CI-mirroring NR3-001 deselect) | **7931 passed, 15 skipped, 1 deselected, exit 0** (TEST_RECEIPT.json) |
 | `python -m build` | wheel + sdist built (PACKAGE_RECEIPT.json) |
 | installed wheel outside repo | every CLI module + `rgcs-lab serve` executed (PACKAGE_RECEIPT.json) |
 | static hub from disk + static server | verified, no telemetry, YELLOW physics visible (STATIC_HUB_RECEIPT.json) |

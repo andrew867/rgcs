@@ -1,0 +1,39 @@
+{
+  "module": "integration_tests",
+  "version": "0.1.0.dev0",
+  "source_commit": "6b55e6c785c73d13d811f436df71c0bf19c67e29",
+  "status": "GREEN",
+  "claim_class": ["IMPLEMENTED_SOFTWARE"],
+  "inputs": {
+    "environment": "Windows 11 Enterprise 10.0.26200, Python 3.13.2, clean venv %LOCALAPPDATA%/rgcs-int-venv (outside OneDrive)",
+    "installed": "numpy scipy pydantic pyyaml pytest hypothesis jsonschema referencing fastapi httpx uvicorn build pytest-qt PySide6 pyqtgraph scikit-fem openpyxl meshio matplotlib"
+  },
+  "models": ["pytest gates from 01_INTEGRATION/TEST_AND_BUILD_GATES.md"],
+  "result": {
+    "authority_focused_post_claude_merge": "25 passed",
+    "rgcs_lab_post_codex_merge": "36 passed, normal exit (reported teardown hang NOT reproduced; see CODEX_PYTEST_HANG_INVESTIGATION.md)",
+    "rgcs_lab_post_cursor_reconciliation": "55 passed (25 Claude authority + 11 Codex numerical/property + 19 Cursor integration/API/a11y)",
+    "rgcs_coordinate": "30 passed (frozen codec untouched)",
+    "full_repository_suite": {
+      "command": "python -m pytest tests -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic",
+      "summary": "7931 passed, 15 skipped, 1 deselected, 4 warnings in 884.05s",
+      "exit_code": 0,
+      "deselection_note": "The single deselected node is the NR3-001/D-V3-04 byte-equality generator test, valid only in the archived v2 reference environment; the repository's own CI deselects exactly this node id (.github/workflows/ci.yml). Its numeric-equivalence companion test passes."
+    },
+    "fixes_made_during_gating": [
+      "tests/rgcs_lab/test_frames.py renamed to test_rlab_frames_core.py (repo-wide pytest basename collision with tests/cwatlas/test_frames.py; contents unchanged)",
+      "tests/cwatlas/test_service.py::test_no_web_framework_imported converted to a fresh-subprocess import-graph check; the prior sys.modules assertion false-failed once any co-resident suite imported FastAPI. The framework-agnostic property itself still holds and is now tested more strictly.",
+      "rgcs_lab.dual_pole.audit_claim accepts 'statement' as well as 'proposal' so text attacks fire on both claim schemas"
+    ],
+    "environment_only_failures_resolved": "19 collection/errors and 1 failure in earlier passes were missing optional dependencies (skfem, openpyxl, meshio, pyqtgraph, matplotlib) — resolved by installing the declared extras; no test or config was weakened"
+  },
+  "warnings": [
+    "test_generator_deterministic remains environment-bound by design (D-V3-04); it is not an integration defect and is deselected only under its exact node id, mirroring CI"
+  ],
+  "tests": [
+    "pytest tests/rgcs_lab (55 passed)",
+    "pytest tests/rgcs_coordinate (30 passed)",
+    "pytest tests -q --deselect <NR3-001 node> (7931 passed, exit 0)"
+  ],
+  "artifacts": []
+}
