@@ -99,7 +99,8 @@ def test_registry_is_typed_and_complete():
     ids = [c.candidate_id for c in dc.CANDIDATES]
     assert ids == ["BASE100_FOLD_MOD20_V1", "FIELD_SPLIT_V1",
                    "BARY_DIGIT_V1", "CW_INTERLEAVED_XYZ_FLATTENED_V1",
-                   "CW_RECURSIVE_XYZ_LEVELS_V1"]
+                   "CW_RECURSIVE_XYZ_LEVELS_V1",
+                   "CW_OCTAL_PACKET_F5_Q22_S3_V1"]
     for c in dc.CANDIDATES:
         assert c.status and c.known_defect  # no silent selection
     assert dc.candidate("BASE100_FOLD_MOD20_V1").status == \

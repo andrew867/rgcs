@@ -238,7 +238,7 @@ CANDIDATES: tuple[DecoderCandidate, ...] = (
     ),
     DecoderCandidate(
         candidate_id="CW_RECURSIVE_XYZ_LEVELS_V1",
-        status="LOCKED_INTERPRETATION_STRUCTURAL_ONLY",
+        status="REJECTED_FOR_SOURCE_DECODE",
         parse=("ordered XYZ triplets, one hierarchical refinement level "
                "each: (d0,d1,d2), (d3,d4,d5), ...; partial final levels "
                "explicit; implemented in cwatlas.r1084"),
@@ -255,10 +255,38 @@ CANDIDATES: tuple[DecoderCandidate, ...] = (
             "surface."),
         best_training_residual_km=248.0,
         residual_over_quantization=None,
-        notes=("Structure lane VERIFIED: exact triplet paths, orange-slice "
-               "child-axis line (level-3 Y: 4->6->8), fold-aware recursion, "
-               "exact inverse encoder, containment invariant. See "
-               "docs/proofs/r1084-recursive-coordinate-recovery/."),
+        notes=("Structure lane VERIFIED but the interpretation was "
+               "REJECTED by the R10.8.5 locked correction (2026-07-26): "
+               "raw decimal digits are not recursive instructions; the "
+               "integer converts to a 30-bit binary packet first. Code "
+               "retained in cwatlas.r1084 as the receipted rejected "
+               "experiment. See docs/proofs/r1084-recursive-coordinate-"
+               "recovery/ and r1085-octal-packet-recovery/."),
+    ),
+    DecoderCandidate(
+        candidate_id="CW_OCTAL_PACKET_F5_Q22_S3_V1",
+        status="LOCKED_INTERPRETATION_STRUCTURAL_ONLY",
+        parse=("decimal integer -> 30-bit binary -> F5 (face) | Q22 "
+               "(11 quaternary refinement levels) | S3 (shell 0..7); "
+               "equivalently 10 octal digits = 9 spatial + 1 shell; "
+               "implemented since R12 (r12.icosapacket, r12.icosarefine) "
+               "and reused verbatim"),
+        face_rule="F5 field IS the face token (source-face id 0..19)",
+        known_defect=(
+            "Placement not achieved under the sealed R10.8.2 freeze: "
+            "0 of 20 codebook x family contexts contain the training "
+            "anchor in the level-11 cell (~3.4 km edge); best approx "
+            "min-distance ~2,683 km. Octal-domain structural check: the "
+            "decimal orange-slice line does not survive conversion "
+            "(shells 7,3,7; only 9 of 11 path levels shared)."),
+        best_training_residual_km=2683.0,
+        residual_over_quantization=None,
+        notes=("Grammar lane EXACT: Stonehenge word verifies bit-for-bit "
+               "(face 4, path 3,3,0,1,2,0,2,1,2,1,1, shell 3; octree "
+               "X=83, Y=80, Z=461; round-trips). Nine-digit and longer "
+               "vector families kept separate (31-34-bit words exceed "
+               "the 30-bit grammar; no version bridge proven). See "
+               "docs/proofs/r1085-octal-packet-recovery/."),
     ),
 )
 
