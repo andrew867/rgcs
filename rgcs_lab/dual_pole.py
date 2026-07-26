@@ -19,7 +19,9 @@ ATTACKS = {
 
 
 def audit_claim(payload: dict[str, object]) -> dict[str, object]:
-    proposal = str(payload.get("proposal", ""))
+    # Accept both claim schemas: Codex lane files use "proposal",
+    # Cursor hub/examples use "statement". Text attacks must fire on both.
+    proposal = str(payload.get("proposal", payload.get("statement", "")))
     evidence = payload.get("evidence", [])
     claim_class = payload.get("claim_class", [])
     waiver = payload.get("operator_waiver")

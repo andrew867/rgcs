@@ -1,0 +1,45 @@
+{
+  "module": "static_hub",
+  "version": "0.1.0.dev0",
+  "source_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9",
+  "status": "GREEN",
+  "claim_class": ["IMPLEMENTED_SOFTWARE"],
+  "inputs": {
+    "generator": "tools/lab/build_static_hub.py",
+    "generated_from": "live integrated adapters (Codex cores executing)",
+    "generating_commit": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9"
+  },
+  "models": ["static hub: index + 9 module pages + fixtures + receipts + workbench"],
+  "result": {
+    "locations": {
+      "working": "static/hub/",
+      "release_mirror": "release/lab/static-hub/ (byte-copied; SHA256SUMS.txt regenerated)"
+    },
+    "modules": ["coordinate", "golay", "frames", "memory", "dual_pole",
+                 "lattice", "metasurface", "predictions", "proofs"],
+    "receipts": "10 receipt JSONs (9 modules + hub-catalog), every one carries backend=rgcs_lab.<core> for core-backed modules and the generating source_commit",
+    "opened_from_disk": "files verified present and content-checked by tests/rgcs_lab/test_lab_core.py::test_hub_static_artifacts_exist",
+    "opened_from_static_server": {
+      "server": "python -m http.server 8892 (repo static/hub)",
+      "index": "served; contains YELLOW physics states and 'underdetermined' wording; contains no 'anti-gravity confirmed' wording",
+      "receipt_fetch": "receipts/golay.json served with status GREEN and generating source_commit"
+    },
+    "telemetry": "none — hub.js performs only same-origin relative fetches (/api/*, fixtures/*); no external hosts, no beacons, credentials omitted",
+    "downloads": "receipt download endpoints verified via /api/receipts/{module} (attachment header) on the installed wheel",
+    "physics_yellow_visible": true,
+    "no_math_reimplemented_in_browser": "guarded by test (encode12/Hamilton/da∕dt/syndrome banned from hub.js)"
+  },
+  "warnings": [
+    "release/lab/static-hub is a generated mirror; regenerate via tools/lab/build_static_hub.py + copy, never hand-edit"
+  ],
+  "tests": [
+    "tests/rgcs_lab/test_lab_core.py::test_hub_static_artifacts_exist",
+    "tests/rgcs_lab/browser/test_hub_a11y_static.py",
+    "http.server smoke (index, receipts, fixtures)"
+  ],
+  "artifacts": [
+    "static/hub/",
+    "release/lab/static-hub/",
+    "release/lab/SHA256SUMS.txt"
+  ]
+}

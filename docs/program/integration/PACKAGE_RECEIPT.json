@@ -1,0 +1,59 @@
+{
+  "module": "packaging",
+  "version": "rgcs 8.2.0 / rgcs_lab 0.1.0.dev0",
+  "source_commit": "f4635cccc9207745f411a9aca51b152d22db229e",
+  "status": "GREEN",
+  "claim_class": ["IMPLEMENTED_SOFTWARE"],
+  "inputs": {
+    "command": "python -m build",
+    "python": "3.13.2",
+    "platform": "win32 (Windows 11 Enterprise 10.0.26200)"
+  },
+  "models": ["setuptools>=68 build backend"],
+  "result": {
+    "wheel": {
+      "file": "dist/rgcs-8.2.0-py3-none-any.whl",
+      "sha256": "b8608fe5cc98ed684db378c8472bde610119796949df962d80c5dab4883e659c"
+    },
+    "sdist": {
+      "file": "dist/rgcs-8.2.0.tar.gz",
+      "sha256": "dd2f7a35c6ac370e58e4ba0cb7e872a3b9940f86588c5346e080fc47355abf92"
+    },
+    "entry_points": {
+      "rgcs-lab": "rgcs_lab.cli:main (single console script; python -m rgcs_lab also works)"
+    },
+    "package_data_verified": {
+      "rgcs_lab.common": ["receipt_schema.json packaged"],
+      "rgcs_lab.data": ["memory_corpus: 4 documents packaged and importable from the installed wheel"]
+    },
+    "installed_wheel_run_outside_repo": {
+      "venv": "%LOCALAPPDATA%/rgcs-wheel-venv (clean, outside repository and OneDrive sync of the repo)",
+      "install": "pip install dist/rgcs-8.2.0-py3-none-any.whl[workbench]",
+      "cli_modules_executed": [
+        "doctor", "modules", "golay demo", "frames example",
+        "memory benchmark (packaged default corpus)", "lattice run",
+        "metasurface sweep", "coordinate decode", "serve"
+      ],
+      "serve_smoke": {
+        "bind": "127.0.0.1:8891",
+        "/api/health": "ok=true, telemetry=false",
+        "/api/receipts/golay": "canonical receipt downloaded (attachment)",
+        "POST /api/golay/demo": "executed Codex core, status GREEN",
+        "non_loopback_bind": "refused with exit code 2 without --allow-remote"
+      }
+    }
+  },
+  "warnings": [
+    "source_commit resolves to 'unknown' when the wheel runs outside a git tree and RGCS_SOURCE_COMMIT is unset (documented gitmeta behavior)",
+    "editable install was exercised implicitly via PYTHONPATH source runs; CI performs pip install -e '.[desktop,dev,workbook,workbench]'"
+  ],
+  "tests": [
+    "python -m build (exit 0)",
+    "clean-venv wheel install + CLI matrix (all exit 0)",
+    "rgcs-lab serve loopback smoke (health, receipts, POST demo)"
+  ],
+  "artifacts": [
+    "dist/rgcs-8.2.0-py3-none-any.whl",
+    "dist/rgcs-8.2.0.tar.gz"
+  ]
+}

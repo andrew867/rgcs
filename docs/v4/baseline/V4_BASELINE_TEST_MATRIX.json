@@ -103,6 +103,31 @@
     ],
     "test_functions": 68
   },
+  "rgcs_coordinate": {
+    "files": [
+      "test_rcw_claims_corpus_projection.py",
+      "test_rcw_cli.py",
+      "test_rcw_codec_parity.py",
+      "test_rcw_trace_and_static.py"
+    ],
+    "test_functions": 30
+  },
+  "rgcs_lab": {
+    "files": [
+      "test_golay.py",
+      "test_lab_api.py",
+      "test_lab_core.py",
+      "test_lattice.py",
+      "test_memory_dual.py",
+      "test_metasurface.py",
+      "test_rlab_dual_pole.py",
+      "test_rlab_frames_core.py",
+      "test_rlab_hub_coordinate.py",
+      "test_rlab_memory_predictions.py",
+      "test_rlab_schema_gate.py"
+    ],
+    "test_functions": 51
+  },
   "ui": {
     "files": [
       "test_smoke.py"
