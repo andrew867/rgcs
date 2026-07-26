@@ -1,0 +1,59 @@
+{
+  "schema": "rgcs.golden-vectors.v1",
+  "status": "structural fixtures, not independent physical validations",
+  "chronology": {
+    "packet_grammar_recovered": "2026-07-26 (R10.8.5, repo commit e5864a5)",
+    "corrected_projection_run": "2026-07-26 (R10.8.5A, YELLOW)",
+    "note": "public-safe metadata only; private operator provenance is excluded by policy"
+  },
+  "vectors": [
+    {
+      "label": "Stonehenge training equality",
+      "raw_decimal": "165876523",
+      "width_bits": 30,
+      "binary": "001001111000110001001100101011",
+      "octal": "1170611453",
+      "face": 4,
+      "q22_bits": "1111000110001001100101",
+      "q22_path": [3, 3, 0, 1, 2, 0, 2, 1, 2, 1, 1],
+      "shell": 3,
+      "spatial_octal": "117061145",
+      "morton": {
+        "x_bits": "001010011",
+        "x_index": 83,
+        "y_bits": "001010000",
+        "y_index": 80,
+        "z_bits": "111001101",
+        "z_index": 461
+      },
+      "physical_label_class": "TRAINING_EQUALITY",
+      "role": "training",
+      "note": "supplied calibration pairing and regression fixture; NOT an independently successful physical decode"
+    },
+    {
+      "label": "orange-slice A",
+      "raw_decimal": "165892743",
+      "intended_shell": 7,
+      "role": "training-adjacent structural fixture"
+    },
+    {
+      "label": "orange-slice B corrected",
+      "raw_decimal": "165892763",
+      "raw_extracted_shell": 3,
+      "intended_shell": 7,
+      "correction_class": "OPERATOR_CORRECTION_TRANSCRIPTION_OR_PACKET_ERROR",
+      "role": "training-adjacent structural fixture",
+      "note": "raw middle extraction shell 3 stays in provenance; the active solve uses shell 7; a physical 7,3,7 shell pattern is refused"
+    },
+    {
+      "label": "orange-slice C",
+      "raw_decimal": "165892783",
+      "intended_shell": 7,
+      "role": "training-adjacent structural fixture"
+    }
+  ],
+  "holdouts": {
+    "status": "none published",
+    "note": "holdout vectors, when designated, are kept separate from training material and never used to fit profiles"
+  }
+}

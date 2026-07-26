@@ -40,6 +40,7 @@ dev = [
 [project.scripts]
 rgcs-v4 = "rscs2_core.cli:main"
 rgcs-workbook = "rgcs_workbench.workbook:main"
+rgcs-coordinate = "rgcs_coordinate.cli:main"
 
 [project.gui-scripts]
 rgcs-workbench = "rgcs_desktop.app.main:main"
@@ -47,7 +48,7 @@ rgcs-workbench = "rgcs_desktop.app.main:main"
 [tool.setuptools.packages.find]
 include = ["rgcs_core*", "rgcs_desktop*", "rscs_core*", "rscs2_core*", "cspc*", "pmwr*", "r3*", "r4*",
            "r6*", "r7*", "r8*", "r9*", "r10*", "r11*", "r12*", "r13*", "r15*",
-           "cwatlas*",
+           "cwatlas*", "rgcs_coordinate*",
            "rgcs_workbench*", "fkey_instrument*",
            "resonator_platform*", "consciousness_lane*"]
 
@@ -57,6 +58,11 @@ rscs2_core = ["registry/*.yaml"]
 r15 = ["schemas/*.json"]
 cwatlas = ["schemas/*.json", "fixtures/*.json"]
 "cwatlas.r1082" = ["schemas/*.json", "fixtures/*.json"]
+# RCW P04: the parity guard resolves package-data by the TOP-LEVEL
+# source root (right-anchored match), so the fixtures glob must live on
+# the top-level key, not only a dotted subpackage key (R10.8.2 lesson).
+rgcs_coordinate = ["fixtures/*.json"]
+"rgcs_coordinate.fixtures" = ["*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial", "tests/v4", "tests/v49", "tests/v50", "tests/v51", "tests/v52", "tests/v6", "tests/v8", "tests/cwatlas"]
