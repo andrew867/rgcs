@@ -30,6 +30,11 @@ authorizes tagging/publication.
 - Phase 5: all nine receipts, fixtures, hub, release mirror,
   SHA256SUMS, SBOM, wheel, and sdist regenerated at the FINAL
   implementation commit `69f2174` (CD-06/07).
+- Privacy firewall catch: the first consolidation full-suite run failed
+  5 firewall/privacy tests because the imported Codex audit docs
+  embedded local pytest temp paths with a username. Redacted
+  (`f0d3964`, CD-08); firewall suites re-run green (63 passed). The
+  firewall was not weakened — it worked.
 
 Full decision log: `CONSOLIDATION_DECISIONS.md`. Executed gate
 evidence: `FINAL_TEST_RECEIPT.json`, `FINAL_PACKAGE_RECEIPT.json`,

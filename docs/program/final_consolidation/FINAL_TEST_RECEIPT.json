@@ -1,0 +1,43 @@
+{
+  "module": "final_consolidation_tests",
+  "version": "0.1.0.dev0",
+  "source_commit": "f0d39648be1807e18d909d0df06cea5a2d1ac706",
+  "status": "GREEN",
+  "claim_class": ["IMPLEMENTED_SOFTWARE"],
+  "inputs": {
+    "environment": "Windows 11 10.0.26200, Python 3.13.2, venv %LOCALAPPDATA%/rgcs-int-venv (outside OneDrive), repo under OneDrive path",
+    "tree": "program/integration @ f0d3964 (final implementation commit for code: 69f2174)"
+  },
+  "models": ["Phase 4 executed-gate matrix"],
+  "result": {
+    "full_repository_suite": {
+      "command": "python -m pytest tests -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic",
+      "summary": "7937 passed, 15 skipped, 1 deselected, 4 warnings in 1032.60s",
+      "exit_code": 0,
+      "deselection": "NR3-001 byte-equality generator node only — the identical deselection CI uses; its numeric-equivalence companion passes"
+    },
+    "focused_gates": {
+      "authority_receipt_claim_fallback": "included in tests/rgcs_lab: 61 passed (incl. 6 new AA-03 catalog-derivation tests)",
+      "golay_properties": "pass (property tests + 178-assertion independent Codex audit)",
+      "quaternion_numerical_equivalence": "pass (<1e-12 round trips)",
+      "memory_determinism_equal_budget": "pass (identical consecutive runs; equal-budget fields verified)",
+      "dual_pole_planted_claims": "7/7 REJECT+RED with typed attacks; banned wording redacted in echoes; waiver never GREEN",
+      "lattice": "Hermitian residual <1e-12; ledger closure ~8e-15; damped case dissipates",
+      "metasurface": "passive; SI units; residual 0.0 W; no-gravity warning present; YELLOW enforced",
+      "predictions": "freeze/verify, tamper detection (match=False), measurement lock refusal",
+      "coordinate_codec_regression": "30 passed; parser untouched; typed refusal (exit 4) for 31-bit vectors",
+      "api": "tests pass; health/modules/receipt-download/banned-input verified live on installed wheel",
+      "browser_static_hub": "a11y + artifact tests pass; generated catalog wired for file:// mode",
+      "privacy_loopback": "privacy defaults tests pass; non-loopback bind refused (exit 2)",
+      "privacy_firewall": "tests/v52 firewall + tests/v6 red-team/sources: 63 passed AFTER redacting private paths the firewall caught in imported audit docs (CD-08)"
+    },
+    "build_and_install": "wheel+sdist built at final implementation commit; clean venv outside repo/OneDrive ran every CLI module, serve, and downloads (FINAL_PACKAGE_RECEIPT.json)",
+    "network_and_scans": "zero external URLs in hub; telemetry=false end-to-end; banned-wording scan clean; private-data scan clean (public surfaces AND committed docs/program tree via firewall)",
+    "process_exit_discipline": "every pytest invocation above has a recorded normal exit code; no run was scored by progress percentage; no plugin suppressed"
+  },
+  "warnings": [
+    "receipts/fixtures record 69f2174 (final implementation commit); f0d3964 and the closing commit are docs/artifact-only (CD-06 convention)"
+  ],
+  "tests": ["pytest tests -q --deselect <NR3-001> (7937 passed, exit 0)"],
+  "artifacts": ["docs/program/final_consolidation/*"]
+}

@@ -63,6 +63,20 @@ implementation state. Earlier receipts under `docs/program/integration/`
 and `docs/program/final_audit/` are explicitly historical records of
 their own phases and keep their original commits.
 
+## CD-08 — Privacy-firewall findings in imported audit docs (redacted)
+
+The first consolidation full-suite run FAILED 5 tests
+(`tests/v52/test_r10_firewall.py` ×3, `tests/v6/test_r11_redteam.py`,
+`tests/v6/test_r11_sources.py`): the R10 privacy firewall flagged
+PRIVATE_PATH findings in the imported Codex audit documents — local
+pytest temp paths embedding a username. This was a REAL leak the
+consolidation's own public-surface scans missed (they did not cover
+`docs/program/`). Redacted to `%LOCALAPPDATA%/Temp/pytest-of-<user>`
+in all three files (JSON escaping preserved); diagnostic content
+unchanged; commit `f0d3964`. Firewall/red-team/sources suites re-run:
+**63 passed**. This is the firewall working as designed; no
+firewall rule was weakened or deselected.
+
 ## CD-07 — SBOM method
 
 CycloneDX 1.5 JSON generated from the CLEAN wheel venv's installed
