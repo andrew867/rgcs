@@ -1,0 +1,106 @@
+{
+ "run_id": "R10.8.5A",
+ "epoch_year": 2025.0,
+ "ground_reference_id": "TERRA_SURFACE_SYNC_V1",
+ "packet_authority_held": true,
+ "training_alignment": {
+  "rule": "smallest minimal-rotation sealed context, declared before results were seen",
+  "context_angles_deg": {
+   "BASE": 88.8918,
+   "F4_ROTATED_DIRECT_LE": 74.5843,
+   "F2_REVERSED_DIRECT_BE": 29.9567,
+   "F1_CANONICAL_DIRECT_BE": 24.142,
+   "F3_CANONICAL_ROOTREL_BE": 24.142
+  },
+  "chosen_context": "F1_CANONICAL_DIRECT_BE",
+  "correction_angle_deg": 24.142,
+  "undetermined_dof": [
+   "ROLL_ABOUT_TRAINING_ANCHOR_AXIS"
+  ]
+ },
+ "trained_frame_cell_contains_training_anchor": true,
+ "sealed_contexts_all_still_miss": true,
+ "stonehenge_lateral_residual_km": {
+  "min": 1.654,
+  "max": 5.15,
+  "cell_edge_km": 3.44,
+  "within_quantization": true
+ },
+ "stonehenge_radial_misfit_km": {
+  "ATMOSPHERIC_LADDER_V1|ZETA_FROM_OCTREE_Z_V1|CLASSIC_HYPSOGRAPHIC_840M": 11.5544,
+  "ATMOSPHERIC_LADDER_V1|ZETA_FROM_OCTREE_Z_V1|MODERN_DEM_797M": 11.5114,
+  "ATMOSPHERIC_LADDER_V1|ZETA_MIDBAND_V1|CLASSIC_HYPSOGRAPHIC_840M": 6.738,
+  "ATMOSPHERIC_LADDER_V1|ZETA_MIDBAND_V1|MODERN_DEM_797M": 6.695,
+  "GEOMETRIC_DOUBLING_V1|ZETA_FROM_OCTREE_Z_V1|CLASSIC_HYPSOGRAPHIC_840M": 23.2722,
+  "GEOMETRIC_DOUBLING_V1|ZETA_FROM_OCTREE_Z_V1|MODERN_DEM_797M": 23.2292,
+  "GEOMETRIC_DOUBLING_V1|ZETA_MIDBAND_V1|CLASSIC_HYPSOGRAPHIC_840M": 13.238,
+  "GEOMETRIC_DOUBLING_V1|ZETA_MIDBAND_V1|MODERN_DEM_797M": 13.195,
+  "UNIFORM_100KM_V1|ZETA_FROM_OCTREE_Z_V1|CLASSIC_HYPSOGRAPHIC_840M": 90.8747,
+  "UNIFORM_100KM_V1|ZETA_FROM_OCTREE_Z_V1|MODERN_DEM_797M": 90.8317,
+  "UNIFORM_100KM_V1|ZETA_MIDBAND_V1|CLASSIC_HYPSOGRAPHIC_840M": 50.738,
+  "UNIFORM_100KM_V1|ZETA_MIDBAND_V1|MODERN_DEM_797M": 50.695
+ },
+ "orange_slice": {
+  "provenance": {
+   "raw_shells": [
+    7,
+    3,
+    7
+   ],
+   "active_shells": [
+    7,
+    7,
+    7
+   ],
+   "corrected_vector": "165892763",
+   "corrected_field": "shell",
+   "correction_claim": "OPERATOR_CORRECTION_TRANSCRIPTION_OR_PACKET_ERROR",
+   "note": "raw middle shell 3 is retained in provenance as a likely transcription or packet error; the active solve uses 7,7,7. The parser is unmodified; no alternative decimal value was searched for."
+  },
+  "adjacent_separations_km_config0": [
+   2.343,
+   10.241
+  ]
+ },
+ "reverse_encoding": {
+  "by_profile": {
+   "UNIFORM_100KM_V1": {
+    "decoded_height_km": 90.1367,
+    "word": 165876523,
+    "reproduces_packet": true,
+    "octal": "1170611453",
+    "aliasing_note": "the word stores face, 11 path levels and a 3-bit shell register only: every point of the same terminal cell and shell band encodes to this same word (explicit aliasing; the in-shell zeta and octree split are NOT independently settable by the encoder)."
+   },
+   "ATMOSPHERIC_LADDER_V1": {
+    "decoded_height_km": 10.8164,
+    "word": 165876523,
+    "reproduces_packet": true,
+    "octal": "1170611453",
+    "aliasing_note": "the word stores face, 11 path levels and a 3-bit shell register only: every point of the same terminal cell and shell band encodes to this same word (explicit aliasing; the in-shell zeta and octree split are NOT independently settable by the encoder)."
+   },
+   "GEOMETRIC_DOUBLING_V1": {
+    "decoded_height_km": 22.5342,
+    "word": 165876523,
+    "reproduces_packet": true,
+    "octal": "1170611453",
+    "aliasing_note": "the word stores face, 11 path levels and a 3-bit shell register only: every point of the same terminal cell and shell band encodes to this same word (explicit aliasing; the in-shell zeta and octree split are NOT independently settable by the encoder)."
+   }
+  },
+  "site_physical_height_inverse": "REFUSED: height -0.738 km above land-zero is outside the operational stack (0..600.0 km under UNIFORM_100KM_V1); shells 0..2 below the land-zero surface are not addressable by this codec."
+ },
+ "underdetermined": {
+  "roll_about_training_axis_dof": true,
+  "thickness_profile_family_members": 3,
+  "land_reference_members": 2,
+  "zeta_convention_members": 2,
+  "magnetic_family_active_members": 4,
+  "magnetic_family_blocked_members": 2,
+  "radial_misfit_km_best_config": 6.695,
+  "second_anchor_available": false
+ },
+ "claims": {
+  "SOURCE_ORIGIN_VALIDATED": "no",
+  "training_equality_is_calibration_not_validation": true
+ },
+ "verdict": "RGCS_R10_8_5A_YELLOW_PACKET_AUTHORITY_HELD_PROJECTION_UNDERDETERMINED"
+}

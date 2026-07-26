@@ -5,26 +5,16 @@
     "7962817": "commit",
     "9165594": "commit"
   },
-  "branch": "r1082-locked-root",
+  "branch": "r1084-recursive-coordinate-recovery",
   "dirty_files": [
-    " M CITATION.cff",
-    " M README.md",
-    " M docs/v4/RELEASE_METADATA.json",
-    " M docs/v4/baseline/V4_FROZEN_ARTIFACT_CHECKSUMS.json",
     " M docs/v4/baseline/V4_REPO_INVENTORY.json",
-    " M pyproject.toml",
-    " M release/v45/RGCS_Master_Evidence_Workbook.xlsx",
-    " M release/v45/SHA256SUMS.txt",
-    " M tests/v4/test_v4c_docs_closeout.py",
-    " M tests/v4/test_v4x_release_metadata.py",
-    " M tools/v4x_release_metadata.py",
-    "?? cwatlas/r1082/",
-    "?? docs/cwatlas/RELEASE_NOTES_V8_2_0.md",
-    "?? docs/cwatlas/r1082/",
-    "?? tests/cwatlas/r1082/",
-    "M CHANGELOG.md"
+    "?? cwatlas/r1085a/",
+    "?? docs/proofs/r1085a-outer-in-gravity-shell-projection/",
+    "?? tests/cwatlas/r1085a/",
+    "?? tools/r1085a_outer_in_projection.py",
+    "M docs/v4/baseline/V4_FROZEN_ARTIFACT_CHECKSUMS.json"
   ],
-  "head": "de620bb2585f70404d58446325ee2d427f5640db",
+  "head": "e5864a5fea954f7fe2c12cf0aba3cfe4124cbc91",
   "protected_tags_present": {
     "v2.0.0": "f9fd2c20a05334e12ac9113ba86853c6591fc84e",
     "v3.0.0": "83521f73d6ad02b009ada88f3b8d33a8a00fc253",
@@ -94,9 +84,10 @@
     "v6.3.0",
     "v7.0.0",
     "v8.0.0",
-    "v8.1.0"
+    "v8.1.0",
+    "v8.2.0"
   ],
   "worktrees": [
-    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS de620bb [r1082-locked-root]"
+    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS e5864a5 [r1084-recursive-coordinate-recovery]"
   ]
 }
