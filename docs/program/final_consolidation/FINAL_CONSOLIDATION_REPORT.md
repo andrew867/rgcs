@@ -86,3 +86,19 @@ exit" — every run has a recorded exit code; no plugin suppressed.
 
 Nothing tagged, published, pushed, or merged to `main`. Awaiting
 explicit operator authorization (`FINAL_RELEASE_HANDOFF.json`).
+
+### Commit-hash self-reference (why three commit fields exist)
+
+A Git commit cannot contain its own hash: the commit id is computed
+over the tree and metadata, so a file inside the commit can never
+carry the id of the commit that introduces it. The handoff therefore
+records three explicit fields instead of one "end commit":
+
+- `final_implementation_commit` (`69f2174…`) — last commit that
+  changed executable behavior; all receipts/artifacts record it;
+- `final_artifact_content_commit` (`734c1fb…`) — the HEAD containing
+  every final artifact, report, redaction, SBOM, and hash reference;
+- `release_control_commit` — the metadata-only commit created by this
+  closure edit; its hash is recorded in the console handoff, in the
+  annotated release tag message when tagging is authorized, and in the
+  operator release receipt kept outside the repository.

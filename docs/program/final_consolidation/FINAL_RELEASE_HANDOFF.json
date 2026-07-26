@@ -6,7 +6,9 @@
   "branch": "program/integration",
   "start_commit": "991446e",
   "final_implementation_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
-  "end_commit": "626f4103da0b826948906421fbb6e3dd82dd4c95 (consolidation content commit; one metadata-only commit follows to stamp this value and is the branch tip)",
+  "final_artifact_content_commit": "734c1fb6a7645b8af0a40ef13dad68376314ef4c",
+  "release_control_commit": "RECORDED_AFTER_THIS_FILE_IS_COMMITTED",
+  "commit_hash_note": "A Git commit cannot contain its own hash (the hash covers the tree, which would have to include it). Therefore: final_implementation_commit is the last commit that changed code; final_artifact_content_commit is the HEAD holding all final artifacts, reports, redactions, SBOM, and hashes BEFORE this metadata edit; release_control_commit is the commit created BY this edit and is recorded in the console handoff, the future annotated tag message, and the operator release receipt kept outside this repository commit.",
   "merged_post_audit_commits": [
     "a8c09c6 — merge program/codex-numerical-audit @ 42fc284 (PASS, docs-only)",
     "no Cursor release-build lane exists (recorded, nothing invented)"
