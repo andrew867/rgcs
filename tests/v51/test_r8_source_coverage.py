@@ -25,6 +25,8 @@ EXCLUDED = {
     # the desktop app; surfaced when the namespace-package hole was
     # closed (R9-D-003)
     "sources",
+    # Public hub static assets and example JSON (no importable package).
+    "static", "workbench", "examples", "fixtures", "proofs",
 }
 
 

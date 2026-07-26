@@ -124,7 +124,7 @@ CARDS: tuple[ModuleCard, ...] = (
         (ClaimClass.CONVENTIONAL_PHYSICS.value,
          ClaimClass.EXPLORATORY_MODEL.value)),
     ModuleCard(
-        "prediction", "Predictions",
+        "predictions", "Predictions",
         "a tamper-evident registry of frozen prospective predictions "
         "with sham/null controls and outcome classification",
         "that a prediction is evidence before measurement, or that a "

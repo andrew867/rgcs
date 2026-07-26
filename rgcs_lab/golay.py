@@ -131,7 +131,7 @@ def demo(address36: int = 165876523, flips: list[int] | None = None
         **decoded,
     }
     return receipt(
-        "golay", status, ["EXACT_STRUCTURAL", "ERROR_CORRECTION"],
+        "golay", status, ["EXACT_ARITHMETIC", "IMPLEMENTED_SOFTWARE"],
         {"address36": address36, "flips": flips or []},
         [{"name": "extended_binary_golay", "n": 24, "k": 12, "d": 8}],
         result,

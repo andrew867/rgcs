@@ -1,0 +1,90 @@
+{
+  "module": "lattice",
+  "version": "0.1.0.dev0",
+  "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+  "status": "GREEN",
+  "claim_class": [
+    "IMPLEMENTED_SOFTWARE",
+    "CONVENTIONAL_PHYSICS",
+    "EXPLORATORY_MODEL"
+  ],
+  "inputs": {
+    "model": "counterrotating-ring"
+  },
+  "models": [
+    "counterrotating-ring"
+  ],
+  "result": {
+    "model": "counterrotating-ring",
+    "n_states": 64,
+    "steps": 40,
+    "dt": 0.05,
+    "hermitian_residual": 0.0,
+    "energy_ledger": {
+      "initial": 1.0,
+      "pump": 0.19841881463101724,
+      "stored": 1.155486817872353,
+      "dissipated": 0.043249429303148755,
+      "numerical_drift": 0.0003174325444843529,
+      "units": "norm-proxy (dimensionless field amplitude squared)"
+    },
+    "trace": [
+      {
+        "t": 0.0,
+        "norm": 1.0040029968789064,
+        "site0_abs": 1.001999499440447
+      },
+      {
+        "t": 0.25,
+        "norm": 1.0240832736939323,
+        "site0_abs": 1.0119699964395843
+      },
+      {
+        "t": 0.5,
+        "norm": 1.0441878940540263,
+        "site0_abs": 1.021855123808667
+      },
+      {
+        "t": 0.75,
+        "norm": 1.0642021924756149,
+        "site0_abs": 1.0316017606012577
+      },
+      {
+        "t": 1.0,
+        "norm": 1.0840126013956808,
+        "site0_abs": 1.0411592584209588
+      },
+      {
+        "t": 1.25,
+        "norm": 1.1035071617839893,
+        "site0_abs": 1.0504794913676274
+      },
+      {
+        "t": 1.5,
+        "norm": 1.1225760238936557,
+        "site0_abs": 1.0595168823070522
+      },
+      {
+        "t": 1.75,
+        "norm": 1.141111935921119,
+        "site0_abs": 1.0682284099953152
+      },
+      {
+        "t": 1.95,
+        "norm": 1.155486817872353,
+        "site0_abs": 1.07493572732157
+      }
+    ],
+    "note": "Parametric/drive growth is attributed to the explicit pump term f(t)."
+  },
+  "warnings": [
+    "Matter transport: not claimed",
+    "PHYSICAL INTERPRETATION: YELLOW"
+  ],
+  "tests": [
+    "lattice_hermitian",
+    "lattice_energy_ledger"
+  ],
+  "artifacts": [],
+  "receipt_sha256": "e10a8e0191bdcb41f0ece65212454ed1608756db75ce29d5681e4444be54e317"
+}

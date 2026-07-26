@@ -1,0 +1,323 @@
+{
+  "module": "memory",
+  "status": "GREEN",
+  "claim_class": [
+    "IMPLEMENTED_SOFTWARE",
+    "EXPLORATORY_MODEL"
+  ],
+  "input": {
+    "query": "golay bit flips transport wrapper"
+  },
+  "models": [
+    "codex-multi-system-retrieval-v1"
+  ],
+  "result": {
+    "documents": 4,
+    "rankings": {
+      "lexical_bm25": [
+        "doc-golay.json",
+        "doc-codec.json",
+        "doc-energy.json"
+      ],
+      "dense_vector_proxy": [
+        "doc-golay.json",
+        "doc-codec.json",
+        "doc-energy.json"
+      ],
+      "hybrid": [
+        "doc-golay.json",
+        "doc-codec.json",
+        "doc-energy.json"
+      ],
+      "graph_retrieval": [
+        "doc-golay.json",
+        "doc-codec.json",
+        "doc-energy.json"
+      ],
+      "recursive_multiresolution_provenance": [
+        "doc-golay.json",
+        "doc-codec.json",
+        "doc-energy.json"
+      ],
+      "role_weighted_reranker": [
+        "doc-golay.json",
+        "doc-codec.json",
+        "doc-yellow.json"
+      ],
+      "complete_proposed_system": [
+        "doc-golay.json",
+        "doc-codec.json",
+        "doc-energy.json"
+      ]
+    },
+    "metrics": {
+      "lexical_bm25": {
+        "top_k": 3,
+        "retrieved": [
+          "doc-golay.json",
+          "doc-codec.json",
+          "doc-energy.json"
+        ],
+        "citation_and_provenance_accuracy": 1.0,
+        "rejected_state_retrieval": false,
+        "stale_memory_avoidance": true,
+        "context_tokens": 54,
+        "deterministic_repeatability": true
+      },
+      "dense_vector_proxy": {
+        "top_k": 3,
+        "retrieved": [
+          "doc-golay.json",
+          "doc-codec.json",
+          "doc-energy.json"
+        ],
+        "citation_and_provenance_accuracy": 1.0,
+        "rejected_state_retrieval": false,
+        "stale_memory_avoidance": true,
+        "context_tokens": 54,
+        "deterministic_repeatability": true
+      },
+      "hybrid": {
+        "top_k": 3,
+        "retrieved": [
+          "doc-golay.json",
+          "doc-codec.json",
+          "doc-energy.json"
+        ],
+        "citation_and_provenance_accuracy": 1.0,
+        "rejected_state_retrieval": false,
+        "stale_memory_avoidance": true,
+        "context_tokens": 54,
+        "deterministic_repeatability": true
+      },
+      "graph_retrieval": {
+        "top_k": 3,
+        "retrieved": [
+          "doc-golay.json",
+          "doc-codec.json",
+          "doc-energy.json"
+        ],
+        "citation_and_provenance_accuracy": 1.0,
+        "rejected_state_retrieval": false,
+        "stale_memory_avoidance": true,
+        "context_tokens": 54,
+        "deterministic_repeatability": true
+      },
+      "recursive_multiresolution_provenance": {
+        "top_k": 3,
+        "retrieved": [
+          "doc-golay.json",
+          "doc-codec.json",
+          "doc-energy.json"
+        ],
+        "citation_and_provenance_accuracy": 1.0,
+        "rejected_state_retrieval": false,
+        "stale_memory_avoidance": true,
+        "context_tokens": 54,
+        "deterministic_repeatability": true
+      },
+      "role_weighted_reranker": {
+        "top_k": 3,
+        "retrieved": [
+          "doc-golay.json",
+          "doc-codec.json",
+          "doc-yellow.json"
+        ],
+        "citation_and_provenance_accuracy": 1.0,
+        "rejected_state_retrieval": false,
+        "stale_memory_avoidance": true,
+        "context_tokens": 51,
+        "deterministic_repeatability": true
+      },
+      "complete_proposed_system": {
+        "top_k": 3,
+        "retrieved": [
+          "doc-golay.json",
+          "doc-codec.json",
+          "doc-energy.json"
+        ],
+        "citation_and_provenance_accuracy": 1.0,
+        "rejected_state_retrieval": false,
+        "stale_memory_avoidance": true,
+        "context_tokens": 54,
+        "deterministic_repeatability": true
+      }
+    },
+    "model": "codex-multi-system-retrieval-v1",
+    "top_system": "complete_proposed_system",
+    "top_id": "doc-golay"
+  },
+  "warnings": [
+    "CONSCIOUSNESS: not demonstrated",
+    "backend=rgcs_lab.memory"
+  ],
+  "receipt": {
+    "module": "memory",
+    "version": "0.1.0.dev0",
+    "source_commit": "f06a4a8428d4a43c0af1bbb1de92967c262cae17",
+    "status": "GREEN",
+    "claim_class": [
+      "IMPLEMENTED_SOFTWARE",
+      "EXPLORATORY_MODEL"
+    ],
+    "inputs": {
+      "query": "golay bit flips transport wrapper"
+    },
+    "models": [
+      "codex-multi-system-retrieval-v1"
+    ],
+    "result": {
+      "documents": 4,
+      "rankings": {
+        "lexical_bm25": [
+          "doc-golay.json",
+          "doc-codec.json",
+          "doc-energy.json"
+        ],
+        "dense_vector_proxy": [
+          "doc-golay.json",
+          "doc-codec.json",
+          "doc-energy.json"
+        ],
+        "hybrid": [
+          "doc-golay.json",
+          "doc-codec.json",
+          "doc-energy.json"
+        ],
+        "graph_retrieval": [
+          "doc-golay.json",
+          "doc-codec.json",
+          "doc-energy.json"
+        ],
+        "recursive_multiresolution_provenance": [
+          "doc-golay.json",
+          "doc-codec.json",
+          "doc-energy.json"
+        ],
+        "role_weighted_reranker": [
+          "doc-golay.json",
+          "doc-codec.json",
+          "doc-yellow.json"
+        ],
+        "complete_proposed_system": [
+          "doc-golay.json",
+          "doc-codec.json",
+          "doc-energy.json"
+        ]
+      },
+      "metrics": {
+        "lexical_bm25": {
+          "top_k": 3,
+          "retrieved": [
+            "doc-golay.json",
+            "doc-codec.json",
+            "doc-energy.json"
+          ],
+          "citation_and_provenance_accuracy": 1.0,
+          "rejected_state_retrieval": false,
+          "stale_memory_avoidance": true,
+          "context_tokens": 54,
+          "deterministic_repeatability": true
+        },
+        "dense_vector_proxy": {
+          "top_k": 3,
+          "retrieved": [
+            "doc-golay.json",
+            "doc-codec.json",
+            "doc-energy.json"
+          ],
+          "citation_and_provenance_accuracy": 1.0,
+          "rejected_state_retrieval": false,
+          "stale_memory_avoidance": true,
+          "context_tokens": 54,
+          "deterministic_repeatability": true
+        },
+        "hybrid": {
+          "top_k": 3,
+          "retrieved": [
+            "doc-golay.json",
+            "doc-codec.json",
+            "doc-energy.json"
+          ],
+          "citation_and_provenance_accuracy": 1.0,
+          "rejected_state_retrieval": false,
+          "stale_memory_avoidance": true,
+          "context_tokens": 54,
+          "deterministic_repeatability": true
+        },
+        "graph_retrieval": {
+          "top_k": 3,
+          "retrieved": [
+            "doc-golay.json",
+            "doc-codec.json",
+            "doc-energy.json"
+          ],
+          "citation_and_provenance_accuracy": 1.0,
+          "rejected_state_retrieval": false,
+          "stale_memory_avoidance": true,
+          "context_tokens": 54,
+          "deterministic_repeatability": true
+        },
+        "recursive_multiresolution_provenance": {
+          "top_k": 3,
+          "retrieved": [
+            "doc-golay.json",
+            "doc-codec.json",
+            "doc-energy.json"
+          ],
+          "citation_and_provenance_accuracy": 1.0,
+          "rejected_state_retrieval": false,
+          "stale_memory_avoidance": true,
+          "context_tokens": 54,
+          "deterministic_repeatability": true
+        },
+        "role_weighted_reranker": {
+          "top_k": 3,
+          "retrieved": [
+            "doc-golay.json",
+            "doc-codec.json",
+            "doc-yellow.json"
+          ],
+          "citation_and_provenance_accuracy": 1.0,
+          "rejected_state_retrieval": false,
+          "stale_memory_avoidance": true,
+          "context_tokens": 51,
+          "deterministic_repeatability": true
+        },
+        "complete_proposed_system": {
+          "top_k": 3,
+          "retrieved": [
+            "doc-golay.json",
+            "doc-codec.json",
+            "doc-energy.json"
+          ],
+          "citation_and_provenance_accuracy": 1.0,
+          "rejected_state_retrieval": false,
+          "stale_memory_avoidance": true,
+          "context_tokens": 54,
+          "deterministic_repeatability": true
+        }
+      },
+      "model": "codex-multi-system-retrieval-v1",
+      "top_system": "complete_proposed_system",
+      "top_id": "doc-golay"
+    },
+    "warnings": [
+      "CONSCIOUSNESS: not demonstrated",
+      "backend=rgcs_lab.memory"
+    ],
+    "tests": [
+      "memory_benchmark_digest",
+      "tests/rgcs_lab/test_memory_dual.py"
+    ],
+    "artifacts": [],
+    "receipt_sha256": "207512db8bda0ece883a2d87864960f06f23beefee5fd8d54d43a68365806a10"
+  },
+  "does": "Reproducible provenance-memory retrieval benchmark.",
+  "does_not": "Does not demonstrate consciousness.",
+  "tests": [
+    "memory_benchmark_digest",
+    "tests/rgcs_lab/test_memory_dual.py"
+  ],
+  "source": "rgcs_lab.memory"
+}

@@ -99,7 +99,7 @@ def simulate(cfg: LatticeConfig | None = None) -> dict[str, object]:
         },
     }
     return receipt(
-        "lattice", "GREEN", ["SYNTHETIC_DIMENSION", "ENERGY_LEDGER"],
+        "lattice", "GREEN", ["IMPLEMENTED_SOFTWARE", "CONVENTIONAL_PHYSICS", "EXPLORATORY_MODEL"],
         cfg.__dict__,
         [{"name": "64_state_coupled_mode_ring",
           "equation": "i da/dt = H a + f - i Gamma a",

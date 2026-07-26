@@ -1,0 +1,9 @@
+{
+  "statement": "exact structural decode of 165876523",
+  "claim_class": [
+    "EXACT_ARITHMETIC"
+  ],
+  "evidence": [
+    "golden_vector"
+  ]
+}

@@ -56,7 +56,12 @@ SOURCE_ROOTS = ("rgcs_desktop", "rgcs_workbench", "rgcs_core",
                 # decision is that a publicly shipped package must be
                 # hashed unless it is removed from every public
                 # artifact. It ships, so it is hashed.
-                "consciousness_lane")
+                "consciousness_lane",
+                # RCW + Recursive Infrastructure Lab: public structural
+                # codec and unified demonstrator hub both ship in the
+                # wheel, so both must invalidate frozen provenance.
+                "rgcs_coordinate",
+                "rgcs_lab")
 
 
 def repo_root() -> Path:

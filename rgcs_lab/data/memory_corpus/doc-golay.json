@@ -1,0 +1,7 @@
+{
+  "id": "doc-golay",
+  "authority": "public",
+  "status": "current",
+  "role": "authority",
+  "content": "Extended binary Golay G24 corrects up to three bit flips in a twenty-four bit codeword used as a transport wrapper."
+}

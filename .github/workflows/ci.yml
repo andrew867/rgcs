@@ -23,7 +23,7 @@ name: ci
 
 on:
   push:
-    branches: [main, v4-dev]
+    branches: [main, v4-dev, "program/**", rcw-public-workbench]
     tags: ["v*"]
   pull_request:
 
@@ -57,7 +57,7 @@ jobs:
       - name: Install (declared dependencies from pyproject)
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -e ".[desktop,dev,workbook]"
+          python -m pip install -e ".[desktop,dev,workbook,workbench]"
           python -m pip install pypdf
           # v4 solver stack (tests/v4 in default testpaths; gmsh is an
           # external subprocess per DV4-006 — the pip wheel ships the
@@ -68,6 +68,11 @@ jobs:
         run: |
           python experiments/schemas/validate.py
           python tools/generate_optical_comparison.py --check
+      - name: Recursive Infrastructure Lab smoke
+        run: |
+          python tools/lab/build_static_hub.py
+          python -m pytest -q tests/rgcs_lab tests/rgcs_coordinate
+          rgcs-lab doctor
       - name: Portable test suite (NR3-001 byte test deselected, see header)
         run: >
           python -m pytest -q

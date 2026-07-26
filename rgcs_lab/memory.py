@@ -119,7 +119,7 @@ def run_benchmark(path: str | Path, query: str = "energy provenance claim",
             "deterministic_repeatability": True,
         }
     return receipt(
-        "memory", "GREEN", ["BENCHMARK_HARNESS", "DETERMINISTIC_RETRIEVAL"],
+        "memory", "GREEN", ["IMPLEMENTED_SOFTWARE", "EXPLORATORY_MODEL"],
         {"corpus": str(path), "query": query, "top_k": top_k},
         [{"name": name, "equal_budget": {"corpus": "same",
           "top_k": top_k, "generation": "none"}} for name in rankings],

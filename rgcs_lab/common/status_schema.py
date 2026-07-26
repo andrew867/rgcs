@@ -15,8 +15,11 @@ from dataclasses import dataclass, field
 from enum import Enum
 from importlib import resources
 
+# Integration note: the predictions module id is the PLURAL slug —
+# unified across authority registry, adapters, API, CLI, and static
+# hub (docs/program/integration/CONFLICT_RESOLUTION.md, IR-01).
 MODULES = ("coordinate", "golay", "frames", "memory", "dual_pole",
-           "lattice", "metasurface", "prediction", "proofs")
+           "lattice", "metasurface", "predictions", "proofs")
 
 STATUSES = ("GREEN", "YELLOW", "RED")
 

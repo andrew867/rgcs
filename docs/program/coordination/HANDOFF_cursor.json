@@ -1,0 +1,59 @@
+{
+  "agent": "cursor",
+  "workstream": "WS09",
+  "start_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+  "end_commit": "b3a67203c6dda53ce50fa861e761642ffe2a4229",
+  "branch": "program/cursor-app-integration",
+  "worktree": "../rgcs-cursor",
+  "files_changed": [
+    "rgcs_lab/",
+    "static/hub/",
+    "tests/rgcs_lab/",
+    "tools/lab/build_static_hub.py",
+    "docs/program/coordination/",
+    "docs/user/rgcs_lab/",
+    "docs/developer/rgcs_lab/",
+    "examples/lab/",
+    "schemas/lab/",
+    "proofs/lab/",
+    "release/lab/",
+    "pyproject.toml",
+    "rgcs_desktop/build_meta.py",
+    ".github/workflows/ci.yml",
+    "tests/v51/test_r8_source_coverage.py"
+  ],
+  "public_api_changes": [
+    "rgcs-lab CLI (doctor, serve, modules, coordinate, golay, frames, memory, dual-pole, lattice, metasurface, predictions)",
+    "FastAPI /api/* module endpoints and /api/receipts/{module}",
+    "static hub at static/hub/ and release/lab/static-hub/"
+  ],
+  "tests": [
+    "tests/rgcs_lab (19 passed)",
+    "tests/rgcs_coordinate + packaging coverage subset (84 passed with adversarial sample)",
+    "tests/v51/test_r8_source_coverage.py",
+    "tests/v52 packaging parity (focused)"
+  ],
+  "documentation": [
+    "docs/user/rgcs_lab/QUICKSTART.md",
+    "docs/user/rgcs_lab/CLAIM_BOUNDARIES.md",
+    "docs/developer/rgcs_lab/README.md",
+    "docs/program/coordination/REPO_TRUTH_CURSOR.md",
+    "docs/program/coordination/MERGE_NOTES_cursor.md"
+  ],
+  "known_yellow": [
+    "Physical Earth projection underdetermined",
+    "High-fidelity spoof-SPP underdetermined (reduced-order only GREEN-as-software)",
+    "Prospective predictions pending measurement",
+    "rgcs_lab/reference/* demos pending Codex package displacement"
+  ],
+  "merge_notes": [
+    "Merge Claude authority/docs first if present",
+    "Merge Codex cores next; adapters already prefer rgcs_golay/rgcs_frames/etc.",
+    "Then merge this branch",
+    "Do not weaken failing tests or alter golden fixtures to force EOD green"
+  ],
+  "verdict": "RGCS_RECURSIVE_INFRASTRUCTURE_YELLOW_CORE_DEMONSTRATORS_READY_PHYSICS_LANES_UNDERDETERMINED",
+  "handoff_commits": [
+    "6aabd7ccb142414195299cd2a35190e1c2251472"
+  ]
+}

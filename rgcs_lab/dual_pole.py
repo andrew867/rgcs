@@ -75,7 +75,7 @@ def audit_file(path: str | Path) -> dict[str, object]:
     if result["verdict"] == "BLOCK":
         status = "RED"
     return receipt(
-        "dual-pole", status, ["ADVERSARIAL_RESEARCH_LOOP"],
+        "dual-pole", status, ["IMPLEMENTED_SOFTWARE", "EXPLORATORY_MODEL"],
         {"claim_file": str(path)},
         [{"name": "deterministic_dual_pole_state_machine",
           "critic_override_rule": "block requires new evidence or typed operator waiver"}],

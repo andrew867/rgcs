@@ -90,7 +90,7 @@ def rotation_receipt(from_frame: str, to_frame: str,
         "round_trip_error": float(np.linalg.norm(np.asarray(restored) - np.asarray(test_vector))),
     }
     return receipt(
-        "frames", "GREEN", ["EXACT_MATH", "FRAME_ROTATION"],
+        "frames", "GREEN", ["EXACT_ARITHMETIC", "IMPLEMENTED_SOFTWARE"],
         {"from_frame": from_frame, "to_frame": to_frame,
          "axis": axis, "angle_rad": angle_rad, "vector": test_vector},
         [{"name": "normalized_hamilton_quaternion", "units": "radians"}],

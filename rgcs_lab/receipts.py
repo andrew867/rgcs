@@ -21,7 +21,7 @@ def receipt(module: str, status: str, claim_class: list[str],
             result: dict[str, Any], tests: list[str],
             warnings: list[str] | None = None,
             artifacts: list[str] | None = None) -> dict[str, Any]:
-    return {
+    body = {
         "module": module,
         "version": "rgcs-lab.receipt.v1",
         "source_commit": source_commit(),
@@ -34,6 +34,12 @@ def receipt(module: str, status: str, claim_class: list[str],
         "tests": tests,
         "artifacts": artifacts or [],
     }
+    # One receipt contract program-wide: every core receipt must pass
+    # the canonical validator (Claude authority) before it is returned.
+    from rgcs_lab.common.status_schema import validate_receipt
+
+    validate_receipt(body)
+    return body
 
 
 def dumps(obj: Any) -> str:

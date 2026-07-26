@@ -1,26 +1,119 @@
-"""Unified CLI for RGCS Recursive Infrastructure Lab."""
+"""Unified ``rgcs-lab`` CLI (also ``python -m rgcs_lab``).
+
+Core numerical subcommands (golay, frames, memory, dual-pole,
+lattice, metasurface) keep the Codex lane's canonical behavior and
+argument surface and execute the Codex cores directly. The hub
+subcommands (doctor, serve, modules, coordinate, predictions) come
+from the Cursor lane and go through the adapter layer.
+"""
 
 from __future__ import annotations
 
 import argparse
+import json
 import math
+import sys
+from pathlib import Path
 
-from . import __version__
-from .dual_pole import audit_file
-from .frames import rotation_receipt
-from .golay import demo as golay_demo
-from .lattice import LatticeConfig, simulate
-from .memory import run_benchmark
-from .metasurface import MetasurfaceConfig, sweep
-from .receipts import dumps
+from rgcs_lab import PRODUCT_NAME, __version__
+from rgcs_lab.dual_pole import audit_file
+from rgcs_lab.frames import rotation_receipt
+from rgcs_lab.golay import demo as golay_demo
+from rgcs_lab.lattice import LatticeConfig, simulate
+from rgcs_lab.memory import run_benchmark
+from rgcs_lab.metasurface import MetasurfaceConfig, sweep
+from rgcs_lab.receipts import dumps
+
+
+def _print_result(obj) -> None:
+    if hasattr(obj, "to_dict"):
+        print(json.dumps(obj.to_dict(), indent=2))
+    else:
+        print(json.dumps(obj, indent=2))
+
+
+# ---------------------------------------------------------------- hub
 
 
 def cmd_doctor(_args) -> int:
+    from rgcs_lab.adapters import coordinate
+    from rgcs_lab.common.privacy import privacy_banner
+    from rgcs_lab.common.status import module_catalog
+
+    print(PRODUCT_NAME, __version__)
+    print(privacy_banner())
+    print("modules:", ", ".join(m["id"] for m in module_catalog()))
+    print("coordinate:", coordinate.doctor())
     print(dumps({"package": "rgcs-lab", "version": __version__,
                  "status": "OK", "commands": [
                      "golay demo", "frames example", "memory benchmark",
-                     "dual-pole audit", "lattice run", "metasurface sweep"]}))
+                     "dual-pole audit", "lattice run", "metasurface sweep",
+                     "coordinate decode|roundtrip", "predictions freeze|verify",
+                     "modules", "serve"]}), end="")
     return 0
+
+
+def cmd_serve(args) -> int:
+    from rgcs_lab.common.privacy import PrivacyDefaults, privacy_banner
+
+    privacy = PrivacyDefaults()
+    host = args.host or privacy.bind_host
+    port = args.port or privacy.bind_port
+    if host not in ("127.0.0.1", "localhost", "::1") and not args.allow_remote:
+        print(
+            "refused: refusing non-loopback bind without --allow-remote "
+            f"(requested host={host})",
+            file=sys.stderr,
+        )
+        return 2
+    try:
+        import uvicorn
+    except ImportError:
+        print(
+            "uvicorn/fastapi required: pip install 'rgcs[workbench]'",
+            file=sys.stderr,
+        )
+        return 3
+    from rgcs_lab.api import create_app
+
+    print(f"serving {PRODUCT_NAME} on http://{host}:{port}/")
+    print(privacy_banner())
+    uvicorn.run(create_app(), host=host, port=port, log_level="info")
+    return 0
+
+
+def cmd_modules(_args) -> int:
+    from rgcs_lab.common.status import module_catalog
+
+    _print_result({"modules": module_catalog()})
+    return 0
+
+
+def cmd_coordinate(args) -> int:
+    from rgcs_lab.adapters import coordinate
+
+    if args.action == "decode":
+        _print_result(coordinate.decode(args.value))
+        return 0
+    if args.action == "roundtrip":
+        result = coordinate.roundtrip(args.value)
+        _print_result(result)
+        return 0 if result.status.value == "GREEN" else 5
+    return 2
+
+
+def cmd_pred(args) -> int:
+    from rgcs_lab.adapters import services
+
+    doc = json.loads(Path(args.path).read_text(encoding="utf-8"))
+    if args.action == "freeze":
+        _print_result(services.predictions_freeze(doc))
+    else:
+        _print_result(services.predictions_verify(doc))
+    return 0
+
+
+# --------------------------------------------------- codex core lane
 
 
 def cmd_golay_demo(args) -> int:
@@ -41,14 +134,20 @@ def cmd_frames_example(args) -> int:
 
 
 def cmd_memory_benchmark(args) -> int:
-    print(dumps(run_benchmark(args.corpus, args.query, args.top_k)))
+    corpus = args.corpus
+    if corpus is None:
+        from rgcs_lab.adapters.services import default_memory_corpus
+
+        corpus = str(default_memory_corpus())
+    print(dumps(run_benchmark(corpus, args.query, args.top_k)))
     return 0
 
 
 def cmd_dual_pole_audit(args) -> int:
     rec = audit_file(args.claim)
+    return_code = 0 if rec["status"] != "RED" else 2
     print(dumps(rec))
-    return 0 if rec["status"] != "RED" else 2
+    return return_code
 
 
 def cmd_lattice_run(args) -> int:
@@ -69,10 +168,29 @@ def cmd_metasurface_sweep(args) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(prog="rgcs-lab")
+    p = argparse.ArgumentParser(prog="rgcs-lab", description=PRODUCT_NAME)
     sub = p.add_subparsers(dest="command", required=True)
-    d = sub.add_parser("doctor")
+
+    d = sub.add_parser("doctor", help="local health and privacy defaults")
     d.set_defaults(fn=cmd_doctor)
+
+    s = sub.add_parser("serve", help="local FastAPI workbench (loopback default)")
+    s.add_argument("--host", default=None)
+    s.add_argument("--port", type=int, default=None)
+    s.add_argument("--allow-remote", action="store_true")
+    s.set_defaults(fn=cmd_serve)
+
+    m = sub.add_parser("modules", help="list hub modules and status badges")
+    m.set_defaults(fn=cmd_modules)
+
+    c = sub.add_parser("coordinate")
+    csub = c.add_subparsers(dest="action", required=True)
+    cd = csub.add_parser("decode")
+    cd.add_argument("value")
+    cd.set_defaults(fn=cmd_coordinate)
+    cr = csub.add_parser("roundtrip")
+    cr.add_argument("value")
+    cr.set_defaults(fn=cmd_coordinate)
 
     golay = sub.add_parser("golay")
     gs = golay.add_subparsers(dest="golay_command", required=True)
@@ -92,7 +210,8 @@ def build_parser() -> argparse.ArgumentParser:
     memory = sub.add_parser("memory")
     ms = memory.add_subparsers(dest="memory_command", required=True)
     mb = ms.add_parser("benchmark")
-    mb.add_argument("corpus")
+    mb.add_argument("corpus", nargs="?", default=None,
+                    help="corpus directory (default: packaged hub corpus)")
     mb.add_argument("--query", default="energy provenance claim")
     mb.add_argument("--top-k", type=int, default=3)
     mb.set_defaults(fn=cmd_memory_benchmark)
@@ -123,13 +242,23 @@ def build_parser() -> argparse.ArgumentParser:
     sw.add_argument("--f-min-hz", type=float, default=1.0e9)
     sw.add_argument("--f-max-hz", type=float, default=4.0e9)
     sw.set_defaults(fn=cmd_metasurface_sweep)
+
+    pred = sub.add_parser("predictions")
+    psub = pred.add_subparsers(dest="action", required=True)
+    pf = psub.add_parser("freeze")
+    pf.add_argument("path")
+    pf.set_defaults(fn=cmd_pred)
+    pv = psub.add_parser("verify")
+    pv.add_argument("path")
+    pv.set_defaults(fn=cmd_pred)
+
     return p
 
 
-def main(argv=None) -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
-    return args.fn(args)
+    return int(args.fn(args))
 
 
 if __name__ == "__main__":

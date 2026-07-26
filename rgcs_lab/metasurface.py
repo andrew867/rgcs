@@ -78,7 +78,7 @@ def sweep(cfg: MetasurfaceConfig | None = None) -> dict[str, object]:
         "warning": "This electromagnetic reduced-order model does not compute gravity or gravity coupling.",
     }
     return receipt(
-        "metasurface", "YELLOW", ["REDUCED_ORDER_EM_SIMULATION", "UNDERDETERMINED_PHYSICS_LANE"],
+        "metasurface", "YELLOW", ["IMPLEMENTED_SOFTWARE", "CONVENTIONAL_PHYSICS", "UNDERDETERMINED"],
         cfg.__dict__,
         [{"name": "passive_RLCG_spoof_spp_line",
           "units": {"L": "H/m", "C": "F/m", "R": "ohm/m",
