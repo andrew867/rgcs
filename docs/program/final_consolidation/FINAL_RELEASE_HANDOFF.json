@@ -1,14 +1,14 @@
 {
-  "handoff": "RGCS Recursive Infrastructure Lab \u2014 final consolidation and release control",
+  "handoff": "RGCS Recursive Infrastructure Lab — final consolidation and release control",
   "date": "2026-07-26",
   "final_verdict": "RGCS_RECURSIVE_INFRASTRUCTURE_YELLOW_CORE_DEMONSTRATORS_READY_PHYSICS_LANES_UNDERDETERMINED",
   "verdict_basis": "All bounded software demonstrators GREEN with executed receipts; full suite passes with the single CI-mirrored deselection; wheel/sdist/SBOM verified from a clean install; hub telemetry-free; the YELLOW form is used solely because standing scientific lanes remain UNDERDETERMINED by policy. A YELLOW scientific interpretation does not block a GREEN bounded software demonstrator release.",
   "branch": "program/integration",
   "start_commit": "991446e",
   "final_implementation_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
-  "end_commit": "487785a378ef126e34b68ee0ba8e277e825ccbb9",
+  "end_commit": "626f4103da0b826948906421fbb6e3dd82dd4c95 (consolidation content commit; one metadata-only commit follows to stamp this value and is the branch tip)",
   "merged_post_audit_commits": [
-    "a8c09c6 \u2014 merge program/codex-numerical-audit @ 42fc284 (PASS, docs-only)",
+    "a8c09c6 — merge program/codex-numerical-audit @ 42fc284 (PASS, docs-only)",
     "no Cursor release-build lane exists (recorded, nothing invented)"
   ],
   "artifacts": {
