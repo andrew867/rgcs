@@ -1,0 +1,195 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-07-26T00:00:00Z",
+    "component": {
+      "type": "application",
+      "name": "rgcs",
+      "version": "8.2.0",
+      "description": "RGCS Recursive Infrastructure Lab (rgcs_lab 0.1.0.dev0) + RGCS scientific stack",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f5e28bc19c7762edc68c52cc6e28073f94c63b4ea88d25e331bb8ddfcb099545"
+        }
+      ],
+      "properties": [
+        {
+          "name": "rgcs:source_commit",
+          "value": "69f2174009654cf9996c88e976a78ac3b21e065d"
+        }
+      ]
+    },
+    "tools": [
+      {
+        "name": "generate-sbom (importlib.metadata over clean wheel venv)",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "annotated-doc",
+      "version": "0.0.4",
+      "purl": "pkg:pypi/annotated-doc@0.0.4",
+      "license_declared": "MIT"
+    },
+    {
+      "type": "library",
+      "name": "annotated-types",
+      "version": "0.8.0",
+      "purl": "pkg:pypi/annotated-types@0.8.0",
+      "license_declared": "MIT"
+    },
+    {
+      "type": "library",
+      "name": "anyio",
+      "version": "4.14.2",
+      "purl": "pkg:pypi/anyio@4.14.2",
+      "license_declared": "MIT"
+    },
+    {
+      "type": "library",
+      "name": "certifi",
+      "version": "2026.7.22",
+      "purl": "pkg:pypi/certifi@2026.7.22",
+      "license_declared": "MPL-2.0"
+    },
+    {
+      "type": "library",
+      "name": "click",
+      "version": "8.4.2",
+      "purl": "pkg:pypi/click@8.4.2",
+      "license_declared": "BSD-3-Clause"
+    },
+    {
+      "type": "library",
+      "name": "colorama",
+      "version": "0.4.6",
+      "purl": "pkg:pypi/colorama@0.4.6",
+      "license_declared": ""
+    },
+    {
+      "type": "library",
+      "name": "fastapi",
+      "version": "0.140.0",
+      "purl": "pkg:pypi/fastapi@0.140.0",
+      "license_declared": "MIT"
+    },
+    {
+      "type": "library",
+      "name": "h11",
+      "version": "0.16.0",
+      "purl": "pkg:pypi/h11@0.16.0",
+      "license_declared": "MIT"
+    },
+    {
+      "type": "library",
+      "name": "httpcore",
+      "version": "1.0.9",
+      "purl": "pkg:pypi/httpcore@1.0.9",
+      "license_declared": "BSD-3-Clause"
+    },
+    {
+      "type": "library",
+      "name": "httpx",
+      "version": "0.28.1",
+      "purl": "pkg:pypi/httpx@0.28.1",
+      "license_declared": "BSD-3-Clause"
+    },
+    {
+      "type": "library",
+      "name": "idna",
+      "version": "3.18",
+      "purl": "pkg:pypi/idna@3.18",
+      "license_declared": "BSD-3-Clause"
+    },
+    {
+      "type": "library",
+      "name": "numpy",
+      "version": "2.5.1",
+      "purl": "pkg:pypi/numpy@2.5.1",
+      "license_declared": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0"
+    },
+    {
+      "type": "library",
+      "name": "pip",
+      "version": "24.3.1",
+      "purl": "pkg:pypi/pip@24.3.1",
+      "license_declared": "MIT"
+    },
+    {
+      "type": "library",
+      "name": "pydantic",
+      "version": "2.13.4",
+      "purl": "pkg:pypi/pydantic@2.13.4",
+      "license_declared": "MIT"
+    },
+    {
+      "type": "library",
+      "name": "pydantic_core",
+      "version": "2.46.4",
+      "purl": "pkg:pypi/pydantic_core@2.46.4",
+      "license_declared": "MIT"
+    },
+    {
+      "type": "library",
+      "name": "PyYAML",
+      "version": "6.0.3",
+      "purl": "pkg:pypi/pyyaml@6.0.3",
+      "license_declared": "MIT"
+    },
+    {
+      "type": "library",
+      "name": "rgcs",
+      "version": "8.2.0",
+      "purl": "pkg:pypi/rgcs@8.2.0",
+      "license_declared": "MIT"
+    },
+    {
+      "type": "library",
+      "name": "rgcs",
+      "version": "8.2.0",
+      "purl": "pkg:pypi/rgcs@8.2.0",
+      "license_declared": "MIT"
+    },
+    {
+      "type": "library",
+      "name": "scipy",
+      "version": "1.18.0",
+      "purl": "pkg:pypi/scipy@1.18.0",
+      "license_declared": "Copyright (c) 2001-2002 Enthought, Inc. 2003, SciPy Developers.\n All rights reserved.\n\n Redistribution and use in source"
+    },
+    {
+      "type": "library",
+      "name": "starlette",
+      "version": "1.3.1",
+      "purl": "pkg:pypi/starlette@1.3.1",
+      "license_declared": "BSD-3-Clause"
+    },
+    {
+      "type": "library",
+      "name": "typing-inspection",
+      "version": "0.4.2",
+      "purl": "pkg:pypi/typing-inspection@0.4.2",
+      "license_declared": "MIT"
+    },
+    {
+      "type": "library",
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "purl": "pkg:pypi/typing_extensions@4.16.0",
+      "license_declared": "PSF-2.0"
+    },
+    {
+      "type": "library",
+      "name": "uvicorn",
+      "version": "0.51.0",
+      "purl": "pkg:pypi/uvicorn@0.51.0",
+      "license_declared": "BSD-3-Clause"
+    }
+  ]
+}

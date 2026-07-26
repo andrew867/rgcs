@@ -32,7 +32,7 @@ The three errors were all setup-time `tmp_path` failures:
 
 ```text
 PermissionError: [WinError 5] Access is denied:
-'C:\Users\andrew\AppData\Local\Temp\pytest-of-andrew'
+'%LOCALAPPDATA%\Temp\pytest-of-<user>'
 ```
 
 The same suite passes when pytest is given a writable temp root inside the
@@ -82,6 +82,6 @@ python -m pytest tests\rgcs_lab -q --basetemp .pytest-basetemp
 Recommended local cleanup outside this audit:
 
 ```text
-repair or remove the inaccessible C:\Users\andrew\AppData\Local\Temp\pytest-of-andrew tree
+repair or remove the inaccessible %LOCALAPPDATA%\Temp\pytest-of-<user> tree
 ```
 

@@ -111,7 +111,7 @@
       "exit_code": 1,
       "elapsed_seconds": 10.96,
       "result": "52 passed, 3 setup errors",
-      "error": "PermissionError WinError 5 on C:\\Users\\andrew\\AppData\\Local\\Temp\\pytest-of-andrew"
+      "error": "PermissionError WinError 5 on %LOCALAPPDATA%\\Temp\\pytest-of-<user>"
     },
     "workspace_basetemp": {
       "command": "python -m pytest tests\\rgcs_lab -q --basetemp .pytest-basetemp",

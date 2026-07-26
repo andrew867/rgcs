@@ -12,7 +12,7 @@
     "coordinate": {
       "module": "coordinate",
       "version": "0.1.0.dev0",
-      "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
+      "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -87,12 +87,12 @@
         "golden_vectors"
       ],
       "artifacts": [],
-      "receipt_sha256": "13e96440f288d8137a2138898bca29d092f505f5bf7058b48547004e03f1013e"
+      "receipt_sha256": "3ec5a94291714dfe5c318610ca200234583d9c4ea6fd8b5004d7a02869f7b467"
     },
     "golay": {
       "module": "golay",
       "version": "0.1.0.dev0",
-      "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
+      "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -157,12 +157,12 @@
         "tests/rgcs_lab/test_golay.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "b307697c2fc7acdb316e98bc242f025dfe51bbc4ca4d245bd1096928c03309a6"
+      "receipt_sha256": "8e5cb40c0289ab25053ff7e1ae1d89b84e7ee083735bd96b4d8d6a1554d5555e"
     },
     "frames": {
       "module": "frames",
       "version": "0.1.0.dev0",
-      "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
+      "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -278,7 +278,7 @@
         "tests/rgcs_lab/test_frames.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "93702ab146e800e603f4ff18e5c476ae6f15e86dc5f5be161f61bf7b35c8534d"
+      "receipt_sha256": "2c623c6b9c411df19ee9a721ec9a21e778d1a4beb15363d27ddd1f0189ba98f6"
     },
     "catalog": [
       {
@@ -399,7 +399,7 @@
   "receipt": {
     "module": "proofs",
     "version": "0.1.0.dev0",
-    "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
+    "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
     "status": "GREEN",
     "claim_class": [
       "IMPLEMENTED_SOFTWARE"
@@ -412,7 +412,7 @@
       "coordinate": {
         "module": "coordinate",
         "version": "0.1.0.dev0",
-        "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
+        "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
         "status": "GREEN",
         "claim_class": [
           "EXACT_ARITHMETIC",
@@ -487,12 +487,12 @@
           "golden_vectors"
         ],
         "artifacts": [],
-        "receipt_sha256": "13e96440f288d8137a2138898bca29d092f505f5bf7058b48547004e03f1013e"
+        "receipt_sha256": "3ec5a94291714dfe5c318610ca200234583d9c4ea6fd8b5004d7a02869f7b467"
       },
       "golay": {
         "module": "golay",
         "version": "0.1.0.dev0",
-        "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
+        "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
         "status": "GREEN",
         "claim_class": [
           "EXACT_ARITHMETIC",
@@ -557,12 +557,12 @@
           "tests/rgcs_lab/test_golay.py"
         ],
         "artifacts": [],
-        "receipt_sha256": "b307697c2fc7acdb316e98bc242f025dfe51bbc4ca4d245bd1096928c03309a6"
+        "receipt_sha256": "8e5cb40c0289ab25053ff7e1ae1d89b84e7ee083735bd96b4d8d6a1554d5555e"
       },
       "frames": {
         "module": "frames",
         "version": "0.1.0.dev0",
-        "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
+        "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
         "status": "GREEN",
         "claim_class": [
           "EXACT_ARITHMETIC",
@@ -678,7 +678,7 @@
           "tests/rgcs_lab/test_frames.py"
         ],
         "artifacts": [],
-        "receipt_sha256": "93702ab146e800e603f4ff18e5c476ae6f15e86dc5f5be161f61bf7b35c8534d"
+        "receipt_sha256": "2c623c6b9c411df19ee9a721ec9a21e778d1a4beb15363d27ddd1f0189ba98f6"
       },
       "catalog": [
         {
@@ -801,7 +801,7 @@
       "receipt_schema"
     ],
     "artifacts": [],
-    "receipt_sha256": "a81046b5d886d5f7d4fbdb227dccd09a98e7654ea08a38e7a02faf0a2bdbc0b7"
+    "receipt_sha256": "1879c8e4fe4f489ef0721b0ebcd428c2ae3bbcc0d3a33008966742612bf48b7c"
   },
   "does": "Aggregate receipts, hashes, and claim-boundary surfaces.",
   "does_not": "Does not convert a green UI into a physical proof.",

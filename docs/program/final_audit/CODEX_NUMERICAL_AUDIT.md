@@ -21,7 +21,7 @@ memory benchmark determinism and equal budgets, dual-pole transitions, lattice
 Hermiticity/convergence/energy accounting, metasurface passivity/SI units, CLI
 receipts, and installed-wheel imports/CLI. The pytest hang is closed as not
 reproduced. A separate default-temp-root ACL issue remains on this machine:
-pytest cannot read `C:\Users\andrew\AppData\Local\Temp\pytest-of-andrew`.
+pytest cannot read `%LOCALAPPDATA%\\Temp\\pytest-of-<user>`.
 With `--basetemp` inside the audit worktree, `tests\rgcs_lab` passes normally.
 
 ## Independent Numerical Checks
@@ -154,7 +154,7 @@ ELAPSED_SECONDS=10.96
 ```
 
 Errors were all setup-time `PermissionError: [WinError 5] Access is denied:
-'C:\Users\andrew\AppData\Local\Temp\pytest-of-andrew'` for tests using
+'%LOCALAPPDATA%\\Temp\\pytest-of-<user>'` for tests using
 `tmp_path`.
 
 Writable basetemp run:

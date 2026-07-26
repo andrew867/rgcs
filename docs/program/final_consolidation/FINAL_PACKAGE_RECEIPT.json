@@ -1,0 +1,35 @@
+{
+  "module": "packaging",
+  "version": "rgcs 8.2.0 / rgcs_lab 0.1.0.dev0",
+  "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
+  "status": "GREEN",
+  "claim_class": ["IMPLEMENTED_SOFTWARE"],
+  "inputs": {"command": "RGCS_SOURCE_COMMIT=<final> python -m build (dist/ cleaned first)", "python": "3.13.2", "platform": "Windows 11 10.0.26200"},
+  "models": ["setuptools>=68 build backend"],
+  "result": {
+    "wheel": {"file": "dist/rgcs-8.2.0-py3-none-any.whl", "sha256": "f5e28bc19c7762edc68c52cc6e28073f94c63b4ea88d25e331bb8ddfcb099545"},
+    "sdist": {"file": "dist/rgcs-8.2.0.tar.gz", "sha256": "81b858193476f6b61ddebcff6604142d90a5f058cc4bc750465c7d87f03589b8"},
+    "sbom": "release/lab/SBOM.cdx.json (CycloneDX 1.5, anchored to wheel sha256 + final commit)",
+    "clean_install_outside_repo_and_onedrive": {
+      "venv": "%LOCALAPPDATA%/rgcs-wheel-venv (recreated fresh for the final wheel)",
+      "cli_matrix": {
+        "doctor": 0, "modules": 0, "golay demo": 0, "frames example": 0,
+        "memory benchmark (packaged corpus)": 0, "lattice run": 0,
+        "metasurface sweep (YELLOW)": 0, "coordinate decode 165876523 (GREEN)": 0,
+        "coordinate decode 1643789253 (typed RED refusal)": 4,
+        "dual-pole audit claim_antigravity (RED)": 2,
+        "serve --host 0.0.0.0 (loopback refusal)": 2
+      },
+      "serve_smoke": {
+        "health": "ok=true, telemetry=false",
+        "modules": "9",
+        "receipt_download": "content-disposition attachment verified (/api/receipts/lattice)",
+        "banned_input_audit": "structured REJECT receipt with redaction, HTTP 200 (422 reserved for residual lock violations)"
+      }
+    },
+    "entry_points": {"rgcs-lab": "rgcs_lab.cli:main (single; python -m rgcs_lab equivalent)"}
+  },
+  "warnings": ["source_commit='unknown' when receipts are generated from an installed wheel outside a git tree without RGCS_SOURCE_COMMIT (documented gitmeta behavior; all SHIPPED receipts were generated in-tree at the final commit)"],
+  "tests": ["python -m build exit 0", "clean-venv CLI matrix above", "serve smoke"],
+  "artifacts": ["dist/rgcs-8.2.0-py3-none-any.whl", "dist/rgcs-8.2.0.tar.gz", "release/lab/SBOM.cdx.json"]
+}

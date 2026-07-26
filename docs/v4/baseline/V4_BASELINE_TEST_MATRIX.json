@@ -122,11 +122,12 @@
       "test_metasurface.py",
       "test_rlab_dual_pole.py",
       "test_rlab_frames_core.py",
+      "test_rlab_hub_catalog.py",
       "test_rlab_hub_coordinate.py",
       "test_rlab_memory_predictions.py",
       "test_rlab_schema_gate.py"
     ],
-    "test_functions": 51
+    "test_functions": 57
   },
   "ui": {
     "files": [

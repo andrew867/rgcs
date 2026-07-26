@@ -154,7 +154,7 @@
   "receipt": {
     "module": "memory",
     "version": "0.1.0.dev0",
-    "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
+    "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
     "status": "GREEN",
     "claim_class": [
       "IMPLEMENTED_SOFTWARE",
@@ -311,7 +311,7 @@
       "tests/rgcs_lab/test_memory_dual.py"
     ],
     "artifacts": [],
-    "receipt_sha256": "346a212843f17ee741098ba42bb91186d6e00e640e2a035ed531c798585056ab"
+    "receipt_sha256": "d81480f63bdb39e07facb2ba7f24afc8907a43b517b45442e7ba75c84c894ae7"
   },
   "does": "Reproducible provenance-memory retrieval benchmark.",
   "does_not": "Does not demonstrate consciousness.",

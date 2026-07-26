@@ -1,0 +1,41 @@
+{
+  "audit": "final-receipt-audit",
+  "date": "2026-07-26",
+  "final_implementation_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
+  "canonical_contract": {
+    "module_status": "rgcs_lab.common.status_schema.ModuleStatus (single)",
+    "receipt_schema": "rgcs_lab/common/receipt_schema.json (packaged canonical; schemas/lab mirror byte-identical)",
+    "validator_enforced_in": [
+      "rgcs_lab.common.receipts.build_receipt (AA-01 fix)",
+      "rgcs_lab.receipts.receipt (Codex core receipts)"
+    ]
+  },
+  "nine_module_receipts": {
+    "regenerated_from_executed_code_at": "69f2174009654cf9996c88e976a78ac3b21e065d",
+    "all_validate": true,
+    "all_record_final_commit": true,
+    "statuses": {
+      "coordinate": "GREEN", "golay": "GREEN", "frames": "GREEN",
+      "memory": "GREEN", "dual_pole": "YELLOW (sample audit outcome; standing infrastructure badge GREEN — AA-05 note)",
+      "lattice": "GREEN", "metasurface": "YELLOW", "predictions": "YELLOW",
+      "proofs": "GREEN"
+    },
+    "backends": {
+      "coordinate": "rgcs_coordinate (frozen)",
+      "golay": "rgcs_lab.golay", "frames": "rgcs_lab.frames",
+      "memory": "rgcs_lab.memory", "dual_pole": "rgcs_lab.dual_pole",
+      "lattice": "rgcs_lab.lattice", "metasurface": "rgcs_lab.metasurface",
+      "predictions": "rgcs_lab.reference.predictions (hub demo by design)",
+      "proofs": "rgcs_lab.adapters aggregate"
+    },
+    "fallback_marker_in_shipped_receipts": 0
+  },
+  "aa03_closure": {
+    "hub_js_module_literals": "none (test-enforced)",
+    "catalog_source": "assets/catalog.data.js GENERATED from module_catalog() at the final commit; index.html loads it before hub.js; file:// mode verified wired",
+    "tests": "tests/rgcs_lab/test_rlab_hub_catalog.py (6 tests: no hand-written catalog, generated+canonical equality, fixture equality, 9 entries resolve to page/fixture/receipt, static wiring order, mirror equality)"
+  },
+  "badge_vs_receipt": "9/9 fixture-embedded receipts byte-equal receipts/<id>.json; badge==receipt status; release mirror byte-identical (re-verified after final regeneration)",
+  "historical_receipts": "docs/program/integration/* and docs/program/final_audit/* keep their own generating commits — explicitly historical phase records",
+  "result": "PASS"
+}

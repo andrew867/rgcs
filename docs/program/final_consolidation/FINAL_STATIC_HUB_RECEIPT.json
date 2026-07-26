@@ -1,0 +1,27 @@
+{
+  "module": "static_hub",
+  "version": "0.1.0.dev0",
+  "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
+  "status": "GREEN",
+  "claim_class": ["IMPLEMENTED_SOFTWARE"],
+  "inputs": {"generator": "tools/lab/build_static_hub.py at the final implementation commit"},
+  "models": ["index + 9 module pages + fixtures + receipts + GENERATED catalog.data.js + workbench"],
+  "result": {
+    "locations": {"working": "static/hub/", "release_mirror": "release/lab/static-hub/ (byte-copied; SHA256SUMS.txt regenerated)"},
+    "aa03": "badge catalog generated from canonical registry (window.RGCS_CATALOG); hub.js contains no module literals; test-enforced",
+    "static_mode": "file:// works via <script src> catalog load (no fetch needed for badges); module pages use fixtures",
+    "server_mode": "/api/modules returns the same canonical catalog (verified count 9 on installed wheel)",
+    "receipts": "9 module receipts + hub-catalog.json; all validate; all record the final commit; fixture-embedded receipts byte-equal receipt files",
+    "telemetry": "none — zero external URLs in hub HTML/JS; same-origin fetches only",
+    "downloads": "receipt download endpoints verified (attachment header) + static receipt files served",
+    "physics_yellow_visible": true
+  },
+  "warnings": ["release mirror is generated — regenerate via build_static_hub.py + copy, never hand-edit"],
+  "tests": [
+    "tests/rgcs_lab/test_rlab_hub_catalog.py (6)",
+    "tests/rgcs_lab/test_lab_core.py::test_hub_static_artifacts_exist",
+    "tests/rgcs_lab/browser/test_hub_a11y_static.py",
+    "http.server smoke (catalog.data.js served, wiring verified)"
+  ],
+  "artifacts": ["static/hub/", "release/lab/static-hub/", "release/lab/SHA256SUMS.txt"]
+}

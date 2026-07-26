@@ -62,7 +62,7 @@
     "receipt": {
       "module": "golay",
       "version": "0.1.0.dev0",
-      "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
+      "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -127,7 +127,7 @@
         "tests/rgcs_lab/test_golay.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "4232141a781e52161ccd57934d453dfd609f56ec4614e763bed80951fa1a4206"
+      "receipt_sha256": "b8796385b4f9fd5e6d81f290955ac4ee947133addbc4b98e5d25c1375faeff66"
     },
     "does": "Encode/decode a 36-bit address with extended binary Golay G24 blocks.",
     "does_not": "Does not show that an external civilization uses Golay coding.",
@@ -201,7 +201,7 @@
     "receipt": {
       "module": "golay",
       "version": "0.1.0.dev0",
-      "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
+      "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -266,7 +266,7 @@
         "tests/rgcs_lab/test_golay.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "b307697c2fc7acdb316e98bc242f025dfe51bbc4ca4d245bd1096928c03309a6"
+      "receipt_sha256": "8e5cb40c0289ab25053ff7e1ae1d89b84e7ee083735bd96b4d8d6a1554d5555e"
     },
     "does": "Encode/decode a 36-bit address with extended binary Golay G24 blocks.",
     "does_not": "Does not show that an external civilization uses Golay coding.",
@@ -340,7 +340,7 @@
     "receipt": {
       "module": "golay",
       "version": "0.1.0.dev0",
-      "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
+      "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -405,7 +405,7 @@
         "tests/rgcs_lab/test_golay.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "c1447a6bb8d047e3aae458ca0776863a18ab1c602a1344bbd745d5a0610d6723"
+      "receipt_sha256": "a6ade4c4998789a94f168bc8b00b211e05a6a8b4dcbb0b9b8bef1133201126cf"
     },
     "does": "Encode/decode a 36-bit address with extended binary Golay G24 blocks.",
     "does_not": "Does not show that an external civilization uses Golay coding.",
@@ -479,7 +479,7 @@
     "receipt": {
       "module": "golay",
       "version": "0.1.0.dev0",
-      "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
+      "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -544,7 +544,7 @@
         "tests/rgcs_lab/test_golay.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "64e485d6b993d84510a0a01606867ec2bf7efda75f23e906c95a142671758f2c"
+      "receipt_sha256": "52f920d289b9a909e2fcd35d1ff22483fbf7fc44f486cc0d5bd82a6bdc694397"
     },
     "does": "Encode/decode a 36-bit address with extended binary Golay G24 blocks.",
     "does_not": "Does not show that an external civilization uses Golay coding.",
@@ -620,7 +620,7 @@
     "receipt": {
       "module": "golay",
       "version": "0.1.0.dev0",
-      "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
+      "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
       "status": "GREEN",
       "claim_class": [
         "EXACT_ARITHMETIC",
@@ -687,7 +687,7 @@
         "tests/rgcs_lab/test_golay.py"
       ],
       "artifacts": [],
-      "receipt_sha256": "f6b527c91f58711a2dc3aceb2e5766f1945382a66dbb298cd7125a3673f79bc8"
+      "receipt_sha256": "0557f765fa546d5fa891696ce099d9c0a1d78ceb6c1c160c4fd78d618aec178c"
     },
     "does": "Encode/decode a 36-bit address with extended binary Golay G24 blocks.",
     "does_not": "Does not show that an external civilization uses Golay coding.",

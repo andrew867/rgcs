@@ -1,0 +1,40 @@
+{
+  "manifest": "final-artifact-manifest",
+  "date": "2026-07-26",
+  "final_implementation_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
+  "artifacts": {
+    "wheel": {
+      "path": "dist/rgcs-8.2.0-py3-none-any.whl",
+      "sha256": "f5e28bc19c7762edc68c52cc6e28073f94c63b4ea88d25e331bb8ddfcb099545"
+    },
+    "sdist": {
+      "path": "dist/rgcs-8.2.0.tar.gz",
+      "sha256": "81b858193476f6b61ddebcff6604142d90a5f058cc4bc750465c7d87f03589b8"
+    },
+    "sbom": {
+      "path": "release/lab/SBOM.cdx.json",
+      "sha256": "0fe07d2f3ba3b57601ca7dac6b7c8d9dde8a539133a7e51cbeee728e6770a33a"
+    },
+    "sha256sums": {
+      "path": "release/lab/SHA256SUMS.txt",
+      "sha256": "e12226eaeb596e2734b735932bcac05612ee86dc242d0ce01b08faeb80d88cfa",
+      "covers": 35
+    },
+    "static_hub_receipts": {
+      "static/hub/receipts/coordinate.json": "7c324a705bf4b4b57e9586eb340e640d1c8e8cd23f24e3e746d9d488f8fd76d1",
+      "static/hub/receipts/golay.json": "e472bda6fbe1f8f29ff5b773155f3697926b2aa1b3ea0b7731e1e58e21a09125",
+      "static/hub/receipts/frames.json": "a3c54386055e1b58fbb9204b6f921db9868e476560c4335b8b87a1af90e5e6e5",
+      "static/hub/receipts/memory.json": "f36d99c96730f8364fc084dd0ee788f1e8df44f6ed3b5e4b1a06fe1d21aa495e",
+      "static/hub/receipts/dual_pole.json": "472939d6c8b92ec7698d2e0db22d72385b30c8a7fa9afb671e484f3f91b6c94e",
+      "static/hub/receipts/lattice.json": "378bf0cae8a28e93cf6b6c9d6d0fa2f5d8807264698d6265cc8891f3031a5e01",
+      "static/hub/receipts/metasurface.json": "55fa9cedbfc068f40a7926e9e79c85974289608c7649a84361377a0402c8c968",
+      "static/hub/receipts/predictions.json": "9bcb1d4de5b33ce4ae90684a9eb7d14e4240428b66e4b1e9a87e2ff1459acc5b",
+      "static/hub/receipts/proofs.json": "584d1ddfa2c0b7dfe362e833b1f0bcae45369811c3734d494b3848eec962e05f"
+    },
+    "generated_catalog": {
+      "path": "static/hub/assets/catalog.data.js",
+      "sha256": "7a5ebb53af3b481ff2dedcf2b8509f69b34441f942926ac2ed48a0ec2ec19711"
+    }
+  },
+  "note": "dist/ artifacts are build outputs (not committed); hub, mirror, SBOM, and SHA256SUMS are committed. Every artifact above was generated at the final implementation commit."
+}

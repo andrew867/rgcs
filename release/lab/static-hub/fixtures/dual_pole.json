@@ -50,7 +50,7 @@
   "receipt": {
     "module": "dual_pole",
     "version": "0.1.0.dev0",
-    "source_commit": "a8c09c66a9114edcda554ab3a16d04b5828b1e78",
+    "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
     "status": "YELLOW",
     "claim_class": [
       "IMPLEMENTED_SOFTWARE",
@@ -103,7 +103,7 @@
       "tests/rgcs_lab/test_memory_dual.py"
     ],
     "artifacts": [],
-    "receipt_sha256": "f253e412c1f345c9270f5aecfe21e5e0c0f529a6ee6c2fec085b8bc1321eef55"
+    "receipt_sha256": "83dee19b7a8146651eafff675da47ae1c0e01bb4c8862db1ecc1e4701c622c51"
   },
   "does": "Proposer/critic loop with typed attack families.",
   "does_not": "Does not make two models independent witnesses.",
