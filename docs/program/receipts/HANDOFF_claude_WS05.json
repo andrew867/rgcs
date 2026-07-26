@@ -1,0 +1,27 @@
+{
+ "agent": "claude",
+ "start_commit": "eb7d7d4",
+ "end_commit": "eb7d7d4+pending-commit",
+ "public_api_changes": [
+  "DualPoleMachine",
+  "EvidenceBinding"
+ ],
+ "known_yellow": [
+  "LLM proposer/critic prompting + benchmark vs single-agent are follow-on lanes; deterministic machine shipped"
+ ],
+ "merge_notes": [
+  "pyproject.toml single hunk (rgcs_lab* + rgcs_lab.common json data) \u2014 Cursor owns package wiring; integration adapters win on conflict",
+  "no Codex or Cursor receipts existed to review at handoff; review obligation open",
+  "full repository regression required before merge into program/integration (integration agent runs it; Claude branch ran focused suites)"
+ ],
+ "workstream": "WS05",
+ "files": [
+  "rgcs_lab/authority/dual_pole_machine.py"
+ ],
+ "tests": [
+  "tests/rgcs_lab/test_rlab_dual_pole.py"
+ ],
+ "documentation": [
+  "docs/program/AUTHORITY_AND_SCHEMAS.md"
+ ]
+}

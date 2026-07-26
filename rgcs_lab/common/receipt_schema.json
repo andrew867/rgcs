@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RGCS Recursive Infrastructure Receipt",
+  "type": "object",
+  "required": [
+    "module",
+    "version",
+    "source_commit",
+    "status",
+    "claim_class",
+    "inputs",
+    "models",
+    "result",
+    "tests"
+  ],
+  "properties": {
+    "module": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "source_commit": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "GREEN",
+        "YELLOW",
+        "RED"
+      ]
+    },
+    "claim_class": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "inputs": {
+      "type": "object"
+    },
+    "models": {
+      "type": "array"
+    },
+    "result": {
+      "type": "object"
+    },
+    "warnings": {
+      "type": "array"
+    },
+    "tests": {
+      "type": "array"
+    },
+    "artifacts": {
+      "type": "array"
+    }
+  }
+}

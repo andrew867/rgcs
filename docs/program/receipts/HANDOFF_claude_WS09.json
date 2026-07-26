@@ -1,0 +1,34 @@
+{
+ "agent": "claude",
+ "start_commit": "eb7d7d4",
+ "end_commit": "eb7d7d4+pending-commit",
+ "public_api_changes": [
+  "hub_index",
+  "module_status",
+  "ModuleStatus",
+  "validate_receipt"
+ ],
+ "known_yellow": [
+  "hub UI is Cursor lane; registry shows honest 1/9 GREEN (coordinate) with 8 RED NOT_EXECUTED until receipts land"
+ ],
+ "merge_notes": [
+  "pyproject.toml single hunk (rgcs_lab* + rgcs_lab.common json data) \u2014 Cursor owns package wiring; integration adapters win on conflict",
+  "no Codex or Cursor receipts existed to review at handoff; review obligation open",
+  "full repository regression required before merge into program/integration (integration agent runs it; Claude branch ran focused suites)"
+ ],
+ "workstream": "WS09",
+ "files": [
+  "rgcs_lab/authority/hub_registry.py",
+  "rgcs_lab/common/status_schema.py",
+  "rgcs_lab/common/receipt_schema.json",
+  "docs/program/ADR-001-product-name.md"
+ ],
+ "tests": [
+  "tests/rgcs_lab/test_rlab_hub_coordinate.py",
+  "tests/rgcs_lab/test_rlab_schema_gate.py"
+ ],
+ "documentation": [
+  "docs/program/AUTHORITY_AND_SCHEMAS.md",
+  "docs/program/ADR-001-product-name.md"
+ ]
+}

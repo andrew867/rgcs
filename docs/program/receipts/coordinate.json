@@ -1,0 +1,37 @@
+{
+ "module": "coordinate",
+ "version": "0.1.0.dev0",
+ "source_commit": "eb7d7d4",
+ "status": "GREEN",
+ "claim_class": [
+  "EXACT_ARITHMETIC",
+  "TRAINING_EQUALITY",
+  "UNDERDETERMINED"
+ ],
+ "inputs": {
+  "golden_word": "165876523",
+  "fixture_role": "supplied training equality and regression fixture"
+ },
+ "models": [
+  "federation-terra-30 structural codec (bit-parity-locked to frozen r12.icosapacket)"
+ ],
+ "result": {
+  "structural_lane": "GREEN",
+  "octal10": "1170611453",
+  "roundtrip_exact": true,
+  "projection_lane": "YELLOW",
+  "projection_verdict": "RGCS_R10_8_5A_YELLOW_PACKET_AUTHORITY_HELD_PROJECTION_UNDERDETERMINED"
+ },
+ "warnings": [
+  "physical projection underdetermined; candidate placements are training-calibrated and cannot validate the training equality",
+  "Morton/octree indices are hierarchical path registers, never coordinates"
+ ],
+ "tests": [
+  "tests/rgcs_coordinate (30 passed, RCW EOD slice)",
+  "in-process golden decode + roundtrip at receipt build time"
+ ],
+ "artifacts": [
+  "workbench/index.html",
+  "docs/proofs/workbench-release/P02_P06_PHASE_RECEIPTS.md"
+ ]
+}
