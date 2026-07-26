@@ -21,6 +21,11 @@ desktop = ["PySide6>=6.6", "pyqtgraph>=0.13"]
 workbook = ["openpyxl>=3.1"]           # xlsx export (interop only;
 #                                        Excel not required to RUN)
 packaging = ["pyinstaller>=6.0"]       # Windows portable/onedir build
+workbench = [
+    "fastapi>=0.110",
+    "uvicorn>=0.27",
+    "httpx>=0.27",
+]
 dev = [
     "pytest>=7.4",
     "hypothesis>=6.90",
@@ -35,12 +40,16 @@ dev = [
     # job, so that module failed to collect on every platform while
     # passing locally. Declared here so the guard actually runs.
     "setuptools>=68",
+    "fastapi>=0.110",
+    "uvicorn>=0.27",
+    "httpx>=0.27",
 ]
 
 [project.scripts]
 rgcs-v4 = "rscs2_core.cli:main"
 rgcs-workbook = "rgcs_workbench.workbook:main"
 rgcs-coordinate = "rgcs_coordinate.cli:main"
+rgcs-lab = "rgcs_lab.cli:main"
 
 [project.gui-scripts]
 rgcs-workbench = "rgcs_desktop.app.main:main"
@@ -48,7 +57,7 @@ rgcs-workbench = "rgcs_desktop.app.main:main"
 [tool.setuptools.packages.find]
 include = ["rgcs_core*", "rgcs_desktop*", "rscs_core*", "rscs2_core*", "cspc*", "pmwr*", "r3*", "r4*",
            "r6*", "r7*", "r8*", "r9*", "r10*", "r11*", "r12*", "r13*", "r15*",
-           "cwatlas*", "rgcs_coordinate*",
+           "cwatlas*", "rgcs_coordinate*", "rgcs_lab*",
            "rgcs_workbench*", "fkey_instrument*",
            "resonator_platform*", "consciousness_lane*"]
 
@@ -65,7 +74,7 @@ rgcs_coordinate = ["fixtures/*.json"]
 "rgcs_coordinate.fixtures" = ["*.json"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial", "tests/v4", "tests/v49", "tests/v50", "tests/v51", "tests/v52", "tests/v6", "tests/v8", "tests/cwatlas"]
+testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial", "tests/v4", "tests/v49", "tests/v50", "tests/v51", "tests/v52", "tests/v6", "tests/v8", "tests/cwatlas", "tests/rgcs_coordinate", "tests/rgcs_lab"]
 pythonpath = ["."]
 markers = [
     "slow: long-running tests (dataset regeneration)",

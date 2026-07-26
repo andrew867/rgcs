@@ -1,0 +1,498 @@
+{
+  "module": "proofs",
+  "version": "0.1.0.dev0",
+  "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+  "status": "GREEN",
+  "claim_class": [
+    "IMPLEMENTED_SOFTWARE"
+  ],
+  "inputs": {},
+  "models": [
+    "hub-proof-aggregate-v1"
+  ],
+  "result": {
+    "coordinate": {
+      "module": "coordinate",
+      "version": "0.1.0.dev0",
+      "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+      "status": "GREEN",
+      "claim_class": [
+        "EXACT_ARITHMETIC",
+        "TRAINING_EQUALITY",
+        "UNDERDETERMINED"
+      ],
+      "inputs": {
+        "raw_decimal": "165876523",
+        "codec": "federation-terra-30"
+      },
+      "models": [
+        "federation-terra-30"
+      ],
+      "result": {
+        "schema": "rgcs.structural-trace.v1",
+        "raw_decimal": "165876523",
+        "width_bits": 30,
+        "binary30": "001001111000110001001100101011",
+        "octal10": "1170611453",
+        "packet_family": "federation-terra-f5-q22-s3-candidate",
+        "face_bits": "00100",
+        "face_id": 4,
+        "face_status": "valid-source-face-range",
+        "q22_bits": "1111000110001001100101",
+        "q22_path": [
+          3,
+          3,
+          0,
+          1,
+          2,
+          0,
+          2,
+          1,
+          2,
+          1,
+          1
+        ],
+        "shell_bits": "011",
+        "extracted_shell": 3,
+        "spatial_octal_path": "117061145",
+        "morton_audit": {
+          "x_bits": "001010011",
+          "y_bits": "001010000",
+          "z_bits": "111001101",
+          "x_index": 83,
+          "y_index": 80,
+          "z_index": 461
+        },
+        "fixture_label": null,
+        "structural_status": "EXACT_STRUCTURAL_DECODE",
+        "physical_projection_status": "UNDERDETERMINED",
+        "claim_class": "EXACT_STRUCTURAL",
+        "claims": {
+          "source_origin_validated": false,
+          "stonehenge_independently_decoded": false,
+          "octal_packet_structure_recovered": true,
+          "physical_projection": "UNDERDETERMINED",
+          "standing": {
+            "SOURCE_ORIGIN_VALIDATED": "no",
+            "STONEHENGE_INDEPENDENTLY_DECODED": "no, until the corrected transform passes",
+            "OCTAL_PACKET_STRUCTURE_RECOVERED": "yes",
+            "PHYSICAL_PROJECTION": "underdetermined unless a later receipt proves otherwise"
+          }
+        }
+      },
+      "warnings": [
+        "PHYSICAL PROJECTION: YELLOW UNDERDETERMINED",
+        "Stonehenge decimal is a training equality"
+      ],
+      "tests": [
+        "roundtrip_coordinate",
+        "golden_vectors"
+      ],
+      "artifacts": [],
+      "receipt_sha256": "f3d469c96c1c5f08e5da335a9ea2c8d32dfa16454682425b7c80ca3c10954772"
+    },
+    "golay": {
+      "module": "golay",
+      "version": "0.1.0.dev0",
+      "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+      "status": "GREEN",
+      "claim_class": [
+        "EXACT_ARITHMETIC",
+        "IMPLEMENTED_SOFTWARE"
+      ],
+      "inputs": {
+        "flips_per_block": 1,
+        "seed": 1
+      },
+      "models": [
+        "rgcs.golay.g24.cyclic-v1"
+      ],
+      "result": {
+        "convention": "rgcs.golay.g24.cyclic-v1",
+        "bit_order": "msb-first-within-block",
+        "generator_poly": "1+x+x^5+x^6+x^7+x^9+x^11",
+        "blocks_in": [
+          2650,
+          1475,
+          241
+        ],
+        "codewords": [
+          10855660,
+          6043418,
+          988988
+        ],
+        "corruption": [
+          10855596,
+          14432026,
+          923452
+        ],
+        "decoded_blocks": [
+          2650,
+          1475,
+          241
+        ],
+        "correction_status": [
+          "corrected",
+          "corrected",
+          "corrected"
+        ],
+        "syndrome": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0
+          ]
+        ],
+        "correction_mask": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "exact_round_trip": true
+      },
+      "warnings": [
+        "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
+        "backend=rgcs_lab.reference.golay"
+      ],
+      "tests": [
+        "golay_roundtrip",
+        "golay_flip_demo"
+      ],
+      "artifacts": [],
+      "receipt_sha256": "3bd7a4cd7a0895925248d868ac591d40319ed27e7ba9e7a08a455d1d829d0a90"
+    },
+    "frames": {
+      "module": "frames",
+      "version": "0.1.0.dev0",
+      "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+      "status": "GREEN",
+      "claim_class": [
+        "EXACT_ARITHMETIC",
+        "IMPLEMENTED_SOFTWARE"
+      ],
+      "inputs": {
+        "example": "earth-south-up"
+      },
+      "models": [
+        "unit-quaternion-hamilton-v1"
+      ],
+      "result": {
+        "example": "earth-south-up",
+        "from_frame": "earth-enu-candidate",
+        "to_frame": "earth-south-up-candidate",
+        "composition_order": "q_total = q_conventional_body * ... * q_local (rightmost applied first)",
+        "quaternion": [
+          6.123233995736766e-17,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "inverse": [
+          6.123233995736766e-17,
+          -1.0,
+          -0.0,
+          -0.0
+        ],
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "angle_rad": 3.141592653589793,
+        "matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            -1.0,
+            -1.2246467991473532e-16
+          ],
+          [
+            0.0,
+            1.2246467991473532e-16,
+            -1.0
+          ]
+        ],
+        "normalization_error": 0.0,
+        "basis_out": {
+          "e1": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "e2": [
+            0.0,
+            -1.0,
+            1.2246467991473532e-16
+          ],
+          "e3": [
+            0.0,
+            -1.2246467991473532e-16,
+            -1.0
+          ]
+        },
+        "round_trip_basis": {
+          "e1": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "e2": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "e3": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "sign_alias_equivalent": true
+      },
+      "warnings": [
+        "PHYSICAL FIELD EFFECT: YELLOW \u2014 not demonstrated"
+      ],
+      "tests": [
+        "frames_identity",
+        "frames_inverse",
+        "frames_roundtrip"
+      ],
+      "artifacts": [],
+      "receipt_sha256": "3256cc788f2b7d56c4d899c72b009f30bede366856d5ee81032b57baef28ddf1"
+    },
+    "catalog": [
+      {
+        "id": "coordinate",
+        "title": "Coordinate",
+        "status": "GREEN",
+        "physical_status": "YELLOW",
+        "purpose": "Exact Federation/Terra 30-bit F5|Q22|S3 structural codec.",
+        "does_not": "Does not yet establish a unique physical source map.",
+        "claim_class": [
+          "EXACT_ARITHMETIC",
+          "TRAINING_EQUALITY",
+          "UNDERDETERMINED"
+        ]
+      },
+      {
+        "id": "golay",
+        "title": "Golay",
+        "status": "GREEN",
+        "physical_status": "YELLOW",
+        "purpose": "Extended binary Golay G24 transport wrapper for a 36-bit address.",
+        "does_not": "Does not show that an external civilization uses Golay coding.",
+        "claim_class": [
+          "EXACT_ARITHMETIC",
+          "IMPLEMENTED_SOFTWARE"
+        ]
+      },
+      {
+        "id": "frames",
+        "title": "Frames",
+        "status": "GREEN",
+        "physical_status": "YELLOW",
+        "purpose": "Ordered quaternion frame compositions with round-trip checks.",
+        "does_not": "Does not demonstrate a physical field effect.",
+        "claim_class": [
+          "EXACT_ARITHMETIC",
+          "IMPLEMENTED_SOFTWARE"
+        ]
+      },
+      {
+        "id": "memory",
+        "title": "Memory",
+        "status": "GREEN",
+        "physical_status": "YELLOW",
+        "purpose": "Reproducible provenance-memory retrieval benchmark harness.",
+        "does_not": "Does not demonstrate consciousness.",
+        "claim_class": [
+          "IMPLEMENTED_SOFTWARE",
+          "EXPLORATORY_MODEL"
+        ]
+      },
+      {
+        "id": "dual_pole",
+        "title": "Dual-Pole",
+        "status": "GREEN",
+        "physical_status": "YELLOW",
+        "purpose": "Proposer/critic research loop with typed attack families.",
+        "does_not": "Does not make two models independent witnesses.",
+        "claim_class": [
+          "IMPLEMENTED_SOFTWARE",
+          "EXPLORATORY_MODEL"
+        ]
+      },
+      {
+        "id": "lattice",
+        "title": "Lattice",
+        "status": "GREEN",
+        "physical_status": "YELLOW",
+        "purpose": "64-state synthetic resonant lattice with an energy ledger.",
+        "does_not": "Does not transport matter.",
+        "claim_class": [
+          "IMPLEMENTED_SOFTWARE",
+          "CONVENTIONAL_PHYSICS",
+          "EXPLORATORY_MODEL"
+        ]
+      },
+      {
+        "id": "metasurface",
+        "title": "Metasurface",
+        "status": "YELLOW",
+        "physical_status": "YELLOW",
+        "purpose": "Passive reduced-order spoof-SPP cell with energy accounting.",
+        "does_not": "Does not modify gravity.",
+        "claim_class": [
+          "IMPLEMENTED_SOFTWARE",
+          "CONVENTIONAL_PHYSICS",
+          "UNDERDETERMINED"
+        ]
+      },
+      {
+        "id": "predictions",
+        "title": "Predictions",
+        "status": "YELLOW",
+        "physical_status": "YELLOW",
+        "purpose": "Freeze prospective predictions and null controls before measurement.",
+        "does_not": "Does not validate a mechanism merely because one outcome matches.",
+        "claim_class": [
+          "PROSPECTIVE_PREDICTION",
+          "UNDERDETERMINED"
+        ]
+      },
+      {
+        "id": "proofs",
+        "title": "Proofs",
+        "status": "GREEN",
+        "physical_status": "YELLOW",
+        "purpose": "Aggregate receipts, hashes, and claim-boundary audit surface.",
+        "does_not": "Does not convert a green UI into a physical proof.",
+        "claim_class": [
+          "IMPLEMENTED_SOFTWARE"
+        ]
+      }
+    ]
+  },
+  "warnings": [
+    "A green UI is not a physical proof"
+  ],
+  "tests": [
+    "hub_nine_modules",
+    "receipt_schema"
+  ],
+  "artifacts": [],
+  "receipt_sha256": "0319746995770b8e061da87bc67ff8632b5bfb92084be003c82a6c82ebdbf5ad"
+}

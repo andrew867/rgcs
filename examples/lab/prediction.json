@@ -1,0 +1,10 @@
+{
+  "prediction_id": "EXAMPLE-RESIDUAL-FORCE-001",
+  "created_at": "2026-07-26T00:00:00Z",
+  "hypothesis": "A phase-dependent force residual may appear after conventional effects are modeled.",
+  "controls": [
+    "unpowered",
+    "detuned",
+    "dummy load"
+  ]
+}

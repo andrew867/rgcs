@@ -1,0 +1,50 @@
+{
+  "module": "predictions",
+  "version": "0.1.0.dev0",
+  "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+  "status": "YELLOW",
+  "claim_class": [
+    "PROSPECTIVE_PREDICTION",
+    "UNDERDETERMINED"
+  ],
+  "inputs": {
+    "prediction_id": "EXAMPLE-RESIDUAL-FORCE-001"
+  },
+  "models": [
+    "prediction-freeze-v1"
+  ],
+  "result": {
+    "prediction_id": "EXAMPLE-RESIDUAL-FORCE-001",
+    "created_at": "2026-07-26T00:00:00Z",
+    "hypothesis": "A phase-dependent force residual may appear in a counterrotating driven resonator after conventional effects are modeled.",
+    "mechanism_candidate": "UNSPECIFIED_EXPLORATORY, torsion is not assumed",
+    "controls": [
+      "unpowered",
+      "detuned",
+      "dummy load",
+      "phase randomized",
+      "orientation reversed",
+      "polarity reversed"
+    ],
+    "claim_boundary": [
+      "A positive residual would not by itself establish gravity modification.",
+      "Energy and momentum accounting remain mandatory."
+    ],
+    "claim_class": [
+      "PROSPECTIVE_PREDICTION",
+      "UNDERDETERMINED"
+    ],
+    "freeze_hash": "dc8615776811505eb028f17dcf15fdcea43b07d47ad157803b4016fd98c79dd3",
+    "status": "YELLOW",
+    "frozen": true
+  },
+  "warnings": [
+    "Pending measurement \u2014 protocol frozen, mechanism not validated"
+  ],
+  "tests": [
+    "prediction_freeze_hash",
+    "prediction_immutable_after_measure"
+  ],
+  "artifacts": [],
+  "receipt_sha256": "317e7e9b2ff6eb5f7c427ab657294577371fd2be438e43d45353c85cf7112f0f"
+}

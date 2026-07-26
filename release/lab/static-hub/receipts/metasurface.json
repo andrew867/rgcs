@@ -1,0 +1,140 @@
+{
+  "module": "metasurface",
+  "version": "0.1.0.dev0",
+  "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+  "status": "YELLOW",
+  "claim_class": [
+    "IMPLEMENTED_SOFTWARE",
+    "CONVENTIONAL_PHYSICS",
+    "UNDERDETERMINED"
+  ],
+  "inputs": {
+    "example": "corrugated-cell"
+  },
+  "models": [
+    "corrugated-cell-sweep-v1"
+  ],
+  "result": {
+    "model": "corrugated-cell-sweep-v1",
+    "points": [
+      {
+        "model": "corrugated-cell-reduced-order-v1",
+        "fidelity": "reduced-order",
+        "high_fidelity_status": "YELLOW_UNDERDETERMINED",
+        "inputs": {
+          "frequency_hz": 800000000.0,
+          "groove_depth_m": 0.002,
+          "period_m": 0.005,
+          "loss_tan": 0.01
+        },
+        "s_parameters": {
+          "R": {
+            "re": 0.5887703755741704,
+            "im": -0.019750947220121585,
+            "mag": 0.5891015660052532
+          },
+          "T": {
+            "re": 0.8013686402455464,
+            "im": -0.026882788900367292,
+            "mag": 0.8018194197623664
+          }
+        },
+        "energy_ledger": {
+          "incident": 1.0,
+          "reflected": 0.3470406550698417,
+          "transmitted": 0.6429143819080578,
+          "absorbed": 0.010044963022100511,
+          "sum": 1.0,
+          "conservation_residual": 0.0,
+          "units": "fraction of incident power"
+        },
+        "claims": {
+          "gravity_modification": false,
+          "labels_generic_eigenmode_as_gravity": false
+        }
+      },
+      {
+        "model": "corrugated-cell-reduced-order-v1",
+        "fidelity": "reduced-order",
+        "high_fidelity_status": "YELLOW_UNDERDETERMINED",
+        "inputs": {
+          "frequency_hz": 1000000000.0,
+          "groove_depth_m": 0.002,
+          "period_m": 0.005,
+          "loss_tan": 0.01
+        },
+        "s_parameters": {
+          "R": {
+            "re": 0.5888417758245741,
+            "im": -0.024696888148814787,
+            "mag": 0.5893594601263926
+          },
+          "T": {
+            "re": 0.8009099878992432,
+            "im": -0.03359134015367314,
+            "mag": 0.8016141134299505
+          }
+        },
+        "energy_ledger": {
+          "incident": 1.0,
+          "reflected": 0.34734457324047296,
+          "transmitted": 0.6425851868500855,
+          "absorbed": 0.010070239909441487,
+          "sum": 0.9999999999999999,
+          "conservation_residual": 1.1102230246251565e-16,
+          "units": "fraction of incident power"
+        },
+        "claims": {
+          "gravity_modification": false,
+          "labels_generic_eigenmode_as_gravity": false
+        }
+      },
+      {
+        "model": "corrugated-cell-reduced-order-v1",
+        "fidelity": "reduced-order",
+        "high_fidelity_status": "YELLOW_UNDERDETERMINED",
+        "inputs": {
+          "frequency_hz": 1200000000.0,
+          "groove_depth_m": 0.002,
+          "period_m": 0.005,
+          "loss_tan": 0.01
+        },
+        "s_parameters": {
+          "R": {
+            "re": 0.5889285292589281,
+            "im": -0.02964827900093934,
+            "mag": 0.5896743448911456
+          },
+          "T": {
+            "re": 0.8003496850701977,
+            "im": -0.04029180041784404,
+            "mag": 0.8013632432130113
+          }
+        },
+        "energy_ledger": {
+          "incident": 1.0,
+          "reflected": 0.3477158330228017,
+          "transmitted": 0.6421830475728759,
+          "absorbed": 0.01010111940432231,
+          "sum": 1.0,
+          "conservation_residual": 0.0,
+          "units": "fraction of incident power"
+        },
+        "claims": {
+          "gravity_modification": false,
+          "labels_generic_eigenmode_as_gravity": false
+        }
+      }
+    ],
+    "max_conservation_residual": 1.1102230246251565e-16
+  },
+  "warnings": [
+    "HIGH-FIDELITY SPOOF-SPP SOLVER: YELLOW UNDERDETERMINED",
+    "Does not modify gravity"
+  ],
+  "tests": [
+    "metasurface_energy_conservation"
+  ],
+  "artifacts": [],
+  "receipt_sha256": "76c645104fd8622219db048134409d7ec25901dd6fe5d2030c5e2d9850a62a07"
+}

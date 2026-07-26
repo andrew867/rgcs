@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RGCS Coordinate Packet Workbench</title>
+<style>
+:root{color-scheme:dark;--bg:#08111b;--panel:#101f2d;--panel2:#0c1824;--line:#29445b;--text:#e9f3fa;--muted:#9fb4c5;--accent:#74d7c4;--gold:#f1c86b;--warn:#ffb86b;--bad:#ff7f8d}
+*{box-sizing:border-box} body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at top,#173047 0,#08111b 48%);color:var(--text)}
+main{max-width:1120px;margin:auto;padding:28px 18px 64px} h1{font-size:clamp(2rem,5vw,3.8rem);line-height:1.03;margin:.2rem 0;color:white}
+.kicker{letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:750;font-size:.78rem}.lede{max-width:820px;color:var(--muted);font-size:1.08rem}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:22px}.panel{grid-column:span 12;background:linear-gradient(145deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 18px 50px #0006}
+@media(min-width:800px){.input-panel{grid-column:span 5}.status-panel{grid-column:span 7}.half{grid-column:span 6}}
+label{display:block;font-weight:700;margin-bottom:7px} input,select,button{font:inherit} input,select{width:100%;padding:12px 13px;border:1px solid #3c5c74;border-radius:10px;background:#07121d;color:var(--text)}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:13px}button{border:0;border-radius:10px;padding:10px 13px;font-weight:750;background:var(--accent);color:#062019;cursor:pointer}
+button.secondary{background:#263d50;color:var(--text)}button:hover{filter:brightness(1.08)}
+.examples{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.chip{font-size:.88rem;padding:7px 9px;background:#172a3a;color:#cfe8f6}
+.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{border:1px solid currentColor;border-radius:999px;padding:5px 9px;font-size:.75rem;font-weight:800;letter-spacing:.04em}.green{color:var(--accent)}.yellow{color:var(--gold)}.training{color:#bba6ff}
+dl{display:grid;grid-template-columns:minmax(130px,.65fr) 1.6fr;gap:8px 12px;margin:0}dt{color:var(--muted)}dd{margin:0;overflow-wrap:anywhere;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+code,pre{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}pre{white-space:pre-wrap;background:#07121d;border:1px solid #233b4e;border-radius:10px;padding:12px;overflow:auto}
+.note{border-left:3px solid var(--gold);padding-left:12px;color:#dfcfaa}.error{color:var(--bad);font-weight:700;min-height:1.5em}
+footer{margin-top:28px;color:var(--muted);font-size:.9rem}a{color:var(--accent)}
+</style>
+</head>
+<body>
+<main>
+<div class="kicker">Open structural decoder</div>
+<h1>RGCS Coordinate Packet Workbench</h1>
+<p class="lede">Inspect the Federation/Terra candidate 30-bit <strong>F5 | Q22 | S3</strong> packet. This page runs entirely in your browser and makes no network requests.</p>
+
+<div class="grid">
+<section class="panel input-panel">
+<label for="coordinate">Decimal packet</label>
+<input id="coordinate" value="165876523" inputmode="numeric" autocomplete="off">
+<div class="actions">
+<button id="decode">Decode packet</button>
+<button id="export" class="secondary">Export JSON</button>
+</div>
+<div class="examples">
+<button class="chip secondary" data-value="165876523">Stonehenge fixture</button>
+<button class="chip secondary" data-value="165892743">Orange A</button>
+<button class="chip secondary" data-value="165892763">Orange B</button>
+<button class="chip secondary" data-value="165892783">Orange C</button>
+</div>
+<p id="error" class="error" role="alert"></p>
+</section>
+
+<section class="panel status-panel">
+<div class="badges">
+<span class="badge green">STRUCTURAL CODEC</span>
+<span class="badge yellow">PHYSICAL PROJECTION UNDERDETERMINED</span>
+<span class="badge training">STONEHENGE IS A TRAINING EQUALITY</span>
+</div>
+<p class="note">The Morton X, Y, and Z values shown here are deinterleaved hierarchical path indices. They are not latitude, longitude, Cartesian coordinates, kilometres, or altitude.</p>
+</section>
+
+<section class="panel half"><h2>Packet fields</h2><dl id="fields"></dl></section>
+<section class="panel half"><h2>Morton/octree audit</h2><dl id="morton"></dl></section>
+<section class="panel"><h2>Canonical trace JSON</h2><pre id="json"></pre></section>
+</div>
+
+<footer>
+<p>Source origin is not validated. This structural demo does not perform the downstream shell, gravity, magnetic, epoch, ground-reference, or conventional map projection.</p>
+</footer>
+</main>
+<script>
+"use strict";
+const WIDTH=30n;
+let currentTrace=null;
+function pad(value,width){return value.padStart(width,"0")}
+function deinterleave(spatial){
+  let x="",y="",z="";
+  for(const ch of spatial){
+    const d=Number(ch);
+    x+=String((d>>2)&1); y+=String((d>>1)&1); z+=String(d&1);
+  }
+  return {x_bits:x,y_bits:y,z_bits:z,x_index:parseInt(x,2),y_index:parseInt(y,2),z_index:parseInt(z,2)};
+}
+function decodePacket(text){
+  if(!/^\d+$/.test(text.trim())) throw new Error("Enter a non-negative decimal integer.");
+  const raw=BigInt(text.trim());
+  if(raw >= (1n<<WIDTH)) throw new Error("This value does not fit the 30-bit packet family. Do not truncate or pad it silently.");
+  const binary=pad(raw.toString(2),30);
+  const octal=pad(raw.toString(8),10);
+  const faceBits=binary.slice(0,5);
+  const q22Bits=binary.slice(5,27);
+  const shellBits=binary.slice(27);
+  const path=[];
+  for(let i=0;i<22;i+=2) path.push(parseInt(q22Bits.slice(i,i+2),2));
+  const spatialOctal=octal.slice(0,9);
+  const rawString=raw.toString(10);
+  const label=rawString==="165876523" ? "Stonehenge, supplied training equality" :
+    rawString==="165892743" ? "Orange-slice A, intended shell 7" :
+    rawString==="165892763" ? "Orange-slice B, active correction shell 7; raw extraction remains provenance" :
+    rawString==="165892783" ? "Orange-slice C, intended shell 7" : null;
+  return {
+    schema:"rgcs.structural-trace.v1",
+    raw_decimal:rawString,
+    width_bits:30,
+    binary30:binary,
+    octal10:octal,
+    packet_family:"federation-terra-f5-q22-s3-candidate",
+    face_bits:faceBits,
+    face_id:parseInt(faceBits,2),
+    face_status:parseInt(faceBits,2)<=19 ? "valid-source-face-range" : "reserved",
+    q22_bits:q22Bits,
+    q22_path:path,
+    shell_bits:shellBits,
+    extracted_shell:parseInt(shellBits,2),
+    spatial_octal_path:spatialOctal,
+    morton_audit:deinterleave(spatialOctal),
+    fixture_label:label,
+    structural_status:"EXACT_STRUCTURAL_DECODE",
+    physical_projection_status:"UNDERDETERMINED",
+    claims:{
+      source_origin_validated:false,
+      stonehenge_independently_decoded:false
+    }
+  };
+}
+function add(dl,key,value){
+  const dt=document.createElement("dt");dt.textContent=key;
+  const dd=document.createElement("dd");dd.textContent=String(value);
+  dl.append(dt,dd);
+}
+function render(){
+  const error=document.getElementById("error"); error.textContent="";
+  try{
+    currentTrace=decodePacket(document.getElementById("coordinate").value);
+    const f=document.getElementById("fields");f.replaceChildren();
+    add(f,"Decimal",currentTrace.raw_decimal);
+    add(f,"Binary 30",currentTrace.binary30);
+    add(f,"Octal 10",currentTrace.octal10);
+    add(f,"Face",`${currentTrace.face_id} (${currentTrace.face_bits}, ${currentTrace.face_status})`);
+    add(f,"Q22 bits",currentTrace.q22_bits);
+    add(f,"Q22 path",currentTrace.q22_path.join(" "));
+    add(f,"Extracted S3",`${currentTrace.extracted_shell} (${currentTrace.shell_bits})`);
+    add(f,"Spatial octal",currentTrace.spatial_octal_path);
+    if(currentTrace.fixture_label) add(f,"Fixture",currentTrace.fixture_label);
+    const m=document.getElementById("morton");m.replaceChildren();
+    add(m,"X bits",currentTrace.morton_audit.x_bits);
+    add(m,"X index",currentTrace.morton_audit.x_index);
+    add(m,"Y bits",currentTrace.morton_audit.y_bits);
+    add(m,"Y index",currentTrace.morton_audit.y_index);
+    add(m,"Z bits",currentTrace.morton_audit.z_bits);
+    add(m,"Z index",currentTrace.morton_audit.z_index);
+    document.getElementById("json").textContent=JSON.stringify(currentTrace,null,2);
+  }catch(e){
+    currentTrace=null;
+    error.textContent=e instanceof Error?e.message:String(e);
+  }
+}
+document.getElementById("decode").addEventListener("click",render);
+document.getElementById("coordinate").addEventListener("keydown",e=>{if(e.key==="Enter")render()});
+document.querySelectorAll("[data-value]").forEach(b=>b.addEventListener("click",()=>{document.getElementById("coordinate").value=b.dataset.value;render()}));
+document.getElementById("export").addEventListener("click",()=>{
+  if(!currentTrace) return render();
+  const blob=new Blob([JSON.stringify(currentTrace,null,2)],{type:"application/json"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`rgcs-trace-${currentTrace.raw_decimal}.json`;a.click();URL.revokeObjectURL(a.href);
+});
+render();
+</script>
+</body>
+</html>

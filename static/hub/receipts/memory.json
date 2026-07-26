@@ -1,0 +1,53 @@
+{
+  "module": "memory",
+  "version": "0.1.0.dev0",
+  "source_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+  "status": "GREEN",
+  "claim_class": [
+    "IMPLEMENTED_SOFTWARE",
+    "EXPLORATORY_MODEL"
+  ],
+  "inputs": {
+    "query": "golay bit flips transport wrapper"
+  },
+  "models": [
+    "bag-of-tokens-overlap-v1"
+  ],
+  "result": {
+    "query": "golay bit flips transport wrapper",
+    "n_docs": 4,
+    "ranking": [
+      {
+        "id": "doc-golay",
+        "score": 5.0,
+        "preview": "Extended binary Golay G24 corrects up to three bit flips in a twenty-four bit codeword used as a transport wrapper."
+      },
+      {
+        "id": "doc-codec",
+        "score": 0.0,
+        "preview": "Federation Terra packet F5 Q22 S3 structural decode is exact arithmetic. Morton indices are hierarchical path registers."
+      },
+      {
+        "id": "doc-energy",
+        "score": 0.0,
+        "preview": "Parametric resonance draws energy from the pump. Superelastic collisions release stored internal energy. No free vacuum "
+      },
+      {
+        "id": "doc-yellow",
+        "score": 0.0,
+        "preview": "Physical Earth projection remains underdetermined. Stonehenge decimal is a training equality until independent reproduct"
+      }
+    ],
+    "top_id": "doc-golay",
+    "benchmark_digest": "ca4bf3b676740e136761f03457f7a1c5a4f2164ae1baec289e17641a8ae33d47",
+    "model": "bag-of-tokens-overlap-v1"
+  },
+  "warnings": [
+    "CONSCIOUSNESS: not demonstrated"
+  ],
+  "tests": [
+    "memory_benchmark_digest"
+  ],
+  "artifacts": [],
+  "receipt_sha256": "cba8c000e871fa871ad31bb3b03ded3c6fc1727e9d6945cf6715909574003ecc"
+}
