@@ -1,0 +1,3142 @@
+{
+ "report_frame_note": "frame = argmin Stonehenge min-distance under C0; a labelled reporting choice, NOT a validated calibration",
+ "report_frame": {
+  "family": "F4_ROTATED_DIRECT_LE",
+  "face": 5,
+  "order": [
+   0,
+   1,
+   2
+  ]
+ },
+ "traces": {
+  "165876523": {
+   "raw": "165876523",
+   "frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "codebook": "E_VERTEX_TRIPLE_CANONICAL",
+    "source_face_id": 5,
+    "mesh_face_id": 5,
+    "vertex_order": [
+     0,
+     1,
+     2
+    ],
+    "profile_id": "EARTH_ROOT_D_V1"
+   },
+   "compensation": "C0_none",
+   "levels": [
+    {
+     "level": 1,
+     "instruction": [
+      1,
+      6,
+      5
+     ],
+     "surface": {
+      "kind": "UP",
+      "lattice": [
+       1,
+       6
+      ],
+      "digits": [
+       1,
+       6
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.910305113496285,
+       -8.987867186087465
+      ],
+      [
+       47.7981724013467,
+       -0.9968411334829416
+      ],
+      [
+       54.22357553767424,
+       2.3769757447801236
+      ]
+     ],
+     "surface_diameter_km": 801.9296986372617,
+     "radial": {
+      "z_digit": 5,
+      "clipped": false,
+      "interval_km": [
+       6371.0,
+       7645.2
+      ]
+     },
+     "gravity": {
+      "shell_id": "L1",
+      "radial_bounds_km": [
+       6371.0,
+       7645.2
+      ],
+      "midpoint_radius_km": 7008.1,
+      "altitude_bounds_km": [
+       0.0,
+       1274.1999999999998
+      ],
+      "radial_thickness_km": 1274.1999999999998,
+      "g_inner_m_s2": 9.820250487063928,
+      "g_midpoint_m_s2": 8.115909493441263,
+      "g_outer_m_s2": 6.819618393794395,
+      "abs_gravity_change_m_s2": 3.0006320932695343,
+      "gravity_change_midpoint_approx_m_s2": 2.9512398157968223,
+      "fractional_gravity_change": 0.3697222222222223,
+      "radial_gradient_mid_s2": -2.3161511660624886e-06
+     }
+    },
+    {
+     "level": 2,
+     "instruction": [
+      8,
+      7,
+      6
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       1,
+       2
+      ],
+      "digits": [
+       8,
+       7
+      ],
+      "clipped": false,
+      "orientation": -1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.417815893713836,
+       -3.9204718629213704
+      ],
+      [
+       52.925489381731204,
+       -4.744440779720381
+      ],
+      [
+       52.270198334527855,
+       -5.035535655046557
+      ]
+     ],
+     "surface_diameter_km": 79.20322990602315,
+     "radial": {
+      "z_digit": 6,
+      "clipped": false,
+      "interval_km": [
+       7135.52,
+       7262.94
+      ]
+     },
+     "gravity": {
+      "shell_id": "L2",
+      "radial_bounds_km": [
+       7135.52,
+       7262.94
+      ],
+      "midpoint_radius_km": 7199.23,
+      "altitude_bounds_km": [
+       764.5200000000004,
+       891.9399999999996
+      ],
+      "radial_thickness_km": 127.41999999999916,
+      "g_inner_m_s2": 7.82864356430479,
+      "g_midpoint_m_s2": 7.69069659884402,
+      "g_outer_m_s2": 7.556363871240326,
+      "abs_gravity_change_m_s2": 0.27227969306446387,
+      "gravity_change_midpoint_approx_m_s2": 0.2722370477466891,
+      "fractional_gravity_change": 0.03540377514117381,
+      "radial_gradient_mid_s2": -2.1365331011355434e-06
+     }
+    },
+    {
+     "level": 3,
+     "instruction": [
+      5,
+      2,
+      3
+     ],
+     "surface": {
+      "kind": "UP",
+      "lattice": [
+       5,
+       2
+      ],
+      "digits": [
+       5,
+       2
+      ],
+      "clipped": false,
+      "orientation": -1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.64328027711826,
+       -4.554519971560877
+      ],
+      [
+       52.693891663487385,
+       -4.637230827798464
+      ],
+      [
+       52.62849636692769,
+       -4.666620744485787
+      ]
+     ],
+     "surface_diameter_km": 7.923233198596147,
+     "radial": {
+      "z_digit": 3,
+      "clipped": false,
+      "interval_km": [
+       7173.746,
+       7186.488
+      ]
+     },
+     "gravity": {
+      "shell_id": "L3",
+      "radial_bounds_km": [
+       7173.746,
+       7186.488
+      ],
+      "midpoint_radius_km": 7180.117,
+      "altitude_bounds_km": [
+       802.7460000000001,
+       815.4880000000003
+      ],
+      "radial_thickness_km": 12.74200000000019,
+      "g_inner_m_s2": 7.745434480236181,
+      "g_midpoint_m_s2": 7.731695353042036,
+      "g_outer_m_s2": 7.717992749880483,
+      "abs_gravity_change_m_s2": 0.02744173035569931,
+      "gravity_change_midpoint_approx_m_s2": 0.02744168714478137,
+      "fractional_gravity_change": 0.0035492513740731342,
+      "radial_gradient_mid_s2": -2.1536404916638647e-06
+     }
+    }
+   ],
+   "final_region": {
+    "surface_polygon_latlon": [
+     [
+      52.64328027711826,
+      -4.554519971560877
+     ],
+     [
+      52.693891663487385,
+      -4.637230827798464
+     ],
+     [
+      52.62849636692769,
+      -4.666620744485787
+     ]
+    ],
+    "surface_corners_chart": [
+     [
+      {
+       "num": 23,
+       "den": 200,
+       "float": 0.115
+      },
+      {
+       "num": 157,
+       "den": 250,
+       "float": 0.628
+      }
+     ],
+     [
+      {
+       "num": 57,
+       "den": 500,
+       "float": 0.114
+      },
+      {
+       "num": 157,
+       "den": 250,
+       "float": 0.628
+      }
+     ],
+     [
+      {
+       "num": 23,
+       "den": 200,
+       "float": 0.115
+      },
+      {
+       "num": 627,
+       "den": 1000,
+       "float": 0.627
+      }
+     ]
+    ],
+    "surface_orientation": -1,
+    "radial_interval_km": [
+     7173.746,
+     7186.488
+    ],
+    "radial_root_profile": "ROOT_R0_FULL_DIAMETER",
+    "uncertainty": {
+     "surface_max_radius_km": 3.9616165992980736,
+     "radial_thickness_km": 12.742,
+     "effective_3d_scale_km": 6.907619899808459,
+     "axis_depths": [
+      3,
+      3,
+      3
+     ],
+     "partial_level_axes": []
+    }
+   },
+   "representative": {
+    "lat_deg": 52.65523625783117,
+    "lon_deg": -4.619451760315407,
+    "height_km_interval": [
+     802.7460000000001,
+     815.4880000000003
+    ],
+    "label": "REPRESENTATIVE_CENTROID_NOT_A_MEASURED_POINT"
+   },
+   "claims": {
+    "SOURCE_ORIGIN_VALIDATED": "no",
+    "PHYSICAL_ANOMALOUS_GRAVITY_VALIDATED": "no"
+   },
+   "reverse_encoding": {
+    "digits": "165876523",
+    "matches_raw": true
+   }
+  },
+  "165877623": {
+   "raw": "165877623",
+   "frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "codebook": "E_VERTEX_TRIPLE_CANONICAL",
+    "source_face_id": 5,
+    "mesh_face_id": 5,
+    "vertex_order": [
+     0,
+     1,
+     2
+    ],
+    "profile_id": "EARTH_ROOT_D_V1"
+   },
+   "compensation": "C0_none",
+   "levels": [
+    {
+     "level": 1,
+     "instruction": [
+      1,
+      6,
+      5
+     ],
+     "surface": {
+      "kind": "UP",
+      "lattice": [
+       1,
+       6
+      ],
+      "digits": [
+       1,
+       6
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.910305113496285,
+       -8.987867186087465
+      ],
+      [
+       47.7981724013467,
+       -0.9968411334829416
+      ],
+      [
+       54.22357553767424,
+       2.3769757447801236
+      ]
+     ],
+     "surface_diameter_km": 801.9296986372617,
+     "radial": {
+      "z_digit": 5,
+      "clipped": false,
+      "interval_km": [
+       6371.0,
+       7645.2
+      ]
+     },
+     "gravity": {
+      "shell_id": "L1",
+      "radial_bounds_km": [
+       6371.0,
+       7645.2
+      ],
+      "midpoint_radius_km": 7008.1,
+      "altitude_bounds_km": [
+       0.0,
+       1274.1999999999998
+      ],
+      "radial_thickness_km": 1274.1999999999998,
+      "g_inner_m_s2": 9.820250487063928,
+      "g_midpoint_m_s2": 8.115909493441263,
+      "g_outer_m_s2": 6.819618393794395,
+      "abs_gravity_change_m_s2": 3.0006320932695343,
+      "gravity_change_midpoint_approx_m_s2": 2.9512398157968223,
+      "fractional_gravity_change": 0.3697222222222223,
+      "radial_gradient_mid_s2": -2.3161511660624886e-06
+     }
+    },
+    {
+     "level": 2,
+     "instruction": [
+      8,
+      7,
+      7
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       1,
+       2
+      ],
+      "digits": [
+       8,
+       7
+      ],
+      "clipped": false,
+      "orientation": -1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.417815893713836,
+       -3.9204718629213704
+      ],
+      [
+       52.925489381731204,
+       -4.744440779720381
+      ],
+      [
+       52.270198334527855,
+       -5.035535655046557
+      ]
+     ],
+     "surface_diameter_km": 79.20322990602315,
+     "radial": {
+      "z_digit": 7,
+      "clipped": false,
+      "interval_km": [
+       7262.94,
+       7390.36
+      ]
+     },
+     "gravity": {
+      "shell_id": "L2",
+      "radial_bounds_km": [
+       7262.94,
+       7390.36
+      ],
+      "midpoint_radius_km": 7326.65,
+      "altitude_bounds_km": [
+       891.9399999999996,
+       1019.3599999999997
+      ],
+      "radial_thickness_km": 127.42000000000007,
+      "g_inner_m_s2": 7.556363871240326,
+      "g_midpoint_m_s2": 7.425520217061572,
+      "g_outer_m_s2": 7.298045843537402,
+      "abs_gravity_change_m_s2": 0.2583180277029241,
+      "gravity_change_midpoint_approx_m_s2": 0.258278964071707,
+      "fractional_gravity_change": 0.034787869422183836,
+      "radial_gradient_mid_s2": -2.026989201630096e-06
+     }
+    },
+    {
+     "level": 3,
+     "instruction": [
+      6,
+      2,
+      3
+     ],
+     "surface": {
+      "kind": "UP",
+      "lattice": [
+       6,
+       2
+      ],
+      "digits": [
+       6,
+       2
+      ],
+      "clipped": false,
+      "orientation": -1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.693891663487385,
+       -4.637230827798464
+      ],
+      [
+       52.74443401612151,
+       -4.720114938740819
+      ],
+      [
+       52.67904585464712,
+       -4.749444633710711
+      ]
+     ],
+     "surface_diameter_km": 7.921454786626481,
+     "radial": {
+      "z_digit": 3,
+      "clipped": false,
+      "interval_km": [
+       7301.166,
+       7313.908
+      ]
+     },
+     "gravity": {
+      "shell_id": "L3",
+      "radial_bounds_km": [
+       7301.166,
+       7313.908
+      ],
+      "midpoint_radius_km": 7307.537,
+      "altitude_bounds_km": [
+       930.1660000000002,
+       942.9080000000004
+      ],
+      "radial_thickness_km": 12.74200000000019,
+      "g_inner_m_s2": 7.47744677371168,
+      "g_midpoint_m_s2": 7.464414189218779,
+      "g_outer_m_s2": 7.451415647166963,
+      "abs_gravity_change_m_s2": 0.02603112654471763,
+      "gravity_change_midpoint_approx_m_s2": 0.026031086971992638,
+      "fractional_gravity_change": 0.0034873636275858954,
+      "radial_gradient_mid_s2": -2.042935722178014e-06
+     }
+    }
+   ],
+   "final_region": {
+    "surface_polygon_latlon": [
+     [
+      52.693891663487385,
+      -4.637230827798464
+     ],
+     [
+      52.74443401612151,
+      -4.720114938740819
+     ],
+     [
+      52.67904585464712,
+      -4.749444633710711
+     ]
+    ],
+    "surface_corners_chart": [
+     [
+      {
+       "num": 57,
+       "den": 500,
+       "float": 0.114
+      },
+      {
+       "num": 157,
+       "den": 250,
+       "float": 0.628
+      }
+     ],
+     [
+      {
+       "num": 113,
+       "den": 1000,
+       "float": 0.113
+      },
+      {
+       "num": 157,
+       "den": 250,
+       "float": 0.628
+      }
+     ],
+     [
+      {
+       "num": 57,
+       "den": 500,
+       "float": 0.114
+      },
+      {
+       "num": 627,
+       "den": 1000,
+       "float": 0.627
+      }
+     ]
+    ],
+    "surface_orientation": -1,
+    "radial_interval_km": [
+     7301.166,
+     7313.908
+    ],
+    "radial_root_profile": "ROOT_R0_FULL_DIAMETER",
+    "uncertainty": {
+     "surface_max_radius_km": 3.9607273933132405,
+     "radial_thickness_km": 12.742,
+     "effective_3d_scale_km": 6.906844451931704,
+     "axis_depths": [
+      3,
+      3,
+      3
+     ],
+     "partial_level_axes": []
+    }
+   },
+   "representative": {
+    "lat_deg": 52.705804032129,
+    "lon_deg": -4.702258070181743,
+    "height_km_interval": [
+     930.1660000000002,
+     942.9080000000004
+    ],
+    "label": "REPRESENTATIVE_CENTROID_NOT_A_MEASURED_POINT"
+   },
+   "claims": {
+    "SOURCE_ORIGIN_VALIDATED": "no",
+    "PHYSICAL_ANOMALOUS_GRAVITY_VALIDATED": "no"
+   },
+   "reverse_encoding": {
+    "digits": "165877623",
+    "matches_raw": true
+   }
+  },
+  "165892743": {
+   "raw": "165892743",
+   "frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "codebook": "E_VERTEX_TRIPLE_CANONICAL",
+    "source_face_id": 5,
+    "mesh_face_id": 5,
+    "vertex_order": [
+     0,
+     1,
+     2
+    ],
+    "profile_id": "EARTH_ROOT_D_V1"
+   },
+   "compensation": "C0_none",
+   "levels": [
+    {
+     "level": 1,
+     "instruction": [
+      1,
+      6,
+      5
+     ],
+     "surface": {
+      "kind": "UP",
+      "lattice": [
+       1,
+       6
+      ],
+      "digits": [
+       1,
+       6
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.910305113496285,
+       -8.987867186087465
+      ],
+      [
+       47.7981724013467,
+       -0.9968411334829416
+      ],
+      [
+       54.22357553767424,
+       2.3769757447801236
+      ]
+     ],
+     "surface_diameter_km": 801.9296986372617,
+     "radial": {
+      "z_digit": 5,
+      "clipped": false,
+      "interval_km": [
+       6371.0,
+       7645.2
+      ]
+     },
+     "gravity": {
+      "shell_id": "L1",
+      "radial_bounds_km": [
+       6371.0,
+       7645.2
+      ],
+      "midpoint_radius_km": 7008.1,
+      "altitude_bounds_km": [
+       0.0,
+       1274.1999999999998
+      ],
+      "radial_thickness_km": 1274.1999999999998,
+      "g_inner_m_s2": 9.820250487063928,
+      "g_midpoint_m_s2": 8.115909493441263,
+      "g_outer_m_s2": 6.819618393794395,
+      "abs_gravity_change_m_s2": 3.0006320932695343,
+      "gravity_change_midpoint_approx_m_s2": 2.9512398157968223,
+      "fractional_gravity_change": 0.3697222222222223,
+      "radial_gradient_mid_s2": -2.3161511660624886e-06
+     }
+    },
+    {
+     "level": 2,
+     "instruction": [
+      8,
+      9,
+      2
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       1,
+       0
+      ],
+      "digits": [
+       8,
+       9
+      ],
+      "clipped": false,
+      "orientation": -1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.111225044021694,
+       -6.149183798535532
+      ],
+      [
+       52.60629523433892,
+       -6.994776286926265
+      ],
+      [
+       51.940898347150764,
+       -7.260579770030369
+      ]
+     ],
+     "surface_diameter_km": 79.54651991630902,
+     "radial": {
+      "z_digit": 2,
+      "clipped": false,
+      "interval_km": [
+       6625.84,
+       6753.26
+      ]
+     },
+     "gravity": {
+      "shell_id": "L2",
+      "radial_bounds_km": [
+       6625.84,
+       6753.26
+      ],
+      "midpoint_radius_km": 6689.55,
+      "altitude_bounds_km": [
+       254.84000000000015,
+       382.2600000000002
+      ],
+      "radial_thickness_km": 127.42000000000007,
+      "g_inner_m_s2": 9.079373601205555,
+      "g_midpoint_m_s2": 8.907256677609006,
+      "g_outer_m_s2": 8.739987973535003,
+      "abs_gravity_change_m_s2": 0.33938562767055386,
+      "gravity_change_midpoint_approx_m_s2": 0.3393240639089146,
+      "fractional_gravity_change": 0.03810214973637157,
+      "radial_gradient_mid_s2": -2.6630361317604336e-06
+     }
+    },
+    {
+     "level": 3,
+     "instruction": [
+      7,
+      4,
+      3
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       2,
+       5
+      ],
+      "digits": [
+       7,
+       4
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.15851682278205,
+       -7.070063629068596
+      ],
+      [
+       52.10921432432181,
+       -6.985324790678701
+      ],
+      [
+       52.175800221298495,
+       -6.958638231338717
+      ]
+     ],
+     "surface_diameter_km": 7.96905474698294,
+     "radial": {
+      "z_digit": 3,
+      "clipped": false,
+      "interval_km": [
+       6664.066,
+       6676.808
+      ]
+     },
+     "gravity": {
+      "shell_id": "L3",
+      "radial_bounds_km": [
+       6664.066,
+       6676.808
+      ],
+      "midpoint_radius_km": 6670.437,
+      "altitude_bounds_km": [
+       293.0659999999998,
+       305.808
+      ],
+      "radial_thickness_km": 12.74200000000019,
+      "g_inner_m_s2": 8.975511268516252,
+      "g_midpoint_m_s2": 8.958374258069336,
+      "g_outer_m_s2": 8.94128628054157,
+      "abs_gravity_change_m_s2": 0.03422498797468388,
+      "gravity_change_midpoint_approx_m_s2": 0.034224925532261585,
+      "fractional_gravity_change": 0.0038204463208104324,
+      "radial_gradient_mid_s2": -2.6859932139586465e-06
+     }
+    }
+   ],
+   "final_region": {
+    "surface_polygon_latlon": [
+     [
+      52.15851682278205,
+      -7.070063629068596
+     ],
+     [
+      52.10921432432181,
+      -6.985324790678701
+     ],
+     [
+      52.175800221298495,
+      -6.958638231338717
+     ]
+    ],
+    "surface_corners_chart": [
+     [
+      {
+       "num": 117,
+       "den": 1000,
+       "float": 0.117
+      },
+      {
+       "num": 151,
+       "den": 250,
+       "float": 0.604
+      }
+     ],
+     [
+      {
+       "num": 59,
+       "den": 500,
+       "float": 0.118
+      },
+      {
+       "num": 151,
+       "den": 250,
+       "float": 0.604
+      }
+     ],
+     [
+      {
+       "num": 117,
+       "den": 1000,
+       "float": 0.117
+      },
+      {
+       "num": 121,
+       "den": 200,
+       "float": 0.605
+      }
+     ]
+    ],
+    "surface_orientation": 1,
+    "radial_interval_km": [
+     6664.066,
+     6676.808
+    ],
+    "radial_root_profile": "ROOT_R0_FULL_DIAMETER",
+    "uncertainty": {
+     "surface_max_radius_km": 3.98452737349147,
+     "radial_thickness_km": 12.742,
+     "effective_3d_scale_km": 6.9539999719365015,
+     "axis_depths": [
+      3,
+      3,
+      3
+     ],
+     "partial_level_axes": []
+    }
+   },
+   "representative": {
+    "lat_deg": 52.147857367231246,
+    "lon_deg": -7.004671235879624,
+    "height_km_interval": [
+     293.0659999999998,
+     305.808
+    ],
+    "label": "REPRESENTATIVE_CENTROID_NOT_A_MEASURED_POINT"
+   },
+   "claims": {
+    "SOURCE_ORIGIN_VALIDATED": "no",
+    "PHYSICAL_ANOMALOUS_GRAVITY_VALIDATED": "no"
+   },
+   "reverse_encoding": {
+    "digits": "165892743",
+    "matches_raw": true
+   }
+  },
+  "165892763": {
+   "raw": "165892763",
+   "frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "codebook": "E_VERTEX_TRIPLE_CANONICAL",
+    "source_face_id": 5,
+    "mesh_face_id": 5,
+    "vertex_order": [
+     0,
+     1,
+     2
+    ],
+    "profile_id": "EARTH_ROOT_D_V1"
+   },
+   "compensation": "C0_none",
+   "levels": [
+    {
+     "level": 1,
+     "instruction": [
+      1,
+      6,
+      5
+     ],
+     "surface": {
+      "kind": "UP",
+      "lattice": [
+       1,
+       6
+      ],
+      "digits": [
+       1,
+       6
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.910305113496285,
+       -8.987867186087465
+      ],
+      [
+       47.7981724013467,
+       -0.9968411334829416
+      ],
+      [
+       54.22357553767424,
+       2.3769757447801236
+      ]
+     ],
+     "surface_diameter_km": 801.9296986372617,
+     "radial": {
+      "z_digit": 5,
+      "clipped": false,
+      "interval_km": [
+       6371.0,
+       7645.2
+      ]
+     },
+     "gravity": {
+      "shell_id": "L1",
+      "radial_bounds_km": [
+       6371.0,
+       7645.2
+      ],
+      "midpoint_radius_km": 7008.1,
+      "altitude_bounds_km": [
+       0.0,
+       1274.1999999999998
+      ],
+      "radial_thickness_km": 1274.1999999999998,
+      "g_inner_m_s2": 9.820250487063928,
+      "g_midpoint_m_s2": 8.115909493441263,
+      "g_outer_m_s2": 6.819618393794395,
+      "abs_gravity_change_m_s2": 3.0006320932695343,
+      "gravity_change_midpoint_approx_m_s2": 2.9512398157968223,
+      "fractional_gravity_change": 0.3697222222222223,
+      "radial_gradient_mid_s2": -2.3161511660624886e-06
+     }
+    },
+    {
+     "level": 2,
+     "instruction": [
+      8,
+      9,
+      2
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       1,
+       0
+      ],
+      "digits": [
+       8,
+       9
+      ],
+      "clipped": false,
+      "orientation": -1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.111225044021694,
+       -6.149183798535532
+      ],
+      [
+       52.60629523433892,
+       -6.994776286926265
+      ],
+      [
+       51.940898347150764,
+       -7.260579770030369
+      ]
+     ],
+     "surface_diameter_km": 79.54651991630902,
+     "radial": {
+      "z_digit": 2,
+      "clipped": false,
+      "interval_km": [
+       6625.84,
+       6753.26
+      ]
+     },
+     "gravity": {
+      "shell_id": "L2",
+      "radial_bounds_km": [
+       6625.84,
+       6753.26
+      ],
+      "midpoint_radius_km": 6689.55,
+      "altitude_bounds_km": [
+       254.84000000000015,
+       382.2600000000002
+      ],
+      "radial_thickness_km": 127.42000000000007,
+      "g_inner_m_s2": 9.079373601205555,
+      "g_midpoint_m_s2": 8.907256677609006,
+      "g_outer_m_s2": 8.739987973535003,
+      "abs_gravity_change_m_s2": 0.33938562767055386,
+      "gravity_change_midpoint_approx_m_s2": 0.3393240639089146,
+      "fractional_gravity_change": 0.03810214973637157,
+      "radial_gradient_mid_s2": -2.6630361317604336e-06
+     }
+    },
+    {
+     "level": 3,
+     "instruction": [
+      7,
+      6,
+      3
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       2,
+       3
+      ],
+      "digits": [
+       7,
+       6
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.192969728259975,
+       -6.8471840871598175
+      ],
+      [
+       52.14353766903272,
+       -6.762642538973317
+      ],
+      [
+       52.21002531578427,
+       -6.735702029203526
+      ]
+     ],
+     "surface_diameter_km": 7.965991532354402,
+     "radial": {
+      "z_digit": 3,
+      "clipped": false,
+      "interval_km": [
+       6664.066,
+       6676.808
+      ]
+     },
+     "gravity": {
+      "shell_id": "L3",
+      "radial_bounds_km": [
+       6664.066,
+       6676.808
+      ],
+      "midpoint_radius_km": 6670.437,
+      "altitude_bounds_km": [
+       293.0659999999998,
+       305.808
+      ],
+      "radial_thickness_km": 12.74200000000019,
+      "g_inner_m_s2": 8.975511268516252,
+      "g_midpoint_m_s2": 8.958374258069336,
+      "g_outer_m_s2": 8.94128628054157,
+      "abs_gravity_change_m_s2": 0.03422498797468388,
+      "gravity_change_midpoint_approx_m_s2": 0.034224925532261585,
+      "fractional_gravity_change": 0.0038204463208104324,
+      "radial_gradient_mid_s2": -2.6859932139586465e-06
+     }
+    }
+   ],
+   "final_region": {
+    "surface_polygon_latlon": [
+     [
+      52.192969728259975,
+      -6.8471840871598175
+     ],
+     [
+      52.14353766903272,
+      -6.762642538973317
+     ],
+     [
+      52.21002531578427,
+      -6.735702029203526
+     ]
+    ],
+    "surface_corners_chart": [
+     [
+      {
+       "num": 117,
+       "den": 1000,
+       "float": 0.117
+      },
+      {
+       "num": 303,
+       "den": 500,
+       "float": 0.606
+      }
+     ],
+     [
+      {
+       "num": 59,
+       "den": 500,
+       "float": 0.118
+      },
+      {
+       "num": 303,
+       "den": 500,
+       "float": 0.606
+      }
+     ],
+     [
+      {
+       "num": 117,
+       "den": 1000,
+       "float": 0.117
+      },
+      {
+       "num": 607,
+       "den": 1000,
+       "float": 0.607
+      }
+     ]
+    ],
+    "surface_orientation": 1,
+    "radial_interval_km": [
+     6664.066,
+     6676.808
+    ],
+    "radial_root_profile": "ROOT_R0_FULL_DIAMETER",
+    "uncertainty": {
+     "surface_max_radius_km": 3.982995766177201,
+     "radial_thickness_km": 12.742,
+     "effective_3d_scale_km": 6.950397934923718,
+     "axis_depths": [
+      3,
+      3,
+      3
+     ],
+     "partial_level_axes": []
+    }
+   },
+   "representative": {
+    "lat_deg": 52.182191138399595,
+    "lon_deg": -6.781838470056492,
+    "height_km_interval": [
+     293.0659999999998,
+     305.808
+    ],
+    "label": "REPRESENTATIVE_CENTROID_NOT_A_MEASURED_POINT"
+   },
+   "claims": {
+    "SOURCE_ORIGIN_VALIDATED": "no",
+    "PHYSICAL_ANOMALOUS_GRAVITY_VALIDATED": "no"
+   },
+   "reverse_encoding": {
+    "digits": "165892763",
+    "matches_raw": true
+   }
+  },
+  "165892783": {
+   "raw": "165892783",
+   "frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "codebook": "E_VERTEX_TRIPLE_CANONICAL",
+    "source_face_id": 5,
+    "mesh_face_id": 5,
+    "vertex_order": [
+     0,
+     1,
+     2
+    ],
+    "profile_id": "EARTH_ROOT_D_V1"
+   },
+   "compensation": "C0_none",
+   "levels": [
+    {
+     "level": 1,
+     "instruction": [
+      1,
+      6,
+      5
+     ],
+     "surface": {
+      "kind": "UP",
+      "lattice": [
+       1,
+       6
+      ],
+      "digits": [
+       1,
+       6
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.910305113496285,
+       -8.987867186087465
+      ],
+      [
+       47.7981724013467,
+       -0.9968411334829416
+      ],
+      [
+       54.22357553767424,
+       2.3769757447801236
+      ]
+     ],
+     "surface_diameter_km": 801.9296986372617,
+     "radial": {
+      "z_digit": 5,
+      "clipped": false,
+      "interval_km": [
+       6371.0,
+       7645.2
+      ]
+     },
+     "gravity": {
+      "shell_id": "L1",
+      "radial_bounds_km": [
+       6371.0,
+       7645.2
+      ],
+      "midpoint_radius_km": 7008.1,
+      "altitude_bounds_km": [
+       0.0,
+       1274.1999999999998
+      ],
+      "radial_thickness_km": 1274.1999999999998,
+      "g_inner_m_s2": 9.820250487063928,
+      "g_midpoint_m_s2": 8.115909493441263,
+      "g_outer_m_s2": 6.819618393794395,
+      "abs_gravity_change_m_s2": 3.0006320932695343,
+      "gravity_change_midpoint_approx_m_s2": 2.9512398157968223,
+      "fractional_gravity_change": 0.3697222222222223,
+      "radial_gradient_mid_s2": -2.3161511660624886e-06
+     }
+    },
+    {
+     "level": 2,
+     "instruction": [
+      8,
+      9,
+      2
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       1,
+       0
+      ],
+      "digits": [
+       8,
+       9
+      ],
+      "clipped": false,
+      "orientation": -1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.111225044021694,
+       -6.149183798535532
+      ],
+      [
+       52.60629523433892,
+       -6.994776286926265
+      ],
+      [
+       51.940898347150764,
+       -7.260579770030369
+      ]
+     ],
+     "surface_diameter_km": 79.54651991630902,
+     "radial": {
+      "z_digit": 2,
+      "clipped": false,
+      "interval_km": [
+       6625.84,
+       6753.26
+      ]
+     },
+     "gravity": {
+      "shell_id": "L2",
+      "radial_bounds_km": [
+       6625.84,
+       6753.26
+      ],
+      "midpoint_radius_km": 6689.55,
+      "altitude_bounds_km": [
+       254.84000000000015,
+       382.2600000000002
+      ],
+      "radial_thickness_km": 127.42000000000007,
+      "g_inner_m_s2": 9.079373601205555,
+      "g_midpoint_m_s2": 8.907256677609006,
+      "g_outer_m_s2": 8.739987973535003,
+      "abs_gravity_change_m_s2": 0.33938562767055386,
+      "gravity_change_midpoint_approx_m_s2": 0.3393240639089146,
+      "fractional_gravity_change": 0.03810214973637157,
+      "radial_gradient_mid_s2": -2.6630361317604336e-06
+     }
+    },
+    {
+     "level": 3,
+     "instruction": [
+      7,
+      8,
+      3
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       2,
+       1
+      ],
+      "digits": [
+       7,
+       8
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.22696695824413,
+       -6.624192891403979
+      ],
+      [
+       52.1774059194398,
+       -6.539851397944399
+      ],
+      [
+       52.24379463226691,
+       -6.512657508921085
+      ]
+     ],
+     "surface_diameter_km": 7.962868848549687,
+     "radial": {
+      "z_digit": 3,
+      "clipped": false,
+      "interval_km": [
+       6664.066,
+       6676.808
+      ]
+     },
+     "gravity": {
+      "shell_id": "L3",
+      "radial_bounds_km": [
+       6664.066,
+       6676.808
+      ],
+      "midpoint_radius_km": 6670.437,
+      "altitude_bounds_km": [
+       293.0659999999998,
+       305.808
+      ],
+      "radial_thickness_km": 12.74200000000019,
+      "g_inner_m_s2": 8.975511268516252,
+      "g_midpoint_m_s2": 8.958374258069336,
+      "g_outer_m_s2": 8.94128628054157,
+      "abs_gravity_change_m_s2": 0.03422498797468388,
+      "gravity_change_midpoint_approx_m_s2": 0.034224925532261585,
+      "fractional_gravity_change": 0.0038204463208104324,
+      "radial_gradient_mid_s2": -2.6859932139586465e-06
+     }
+    }
+   ],
+   "final_region": {
+    "surface_polygon_latlon": [
+     [
+      52.22696695824413,
+      -6.624192891403979
+     ],
+     [
+      52.1774059194398,
+      -6.539851397944399
+     ],
+     [
+      52.24379463226691,
+      -6.512657508921085
+     ]
+    ],
+    "surface_corners_chart": [
+     [
+      {
+       "num": 117,
+       "den": 1000,
+       "float": 0.117
+      },
+      {
+       "num": 76,
+       "den": 125,
+       "float": 0.608
+      }
+     ],
+     [
+      {
+       "num": 59,
+       "den": 500,
+       "float": 0.118
+      },
+      {
+       "num": 76,
+       "den": 125,
+       "float": 0.608
+      }
+     ],
+     [
+      {
+       "num": 117,
+       "den": 1000,
+       "float": 0.117
+      },
+      {
+       "num": 609,
+       "den": 1000,
+       "float": 0.609
+      }
+     ]
+    ],
+    "surface_orientation": 1,
+    "radial_interval_km": [
+     6664.066,
+     6676.808
+    ],
+    "radial_root_profile": "ROOT_R0_FULL_DIAMETER",
+    "uncertainty": {
+     "surface_max_radius_km": 3.9814344242748434,
+     "radial_thickness_km": 12.742,
+     "effective_3d_scale_km": 6.946757664788367,
+     "axis_depths": [
+      3,
+      3,
+      3
+     ],
+     "partial_level_axes": []
+    }
+   },
+   "representative": {
+    "lat_deg": 52.21606939285692,
+    "lon_deg": -6.558896084047389,
+    "height_km_interval": [
+     293.0659999999998,
+     305.808
+    ],
+    "label": "REPRESENTATIVE_CENTROID_NOT_A_MEASURED_POINT"
+   },
+   "claims": {
+    "SOURCE_ORIGIN_VALIDATED": "no",
+    "PHYSICAL_ANOMALOUS_GRAVITY_VALIDATED": "no"
+   },
+   "reverse_encoding": {
+    "digits": "165892783",
+    "matches_raw": true
+   }
+  },
+  "1678523973": {
+   "raw": "1678523973",
+   "frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "codebook": "E_VERTEX_TRIPLE_CANONICAL",
+    "source_face_id": 5,
+    "mesh_face_id": 5,
+    "vertex_order": [
+     0,
+     1,
+     2
+    ],
+    "profile_id": "EARTH_ROOT_D_V1"
+   },
+   "compensation": "C0_none",
+   "levels": [
+    {
+     "level": 1,
+     "instruction": [
+      1,
+      6,
+      7
+     ],
+     "surface": {
+      "kind": "UP",
+      "lattice": [
+       1,
+       6
+      ],
+      "digits": [
+       1,
+       6
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.910305113496285,
+       -8.987867186087465
+      ],
+      [
+       47.7981724013467,
+       -0.9968411334829416
+      ],
+      [
+       54.22357553767424,
+       2.3769757447801236
+      ]
+     ],
+     "surface_diameter_km": 801.9296986372617,
+     "radial": {
+      "z_digit": 7,
+      "clipped": false,
+      "interval_km": [
+       8919.4,
+       10193.6
+      ]
+     },
+     "gravity": {
+      "shell_id": "L1",
+      "radial_bounds_km": [
+       8919.4,
+       10193.6
+      ],
+      "midpoint_radius_km": 9556.5,
+      "altitude_bounds_km": [
+       2548.3999999999996,
+       3822.6000000000004
+      ],
+      "radial_thickness_km": 1274.2000000000007,
+      "g_inner_m_s2": 5.010331881155065,
+      "g_midpoint_m_s2": 4.364555772028413,
+      "g_outer_m_s2": 3.836035346509347,
+      "abs_gravity_change_m_s2": 1.1742965346457188,
+      "gravity_change_midpoint_approx_m_s2": 1.1638815392075774,
+      "fractional_gravity_change": 0.26905293367346944,
+      "radial_gradient_mid_s2": -9.134213931938289e-07
+     }
+    },
+    {
+     "level": 2,
+     "instruction": [
+      8,
+      5,
+      2
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       1,
+       4
+      ],
+      "digits": [
+       8,
+       5
+      ],
+      "clipped": false,
+      "orientation": -1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.679085117418786,
+       -1.6894716710402435
+      ],
+      [
+       53.19865671307735,
+       -2.489222368066353
+      ],
+      [
+       52.554097575116025,
+       -2.8048353565805253
+      ]
+     ],
+     "surface_diameter_km": 78.80340082909468,
+     "radial": {
+      "z_digit": 2,
+      "clipped": false,
+      "interval_km": [
+       9174.24,
+       9301.66
+      ]
+     },
+     "gravity": {
+      "shell_id": "L2",
+      "radial_bounds_km": [
+       9174.24,
+       9301.66
+      ],
+      "midpoint_radius_km": 9237.95,
+      "altitude_bounds_km": [
+       2803.24,
+       2930.66
+      ],
+      "radial_thickness_km": 127.42000000000007,
+      "g_inner_m_s2": 4.735846106801663,
+      "g_midpoint_m_s2": 4.670749339863938,
+      "g_outer_m_s2": 4.606985591604395,
+      "abs_gravity_change_m_s2": 0.12886051519726832,
+      "gravity_change_midpoint_approx_m_s2": 0.12884825765141905,
+      "fractional_gravity_change": 0.027588831217609747,
+      "radial_gradient_mid_s2": -1.0112090539273188e-06
+     }
+    },
+    {
+     "level": 3,
+     "instruction": [
+      3,
+      9,
+      7
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       6,
+       0
+      ],
+      "digits": [
+       3,
+       9
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       53.031059039950996,
+       -2.359823715342273
+      ],
+      [
+       52.97925376080229,
+       -2.2794568159492687
+      ],
+      [
+       53.04345213803174,
+       -2.247433601822688
+      ]
+     ],
+     "surface_diameter_km": 7.880337958691132,
+     "radial": {
+      "z_digit": 7,
+      "clipped": false,
+      "interval_km": [
+       9263.434,
+       9276.176
+      ]
+     },
+     "gravity": {
+      "shell_id": "L3",
+      "radial_bounds_km": [
+       9263.434,
+       9276.176
+      ],
+      "midpoint_radius_km": 9269.805,
+      "altitude_bounds_km": [
+       2892.4339999999993,
+       2905.1759999999995
+      ],
+      "radial_thickness_km": 12.74200000000019,
+      "g_inner_m_s2": 4.645085930508983,
+      "g_midpoint_m_s2": 4.6387031268236925,
+      "g_outer_m_s2": 4.632333470002834,
+      "abs_gravity_change_m_s2": 0.012752460506148776,
+      "gravity_change_midpoint_approx_m_s2": 0.012752448458622025,
+      "fractional_gravity_change": 0.002749143490646469,
+      "radial_gradient_mid_s2": -1.0008200014614532e-06
+     }
+    },
+    {
+     "level": 4,
+     "instruction": "PARTIAL",
+     "axes_present": [
+      "X"
+     ],
+     "surface": {
+      "kind": "PARTIAL_X_BAND",
+      "lattice": [
+       3,
+       null
+      ],
+      "digits": [
+       3,
+       null
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       53.015524185459,
+       -2.3356949998494674
+      ],
+      [
+       53.01034461743941,
+       -2.3276556473306473
+      ],
+      [
+       53.02419908789114,
+       -2.2570477980483474
+      ]
+     ],
+     "surface_diameter_km": 5.348259512952152,
+     "radial": {
+      "note": "no Z digit: radial interval unchanged (axis-specific uncertainty)"
+     }
+    }
+   ],
+   "final_region": {
+    "surface_polygon_latlon": [
+     [
+      53.015524185459,
+      -2.3356949998494674
+     ],
+     [
+      53.01034461743941,
+      -2.3276556473306473
+     ],
+     [
+      53.02419908789114,
+      -2.2570477980483474
+     ]
+    ],
+    "surface_corners_chart": [
+     [
+      {
+       "num": 1133,
+       "den": 10000,
+       "float": 0.1133
+      },
+      {
+       "num": 649,
+       "den": 1000,
+       "float": 0.649
+      }
+     ],
+     [
+      {
+       "num": 567,
+       "den": 5000,
+       "float": 0.1134
+      },
+      {
+       "num": 649,
+       "den": 1000,
+       "float": 0.649
+      }
+     ],
+     [
+      {
+       "num": 1133,
+       "den": 10000,
+       "float": 0.1133
+      },
+      {
+       "num": 6497,
+       "den": 10000,
+       "float": 0.6497
+      }
+     ]
+    ],
+    "surface_orientation": 1,
+    "radial_interval_km": [
+     9263.434,
+     9276.176
+    ],
+    "radial_root_profile": "ROOT_R0_FULL_DIAMETER",
+    "uncertainty": {
+     "surface_max_radius_km": 2.674129756476076,
+     "radial_thickness_km": 12.742,
+     "effective_3d_scale_km": 2.8279092841793583,
+     "axis_depths": [
+      4,
+      3,
+      3
+     ],
+     "partial_level_axes": [
+      "X"
+     ]
+    }
+   },
+   "representative": {
+    "lat_deg": 53.016695107720295,
+    "lon_deg": -2.3067999061495192,
+    "height_km_interval": [
+     2892.4339999999993,
+     2905.1759999999995
+    ],
+    "label": "REPRESENTATIVE_CENTROID_NOT_A_MEASURED_POINT"
+   },
+   "claims": {
+    "SOURCE_ORIGIN_VALIDATED": "no",
+    "PHYSICAL_ANOMALOUS_GRAVITY_VALIDATED": "no"
+   }
+  },
+  "167829573": {
+   "raw": "167829573",
+   "frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "codebook": "E_VERTEX_TRIPLE_CANONICAL",
+    "source_face_id": 5,
+    "mesh_face_id": 5,
+    "vertex_order": [
+     0,
+     1,
+     2
+    ],
+    "profile_id": "EARTH_ROOT_D_V1"
+   },
+   "compensation": "C0_none",
+   "levels": [
+    {
+     "level": 1,
+     "instruction": [
+      1,
+      6,
+      7
+     ],
+     "surface": {
+      "kind": "UP",
+      "lattice": [
+       1,
+       6
+      ],
+      "digits": [
+       1,
+       6
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.910305113496285,
+       -8.987867186087465
+      ],
+      [
+       47.7981724013467,
+       -0.9968411334829416
+      ],
+      [
+       54.22357553767424,
+       2.3769757447801236
+      ]
+     ],
+     "surface_diameter_km": 801.9296986372617,
+     "radial": {
+      "z_digit": 7,
+      "clipped": false,
+      "interval_km": [
+       8919.4,
+       10193.6
+      ]
+     },
+     "gravity": {
+      "shell_id": "L1",
+      "radial_bounds_km": [
+       8919.4,
+       10193.6
+      ],
+      "midpoint_radius_km": 9556.5,
+      "altitude_bounds_km": [
+       2548.3999999999996,
+       3822.6000000000004
+      ],
+      "radial_thickness_km": 1274.2000000000007,
+      "g_inner_m_s2": 5.010331881155065,
+      "g_midpoint_m_s2": 4.364555772028413,
+      "g_outer_m_s2": 3.836035346509347,
+      "abs_gravity_change_m_s2": 1.1742965346457188,
+      "gravity_change_midpoint_approx_m_s2": 1.1638815392075774,
+      "fractional_gravity_change": 0.26905293367346944,
+      "radial_gradient_mid_s2": -9.134213931938289e-07
+     }
+    },
+    {
+     "level": 2,
+     "instruction": [
+      8,
+      2,
+      9
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       1,
+       7
+      ],
+      "digits": [
+       8,
+       2
+      ],
+      "clipped": false,
+      "orientation": -1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.98701897447844,
+       1.6465685985925833
+      ],
+      [
+       53.52290080901556,
+       0.8875139527632756
+      ],
+      [
+       52.895451540430486,
+       0.537065120106357
+      ]
+     ],
+     "surface_diameter_km": 78.1038313211062,
+     "radial": {
+      "z_digit": 9,
+      "clipped": false,
+      "interval_km": [
+       10066.18,
+       10193.6
+      ]
+     },
+     "gravity": {
+      "shell_id": "L2",
+      "radial_bounds_km": [
+       10066.18,
+       10193.6
+      ],
+      "midpoint_radius_km": 10129.89,
+      "altitude_bounds_km": [
+       3695.1800000000003,
+       3822.6000000000004
+      ],
+      "radial_thickness_km": 127.42000000000007,
+      "g_inner_m_s2": 3.933764816160843,
+      "g_midpoint_m_s2": 3.88443909934889,
+      "g_outer_m_s2": 3.836035346509347,
+      "abs_gravity_change_m_s2": 0.09772946965149581,
+      "gravity_change_midpoint_approx_m_s2": 0.0977217383483998,
+      "fractional_gravity_change": 0.025159223031164843,
+      "radial_gradient_mid_s2": -7.669262152597688e-07
+     }
+    },
+    {
+     "level": 3,
+     "instruction": [
+      5,
+      7,
+      3
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       4,
+       2
+      ],
+      "digits": [
+       5,
+       7
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       53.22857493263403,
+       0.9346368466540921
+      ],
+      [
+       53.17511130658361,
+       1.0108794284185425
+      ],
+      [
+       53.23771164644787,
+       1.0462201092708603
+      ]
+     ],
+     "surface_diameter_km": 7.81853640180283,
+     "radial": {
+      "z_digit": 3,
+      "clipped": false,
+      "interval_km": [
+       10104.406,
+       10117.148
+      ]
+     },
+     "gravity": {
+      "shell_id": "L3",
+      "radial_bounds_km": [
+       10104.406,
+       10117.148
+      ],
+      "midpoint_radius_km": 10110.777,
+      "altitude_bounds_km": [
+       3733.406000000001,
+       3746.1479999999992
+      ],
+      "radial_thickness_km": 12.74199999999837,
+      "g_inner_m_s2": 3.9040574474412493,
+      "g_midpoint_m_s2": 3.899138950357893,
+      "g_outer_m_s2": 3.894229742219642,
+      "abs_gravity_change_m_s2": 0.00982770522160715,
+      "gravity_change_midpoint_approx_m_s2": 0.009827697417409942,
+      "fractional_gravity_change": 0.002520480892507072,
+      "radial_gradient_mid_s2": -7.712837401829538e-07
+     }
+    }
+   ],
+   "final_region": {
+    "surface_polygon_latlon": [
+     [
+      53.22857493263403,
+      0.9346368466540921
+     ],
+     [
+      53.17511130658361,
+      1.0108794284185425
+     ],
+     [
+      53.23771164644787,
+      1.0462201092708603
+     ]
+    ],
+    "surface_corners_chart": [
+     [
+      {
+       "num": 23,
+       "den": 200,
+       "float": 0.115
+      },
+      {
+       "num": 677,
+       "den": 1000,
+       "float": 0.677
+      }
+     ],
+     [
+      {
+       "num": 29,
+       "den": 250,
+       "float": 0.116
+      },
+      {
+       "num": 677,
+       "den": 1000,
+       "float": 0.677
+      }
+     ],
+     [
+      {
+       "num": 23,
+       "den": 200,
+       "float": 0.115
+      },
+      {
+       "num": 339,
+       "den": 500,
+       "float": 0.678
+      }
+     ]
+    ],
+    "surface_orientation": 1,
+    "radial_interval_km": [
+     10104.406,
+     10117.148
+    ],
+    "radial_root_profile": "ROOT_R0_FULL_DIAMETER",
+    "uncertainty": {
+     "surface_max_radius_km": 3.909268200901415,
+     "radial_thickness_km": 12.742,
+     "effective_3d_scale_km": 6.798339738126961,
+     "axis_depths": [
+      3,
+      3,
+      3
+     ],
+     "partial_level_axes": []
+    }
+   },
+   "representative": {
+    "lat_deg": 53.21381209180118,
+    "lon_deg": 0.9972531263993292,
+    "height_km_interval": [
+     3733.406000000001,
+     3746.1479999999992
+    ],
+    "label": "REPRESENTATIVE_CENTROID_NOT_A_MEASURED_POINT"
+   },
+   "claims": {
+    "SOURCE_ORIGIN_VALIDATED": "no",
+    "PHYSICAL_ANOMALOUS_GRAVITY_VALIDATED": "no"
+   },
+   "reverse_encoding": {
+    "digits": "167829573",
+    "matches_raw": true
+   }
+  },
+  "16752349783": {
+   "raw": "16752349783",
+   "frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "codebook": "E_VERTEX_TRIPLE_CANONICAL",
+    "source_face_id": 5,
+    "mesh_face_id": 5,
+    "vertex_order": [
+     0,
+     1,
+     2
+    ],
+    "profile_id": "EARTH_ROOT_D_V1"
+   },
+   "compensation": "C0_none",
+   "levels": [
+    {
+     "level": 1,
+     "instruction": [
+      1,
+      6,
+      7
+     ],
+     "surface": {
+      "kind": "UP",
+      "lattice": [
+       1,
+       6
+      ],
+      "digits": [
+       1,
+       6
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.910305113496285,
+       -8.987867186087465
+      ],
+      [
+       47.7981724013467,
+       -0.9968411334829416
+      ],
+      [
+       54.22357553767424,
+       2.3769757447801236
+      ]
+     ],
+     "surface_diameter_km": 801.9296986372617,
+     "radial": {
+      "z_digit": 7,
+      "clipped": false,
+      "interval_km": [
+       8919.4,
+       10193.6
+      ]
+     },
+     "gravity": {
+      "shell_id": "L1",
+      "radial_bounds_km": [
+       8919.4,
+       10193.6
+      ],
+      "midpoint_radius_km": 9556.5,
+      "altitude_bounds_km": [
+       2548.3999999999996,
+       3822.6000000000004
+      ],
+      "radial_thickness_km": 1274.2000000000007,
+      "g_inner_m_s2": 5.010331881155065,
+      "g_midpoint_m_s2": 4.364555772028413,
+      "g_outer_m_s2": 3.836035346509347,
+      "abs_gravity_change_m_s2": 1.1742965346457188,
+      "gravity_change_midpoint_approx_m_s2": 1.1638815392075774,
+      "fractional_gravity_change": 0.26905293367346944,
+      "radial_gradient_mid_s2": -9.134213931938289e-07
+     }
+    },
+    {
+     "level": 2,
+     "instruction": [
+      5,
+      2,
+      3
+     ],
+     "surface": {
+      "kind": "UP",
+      "lattice": [
+       5,
+       2
+      ],
+      "digits": [
+       5,
+       2
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       50.725973557783625,
+       -2.631485135415004
+      ],
+      [
+       50.199124671862144,
+       -1.8632049088481029
+      ],
+      [
+       50.85635742236535,
+       -1.5511123321033415
+      ]
+     ],
+     "surface_diameter_km": 79.93295881008363,
+     "radial": {
+      "z_digit": 3,
+      "clipped": false,
+      "interval_km": [
+       9301.66,
+       9429.08
+      ]
+     },
+     "gravity": {
+      "shell_id": "L2",
+      "radial_bounds_km": [
+       9301.66,
+       9429.08
+      ],
+      "midpoint_radius_km": 9365.369999999999,
+      "altitude_bounds_km": [
+       2930.66,
+       3058.08
+      ],
+      "radial_thickness_km": 127.42000000000007,
+      "g_inner_m_s2": 4.606985591604395,
+      "g_midpoint_m_s2": 4.544518713065821,
+      "g_outer_m_s2": 4.483313772399529,
+      "abs_gravity_change_m_s2": 0.12367181920486568,
+      "gravity_change_midpoint_approx_m_s2": 0.12366037314464828,
+      "fractional_gravity_change": 0.027213403005537252,
+      "radial_gradient_mid_s2": -9.704942171138613e-07
+     }
+    },
+    {
+     "level": 3,
+     "instruction": [
+      4,
+      9,
+      7
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       5,
+       0
+      ],
+      "digits": [
+       4,
+       9
+      ],
+      "clipped": false,
+      "orientation": -1
+     },
+     "surface_polygon_latlon": [
+      [
+       50.423740145340645,
+       -2.061195296409467
+      ],
+      [
+       50.47650805035833,
+       -2.1378245509398335
+      ],
+      [
+       50.41053949758108,
+       -2.1685656452224586
+      ]
+     ],
+     "surface_diameter_km": 7.991559546007356,
+     "radial": {
+      "z_digit": 7,
+      "clipped": false,
+      "interval_km": [
+       9390.854,
+       9403.596
+      ]
+     },
+     "gravity": {
+      "shell_id": "L3",
+      "radial_bounds_km": [
+       9390.854,
+       9403.596
+      ],
+      "midpoint_radius_km": 9397.224999999999,
+      "altitude_bounds_km": [
+       3019.8539999999994,
+       3032.5959999999995
+      ],
+      "radial_thickness_km": 12.74200000000019,
+      "g_inner_m_s2": 4.519887220673459,
+      "g_midpoint_m_s2": 4.51376063754734,
+      "g_outer_m_s2": 4.507646502607175,
+      "abs_gravity_change_m_s2": 0.01224071806628404,
+      "gravity_change_midpoint_approx_m_s2": 0.012240706813687885,
+      "fractional_gravity_change": 0.0027118668997333736,
+      "radial_gradient_mid_s2": -9.60658202298517e-07
+     }
+    },
+    {
+     "level": 4,
+     "instruction": "PARTIAL",
+     "axes_present": [
+      "X",
+      "Y"
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       1,
+       6
+      ],
+      "digits": [
+       8,
+       3
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       50.42506153284287,
+       -2.1516829302673597
+      ],
+      [
+       50.419786513987084,
+       -2.144017538299792
+      ],
+      [
+       50.42638427022198,
+       -2.1409434538518055
+      ]
+     ],
+     "surface_diameter_km": 0.799345789100085,
+     "radial": {
+      "note": "no Z digit: radial interval unchanged (axis-specific uncertainty)"
+     }
+    }
+   ],
+   "final_region": {
+    "surface_polygon_latlon": [
+     [
+      50.42506153284287,
+      -2.1516829302673597
+     ],
+     [
+      50.419786513987084,
+      -2.144017538299792
+     ],
+     [
+      50.42638427022198,
+      -2.1409434538518055
+     ]
+    ],
+    "surface_corners_chart": [
+     [
+      {
+       "num": 779,
+       "den": 5000,
+       "float": 0.1558
+      },
+      {
+       "num": 6203,
+       "den": 10000,
+       "float": 0.6203
+      }
+     ],
+     [
+      {
+       "num": 1559,
+       "den": 10000,
+       "float": 0.1559
+      },
+      {
+       "num": 6203,
+       "den": 10000,
+       "float": 0.6203
+      }
+     ],
+     [
+      {
+       "num": 779,
+       "den": 5000,
+       "float": 0.1558
+      },
+      {
+       "num": 1551,
+       "den": 2500,
+       "float": 0.6204
+      }
+     ]
+    ],
+    "surface_orientation": 1,
+    "radial_interval_km": [
+     9390.854,
+     9403.596
+    ],
+    "radial_root_profile": "ROOT_R0_FULL_DIAMETER",
+    "uncertainty": {
+     "surface_max_radius_km": 0.3996728945500425,
+     "radial_thickness_km": 12.742,
+     "effective_3d_scale_km": 1.4965725647672228,
+     "axis_depths": [
+      4,
+      4,
+      3
+     ],
+     "partial_level_axes": [
+      "X",
+      "Y"
+     ]
+    }
+   },
+   "representative": {
+    "lat_deg": 50.42374422766448,
+    "lon_deg": -2.1455479149389465,
+    "height_km_interval": [
+     3019.8539999999994,
+     3032.5959999999995
+    ],
+    "label": "REPRESENTATIVE_CENTROID_NOT_A_MEASURED_POINT"
+   },
+   "claims": {
+    "SOURCE_ORIGIN_VALIDATED": "no",
+    "PHYSICAL_ANOMALOUS_GRAVITY_VALIDATED": "no"
+   }
+  },
+  "1678295343": {
+   "raw": "1678295343",
+   "frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "codebook": "E_VERTEX_TRIPLE_CANONICAL",
+    "source_face_id": 5,
+    "mesh_face_id": 5,
+    "vertex_order": [
+     0,
+     1,
+     2
+    ],
+    "profile_id": "EARTH_ROOT_D_V1"
+   },
+   "compensation": "C0_none",
+   "levels": [
+    {
+     "level": 1,
+     "instruction": [
+      1,
+      6,
+      7
+     ],
+     "surface": {
+      "kind": "UP",
+      "lattice": [
+       1,
+       6
+      ],
+      "digits": [
+       1,
+       6
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.910305113496285,
+       -8.987867186087465
+      ],
+      [
+       47.7981724013467,
+       -0.9968411334829416
+      ],
+      [
+       54.22357553767424,
+       2.3769757447801236
+      ]
+     ],
+     "surface_diameter_km": 801.9296986372617,
+     "radial": {
+      "z_digit": 7,
+      "clipped": false,
+      "interval_km": [
+       8919.4,
+       10193.6
+      ]
+     },
+     "gravity": {
+      "shell_id": "L1",
+      "radial_bounds_km": [
+       8919.4,
+       10193.6
+      ],
+      "midpoint_radius_km": 9556.5,
+      "altitude_bounds_km": [
+       2548.3999999999996,
+       3822.6000000000004
+      ],
+      "radial_thickness_km": 1274.2000000000007,
+      "g_inner_m_s2": 5.010331881155065,
+      "g_midpoint_m_s2": 4.364555772028413,
+      "g_outer_m_s2": 3.836035346509347,
+      "abs_gravity_change_m_s2": 1.1742965346457188,
+      "gravity_change_midpoint_approx_m_s2": 1.1638815392075774,
+      "fractional_gravity_change": 0.26905293367346944,
+      "radial_gradient_mid_s2": -9.134213931938289e-07
+     }
+    },
+    {
+     "level": 2,
+     "instruction": [
+      8,
+      2,
+      9
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       1,
+       7
+      ],
+      "digits": [
+       8,
+       2
+      ],
+      "clipped": false,
+      "orientation": -1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.98701897447844,
+       1.6465685985925833
+      ],
+      [
+       53.52290080901556,
+       0.8875139527632756
+      ],
+      [
+       52.895451540430486,
+       0.537065120106357
+      ]
+     ],
+     "surface_diameter_km": 78.1038313211062,
+     "radial": {
+      "z_digit": 9,
+      "clipped": false,
+      "interval_km": [
+       10066.18,
+       10193.6
+      ]
+     },
+     "gravity": {
+      "shell_id": "L2",
+      "radial_bounds_km": [
+       10066.18,
+       10193.6
+      ],
+      "midpoint_radius_km": 10129.89,
+      "altitude_bounds_km": [
+       3695.1800000000003,
+       3822.6000000000004
+      ],
+      "radial_thickness_km": 127.42000000000007,
+      "g_inner_m_s2": 3.933764816160843,
+      "g_midpoint_m_s2": 3.88443909934889,
+      "g_outer_m_s2": 3.836035346509347,
+      "abs_gravity_change_m_s2": 0.09772946965149581,
+      "gravity_change_midpoint_approx_m_s2": 0.0977217383483998,
+      "fractional_gravity_change": 0.025159223031164843,
+      "radial_gradient_mid_s2": -7.669262152597688e-07
+     }
+    },
+    {
+     "level": 3,
+     "instruction": [
+      5,
+      3,
+      4
+     ],
+     "surface": {
+      "kind": "UP",
+      "lattice": [
+       5,
+       3
+      ],
+      "digits": [
+       5,
+       3
+      ],
+      "clipped": false,
+      "orientation": -1
+     },
+     "surface_polygon_latlon": [
+      [
+       53.22857493263403,
+       0.9346368466540921
+      ],
+      [
+       53.281982287025535,
+       0.858214469454834
+      ],
+      [
+       53.21932747401585,
+       0.8230224263884864
+      ]
+     ],
+     "surface_diameter_km": 7.817437970122169,
+     "radial": {
+      "z_digit": 4,
+      "clipped": false,
+      "interval_km": [
+       10117.148,
+       10129.89
+      ]
+     },
+     "gravity": {
+      "shell_id": "L3",
+      "radial_bounds_km": [
+       10117.148,
+       10129.89
+      ],
+      "midpoint_radius_km": 10123.519,
+      "altitude_bounds_km": [
+       3746.1479999999992,
+       3758.8899999999994
+      ],
+      "radial_thickness_km": 12.74200000000019,
+      "g_inner_m_s2": 3.894229742219642,
+      "g_midpoint_m_s2": 3.889329799650733,
+      "g_outer_m_s2": 3.88443909934889,
+      "abs_gravity_change_m_s2": 0.00979064287075171,
+      "gravity_change_midpoint_approx_m_s2": 0.009790635115546358,
+      "fractional_gravity_change": 0.0025173084760338202,
+      "radial_gradient_mid_s2": -7.683750679285994e-07
+     }
+    },
+    {
+     "level": 4,
+     "instruction": "PARTIAL",
+     "axes_present": [
+      "X"
+     ],
+     "surface": {
+      "kind": "PARTIAL_X_BAND",
+      "lattice": [
+       3,
+       null
+      ],
+      "digits": [
+       3,
+       null
+      ],
+      "clipped": false,
+      "orientation": -1
+     },
+     "surface_polygon_latlon": [
+      [
+       53.24460306364446,
+       0.9117290285867474
+      ],
+      [
+       53.24994464688998,
+       0.904089491621432
+      ],
+      [
+       53.23813059237031,
+       0.8335723561893559
+      ]
+     ],
+     "surface_diameter_km": 5.250424927771234,
+     "radial": {
+      "note": "no Z digit: radial interval unchanged (axis-specific uncertainty)"
+     }
+    }
+   ],
+   "final_region": {
+    "surface_polygon_latlon": [
+     [
+      53.24460306364446,
+      0.9117290285867474
+     ],
+     [
+      53.24994464688998,
+      0.904089491621432
+     ],
+     [
+      53.23813059237031,
+      0.8335723561893559
+     ]
+    ],
+    "surface_corners_chart": [
+     [
+      {
+       "num": 1147,
+       "den": 10000,
+       "float": 0.1147
+      },
+      {
+       "num": 677,
+       "den": 1000,
+       "float": 0.677
+      }
+     ],
+     [
+      {
+       "num": 573,
+       "den": 5000,
+       "float": 0.1146
+      },
+      {
+       "num": 677,
+       "den": 1000,
+       "float": 0.677
+      }
+     ],
+     [
+      {
+       "num": 1147,
+       "den": 10000,
+       "float": 0.1147
+      },
+      {
+       "num": 6763,
+       "den": 10000,
+       "float": 0.6763
+      }
+     ]
+    ],
+    "surface_orientation": -1,
+    "radial_interval_km": [
+     10117.148,
+     10129.89
+    ],
+    "radial_root_profile": "ROOT_R0_FULL_DIAMETER",
+    "uncertainty": {
+     "surface_max_radius_km": 2.625212463885617,
+     "radial_thickness_km": 12.742,
+     "effective_3d_scale_km": 2.80222131774718,
+     "axis_depths": [
+      4,
+      3,
+      3
+     ],
+     "partial_level_axes": [
+      "X"
+     ]
+    }
+   },
+   "representative": {
+    "lat_deg": 53.24423179580508,
+    "lon_deg": 0.8831310614679975,
+    "height_km_interval": [
+     3746.1479999999992,
+     3758.8899999999994
+    ],
+    "label": "REPRESENTATIVE_CENTROID_NOT_A_MEASURED_POINT"
+   },
+   "claims": {
+    "SOURCE_ORIGIN_VALIDATED": "no",
+    "PHYSICAL_ANOMALOUS_GRAVITY_VALIDATED": "no"
+   }
+  },
+  "16782953437": {
+   "raw": "16782953437",
+   "frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "codebook": "E_VERTEX_TRIPLE_CANONICAL",
+    "source_face_id": 5,
+    "mesh_face_id": 5,
+    "vertex_order": [
+     0,
+     1,
+     2
+    ],
+    "profile_id": "EARTH_ROOT_D_V1"
+   },
+   "compensation": "C0_none",
+   "levels": [
+    {
+     "level": 1,
+     "instruction": [
+      1,
+      6,
+      7
+     ],
+     "surface": {
+      "kind": "UP",
+      "lattice": [
+       1,
+       6
+      ],
+      "digits": [
+       1,
+       6
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.910305113496285,
+       -8.987867186087465
+      ],
+      [
+       47.7981724013467,
+       -0.9968411334829416
+      ],
+      [
+       54.22357553767424,
+       2.3769757447801236
+      ]
+     ],
+     "surface_diameter_km": 801.9296986372617,
+     "radial": {
+      "z_digit": 7,
+      "clipped": false,
+      "interval_km": [
+       8919.4,
+       10193.6
+      ]
+     },
+     "gravity": {
+      "shell_id": "L1",
+      "radial_bounds_km": [
+       8919.4,
+       10193.6
+      ],
+      "midpoint_radius_km": 9556.5,
+      "altitude_bounds_km": [
+       2548.3999999999996,
+       3822.6000000000004
+      ],
+      "radial_thickness_km": 1274.2000000000007,
+      "g_inner_m_s2": 5.010331881155065,
+      "g_midpoint_m_s2": 4.364555772028413,
+      "g_outer_m_s2": 3.836035346509347,
+      "abs_gravity_change_m_s2": 1.1742965346457188,
+      "gravity_change_midpoint_approx_m_s2": 1.1638815392075774,
+      "fractional_gravity_change": 0.26905293367346944,
+      "radial_gradient_mid_s2": -9.134213931938289e-07
+     }
+    },
+    {
+     "level": 2,
+     "instruction": [
+      8,
+      2,
+      9
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       1,
+       7
+      ],
+      "digits": [
+       8,
+       2
+      ],
+      "clipped": false,
+      "orientation": -1
+     },
+     "surface_polygon_latlon": [
+      [
+       52.98701897447844,
+       1.6465685985925833
+      ],
+      [
+       53.52290080901556,
+       0.8875139527632756
+      ],
+      [
+       52.895451540430486,
+       0.537065120106357
+      ]
+     ],
+     "surface_diameter_km": 78.1038313211062,
+     "radial": {
+      "z_digit": 9,
+      "clipped": false,
+      "interval_km": [
+       10066.18,
+       10193.6
+      ]
+     },
+     "gravity": {
+      "shell_id": "L2",
+      "radial_bounds_km": [
+       10066.18,
+       10193.6
+      ],
+      "midpoint_radius_km": 10129.89,
+      "altitude_bounds_km": [
+       3695.1800000000003,
+       3822.6000000000004
+      ],
+      "radial_thickness_km": 127.42000000000007,
+      "g_inner_m_s2": 3.933764816160843,
+      "g_midpoint_m_s2": 3.88443909934889,
+      "g_outer_m_s2": 3.836035346509347,
+      "abs_gravity_change_m_s2": 0.09772946965149581,
+      "gravity_change_midpoint_approx_m_s2": 0.0977217383483998,
+      "fractional_gravity_change": 0.025159223031164843,
+      "radial_gradient_mid_s2": -7.669262152597688e-07
+     }
+    },
+    {
+     "level": 3,
+     "instruction": [
+      5,
+      3,
+      4
+     ],
+     "surface": {
+      "kind": "UP",
+      "lattice": [
+       5,
+       3
+      ],
+      "digits": [
+       5,
+       3
+      ],
+      "clipped": false,
+      "orientation": -1
+     },
+     "surface_polygon_latlon": [
+      [
+       53.22857493263403,
+       0.9346368466540921
+      ],
+      [
+       53.281982287025535,
+       0.858214469454834
+      ],
+      [
+       53.21932747401585,
+       0.8230224263884864
+      ]
+     ],
+     "surface_diameter_km": 7.817437970122169,
+     "radial": {
+      "z_digit": 4,
+      "clipped": false,
+      "interval_km": [
+       10117.148,
+       10129.89
+      ]
+     },
+     "gravity": {
+      "shell_id": "L3",
+      "radial_bounds_km": [
+       10117.148,
+       10129.89
+      ],
+      "midpoint_radius_km": 10123.519,
+      "altitude_bounds_km": [
+       3746.1479999999992,
+       3758.8899999999994
+      ],
+      "radial_thickness_km": 12.74200000000019,
+      "g_inner_m_s2": 3.894229742219642,
+      "g_midpoint_m_s2": 3.889329799650733,
+      "g_outer_m_s2": 3.88443909934889,
+      "abs_gravity_change_m_s2": 0.00979064287075171,
+      "gravity_change_midpoint_approx_m_s2": 0.009790635115546358,
+      "fractional_gravity_change": 0.0025173084760338202,
+      "radial_gradient_mid_s2": -7.683750679285994e-07
+     }
+    },
+    {
+     "level": 4,
+     "instruction": "PARTIAL",
+     "axes_present": [
+      "X",
+      "Y"
+     ],
+     "surface": {
+      "kind": "DOWN",
+      "lattice": [
+       6,
+       2
+      ],
+      "digits": [
+       3,
+       7
+      ],
+      "clipped": false,
+      "orientation": 1
+     },
+     "surface_polygon_latlon": [
+      [
+       53.26319251934614,
+       0.8476491705914627
+      ],
+      [
+       53.25785418728802,
+       0.8552983665017234
+      ],
+      [
+       53.26411812561835,
+       0.8588197813150642
+      ]
+     ],
+     "surface_diameter_km": 0.7818014594422993,
+     "radial": {
+      "note": "no Z digit: radial interval unchanged (axis-specific uncertainty)"
+     }
+    }
+   ],
+   "final_region": {
+    "surface_polygon_latlon": [
+     [
+      53.26319251934614,
+      0.8476491705914627
+     ],
+     [
+      53.25785418728802,
+      0.8552983665017234
+     ],
+     [
+      53.26411812561835,
+      0.8588197813150642
+     ]
+    ],
+    "surface_corners_chart": [
+     [
+      {
+       "num": 1143,
+       "den": 10000,
+       "float": 0.1143
+      },
+      {
+       "num": 6767,
+       "den": 10000,
+       "float": 0.6767
+      }
+     ],
+     [
+      {
+       "num": 143,
+       "den": 1250,
+       "float": 0.1144
+      },
+      {
+       "num": 6767,
+       "den": 10000,
+       "float": 0.6767
+      }
+     ],
+     [
+      {
+       "num": 1143,
+       "den": 10000,
+       "float": 0.1143
+      },
+      {
+       "num": 423,
+       "den": 625,
+       "float": 0.6768
+      }
+     ]
+    ],
+    "surface_orientation": 1,
+    "radial_interval_km": [
+     10117.148,
+     10129.89
+    ],
+    "radial_root_profile": "ROOT_R0_FULL_DIAMETER",
+    "uncertainty": {
+     "surface_max_radius_km": 0.39090072972114964,
+     "radial_thickness_km": 12.742,
+     "effective_3d_scale_km": 1.464866004736499,
+     "axis_depths": [
+      4,
+      4,
+      3
+     ],
+     "partial_level_axes": [
+      "X",
+      "Y"
+     ]
+    }
+   },
+   "representative": {
+    "lat_deg": 53.261721739148854,
+    "lon_deg": 0.853922515797162,
+    "height_km_interval": [
+     3746.1479999999992,
+     3758.8899999999994
+    ],
+    "label": "REPRESENTATIVE_CENTROID_NOT_A_MEASURED_POINT"
+   },
+   "claims": {
+    "SOURCE_ORIGIN_VALIDATED": "no",
+    "PHYSICAL_ANOMALOUS_GRAVITY_VALIDATED": "no"
+   }
+  }
+ }
+}
