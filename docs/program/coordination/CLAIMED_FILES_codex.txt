@@ -1,0 +1,19 @@
+Codex claim for program/codex-core-algorithms
+
+Worktree: codex-worktree
+Agent: codex
+Scope: bounded core algorithms, numerical correctness, property tests, CLIs, deterministic examples, receipts.
+
+Claimed files:
+- rgcs_lab/**
+- tests/rgcs_lab/**
+- examples/rgcs_lab/**
+- docs/program/coordination/CLAIMED_FILES_codex.txt
+- docs/program/coordination/HANDOFF_codex.json
+- docs/workbench/RGCS_LAB_CLI.md
+- pyproject.toml
+
+Notes:
+- Do not edit public authority or claim-language files from this branch.
+- Metasurface results remain electromagnetic reduced-order simulations only.
+- Lattice resonance gain is attributed to declared drive or pump terms, not excess energy.

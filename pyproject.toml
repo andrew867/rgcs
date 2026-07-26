@@ -41,6 +41,7 @@ dev = [
 rgcs-v4 = "rscs2_core.cli:main"
 rgcs-workbook = "rgcs_workbench.workbook:main"
 rgcs-coordinate = "rgcs_coordinate.cli:main"
+rgcs-lab = "rgcs_lab.cli:main"
 
 [project.gui-scripts]
 rgcs-workbench = "rgcs_desktop.app.main:main"

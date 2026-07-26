@@ -1,0 +1,6 @@
+{
+  "proposal": "This spoof-SPP simulation is a reduced-order electromagnetic candidate. Resonance gain is attributed to the drive.",
+  "claim_class": ["REDUCED_ORDER_EM_SIMULATION"],
+  "evidence": [{"id": "metasurface_receipt", "status": "YELLOW"}]
+}
+

@@ -1,0 +1,58 @@
+{
+  "agent": "codex",
+  "workstream": "WS02,WS03,WS04,WS05,WS06,WS07",
+  "start_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+  "end_commit": "see branch HEAD after commit",
+  "files_changed": [
+    "docs/program/coordination/CLAIMED_FILES_codex.txt",
+    "docs/program/coordination/HANDOFF_codex.json",
+    "docs/workbench/RGCS_LAB_CLI.md",
+    "examples/rgcs_lab/claim_yellow.json",
+    "examples/rgcs_lab/memory/doc_current.json",
+    "examples/rgcs_lab/memory/doc_rejected.json",
+    "examples/rgcs_lab/memory/doc_stale.json",
+    "pyproject.toml",
+    "rgcs_lab/__init__.py",
+    "rgcs_lab/cli.py",
+    "rgcs_lab/dual_pole.py",
+    "rgcs_lab/frames.py",
+    "rgcs_lab/golay.py",
+    "rgcs_lab/lattice.py",
+    "rgcs_lab/memory.py",
+    "rgcs_lab/metasurface.py",
+    "rgcs_lab/receipts.py",
+    "tests/rgcs_lab/test_frames.py",
+    "tests/rgcs_lab/test_golay.py",
+    "tests/rgcs_lab/test_lattice.py",
+    "tests/rgcs_lab/test_memory_dual.py",
+    "tests/rgcs_lab/test_metasurface.py"
+  ],
+  "public_api_changes": [
+    "Added rgcs-lab console script.",
+    "Added rgcs_lab pure-Python package for Golay, quaternion frames, memory benchmark, dual-pole audit, 64-state lattice, and reduced-order metasurface receipts."
+  ],
+  "tests": [
+    "python -m pytest tests\\rgcs_lab -q: 11 tests reached 100% but pytest process timed out during teardown/reporting in this environment.",
+    "python -m rgcs_lab.cli doctor: passed.",
+    "python -m rgcs_lab.cli golay demo --random-flips 3: passed.",
+    "python -m rgcs_lab.cli frames example earth-south-up: passed.",
+    "python -m rgcs_lab.cli memory benchmark examples\\rgcs_lab\\memory --top-k 2: passed.",
+    "python -m rgcs_lab.cli dual-pole audit examples\\rgcs_lab\\claim_yellow.json: passed.",
+    "python -m rgcs_lab.cli lattice run --steps 10: passed.",
+    "python -m rgcs_lab.cli metasurface sweep --points 3: passed.",
+    "python -m pip install . --no-deps --target C:\\tmp\\rgcs-lab-installed --upgrade: built and installed rgcs-8.2.0.",
+    "Installed-package import/CLI smoke from C:\\tmp with editable rgcs path entries removed: doctor and golay demo passed.",
+    "python -m pytest tests\\rgcs_coordinate tests\\property\\test_properties.py tests\\unit\\test_experiments_provenance.py -q: test bodies reached 100% but two existing tmp_path-based tests errored/hung during reporting under current Windows sandbox."
+  ],
+  "documentation": [
+    "docs/workbench/RGCS_LAB_CLI.md"
+  ],
+  "known_yellow": [
+    "Metasurface is a reduced-order electromagnetic simulator only and does not compute gravity.",
+    "Memory dense-vector lane is a deterministic bag-of-words proxy until an embedding adapter is explicitly supplied."
+  ],
+  "merge_notes": [
+    "Cursor worktree already contains an rgcs_lab package surface; integration should reconcile package ownership and adapter layout rather than blindly overlay either branch.",
+    "No public authority or claim-language files were edited."
+  ]
+}
