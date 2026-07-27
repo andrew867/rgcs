@@ -1,0 +1,1297 @@
+{
+  "schema": "rgcs.r109.t11-evaluation.v1",
+  "candidate_count": 46,
+  "survivor_count": 0,
+  "equivalence_classes": [],
+  "results": [
+    {
+      "candidate": "T11_CANDIDATE_ORDER_FQCS",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order F>Q>C>S",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_FQSC",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order F>Q>S>C",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_FCQS",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order F>C>Q>S",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_FCSQ",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order F>C>S>Q",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_FSQC",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order F>S>Q>C",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_FSCQ",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order F>S>C>Q",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_QFCS",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order Q>F>C>S",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": false,
+          "roundtrip": false,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_QFSC",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order Q>F>S>C",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": false,
+          "roundtrip": false,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_QCFS",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order Q>C>F>S",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": false,
+          "roundtrip": false,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": false,
+          "roundtrip": false,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_QCSF",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order Q>C>S>F",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_QSFC",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order Q>S>F>C",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": false,
+          "roundtrip": false,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": false,
+          "roundtrip": false,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_QSCF",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order Q>S>C>F",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": true,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_CFQS",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order C>F>Q>S",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_CFSQ",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order C>F>S>Q",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_CQFS",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order C>Q>F>S",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": false,
+          "roundtrip": false,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": false,
+          "roundtrip": false,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_CQSF",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order C>Q>S>F",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_CSFQ",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order C>S>F>Q",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_CSQF",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order C>S>Q>F",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_SFQC",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order S>F>Q>C",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_SFCQ",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order S>F>C>Q",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_SQFC",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order S>Q>F>C",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": false,
+          "roundtrip": false,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": false,
+          "roundtrip": false,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_SQCF",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order S>Q>C>F",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_SCFQ",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order S>C>F>Q",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_ORDER_SCQF",
+      "kind": "FIELD_ORDER",
+      "assumptions": "contiguous fields in the 33-bit frame, order S>C>Q>F",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_OCTAL_DELETE_0",
+      "kind": "OCTAL_DELETE",
+      "assumptions": "refined octal11 = compact octal10 with the child digit inserted at octal position 0",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_OCTAL_DELETE_1",
+      "kind": "OCTAL_DELETE",
+      "assumptions": "refined octal11 = compact octal10 with the child digit inserted at octal position 1",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_OCTAL_DELETE_2",
+      "kind": "OCTAL_DELETE",
+      "assumptions": "refined octal11 = compact octal10 with the child digit inserted at octal position 2",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_OCTAL_DELETE_3",
+      "kind": "OCTAL_DELETE",
+      "assumptions": "refined octal11 = compact octal10 with the child digit inserted at octal position 3",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_OCTAL_DELETE_4",
+      "kind": "OCTAL_DELETE",
+      "assumptions": "refined octal11 = compact octal10 with the child digit inserted at octal position 4",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_OCTAL_DELETE_5",
+      "kind": "OCTAL_DELETE",
+      "assumptions": "refined octal11 = compact octal10 with the child digit inserted at octal position 5",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_OCTAL_DELETE_6",
+      "kind": "OCTAL_DELETE",
+      "assumptions": "refined octal11 = compact octal10 with the child digit inserted at octal position 6",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_OCTAL_DELETE_7",
+      "kind": "OCTAL_DELETE",
+      "assumptions": "refined octal11 = compact octal10 with the child digit inserted at octal position 7",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_OCTAL_DELETE_8",
+      "kind": "OCTAL_DELETE",
+      "assumptions": "refined octal11 = compact octal10 with the child digit inserted at octal position 8",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_OCTAL_DELETE_9",
+      "kind": "OCTAL_DELETE",
+      "assumptions": "refined octal11 = compact octal10 with the child digit inserted at octal position 9",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_OCTAL_DELETE_10",
+      "kind": "OCTAL_DELETE",
+      "assumptions": "refined octal11 = compact octal10 with the child digit inserted at octal position 10",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_BITSHIFT_GROUP_0",
+      "kind": "COMPACT_SHIFT",
+      "assumptions": "refined bits = compact bits with one 3-bit child group inserted at bit offset 0",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_BITSHIFT_GROUP_1",
+      "kind": "COMPACT_SHIFT",
+      "assumptions": "refined bits = compact bits with one 3-bit child group inserted at bit offset 3",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_BITSHIFT_GROUP_2",
+      "kind": "COMPACT_SHIFT",
+      "assumptions": "refined bits = compact bits with one 3-bit child group inserted at bit offset 6",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_BITSHIFT_GROUP_3",
+      "kind": "COMPACT_SHIFT",
+      "assumptions": "refined bits = compact bits with one 3-bit child group inserted at bit offset 9",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_BITSHIFT_GROUP_4",
+      "kind": "COMPACT_SHIFT",
+      "assumptions": "refined bits = compact bits with one 3-bit child group inserted at bit offset 12",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_BITSHIFT_GROUP_5",
+      "kind": "COMPACT_SHIFT",
+      "assumptions": "refined bits = compact bits with one 3-bit child group inserted at bit offset 15",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_BITSHIFT_GROUP_6",
+      "kind": "COMPACT_SHIFT",
+      "assumptions": "refined bits = compact bits with one 3-bit child group inserted at bit offset 18",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_BITSHIFT_GROUP_7",
+      "kind": "COMPACT_SHIFT",
+      "assumptions": "refined bits = compact bits with one 3-bit child group inserted at bit offset 21",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_BITSHIFT_GROUP_8",
+      "kind": "COMPACT_SHIFT",
+      "assumptions": "refined bits = compact bits with one 3-bit child group inserted at bit offset 24",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_BITSHIFT_GROUP_9",
+      "kind": "COMPACT_SHIFT",
+      "assumptions": "refined bits = compact bits with one 3-bit child group inserted at bit offset 27",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11_CANDIDATE_BITSHIFT_GROUP_10",
+      "kind": "COMPACT_SHIFT",
+      "assumptions": "refined bits = compact bits with one 3-bit child group inserted at bit offset 30",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "contained": false,
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    }
+  ],
+  "status": "NO_CANDIDATE_IN_BOUNDED_SPACE"
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "rgcs.r109.sealed-holdout-intake.v1",
+  "intake_id": "SEALED_HOLDOUT_INTAKE_2026-07-27",
+  "external_receipt_status": "referenced file RGCS_Sealed_Holdout_Intake_2026-07-27/SEALED_HOLDOUT_INTAKE.json NOT FOUND on disk after full search; operator chat message of 2026-07-27 is the intake source",
+  "intake_sha256": "350c4ffba82e2434896d2b2f57fb925fba035382bed6d0768e52b7d87f3d16f6",
+  "records": [
+    {
+      "raw": 165892323,
+      "received_local": "2026-07-27 ~06:07",
+      "batch": "waking",
+      "source_note": "recorded immediately on waking; no description",
+      "evidence_class": "SOURCE_REPORTED",
+      "raw_sha256": "99311666b6534f36a22423b2cafb86b7a928c6a0fcb62ce38a67f72240a59ea9"
+    },
+    {
+      "raw": 1687209343,
+      "received_local": "2026-07-27 ~14:05",
+      "batch": "pair",
+      "source_note": "received together without description; relationship to 168724343 UNKNOWN \u2014 not assumed",
+      "evidence_class": "SOURCE_REPORTED",
+      "raw_sha256": "b4746845581be1f11ed8cce5629539f7622e97058f4af6b7a94752c82114b04c"
+    },
+    {
+      "raw": 168724343,
+      "received_local": "2026-07-27 ~14:05",
+      "batch": "pair",
+      "source_note": "received together without description; relationship to 1687209343 UNKNOWN \u2014 not assumed",
+      "evidence_class": "SOURCE_REPORTED",
+      "raw_sha256": "9a6ce81fc0401792a3bde93e2c00cd8b2b3107e3ea6bc62e8ddb4be5bf198d30"
+    },
+    {
+      "raw": 165872943,
+      "received_local": "2026-07-27 ~16:31",
+      "batch": "preset-pair",
+      "source_note": "source note: 'move like preset locations'; no geographic labels",
+      "evidence_class": "SOURCE_REPORTED",
+      "raw_sha256": "f811cdad55561c66615b248eff726c9f81ec0c12ec23b3d511dfb576d3d89a5c"
+    },
+    {
+      "raw": 165829473,
+      "received_local": "2026-07-27 ~16:31",
+      "batch": "preset-pair",
+      "source_note": "source note: 'move like preset locations'; no geographic labels",
+      "evidence_class": "SOURCE_REPORTED",
+      "raw_sha256": "25a3ecc87033194ac61eb1143c31952ca4eee75bec62c9f9a3962f802a296db9"
+    }
+  ],
+  "structural_observation": {
+    "all_decimal_terminals": 3,
+    "decodable_s3_values": {
+      "165892323": 3,
+      "168724343": 7,
+      "165872943": 7,
+      "165829473": 1
+    },
+    "uniform": false,
+    "firewall": "decimal terminal marker != binary low-three bits != physical shell semantics (R109-SHL-02, strengthened)"
+  },
+  "rules": [
+    "hashed before decoding",
+    "never T11 selection input",
+    "never Earth V2 fit input",
+    "pair relationship untested until T11 frozen",
+    "no gazetteer lookup until T11+header+face+V2 frozen",
+    "no retuning after label reveal",
+    "publication HOLD"
+  ]
+}

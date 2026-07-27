@@ -1,0 +1,138 @@
+{
+  "schema": "rgcs.r109.vector-registry.v2",
+  "records": [
+    {
+      "raw": 165876523,
+      "role": "compact_training_anchor",
+      "label": "Stonehenge",
+      "status": "CURRENT",
+      "evidence_class": "SOURCE_REPORTED",
+      "fit_allowed": true,
+      "notes": "fixed compact form; training equality; V2 calibration anchor",
+      "octal": "1170611453",
+      "octal_depth": 10,
+      "decimal_terminal_digit": 3
+    },
+    {
+      "raw": 1643789253,
+      "role": "refined_training_anchor",
+      "label": "Stonehenge",
+      "status": "CURRENT_T11_UNRESOLVED",
+      "evidence_class": "SOURCE_REPORTED",
+      "fit_allowed": false,
+      "notes": "same physical address as 165876523 at higher precision; T11 interleave unresolved — parent-child constraint only",
+      "octal": "14176435705",
+      "octal_depth": 11,
+      "decimal_terminal_digit": 3
+    },
+    {
+      "raw": 167849523,
+      "role": "compact_training_anchor",
+      "label": "Erie",
+      "status": "CURRENT",
+      "evidence_class": "SOURCE_REPORTED",
+      "fit_allowed": true,
+      "notes": "V2 calibration anchor",
+      "octal": "1200227063",
+      "octal_depth": 10,
+      "decimal_terminal_digit": 3
+    },
+    {
+      "raw": 165879243,
+      "role": "compact_training_anchor",
+      "label": "Montreal",
+      "status": "CORRECTED_CURRENT_DIRECT",
+      "evidence_class": "SOURCE_REPORTED",
+      "fit_allowed": true,
+      "notes": "DIRECT compact packet (R109-MTL-01); replaces the affine bridge target 168500683 and the superseded transcription",
+      "octal": "1170616713",
+      "octal_depth": 10,
+      "decimal_terminal_digit": 3
+    },
+    {
+      "raw": 168729543,
+      "role": "historical_record",
+      "label": "Montreal superseded transcription",
+      "status": "SUPERSEDED",
+      "evidence_class": "SUPERSEDED",
+      "fit_allowed": false,
+      "notes": "preserved provenance; never a current anchor",
+      "octal": "1203515707",
+      "octal_depth": 10,
+      "decimal_terminal_digit": 3
+    },
+    {
+      "raw": 168500683,
+      "role": "historical_record",
+      "label": "Montreal affine-bridge target (stale)",
+      "status": "SUPERSEDED",
+      "evidence_class": "SUPERSEDED",
+      "fit_allowed": false,
+      "notes": "output of the superseded general affine bridge; retained in the superseded-model ledger only",
+      "octal": "1202616713",
+      "octal_depth": 10,
+      "decimal_terminal_digit": 3
+    },
+    {
+      "raw": 168930443,
+      "role": "compact_training_anchor",
+      "label": "Toronto",
+      "status": "SOURCE_CONFIRMED",
+      "evidence_class": "SOURCE_REPORTED",
+      "fit_allowed": true,
+      "notes": "V2 calibration anchor",
+      "octal": "1204326213",
+      "octal_depth": 10,
+      "decimal_terminal_digit": 3
+    },
+    {
+      "raw": 1672875493,
+      "role": "refined_training_anchor",
+      "label": "Toronto",
+      "status": "CURRENT_T11_UNRESOLVED",
+      "evidence_class": "SOURCE_REPORTED",
+      "fit_allowed": false,
+      "notes": "same physical address as 168930443 at higher precision",
+      "octal": "14355406745",
+      "octal_depth": 11,
+      "decimal_terminal_digit": 3
+    },
+    {
+      "raw": 1658274383,
+      "role": "labelled_record_not_for_fit",
+      "label": "CYYT St. John's",
+      "status": "T11_UNRESOLVED",
+      "evidence_class": "SOURCE_REPORTED",
+      "fit_allowed": false,
+      "notes": "Newfoundland record — excluded from warp fitting by R109-HLD-01",
+      "octal": "14265641117",
+      "octal_depth": 11,
+      "decimal_terminal_digit": 3
+    },
+    {
+      "raw": 1658792343,
+      "role": "corrupted_session_record",
+      "label": "Gander/Argentia collision",
+      "status": "DO_NOT_FIT_REACQUIRE",
+      "evidence_class": "UNRESOLVED",
+      "fit_allowed": false,
+      "notes": "corrupted transcription session; reacquire from source; never fitted",
+      "octal": "14267624627",
+      "octal_depth": 11,
+      "decimal_terminal_digit": 3
+    },
+    {
+      "raw": 167854923,
+      "role": "frozen_blind_holdout",
+      "label": null,
+      "status": "DO_NOT_RETUNE",
+      "evidence_class": "HOLDOUT_RESULT",
+      "fit_allowed": false,
+      "notes": "frozen blind holdout with existing V1 blind receipt and candidate Ohio output; V2 is never moved to change it",
+      "octal": "1200241513",
+      "octal_depth": 10,
+      "decimal_terminal_digit": 3
+    }
+  ],
+  "fit_anchor_count": 4
+}

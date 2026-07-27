@@ -1,0 +1,30 @@
+{
+  "transport": {
+    "modulus": 1073741824,
+    "header_candidate": 16,
+    "variable_stone_payload": 43789253,
+    "variable_toronto_payload": 72875493,
+    "a": 923,
+    "b": 550585316,
+    "a_inverse": 953920147,
+    "stone_forward": 165876523,
+    "toronto_forward": 168930443,
+    "stone_inverse": 43789253,
+    "toronto_inverse": 72875493,
+    "observed_decomposition": "923 = 40*23 + 3; recorded as retrospective arithmetic only"
+  },
+  "node_and_face": {
+    "stone_top6_state": 9,
+    "selected_lattice_node": 23,
+    "absolute_gap": 14,
+    "selected_face_codebook_offset": 14
+  },
+  "equilateral_tree_metric": {
+    "lcp_E_M": 2,
+    "lcp_M_T": 2,
+    "lcp_T_E": 2,
+    "tree_distance_E_M": 18,
+    "tree_distance_M_T": 18,
+    "tree_distance_T_E": 18
+  }
+}

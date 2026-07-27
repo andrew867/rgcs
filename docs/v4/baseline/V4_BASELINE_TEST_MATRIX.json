@@ -92,6 +92,15 @@
     ],
     "test_functions": 33
   },
+  "r109": {
+    "files": [
+      "test_rlab109_codec.py",
+      "test_rlab109_earth.py",
+      "test_rlab109_sealed_holdout.py",
+      "test_rlab109_t11_headers_shells.py"
+    ],
+    "test_functions": 35
+  },
   "regression": {
     "files": [
       "test_generator_determinism.py",

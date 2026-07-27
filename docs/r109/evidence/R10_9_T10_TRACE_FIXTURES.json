@@ -1,0 +1,265 @@
+{
+  "schema": "rgcs.r109.t10-traces.v1",
+  "traces": {
+    "165876523": {
+      "schema": "rgcs.structural-trace.v1",
+      "raw_decimal": "165876523",
+      "width_bits": 30,
+      "binary30": "001001111000110001001100101011",
+      "octal10": "1170611453",
+      "packet_family": "federation-terra-f5-q22-s3-candidate",
+      "face_bits": "00100",
+      "face_id": 4,
+      "face_status": "valid-source-face-range",
+      "q22_bits": "1111000110001001100101",
+      "q22_path": [
+        3,
+        3,
+        0,
+        1,
+        2,
+        0,
+        2,
+        1,
+        2,
+        1,
+        1
+      ],
+      "shell_bits": "011",
+      "extracted_shell": 3,
+      "spatial_octal_path": "117061145",
+      "morton_audit": {
+        "x_bits": "001010011",
+        "y_bits": "001010000",
+        "z_bits": "111001101",
+        "x_index": 83,
+        "y_index": 80,
+        "z_index": 461
+      },
+      "fixture_label": null,
+      "structural_status": "EXACT_STRUCTURAL_DECODE",
+      "physical_projection_status": "UNDERDETERMINED",
+      "claim_class": "EXACT_STRUCTURAL",
+      "claims": {
+        "source_origin_validated": false,
+        "stonehenge_independently_decoded": false,
+        "octal_packet_structure_recovered": true,
+        "physical_projection": "UNDERDETERMINED",
+        "standing": {
+          "SOURCE_ORIGIN_VALIDATED": "no",
+          "STONEHENGE_INDEPENDENTLY_DECODED": "no, until the corrected transform passes",
+          "OCTAL_PACKET_STRUCTURE_RECOVERED": "yes",
+          "PHYSICAL_PROJECTION": "underdetermined unless a later receipt proves otherwise"
+        }
+      }
+    },
+    "167849523": {
+      "schema": "rgcs.structural-trace.v1",
+      "raw_decimal": "167849523",
+      "width_bits": 30,
+      "binary30": "001010000000010010111000110011",
+      "octal10": "1200227063",
+      "packet_family": "federation-terra-f5-q22-s3-candidate",
+      "face_bits": "00101",
+      "face_id": 5,
+      "face_status": "valid-source-face-range",
+      "q22_bits": "0000000010010111000110",
+      "q22_path": [
+        0,
+        0,
+        0,
+        0,
+        2,
+        1,
+        1,
+        3,
+        0,
+        1,
+        2
+      ],
+      "shell_bits": "011",
+      "extracted_shell": 3,
+      "spatial_octal_path": "120022706",
+      "morton_audit": {
+        "x_bits": "000000101",
+        "y_bits": "010011101",
+        "z_bits": "100000100",
+        "x_index": 5,
+        "y_index": 157,
+        "z_index": 260
+      },
+      "fixture_label": null,
+      "structural_status": "EXACT_STRUCTURAL_DECODE",
+      "physical_projection_status": "UNDERDETERMINED",
+      "claim_class": "EXACT_STRUCTURAL",
+      "claims": {
+        "source_origin_validated": false,
+        "stonehenge_independently_decoded": false,
+        "octal_packet_structure_recovered": true,
+        "physical_projection": "UNDERDETERMINED",
+        "standing": {
+          "SOURCE_ORIGIN_VALIDATED": "no",
+          "STONEHENGE_INDEPENDENTLY_DECODED": "no, until the corrected transform passes",
+          "OCTAL_PACKET_STRUCTURE_RECOVERED": "yes",
+          "PHYSICAL_PROJECTION": "underdetermined unless a later receipt proves otherwise"
+        }
+      }
+    },
+    "165879243": {
+      "schema": "rgcs.structural-trace.v1",
+      "raw_decimal": "165879243",
+      "width_bits": 30,
+      "binary30": "001001111000110001110111001011",
+      "octal10": "1170616713",
+      "packet_family": "federation-terra-f5-q22-s3-candidate",
+      "face_bits": "00100",
+      "face_id": 4,
+      "face_status": "valid-source-face-range",
+      "q22_bits": "1111000110001110111001",
+      "q22_path": [
+        3,
+        3,
+        0,
+        1,
+        2,
+        0,
+        3,
+        2,
+        3,
+        2,
+        1
+      ],
+      "shell_bits": "011",
+      "extracted_shell": 3,
+      "spatial_octal_path": "117061671",
+      "morton_audit": {
+        "x_bits": "001010110",
+        "y_bits": "001010110",
+        "z_bits": "111001011",
+        "x_index": 86,
+        "y_index": 86,
+        "z_index": 459
+      },
+      "fixture_label": null,
+      "structural_status": "EXACT_STRUCTURAL_DECODE",
+      "physical_projection_status": "UNDERDETERMINED",
+      "claim_class": "EXACT_STRUCTURAL",
+      "claims": {
+        "source_origin_validated": false,
+        "stonehenge_independently_decoded": false,
+        "octal_packet_structure_recovered": true,
+        "physical_projection": "UNDERDETERMINED",
+        "standing": {
+          "SOURCE_ORIGIN_VALIDATED": "no",
+          "STONEHENGE_INDEPENDENTLY_DECODED": "no, until the corrected transform passes",
+          "OCTAL_PACKET_STRUCTURE_RECOVERED": "yes",
+          "PHYSICAL_PROJECTION": "underdetermined unless a later receipt proves otherwise"
+        }
+      }
+    },
+    "168930443": {
+      "schema": "rgcs.structural-trace.v1",
+      "raw_decimal": "168930443",
+      "width_bits": 30,
+      "binary30": "001010000100011010110010001011",
+      "octal10": "1204326213",
+      "packet_family": "federation-terra-f5-q22-s3-candidate",
+      "face_bits": "00101",
+      "face_id": 5,
+      "face_status": "valid-source-face-range",
+      "q22_bits": "0000100011010110010001",
+      "q22_path": [
+        0,
+        0,
+        2,
+        0,
+        3,
+        1,
+        1,
+        2,
+        1,
+        0,
+        1
+      ],
+      "shell_bits": "011",
+      "extracted_shell": 3,
+      "spatial_octal_path": "120432621",
+      "morton_audit": {
+        "x_bits": "000100100",
+        "y_bits": "010011110",
+        "z_bits": "100010001",
+        "x_index": 36,
+        "y_index": 158,
+        "z_index": 273
+      },
+      "fixture_label": null,
+      "structural_status": "EXACT_STRUCTURAL_DECODE",
+      "physical_projection_status": "UNDERDETERMINED",
+      "claim_class": "EXACT_STRUCTURAL",
+      "claims": {
+        "source_origin_validated": false,
+        "stonehenge_independently_decoded": false,
+        "octal_packet_structure_recovered": true,
+        "physical_projection": "UNDERDETERMINED",
+        "standing": {
+          "SOURCE_ORIGIN_VALIDATED": "no",
+          "STONEHENGE_INDEPENDENTLY_DECODED": "no, until the corrected transform passes",
+          "OCTAL_PACKET_STRUCTURE_RECOVERED": "yes",
+          "PHYSICAL_PROJECTION": "underdetermined unless a later receipt proves otherwise"
+        }
+      }
+    },
+    "167854923": {
+      "schema": "rgcs.structural-trace.v1",
+      "raw_decimal": "167854923",
+      "width_bits": 30,
+      "binary30": "001010000000010100001101001011",
+      "octal10": "1200241513",
+      "packet_family": "federation-terra-f5-q22-s3-candidate",
+      "face_bits": "00101",
+      "face_id": 5,
+      "face_status": "valid-source-face-range",
+      "q22_bits": "0000000010100001101001",
+      "q22_path": [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        1,
+        2,
+        2,
+        1
+      ],
+      "shell_bits": "011",
+      "extracted_shell": 3,
+      "spatial_octal_path": "120024151",
+      "morton_audit": {
+        "x_bits": "000001010",
+        "y_bits": "010010000",
+        "z_bits": "100000111",
+        "x_index": 10,
+        "y_index": 144,
+        "z_index": 263
+      },
+      "fixture_label": null,
+      "structural_status": "EXACT_STRUCTURAL_DECODE",
+      "physical_projection_status": "UNDERDETERMINED",
+      "claim_class": "EXACT_STRUCTURAL",
+      "claims": {
+        "source_origin_validated": false,
+        "stonehenge_independently_decoded": false,
+        "octal_packet_structure_recovered": true,
+        "physical_projection": "UNDERDETERMINED",
+        "standing": {
+          "SOURCE_ORIGIN_VALIDATED": "no",
+          "STONEHENGE_INDEPENDENTLY_DECODED": "no, until the corrected transform passes",
+          "OCTAL_PACKET_STRUCTURE_RECOVERED": "yes",
+          "PHYSICAL_PROJECTION": "underdetermined unless a later receipt proves otherwise"
+        }
+      }
+    }
+  }
+}

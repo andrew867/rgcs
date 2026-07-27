@@ -1,0 +1,32 @@
+{
+  "schema": "rgcs.r109.test-receipt.v1",
+  "date": "2026-07-27",
+  "branch": "program/r10-9-variable-depth",
+  "environment": "Windows 11 10.0.26200, Python 3.13.2, venv %LOCALAPPDATA%/rgcs-int-venv (outside OneDrive)",
+  "focused_suite": {
+    "command": "pytest tests/r109 -q",
+    "result": "39 passed",
+    "exit_code": 0,
+    "coverage": [
+      "compact packet exactness for all five corpus vectors incl. direct Montréal (encode(decode(x))==x)",
+      "depth dispatch T10/T11; long values never truncated",
+      "stale-model regressions: affine bridge refused in production (historical replay only via explicit profile id; archived arithmetic 43789253->165876523 still reproduces), superseded transcription and bridge target refused as fit inputs, decimal-triplet XYZ refused",
+      "node 23 six-bit selector; 23-9=14; source_face=(F5+14) mod 20; literal F5=23 refused at typed layer AND frozen parser; reserved-face promotion refused",
+      "header recovery: NOT_RECOVERED status, UNRESOLVED aliases, frequency-key list quarantined from header parsing, group codes stay SOURCE_REPORTED (evidence-class upgrade refused)",
+      "T11: 46-candidate bounded space declared/finite, evaluation honest (zero survivors recorded), reversibility where decodable, NO location names in candidate logic (source-scan test)",
+      "shells: crustal band variable depth (Terra/Luna body-specific), shell 7 orbit class, marker firewall reports four facts and refuses collapse, outer-in vs inner-out closure under every declared profile",
+      "registry V2: all eleven vectors present, fit set exactly {Stonehenge, Erie, Montréal-direct, Toronto}, corrupted collision and Newfoundland and holdout excluded",
+      "earth: V1 archive preserved; V1 chain reproduces Stonehenge and orange triplet to <1e-9; V2 anchors use direct Montréal and never the superseded values; V2 evidence records fold failure honestly (361 L6 reversals vs V1's 0); blind holdout never an anchor",
+      "sealed holdout intake 2026-07-27: records hashed+sealed, never training inputs (T11/V2/fit sets), pair relation not assumed, structural observation preserved (all decimal terminals 3, S3={3,7,7,1}), pre-reveal prediction receipts for all four decodable vectors, T11-depth value has no prediction"
+    ]
+  },
+  "full_repository_suite": {
+    "command": "pytest tests -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic",
+    "result": "7976 passed, 15 skipped, 1 deselected, 4 warnings in 976.90s",
+    "failed": 0,
+    "errors": 0,
+    "exit_note": "pytest wrote its complete end-of-run summary (zero FAILED/ERROR lines); the wrapping shell was killed immediately afterwards by a desktop-app restart, so the shell-level echo of the exit code is absent. The previously observed run of the same suite one fix earlier completed 7970 passed / 1 failed with normal exit; the single failure (r109 missing from SOURCE_ROOTS) was fixed by registering the package and its test re-passed in isolation before this clean run.",
+    "deselection": "NR3-001 byte-equality generator node only — identical to CI and to the R10.8/consolidation phases"
+  },
+  "no_suppression": "no plugin disabled, no timeout masking, no test weakened; the one production change made in response to a failure was registering the new r109 package in rgcs_desktop.build_meta.SOURCE_ROOTS (the guard working as designed)"
+}

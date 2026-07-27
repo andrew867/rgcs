@@ -1,0 +1,118 @@
+{
+  "schema": "rgcs.r109.header-recovery.v1",
+  "primary_list": [
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    15
+  ],
+  "frequency_key_list_quarantined": [
+    5,
+    7,
+    24,
+    27,
+    28,
+    48,
+    54,
+    57,
+    64,
+    75,
+    97
+  ],
+  "status": "NOT_RECOVERED_FROM_HISTORY",
+  "evidence": "searched: integration repo working tree; git grep across all refs; git log -S pickaxe over --all; the sibling RGCS checkout; internal-docs/ operator archives including every plans-v5 zip. Only occurrences: the R10.9 prompt pack files themselves.",
+  "aliases": [
+    {
+      "value": 3,
+      "binary4": "0011",
+      "binary5": "00011",
+      "binary6": "000011",
+      "semantics": "UNKNOWN — not invented (R109-HDR-01)",
+      "evidence_class": "UNRESOLVED"
+    },
+    {
+      "value": 5,
+      "binary4": "0101",
+      "binary5": "00101",
+      "binary6": "000101",
+      "semantics": "UNKNOWN — not invented (R109-HDR-01)",
+      "evidence_class": "UNRESOLVED"
+    },
+    {
+      "value": 6,
+      "binary4": "0110",
+      "binary5": "00110",
+      "binary6": "000110",
+      "semantics": "UNKNOWN — not invented (R109-HDR-01)",
+      "evidence_class": "UNRESOLVED"
+    },
+    {
+      "value": 7,
+      "binary4": "0111",
+      "binary5": "00111",
+      "binary6": "000111",
+      "semantics": "UNKNOWN — not invented (R109-HDR-01)",
+      "evidence_class": "UNRESOLVED"
+    },
+    {
+      "value": 8,
+      "binary4": "1000",
+      "binary5": "01000",
+      "binary6": "001000",
+      "semantics": "UNKNOWN — not invented (R109-HDR-01)",
+      "evidence_class": "UNRESOLVED"
+    },
+    {
+      "value": 9,
+      "binary4": "1001",
+      "binary5": "01001",
+      "binary6": "001001",
+      "semantics": "UNKNOWN — not invented (R109-HDR-01)",
+      "evidence_class": "UNRESOLVED"
+    },
+    {
+      "value": 10,
+      "binary4": "1010",
+      "binary5": "01010",
+      "binary6": "001010",
+      "semantics": "UNKNOWN — not invented (R109-HDR-01)",
+      "evidence_class": "UNRESOLVED"
+    },
+    {
+      "value": 12,
+      "binary4": "1100",
+      "binary5": "01100",
+      "binary6": "001100",
+      "semantics": "UNKNOWN — not invented (R109-HDR-01)",
+      "evidence_class": "UNRESOLVED"
+    },
+    {
+      "value": 15,
+      "binary4": "1111",
+      "binary5": "01111",
+      "binary6": "001111",
+      "semantics": "UNKNOWN — not invented (R109-HDR-01)",
+      "evidence_class": "UNRESOLVED"
+    }
+  ],
+  "source_reported_group_codes": {
+    "16": "Sol members in the GFW/intergalactic-federation group",
+    "16-5": "Terra",
+    "16-7": "Luna"
+  },
+  "chronology": [
+    {
+      "date": "2026-07-26",
+      "event": "federation group / node 23 provenance recorded in the private operator area (internal-docs, untracked)"
+    },
+    {
+      "date": "2026-07-27",
+      "event": "R10.9 pack names the primary historical header list; repo+history+archive search finds no earlier interpretation; list stored as explicit UNRESOLVED alias set"
+    }
+  ]
+}

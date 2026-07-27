@@ -5,14 +5,16 @@
     "7962817": "commit",
     "9165594": "commit"
   },
-  "branch": "program/integration",
+  "branch": "program/r10-9-variable-depth",
   "dirty_files": [
-    " M docs/program/final_consolidation/FINAL_CONSOLIDATION_REPORT.md",
     " M docs/v4/baseline/V4_REPO_INVENTORY.json",
-    "?? docs/program/final_consolidation/FINAL_RELEASE_HANDOFF.json",
-    "M docs/program/final_consolidation/CONSOLIDATION_DECISIONS.md"
+    " M rgcs_desktop/build_meta.py",
+    "?? docs/r109/",
+    "?? r109/",
+    "?? tests/r109/",
+    "M docs/v4/baseline/V4_BASELINE_TEST_MATRIX.json"
   ],
-  "head": "f0d39648be1807e18d909d0df06cea5a2d1ac706",
+  "head": "3af2496969a19a95fb5be974a783f63e7f2f1914",
   "protected_tags_present": {
     "v2.0.0": "f9fd2c20a05334e12ac9113ba86853c6591fc84e",
     "v3.0.0": "83521f73d6ad02b009ada88f3b8d33a8a00fc253",
@@ -92,6 +94,6 @@
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS/codex-worktree                                  71e7342 [program/codex-core-algorithms]",
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-claude                                          188caab [program/claude-authority-docs]",
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-cursor                                          d4baf0d [program/cursor-app-integration]",
-    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-integration                                     f0d3964 [program/integration]"
+    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-integration                                     3af2496 [program/r10-9-variable-depth]"
   ]
 }

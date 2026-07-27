@@ -1,0 +1,175 @@
+{
+  "schema": "rgcs.earth-alignment/0.1-candidate",
+  "status": "CALIBRATED_CANDIDATE_NOT_VALIDATED",
+  "publication_hold": true,
+  "frame": {
+    "optimization_storage": "conventional unit ECEF for numerical convenience",
+    "south_up_matrix": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0
+      ]
+    ],
+    "south_up_determinant": 1.0,
+    "render_to_ecef": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0
+      ]
+    ],
+    "note": "The South-Up realization is obtained by conjugating every physical vector, center, and displacement by the fixed proper rotation. Geographic rendering applies its transpose."
+  },
+  "root_profile": {
+    "origin": "Earth center of mass",
+    "axis": "mean rotation axis",
+    "root_target_lat_deg": -70.0,
+    "root_target_lon_deg": 120.0,
+    "root_mesh_face": 0,
+    "phase_feature": "e2",
+    "phase_target": "IGRF-14 2025 surface minimum",
+    "phase_target_lat_deg": -26.22,
+    "phase_target_lon_deg": -60.03,
+    "clockwise_codebook_sign": 1
+  },
+  "face_translation": {
+    "formula": "source_face = (packet_F5 + 14) mod 20",
+    "offset": 14,
+    "packet_face_4_source_face": 18,
+    "packet_face_5_source_face": 19,
+    "source_face_18_mesh_face": 12,
+    "source_face_19_mesh_face": 19,
+    "node23_relation": "abs(23 - Stonehenge_top6_state_9) = 14",
+    "claim_status": "FINITE_CALIBRATION_RESULT_NOT_SOURCE_SEMANTICS"
+  },
+  "transport_candidate": {
+    "header_candidate": "16",
+    "x_stone": 43789253,
+    "x_toronto": 72875493,
+    "modulus": 1073741824,
+    "a": 923,
+    "b": 550585316,
+    "a_inverse": 953920147,
+    "stone_canonical": 165876523,
+    "toronto_canonical": 168930443
+  },
+  "paths": {
+    "stonehenge": [
+      3,
+      3,
+      0,
+      1,
+      2,
+      0,
+      2,
+      1,
+      2,
+      1,
+      1
+    ],
+    "erie": [
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      1,
+      3,
+      0,
+      1,
+      2
+    ],
+    "montreal": [
+      0,
+      0,
+      1,
+      3,
+      1,
+      0,
+      3,
+      1,
+      3,
+      2,
+      0
+    ],
+    "toronto_canonical_candidate": [
+      0,
+      0,
+      2,
+      0,
+      3,
+      1,
+      1,
+      2,
+      1,
+      0,
+      1
+    ]
+  },
+  "warp": {
+    "family": "composed Gaussian radial-basis landmark registration on S2",
+    "primary_sigma_chord": 0.09,
+    "primary_steps": 542,
+    "orange_plane_correction_sigma_chord": 0.02,
+    "orange_plane_steps": 85,
+    "total_steps": 627,
+    "operator_steps_file": "operator/WARP_STEPS.json.gz"
+  },
+  "verification": {
+    "vertices": 40962,
+    "triangles": 81920,
+    "flips": 0,
+    "min_area_proxy_ratio": 0.038403667060314464,
+    "max_area_proxy_ratio": 5.860407372766939,
+    "p01_area_proxy_ratio": 0.3898977587511539,
+    "p99_area_proxy_ratio": 1.266241754527911,
+    "rms_log_area_proxy": 0.22304979099762923,
+    "min_orientation": 3.2912002097128704e-05
+  },
+  "forward_anchor_residual_deg": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "inverse_anchor_residual_deg": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "random_inverse_error_deg": {
+    "samples": 200,
+    "mean": 2.413838981505152e-05,
+    "max": 0.0025958069131906403,
+    "p50": 0.0,
+    "p90": 0.0,
+    "p99": 0.00047961225026684303
+  }
+}

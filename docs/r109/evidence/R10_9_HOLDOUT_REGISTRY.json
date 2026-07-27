@@ -1,0 +1,22 @@
+{
+  "schema": "rgcs.r109.holdout-registry.v1",
+  "frozen_blind_holdout": {
+    "raw": 167854923,
+    "octal": "1200241513",
+    "status": "DO_NOT_RETUNE",
+    "v1_receipt": {
+      "operator": "EARTH_ALIGNMENT_V1_LEGACY_CALIBRATED (archive 2026-07-26, 627 steps)",
+      "prewarp_convention": "recovered face-19 convention (APPROXIMATE_CONVENTION_UNRESOLVED)",
+      "output_lat_deg": 41.73006338758707,
+      "output_lon_deg": -80.83365937278147,
+      "candidate_region_note": "consistent with the pack-described candidate Ohio output; GEOMETRIC_CANDIDATE_ONLY_NOT_LABELLED_LOCATION"
+    },
+    "v2_transparent_report": {
+      "operator": "EARTH_ALIGNMENT_V2_MONTREAL_DIRECT",
+      "output_lat_deg": 41.71141147593621,
+      "output_lon_deg": -81.33771174871,
+      "note": "decoded AFTER V2 freeze for the record; never a calibration input; V2 was not adjusted to move it (R109-HLD-01)"
+    },
+    "future_lists_gate": "unlabelled Terra/Luna lists decode only after codec freeze + body-header resolution + raw-list hash, with no labels revealed"
+  }
+}

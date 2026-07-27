@@ -1,0 +1,62 @@
+{
+  "ANCHOR_FORWARD_RESULTS.csv": {
+    "bytes": 1092,
+    "sha256": "ad34bea4dbd2d3d7abb7a2d3426ea6f898ec9f6f2352a575b1828d2746de20f1"
+  },
+  "EARTH_ALIGNMENT_CANDIDATE.json": {
+    "bytes": 3463,
+    "sha256": "c74250303f40037001904de72e0fc63bc98b049bc25c9df4bbfd99638ec34a59"
+  },
+  "EARTH_ALIGNMENT_REPORT.md": {
+    "bytes": 8602,
+    "sha256": "b29b0063afbb95dbc1a3c75bdf1ce4ea5fd14ccef7d01f87fab7ab66483eccc9"
+  },
+  "EXACT_ARITHMETIC_TESTS.json": {
+    "bytes": 771,
+    "sha256": "5dd2786d5de2d0aceeb4f4239f989cf876cdac35334b1cb98c10b39a1ef19f2f"
+  },
+  "FACE_CODEBOOK_OPTION_A_OFFSET14.csv": {
+    "bytes": 291,
+    "sha256": "049898029836b255815ea3b355590f8036540429a5b1ea64172aac25dfa2f71c"
+  },
+  "FACE_OFFSET_SWEEP.csv": {
+    "bytes": 3272,
+    "sha256": "ff017571d7867676aa3ea1309921721e730f78398d2294eeaa84db22b28da646"
+  },
+  "MAPPED_FACE_CENTROIDS.csv": {
+    "bytes": 1144,
+    "sha256": "361409ade3d10e673e77790e6d73954db6ed0e6c73ab6966fb2fad489d6a7528"
+  },
+  "MAPPED_ICOSAHEDRON_VERTICES.csv": {
+    "bytes": 2010,
+    "sha256": "3760551b685f20ea3ccf10d8e982c2e7ad902e38378a2e450c509c374008d648"
+  },
+  "ORANGE_SLICE_RESULTS.csv": {
+    "bytes": 616,
+    "sha256": "db00fee87e45e1ee7b38b81e3e3103600dbc374dc520db55d15b01930f5b8bb0"
+  },
+  "README.md": {
+    "bytes": 598,
+    "sha256": "9d6233377c5f5a508c4ccc8e3950219d20cb66ef2cba9f709882b93f2571c382"
+  },
+  "WARP_SIGMA_SWEEP.csv": {
+    "bytes": 793,
+    "sha256": "425b53af829b4fc5b109b125870216ef69c46f1e0e3e98c637819982c81b61bb"
+  },
+  "apply_alignment.py": {
+    "bytes": 1733,
+    "sha256": "41499212b0fd3e096e1bad2a659d80eba2ac9551d8c6b8b36bf03ea0edb082b2"
+  },
+  "figures/earth_alignment_equirectangular.png": {
+    "bytes": 299274,
+    "sha256": "435c6552f004dc073e544daef7f63829efc1a9ecafb4b94d346b2cfea77469d3"
+  },
+  "figures/earth_alignment_globe.png": {
+    "bytes": 982178,
+    "sha256": "fa530f82a22d3dac4295946186163342123eea5dce507e21247bd93440ef2166"
+  },
+  "operator/WARP_STEPS.json.gz": {
+    "bytes": 176282,
+    "sha256": "93b4d2a47710231a02172d4fb3c0e926f54c2a212334ad28e64a68f2c5e684b6"
+  }
+}
