@@ -1,0 +1,33 @@
+candidate,family,assumptions,passes_all
+T11V2_FAM_ORIENT_FQCS_APPLY_seedFwd_childRaw,FAM_ORIENT,order F>Q>C>S; symbol map APPLY; seed BFS assignment; child raw,False
+T11V2_FAM_ORIENT_FQCS_APPLY_seedFwd_childRemap,FAM_ORIENT,order F>Q>C>S; symbol map APPLY; seed BFS assignment; child remapped,False
+T11V2_FAM_ORIENT_FQCS_APPLY_seedInv_childRaw,FAM_ORIENT,order F>Q>C>S; symbol map APPLY; seed inverse BFS assignment; child raw,False
+T11V2_FAM_ORIENT_FQCS_APPLY_seedInv_childRemap,FAM_ORIENT,order F>Q>C>S; symbol map APPLY; seed inverse BFS assignment; child remapped,False
+T11V2_FAM_ORIENT_FQCS_UNAPPLY_seedFwd_childRaw,FAM_ORIENT,order F>Q>C>S; symbol map UNAPPLY; seed BFS assignment; child raw,False
+T11V2_FAM_ORIENT_FQCS_UNAPPLY_seedFwd_childRemap,FAM_ORIENT,order F>Q>C>S; symbol map UNAPPLY; seed BFS assignment; child remapped,False
+T11V2_FAM_ORIENT_FQCS_UNAPPLY_seedInv_childRaw,FAM_ORIENT,order F>Q>C>S; symbol map UNAPPLY; seed inverse BFS assignment; child raw,False
+T11V2_FAM_ORIENT_FQCS_UNAPPLY_seedInv_childRemap,FAM_ORIENT,order F>Q>C>S; symbol map UNAPPLY; seed inverse BFS assignment; child remapped,False
+T11V2_FAM_ORDER_ORIENT_QFCS_APPLY_seedFwd_childRaw,FAM_ORDER_ORIENT,order Q>F>C>S; symbol map APPLY; seed BFS assignment; child raw,False
+T11V2_FAM_ORDER_ORIENT_QFCS_APPLY_seedFwd_childRemap,FAM_ORDER_ORIENT,order Q>F>C>S; symbol map APPLY; seed BFS assignment; child remapped,False
+T11V2_FAM_ORDER_ORIENT_QFCS_APPLY_seedInv_childRaw,FAM_ORDER_ORIENT,order Q>F>C>S; symbol map APPLY; seed inverse BFS assignment; child raw,False
+T11V2_FAM_ORDER_ORIENT_QFCS_APPLY_seedInv_childRemap,FAM_ORDER_ORIENT,order Q>F>C>S; symbol map APPLY; seed inverse BFS assignment; child remapped,False
+T11V2_FAM_ORDER_ORIENT_QFCS_UNAPPLY_seedFwd_childRaw,FAM_ORDER_ORIENT,order Q>F>C>S; symbol map UNAPPLY; seed BFS assignment; child raw,False
+T11V2_FAM_ORDER_ORIENT_QFCS_UNAPPLY_seedFwd_childRemap,FAM_ORDER_ORIENT,order Q>F>C>S; symbol map UNAPPLY; seed BFS assignment; child remapped,False
+T11V2_FAM_ORDER_ORIENT_QFCS_UNAPPLY_seedInv_childRaw,FAM_ORDER_ORIENT,order Q>F>C>S; symbol map UNAPPLY; seed inverse BFS assignment; child raw,False
+T11V2_FAM_ORDER_ORIENT_QFCS_UNAPPLY_seedInv_childRemap,FAM_ORDER_ORIENT,order Q>F>C>S; symbol map UNAPPLY; seed inverse BFS assignment; child remapped,False
+T11V2_FAM_ORDER_ORIENT_QCSF_APPLY_seedFwd_childRaw,FAM_ORDER_ORIENT,order Q>C>S>F; symbol map APPLY; seed BFS assignment; child raw,False
+T11V2_FAM_ORDER_ORIENT_QCSF_APPLY_seedFwd_childRemap,FAM_ORDER_ORIENT,order Q>C>S>F; symbol map APPLY; seed BFS assignment; child remapped,False
+T11V2_FAM_ORDER_ORIENT_QCSF_APPLY_seedInv_childRaw,FAM_ORDER_ORIENT,order Q>C>S>F; symbol map APPLY; seed inverse BFS assignment; child raw,False
+T11V2_FAM_ORDER_ORIENT_QCSF_APPLY_seedInv_childRemap,FAM_ORDER_ORIENT,order Q>C>S>F; symbol map APPLY; seed inverse BFS assignment; child remapped,False
+T11V2_FAM_ORDER_ORIENT_QCSF_UNAPPLY_seedFwd_childRaw,FAM_ORDER_ORIENT,order Q>C>S>F; symbol map UNAPPLY; seed BFS assignment; child raw,False
+T11V2_FAM_ORDER_ORIENT_QCSF_UNAPPLY_seedFwd_childRemap,FAM_ORDER_ORIENT,order Q>C>S>F; symbol map UNAPPLY; seed BFS assignment; child remapped,False
+T11V2_FAM_ORDER_ORIENT_QCSF_UNAPPLY_seedInv_childRaw,FAM_ORDER_ORIENT,order Q>C>S>F; symbol map UNAPPLY; seed inverse BFS assignment; child raw,False
+T11V2_FAM_ORDER_ORIENT_QCSF_UNAPPLY_seedInv_childRemap,FAM_ORDER_ORIENT,order Q>C>S>F; symbol map UNAPPLY; seed inverse BFS assignment; child remapped,False
+T11V2_FAM_NODE_FQCS_APPLY_seedFwd_spinInert,FAM_NODE,six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map APPLY; seed BFS; spin carried inert,False
+T11V2_FAM_NODE_FQCS_APPLY_seedFwd_spinAct,FAM_NODE,six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map APPLY; seed BFS; spin seeds orientation,False
+T11V2_FAM_NODE_FQCS_APPLY_seedInv_spinInert,FAM_NODE,six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map APPLY; seed inverse BFS; spin carried inert,False
+T11V2_FAM_NODE_FQCS_APPLY_seedInv_spinAct,FAM_NODE,six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map APPLY; seed inverse BFS; spin seeds orientation,False
+T11V2_FAM_NODE_FQCS_UNAPPLY_seedFwd_spinInert,FAM_NODE,six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map UNAPPLY; seed BFS; spin carried inert,False
+T11V2_FAM_NODE_FQCS_UNAPPLY_seedFwd_spinAct,FAM_NODE,six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map UNAPPLY; seed BFS; spin seeds orientation,False
+T11V2_FAM_NODE_FQCS_UNAPPLY_seedInv_spinInert,FAM_NODE,six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map UNAPPLY; seed inverse BFS; spin carried inert,False
+T11V2_FAM_NODE_FQCS_UNAPPLY_seedInv_spinAct,FAM_NODE,six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map UNAPPLY; seed inverse BFS; spin seeds orientation,False

@@ -1,0 +1,20 @@
+{
+  "schema": "rgcs.r1010.test-receipt.v1",
+  "date": "2026-07-27",
+  "branch": "program/r10-10-face-orientation",
+  "parent_commit": "b422e36ae4a289c0d392f946bf1b604a3b3c5065",
+  "environment": "Windows 11 10.0.26200, Python 3.13.2, venv %LOCALAPPDATA%/rgcs-int-venv",
+  "focused_suites": {
+    "tests/r1010": "16 passed (orientation group closure/inverse/parity, 20 faces/30 adjacencies/60 inverting reflective transitions, path-independence failure audited [12/12 five-cycles holonomy -1], centre-child dual flags, orientation traces, T11 V1 preserved [46/0], T11 V2 documented finite [32/0] with recorded rejections, reversibility where decodable, node-state reversible split + 60..63 refusal, no place names in orientation/search code, Montréal LCP=6 audit, holdout freeze + prediction receipts, sealed records still absent from all fit sets)",
+    "tests/r109": "39 passed (R10.9 regression intact)",
+    "combined": "55 passed, exit 0"
+  },
+  "full_repository_suite": {
+    "command": "pytest tests -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic",
+    "result": "7992 passed, 15 skipped, 1 deselected, 4 warnings in 1297.90s",
+    "exit_code": 0,
+    "deselection": "NR3-001 byte-equality generator node only — identical to CI and every prior phase"
+  },
+  "production_changes_for_guards": "r1010 registered in rgcs_desktop.build_meta.SOURCE_ROOTS (dist-freshness hash), proactively — coverage and packaging guards pass",
+  "no_suppression": "no plugin disabled, no timeout masking, no test weakened"
+}

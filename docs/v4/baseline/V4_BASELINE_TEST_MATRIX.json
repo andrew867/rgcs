@@ -92,6 +92,13 @@
     ],
     "test_functions": 33
   },
+  "r1010": {
+    "files": [
+      "test_rlab1010_orientation.py",
+      "test_rlab1010_t11_holdouts.py"
+    ],
+    "test_functions": 16
+  },
   "r109": {
     "files": [
       "test_rlab109_codec.py",

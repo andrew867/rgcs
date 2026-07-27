@@ -1,0 +1,14 @@
+{
+  "schema": "rgcs.r1010.holdout-freeze.v1",
+  "intake_id": "SEALED_HOLDOUT_INTAKE_2026-07-27",
+  "intake_sha256": "350c4ffba82e2434896d2b2f57fb925fba035382bed6d0768e52b7d87f3d16f6",
+  "implementation_state_sha256": "7a8ab3fa107b34e4685793306df10a3889f01411eb18a07d760ab5c35a96ae94",
+  "parent_commit": "b422e36ae4a289c0d392f946bf1b604a3b3c5065",
+  "frozen_components": {
+    "codec": "T10 frozen; T11 UNRESOLVED (searches V1+V2 exhausted, 0 survivors)",
+    "orientation": "S3 algebra + dual-graph BFS assignments frozen this run; holonomy incompleteness documented",
+    "body_profile": "UNRESOLVED (typed source-reported only)",
+    "earth_candidate": "V1 current smooth candidate; V2 folded diagnostic; V3 NOT BUILT (no packet-geometry change)"
+  },
+  "operator_gate": "predictions frozen and hashed below \u2014 the operator MAY NOW ask the source whether each result is correct and request labels; replies must be recorded verbatim; NO retuning after reveal"
+}

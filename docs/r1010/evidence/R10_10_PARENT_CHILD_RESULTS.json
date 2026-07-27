@@ -1,0 +1,938 @@
+{
+  "schema": "rgcs.r1010.t11-search-v2.v1",
+  "search_v1": "T11_SEARCH_V1_EXHAUSTED (46 candidates, 0 survivors, preserved in r109.t11_candidates)",
+  "candidate_count": 32,
+  "survivor_count": 0,
+  "equivalence_classes": [],
+  "results": [
+    {
+      "candidate": "T11V2_FAM_ORIENT_FQCS_APPLY_seedFwd_childRaw",
+      "family": "FAM_ORIENT",
+      "assumptions": "order F>Q>C>S; symbol map APPLY; seed BFS assignment; child raw",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORIENT_FQCS_APPLY_seedFwd_childRemap",
+      "family": "FAM_ORIENT",
+      "assumptions": "order F>Q>C>S; symbol map APPLY; seed BFS assignment; child remapped",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORIENT_FQCS_APPLY_seedInv_childRaw",
+      "family": "FAM_ORIENT",
+      "assumptions": "order F>Q>C>S; symbol map APPLY; seed inverse BFS assignment; child raw",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORIENT_FQCS_APPLY_seedInv_childRemap",
+      "family": "FAM_ORIENT",
+      "assumptions": "order F>Q>C>S; symbol map APPLY; seed inverse BFS assignment; child remapped",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORIENT_FQCS_UNAPPLY_seedFwd_childRaw",
+      "family": "FAM_ORIENT",
+      "assumptions": "order F>Q>C>S; symbol map UNAPPLY; seed BFS assignment; child raw",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORIENT_FQCS_UNAPPLY_seedFwd_childRemap",
+      "family": "FAM_ORIENT",
+      "assumptions": "order F>Q>C>S; symbol map UNAPPLY; seed BFS assignment; child remapped",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORIENT_FQCS_UNAPPLY_seedInv_childRaw",
+      "family": "FAM_ORIENT",
+      "assumptions": "order F>Q>C>S; symbol map UNAPPLY; seed inverse BFS assignment; child raw",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORIENT_FQCS_UNAPPLY_seedInv_childRemap",
+      "family": "FAM_ORIENT",
+      "assumptions": "order F>Q>C>S; symbol map UNAPPLY; seed inverse BFS assignment; child remapped",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QFCS_APPLY_seedFwd_childRaw",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>F>C>S; symbol map APPLY; seed BFS assignment; child raw",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": false,
+          "rejection": "reserved face 23",
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QFCS_APPLY_seedFwd_childRemap",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>F>C>S; symbol map APPLY; seed BFS assignment; child remapped",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": false,
+          "rejection": "reserved face 23",
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QFCS_APPLY_seedInv_childRaw",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>F>C>S; symbol map APPLY; seed inverse BFS assignment; child raw",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": false,
+          "rejection": "reserved face 23",
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QFCS_APPLY_seedInv_childRemap",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>F>C>S; symbol map APPLY; seed inverse BFS assignment; child remapped",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": false,
+          "rejection": "reserved face 23",
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QFCS_UNAPPLY_seedFwd_childRaw",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>F>C>S; symbol map UNAPPLY; seed BFS assignment; child raw",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": false,
+          "rejection": "reserved face 23",
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QFCS_UNAPPLY_seedFwd_childRemap",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>F>C>S; symbol map UNAPPLY; seed BFS assignment; child remapped",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": false,
+          "rejection": "reserved face 23",
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QFCS_UNAPPLY_seedInv_childRaw",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>F>C>S; symbol map UNAPPLY; seed inverse BFS assignment; child raw",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": false,
+          "rejection": "reserved face 23",
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QFCS_UNAPPLY_seedInv_childRemap",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>F>C>S; symbol map UNAPPLY; seed inverse BFS assignment; child remapped",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": false,
+          "rejection": "reserved face 23",
+          "passes": false
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QCSF_APPLY_seedFwd_childRaw",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>C>S>F; symbol map APPLY; seed BFS assignment; child raw",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QCSF_APPLY_seedFwd_childRemap",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>C>S>F; symbol map APPLY; seed BFS assignment; child remapped",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QCSF_APPLY_seedInv_childRaw",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>C>S>F; symbol map APPLY; seed inverse BFS assignment; child raw",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QCSF_APPLY_seedInv_childRemap",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>C>S>F; symbol map APPLY; seed inverse BFS assignment; child remapped",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QCSF_UNAPPLY_seedFwd_childRaw",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>C>S>F; symbol map UNAPPLY; seed BFS assignment; child raw",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QCSF_UNAPPLY_seedFwd_childRemap",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>C>S>F; symbol map UNAPPLY; seed BFS assignment; child remapped",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QCSF_UNAPPLY_seedInv_childRaw",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>C>S>F; symbol map UNAPPLY; seed inverse BFS assignment; child raw",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_ORDER_ORIENT_QCSF_UNAPPLY_seedInv_childRemap",
+      "family": "FAM_ORDER_ORIENT",
+      "assumptions": "order Q>C>S>F; symbol map UNAPPLY; seed inverse BFS assignment; child remapped",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": true,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_NODE_FQCS_APPLY_seedFwd_spinInert",
+      "family": "FAM_NODE",
+      "assumptions": "six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map APPLY; seed BFS; spin carried inert",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_NODE_FQCS_APPLY_seedFwd_spinAct",
+      "family": "FAM_NODE",
+      "assumptions": "six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map APPLY; seed BFS; spin seeds orientation",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_NODE_FQCS_APPLY_seedInv_spinInert",
+      "family": "FAM_NODE",
+      "assumptions": "six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map APPLY; seed inverse BFS; spin carried inert",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_NODE_FQCS_APPLY_seedInv_spinAct",
+      "family": "FAM_NODE",
+      "assumptions": "six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map APPLY; seed inverse BFS; spin seeds orientation",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_NODE_FQCS_UNAPPLY_seedFwd_spinInert",
+      "family": "FAM_NODE",
+      "assumptions": "six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map UNAPPLY; seed BFS; spin carried inert",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_NODE_FQCS_UNAPPLY_seedFwd_spinAct",
+      "family": "FAM_NODE",
+      "assumptions": "six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map UNAPPLY; seed BFS; spin seeds orientation",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_NODE_FQCS_UNAPPLY_seedInv_spinInert",
+      "family": "FAM_NODE",
+      "assumptions": "six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map UNAPPLY; seed inverse BFS; spin carried inert",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    },
+    {
+      "candidate": "T11V2_FAM_NODE_FQCS_UNAPPLY_seedInv_spinAct",
+      "family": "FAM_NODE",
+      "assumptions": "six-bit node state = spin*20+face (60..63 refused); 2-bit shell class; symbol map UNAPPLY; seed inverse BFS; spin seeds orientation",
+      "pair_results": [
+        {
+          "refined": 1643789253,
+          "compact": 165876523,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        },
+        {
+          "refined": 1672875493,
+          "compact": 168930443,
+          "decodes": true,
+          "roundtrip": true,
+          "same_face": false,
+          "same_shell_class": false,
+          "parent_path_equal": false,
+          "passes": false,
+          "rejection": "same_face; same_shell_class; parent_path_equal failed"
+        }
+      ],
+      "passes_all_pairs": false
+    }
+  ],
+  "status": "NO_CANDIDATE_IN_EXPANDED_FAMILIES"
+}
