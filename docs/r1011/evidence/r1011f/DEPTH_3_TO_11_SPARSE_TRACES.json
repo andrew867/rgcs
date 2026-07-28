@@ -1,0 +1,52 @@
+{
+  "stonehenge": {
+    "raw": 165876523,
+    "depth": 11,
+    "cell_center": [
+      51.17881756854648,
+      -1.8262863029374141
+    ],
+    "cell_diameter_km": 5.7829554619837715,
+    "note": "frozen check only; L0 law"
+  },
+  "erie": {
+    "raw": 167849523,
+    "depth": 11,
+    "cell_center": [
+      42.11448624791035,
+      -80.07616923256619
+    ],
+    "cell_diameter_km": 4.290759960027032,
+    "note": "frozen check only; L0 law"
+  },
+  "montreal_direct": {
+    "raw": 165879243,
+    "depth": 11,
+    "cell_center": [
+      51.494214986908915,
+      -1.8954507510591105
+    ],
+    "cell_diameter_km": 5.783353007791165,
+    "note": "frozen check only; L0 law"
+  },
+  "toronto": {
+    "raw": 168930443,
+    "depth": 11,
+    "cell_center": [
+      43.65322463296549,
+      -79.38324679756163
+    ],
+    "cell_diameter_km": 4.2907957429415,
+    "note": "frozen check only; L0 law"
+  },
+  "orange_A": {
+    "raw": 165892743,
+    "depth": 11,
+    "cell_center": [
+      50.04900357040987,
+      -2.4513486559483653
+    ],
+    "cell_diameter_km": 5.781753147774134,
+    "note": "frozen check only; L0 law"
+  }
+}

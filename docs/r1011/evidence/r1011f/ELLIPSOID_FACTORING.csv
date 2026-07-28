@@ -1,0 +1,4 @@
+context,edge,ellipsoid_factor,note
+COARSE_pack_reproduced,apex_to_miami,1.0014999672525613,only edge anywhere in this phase with <150 km cross-track
+EXACT_T_V1,apex_to_miami,degenerate,cross-track 306 km; fraction ~1; rejected
+EXACT_T_FLATFACE,apex_to_miami,0.9838,cross-track 1268 km; rejected

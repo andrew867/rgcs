@@ -1,0 +1,217 @@
+{
+  "raw_wire": "1687425419853",
+  "authority": "RAW_WIRE_REMAINS_UNCHANGED",
+  "candidate_count": 11,
+  "selection": null,
+  "candidates": [
+    {
+      "deleted_index_zero_based": 2,
+      "deleted_character": "8",
+      "candidate_wire": "167425419853",
+      "status": "POSSIBLE_SINGLE_EXTRA_DIGIT_CORRECTION_NOT_SELECTED",
+      "depth": 3,
+      "terminal": 3,
+      "E3": 5,
+      "states": [
+        34,
+        4,
+        37
+      ],
+      "children": [
+        2,
+        4,
+        1
+      ]
+    },
+    {
+      "deleted_index_zero_based": 3,
+      "deleted_character": "7",
+      "candidate_wire": "168425419853",
+      "status": "POSSIBLE_SINGLE_EXTRA_DIGIT_CORRECTION_NOT_SELECTED",
+      "depth": 3,
+      "terminal": 3,
+      "E3": 6,
+      "states": [
+        17,
+        48,
+        21
+      ],
+      "children": [
+        6,
+        4,
+        1
+      ]
+    },
+    {
+      "deleted_index_zero_based": 4,
+      "deleted_character": "4",
+      "candidate_wire": "168725419853",
+      "status": "POSSIBLE_SINGLE_EXTRA_DIGIT_CORRECTION_NOT_SELECTED",
+      "depth": 3,
+      "terminal": 3,
+      "E3": 6,
+      "states": [
+        32,
+        3,
+        55
+      ],
+      "children": [
+        4,
+        4,
+        1
+      ]
+    },
+    {
+      "deleted_index_zero_based": 5,
+      "deleted_character": "2",
+      "candidate_wire": "168745419853",
+      "status": "POSSIBLE_SINGLE_EXTRA_DIGIT_CORRECTION_NOT_SELECTED",
+      "depth": 3,
+      "terminal": 3,
+      "E3": 6,
+      "states": [
+        33,
+        0,
+        57
+      ],
+      "children": [
+        6,
+        4,
+        1
+      ]
+    },
+    {
+      "deleted_index_zero_based": 6,
+      "deleted_character": "5",
+      "candidate_wire": "168742419853",
+      "status": "POSSIBLE_SINGLE_EXTRA_DIGIT_CORRECTION_NOT_SELECTED",
+      "depth": 3,
+      "terminal": 3,
+      "E3": 6,
+      "states": [
+        32,
+        55,
+        47
+      ],
+      "children": [
+        7,
+        0,
+        1
+      ]
+    },
+    {
+      "deleted_index_zero_based": 7,
+      "deleted_character": "4",
+      "candidate_wire": "168742519853",
+      "status": "POSSIBLE_SINGLE_EXTRA_DIGIT_CORRECTION_NOT_SELECTED",
+      "depth": 3,
+      "terminal": 3,
+      "E3": 6,
+      "states": [
+        32,
+        56,
+        3
+      ],
+      "children": [
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "deleted_index_zero_based": 8,
+      "deleted_character": "1",
+      "candidate_wire": "168742549853",
+      "status": "POSSIBLE_SINGLE_EXTRA_DIGIT_CORRECTION_NOT_SELECTED",
+      "depth": 3,
+      "terminal": 3,
+      "E3": 6,
+      "states": [
+        32,
+        56,
+        9
+      ],
+      "children": [
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "deleted_index_zero_based": 9,
+      "deleted_character": "9",
+      "candidate_wire": "168742541853",
+      "status": "POSSIBLE_SINGLE_EXTRA_DIGIT_CORRECTION_NOT_SELECTED",
+      "depth": 3,
+      "terminal": 3,
+      "E3": 6,
+      "states": [
+        32,
+        56,
+        7
+      ],
+      "children": [
+        5,
+        5,
+        1
+      ]
+    },
+    {
+      "deleted_index_zero_based": 10,
+      "deleted_character": "8",
+      "candidate_wire": "168742541953",
+      "status": "POSSIBLE_SINGLE_EXTRA_DIGIT_CORRECTION_NOT_SELECTED",
+      "depth": 3,
+      "terminal": 3,
+      "E3": 6,
+      "states": [
+        32,
+        56,
+        7
+      ],
+      "children": [
+        5,
+        6,
+        3
+      ]
+    },
+    {
+      "deleted_index_zero_based": 11,
+      "deleted_character": "5",
+      "candidate_wire": "168742541983",
+      "status": "POSSIBLE_SINGLE_EXTRA_DIGIT_CORRECTION_NOT_SELECTED",
+      "depth": 3,
+      "terminal": 3,
+      "E3": 6,
+      "states": [
+        32,
+        56,
+        7
+      ],
+      "children": [
+        5,
+        6,
+        6
+      ]
+    },
+    {
+      "deleted_index_zero_based": 12,
+      "deleted_character": "3",
+      "candidate_wire": "168742541985",
+      "status": "POSSIBLE_SINGLE_EXTRA_DIGIT_CORRECTION_NOT_SELECTED",
+      "depth": 3,
+      "terminal": 5,
+      "E3": 6,
+      "states": [
+        32,
+        56,
+        7
+      ],
+      "children": [
+        5,
+        6,
+        6
+      ]
+    }
+  ]
+}

@@ -1,0 +1,447 @@
+{
+  "schema": "rgcs.r1011fa.intake-freeze.v1",
+  "intake_sha256": "b9f649ee07194170acb671d50302db4d20f3a96e6239345e62a7bf1bd45dc0b4",
+  "wire_count": 28,
+  "independent_parse": [
+    {
+      "wire": "165892376543",
+      "status": "PARSED",
+      "e3": 4,
+      "states": [
+        24,
+        62,
+        6
+      ],
+      "children": [
+        6,
+        2,
+        6
+      ],
+      "terminal": 3,
+      "depth": 3
+    },
+    {
+      "wire": "1687492323",
+      "status": "PARSED",
+      "e3": 4,
+      "states": [
+        11,
+        0,
+        22
+      ],
+      "children": [
+        0
+      ],
+      "terminal": 3,
+      "depth": 1
+    },
+    {
+      "wire": "165874213",
+      "status": "PARSED",
+      "e3": 2,
+      "states": [
+        15,
+        26,
+        29
+      ],
+      "children": [],
+      "terminal": 3,
+      "depth": 0
+    },
+    {
+      "wire": "1685723243",
+      "status": "PARSED",
+      "e3": 4,
+      "states": [
+        5,
+        38,
+        52
+      ],
+      "children": [
+        4
+      ],
+      "terminal": 3,
+      "depth": 1
+    },
+    {
+      "wire": "16879462343",
+      "status": "PARSED",
+      "e3": 5,
+      "states": [
+        15,
+        31,
+        15
+      ],
+      "children": [
+        7,
+        2
+      ],
+      "terminal": 3,
+      "depth": 2
+    },
+    {
+      "wire": "1687954133",
+      "status": "PARSED",
+      "e3": 4,
+      "states": [
+        12,
+        26,
+        34
+      ],
+      "children": [
+        5
+      ],
+      "terminal": 3,
+      "depth": 1
+    },
+    {
+      "wire": "16879432763",
+      "status": "PARSED",
+      "e3": 5,
+      "states": [
+        15,
+        30,
+        33
+      ],
+      "children": [
+        5,
+        4
+      ],
+      "terminal": 3,
+      "depth": 2
+    },
+    {
+      "wire": "16879053173",
+      "status": "PARSED",
+      "e3": 5,
+      "states": [
+        15,
+        21,
+        16
+      ],
+      "children": [
+        4,
+        5
+      ],
+      "terminal": 3,
+      "depth": 2
+    },
+    {
+      "wire": "168732567433",
+      "status": "PARSED",
+      "e3": 6,
+      "states": [
+        32,
+        25,
+        43
+      ],
+      "children": [
+        4,
+        4,
+        7
+      ],
+      "terminal": 3,
+      "depth": 3
+    },
+    {
+      "wire": "168759874243",
+      "status": "PARSED",
+      "e3": 6,
+      "states": [
+        33,
+        45,
+        0
+      ],
+      "children": [
+        7,
+        4,
+        0
+      ],
+      "terminal": 3,
+      "depth": 3
+    },
+    {
+      "wire": "16875421733",
+      "status": "PARSED",
+      "e3": 5,
+      "states": [
+        13,
+        60,
+        38
+      ],
+      "children": [
+        3,
+        5
+      ],
+      "terminal": 3,
+      "depth": 2
+    },
+    {
+      "wire": "168792375433",
+      "status": "PARSED",
+      "e3": 6,
+      "states": [
+        35,
+        16,
+        12
+      ],
+      "children": [
+        6,
+        4,
+        7
+      ],
+      "terminal": 3,
+      "depth": 3
+    },
+    {
+      "wire": "168723618233",
+      "status": "PARSED",
+      "e3": 6,
+      "states": [
+        31,
+        62,
+        23
+      ],
+      "children": [
+        5,
+        3,
+        7
+      ],
+      "terminal": 3,
+      "depth": 3
+    },
+    {
+      "wire": "168742987323",
+      "status": "PARSED",
+      "e3": 6,
+      "states": [
+        32,
+        57,
+        30
+      ],
+      "children": [
+        5,
+        5,
+        4
+      ],
+      "terminal": 3,
+      "depth": 3
+    },
+    {
+      "wire": "16875654323",
+      "status": "PARSED",
+      "e3": 5,
+      "states": [
+        14,
+        2,
+        17
+      ],
+      "children": [
+        7,
+        0
+      ],
+      "terminal": 3,
+      "depth": 2
+    },
+    {
+      "wire": "168798424693",
+      "status": "PARSED",
+      "e3": 6,
+      "states": [
+        35,
+        34,
+        42
+      ],
+      "children": [
+        2,
+        4,
+        5
+      ],
+      "terminal": 3,
+      "depth": 3
+    },
+    {
+      "wire": "16874328753",
+      "status": "PARSED",
+      "e3": 5,
+      "states": [
+        13,
+        33,
+        58
+      ],
+      "children": [
+        5,
+        3
+      ],
+      "terminal": 3,
+      "depth": 2
+    },
+    {
+      "wire": "168753684323",
+      "status": "PARSED",
+      "e3": 6,
+      "states": [
+        33,
+        26,
+        7
+      ],
+      "children": [
+        7,
+        6,
+        0
+      ],
+      "terminal": 3,
+      "depth": 3
+    },
+    {
+      "wire": "16875632133",
+      "status": "PARSED",
+      "e3": 5,
+      "states": [
+        14,
+        1,
+        47
+      ],
+      "children": [
+        1,
+        5
+      ],
+      "terminal": 3,
+      "depth": 2
+    },
+    {
+      "wire": "1687098453",
+      "status": "PARSED",
+      "e3": 4,
+      "states": [
+        9,
+        51,
+        26
+      ],
+      "children": [
+        5
+      ],
+      "terminal": 3,
+      "depth": 1
+    },
+    {
+      "wire": "16872368743",
+      "status": "PARSED",
+      "e3": 5,
+      "states": [
+        12,
+        50,
+        4
+      ],
+      "children": [
+        1,
+        2
+      ],
+      "terminal": 3,
+      "depth": 2
+    },
+    {
+      "wire": "16875412343",
+      "status": "PARSED",
+      "e3": 5,
+      "states": [
+        13,
+        60,
+        23
+      ],
+      "children": [
+        6,
+        2
+      ],
+      "terminal": 3,
+      "depth": 2
+    },
+    {
+      "wire": "1687982363",
+      "status": "PARSED",
+      "e3": 4,
+      "states": [
+        12,
+        32,
+        3
+      ],
+      "children": [
+        4
+      ],
+      "terminal": 3,
+      "depth": 1
+    },
+    {
+      "wire": "16871438433",
+      "status": "PARSED",
+      "e3": 5,
+      "states": [
+        12,
+        27,
+        22
+      ],
+      "children": [
+        4,
+        3
+      ],
+      "terminal": 3,
+      "depth": 2
+    },
+    {
+      "wire": "16879895413",
+      "status": "PARSED",
+      "e3": 5,
+      "states": [
+        15,
+        41,
+        52
+      ],
+      "children": [
+        4,
+        5
+      ],
+      "terminal": 3,
+      "depth": 2
+    },
+    {
+      "wire": "1687425419853",
+      "status": "WIDTH_OVERFLOW",
+      "detail": "1687425419853: payload 8742541985 exceeds 33 bits at depth 4 \u2014 width family violated, never truncate"
+    },
+    {
+      "wire": "168726549833",
+      "status": "PARSED",
+      "e3": 6,
+      "states": [
+        32,
+        7,
+        20
+      ],
+      "children": [
+        2,
+        0,
+        7
+      ],
+      "terminal": 3,
+      "depth": 3
+    },
+    {
+      "wire": "1687676423",
+      "status": "PARSED",
+      "e3": 4,
+      "states": [
+        11,
+        36,
+        19
+      ],
+      "children": [
+        2
+      ],
+      "terminal": 3,
+      "depth": 1
+    }
+  ],
+  "matches_expected_27_1": true,
+  "overflow_wire_untouched": true,
+  "single_deletion_file": "triage only \u2014 imported, not applied"
+}

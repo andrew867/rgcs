@@ -1,0 +1,8 @@
+law,params,selected,reason
+L0_no_compensation,0,True,"lexicographic winner by default: topology/containment, shared edges, no folds, and anchor preservation all PASS on the registered operators; zero usable exact-T edge data exists to justify any r != 1"
+L1_constant_ratio,1,False,unevaluable - no usable edges
+L2_edge_class_ratios,2,False,unevaluable
+L3_layer_ratios,1,False,unevaluable
+L4_decaying_log_odds,1,False,unevaluable
+L5_ellipsoid_only,0,False,REJECTED where measurable: ellipsoid factors 0.08-0.15 percent cannot produce 12-20 percent coarse deviations
+L6_neutral_after_L2,0,False,reduces to L0 without recovered exact L2 odds
