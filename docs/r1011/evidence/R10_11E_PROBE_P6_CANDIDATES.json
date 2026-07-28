@@ -1,0 +1,317 @@
+{
+  "schema": "rgcs.r1011e.probe-candidates.v1",
+  "probe": "P6",
+  "compact_wire": 165879633,
+  "states": [
+    15,
+    34,
+    59
+  ],
+  "child": 6,
+  "required_output1": 49,
+  "required_xor23": 48,
+  "e3": 2,
+  "terminal": 3,
+  "candidates": [
+    {
+      "completion_id": "A063524042c34b1d",
+      "refined_states": [
+        49,
+        42,
+        26
+      ],
+      "candidate_wire": 1658216543
+    },
+    {
+      "completion_id": "A062f24042c34b1d",
+      "refined_states": [
+        49,
+        40,
+        24
+      ],
+      "candidate_wire": 1658206143
+    },
+    {
+      "completion_id": "A06353e042c34b1d",
+      "refined_states": [
+        49,
+        46,
+        30
+      ],
+      "candidate_wire": 1658237343
+    },
+    {
+      "completion_id": "A062f3e042c34b1d",
+      "refined_states": [
+        49,
+        44,
+        28
+      ],
+      "candidate_wire": 1658226943
+    },
+    {
+      "completion_id": "A1c35241e2c34b1d",
+      "refined_states": [
+        49,
+        35,
+        19
+      ],
+      "candidate_wire": 1658180143
+    },
+    {
+      "completion_id": "A1c2f241e2c34b1d",
+      "refined_states": [
+        49,
+        33,
+        17
+      ],
+      "candidate_wire": 1658169743
+    },
+    {
+      "completion_id": "A1c353e1e2c34b1d",
+      "refined_states": [
+        49,
+        39,
+        23
+      ],
+      "candidate_wire": 1658200943
+    },
+    {
+      "completion_id": "A1c2f3e1e2c34b1d",
+      "refined_states": [
+        49,
+        37,
+        21
+      ],
+      "candidate_wire": 1658190543
+    },
+    {
+      "completion_id": "A1c3524043634b1d",
+      "refined_states": [
+        49,
+        59,
+        11
+      ],
+      "candidate_wire": 1658302383
+    },
+    {
+      "completion_id": "A1c2f24043634b1d",
+      "refined_states": [
+        49,
+        57,
+        9
+      ],
+      "candidate_wire": 1658291983
+    },
+    {
+      "completion_id": "A1c353e043634b1d",
+      "refined_states": [
+        49,
+        63,
+        15
+      ],
+      "candidate_wire": 1658323183
+    },
+    {
+      "completion_id": "A1c2f3e043634b1d",
+      "refined_states": [
+        49,
+        61,
+        13
+      ],
+      "candidate_wire": 1658312783
+    },
+    {
+      "completion_id": "A0635241e3634b1d",
+      "refined_states": [
+        49,
+        50,
+        2
+      ],
+      "candidate_wire": 1658255583
+    },
+    {
+      "completion_id": "A062f241e3634b1d",
+      "refined_states": [
+        49,
+        48,
+        0
+      ],
+      "candidate_wire": 1658245183
+    },
+    {
+      "completion_id": "A06353e1e3634b1d",
+      "refined_states": [
+        49,
+        54,
+        6
+      ],
+      "candidate_wire": 1658276383
+    },
+    {
+      "completion_id": "A062f3e1e3634b1d",
+      "refined_states": [
+        49,
+        52,
+        4
+      ],
+      "candidate_wire": 1658265983
+    },
+    {
+      "completion_id": "A1c3524042c2eb1d",
+      "refined_states": [
+        49,
+        11,
+        59
+      ],
+      "candidate_wire": 1658060463
+    },
+    {
+      "completion_id": "A1c2f24042c2eb1d",
+      "refined_states": [
+        49,
+        9,
+        57
+      ],
+      "candidate_wire": 1658050063
+    },
+    {
+      "completion_id": "A1c353e042c2eb1d",
+      "refined_states": [
+        49,
+        15,
+        63
+      ],
+      "candidate_wire": 1658081263
+    },
+    {
+      "completion_id": "A1c2f3e042c2eb1d",
+      "refined_states": [
+        49,
+        13,
+        61
+      ],
+      "candidate_wire": 1658070863
+    },
+    {
+      "completion_id": "A0635241e2c2eb1d",
+      "refined_states": [
+        49,
+        2,
+        50
+      ],
+      "candidate_wire": 1658013663
+    },
+    {
+      "completion_id": "A062f241e2c2eb1d",
+      "refined_states": [
+        49,
+        0,
+        48
+      ],
+      "candidate_wire": 1658003263
+    },
+    {
+      "completion_id": "A06353e1e2c2eb1d",
+      "refined_states": [
+        49,
+        6,
+        54
+      ],
+      "candidate_wire": 1658034463
+    },
+    {
+      "completion_id": "A062f3e1e2c2eb1d",
+      "refined_states": [
+        49,
+        4,
+        52
+      ],
+      "candidate_wire": 1658024063
+    },
+    {
+      "completion_id": "A06352404362eb1d",
+      "refined_states": [
+        49,
+        26,
+        42
+      ],
+      "candidate_wire": 1658135903
+    },
+    {
+      "completion_id": "A062f2404362eb1d",
+      "refined_states": [
+        49,
+        24,
+        40
+      ],
+      "candidate_wire": 1658125503
+    },
+    {
+      "completion_id": "A06353e04362eb1d",
+      "refined_states": [
+        49,
+        30,
+        46
+      ],
+      "candidate_wire": 1658156703
+    },
+    {
+      "completion_id": "A062f3e04362eb1d",
+      "refined_states": [
+        49,
+        28,
+        44
+      ],
+      "candidate_wire": 1658146303
+    },
+    {
+      "completion_id": "A1c35241e362eb1d",
+      "refined_states": [
+        49,
+        19,
+        35
+      ],
+      "candidate_wire": 1658099503
+    },
+    {
+      "completion_id": "A1c2f241e362eb1d",
+      "refined_states": [
+        49,
+        17,
+        33
+      ],
+      "candidate_wire": 1658089103
+    },
+    {
+      "completion_id": "A1c353e1e362eb1d",
+      "refined_states": [
+        49,
+        23,
+        39
+      ],
+      "candidate_wire": 1658120303
+    },
+    {
+      "completion_id": "A1c2f3e1e362eb1d",
+      "refined_states": [
+        49,
+        21,
+        37
+      ],
+      "candidate_wire": 1658109903
+    }
+  ],
+  "distinct_wires": 32,
+  "wire_collisions": 0,
+  "information_accounting": {
+    "raw_observed_output_bits": 18,
+    "already_known_bits": "output state 1 (6 bits) is a SOURCE_KNOWN cell",
+    "new_table_cells_observed": 2,
+    "new_table_cell_bits": 12,
+    "affine_completion_index_entropy_bits": 5,
+    "invariant_check": "s2 XOR s3 == 48 under every completion (independent test)",
+    "note": "one descendant supplies two previously unknown six-bit cells (12 bits of table content) while at most 5 bits are needed to index a completion \u2014 the surplus is the falsification power"
+  },
+  "candidate_set_sha256": "0b684ca5b5f69c4d9da711ba65fb7a9ff03a87c4889bb9abc45e76bd9b15005e"
+}
