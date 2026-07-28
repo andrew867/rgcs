@@ -1,0 +1,22 @@
+{
+ "schema": "rgcs.r1012.private-release.v1",
+ "source_snapshot_commit_at_build": "6d9642f862dbaab1ec76faf7d167946896aa8d65",
+ "note": "the consolidation commit follows this build; its hash is recorded in the commit message and runlog (a commit cannot contain its own hash)",
+ "publication": "HOLD",
+ "upload": "FORBIDDEN",
+ "contents": {
+  "artifacts/rgcs-8.2.0-py3-none-any.whl": "ce993e200478a8f0d0236553a6e466a0c31cd0ec51060c9a8eeddea9aea18fbb",
+  "artifacts/rgcs-8.2.0.tar.gz": "e685d7cff1931dc890f6a5e0e8b3d28328355662e56be84ab36056dd1416f352",
+  "artifacts/SBOM_repo_baseline.cdx.json": "0fe07d2f3ba3b57601ca7dac6b7c8d9dde8a539133a7e51cbeee728e6770a33a",
+  "fixtures/golden28_v2.json": "ff5f157c183cd520f04b843d7ac9ef2e265cb5ac988137f4cc4c4fc59978dfa8",
+  "receipts/AUTHORITY_GRAPH.json": "b6a20795e65af15466b8e62a57876276d7982501d5ff556c6dad13ba266e9eba",
+  "receipts/CHILD_COVERAGE.json": "8c0bb8a735ba3f1288080600e70989c6bd760a5bd4c592e07bc3498993cd5122",
+  "receipts/CORPUS_VERIFY.json": "21857e37da0c3262963fe8b075fb34440cc859d081c06b85e2f86dea152b7a8e",
+  "receipts/MESH_AUDIT.json": "c6151a99f0b7613006483d7ee8198117b562d2a400327c073baf571f84b7ac90",
+  "receipts/OPERATOR_FAMILY_RECEIPTS.json": "727bb30b1b6a3912a57d5e3ad711e888b04398ce14612ead6a92bdf1d16d6e76",
+  "receipts/RELEASE_VERIFY.json": "43d958eb8c1c6d96e9cfbd46cdd89c8c6b42052299ed5549a150547693f10152",
+  "receipts/S6_HYPOTHESES.json": "aee4e67a8a2fc60574a3bf42f853fdeb464bc0f77917b05af5a65d88e9ae4d53",
+  "receipts/SELF_TEST.json": "7a2c5af8342b1f4aede463cddb81fe5715856a64e685f093b173e75d93808449",
+  "receipts/TRANSITION_REGISTRY.json": "9b3acf427631da6321b7b73c43f42dffa0573e4d45027298be7f378d3ac756be"
+ }
+}

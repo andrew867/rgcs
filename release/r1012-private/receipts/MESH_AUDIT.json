@@ -1,0 +1,8 @@
+{
+  "level": 4,
+  "vertices": 2562,
+  "triangles": 5120,
+  "orientation_reversals": 0,
+  "shared_edge_construction": "midpoints are functions of endpoint IDs only \u2014 cracks impossible by construction",
+  "ratio_law": "NONE SELECTED (r=1 stands; R10.11F-A result)"
+}

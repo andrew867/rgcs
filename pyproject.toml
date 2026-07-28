@@ -50,6 +50,7 @@ rgcs-v4 = "rscs2_core.cli:main"
 rgcs-workbook = "rgcs_workbench.workbook:main"
 rgcs-coordinate = "rgcs_coordinate.cli:main"
 rgcs-lab = "rgcs_lab.cli:main"
+rgcs = "r1012.cli:main"
 
 [project.gui-scripts]
 rgcs-workbench = "rgcs_desktop.app.main:main"
@@ -74,6 +75,8 @@ rgcs_coordinate = ["fixtures/*.json"]
 "rgcs_coordinate.fixtures" = ["*.json"]
 "rgcs_lab.common" = ["*.json"]
 "rgcs_lab.data" = ["memory_corpus/*.json"]
+r1012 = ["data/*.json", "data/*.csv"]
+r1011 = ["data/*.csv"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial", "tests/v4", "tests/v49", "tests/v50", "tests/v51", "tests/v52", "tests/v6", "tests/v8", "tests/cwatlas", "tests/rgcs_coordinate", "tests/rgcs_lab"]

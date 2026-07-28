@@ -25,8 +25,11 @@ from pathlib import Path
 
 from r1011.segmented_codec import T_SPARSE
 
-EV = Path(__file__).resolve().parents[1] / "docs" / "r1011" / "evidence" / \
-    "r1011d"
+_PKG = Path(__file__).resolve().parent / "data"
+_DOCS = Path(__file__).resolve().parents[1] / "docs" / "r1011" / \
+    "evidence" / "r1011d"
+#: packaged copy preferred (wheel installs); repo evidence as fallback
+EV = _PKG if (_PKG / "AFFINE_CONSENSUS_TABLE.csv").exists() else _DOCS
 
 HYPOTHESIS_STATUS = ("RESTRICTED_AFFINE_FALSIFIABLE_HYPOTHESIS — not the "
                      "recovered source table; child columns 5 and 6 only; "

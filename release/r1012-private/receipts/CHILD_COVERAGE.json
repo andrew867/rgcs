@@ -1,0 +1,339 @@
+{
+  "schema": "rgcs.r1012.child-coverage.v1",
+  "child_symbol_occurrences": {
+    "0": 6,
+    "1": 3,
+    "2": 7,
+    "3": 4,
+    "4": 12,
+    "5": 12,
+    "6": 6,
+    "7": 8
+  },
+  "columns_with_source_known_cells": [
+    5,
+    6
+  ],
+  "columns_touched_by_new_batch_without_transitions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    7
+  ],
+  "transition_inference_rule": "NEVER from a child symbol alone",
+  "query_queue": [
+    {
+      "wire": "165892376543",
+      "children": [
+        6,
+        2,
+        6
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        2
+      ]
+    },
+    {
+      "wire": "1687492323",
+      "children": [
+        0
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        0
+      ]
+    },
+    {
+      "wire": "1685723243",
+      "children": [
+        4
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        4
+      ]
+    },
+    {
+      "wire": "16879462343",
+      "children": [
+        7,
+        2
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        2,
+        7
+      ]
+    },
+    {
+      "wire": "1687954133",
+      "children": [
+        5
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": []
+    },
+    {
+      "wire": "16879432763",
+      "children": [
+        5,
+        4
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        4
+      ]
+    },
+    {
+      "wire": "16879053173",
+      "children": [
+        4,
+        5
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        4
+      ]
+    },
+    {
+      "wire": "168732567433",
+      "children": [
+        4,
+        4,
+        7
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        4,
+        7
+      ]
+    },
+    {
+      "wire": "168759874243",
+      "children": [
+        7,
+        4,
+        0
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        0,
+        4,
+        7
+      ]
+    },
+    {
+      "wire": "16875421733",
+      "children": [
+        3,
+        5
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        3
+      ]
+    },
+    {
+      "wire": "168792375433",
+      "children": [
+        6,
+        4,
+        7
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        4,
+        7
+      ]
+    },
+    {
+      "wire": "168723618233",
+      "children": [
+        5,
+        3,
+        7
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        3,
+        7
+      ]
+    },
+    {
+      "wire": "168742987323",
+      "children": [
+        5,
+        5,
+        4
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        4
+      ]
+    },
+    {
+      "wire": "16875654323",
+      "children": [
+        7,
+        0
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        0,
+        7
+      ]
+    },
+    {
+      "wire": "168798424693",
+      "children": [
+        2,
+        4,
+        5
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        2,
+        4
+      ]
+    },
+    {
+      "wire": "16874328753",
+      "children": [
+        5,
+        3
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        3
+      ]
+    },
+    {
+      "wire": "168753684323",
+      "children": [
+        7,
+        6,
+        0
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        0,
+        7
+      ]
+    },
+    {
+      "wire": "16875632133",
+      "children": [
+        1,
+        5
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        1
+      ]
+    },
+    {
+      "wire": "1687098453",
+      "children": [
+        5
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": []
+    },
+    {
+      "wire": "16872368743",
+      "children": [
+        1,
+        2
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        1,
+        2
+      ]
+    },
+    {
+      "wire": "16875412343",
+      "children": [
+        6,
+        2
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        2
+      ]
+    },
+    {
+      "wire": "1687982363",
+      "children": [
+        4
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        4
+      ]
+    },
+    {
+      "wire": "16871438433",
+      "children": [
+        4,
+        3
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        3,
+        4
+      ]
+    },
+    {
+      "wire": "16879895413",
+      "children": [
+        4,
+        5
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        4
+      ]
+    },
+    {
+      "wire": "168742538943",
+      "children": [
+        1,
+        0,
+        6
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        0,
+        1
+      ]
+    },
+    {
+      "wire": "168726549833",
+      "children": [
+        2,
+        0,
+        7
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        0,
+        2,
+        7
+      ]
+    },
+    {
+      "wire": "1687676423",
+      "children": [
+        2
+      ],
+      "becomes_decisive_if": "a same-location compact parent (or deeper refined descendant) is declared by the source",
+      "new_columns_it_would_touch": [
+        2
+      ]
+    }
+  ]
+}

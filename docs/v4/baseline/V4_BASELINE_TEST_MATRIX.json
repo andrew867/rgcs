@@ -101,9 +101,20 @@
   },
   "r1011": {
     "files": [
-      "test_rlab1011_codec_map.py"
+      "test_rlab1011_codec_map.py",
+      "test_rlab1011_e2s6_intake.py",
+      "test_rlab1011_segmented.py",
+      "test_rlab1011d_e3_affine.py",
+      "test_rlab1011e_families_probes.py",
+      "test_rlab1011f_fa.py"
     ],
-    "test_functions": 11
+    "test_functions": 51
+  },
+  "r1012": {
+    "files": [
+      "test_rlab1012_release.py"
+    ],
+    "test_functions": 16
   },
   "r109": {
     "files": [

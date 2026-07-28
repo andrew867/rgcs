@@ -1,0 +1,11 @@
+{
+  "release": "R10.12 private candidate",
+  "version": "0.10.12",
+  "publication": "HOLD",
+  "registry": "corpus28-v2-4e426c0f",
+  "self_test_all_pass": true,
+  "fitted_warp_active": false,
+  "uniform_ratio_law_selected": false,
+  "table_status": "12/512 SOURCE_KNOWN; remainder typed",
+  "s6_geometry_bridge": "UNDERDETERMINED (geometry stops at STATE_MAPPED)"
+}
