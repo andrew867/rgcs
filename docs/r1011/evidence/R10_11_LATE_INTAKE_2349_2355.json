@@ -1,0 +1,120 @@
+{
+  "schema": "rgcs.r1011.late-intake-2349-2355.v1",
+  "intake": {
+    "1658729343": "probable refined member of slash pair (source '1658729343 / 165823973')",
+    "165823973": "probable compact member of slash pair",
+    "165652893": "new vector, no description",
+    "165879633": "new vector, no description",
+    "165778933": "new vector, no description",
+    "165872393": "new vector; source wording implies its middle state is exactly 23 under the true frame"
+  },
+  "header_16_readings": {
+    "decimal_integer": {
+      "value": 16,
+      "binary": "10000",
+      "bits": 5
+    },
+    "two_octal_symbols": {
+      "value": "1|6",
+      "binary": "001|110",
+      "bits": 6,
+      "status": "currently favored by wording, NOT locked"
+    }
+  },
+  "frame_scan_result": {
+    "claim": "165872393 middle state == 23 under the true frame",
+    "tested": "every contiguous 6-bit reading: clips {none,16,165} x payload widths up to 33 x E2 {front,back,absent} x state window {front,back}; plus ALL 6-bit substrings of every variant",
+    "result": "NO reading yields 23 anywhere in 165872393 \u2014 the value 23 (010111) does not occur as any aligned or unaligned 6-bit window in any tested rendering",
+    "conclusion": "the middle-state-23 property requires a NON-CONTIGUOUS interleave, a different state numbering, or transition-table indirection \u2014 UNRESOLVED; recorded, not forced"
+  },
+  "table_search_result": {
+    "instruction": "the existing 64-state lattice-node table IS the compact-to-refined transition table (source-reported)",
+    "found_in_repo": [
+      "rgcs_lab/lattice.py \u2014 WS06 64-state coupled-mode RING (hermitian_ring_hamiltonian: state i couples to (i\u00b11) mod 64, optional defect state) \u2014 the only in-repo 64-state lattice-node structure",
+      "r1010/t11_search_v2.py \u2014 six-bit spin*20+face selector split (R10.10 candidate machinery, not a table)"
+    ],
+    "found_in_archives": [
+      "R7 pack (2026-07-18) A13_38_BIT_HEADER_AND_6X6_DECODER.md + CW_VECTOR_PRELIMINARY_DECODE.md \u2014 the archived 2+6x6 architecture (E2 + six S6 states over 38-bit CW vectors); the evident origin of the E2|S6 frame; no explicit 64-row transition table ships with it"
+    ],
+    "tests_run": [
+      "ring-successor/offset table s -> (s+k) mod 64 for all k in 0..63 against compact(30-bit,5xS6) vs refined(33-bit,first 5xS6) on Stonehenge/Toronto/CYYT/slash pairs: NO k works"
+    ],
+    "status": "NO in-repo or archived 64-state table reproduces the compact->refined relation on the exact pairs under the readings tested; the specific table the source means is NOT identified \u2014 ask the source WHICH lattice-node table (the WS06 ring? an unshared one?) and the '16' radix question before further search"
+  },
+  "holdout_167854923_reveal": {
+    "raw": 167854923,
+    "revealed_label": "historical lunar-surface location",
+    "evidence_class": "SOURCE_REPORTED",
+    "revealed_at": "2026-07-27 23:49-23:55 window (operator relay)",
+    "frozen_predictions": {
+      "v1": [
+        41.730063,
+        -80.833659
+      ],
+      "v2_folded_diagnostic": [
+        41.711411,
+        -81.337712
+      ],
+      "note": "both are Earth-surface outputs under Earth-calibrated maps"
+    },
+    "score": "WRONG_BODY / NON_GEOGRAPHIC_EARTH_OUTCOME \u2014 the frozen Earth-map predictions cannot be correct for a lunar-surface label; recorded as-is, NO RETUNING (the maps are not adjusted, the receipts stand)",
+    "consistency_notes": [
+      "decimal prefix 167 matches the 20:07 Luna sub-space wording (16-7)",
+      "old-profile S3=3 and decimal terminal 3 both read 'surface' \u2014 consistent with 'lunar-SURFACE' under body-relative shells",
+      "TENSION: 167849523 carries the Erie (Earth) training label yet shares the 167 prefix \u2014 unresolved, recorded, not repaired"
+    ]
+  },
+  "e2s6_parses": {
+    "165872393": {
+      "header": "165",
+      "E2": "11",
+      "states": [
+        20,
+        63,
+        9
+      ],
+      "payload_bits": 20
+    },
+    "165652893": {
+      "header": "165",
+      "E2": "10",
+      "states": [
+        31,
+        25,
+        29
+      ],
+      "payload_bits": 20
+    },
+    "165879633": {
+      "header": "165",
+      "E2": "11",
+      "states": [
+        22,
+        48,
+        17
+      ],
+      "payload_bits": 20
+    },
+    "165778933": {
+      "header": "165",
+      "E2": "10",
+      "states": [
+        62,
+        10,
+        53
+      ],
+      "payload_bits": 20
+    },
+    "165823973": {
+      "header": "165",
+      "E2": "11",
+      "states": [
+        9,
+        10,
+        37
+      ],
+      "payload_bits": 20
+    }
+  },
+  "firewalls": "no geographic labels, British outputs, or sealed holdouts used in table testing; slash pair used ONLY as a PROBABLE pair for table comparison"
+}
