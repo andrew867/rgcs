@@ -7,23 +7,24 @@
   },
   "branch": "program/r10-11-flat-face-codec",
   "dirty_files": [
-    " M docs/r1011/evidence/SHA256SUMS.txt",
-    " M docs/r1011/evidence/r1011d/SEGMENTED_E3_VECTOR_ATLAS.csv",
+    " M CITATION.cff",
+    " M README.md",
+    " M docs/v4/RELEASE_METADATA.json",
     " M docs/v4/baseline/V4_BASELINE_TEST_MATRIX.json",
     " M docs/v4/baseline/V4_FROZEN_ARTIFACT_CHECKSUMS.json",
     " M docs/v4/baseline/V4_REPO_INVENTORY.json",
     " M pyproject.toml",
-    " M r10/firewall.py",
-    " M r1011/affine_envelope.py",
     " M rgcs_desktop/build_meta.py",
-    "?? docs/r1012/",
-    "?? r1011/data/",
-    "?? r1012/",
-    "?? release/r1012-private/",
-    "?? tests/r1012/",
-    "M docs/r1011/evidence/RGCS_COMPLETE_VECTOR_CENSUS_2026-07-27.csv"
+    " M tests/v4/test_v4c_docs_closeout.py",
+    " M tests/v4/test_v4x_release_metadata.py",
+    " M tools/v4x_release_metadata.py",
+    "?? docs/r1013/",
+    "?? r1013/",
+    "?? release/r1013-private/",
+    "?? tests/r1013/",
+    "M CHANGELOG.md"
   ],
-  "head": "6d9642f862dbaab1ec76faf7d167946896aa8d65",
+  "head": "d7eaeebf3c9cc5fdc17b96091dd92521f475e622",
   "protected_tags_present": {
     "v2.0.0": "f9fd2c20a05334e12ac9113ba86853c6591fc84e",
     "v3.0.0": "83521f73d6ad02b009ada88f3b8d33a8a00fc253",
@@ -103,6 +104,6 @@
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS/codex-worktree                                  71e7342 [program/codex-core-algorithms]",
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-claude                                          188caab [program/claude-authority-docs]",
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-cursor                                          d4baf0d [program/cursor-app-integration]",
-    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-integration                                     6d9642f [program/r10-11-flat-face-codec]"
+    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-integration                                     d7eaeeb [program/r10-11-flat-face-codec]"
   ]
 }

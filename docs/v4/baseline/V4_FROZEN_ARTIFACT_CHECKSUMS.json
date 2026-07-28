@@ -5,6 +5,9 @@
     "release/SHA256SUMS.txt": "9ebc33bd042f17907a9b5c3134f21b053bca2f4e651c8a7786af885fd632a994",
     "release/lab/SHA256SUMS.txt": "e12226eaeb596e2734b735932bcac05612ee86dc242d0ce01b08faeb80d88cfa",
     "release/r1012-private/SHA256SUMS.txt": "803183ce5c0b95ea8dd4d66985abde0890a5df0ea108a842b02e19ac84243d07",
+    "release/r1013-private/SHA256SUMS.txt": "e03dea3e9d63b0a6b552a07e8770aa65e9596efaa433d3cebe0cbda29c116a2e",
+    "release/r1013-private/docs/manual/SHA256SUMS.txt": "e54ded635c8ed030e2062e7089f7f3dc597a25fefc494c342fa5540883c200b9",
+    "release/r1013-private/fixtures/golden_proof_bundle/SHA256SUMS.txt": "885984e19ed5a38512aca3de24aa68b7c865ff389e57a357f9edc0374faee6ef",
     "release/v45/SHA256SUMS.txt": "ccac93e3b82891acf12646c2ea0072283b54e7eed5ac8652eb1f30e154da681b"
   },
   "tag_tree_hashes": {

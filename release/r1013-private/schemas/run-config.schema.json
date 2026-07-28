@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rgcs.local/schemas/run-config-1.0.json",
+  "title": "RGCS Run Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "specimen_path",
+    "model"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "rgcs.run-config/1.0"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "specimen_path": {
+      "type": "string"
+    },
+    "model": {
+      "enum": [
+        "quick_estimate",
+        "christoffel",
+        "fem_elastic",
+        "fem_piezo",
+        "optical",
+        "coil",
+        "dynamic_boundary"
+      ]
+    },
+    "fixture_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "mesh": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "solver": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "output_dir": {
+      "type": "string"
+    }
+  }
+}

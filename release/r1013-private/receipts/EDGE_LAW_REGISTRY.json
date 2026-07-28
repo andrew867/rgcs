@@ -1,0 +1,50 @@
+{
+ "schema": "rgcs.r1013.edge-law.v1",
+ "base_odds": [
+  10,
+  9
+ ],
+ "base_edge_fraction": 0.5263157894736842,
+ "families": [
+  {
+   "id": "M0_IDENTITY",
+   "form": "M = 1 (state-independent)",
+   "status": "REJECTED_GLOBAL",
+   "note": "the global 10/9 law was tested against the exact operator and rejected (R10.11F-A)"
+  },
+  {
+   "id": "M1_TOR_LINEAR",
+   "form": "M = 1 + a*phi_tor/63",
+   "status": "UNDERDETERMINED"
+  },
+  {
+   "id": "M2_POL_LINEAR",
+   "form": "M = 1 + b*phi_pol/63",
+   "status": "UNDERDETERMINED"
+  },
+  {
+   "id": "M3_RAD_SUNDIAL",
+   "form": "M = f_sundial(phi_rad); nonlinear table, 15-degrees-per-unit clue",
+   "status": "UNRESOLVED_SOURCE_CLUE",
+   "note": "the sundial table itself is not recovered; the 15 degree step is a clue, not a mapping"
+  },
+  {
+   "id": "M4_CHILD_INDEXED",
+   "form": "M = m_c per child c",
+   "status": "UNDERDETERMINED"
+  },
+  {
+   "id": "M5_EDGE_CLASS",
+   "form": "M = m_e per edge class e",
+   "status": "UNDERDETERMINED"
+  },
+  {
+   "id": "M6_SIDE",
+   "form": "M = m_sigma per refinement side (left/right)",
+   "status": "UNDERDETERMINED"
+  }
+ ],
+ "selection_rule": "a modifier family may be selected ONLY on out-of-sample improvement against held-out data that was never used for fitting; no such data is available, so no family is selected",
+ "selected": null,
+ "evidence_class": "SOURCE_PROVENANCE_ONLY"
+}

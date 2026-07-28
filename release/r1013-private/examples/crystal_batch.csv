@@ -1,0 +1,3 @@
+specimen_path,enabled,notes
+examples/crystal_minimum.json,true,quick estimates only
+examples/crystal_complete.json,true,full model example

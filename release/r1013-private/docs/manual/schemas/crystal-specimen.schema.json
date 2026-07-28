@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rgcs.local/schemas/crystal-specimen-1.0.json",
+  "title": "RGCS Crystal Specimen",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "specimen_id",
+    "name",
+    "material",
+    "geometry"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "rgcs.crystal-specimen/1.0"
+    },
+    "specimen_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "material_id"
+      ],
+      "properties": {
+        "material_id": {
+          "type": "string"
+        },
+        "density_g_cm3": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "handedness": {
+          "enum": [
+            "left",
+            "right",
+            "unknown",
+            "not_applicable"
+          ]
+        },
+        "material_record_version": {
+          "type": "string"
+        }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "length_mm",
+        "wide_diameter_mm",
+        "facets",
+        "diameter_mode",
+        "angle_mode"
+      ],
+      "properties": {
+        "length_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "wide_diameter_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "narrow_diameter_mm": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "facets": {
+          "type": "integer",
+          "minimum": 3
+        },
+        "female_angle_deg": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 180
+        },
+        "male_angle_deg": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 180
+        },
+        "diameter_mode": {
+          "enum": [
+            "across_vertices",
+            "across_flats"
+          ]
+        },
+        "angle_mode": {
+          "enum": [
+            "face_slope",
+            "axis_to_face",
+            "apex_included"
+          ]
+        }
+      }
+    },
+    "orientation": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "status": {
+          "enum": [
+            "known",
+            "estimated",
+            "assumed",
+            "unknown"
+          ]
+        },
+        "c_axis_body_axis": {
+          "type": "string"
+        },
+        "euler_zxz_deg": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
+      }
+    },
+    "measurements": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "source_claims": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "mesh_source": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

@@ -1,0 +1,334 @@
+{
+  "artifact": "RGCS_R10_13_Full_Documentation_Baseline_2026-07-28",
+  "date": "2026-07-28",
+  "version": "0.1.0",
+  "manifest_scope": "all files except DOCUMENTATION_MANIFEST.json and SHA256SUMS.txt",
+  "file_count": 65,
+  "files": [
+    {
+      "path": "00_START/GLOSSARY.md",
+      "bytes": 2225,
+      "sha256": "7206d157ddf49afb52026ecf6bb2b216d5cd831d8b693c57719037f3a8547cbc"
+    },
+    {
+      "path": "00_START/QUICK_START_10_MINUTES.md",
+      "bytes": 2930,
+      "sha256": "505827fe98b24d513a7046750470d31f256b0d8f5e47b629df17e3749cad149f"
+    },
+    {
+      "path": "00_START/START_HERE.md",
+      "bytes": 2654,
+      "sha256": "b94b5a397e6ab8127671cfaaa0f5d7483b35bb14da33614a7e20c86eaff6016f"
+    },
+    {
+      "path": "00_START/WHAT_RGCS_DOES_AND_DOES_NOT_DO.md",
+      "bytes": 2175,
+      "sha256": "c345114a261b611c628aa96223c2708ec62225df127122549b7859d11c7e896d"
+    },
+    {
+      "path": "01_INSTALL/INSTALL_FROM_SOURCE.md",
+      "bytes": 1457,
+      "sha256": "5a4e4f42fe97032385c78b6600611d9d7b9e715433b14872f958b00055a58408"
+    },
+    {
+      "path": "01_INSTALL/INSTALL_LINUX.md",
+      "bytes": 1521,
+      "sha256": "487e13ffd4405e787f2f0a8229dd0a66054a17ffaa8088c3f5a7bb09c5b64692"
+    },
+    {
+      "path": "01_INSTALL/INSTALL_WINDOWS.md",
+      "bytes": 1866,
+      "sha256": "db064b64c2b0e3488d45b61b163d37c7af810f0050168c416828554bd3398b1e"
+    },
+    {
+      "path": "01_INSTALL/UPDATE_AND_ROLLBACK.md",
+      "bytes": 1364,
+      "sha256": "533245c507f2c337cc4ee02b469d06888f61a402f39694ba87fa6bbba91987dc"
+    },
+    {
+      "path": "01_INSTALL/VERIFY_INSTALLATION.md",
+      "bytes": 1366,
+      "sha256": "bdc6eb9b7f0cdfceb20688811ccd17002ee46e8f555ecac471e566ec98e596b2"
+    },
+    {
+      "path": "02_USER_MANUAL/CALCULATING_RESONANT_FREQUENCIES.md",
+      "bytes": 2960,
+      "sha256": "f9b5b9447691ad7af8dca4e9d60a9e19ece9ac66689f8f1292e169afb31dcb5b"
+    },
+    {
+      "path": "02_USER_MANUAL/CLI_REFERENCE.md",
+      "bytes": 2602,
+      "sha256": "6cb4e9550b83c294a0f7b428c782de96421a4dd00beaa67e3d13eeb27642e151"
+    },
+    {
+      "path": "02_USER_MANUAL/COMPLETE_USER_MANUAL.md",
+      "bytes": 7588,
+      "sha256": "2141d58784283616efe541f638ca70db43257e96a7e761ba627225de356aab10"
+    },
+    {
+      "path": "02_USER_MANUAL/DESKTOP_APP_GUIDE.md",
+      "bytes": 1907,
+      "sha256": "2fe208f74363385298aa77f1fae9072d84004b20501156be6f27e932abd0c2cb"
+    },
+    {
+      "path": "02_USER_MANUAL/FAQ.md",
+      "bytes": 2254,
+      "sha256": "75e1317339941f90111571af57bc7c4929bfe8cc8c1fcb69d0d56453322b962a"
+    },
+    {
+      "path": "02_USER_MANUAL/MEASURING_YOUR_CRYSTAL.md",
+      "bytes": 3490,
+      "sha256": "0b7f4af9403a49abbe9aa28b0033fe6eadaa12fc15f51bc72ca5ed111d3bc884"
+    },
+    {
+      "path": "02_USER_MANUAL/SPECIMEN_FILE_FORMAT.md",
+      "bytes": 3242,
+      "sha256": "5ce5fb325c2234b57ea2176f1feca13cf37ece7bbe9c7d8bb01dea815c39814b"
+    },
+    {
+      "path": "02_USER_MANUAL/TROUBLESHOOTING.md",
+      "bytes": 2395,
+      "sha256": "bf8ebd3875d1cf367d6e9c39be9b8fb3321baf7adf3cb47c89572bc5ec89c676"
+    },
+    {
+      "path": "02_USER_MANUAL/UNDERSTANDING_RESULTS.md",
+      "bytes": 2429,
+      "sha256": "b03d45f4f5537dc9a1486c39c5ba1184ffc91a0696012ba247f59a63f3bd32f1"
+    },
+    {
+      "path": "03_TUTORIALS/TUTORIAL_BATCH_CRYSTALS.md",
+      "bytes": 1327,
+      "sha256": "0a8679aee3e9347569f29b536934e637a80978192098a1c2499d3a4e202487c1"
+    },
+    {
+      "path": "03_TUTORIALS/TUTORIAL_FIXTURE_COMPARISON.md",
+      "bytes": 1309,
+      "sha256": "3d30cda85dc946f772f91e4ee9e6d5634bc5503c12484bbf0f365dc63a2650ff"
+    },
+    {
+      "path": "03_TUTORIALS/TUTORIAL_FULL_FEM.md",
+      "bytes": 1791,
+      "sha256": "366a4abcc461a2a83d8e4085a01a3bb1a3f19e42aea77d714fc4f4ef0882e470"
+    },
+    {
+      "path": "03_TUTORIALS/TUTORIAL_ORIENTATION_SWEEP.md",
+      "bytes": 1309,
+      "sha256": "5ff7da9094ae657d1dc792fa63840efbd16e380319c9154914b6cbdcad0a5d81"
+    },
+    {
+      "path": "03_TUTORIALS/TUTORIAL_PROOF_BUNDLE.md",
+      "bytes": 1326,
+      "sha256": "967d18c0e099e025b15376c2681435bc392a4446e7c773a115ca8cf87541a559"
+    },
+    {
+      "path": "03_TUTORIALS/TUTORIAL_QUICK_ESTIMATE.md",
+      "bytes": 1446,
+      "sha256": "28bd6f5c349a9b60a002b5647385d727c9b221851f4030fcc1d030220e96f745"
+    },
+    {
+      "path": "04_TECHNICAL/ANISOTROPY_AND_CHRISTOFFEL.md",
+      "bytes": 1355,
+      "sha256": "a90222d13f3034ca898725ca3a49ae6e8c72431735c7e2d0fe60e1e6467a82cf"
+    },
+    {
+      "path": "04_TECHNICAL/APERTURE_RING_MODEL.md",
+      "bytes": 2464,
+      "sha256": "592263dcea0dcd65bbd690eab14799f239db1f6be046356d67bdeb053992b899"
+    },
+    {
+      "path": "04_TECHNICAL/API_REFERENCE.md",
+      "bytes": 1808,
+      "sha256": "a8e832f96927b4af48962d4abd9fd1429ba7fa8a6fef40949ce959bd7000a670"
+    },
+    {
+      "path": "04_TECHNICAL/ARCHITECTURE.md",
+      "bytes": 1807,
+      "sha256": "134385ce86c1f1438418fc240e8b1b4f59369e89767182d08b2230f802441636"
+    },
+    {
+      "path": "04_TECHNICAL/CRYSTAL_GEOMETRY_MODEL.md",
+      "bytes": 1891,
+      "sha256": "4818f3e79ece826d837cda7a9d33566afb0b9c4a6540ea1965091ea7360a963c"
+    },
+    {
+      "path": "04_TECHNICAL/EVIDENCE_AND_PROVENANCE.md",
+      "bytes": 1518,
+      "sha256": "64746411e901411518b48a74ba4e4764c56387d9f70b4f563820c51806474f64"
+    },
+    {
+      "path": "04_TECHNICAL/FEM_PIPELINE.md",
+      "bytes": 1487,
+      "sha256": "4beadf8aa1c9a8bd4de8c60952a60e7a567da1f5a1f21348a5884141f503f0f7"
+    },
+    {
+      "path": "04_TECHNICAL/MATERIAL_MODEL.md",
+      "bytes": 1466,
+      "sha256": "e4e59cf33c44546739a56a49d93b2ab632a5e22c97c0fe935ba50e5516e23689"
+    },
+    {
+      "path": "04_TECHNICAL/OPTICAL_AND_ACOUSTIC_PHASE.md",
+      "bytes": 1584,
+      "sha256": "ec7b8719f4217ce517c4c320e5a9df0c0921fbe9c0d87905f9b067a48bed8b23"
+    },
+    {
+      "path": "04_TECHNICAL/PHRYLL_DYNAMIC_BOUNDARY_MODEL.md",
+      "bytes": 2510,
+      "sha256": "b1f78792d2319e4f238b78630e14a731a6aafdb3917e6834349f2471b9de384f"
+    },
+    {
+      "path": "04_TECHNICAL/PIEZOELECTRIC_MODEL.md",
+      "bytes": 1258,
+      "sha256": "68d2dc282f659449b3ce0f01d2921309ee8b5c9422a934b601c36d8d1f136d9d"
+    },
+    {
+      "path": "04_TECHNICAL/RESONANCE_MATH.md",
+      "bytes": 1830,
+      "sha256": "a5c24abfc4da4ec8133bf56db263774db307cb80230cdc877522bf39cb2486b6"
+    },
+    {
+      "path": "04_TECHNICAL/SCHEMA_REFERENCE.md",
+      "bytes": 1413,
+      "sha256": "95593eb74ef063dadebf148ac399acc9e09e9b1aa4dfcd53be65112914f87b1b"
+    },
+    {
+      "path": "04_TECHNICAL/VALIDATION_AND_UNCERTAINTY.md",
+      "bytes": 1405,
+      "sha256": "c5d756a5e347649bdb148e0165e8d0a8366e2f38f1c942573f8cf6acbe37bec4"
+    },
+    {
+      "path": "04_TECHNICAL/VARIABLE_CODEC_AND_STATE_GEOMETRY.md",
+      "bytes": 2567,
+      "sha256": "6ffb36e5389d1ef76a897a73f275f277fbe8f610f06d4fc19947ebbc370c3e4c"
+    },
+    {
+      "path": "05_REFERENCE/CONTRIBUTOR_DOC_MAINTENANCE.md",
+      "bytes": 1618,
+      "sha256": "ae3bcf1927a008d759092c6c830861244b0138aeb018d07c6db8ad0a5904b53d"
+    },
+    {
+      "path": "05_REFERENCE/DOCUMENTATION_ACCEPTANCE_MATRIX.md",
+      "bytes": 1043,
+      "sha256": "0995a6ac68a1f81e8f453bcaa1be7c08155e16ca5b7c00624b0f6be6756db0c3"
+    },
+    {
+      "path": "05_REFERENCE/ERROR_MESSAGES.md",
+      "bytes": 810,
+      "sha256": "354f2821b8e7b0786f9fc20f6240f559d1fe24871cc0e9cbc9f9de2f4ffa9053"
+    },
+    {
+      "path": "05_REFERENCE/FREQUENCY_KEY_REGISTRY.md",
+      "bytes": 1895,
+      "sha256": "2ed0ac28eed3cd48cbaf5fb48d23a4d1cfb207e05c12ed9639854c80fafc00a1"
+    },
+    {
+      "path": "05_REFERENCE/KNOWN_LIMITATIONS.md",
+      "bytes": 1467,
+      "sha256": "28f903400761391684f04136eda3798a3e6bea8df40a21b38e4c3a3ec1454770"
+    },
+    {
+      "path": "05_REFERENCE/MIGRATION_GUIDE.md",
+      "bytes": 1417,
+      "sha256": "726ede5952d7b479b9bcd7b5b9051ea926978caf1ae9df48c3414056692fe923"
+    },
+    {
+      "path": "05_REFERENCE/RELEASE_CHECKLIST.md",
+      "bytes": 728,
+      "sha256": "9adbc036bb3d6c8f211f90039177658c2e0215c684ca127865d0211d690c9f06"
+    },
+    {
+      "path": "05_REFERENCE/SOURCE_BASIS.md",
+      "bytes": 1933,
+      "sha256": "ce77284a9c93dc659aa4c33e20887c11ea7fb78eb6163cf907941dde3570083d"
+    },
+    {
+      "path": "05_REFERENCE/UNITS_AND_CONVENTIONS.md",
+      "bytes": 731,
+      "sha256": "756a617d680257bf64ef416da73c91f6aa6f73d035712119dd0ad5b9dbc47b58"
+    },
+    {
+      "path": "BUILD_VERIFICATION_REPORT.md",
+      "bytes": 1026,
+      "sha256": "d96a357b7c49abf392dbcee2b6fd4de33715e3f5b71d14314e0c0fcf47ef3833"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 778,
+      "sha256": "54a3eb74e4c9a549fc6286d74aad38e67c4597218caa14a404a2a23423541686"
+    },
+    {
+      "path": "DOCUMENTATION_STATUS.md",
+      "bytes": 2616,
+      "sha256": "5eb87d4b831581be7eb91675a50a07c5a899d8d653e46a02a15ba51e1059166e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3677,
+      "sha256": "411c1d61483ea4f331bc118fdd772b2ec2f98763d0da166b75effa2b8222d966"
+    },
+    {
+      "path": "RGCS_COMPLETE_USER_MANUAL.md",
+      "bytes": 88692,
+      "sha256": "130b247b25ba79b8f350173277a7db4c6aed145ff7463cbc8f16bb9cdc3a3663"
+    },
+    {
+      "path": "examples/crystal_batch.csv",
+      "bytes": 139,
+      "sha256": "3d1922357aba88f5efe037c23e25bc98a226135ec406a4d7a6e539306c78327e"
+    },
+    {
+      "path": "examples/crystal_complete.json",
+      "bytes": 1250,
+      "sha256": "b2e8bd60d546e51ced25c5d44af3e33bb4f488a917e9eb5f7093bb29922e1018"
+    },
+    {
+      "path": "examples/crystal_measurement_worksheet.csv",
+      "bytes": 239,
+      "sha256": "c62a1d049241394060dff69b41644c9962dd057fc8f8a30f3996d63b25afc821"
+    },
+    {
+      "path": "examples/crystal_minimum.json",
+      "bytes": 656,
+      "sha256": "400c5a27ec52a40799a6d565186039b633ac6d73f32f485a5549a2102320292a"
+    },
+    {
+      "path": "examples/fixtures/free.json",
+      "bytes": 196,
+      "sha256": "f2ccd2e25cc17af4574189481a273c5470178a28413cd948ed8f39b83bed3fbf"
+    },
+    {
+      "path": "examples/fixtures/three_point.json",
+      "bytes": 315,
+      "sha256": "14ff21612ddf34810f6c9c683cb8903be773e85558bc457bbbabfad51c94b4fd"
+    },
+    {
+      "path": "reference_models/README.md",
+      "bytes": 1190,
+      "sha256": "755b1c8fa4db6239c5f64b7e0e9ec3cb2452f6836cd5d7f175d69d4100813e96"
+    },
+    {
+      "path": "reference_models/rgcs_phryll_aperture_generator.scad",
+      "bytes": 2251,
+      "sha256": "c3768c39f091cd1b9f544d8eeb95b47d2ee5de5db1a741bb7377521330be9c31"
+    },
+    {
+      "path": "schemas/crystal-specimen.schema.json",
+      "bytes": 3420,
+      "sha256": "8e6687b4ce9ba4b6ffdc8d21cab5f808efb0aa36395b978d93ce4ae05f3b8150"
+    },
+    {
+      "path": "schemas/fixture.schema.json",
+      "bytes": 930,
+      "sha256": "4154fd95c37ebb69df7ff7bb82fe74378716a2b11c7034b6d751a929a86a3f06"
+    },
+    {
+      "path": "schemas/result-certificate.schema.json",
+      "bytes": 999,
+      "sha256": "0bc8993f584bd6df3f6dafb9f6b5b6ba77a75359e9531e078f6557d21dfe1478"
+    },
+    {
+      "path": "schemas/run-config.schema.json",
+      "bytes": 991,
+      "sha256": "f81a0388e700b95881f220b1c7db3a5d0a5c87e762d40f1936e49aa3928d7f74"
+    }
+  ]
+}

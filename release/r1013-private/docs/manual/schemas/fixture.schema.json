@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rgcs.local/schemas/fixture-1.0.json",
+  "title": "RGCS Fixture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "fixture_id",
+    "type"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "rgcs.fixture/1.0"
+    },
+    "fixture_id": {
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "free",
+        "free_suspension",
+        "three_point",
+        "soft_pad",
+        "center_clamp",
+        "end_clamp",
+        "custom"
+      ]
+    },
+    "contacts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "preload_n": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "material": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+reading_id,specimen_id,quantity,value,unit,tool,tool_resolution,temperature_c,notes
+1,crystal-001,length,,,calipers,,,,
+2,crystal-001,wide_diameter,,,calipers,,,,
+3,crystal-001,narrow_diameter,,,calipers,,,,
+4,crystal-001,mass,,,scale,,,,

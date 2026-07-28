@@ -3,6 +3,33 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [8.3.0] - 2026-07-28
+
+R10.13 private release candidate: normal-user custom crystal workflow.
+
+- r1013 package: crystal-specimen schema 1.0 (canonical hash, migration,
+  field-level errors with repair steps), quick estimates, Christoffel API,
+  custom-specimen FEM + convergence + piezo boundaries over the frozen
+  rscs2_core solvers, fixtures (7 types), result certificates, proof
+  bundles, unified `rgcs` CLI (R10.12 codec subcommands delegate to
+  r1012 unchanged; rgcs-v4/rgcs-workbook/rgcs-workbench preserved),
+  stable error codes RGCS-E001..E015, `rgcs doctor`.
+- Research-only (typed evidence boundaries, no physical claims): exact
+  timing compiler (4096 Hz / 552.001953125 ms / 125 states), aperture
+  ring model (35/33/2, 29/89, 3.584 MHz; gap indices refuse selection),
+  conventional gated-wavepacket energy ledger, two-sided variable codec
+  (no extension bit), 19-wire exact-cover solver (typed negative),
+  state-dependent 10/9 edge-law registry (no law selected).
+- Documentation baseline imported and synchronized (docs/r1013/manual);
+  every release-marked command executes in tests; `rgcs frequency
+  coordinate` refused (underdetermined state-to-geometry bridge);
+  desktop New Specimen wizard deferred with wording removed.
+- New optional extra `fem` (scikit-fem + meshio) for the FEM path.
+- Private candidate only: no tag, no push, publication HOLD.
+
+Tests: 8129 passing (1 archived-environment byte test deselected by policy
+D-V3-04).
+
 ## [8.2.0] - 2026-07-25
 
 R10.8.2 Locked Two-Layer Earth Root and Source-Map Calibration. A new

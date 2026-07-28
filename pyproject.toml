@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rgcs"
-version = "8.2.0"
+version = "8.3.0"
 description = "RGCS v4.1 / RSCS 2.0: typed resonant-coordinate framework (rscs_core), the deterministic RGCS crystal-application core (rgcs_core), and the capability-aware v4 multiphysics stack (rscs2_core: anisotropic FEM, piezoelectricity, projections, uncertainty-aware Eye Consensus, reduced-order reference systems, quarantined source hypotheses, proof bundles)."
 requires-python = ">=3.11"
 license = { text = "MIT" }
@@ -20,6 +20,7 @@ dependencies = [
 desktop = ["PySide6>=6.6", "pyqtgraph>=0.13"]
 workbook = ["openpyxl>=3.1"]           # xlsx export (interop only;
 #                                        Excel not required to RUN)
+fem = ["scikit-fem>=9.0", "meshio>=5.3"]   # custom-specimen FEM path (R10.13)
 packaging = ["pyinstaller>=6.0"]       # Windows portable/onedir build
 workbench = [
     "fastapi>=0.110",
@@ -50,7 +51,7 @@ rgcs-v4 = "rscs2_core.cli:main"
 rgcs-workbook = "rgcs_workbench.workbook:main"
 rgcs-coordinate = "rgcs_coordinate.cli:main"
 rgcs-lab = "rgcs_lab.cli:main"
-rgcs = "r1012.cli:main"
+rgcs = "r1013.cli:main"
 
 [project.gui-scripts]
 rgcs-workbench = "rgcs_desktop.app.main:main"
@@ -76,6 +77,7 @@ rgcs_coordinate = ["fixtures/*.json"]
 "rgcs_lab.common" = ["*.json"]
 "rgcs_lab.data" = ["memory_corpus/*.json"]
 r1012 = ["data/*.json", "data/*.csv"]
+r1013 = ["data/schemas/*.json", "data/examples/*.json", "data/examples/*.csv", "data/examples/fixtures/*.json"]
 r1011 = ["data/*.csv"]
 
 [tool.pytest.ini_options]

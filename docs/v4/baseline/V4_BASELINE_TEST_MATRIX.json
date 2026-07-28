@@ -116,6 +116,13 @@
     ],
     "test_functions": 16
   },
+  "r1013": {
+    "files": [
+      "test_doc_execution.py",
+      "test_rlab1013_release.py"
+    ],
+    "test_functions": 52
+  },
   "r109": {
     "files": [
       "test_rlab109_codec.py",

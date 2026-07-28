@@ -1,0 +1,44 @@
+# Verify the Installation
+
+
+> Documentation status: R10.13 IMPLEMENTED release documentation (verified against the repository; see receipts/COMMAND_STATUS.json).
+>
+> Repository state observed during drafting: public RGCS v8.0.0, Python 3.11+, existing console commands `rgcs-v4` and `rgcs-workbook`, and desktop command `rgcs-workbench`.
+>
+> The custom-specimen commands are implemented in this release by the unified `rgcs` command (r1013.cli) and every documented command is executed by the doc-execution test suite. Two documented items were NOT shipped and carry typed reasons in receipts/COMMAND_STATUS.json: `rgcs frequency coordinate` (refused: would assert the underdetermined state-to-geometry bridge) and the desktop New Specimen wizard (deferred; CLI workflow is the supported path).
+>
+> All resonance outputs are estimates, analytic results, numerical simulations, synthetic observations, or physical measurements according to their evidence label. A computed frequency is not a measured resonance.
+
+
+Run the commands that exist in v8.0.0:
+
+```bash
+rgcs-v4 devices
+rgcs-v4 material
+rgcs-v4 geometry nominal
+```
+
+For the R10.13 target release, also run:
+
+```bash
+rgcs --version
+rgcs doctor
+rgcs self-test
+rgcs schema verify
+rgcs examples verify
+```
+
+A passing installation report must state:
+
+- package version;
+- Python version;
+- operating system;
+- CPU and optional accelerator;
+- Gmsh availability;
+- desktop availability;
+- schema versions;
+- example validation count;
+- documentation example test count;
+- no-mock audit status.
+
+A missing optional tool may produce a warning. A missing required dependency must produce an error with a repair command.

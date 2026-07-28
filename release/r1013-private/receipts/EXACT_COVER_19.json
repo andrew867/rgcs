@@ -1,0 +1,62 @@
+{
+ "schema": "rgcs.r1013.exact-cover.v1",
+ "wires": [
+  "165876523",
+  "1643789253",
+  "168930443",
+  "1672875493",
+  "165892733",
+  "1658274383",
+  "165823973",
+  "1658729343",
+  "165879243",
+  "167849523",
+  "167854923",
+  "165892323",
+  "168724343",
+  "165872943",
+  "165829473",
+  "165872393",
+  "165652893",
+  "165879633",
+  "165778933"
+ ],
+ "wire_count": 19,
+ "candidate_pairs": 31,
+ "candidate_triples": 0,
+ "partitions_examined": 58,
+ "surviving_partitions": 0,
+ "known_pairs_reproduced": [
+  {
+   "pair": [
+    "165876523",
+    "1643789253"
+   ],
+   "linked": true
+  },
+  {
+   "pair": [
+    "168930443",
+    "1672875493"
+   ],
+   "linked": true
+  },
+  {
+   "pair": [
+    "165892733",
+    "1658274383"
+   ],
+   "linked": true
+  },
+  {
+   "pair": [
+    "165823973",
+    "1658729343"
+   ],
+   "linked": true
+  }
+ ],
+ "search_exhausted": true,
+ "status": "NO_PARTITION_UNDER_CURRENT_CONSTRAINTS",
+ "next_source_request": "The 19 wires do not partition into 8 one-step pairs and one 3-chain under the executable link tests (depth structure: 15 compact + 4 refined wires cannot form 8 pairs each needing a refined member). Request from the source: which wires pair, or the refined descendants of the frozen probes 165872393 (child 5) and 165879633 (child 6)."
+}

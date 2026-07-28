@@ -1,0 +1,30 @@
+{
+ "q": 13,
+ "duty_nominal": 0.5,
+ "duty_effective": 0.4999999999999983,
+ "ledger_j": {
+  "E_before": 1.0,
+  "W_switch": 0.1,
+  "E_pump": 0.2,
+  "E_after": 1.17,
+  "E_loss": 0.13
+ },
+ "balance_residual_j": 2.220446049250313e-16,
+ "partition": {
+  "transmitted_fraction": 0.4999999999999983,
+  "gated_off_fraction": 0.5000000000000018,
+  "note": "gated-off energy is reflected, stored, or redistributed into other modes; it does not vanish"
+ },
+ "observables": [
+  "transmitted/reflected energy",
+  "optical sidebands",
+  "acoustic sidebands",
+  "ring-down",
+  "piezo output",
+  "switching work",
+  "thermal change",
+  "mode redistribution"
+ ],
+ "evidence_class": "ANALYTIC",
+ "model_status": "RESEARCH_ONLY_CONVENTIONAL"
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "rgcs.crystal-specimen/1.0",
+  "specimen_id": "example-complete-001",
+  "name": "Example complete six-sided quartz",
+  "description": "Documentation example, not a certified physical record.",
+  "material": {
+    "material_id": "alpha_quartz",
+    "density_g_cm3": 2.65,
+    "handedness": "unknown",
+    "material_record_version": "alpha-quartz-default"
+  },
+  "geometry": {
+    "length_mm": 77.8,
+    "wide_diameter_mm": 30.2,
+    "narrow_diameter_mm": 24.0,
+    "facets": 6,
+    "female_angle_deg": 51.843,
+    "male_angle_deg": 60.0,
+    "diameter_mode": "across_vertices",
+    "angle_mode": "face_slope"
+  },
+  "orientation": {
+    "status": "assumed",
+    "c_axis_body_axis": "+Z",
+    "euler_zxz_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "uncertainty_deg": [
+      0.0,
+      10.0,
+      360.0
+    ]
+  },
+  "measurements": {
+    "mass_g": 68.0,
+    "length_uncertainty_mm": 0.1,
+    "diameter_uncertainty_mm": 0.2,
+    "angle_uncertainty_deg": 1.0,
+    "mass_uncertainty_g": 0.1,
+    "temperature_c": 22.0
+  },
+  "provenance": {
+    "operator": "documentation-example",
+    "measurement_date": "2026-07-28",
+    "source_type": "example",
+    "notes": "Replace every example value with direct measurements."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schema_version": "rgcs.fixture/1.0",
+  "fixture_id": "free-001",
+  "type": "free",
+  "contacts": [],
+  "preload_n": null,
+  "material": null,
+  "notes": "Free-body computational boundary."
+}
