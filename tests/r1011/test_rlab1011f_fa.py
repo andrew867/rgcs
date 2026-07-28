@@ -15,17 +15,39 @@ EVA = pathlib.Path(__file__).resolve().parents[2] / "docs" / "r1011" / \
     "evidence" / "r1011fa"
 
 
-def test_intake_frozen_and_reparsed_27_1():
+def test_intake_v2_corrected_28_of_28():
     doc = json.loads((EVA / "R10_11FA_INTAKE_PARSE_RECEIPT.json")
                      .read_text(encoding="utf-8"))
+    assert doc["schema"].endswith("intake-freeze.v2")
     assert doc["wire_count"] == 28
-    assert doc["matches_expected_27_1"] is True
-    statuses = [r["status"] for r in doc["independent_parse"]]
-    assert statuses.count("PARSED") == 27
-    assert statuses.count("WIDTH_OVERFLOW") == 1
-    bad = next(r for r in doc["independent_parse"]
-               if r["status"] == "WIDTH_OVERFLOW")
-    assert bad["wire"] == "1687425419853"
+    assert doc["parsed"] == 28 and doc["failures"] == 0
+    # A2 correction ledger: malformed value preserved, superseded
+    led = doc["correction_ledger"]
+    assert led["malformed_transcription_preserved"] == "1687425419853"
+    assert led["superseded_by"] == "168742538943"
+    assert led["v1_status_line_deleted"] == "ONE_WIDTH_OVERFLOW_UNRESOLVED"
+    cw = doc["corrected_wire_verification"]
+    assert (cw["e3"], tuple(cw["states"]), tuple(cw["children"]),
+            cw["terminal"], cw["depth"]) == (6, (32, 56, 7), (1, 0, 6), 3, 3)
+
+
+def test_corrected_wire_parses_and_roundtrips():
+    p = e3.parse(168742538943)
+    assert p.e3 == 6 and p.states == (32, 56, 7)
+    assert p.children == (1, 0, 6) and p.terminal == 3
+    assert e3.encode(p) == 168742538943
+
+
+def test_a2_reclassifications_registered():
+    reg = json.loads((EVA / "R10_11FA2_CORRECTIONS.json")
+                     .read_text(encoding="utf-8"))
+    assert "PRIMED_RETROSPECTIVE" in reg["reclassification_144000"]["status"]
+    assert "CANNOT support" in reg["reclassification_144000"]["consequence"]
+    sub = reg["subtitle_chronology"]
+    assert "NOT independent confirmation" in sub["classification"]
+    assert set(sub["not_named"]) == {"QAnon", "Project 2025",
+                                     "US military-industrial complex"}
+    assert "144000_RECLASSIFIED_AS_PRIMED_RETROSPECTIVE_MATCH" in         reg["verdict_lines"]
 
 
 def test_overflow_wire_refused_never_truncated():

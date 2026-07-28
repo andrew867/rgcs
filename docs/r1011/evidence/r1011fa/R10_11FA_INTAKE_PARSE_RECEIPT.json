@@ -1,7 +1,16 @@
 {
-  "schema": "rgcs.r1011fa.intake-freeze.v1",
-  "intake_sha256": "b9f649ee07194170acb671d50302db4d20f3a96e6239345e62a7bf1bd45dc0b4",
+  "schema": "rgcs.r1011fa.intake-freeze.v2",
+  "supersedes_v1_intake_sha256": "b9f649ee07194170acb671d50302db4d20f3a96e6239345e62a7bf1bd45dc0b4",
+  "intake_v2_sha256": "4e426c0f3c3c7ee34b4c552afba28764cb11f0bea3a014978daa9ce624ff3dde",
+  "correction_ledger": {
+    "malformed_transcription_preserved": "1687425419853",
+    "superseded_by": "168742538943",
+    "v1_status_line_deleted": "ONE_WIDTH_OVERFLOW_UNRESOLVED",
+    "note": "operator A2 correction 2026-07-28; the malformed value is preserved HERE only and is no longer an active wire"
+  },
   "wire_count": 28,
+  "parsed": 28,
+  "failures": 0,
   "independent_parse": [
     {
       "wire": "165892376543",
@@ -404,9 +413,21 @@
       "depth": 2
     },
     {
-      "wire": "1687425419853",
-      "status": "WIDTH_OVERFLOW",
-      "detail": "1687425419853: payload 8742541985 exceeds 33 bits at depth 4 \u2014 width family violated, never truncate"
+      "wire": "168742538943",
+      "status": "PARSED",
+      "e3": 6,
+      "states": [
+        32,
+        56,
+        7
+      ],
+      "children": [
+        1,
+        0,
+        6
+      ],
+      "terminal": 3,
+      "depth": 3
     },
     {
       "wire": "168726549833",
@@ -441,7 +462,23 @@
       "depth": 1
     }
   ],
-  "matches_expected_27_1": true,
-  "overflow_wire_untouched": true,
-  "single_deletion_file": "triage only \u2014 imported, not applied"
+  "corrected_wire_verification": {
+    "wire": "168742538943",
+    "e3": 6,
+    "states": [
+      32,
+      56,
+      7
+    ],
+    "children": [
+      1,
+      0,
+      6
+    ],
+    "terminal": 3,
+    "depth": 3,
+    "width_bits": 30,
+    "roundtrip_exact": true,
+    "note": "first observed E3 value outside {2,3,4}"
+  }
 }
