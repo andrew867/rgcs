@@ -7,24 +7,18 @@
   },
   "branch": "program/r10-11-flat-face-codec",
   "dirty_files": [
-    " M CITATION.cff",
-    " M README.md",
-    " M docs/v4/RELEASE_METADATA.json",
-    " M docs/v4/baseline/V4_BASELINE_TEST_MATRIX.json",
-    " M docs/v4/baseline/V4_FROZEN_ARTIFACT_CHECKSUMS.json",
     " M docs/v4/baseline/V4_REPO_INVENTORY.json",
     " M pyproject.toml",
+    " M r1013/cli.py",
     " M rgcs_desktop/build_meta.py",
-    " M tests/v4/test_v4c_docs_closeout.py",
-    " M tests/v4/test_v4x_release_metadata.py",
-    " M tools/v4x_release_metadata.py",
-    "?? docs/r1013/",
-    "?? r1013/",
-    "?? release/r1013-private/",
-    "?? tests/r1013/",
-    "M CHANGELOG.md"
+    "?? docs/surface_wave/",
+    "?? evidence/r1015/",
+    "?? negative_results/",
+    "?? rgcs_surface_wave/",
+    "?? tests/r1015/",
+    "M docs/v4/baseline/V4_BASELINE_TEST_MATRIX.json"
   ],
-  "head": "d7eaeebf3c9cc5fdc17b96091dd92521f475e622",
+  "head": "20545f46d4eeb7967f098b61b579b4cf355e3613",
   "protected_tags_present": {
     "v2.0.0": "f9fd2c20a05334e12ac9113ba86853c6591fc84e",
     "v3.0.0": "83521f73d6ad02b009ada88f3b8d33a8a00fc253",
@@ -104,6 +98,6 @@
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS/codex-worktree                                  71e7342 [program/codex-core-algorithms]",
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-claude                                          188caab [program/claude-authority-docs]",
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-cursor                                          d4baf0d [program/cursor-app-integration]",
-    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-integration                                     d7eaeeb [program/r10-11-flat-face-codec]"
+    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-integration                                     20545f4 [program/r10-11-flat-face-codec]"
   ]
 }

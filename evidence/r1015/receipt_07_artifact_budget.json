@@ -1,0 +1,82 @@
+{
+  "schema": "rgcs.r1015.receipt.v1",
+  "command": "artifact budget",
+  "inputs": {
+    "candidate_force_n": 1e-12
+  },
+  "input_hash": "2ba79a0549958425eb1a5d7e916957cdf6dfbaecddd8baa028777b66e95dad0c",
+  "outputs": {
+    "schema": "rgcs.r1015.artifact-budget.v1",
+    "candidate_force_n": 1e-12,
+    "estimates": [
+      {
+        "mechanism": "electrostatic_attraction",
+        "force_n": 0.00017708375625600001,
+        "formula": "eps0 A V^2 / (2 g^2)",
+        "note": "always attractive, scales as V^2 so it is EVEN under polarity reversal, exactly like a Maxwell stress signal; polarity reversal does NOT discriminate them",
+        "claim_class": "DERIVED"
+      },
+      {
+        "mechanism": "ion_wind",
+        "force_n": 5e-06,
+        "formula": "I d / mu",
+        "reference": "Christenson & Moller, AIAA J. 5(10), 1967",
+        "note": "requires air; vanishes in hard vacuum, which is the decisive control",
+        "claim_class": "DERIVED"
+      },
+      {
+        "mechanism": "thermal_buoyancy",
+        "force_n": 4.0262574505999995e-06,
+        "power_w": 0.001,
+        "delta_t_k": 1.0,
+        "formula": "rho beta dT g V",
+        "note": "slow onset with a thermal time constant; a step in drive followed by a slow force ramp is the signature",
+        "claim_class": "DERIVED"
+      },
+      {
+        "mechanism": "photon_radiation_pressure",
+        "force_n": 3.3356409519815207e-12,
+        "formula": "P * anisotropy / c",
+        "note": "isotropic radiation gives ZERO net force; this is the hard ceiling for any purely radiative thrust and it is not multiplied by Q",
+        "claim_class": "ESTABLISHED"
+      },
+      {
+        "mechanism": "cable_stiffness",
+        "force_n": 5e-08,
+        "formula": "k x",
+        "note": "the classic false positive on a torsion balance; control by cable routing and by driving with the balance locked",
+        "claim_class": "DERIVED"
+      }
+    ],
+    "largest_artifact": "electrostatic_attraction",
+    "largest_artifact_force_n": 0.00017708375625600001,
+    "candidate_over_largest_artifact": 5.647045336865095e-09,
+    "verdict": "CANDIDATE_BELOW_ARTIFACT_FLOOR",
+    "required_controls": [
+      "hard vacuum (removes ion wind and convection)",
+      "sham drive at matched dissipated power",
+      "drive reversal and polarity reversal",
+      "balance locked during drive",
+      "dielectric removed",
+      "geometry mirrored",
+      "blind analysis of the force channel"
+    ],
+    "note": "exceeding the artifact floor is NECESSARY and not sufficient; it only earns the right to a controlled measurement",
+    "claim_class": "DERIVED"
+  },
+  "evidence_class": "DERIVED",
+  "limitations": [
+    "order-of-magnitude"
+  ],
+  "uncertainty": {},
+  "software": {
+    "python": "3.13.2",
+    "rgcs_surface_wave": "0.10.15",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0"
+  },
+  "source_commit": "20545f46d4eeb7967f098b61b579b4cf355e3613",
+  "publication_status": "HOLD",
+  "nonclaim": "Computed values are simulation outputs, not measurements. This work does not demonstrate antigravity, reactionless thrust, gravity modification, free energy, or anomalous propulsion, and makes no claim about the origin or authorship of the source material.",
+  "receipt_hash": "b4c1187ac85118d4091b39f037294de1dfcd241c098b8e49dd7ba78ccee848a3"
+}

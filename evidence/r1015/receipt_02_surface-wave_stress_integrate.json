@@ -1,0 +1,73 @@
+{
+  "schema": "rgcs.r1015.receipt.v1",
+  "command": "surface-wave stress integrate",
+  "inputs": {
+    "masks": "null library"
+  },
+  "input_hash": "eae4aac329bdde31c59bfa8b364c8dcef4d6a4cce517ec887e23f8773e80a1f7",
+  "outputs": {
+    "schema": "rgcs.r1015.mask-comparison.v1",
+    "rows": [
+      {
+        "mask": "adjacent_gaps",
+        "role": "control: maximal m=1 asymmetry for a two-gap mask",
+        "mask_m1": 0.056912816799727935,
+        "lateral_force_n": 7.491940885257591e-13,
+        "axial_force_n": -4.740817479573799e-11
+      },
+      {
+        "mask": "symmetric_gaps",
+        "role": "control: intermediate separation",
+        "mask_m1": 0.03147982751154859,
+        "lateral_force_n": 4.143970023914797e-13,
+        "axial_force_n": -4.740817479573801e-11
+      },
+      {
+        "mask": "randomized_gaps",
+        "role": "control: arbitrary separation, no candidate status",
+        "mask_m1": 0.012715481940360734,
+        "lateral_force_n": 1.6738521194614605e-13,
+        "axial_force_n": -4.7408174795738134e-11
+      },
+      {
+        "mask": "nearest_diametric_gaps",
+        "role": "control: minimal m=1 asymmetry reachable with two gaps on an odd cell count",
+        "mask_m1": 0.0025637045914578553,
+        "lateral_force_n": 3.374832652205229e-14,
+        "axial_force_n": -4.740817479573798e-11
+      },
+      {
+        "mask": "all_active",
+        "role": "control: perfectly symmetric, all net-force harmonics vanish except m=0",
+        "mask_m1": 1.724350394815491e-16,
+        "lateral_force_n": 5.289017246996075e-27,
+        "axial_force_n": -5.33287549355181e-11
+      },
+      {
+        "mask": "unpatterned_annulus",
+        "role": "control: no angular patterning at all; the continuum limit of all_active",
+        "mask_m1": 1.724350394815491e-16,
+        "lateral_force_n": 5.289017246996075e-27,
+        "axial_force_n": -5.33287549355181e-11
+      }
+    ],
+    "m1_lateral_correlation": 1.0,
+    "finding": "lateral force tracks the m=1 mask amplitude, as the orthogonality rule requires; it is an ordinary asymmetry force balanced by the support reaction",
+    "claim_class": "SIMULATED"
+  },
+  "evidence_class": "SIMULATED",
+  "limitations": [
+    "quasi-static exact-Coulomb sources"
+  ],
+  "uncertainty": {},
+  "software": {
+    "python": "3.13.2",
+    "rgcs_surface_wave": "0.10.15",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0"
+  },
+  "source_commit": "20545f46d4eeb7967f098b61b579b4cf355e3613",
+  "publication_status": "HOLD",
+  "nonclaim": "Computed values are simulation outputs, not measurements. This work does not demonstrate antigravity, reactionless thrust, gravity modification, free energy, or anomalous propulsion, and makes no claim about the origin or authorship of the source material.",
+  "receipt_hash": "a1c48f3a3f07248ce8f62b07e60ad3301080545ba1afff44b18743f1faead9f3"
+}

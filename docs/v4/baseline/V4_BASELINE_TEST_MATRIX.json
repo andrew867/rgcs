@@ -123,6 +123,13 @@
     ],
     "test_functions": 52
   },
+  "r1015": {
+    "files": [
+      "test_privacy_boundary.py",
+      "test_surface_wave.py"
+    ],
+    "test_functions": 58
+  },
   "r109": {
     "files": [
       "test_rlab109_codec.py",

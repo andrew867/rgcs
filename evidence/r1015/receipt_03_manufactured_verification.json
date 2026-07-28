@@ -1,0 +1,94 @@
+{
+  "schema": "rgcs.r1015.receipt.v1",
+  "command": "manufactured verification",
+  "inputs": {},
+  "input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "outputs": {
+    "schema": "rgcs.r1015.manufactured.v1",
+    "cases": [
+      {
+        "case": "M1_charge_in_uniform_field",
+        "exact_force_n": [
+          0.0,
+          0.0,
+          1.0000000000000002e-06
+        ],
+        "computed_force_n": [
+          -4.193125139563698e-23,
+          -4.063602698624184e-23,
+          1.0000000000000343e-06
+        ],
+        "relative_error": 3.409312613001288e-14,
+        "closure_defect": 4.1818299474803796e-17,
+        "passed": true,
+        "claim_class": "DERIVED"
+      },
+      {
+        "case": "M2_two_point_charges",
+        "exact_force_n": [
+          -1.797510358452234e-06,
+          0.0,
+          0.0
+        ],
+        "computed_force_n": [
+          -1.7975103584522358e-06,
+          -5.222730615840058e-23,
+          3.96057954699511e-22
+        ],
+        "coulomb_magnitude_n": 1.797510358452234e-06,
+        "relative_error": 9.683010667763998e-16,
+        "passed": true,
+        "claim_class": "DERIVED"
+      },
+      {
+        "case": "M3_source_free_uniform",
+        "computed_force_n": [
+          -4.269709649508726e-28,
+          -1.428084757482913e-28,
+          1.600278301950687e-28
+        ],
+        "force_magnitude_n": 4.778152070555848e-28,
+        "passed": true,
+        "claim_class": "DERIVED"
+      },
+      {
+        "case": "M4_pair_momentum_closure",
+        "force_body_1_n": [
+          2.808609935081609e-06,
+          -9.149518012228142e-23,
+          -4.393880016305114e-22
+        ],
+        "force_body_2_n": [
+          -2.8086099350816174e-06,
+          -4.778391268784498e-22,
+          -8.147729033647323e-23
+        ],
+        "sum_n": [
+          -8.470329472543003e-21,
+          -5.6933430700073125e-22,
+          -5.208652919669846e-22
+        ],
+        "relative_residual": 3.028332786368144e-15,
+        "passed": true,
+        "claim_class": "DERIVED"
+      }
+    ],
+    "all_passed": true,
+    "claim_class": "DERIVED"
+  },
+  "evidence_class": "DERIVED",
+  "limitations": [
+    "exact analytic comparisons"
+  ],
+  "uncertainty": {},
+  "software": {
+    "python": "3.13.2",
+    "rgcs_surface_wave": "0.10.15",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0"
+  },
+  "source_commit": "20545f46d4eeb7967f098b61b579b4cf355e3613",
+  "publication_status": "HOLD",
+  "nonclaim": "Computed values are simulation outputs, not measurements. This work does not demonstrate antigravity, reactionless thrust, gravity modification, free energy, or anomalous propulsion, and makes no claim about the origin or authorship of the source material.",
+  "receipt_hash": "1dda32709b623aaf8f097cf4ab08b7a75cb7ecc007ffb3ecbd8d6f1f1eea9c84"
+}

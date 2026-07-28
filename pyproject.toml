@@ -57,7 +57,7 @@ rgcs = "r1013.cli:main"
 rgcs-workbench = "rgcs_desktop.app.main:main"
 
 [tool.setuptools.packages.find]
-include = ["rgcs_core*", "rgcs_desktop*", "rscs_core*", "rscs2_core*", "cspc*", "pmwr*", "r3*", "r4*",
+include = ["rgcs_surface_wave*", "rgcs_core*", "rgcs_desktop*", "rscs_core*", "rscs2_core*", "cspc*", "pmwr*", "r3*", "r4*",
            "r6*", "r7*", "r8*", "r9*", "r10*", "r11*", "r12*", "r13*", "r15*",
            "cwatlas*", "rgcs_coordinate*", "rgcs_lab*",
            "rgcs_workbench*", "fkey_instrument*",

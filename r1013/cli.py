@@ -497,6 +497,9 @@ def main(argv=None) -> int:
     if argv and argv[0] in R1012_COMMANDS:
         from r1012.cli import main as codec_main
         return codec_main(argv)
+    if argv and argv[0] == "surface-wave":
+        from rgcs_surface_wave.cli import main as sw_main
+        return sw_main(argv[1:])
     ap = argparse.ArgumentParser(
         prog="rgcs",
         description="RGCS unified interface: crystal workflows plus "

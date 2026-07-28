@@ -1,0 +1,127 @@
+{
+  "schema": "rgcs.r1015.receipt.v1",
+  "command": "surface-wave eigenmodes solve",
+  "inputs": {
+    "geometry": "candidate"
+  },
+  "input_hash": "34836e0bd455a9ba90459eff61a965f68f75ccad0eedd5870e42853216a6972b",
+  "outputs": {
+    "f_sw_hz": 1150903450.5317373,
+    "modes": [
+      {
+        "m": 0,
+        "radial_index": 1,
+        "k_rad_per_m": 50.59695670812825,
+        "frequency_hz": 1150903450.5317373,
+        "frequency_mhz": 1150.9034505317372,
+        "free_space_wavelength_m": 0.2604844549397177,
+        "determinant_residual": 2.42861286636753e-17,
+        "q_dielectric": 50.0,
+        "q_conductor": 2053.3987941530277,
+        "q_radiation": null,
+        "q_radiation_status": "NOT_MODELLED: an open annulus radiates; this reduced closed parallel-plate model cannot estimate it, so the reported Q is an UPPER BOUND",
+        "q_total_upper_bound": 48.81144745021751
+      },
+      {
+        "m": 1,
+        "radial_index": 1,
+        "k_rad_per_m": 51.38551585717565,
+        "frequency_hz": 1168840407.705314,
+        "frequency_mhz": 1168.840407705314,
+        "free_space_wavelength_m": 0.25648707558678374,
+        "determinant_residual": 2.7755575615628914e-17,
+        "q_dielectric": 50.0,
+        "q_conductor": 2069.338153398752,
+        "q_radiation": null,
+        "q_radiation_status": "NOT_MODELLED: an open annulus radiates; this reduced closed parallel-plate model cannot estimate it, so the reported Q is an UPPER BOUND",
+        "q_total_upper_bound": 48.820386451312274
+      },
+      {
+        "m": 2,
+        "radial_index": 1,
+        "k_rad_per_m": 53.677959605581584,
+        "frequency_hz": 1220985469.2237365,
+        "frequency_mhz": 1220.9854692237366,
+        "free_space_wavelength_m": 0.2455331906534469,
+        "determinant_residual": 1.3877787807814457e-17,
+        "q_dielectric": 50.0,
+        "q_conductor": 2114.9938279279563,
+        "q_radiation": null,
+        "q_radiation_status": "NOT_MODELLED: an open annulus radiates; this reduced closed parallel-plate model cannot estimate it, so the reported Q is an UPPER BOUND",
+        "q_total_upper_bound": 48.84526229694028
+      },
+      {
+        "m": 3,
+        "radial_index": 1,
+        "k_rad_per_m": 57.28350974856616,
+        "frequency_hz": 1302999099.5012176,
+        "frequency_mhz": 1302.9990995012176,
+        "free_space_wavelength_m": 0.23007879139345472,
+        "determinant_residual": 6.245004513516506e-17,
+        "q_dielectric": 50.0,
+        "q_conductor": 2184.871573979769,
+        "q_radiation": null,
+        "q_radiation_status": "NOT_MODELLED: an open annulus radiates; this reduced closed parallel-plate model cannot estimate it, so the reported Q is an UPPER BOUND",
+        "q_total_upper_bound": 48.88136748925214
+      },
+      {
+        "m": 0,
+        "radial_index": 2,
+        "k_rad_per_m": 101.48811786989906,
+        "frequency_hz": 2308499021.3586187,
+        "frequency_mhz": 2308.499021358619,
+        "free_space_wavelength_m": 0.12986466757242263,
+        "determinant_residual": 1.4224732503009818e-16,
+        "q_dielectric": 50.0,
+        "q_conductor": 2908.1627273137533,
+        "q_radiation": null,
+        "q_radiation_status": "NOT_MODELLED: an open annulus radiates; this reduced closed parallel-plate model cannot estimate it, so the reported Q is an UPPER BOUND",
+        "q_total_upper_bound": 49.1548808397467
+      },
+      {
+        "m": 1,
+        "radial_index": 2,
+        "k_rad_per_m": 101.89751195970852,
+        "frequency_hz": 2317811302.2000737,
+        "frequency_mhz": 2317.811302200074,
+        "free_space_wavelength_m": 0.1293429097163501,
+        "determinant_residual": 3.9898639947466563e-17,
+        "q_dielectric": 50.0,
+        "q_conductor": 2914.022459443407,
+        "q_radiation": null,
+        "q_radiation_status": "NOT_MODELLED: an open annulus radiates; this reduced closed parallel-plate model cannot estimate it, so the reported Q is an UPPER BOUND",
+        "q_total_upper_bound": 49.15655160033117
+      }
+    ],
+    "candidate_4096": {
+      "schema": "rgcs.r1015.candidate-carrier-test.v1",
+      "f_candidate_hz": 4096.0,
+      "candidate_free_space_wavelength_m": 73191.51806640625,
+      "annulus_circumference_m": 0.7111664463864444,
+      "circumference_in_wavelengths": 9.71651449750239e-06,
+      "lowest_derived_eigenmode_hz": 1168840407.705314,
+      "ratio_derived_over_candidate": 285361.42766243016,
+      "required_slow_wave_factor_for_m1": 102917.56372689486,
+      "verdict": "FALSIFIED_AS_ELECTROMAGNETIC_CARRIER",
+      "interpretation": "the structure is electrically tiny at the candidate frequency: it cannot support a bound annular surface-wave resonance there. The candidate frequency is retained as a SWITCHING and PHASE reference, which is what the source record actually describes, and NOT as the electromagnetic carrier. This is a NULL result for the carrier reading, not a failure of the device concept.",
+      "claim_class": "NULL"
+    }
+  },
+  "evidence_class": "SIMULATED",
+  "limitations": [
+    "closed PEC walls: a real open annulus radiates and the reported Q is an upper bound",
+    "no z variation: higher-order axial modes are excluded",
+    "the angular patterning is NOT in this eigenproblem; it enters as a perturbation through the mask spectrum"
+  ],
+  "uncertainty": {},
+  "software": {
+    "python": "3.13.2",
+    "rgcs_surface_wave": "0.10.15",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0"
+  },
+  "source_commit": "20545f46d4eeb7967f098b61b579b4cf355e3613",
+  "publication_status": "HOLD",
+  "nonclaim": "Computed values are simulation outputs, not measurements. This work does not demonstrate antigravity, reactionless thrust, gravity modification, free energy, or anomalous propulsion, and makes no claim about the origin or authorship of the source material.",
+  "receipt_hash": "956e7cb68e75765fcf638067e3bbbe2a22ef319a807856399520a00ad7e51a64"
+}
