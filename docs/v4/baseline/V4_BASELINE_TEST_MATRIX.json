@@ -130,6 +130,12 @@
     ],
     "test_functions": 58
   },
+  "r1015a": {
+    "files": [
+      "test_scale_a.py"
+    ],
+    "test_functions": 35
+  },
   "r109": {
     "files": [
       "test_rlab109_codec.py",

@@ -500,6 +500,9 @@ def main(argv=None) -> int:
     if argv and argv[0] == "surface-wave":
         from rgcs_surface_wave.cli import main as sw_main
         return sw_main(argv[1:])
+    if argv and argv[0] == "scale-a":
+        from r1015a.cli import main as scale_a_main
+        return scale_a_main(argv[1:])
     ap = argparse.ArgumentParser(
         prog="rgcs",
         description="RGCS unified interface: crystal workflows plus "

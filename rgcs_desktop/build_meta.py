@@ -45,7 +45,7 @@ STAMP_NAME = "_build_stamp.json"
 SOURCE_ROOTS = ("rgcs_desktop", "rgcs_workbench", "rgcs_core",
                 "rscs_core", "rscs2_core", "fkey_instrument",
                 "resonator_platform", "cspc", "pmwr", "r3", "r4",
-                "r6", "r7", "r8", "r9", "r10", "r109", "r1010", "r1011", "r1012", "r1013", "rgcs_surface_wave", "r11", "r12", "r13", "r15",
+                "r6", "r7", "r8", "r9", "r10", "r109", "r1010", "r1011", "r1012", "r1013", "r1015a", "rgcs_surface_wave", "r11", "r12", "r13", "r15",
                 "cwatlas",
                 # Q02 / R10-D-004: the inverse of R8-D-006. This lane
                 # ships in the wheel and sdist and is importable after
