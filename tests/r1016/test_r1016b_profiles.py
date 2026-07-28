@@ -94,10 +94,15 @@ def test_no_mesh_warp_anywhere_in_r1016():
 
 # 10. strict anchor gate enforced
 def test_strict_gate_constant_and_enforcement():
-    from r1016.project import STRICT_ANCHORS, STRICT_GATE_RMS_KM
+    """Keyed by RESOLVED SURFACE WORDS, not raw transport wires:
+    Montreal is 168500683 here, not 165879243."""
+    from r1016.project import (RAW_TRANSPORT_ANCHORS, STRICT_ANCHORS,
+                               STRICT_GATE_RMS_KM)
     assert STRICT_GATE_RMS_KM == 25.0
     assert set(STRICT_ANCHORS) == {"165876523", "168930443",
-                                   "165879243", "167849523"}
+                                   "168500683", "167849523"}
+    assert set(RAW_TRANSPORT_ANCHORS) == {"165876523", "168930443",
+                                          "165879243", "167849523"}
 
 
 # 11. path-vector compact/refined relationships detected
@@ -177,3 +182,51 @@ def test_prefix_test_excludes_the_constructed_point_by_default():
 def test_shared_prefix_helper():
     assert shared_prefix("2173604", "21736041") == 7
     assert shared_prefix("2173604", "3320164") == 0
+
+
+# --- canonical surface word bridge (R10.16B patch) -------------------
+def test_resolver_matches_specification():
+    from r1016.surface_word import ANCHOR_RECORDS, resolve_surface_word
+    expect = {"Stonehenge": (165876523, "raw_vector"),
+              "Toronto": (168930443, "canonical_packet_or_candidate"),
+              "Montreal": (168500683, "canonical_packet_or_candidate"),
+              "Erie": (167849523, "canonical_packet_or_candidate")}
+    for name, (word, src) in expect.items():
+        got_word, got_src = resolve_surface_word(ANCHOR_RECORDS[name])
+        assert got_word == word, name
+        assert got_src == src, name
+
+
+def test_resolver_falls_back_to_raw_without_status():
+    from r1016.surface_word import resolve_surface_word
+    w, src = resolve_surface_word(
+        {"raw_vector": "165876523",
+         "canonical_packet_or_candidate": "999999999",
+         "current_status": "SOMETHING_ELSE"})
+    assert (w, src) == (165876523, "raw_vector")
+
+
+def test_montreal_is_rebound_off_the_raw_transport_wire():
+    from r1016.surface_word import payload_octal, resolved_anchors
+    a = resolved_anchors()["Montreal"]
+    assert a["differs_from_raw"] is True
+    assert a["surface_word"] == 168500683
+    assert payload_octal(a["raw_vector"]) == "2174224"
+    assert payload_octal(a["surface_word"]) == "3174224"
+    # the raw wire sits one symbol from the old Cotswolds candidate
+    assert abs(int("2174224", 8) - int("2174225", 8)) == 1
+
+
+def test_strict_anchors_use_resolved_surface_words():
+    from r1016.project import RAW_TRANSPORT_ANCHORS, STRICT_ANCHORS
+    assert "168500683" in STRICT_ANCHORS
+    assert "165879243" not in STRICT_ANCHORS
+    assert "165879243" in RAW_TRANSPORT_ANCHORS      # diagnostic only
+
+
+def test_surface_bridge_removes_the_spurious_contradiction():
+    """The retracted finding: raw Montreal shared 3 symbols with
+    Stonehenge; the canonical surface word shares none."""
+    from r1016.hierarchy import shared_prefix
+    assert shared_prefix("2173604", "2174224") == 3   # raw, spurious
+    assert shared_prefix("2173604", "3174224") == 0   # resolved

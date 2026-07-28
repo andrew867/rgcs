@@ -26,11 +26,27 @@ from r12 import icosapacket as pk
 
 EARTH_R_KM = 6371.0088
 
-#: The four strict calibration anchors and their claimed places.
-STRICT_ANCHORS = {
+#: The four strict calibration anchors, keyed by their RESOLVED
+#: SURFACE WORD -- not by the raw transport wire. Where a record
+#: carries a canonical packet/candidate, that is the word which gets
+#: projected; see r1016.surface_word. Montreal is the case that forced
+#: this: raw 165879243 (payload octal 2174224) sits one symbol from
+#: the old Cotswolds candidate and pulls Montreal into the British
+#: cluster, while its canonical word 168500683 gives 3174224.
+def _resolved_strict_anchors() -> dict:
+    from r1016.surface_word import resolved_anchors
+    return {str(v["surface_word"]): (name, v["lat"], v["lon"])
+            for name, v in resolved_anchors().items()}
+
+
+STRICT_ANCHORS = _resolved_strict_anchors()
+
+#: The raw-wire keying, retained ONLY for explicitly labelled
+#: RAW_TRANSPORT_WIRE_DIAGNOSTIC runs.
+RAW_TRANSPORT_ANCHORS = {
     "165876523": ("Stonehenge", 51.1789, -1.8262),
     "168930443": ("Toronto", 43.6532, -79.3832),
-    "165879243": ("Montreal (corrected)", 45.5019, -73.5674),
+    "165879243": ("Montreal (RAW TRANSPORT)", 45.5019, -73.5674),
     "167849523": ("Erie", 42.1292, -80.0851),
 }
 STRICT_GATE_RMS_KM = 25.0

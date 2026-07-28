@@ -21,6 +21,12 @@ from __future__ import annotations
 import math
 from itertools import combinations
 
+#: NOTE: Montreal uses the payload of its CANONICAL SURFACE WORD
+#: (168500683 -> 850068 -> octal 3174224), not the raw transport wire
+#: (165879243 -> 587924 -> octal 2174224). Using the raw wire made
+#: Montreal share three leading symbols with Stonehenge and produced a
+#: spurious "sharpest contradiction" that has been retracted.
+#:
 #: Claimed places for the strict anchors plus the derived Avebury
 #: relation. Avebury's payload is CONSTRUCTED as Stonehenge*8+1, so it
 #: is a construction, not an independent observation, and it is
@@ -28,7 +34,7 @@ from itertools import combinations
 REFERENCE_POINTS = {
     "Stonehenge": ("587652", 51.1789, -1.8262, "independent"),
     "Toronto": ("893044", 43.6532, -79.3832, "independent"),
-    "Montreal": ("587924", 45.5019, -73.5674, "independent"),
+    "Montreal": ("850068", 45.5019, -73.5674, "independent"),
     "Erie": ("784952", 42.1292, -80.0851, "independent"),
     "Avebury": ("4701217", 51.4286, -1.8544,
                 "CONSTRUCTED as Stonehenge octal right-append 1"),
