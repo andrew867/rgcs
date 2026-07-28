@@ -1,0 +1,21 @@
+{
+  "schema": "rgcs.r1011.test-receipt.v1",
+  "date": "2026-07-27",
+  "branch": "program/r10-11-flat-face-codec",
+  "parent_commit": "f34bb521c32e7fadd699596401377da3353a4a9a",
+  "environment": "Windows 11 10.0.26200, Python 3.13.2, venv %LOCALAPPDATA%/rgcs-int-venv",
+  "focused_suites": {
+    "tests/r1011": "11 passed (codec families finite/documented/zero-survivors with recorded rejections; scatter zero even per-pair; typed-digit pattern 5->4/8->7/5->5 recorded; NO location names in codec or map code; frozen map convex + exact anchors + root lock; 0 folds and 0 edge mismatches at depth 5; inverse roundtrip 12/12; no RBF/displacement field in the candidate; UK cluster and sealed holdouts absent from fit inputs; freeze + prediction receipts verified; demoted old profile still round-trips exactly)",
+    "tests/r1010 + tests/r109": "55 passed (R10.10 and R10.9 regressions intact)",
+    "guards": "tests/v51 source-coverage + tests/v52 packaging pass with r1011 registered in SOURCE_ROOTS",
+    "combined_focused": "72 passed, exit 0"
+  },
+  "full_repository_suite": {
+    "command": "pytest tests -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic",
+    "result": "8003 passed, 15 skipped, 1 deselected, 4 warnings in 1307.53s",
+    "exit_code": 0,
+    "deselection": "NR3-001 byte-equality generator node only — identical to CI and every prior phase"
+  },
+  "audit_note": "one verification bug was found and fixed DURING this phase: the first orientation audit measured absolute normal sign under the corner-permuted traversal (uniform handedness misread as 100% reversals); the corrected audit measures sign changes against each root face's handedness and reports 0 reversals at depths 5 and 6 — the fix is in r1011/flat_hedron.py and the corrected numbers are the ones certified",
+  "no_suppression": "no plugin disabled, no timeout masking, no test weakened"
+}

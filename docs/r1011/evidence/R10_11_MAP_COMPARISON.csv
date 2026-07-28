@@ -1,0 +1,8 @@
+model,params,max_anchor_residual_deg,mean_anchor_residual_deg,orientation_reversals_L6,notes
+V1_GAUSSIAN_RBF,627 warp steps,0.0,0.0,0,smooth calibrated; historical profile
+V2_DIRECT_MONTREAL_RBF,868 steps,0.0,0.0,361,FOLDED - rejected diagnostic
+REGULAR_SPHERICAL_MIDPOINT,0,16.55287889442678,13.841499115203048,0,rigid control
+PARAM_SLERP_t=0.6515,1,15.332193375729114,11.30319929899026,0,traversal-curved control (not source-matched)
+MOBIUS_CONTROL,6,4.487694115433927,3.55716542422167,0,global conformal control (not source-matched)
+SNYDER_STYLE_EQUAL_AREA_APPROX,0,16.850330557572683,14.214551428308157,0,"planar equal-area proxy, NOT full ISEA (labelled approximation)"
+FLAT_FACE_NODE_CURVATURE_NEW,24 (12 node dirs),4.186974206842247e-05,2.8135925950938904e-05,0,SOURCE-MATCHED; convex; 0 folds depth-6; exact inverse lookup

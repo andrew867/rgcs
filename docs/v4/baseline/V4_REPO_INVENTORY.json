@@ -5,16 +5,16 @@
     "7962817": "commit",
     "9165594": "commit"
   },
-  "branch": "program/r10-10-face-orientation",
+  "branch": "program/r10-11-flat-face-codec",
   "dirty_files": [
     " M docs/v4/baseline/V4_REPO_INVENTORY.json",
     " M rgcs_desktop/build_meta.py",
-    "?? docs/r1010/",
-    "?? r1010/",
-    "?? tests/r1010/",
+    "?? docs/r1011/",
+    "?? r1011/",
+    "?? tests/r1011/",
     "M docs/v4/baseline/V4_BASELINE_TEST_MATRIX.json"
   ],
-  "head": "b422e36ae4a289c0d392f946bf1b604a3b3c5065",
+  "head": "f34bb521c32e7fadd699596401377da3353a4a9a",
   "protected_tags_present": {
     "v2.0.0": "f9fd2c20a05334e12ac9113ba86853c6591fc84e",
     "v3.0.0": "83521f73d6ad02b009ada88f3b8d33a8a00fc253",
@@ -94,6 +94,6 @@
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS/codex-worktree                                  71e7342 [program/codex-core-algorithms]",
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-claude                                          188caab [program/claude-authority-docs]",
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-cursor                                          d4baf0d [program/cursor-app-integration]",
-    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-integration                                     b422e36 [program/r10-10-face-orientation]"
+    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-integration                                     f34bb52 [program/r10-11-flat-face-codec]"
   ]
 }

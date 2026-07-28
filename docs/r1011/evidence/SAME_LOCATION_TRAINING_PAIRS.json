@@ -1,0 +1,43 @@
+{
+  "schema": "rgcs.same-location-pairs.v2",
+  "pairs": [
+    {
+      "id": "STONEHENGE",
+      "compact": "165876523",
+      "refined": "1643789253",
+      "label": "Stonehenge",
+      "label_status": "SOURCE_REPORTED_TRAINING_LABEL"
+    },
+    {
+      "id": "TORONTO",
+      "compact": "168930443",
+      "refined": "1672875493",
+      "label": "Toronto",
+      "label_status": "SOURCE_CONFIRMED_TRAINING_LABEL"
+    },
+    {
+      "id": "CYYT",
+      "compact": "165892733",
+      "refined": "1658274383",
+      "label": "St. John's / CYYT",
+      "label_status": "SOURCE_REPORTED_SAME_LOCATION_PAIR_2026-07-27_20_36"
+    }
+  ],
+  "excluded": [
+    {
+      "raw": "1658792343",
+      "reason": "Corrupted Gander/Argentia collision; do not fit."
+    },
+    {
+      "raw": [
+        "167854923",
+        "1687209343",
+        "168724343",
+        "165892323",
+        "165872943",
+        "165829473"
+      ],
+      "reason": "Sealed holdouts; do not fit or use for grammar selection."
+    }
+  ]
+}

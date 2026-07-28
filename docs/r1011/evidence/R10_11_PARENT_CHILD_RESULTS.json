@@ -1,0 +1,5011 @@
+{
+  "schema": "rgcs.r1011.codec-search.v1",
+  "pair_count": 3,
+  "candidate_count": 183,
+  "survivor_count": 0,
+  "survivors": [],
+  "results": [
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off0",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "110",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "110",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "110",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off1",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "100",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "100",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "100",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off2",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "000",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "000",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "000",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off3",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "000",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "001",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "001",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off4",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "001",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "011",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "010",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off5",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "011",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "111",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "101",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off6",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "111",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "110",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "011",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off7",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "111",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "101",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "110",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off8",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "111",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "011",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "101",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off9",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "111",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "110",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "010",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off10",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "110",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "101",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "101",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off11",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "101",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "011",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "011",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off12",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "010",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "110",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "111",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off13",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "100",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "100",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "110",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off14",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "000",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "000",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "101",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off15",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "001",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "000",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "010",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off16",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "011",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "000",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "100",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off17",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "111",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "001",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "000",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off18",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "110",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "011",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "000",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off19",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "101",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "110",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "001",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off20",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "011",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "101",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "010",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off21",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "111",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "011",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "100",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off22",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "111",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "111",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "001",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off23",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "110",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "111",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "010",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off24",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "100",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "110",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "100",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off25",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "000",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "100",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "001",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off26",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "001",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "001",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "011",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off27",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "010",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "010",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "111",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off28",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_bits": "101",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_bits": "101",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_bits": "111",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off29",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "offset beyond word",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "offset beyond word",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "offset beyond word",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_BITDEL_off30",
+      "survives": false,
+      "rejection": "not all pairs align at this offset",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "offset beyond word",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "offset beyond word",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "offset beyond word",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_OCTDEL_pos0",
+      "survives": false,
+      "rejection": "not all pairs align at this octal position",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_digit": "1",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_digit": "1",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_digit": "1",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_OCTDEL_pos1",
+      "survives": false,
+      "rejection": "not all pairs align at this octal position",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_digit": "4",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_digit": "4",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_digit": "4",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_OCTDEL_pos2",
+      "survives": false,
+      "rejection": "not all pairs align at this octal position",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_digit": "1",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_digit": "3",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_digit": "2",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_OCTDEL_pos3",
+      "survives": false,
+      "rejection": "not all pairs align at this octal position",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_digit": "7",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_digit": "5",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_digit": "6",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_OCTDEL_pos4",
+      "survives": false,
+      "rejection": "not all pairs align at this octal position",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_digit": "6",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_digit": "5",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_digit": "5",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_OCTDEL_pos5",
+      "survives": false,
+      "rejection": "not all pairs align at this octal position",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_digit": "4",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_digit": "4",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_digit": "6",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_OCTDEL_pos6",
+      "survives": false,
+      "rejection": "not all pairs align at this octal position",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_digit": "3",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_digit": "0",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_digit": "4",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_OCTDEL_pos7",
+      "survives": false,
+      "rejection": "not all pairs align at this octal position",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_digit": "5",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_digit": "6",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_digit": "1",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_OCTDEL_pos8",
+      "survives": false,
+      "rejection": "not all pairs align at this octal position",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_digit": "7",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_digit": "7",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_digit": "1",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_OCTDEL_pos9",
+      "survives": false,
+      "rejection": "not all pairs align at this octal position",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_digit": "0",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_digit": "4",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_digit": "1",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "A",
+      "candidate": "A_OCTDEL_pos10",
+      "survives": false,
+      "rejection": "not all pairs align at this octal position",
+      "per_pair": [
+        {
+          "hit": false,
+          "child_digit": "5",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "child_digit": "5",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "child_digit": "7",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off0",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off1",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off2",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off3",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off4",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off5",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off6",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off7",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off8",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off9",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off10",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off11",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off12",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off13",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off14",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off15",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off16",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off17",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off18",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off19",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off20",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off21",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off22",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off23",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off24",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off25",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off26",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off27",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "1",
+            "1"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off28",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP1_BITDEL_off29",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off0",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off1",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off2",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off3",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off4",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off5",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off6",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off7",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off8",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off9",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off10",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off11",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off12",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off13",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off14",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off15",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off16",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off17",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off18",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off19",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off20",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off21",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off22",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off23",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off24",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "headers": [
+            "16",
+            "16"
+          ],
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off25",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off26",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off27",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off28",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP2_BITDEL_off29",
+      "survives": false,
+      "rejection": "payload alignment failed",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off0",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off1",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off2",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off3",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off4",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off5",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off6",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off7",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off8",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off9",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off10",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off11",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off12",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off13",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off14",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off15",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off16",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off17",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off18",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off19",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off20",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "headers": [
+            "165",
+            "165"
+          ],
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off21",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off22",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off23",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off24",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off25",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off26",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off27",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off28",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "candidate": "B_CLIP3_BITDEL_off29",
+      "survives": false,
+      "rejection": "header fields differ within a pair",
+      "per_pair": [
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "why": "payload widths not 3 bits apart or offset out of range",
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "C",
+      "candidate": "C_STAR_SOL_BODY_TYPED",
+      "survives": false,
+      "rejection": "typed star|Sol|body digits do not agree across pair members / not in {165,167} form",
+      "per_pair": [
+        {
+          "typed_compact": [
+            "1",
+            "6",
+            "5"
+          ],
+          "typed_refined": [
+            "1",
+            "6",
+            "4"
+          ],
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "typed_compact": [
+            "1",
+            "6",
+            "8"
+          ],
+          "typed_refined": [
+            "1",
+            "6",
+            "7"
+          ],
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "typed_compact": [
+            "1",
+            "6",
+            "5"
+          ],
+          "typed_refined": [
+            "1",
+            "6",
+            "5"
+          ],
+          "hit": true,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm012_fwd_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm012_fwd_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm012_rev_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm012_rev_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm021_fwd_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm021_fwd_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm021_rev_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm021_rev_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm102_fwd_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm102_fwd_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm102_rev_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm102_rev_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm120_fwd_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm120_fwd_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm120_rev_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm120_rev_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm201_fwd_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm201_fwd_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm201_rev_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm201_rev_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm210_fwd_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm210_fwd_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm210_rev_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_nat_perm210_rev_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm012_fwd_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm012_fwd_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm012_rev_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm012_rev_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm021_fwd_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm021_fwd_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm021_rev_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm021_rev_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm102_fwd_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm102_fwd_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm102_rev_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm102_rev_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm120_fwd_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm120_fwd_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm120_rev_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm120_rev_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm201_fwd_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm201_fwd_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm201_rev_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm201_rev_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm210_fwd_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm210_fwd_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm210_rev_bin",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_LVL_30_33_perm210_rev_gray",
+      "survives": false,
+      "rejection": "level sequences differ",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "candidate": "E_SCATTER_DEL3",
+      "survives": false,
+      "rejection": "no common 3-bit deletion position-set across all pairs",
+      "per_pair": [
+        {
+          "hit_count": 0,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit_count": 0,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit_count": 0,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    },
+    {
+      "family": "F",
+      "candidate": "F_IDENTITY_TRANSDUCER",
+      "survives": false,
+      "rejection": "identity transducer reduces to family A (already failed); non-trivial machine spaces are unbounded and are NOT searched (that would silently widen the grammar)",
+      "per_pair": [
+        {
+          "hit": false,
+          "compact": 165876523,
+          "refined": 1643789253
+        },
+        {
+          "hit": false,
+          "compact": 168930443,
+          "refined": 1672875493
+        },
+        {
+          "hit": false,
+          "compact": 165892733,
+          "refined": 1658274383
+        }
+      ]
+    }
+  ],
+  "status": "TESTED_GRAMMAR_INCOMPLETE_ZERO_SURVIVORS"
+}

@@ -99,6 +99,12 @@
     ],
     "test_functions": 16
   },
+  "r1011": {
+    "files": [
+      "test_rlab1011_codec_map.py"
+    ],
+    "test_functions": 11
+  },
   "r109": {
     "files": [
       "test_rlab109_codec.py",
