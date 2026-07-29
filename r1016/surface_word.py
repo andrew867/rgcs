@@ -20,7 +20,10 @@ from __future__ import annotations
 
 RAW_DIAGNOSTIC_LABEL = "RAW_TRANSPORT_WIRE_DIAGNOSTIC"
 
-#: Strict-anchor records. ``canonical_packet_or_candidate`` is the
+#: Strict-anchor records. MONTREAL WAS REMOVED at operator instruction
+#: (R10.18): the 165879243 / 168500683 pairing was mislabelled at source
+#: and is no longer an anchor in any lane. Do not reintroduce it.
+#: ``canonical_packet_or_candidate`` is the
 #: surface/projection word where it differs from the transport wire.
 ANCHOR_RECORDS = {
     "Stonehenge": {
@@ -34,12 +37,6 @@ ANCHOR_RECORDS = {
         "canonical_packet_or_candidate": "168930443",
         "current_status": "CORRECTED_WIRE_TO_CANONICAL_CANDIDATE",
         "lat": 43.6532, "lon": -79.3832,
-    },
-    "Montreal": {
-        "raw_vector": "165879243",
-        "canonical_packet_or_candidate": "168500683",
-        "current_status": "CORRECTED_WIRE_TO_CANONICAL_CANDIDATE",
-        "lat": 45.5019, "lon": -73.5674,
     },
     "Erie": {
         "raw_vector": "167849523",

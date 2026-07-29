@@ -136,6 +136,27 @@
     ],
     "test_functions": 35
   },
+  "r1016": {
+    "files": [
+      "test_atlas_search.py",
+      "test_r1016b_profiles.py",
+      "test_r1016c_surface_metric.py"
+    ],
+    "test_functions": 47
+  },
+  "r1017": {
+    "files": [
+      "test_hedron_shell.py"
+    ],
+    "test_functions": 15
+  },
+  "r1018": {
+    "files": [
+      "test_lineage.py",
+      "test_quarantine.py"
+    ],
+    "test_functions": 13
+  },
   "r109": {
     "files": [
       "test_rlab109_codec.py",

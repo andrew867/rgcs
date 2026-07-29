@@ -34,7 +34,6 @@ LEDGER_NAME_ENV = "RGCS_R1016_LEDGER_NAME"
 SOURCE_NOTES = {
     "165876523": "Stonehenge (strict anchor; TRAINING equality)",
     "168930443": "Toronto (strict anchor)",
-    "165879243": "Montreal corrected (strict anchor)",
     "167849523": "Erie (strict anchor)",
     "165892733": "described St John's; see prefix rule",
     "167829573": "described McKean County",

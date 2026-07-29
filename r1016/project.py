@@ -43,10 +43,12 @@ STRICT_ANCHORS = _resolved_strict_anchors()
 
 #: The raw-wire keying, retained ONLY for explicitly labelled
 #: RAW_TRANSPORT_WIRE_DIAGNOSTIC runs.
+#: MONTREAL FULLY REMOVED (operator instruction, R10.18): BOTH the
+#: raw/direct 165879243 and the bridge 168500683 are out of every
+#: anchor set and every diagnostic. Do not reintroduce either.
 RAW_TRANSPORT_ANCHORS = {
     "165876523": ("Stonehenge", 51.1789, -1.8262),
     "168930443": ("Toronto", 43.6532, -79.3832),
-    "165879243": ("Montreal (RAW TRANSPORT)", 45.5019, -73.5674),
     "167849523": ("Erie", 42.1292, -80.0851),
 }
 STRICT_GATE_RMS_KM = 25.0

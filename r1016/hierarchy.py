@@ -28,7 +28,6 @@ from itertools import combinations
 SURFACE_ANCHORS = {
     "Stonehenge": (165876523, 51.1789, -1.8262, "independent"),
     "Toronto": (168930443, 43.6532, -79.3832, "independent"),
-    "Montreal": (168500683, 45.5019, -73.5674, "independent"),
     "Erie": (167849523, 42.1292, -80.0851, "independent"),
 }
 
@@ -123,7 +122,6 @@ def payload_prefix_diagnostic() -> dict:
     from r1016.addressing import REPARSE_DIAGNOSTIC, TransportWire
     pts = {"Stonehenge": (165876523, 51.1789, -1.8262),
            "Toronto": (168930443, 43.6532, -79.3832),
-           "Montreal": (168500683, 45.5019, -73.5674),
            "Erie": (167849523, 42.1292, -80.0851)}
     rows = []
     for a, b in combinations(sorted(pts), 2):
@@ -157,7 +155,6 @@ def payload_prefix_diagnostic() -> dict:
 REFERENCE_POINTS = {
     "Stonehenge": ("587652", 51.1789, -1.8262, "independent"),
     "Toronto": ("893044", 43.6532, -79.3832, "independent"),
-    "Montreal": ("850068", 45.5019, -73.5674, "independent"),
     "Erie": ("784952", 42.1292, -80.0851, "independent"),
     "Avebury": ("4701217", 51.4286, -1.8544,
                 "CONSTRUCTED as Stonehenge octal right-append 1"),
