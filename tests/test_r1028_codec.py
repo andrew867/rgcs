@@ -386,3 +386,37 @@ def test_s8_layer2_partitions_the_tested_corpus():
     assert lay["STONEHENGE"] == lay["ORANGE"] == 15
     assert lay["ERIE"] == lay["TORONTO"] == 16
     assert lay["ANCHORAGE"] == 29
+
+
+# --- R10.38B ----------------------------------------------------------
+
+def test_orange_triplet_is_same_cell_tail_variants():
+    from r1028 import varcodec36 as v
+    a, b, c = 165892743, 165892763, 165892783
+    assert v.same_cell(a, b) and v.same_cell(b, c)
+    assert v.cell_key(a) == (2, 120, 3402)
+    assert len({v.decode(x)["E3"][0] for x in (a, b, c)}) > 1   # tails differ
+
+
+def test_check_digit_is_not_a_function_of_geometry_alone():
+    """Orange shares R4/S8/P12 but carries checks {3,7}. Any future
+    checksum rule MUST read the tail or the whole word."""
+    from r1028 import varcodec36 as v
+    r = v.check_depends_on_tail(
+        [165876523, 167849523, 168930443,
+         165892743, 165892763, 165892783])
+    assert r["check_is_function_of_geometry_alone"] is False
+    assert r["groups_with_differing_checks"] == 1
+
+
+def test_family_typing_separates_the_three_routes():
+    from r1028 import varcodec36 as v
+    assert v.family_of(165876523) == v.FAMILY_VARIABLE30
+    assert v.family_of(16873059233) == v.FAMILY_VARIABLE36
+    assert v.family_of(168730592363363) == v.FAMILY_MULTIBLOCK
+    assert v.family_of(1678059360633) == v.FAMILY_MULTIBLOCK
+
+
+def test_tail_is_declared_non_spatial():
+    from r1028 import varcodec36 as v
+    assert "NON-SPATIAL" in v.FIELD_SEMANTICS["tail"]

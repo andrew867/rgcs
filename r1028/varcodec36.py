@@ -183,3 +183,62 @@ def decode_report(labelled) -> dict:
         "distinct_check_digits": sorted(checks),
         "valid_octal_lengths": list(VALID_OCTAL_LENGTHS),
     }
+
+
+#: R10.38B family typing, by active width and parse outcome.
+FAMILY_VARIABLE30 = "VARIABLE30_TERRA_SURFACE_CELL"
+FAMILY_VARIABLE36 = "VARIABLE36_EXTENDED_SURFACE_CELL"
+FAMILY_MULTIBLOCK = "MULTIBLOCK_OR_DIFFERENT_ROUTE"
+
+#: Corrected field semantics (R10.38B). Roles are CANDIDATES; only the
+#: same-cell relation below is established.
+FIELD_SEMANTICS = {
+    "R4": "root / body / system family",
+    "S8": "major surface zone / triangle-family CANDIDATE",
+    "P12": "local geometric cell CANDIDATE",
+    "tail": "epoch / state / check - NON-SPATIAL",
+}
+
+
+def family_of(value: int) -> str:
+    try:
+        w = active_width(value)
+    except VarCodecError:
+        return FAMILY_MULTIBLOCK
+    return FAMILY_VARIABLE30 if w <= 30 else FAMILY_VARIABLE36
+
+
+def cell_key(value: int) -> tuple:
+    """The geometric identity of a word: R4/S8/P12. The tail is NOT part
+    of it, so same-cell tail variants share a key."""
+    d = decode(value)
+    return (d["R4_root"], d["S8_surface"], d["P12_path"])
+
+
+def same_cell(a: int, b: int) -> bool:
+    return cell_key(a) == cell_key(b)
+
+
+def check_depends_on_tail(values) -> dict:
+    """If two words share R4/S8/P12 but differ in check digit, the check
+    CANNOT be a function of the geometric fields alone. That is a hard
+    constraint on any future checksum rule."""
+    by = {}
+    for v in values:
+        by.setdefault(cell_key(v), []).append(decode(v))
+    proof = []
+    for key, ds in by.items():
+        checks = {d["check_digit_m3"] for d in ds}
+        if len(ds) > 1 and len(checks) > 1:
+            proof.append({"cell": key, "checks": sorted(checks),
+                          "values": [d["value"] for d in ds]})
+    return {
+        "same_cell_groups": len(by),
+        "groups_with_differing_checks": len(proof),
+        "proof": proof,
+        "check_is_function_of_geometry_alone": not proof,
+        "conclusion": ("REFUTED: the check digit varies within a fixed "
+                       "R4/S8/P12 cell, so it must read the tail (or the "
+                       "whole word), not the geometric fields alone"
+                       if proof else "not refuted by this corpus"),
+    }
