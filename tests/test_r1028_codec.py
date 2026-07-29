@@ -332,3 +332,53 @@ def test_over_long_vectors_are_refused_not_forced():
     from r1028 import varcodec36 as v
     with pytest.raises(v.VarCodecError, match="not a single"):
         v.decode(168730592363363)      # 16 octal digits
+
+
+# --- R10.38: variable codec is authoritative --------------------------
+
+OPERATOR_R1038 = {
+    165876523: ("001001111000110001001100101011", 2, 120, 3148, [5, 3], 3),
+    167849523: ("001010000000010010111000110011", 2, 128, 1208, [6, 3], 3),
+    168930443: ("001010000100011010110010001011", 2, 132, 1714, [1, 3], 3),
+}
+
+
+@pytest.mark.parametrize("value", sorted(OPERATOR_R1038))
+def test_reproduces_the_operator_r1038_parse_exactly(value):
+    from r1028 import varcodec36 as v
+    bits, r4, s8, p12, e3, chk = OPERATOR_R1038[value]
+    d = v.decode(value)
+    assert d["total_bits"] == 30
+    assert d["bits"] == bits
+    assert (d["R4_root"], d["S8_surface"], d["P12_path"]) == (r4, s8, p12)
+    assert d["E3"] == e3 and d["check_digit_m3"] == chk
+
+
+def test_smallest_valid_width_rule_never_forces_36_bits():
+    from r1028 import varcodec36 as v
+    assert v.VALID_WIDTHS == (27, 30, 33, 36)
+    assert v.active_width(165876523) == 30          # 28 bits -> 30
+    assert v.active_width(16873059233) == 36        # 34 bits -> 36
+    assert v.active_width(1) == 27                  # tiny -> 27, not 36
+
+
+def test_bit_length_and_octal_width_rules_agree():
+    from r1028 import varcodec36 as v
+    for raw in ("165876523", "167849523", "168930443",
+                "165892743", "16873059233", "16875092353"):
+        assert v.width_rules_agree(int(raw))
+
+
+def test_s8_layer2_partitions_the_tested_corpus():
+    """S8's high-5 'layer 2' separates the families that F5 could not.
+    Suggestive only: just TWO independent verified contrasts."""
+    from r1028 import varcodec36 as v
+    lay = {}
+    for name, raw in (("STONEHENGE", "165876523"), ("ERIE", "167849523"),
+                      ("TORONTO", "168930443"), ("ORANGE", "165892743"),
+                      ("ANCHORAGE", "16873059233")):
+        d = v.decode(int(raw))
+        lay[name] = v.surface_split(d["S8_surface"])["layer2_hi5"]
+    assert lay["STONEHENGE"] == lay["ORANGE"] == 15
+    assert lay["ERIE"] == lay["TORONTO"] == 16
+    assert lay["ANCHORAGE"] == 29

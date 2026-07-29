@@ -57,6 +57,34 @@ class VarCodecError(ValueError):
     pass
 
 
+VALID_WIDTHS = tuple(FIXED_BITS + t for t in TAIL_WIDTHS)   # 27,30,33,36
+
+
+def active_width(value: int) -> int:
+    """R10.38 parsing rule: the SMALLEST valid width that contains the
+    integer, then left-zero-pad. Do NOT force 36 bits unless bit_length
+    requires it.
+
+    This is equivalent to reading the width off the octal length for
+    every in-range value, and ``width_rules_agree`` proves it.
+    """
+    bl = max(1, value.bit_length())
+    for w in VALID_WIDTHS:
+        if bl <= w:
+            return w
+    raise VarCodecError(
+        f"{value} needs {bl} bits; the widest single variable-length "
+        f"word is {VALID_WIDTHS[-1]} bits. Multi-block, not one word.")
+
+
+def width_rules_agree(value: int) -> bool:
+    """bit_length rule and octal-length rule must give the same width."""
+    try:
+        return active_width(value) == len(format(value, "o")) * 3
+    except VarCodecError:
+        return False
+
+
 def tail_bits_for(octal_len: int) -> int:
     t = octal_len * 3 - FIXED_BITS
     if t not in TAIL_WIDTHS:
@@ -72,8 +100,8 @@ def decode(value: int) -> dict:
     """Decode one variable-length word. Length is read from the octal."""
     assert_clean([value], where="R10.37 variable-length decode")
     octal = format(value, "o")
-    tail = tail_bits_for(len(octal))
-    total = FIXED_BITS + tail
+    total = active_width(value)            # R10.38 authoritative rule
+    tail = total - FIXED_BITS
     pos = total
     pos -= ROOT_BITS
     root = (value >> pos) & ((1 << ROOT_BITS) - 1)
@@ -95,6 +123,9 @@ def decode(value: int) -> dict:
 
     return {
         "value": value, "octal": octal, "octal_digits": len(octal),
+        "bits": format(value, f"0{total}b"),
+        "width_rules_agree": width_rules_agree(value),
+        "E3": groups,
         "total_bits": total, "tail_bits": tail,
         "R4_root": root, "S8_surface": surface, "P12_path": path,
         "tail_groups": groups, "check_digit_m3": check,
