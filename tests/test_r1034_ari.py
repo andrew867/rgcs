@@ -90,3 +90,45 @@ def test_phase_conjugation_node_stays_provenance_language():
     r = g.report()
     assert "UNTIL_MEASURED" in r["phase_conjugation_node"]
     assert r["physical_validation_claimed"] is False
+
+
+# --- R10.35 EarthStar grid --------------------------------------------
+
+def test_earthstar_node_count_is_exactly_62_by_construction():
+    from r1034 import earthstar as e
+    s = e.structure_check()
+    assert s["nodes"] == 62 and s["nodes_match_62"]
+    assert s["great_circles"] == 15 and s["great_circles_match_15"]
+
+
+def test_orientation_is_not_sourced_and_is_declared():
+    from r1034 import earthstar as e
+    assert e.structure_check()["orientation_sourced"] is False
+    for row in e.score_sites([("X", 51.1789, -1.8262)]):
+        assert row["orientation_sourced"] is False
+        assert row["scored_as_evidence"] is False
+
+
+def test_edge_proximity_is_not_discriminating_at_the_observed_scale():
+    """~1 in 3 random points sit within 151 km of a grid great circle."""
+    from r1034 import earthstar as e
+    base = {r["distance_km"]: r for r in e.chance_baseline(samples=60000)}
+    assert base[151]["fraction_within_of_any_edge"] > 0.25
+    assert base[151]["edge_test_is_discriminating"] is False
+
+
+def test_node_proximity_is_far_more_discriminating_than_edge():
+    from r1034 import earthstar as e
+    base = {r["distance_km"]: r for r in e.chance_baseline(samples=60000)}
+    at150 = base[151]
+    assert at150["fraction_within_of_any_node"] < 0.02
+    assert (at150["fraction_within_of_any_edge"]
+            > 10 * at150["fraction_within_of_any_node"])
+
+
+def test_nothing_is_promoted_without_a_blind_test():
+    from r1034 import earthstar as e
+    r = e.report()
+    assert r["blind_test_passed"] is False
+    assert r["projector_promoted"] is False
+    assert r["verdict"].endswith("EXACT_FAILURES_EMITTED")
