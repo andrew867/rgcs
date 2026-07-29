@@ -65,9 +65,31 @@ def test_anchors_are_never_counted_as_confirmations():
     assert all(row["is_training_anchor"] for row in r["rows"])
 
 
-def test_status_records_the_refutation_not_only_the_success():
-    assert B.STATUS["canonical_same_location_pairs"].startswith("CONFIRMED")
-    assert B.STATUS["general_transport_rows"].startswith("REFUTED")
+def test_affine_is_refuted_by_the_third_labelled_pair():
+    """R10.47C. Two points DEFINE an affine mod 2^30; they cannot test
+    it. The third labelled pair is the first out-of-sample trial."""
+    var, comp = B.REFUTING_PAIR["CYYT_StJohns"]
+    got = B.bridge(var)
+    assert got != comp
+    assert abs(got - comp) > 4e8            # not a near miss
+    assert B.STATUS["canonical_same_location_pairs"].startswith("REFUTED")
+    assert B.STATUS["general_transport_bridge"].startswith("REFUTED")
+
+
+def test_no_member_of_the_fitting_family_reproduces_the_third_pair():
+    from math import gcd
+    M = B.MODULUS
+    (v1, c1), (v2, c2) = B.SAME_LOCATION_PAIRS.values()
+    x1, x2 = B.strip_header(v1), B.strip_header(v2)
+    v3, c3 = B.REFUTING_PAIR["CYYT_StJohns"]
+    x3 = B.strip_header(v3)
+    dx, dy = (x2 - x1) % M, (c2 - c1) % M
+    g = gcd(dx, M)
+    inv = pow(dx // g, -1, M // g)
+    a0 = (dy // g * inv) % (M // g)
+    fam = [((a0 + k * (M // g)) % M) for k in range(g)]
+    assert len(fam) == 32
+    assert not [a for a in fam if (a * x3 + (c1 - a * x1)) % M == c3]
 
 
 def test_status_does_not_claim_avebury_is_refuted():

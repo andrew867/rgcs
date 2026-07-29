@@ -80,8 +80,20 @@ TRANSPORT_HEADER = "16"
 LABEL = "R10_19_SURFACE_BRIDGE_HEADER_STRIPPED_AFFINE_CANDIDATE"
 
 #: Status per lane. The bridge is not a general canonicalizer.
+#: R10.47C RETRACTION. A THIRD labelled same-location pair (CYYT/St
+#: John's, 1658274383 -> 165892733) is the first out-of-sample test of
+#: this map, and it MISSES by 484,856,892. Enumerating the 32-member
+#: (A,B) family that fits the first two pairs, ZERO members reproduce
+#: the third. Two points cannot over-determine an affine mod 2^30, so
+#: the earlier "2 of 2 exact" was the minimum needed to DEFINE the map,
+#: never a test of it. The R10.19 figure 32/2^60 answered whether a
+#: pre-recorded constant lands in the fitting family - a different and
+#: much weaker question than whether the map generalises.
 STATUS = {
-    "canonical_same_location_pairs": "CONFIRMED_2_OF_2_EXACT",
+    "canonical_same_location_pairs":
+        "REFUTED_2_OF_3_THIRD_LABELLED_PAIR_MISSES",
+    "general_transport_bridge": "REFUTED_NO_AFFINE_FITS_ALL_THREE_PAIRS",
+    "_superseded_claim": "CONFIRMED_2_OF_2_EXACT",
     "general_transport_rows": "REFUTED_AT_CHANCE_1_OF_60",
     "right_append_child_relation":
         "NOT_AN_AFFINE_RELATION_SEE_R10_19B_PAYLOAD_OCTAL_FAMILY",
@@ -92,6 +104,10 @@ SAME_LOCATION_PAIRS = {
     "Stonehenge": (1643789253, 165876523),
     "Toronto": (1672875493, 168930443),
 }
+
+#: The THIRD labelled pair, which the affine does NOT reproduce. It is
+#: the out-of-sample test the first two could never provide.
+REFUTING_PAIR = {"CYYT_StJohns": (1658274383, 165892733)}
 
 
 class BridgeError(ValueError):

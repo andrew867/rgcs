@@ -1,4 +1,11 @@
-"""THE ACTUAL 36-bit VARIABLE-LENGTH CODEC, as the source specifies it.
+"""THE 36-bit VARIABLE-LENGTH CODEC.
+
+R10.47C SUPERSEDES the fixed R4|S8|P12|tail reading used here. Every
+field label is a MAXIMUM CAPACITY, not an always-full field; see
+:mod:`r1028.staged` for the variable staged parser that enumerates all
+legal (root, section, path, epoch) boundaries. This module is retained
+as the FIXED-BOUNDARY DIAGNOSTIC LANE.
+
 
 Earlier runs parsed every vector as a FIXED 36-bit word with an
 ``F5 | Q22 | S3`` split. That was wrong on two counts, and the source
