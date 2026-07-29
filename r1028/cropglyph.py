@@ -507,3 +507,94 @@ def temporal_report() -> dict:
             "then decode once, and score the residual",
         ],
     }
+
+
+# --- R10.41E: multi-field hypothesis, and how to keep it falsifiable --
+
+SUBSYSTEM_ROLES = ("R4_ROOT_HEADER", "S8_SURFACE_ZONE", "P12_LOCAL_CELL",
+                   "SHELL_RADIAL_STACK", "TAIL_STATE_CHECK",
+                   "ROUTE_OPERATOR_BRIDGE", "APERTURE_PHASE_GATE")
+
+#: H_MULTI is MORE flexible than H_BAD: with 7 roles and 4 glyphs an
+#: assignment always exists. So each role must carry a PREDICTION that
+#: the glyph can fail. These are those predictions.
+ROLE_PREDICTIONS = {
+    "SHELL_RADIAL_STACK":
+        "successive radii ratios should reproduce the constants the "
+        "source names (phi, sqrt2) rather than arbitrary simple ratios",
+    "TAIL_STATE_CHECK":
+        "every visible count must fit a 3-bit field, i.e. lie in 0..7",
+    "P12_LOCAL_CELL":
+        "P12 is FOUR 3-bit octal steps, so a path diagram should show "
+        "four levels",
+    "ROUTE_OPERATOR_BRIDGE":
+        "a bridge glyph should show exactly two terminals joined by one "
+        "connector, with no free-standing third terminal",
+}
+
+
+def multi_field_assessment() -> list:
+    """Each glyph against its proposed role's own prediction."""
+    return [
+        {"glyph": "BISHOPSTONE_20260703_A",
+         "role": "SHELL_RADIAL_STACK",
+         "prediction": ROLE_PREDICTIONS["SHELL_RADIAL_STACK"],
+         "observed": "44/27=1.630 (phi, 0.7% off); 62/44=1.409 "
+                     "(sqrt2, 0.4% off); 152/76=2.000",
+         "prediction_met": True,
+         "null": "phi or sqrt2 within 2% covers 4% of the range; "
+                 "P(>=2 of 4 ratios hit) = 0.0094 ~ 1 in 106",
+         "why_this_null_is_fair": "phi and sqrt2 are named in the "
+                                  "source check formula sqrt(2)/phi "
+                                  "BEFORE measurement, so they are "
+                                  "pre-specified targets, unlike "
+                                  "'nearest of 22 simple ratios'",
+         "class": "BEST_SUBSYSTEM_CANDIDATE"},
+        {"glyph": "FOXHILL_20260721_A", "role": "TAIL_STATE_CHECK",
+         "prediction": ROLE_PREDICTIONS["TAIL_STATE_CHECK"],
+         "observed": "dot split 2|3, both within 0..7",
+         "prediction_met": True,
+         "null": "any small count satisfies 0..7; weak",
+         "class": "CONSISTENT_BUT_WEAK"},
+        {"glyph": "AVEBURY_20260714_A", "role": "P12_LOCAL_CELL",
+         "prediction": ROLE_PREDICTIONS["P12_LOCAL_CELL"],
+         "observed": "3 clusters, not 4 path levels",
+         "prediction_met": False,
+         "null": "n/a - the prediction simply fails",
+         "class": "ROLE_PREDICTION_NOT_MET"},
+        {"glyph": "BISHOPSTONE_20260703_B",
+         "role": "ROUTE_OPERATOR_BRIDGE",
+         "prediction": ROLE_PREDICTIONS["ROUTE_OPERATOR_BRIDGE"],
+         "observed": "two terminals joined by one bar",
+         "prediction_met": True,
+         "null": "the glyph is visually a dumbbell; the prediction is "
+                 "nearly restating the observation",
+         "class": "CONSISTENT_BUT_NEARLY_TAUTOLOGICAL"},
+    ]
+
+
+def multi_field_report() -> dict:
+    rows = multi_field_assessment()
+    met = [r for r in rows if r["prediction_met"]]
+    return {
+        "schema": "rgcs.r1041e.multifield.v1",
+        "hypothesis_refuted": "H_BAD: one universal grammar reads every "
+                              "glyph as a tail6 value",
+        "hypothesis_open": "H_MULTI: different glyphs diagram different "
+                           "codec subsystems",
+        "assessment": rows,
+        "predictions_met": len(met), "predictions_total": len(rows),
+        "flexibility_warning": "with 7 roles and 4 glyphs an assignment "
+                               "ALWAYS exists, so H_MULTI is only "
+                               "meaningful where a role makes a "
+                               "prediction the glyph could fail",
+        "falsifiability_demonstrated": any(not r["prediction_met"]
+                                           for r in rows),
+        "strongest": "BISHOPSTONE_A as shell/radial stack - phi then "
+                     "sqrt2 in successive ratios, the two constants the "
+                     "source names, at ~1 in 106",
+        "weakest": "AVEBURY as P12 local cell - fails its own prediction "
+                   "(3 clusters vs 4 octal path steps)",
+        "verdict": "R10_41E_UNIVERSAL_TAIL_GRAMMAR_REFUTED_"
+                   "MULTI_FIELD_GLYPH_CODEC_HYPOTHESIS_OPEN",
+    }
