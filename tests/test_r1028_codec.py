@@ -420,3 +420,46 @@ def test_family_typing_separates_the_three_routes():
 def test_tail_is_declared_non_spatial():
     from r1028 import varcodec36 as v
     assert "NON-SPATIAL" in v.FIELD_SEMANTICS["tail"]
+
+
+# --- R10.39A sundial / phi state table --------------------------------
+
+def test_orange_sundial_gives_exactly_minus5_zero_plus5():
+    from r1028 import sundial as s
+    r = s.orange_intracell(centre_tail=27)
+    assert r["relative_deg"] == [-5.0, 0.0, 5.0]
+    assert r["evenly_spaced"] and r["monotone"] and r["step_deg"] == 5.0
+
+
+def test_the_plus20_tail_step_is_declared_arithmetically_forced():
+    """Honesty guard: the step follows from the decimals alone."""
+    from r1028 import sundial as s
+    r = s.orange_intracell()
+    assert r["tail_step_is_arithmetically_forced"] is True
+    assert r["status"] == "SELF_CONSISTENT_UNFALSIFIED_UNTESTED"
+    for a, b in ((165892743, 165892763), (165892763, 165892783)):
+        assert b - a == 20 and (b & 63) - (a & 63) == 20
+
+
+def test_phi_check_digit_rules_are_refuted_with_power():
+    from r1028 import sundial as s
+    r = s.check_digit_search(
+        [165876523, 167849523, 168930443, 165892743, 165892763,
+         165892783, 16873059233, 16875092353])
+    assert r["survivor_count"] == 0
+    assert r["had_power"] is True
+    assert r["verdict"] == "ALL_PHI_CHECK_RULES_REFUTED"
+    assert "does NOT refute" in r["scope_note"]
+
+
+def test_frac_reduction_is_not_monotone_so_ordering_would_break():
+    """If the state table is meant to be ordered, frac is wrong."""
+    import math
+    from r1028 import sundial as s
+    got = [int(8 * math.modf(t * s.SQRT2_OVER_PHI)[0]) for t in (7, 27, 47)]
+    assert got != sorted(got)
+
+
+def test_sqrt2_over_phi_matches_the_source_constant():
+    from r1028 import sundial as s
+    assert abs(s.SQRT2_OVER_PHI - 0.8740320488976422) < 1e-15
