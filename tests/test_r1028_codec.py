@@ -287,3 +287,48 @@ def test_lunar_lane_sources_no_coordinate():
     from r1028 import crystal1031 as c
     assert all(x["coordinate_sourced"] is False for x in c.LUNAR_ROOT_LANE)
     assert c.report()["external_facts_asserted"] == 0
+
+
+# --- the ACTUAL variable-length codec (source-specified) ---------------
+
+def test_word_length_is_variable_and_read_from_octal_length():
+    from r1028 import varcodec36 as v
+    assert v.VALID_OCTAL_LENGTHS == (9, 10, 11, 12)   # 27/30/33/36 bits
+    for octal_len, tail in ((9, 3), (10, 6), (11, 9), (12, 12)):
+        assert v.tail_bits_for(octal_len) == tail
+
+
+def test_root_is_four_bits_and_unifies_the_verified_anchors():
+    """The 5-bit F5 stole the top bit of the 8-bit surface field, which
+    split one root family into an apparent {4,5}."""
+    from r1028 import varcodec36 as v
+    roots = {n: v.decode(int(x))["R4_root"] for n, x in
+             (("STONEHENGE", "165876523"), ("ERIE", "167849523"),
+              ("TORONTO", "168930443"))}
+    assert set(roots.values()) == {2}
+
+
+def test_check_digit_is_mandatory_at_every_width():
+    from r1028 import varcodec36 as v
+    for raw in ("165876523", "16873059233"):
+        d = v.decode(int(raw))
+        assert d["check_digit_m3"] == d["tail_groups"][-1]
+
+
+def test_orange_triplet_is_one_cell_with_three_tails():
+    """43/63/83 share R4, S8 AND P12 exactly - they are the same
+    geometric cell, differing only in the tail. So they cannot be three
+    separate positions along an edge."""
+    from r1028 import varcodec36 as v
+    ds = [v.decode(int(x)) for x in
+          ("165892743", "165892763", "165892783")]
+    assert len({d["R4_root"] for d in ds}) == 1
+    assert len({d["S8_surface"] for d in ds}) == 1
+    assert len({d["P12_path"] for d in ds}) == 1
+    assert len({d["value"] for d in ds}) == 3      # but distinct words
+
+
+def test_over_long_vectors_are_refused_not_forced():
+    from r1028 import varcodec36 as v
+    with pytest.raises(v.VarCodecError, match="not a single"):
+        v.decode(168730592363363)      # 16 octal digits
