@@ -329,9 +329,13 @@ def test_orange_triplet_is_one_cell_with_three_tails():
 
 
 def test_over_long_vectors_are_refused_not_forced():
+    """Jerusalem needs 48 bits; the widest single word is 36. It is
+    refused as multi-block rather than truncated into one word."""
     from r1028 import varcodec36 as v
-    with pytest.raises(v.VarCodecError, match="not a single"):
-        v.decode(168730592363363)      # 16 octal digits
+    with pytest.raises(v.VarCodecError, match="Multi-block"):
+        v.decode(168730592363363)      # 48 bits
+    with pytest.raises(v.VarCodecError, match="Multi-block"):
+        v.decode(1678059360633)        # 41 bits
 
 
 # --- R10.38: variable codec is authoritative --------------------------
