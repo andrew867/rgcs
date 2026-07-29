@@ -1,52 +1,53 @@
-"""R10.18C — the Montreal quarantine is a hard gate, not a convention.
+"""R10.44 — the Montreal quarantine, LIFTED by operator instruction.
 
-Operator instruction: Montreal is not confirmed. If any Montreal
-raw/canonical/superseded value reaches a scoring table, the run is
-INVALID. These tests prove the gate fires and that no live structure
-still carries the values.
+The R10.18C quarantine was an operator decision and so is lifting it
+(2026-07-29). These tests now pin the RELEASE, and — more importantly —
+pin the technical note the quarantine was flagging, so lifting the gate
+does not quietly lose the reason it existed.
 """
 
 import pytest
 
-from r1016 import inventory, project
-from r1016.quarantine import QUARANTINED, QuarantineError, assert_clean
-
+from r1016 import quarantine as q
+from r1028.varcodec36 import decode
 
 MONTREAL = ("165879243", "168500683", "168729543")
 
 
-def test_all_three_montreal_values_are_quarantined():
-    assert set(MONTREAL) <= set(QUARANTINED)
+def test_quarantine_is_lifted():
+    assert q.QUARANTINED == {}
+    assert q.QUARANTINED_FAMILIES == ()
 
 
 @pytest.mark.parametrize("value", MONTREAL)
-def test_assert_clean_raises_on_each_montreal_value(value):
-    with pytest.raises(QuarantineError, match="INVALID RUN"):
-        assert_clean(["165876523", value], where="scoring table")
+def test_assert_clean_now_passes_on_montreal(value):
+    q.assert_clean(["165876523", value], where="R10.44 scoring")
+    assert q.is_quarantined(value) is False
 
 
-def test_assert_clean_passes_on_the_surviving_anchors():
-    assert_clean(project.STRICT_ANCHORS, where="scoring table") is None
+@pytest.mark.parametrize("value", MONTREAL)
+def test_every_released_value_carries_its_note(value):
+    """Lifting the gate must not lose WHY it was raised."""
+    assert value in q.RELEASED_BY_OPERATOR
+    assert q.RELEASED_BY_OPERATOR[value].strip()
 
 
-def test_montreal_is_absent_from_every_live_anchor_structure():
-    from r1016.surface_word import ANCHOR_RECORDS
-    live = set(project.STRICT_ANCHORS) | set(project.RAW_TRANSPORT_ANCHORS)
-    live |= set(inventory.SOURCE_NOTES)
-    for rec in ANCHOR_RECORDS.values():
-        live |= {str(rec["raw_vector"]),
-                 str(rec["canonical_packet_or_candidate"])}
-    assert not (live & set(MONTREAL))
+def test_the_band_conflict_that_prompted_the_quarantine_still_exists():
+    """Montreal is in North America. The DIRECT wire says Britain."""
+    direct = decode(165879243)
+    canonical = decode(168500683)
+    assert direct["S8_surface"] >> 3 == 15      # Britain macroband
+    assert canonical["S8_surface"] >> 3 == 16   # North America
+    # the local cell and state are preserved across the correction
+    assert direct["P12_path"] == canonical["P12_path"] == 3191
+    assert (165879243 & 63) == (168500683 & 63) == 11
 
 
-def test_strict_anchor_count_is_three_not_twenty_two():
-    """Hard independent anchors: 3. The 17 projection-derived rows are
-    internal-consistency only and are never validation."""
-    assert len(project.STRICT_ANCHORS) == 3
+def test_superseded_transcription_is_a_different_cell():
+    d = decode(168729543)
+    assert d["P12_path"] == 2671 != 3191
 
 
-def test_the_bridge_refuses_quarantined_input():
+def test_bridge_now_accepts_montreal():
     from r1019.bridge import bridge
-    for v in MONTREAL:
-        with pytest.raises(QuarantineError):
-            bridge(v)
+    assert isinstance(bridge("165879243"), int)

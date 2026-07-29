@@ -48,10 +48,13 @@ def test_bridge_refuses_a_value_with_no_transport_header():
         B.bridge(4789253)
 
 
-def test_bridge_refuses_quarantined_montreal_values():
+def test_bridge_accepts_montreal_after_the_r1044_lift():
+    """Quarantine lifted by operator instruction (R10.44)."""
+    from r1016 import quarantine as q
+    assert q.QUARANTINED == {}
     for v in ("165879243", "168500683", "168729543"):
-        with pytest.raises(QuarantineError):
-            B.bridge(v)
+        assert isinstance(B.bridge(v), int)
+        assert v in q.RELEASED_BY_OPERATOR
 
 
 def test_anchors_are_never_counted_as_confirmations():

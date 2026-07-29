@@ -78,15 +78,21 @@ def test_depth_six_is_required_to_separate_erie_and_toronto():
 
 # --- what must stay refused ------------------------------------------
 
-def test_projector_refuses_quarantined_vectors():
+def test_projector_accepts_montreal_after_the_r1044_lift():
+    """Quarantine lifted (R10.44). Montreal may now enter the projector,
+    but it is still NOT a hard anchor: the direct wire places it in the
+    Britain band while the site is in North America."""
+    from r1016 import quarantine as q
     from r1025.projector import Anchor
-    bad = Anchor("MONTREAL", 165879243, 45.5, -73.5)
-    ico = hedra.families()["ICOSAHEDRON_20_FACE_CENTRE"]
     import numpy as np
+    assert q.QUARANTINED == {}
+    a = Anchor("MONTREAL", 165879243, 45.5, -73.5)
+    ico = hedra.families()["ICOSAHEDRON_20_FACE_CENTRE"]
     cand = Candidate("ICOSAHEDRON_20_FACE_CENTRE", "IDENTITY", "right",
                      "south_up", 0, 4, "UNIFORM")
-    with pytest.raises(QuarantineError):
-        evaluate(cand, ico, np.eye(3), (bad,), 2)
+    r = evaluate(cand, ico, np.eye(3), (a,), 2)
+    assert r["anchors_total"] == 1
+    assert "165879243" in q.RELEASED_BY_OPERATOR
 
 
 def test_place_name_buckets_are_refused():

@@ -156,9 +156,14 @@ def test_candidates_cannot_be_promoted_to_hard_anchors():
     assert all(not x["may_train_projector"] for x in r["rows"])
 
 
-def test_candidate_decode_refuses_quarantined_values():
-    with pytest.raises(QuarantineError):
-        vectors.decode("MONTREAL", "165879243")
+def test_montreal_now_decodes_after_the_r1044_lift():
+    """The quarantine was lifted by operator instruction. The band
+    conflict it flagged is preserved as a note, not as a gate."""
+    from r1016 import quarantine as q
+    assert q.QUARANTINED == {}
+    d = vectors.decode("MONTREAL_DIRECT", "165879243")
+    assert d["raw"] == "165879243"
+    assert "165879243" in q.RELEASED_BY_OPERATOR
 
 
 def test_research_lane_asserts_no_external_facts():

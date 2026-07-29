@@ -110,11 +110,14 @@ def test_short_worked_example_is_not_typed_as_a_surface_word():
         "WORKED_EXAMPLE_NOT_GEOGRAPHIC"
 
 
-def test_quarantine_is_absolute_and_first():
-    for v in ("165879243", "168500683", "168729543"):
-        assert fam(v) == "QUARANTINED_MONTREAL_FAMILY"
-    with pytest.raises(QuarantineError):
-        sort_ledger([{"raw_vector": "165879243", "record_group": "x"}])
+def test_montreal_sorts_normally_after_the_r1044_lift():
+    """Quarantine lifted (R10.44). Montreal now sorts by the same rules
+    as anything else; the band note lives in RELEASED_BY_OPERATOR."""
+    from r1016 import quarantine as q
+    assert q.QUARANTINED == {}
+    r = sort_ledger([{"raw_vector": "165879243", "record_group": "x"}])
+    assert r["total"] == 1
+    assert fam("165879243") != "QUARANTINED_MONTREAL_FAMILY"
 
 
 def test_corrupted_collision_row_is_excluded():
