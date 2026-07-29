@@ -11,7 +11,8 @@ import sys
 from pathlib import Path
 
 from r1016.quarantine import QUARANTINED
-from r1028 import checksum, freq1030, payload, research, sspp221, vectors
+from r1028 import (checksum, crystal1031, fieldsum, freq1030, payload,
+                   research, sspp221, vectors)
 
 
 def _write(path: Path, rows, keys=None):
@@ -85,6 +86,21 @@ def main(outdir: str) -> dict:
     (data / "freq1030_report.json").write_text(
         json.dumps(fq, indent=2), encoding="utf-8")
 
+    # --- R10.31 decoded-field checksum + crystal stack -------------
+    fs = fieldsum.search([(lab, int(raw)) for lab, raw in vectors.CANDIDATES])
+    _write(data / "field_checksum_search_r1031.csv",
+           [{"rule": r} for r in fs["survivors"]])
+    _write(data / "field_checksum_degeneracy_r1031.csv", [fs["degeneracy"]])
+    cr = crystal1031.report()
+    _write(data / "crystal_frequency_stack_r1031.csv", cr["stack_roles"])
+    _write(data / "lunar_root_lane_r1031.csv", cr["lunar_root_lane"])
+    _write(data / "attestation_40ghz_r1031.csv", [cr["attestation_40ghz"]])
+    (data / "r1031_field_checksum.json").write_text(
+        json.dumps({k: v for k, v in fs.items() if k != "survivors"},
+                   indent=2), encoding="utf-8")
+    (data / "r1031_crystal_stack.json").write_text(
+        json.dumps(cr, indent=2), encoding="utf-8")
+
     # --- quarantine receipt -----------------------------------------
     qr = []
     for f in sorted(data.glob("*.csv")):
@@ -122,6 +138,16 @@ def main(outdir: str) -> dict:
         "r1030_frequency_law": fq["verdict"],
         "r1030_f_op_mhz": fq["law"]["F_op_mhz"],
         "r1030_free_constants_fitted": fq["law"]["free_constants_fitted"],
+        "r1031_field_checksum": fs["verdict"],
+        "r1031_rules_tested": fs["rules_tested"],
+        "r1031_survivors": fs["survivor_count"],
+        "r1031_expected_false": round(fs["expected_false_survivors"], 2),
+        "r1031_effective_examples":
+            fs["degeneracy"]["effective_independent_examples"],
+        "r1031_phase_lockable": cr["phase_lock"]["phase_lockable"],
+        "r1031_is_scale_a_harmonic":
+            cr["harmonic_coincidence"]["is_integer_harmonic"],
+        "r1031_40ghz_status": cr["attestation_40ghz"]["status"],
     }
     (data / "r1028_run_summary.json").write_text(
         json.dumps(summary, indent=2), encoding="utf-8")

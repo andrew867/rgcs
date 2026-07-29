@@ -211,3 +211,79 @@ def test_apollo_lane_asserts_no_external_facts():
     assert r["external_facts_asserted"] == 0
     assert r["patent_window"]["results"] == []
     assert any("DROPPED" in a["state"] for a in freq1030.APOLLO_LANE)
+
+
+# --- R10.31 decoded-field checksum ------------------------------------
+
+def test_field_checksum_reports_degeneracy_not_just_count():
+    """The corpus looks like 2 examples and behaves like 1."""
+    from r1028 import fieldsum
+    vals = [("ANCHORAGE_ALASKA", 16873059233),
+            ("SANTA_FE_NEW_MEXICO", 16875092353)]
+    r = fieldsum.search(vals)
+    d = r["degeneracy"]
+    assert d["target_is_constant"] is True
+    assert d["target_values"] == [1]
+    assert d["effective_independent_examples"] == 1
+    assert set(d["constant_fields"]) == {"R4", "S8", "E3_1"}
+
+
+def test_field_checksum_is_still_blocked_and_says_why():
+    from r1028 import fieldsum
+    vals = [("ANCHORAGE_ALASKA", 16873059233),
+            ("SANTA_FE_NEW_MEXICO", 16875092353)]
+    r = fieldsum.search(vals)
+    assert r["verdict"] == "R10_31_FIELD_CHECKSUM_STILL_BLOCKED"
+    assert r["decisive"] is False
+    # survivors exist but chance predicts many too
+    assert r["survivor_count"] > 0
+    assert r["expected_false_survivors"] > 1
+    assert "degeneracy" in r["exact_failure"]
+
+
+def test_every_field_rule_is_exact_and_finite():
+    from r1028 import fieldsum
+    d = fieldsum.fields_of(16873059233)
+    for _, fn in fieldsum.rule_families():
+        v = fn(d)
+        assert isinstance(v, int) and 0 <= v < 8
+
+
+# --- R10.31 crystal stack ---------------------------------------------
+
+def test_4096hz_and_law_frequency_are_exactly_phase_lockable():
+    from r1028 import crystal1031 as c
+    r = c.phase_lock_report()
+    assert r["common_reference_hz"] == 0.25
+    assert r["f_op_divider"] == 52734375
+    assert r["scale_a_divider"] == 16384
+    assert r["phase_lockable"] is True
+
+
+def test_law_frequency_is_not_a_scale_a_harmonic():
+    from r1028 import crystal1031 as c
+    r = c.harmonic_coincidence_report()
+    assert r["is_integer_harmonic"] is False
+    assert abs(r["miss_hz"] - 1430.25) < 1e-6
+    assert r["excites_scale_a_by_harmonic_coincidence"] is False
+
+
+def test_specimen_drive_role_is_a_negative_result():
+    from r1028 import crystal1031 as c
+    roles = {r["role"]: r for r in c.stack_roles()}
+    assert roles["SPECIMEN_ACOUSTIC_DRIVE"]["supported"] is False
+    assert roles["SPECIMEN_ACOUSTIC_DRIVE"]["status"] == "NEGATIVE_RESULT"
+    assert roles["94_GHZ_CARRIER"]["supported"] is False
+
+
+def test_40ghz_remains_an_unattested_fitted_constant():
+    from r1028 import crystal1031 as c
+    a = c.ATTESTATION_40GHZ
+    assert a["attested_in_source_notes"] is False
+    assert a["status"] == "UNATTESTED_FITTED_CONSTANT"
+
+
+def test_lunar_lane_sources_no_coordinate():
+    from r1028 import crystal1031 as c
+    assert all(x["coordinate_sourced"] is False for x in c.LUNAR_ROOT_LANE)
+    assert c.report()["external_facts_asserted"] == 0
