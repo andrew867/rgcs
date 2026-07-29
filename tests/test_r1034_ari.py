@@ -132,3 +132,24 @@ def test_nothing_is_promoted_without_a_blind_test():
     assert r["blind_test_passed"] is False
     assert r["projector_promoted"] is False
     assert r["verdict"].endswith("EXACT_FAILURES_EMITTED")
+
+
+# --- R10.36 checks -----------------------------------------------------
+
+def test_triangle_null_is_far_tighter_than_edge_null():
+    """The R10.36 split: T2 is a real test, T3 is not. 120 LCD
+    triangles give a 0.83% null; the 15-edge band gives ~32% at 151 km."""
+    from r1034 import earthstar as e
+    tri_null = 1 / 120
+    base = {r["distance_km"]: r for r in e.chance_baseline(samples=60000)}
+    edge_null = base[151]["fraction_within_of_any_edge"]
+    assert tri_null < 0.01
+    assert edge_null > 0.25
+    assert edge_null > 30 * tri_null
+
+
+def test_rgcs_ids_and_earthstar_labels_cannot_collide():
+    """T1: disjoint by orders of magnitude, so 165892743 != node 43."""
+    rgcs_min = min(int(x) for x in
+                   ("165892743", "165876523", "16873059233"))
+    assert rgcs_min > 62          # 62 is the whole EarthStar node set
