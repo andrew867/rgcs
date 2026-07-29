@@ -463,3 +463,49 @@ def test_frac_reduction_is_not_monotone_so_ordering_would_break():
 def test_sqrt2_over_phi_matches_the_source_constant():
     from r1028 import sundial as s
     assert abs(s.SQRT2_OVER_PHI - 0.8740320488976422) < 1e-15
+
+
+# --- R10.39B: sundial refines the EPOCH -------------------------------
+
+def test_o3_cannot_be_a_spatial_longitude():
+    """Erie and Toronto are 0.7 deg apart in longitude but 5 o3 sectors
+    (225 deg) apart. A spatial reading is contradicted; an epoch reading
+    is not."""
+    from r1028 import sundial as s
+    r = s.epoch_is_not_longitude(
+        [("STONEHENGE", 165876523, -1.8262),
+         ("ERIE", 167849523, -80.0851),
+         ("TORONTO", 168930443, -79.3832)])
+    d = r["discriminating_pair"]
+    assert d is not None
+    assert set(d["pair"]) == {"ERIE", "TORONTO"}
+    assert d["delta_longitude_deg"] < 1.0
+    assert d["delta_o3_deg"] == 225.0
+    assert d["spatial_reading"] == "CONTRADICTED"
+
+
+def test_nested_epoch_levels_refine_by_one_eighth():
+    from r1028 import sundial as s
+    for value, levels, deg in ((165876523, 1, 45.0),
+                               (16873059233, 3, 0.703125)):
+        e = s.epoch_refinement(value)
+        assert e["levels"] == levels
+        assert abs(e["resolution_deg"] - deg) < 1e-9
+        assert e["check_digit_excluded"] is True
+
+
+def test_one_word_cannot_express_a_one_second_epoch():
+    from r1028 import sundial as s
+    L = s.levels_for_one_second()
+    assert L["levels_to_reach_1_second"] == 6      # tail carries only 3
+
+
+def test_r1039a_even_spacing_was_a_check_digit_artifact():
+    """Using the epoch field alone, orange is 0/9/15 h - NOT evenly
+    spaced. The tidy -5/0/+5 came from mixing in the check digit."""
+    from r1028 import sundial as s
+    hrs = [s.epoch_refinement(v)["epoch_hours"]
+           for v in (165892743, 165892763, 165892783)]
+    assert hrs == [0.0, 9.0, 15.0]
+    steps = [hrs[1] - hrs[0], hrs[2] - hrs[1]]
+    assert steps[0] != steps[1]

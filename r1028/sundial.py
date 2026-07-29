@@ -131,3 +131,98 @@ def orange_intracell(centre_tail: int = 27) -> dict:
                             "positions; no such group exists yet",
         "status": "SELF_CONSISTENT_UNFALSIFIED_UNTESTED",
     }
+
+
+# --- R10.39B: the sundial refines the EPOCH, not the position ---------
+
+SECONDS_PER_DAY = 86400
+OCTAL = 8
+
+
+def epoch_refinement(value: int) -> dict:
+    """Nested sundial epoch refinement.
+
+    OPERATOR INSIGHT (R10.39B): the sundial calculation refines the
+    EPOCH, not the location. This is what the source's own field names
+    say -- "o3: epoch refinement / o3: epoch refinement / o3: epoch
+    frequency" -- and it explains why a 15 deg/hour rule appears at all:
+    a sundial IS a time-to-angle conversion.
+
+    Each o3 field is one octal digit refining the level above by 1/8:
+
+        1 field   8 states    45 deg      3 h
+        2 fields  64          5.625 deg   22.5 min
+        3 fields  512         0.703 deg   168.75 s
+
+    which is exactly "epoch refinement, epoch refinement, epoch
+    frequency" as successive refinement.
+
+    THIS CORRECTS R10.39A. There I converted the FULL 6-bit tail, which
+    mixes the o3 epoch field with the m3 check digit. That produced the
+    tidy -5/0/+5 spacing for orange -- but the check digit has no
+    business inside an angle. Using the epoch field alone gives
+    0 h / 9 h / 15 h, which is NOT evenly spaced. The even spacing was
+    an artifact of including the check bits.
+    """
+    d = decode(value)
+    o = d["E3"][:-1]                    # drop the mandatory check digit
+    deg = sum(g * 360.0 / OCTAL ** (i + 1) for i, g in enumerate(o))
+    sec = sum(g * SECONDS_PER_DAY / OCTAL ** (i + 1) for i, g in enumerate(o))
+    return {
+        "value": value, "o3_fields": o, "levels": len(o),
+        "epoch_angle_deg": deg,
+        "epoch_seconds": sec, "epoch_hours": sec / 3600.0,
+        "resolution_deg": 360.0 / OCTAL ** len(o) if o else None,
+        "resolution_seconds": (SECONDS_PER_DAY / OCTAL ** len(o)
+                               if o else None),
+        "check_digit_excluded": True,
+    }
+
+
+def levels_for_one_second() -> dict:
+    """How many o3 levels reach the source's '1 second' time scale."""
+    rows = []
+    for k in range(1, 8):
+        rows.append({"levels": k, "states": OCTAL ** k,
+                     "deg": 360.0 / OCTAL ** k,
+                     "seconds": SECONDS_PER_DAY / OCTAL ** k})
+    reach = next(r["levels"] for r in rows if r["seconds"] <= 1.0)
+    return {"rows": rows, "levels_to_reach_1_second": reach,
+            "note": "the 12-bit tail carries only 3 epoch levels "
+                    "(168.75 s); reaching 1 s needs 6 levels, so a "
+                    "single word cannot express a 1-second epoch"}
+
+
+def epoch_is_not_longitude(pairs) -> dict:
+    """Discriminating test: if o3 were a SPATIAL angle, two points at
+    nearly the same longitude would need nearly the same o3."""
+    rows = []
+    for name, value, lon in pairs:
+        e = epoch_refinement(value)
+        rows.append({"name": name, "lon": lon,
+                     "o3_first": e["o3_fields"][0] if e["o3_fields"] else None,
+                     "epoch_hours": e["epoch_hours"]})
+    verdict = None
+    for i in range(len(rows)):
+        for j in range(i + 1, len(rows)):
+            a, b = rows[i], rows[j]
+            if a["lon"] is None or b["lon"] is None:
+                continue
+            dlon = abs(a["lon"] - b["lon"])
+            do3 = abs(a["o3_first"] - b["o3_first"])
+            if dlon < 2.0 and do3 >= 2:
+                verdict = {
+                    "pair": [a["name"], b["name"]],
+                    "delta_longitude_deg": round(dlon, 4),
+                    "delta_o3_units": do3,
+                    "delta_o3_deg": do3 * 45.0,
+                    "spatial_reading": "CONTRADICTED",
+                    "epoch_reading": "CONSISTENT",
+                }
+    return {"rows": rows, "discriminating_pair": verdict,
+            "conclusion": ("o3 cannot be a spatial longitude: two points "
+                           "under 2 deg apart carry o3 values many "
+                           "sectors apart. Under an epoch reading this "
+                           "is expected, since nearby places need not "
+                           "share an epoch."
+                           if verdict else "no discriminating pair")}
