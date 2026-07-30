@@ -514,3 +514,72 @@ def test_r1039a_even_spacing_was_a_check_digit_artifact():
     assert hrs == [0.0, 9.0, 15.0]
     steps = [hrs[1] - hrs[0], hrs[2] - hrs[1]]
     assert steps[0] != steps[1]
+
+
+# --- R10.48D/E: source constraints finally implemented ----------------
+
+def test_source_minima_one_of_each_from_8bit_and_12bit():
+    """Line 32: 'always one of each from the 8-bit and 12-bit parts'."""
+    from r1028 import staged as S
+    for w in (27, 30, 33, 36):
+        for R, Sb, P, E in S.legal_splits(w):
+            assert Sb >= S.SECTION_MIN
+            assert P >= S.PATH_MIN
+
+
+def test_root_is_a_fixed_4_bit_zero_padded_field():
+    """Line 31: 'always 4-bit root zero padded'."""
+    from r1028 import staged as S
+    assert S.ROOT_FIXED is True
+    for w in (27, 30, 33, 36):
+        assert all(sp[0] == 4 for sp in S.legal_splits(w))
+
+
+def test_fixing_the_root_shrinks_the_split_space():
+    from r1028 import staged as S
+    fixed = {w: len(S.legal_splits(w)) for w in (27, 30, 33, 36)}
+    S.ROOT_FIXED = False
+    try:
+        var = {w: len(S.legal_splits(w)) for w in (27, 30, 33, 36)}
+    finally:
+        S.ROOT_FIXED = True
+    assert fixed == {27: 9, 30: 6, 33: 3, 36: 1}
+    assert all(fixed[w] <= var[w] for w in fixed)
+
+
+def test_section_decomposes_into_layer2_and_optional_layer3():
+    """Line 107: 'layer 2 and 3, not always including level 3'."""
+    from r1028.staged import section_layers
+    L = section_layers(0b10011001, 8)
+    assert any(x["level3_present"] for x in L)
+    assert any(not x["level3_present"] for x in L)
+    for x in L:
+        assert x["layer2_bits"] + x["layer3_bits"] == 8
+
+
+def test_level3_datum_is_mean_sea_level_not_land_zero():
+    """Line 108, matching R10.17's independent finding."""
+    from r1028 import acceptance as A
+    assert A.LEVEL3_DATUM == "MEAN_SEA_LEVEL"
+    assert A.datum_offset_m() == 0.0
+    assert A.datum_offset_m("RECORDED_LAND_ZERO_840M") == 840.0
+
+
+def test_water_acceptance_criterion_is_defined_but_not_scoreable():
+    """Line 108: decodes 'usually land in oceans or bodies of water'."""
+    from r1028 import acceptance as A
+    r = A.readiness()
+    assert r["criterion_defined"] and r["datum_defined"]
+    assert r["scoreable_now"] is False
+    assert "71%" in r["baseline_to_beat"]
+    empty = A.water_criterion([])
+    assert empty["verdict"] == "NOT_SCOREABLE_NO_COORDINATES"
+
+
+def test_water_criterion_can_contradict_the_source():
+    """The criterion must be able to FAIL, or it is not a criterion."""
+    from r1028 import acceptance as A
+    land = A.water_criterion([{"over_water": False}] * 5)
+    assert land["verdict"] == "CONTRADICTS_SOURCE_EXPECTATION"
+    sea = A.water_criterion([{"over_water": True}] * 5)
+    assert sea["verdict"] == "CONSISTENT_WITH_SOURCE"

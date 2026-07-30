@@ -31,7 +31,21 @@ result is reported as prefix coincidence, not refinement.
 
 from __future__ import annotations
 
+#: SOURCE line 31: "always 4-bit root zero padded". The root is a FIXED
+#: 4-bit field, zero-padded - not a variable-width one. This supersedes
+#: the R10.47C "ROOTvar <= 4" wording, which the source contradicts.
+#: Set ROOT_FIXED=False only to reproduce the older variable-root
+#: enumeration for comparison.
+ROOT_FIXED = True
+ROOT_BITS = 4
 ROOT_MAX, SECTION_MAX = 4, 8
+
+#: SOURCE line 107: the 8-bit section is "surface refinement layer 2 AND
+#: 3, not always including level 3". So S decomposes again:
+#:     S = layer2 | OPTIONAL layer3
+#: layer3 is one octal refinement digit when present, absent otherwise.
+LAYER3_LENS = (0, 3)
+LAYER2_MIN = 1
 PATH_LENS = (0, 3, 6, 9, 12)
 EPOCH_LENS = (0, 3, 6, 9)
 M3_BITS = 3
@@ -66,8 +80,9 @@ def legal_splits(payload_bits: int, enforce_source_minima: bool = True):
     """
     smin = SECTION_MIN if enforce_source_minima else 0
     pmin = PATH_MIN if enforce_source_minima else 0
+    roots = (ROOT_BITS,) if ROOT_FIXED else range(1, ROOT_MAX + 1)
     out = []
-    for R in range(1, ROOT_MAX + 1):
+    for R in roots:
         for S in range(smin, SECTION_MAX + 1):
             for P in PATH_LENS:
                 if P < pmin:
@@ -75,6 +90,29 @@ def legal_splits(payload_bits: int, enforce_source_minima: bool = True):
                 E = payload_bits - M3_BITS - R - S - P
                 if E in EPOCH_LENS:
                     out.append((R, S, P, E))
+    return out
+
+
+def section_layers(section: int, S_bits: int):
+    """SOURCE line 107: split the section into layer2 | optional layer3.
+
+    Returns every legal (layer2_bits, layer3_bits) decomposition with
+    the layer values, so the optional level-3 refinement is explicit
+    rather than buried inside an opaque S.
+    """
+    out = []
+    for l3 in LAYER3_LENS:
+        l2 = S_bits - l3
+        if l2 < LAYER2_MIN:
+            continue
+        layer2 = (section >> l3) & ((1 << l2) - 1) if l2 else 0
+        layer3 = section & ((1 << l3) - 1) if l3 else None
+        out.append({
+            "layer2_bits": l2, "layer3_bits": l3,
+            "layer2": layer2, "layer3": layer3,
+            "level3_present": l3 > 0,
+            "layer3_octal": format(layer3, "01o") if l3 else "",
+        })
     return out
 
 
@@ -96,6 +134,7 @@ def stage(value: int, width: int, split) -> dict:
         "root_padded4": format(root, "04b"),
         "section_padded8": format(sect, "08b"),
         "path_octal": format(path, f"0{P // 3}o") if P else "",
+        "section_layerings": section_layers(sect, S),
         "epoch_octal": format(ep, f"0{E // 3}o") if E else "",
         "m3": m3,
     }
