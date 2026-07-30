@@ -45,12 +45,33 @@ TRANSPORT_PAIRS = {
 }
 
 
-def legal_splits(payload_bits: int):
-    """Every (R,S,P,E) with R+S+P+E+3 == payload_bits."""
+#: SOURCE CONSTRAINT, line 32 of the 2026-07-29 note:
+#:   "surface refinements can be less than 20 bits, but ALWAYS ONE OF
+#:    EACH from the 8-bit and 12-bit parts"
+#: so a legal split must draw at least one refinement from the section
+#: (8-bit) part AND at least one octal step from the path (12-bit) part.
+#: S = 0 and P = 0 are therefore ILLEGAL. Earlier revisions of this
+#: function allowed both and over-enumerated the split space.
+SECTION_MIN = 1          # at least one bit from the 8-bit part
+PATH_MIN = 3             # at least one octal step from the 12-bit part
+
+
+def legal_splits(payload_bits: int, enforce_source_minima: bool = True):
+    """Every (R,S,P,E) with R+S+P+E+3 == payload_bits.
+
+    With ``enforce_source_minima`` (the default and the correct
+    behaviour) S >= 1 and P >= 3, per the source's "always one of each"
+    rule. Pass False only to reproduce the older over-enumeration for
+    comparison.
+    """
+    smin = SECTION_MIN if enforce_source_minima else 0
+    pmin = PATH_MIN if enforce_source_minima else 0
     out = []
     for R in range(1, ROOT_MAX + 1):
-        for S in range(0, SECTION_MAX + 1):
+        for S in range(smin, SECTION_MAX + 1):
             for P in PATH_LENS:
+                if P < pmin:
+                    continue
                 E = payload_bits - M3_BITS - R - S - P
                 if E in EPOCH_LENS:
                     out.append((R, S, P, E))
