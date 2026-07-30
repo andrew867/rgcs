@@ -270,6 +270,58 @@ This picture is the argument for blocker B01/B02 in a single image. The line bet
 the two points is exact. Which of the two points is right is exactly what three
 anchors cannot tell you.
 
+### Three or more vectors — the polygon builder
+
+```bash
+python -m r1053 polygon 165876523,167849523,168930443
+```
+
+```
+   1. 165876523   51.178900,   -1.826200  [FIT_ANCHOR_TARGET]  Stonehenge hard anchor
+   2. 167849523   42.129200,  -80.085100  [FIT_ANCHOR_TARGET]  Erie hard anchor
+   3. 168930443   43.653200,  -79.383200  [FIT_ANCHOR_TARGET]  Toronto hard anchor
+
+vertices        3  (AS_SUPPLIED)
+perimeter       11,568.012 km
+area            299,098.202 km2
+  cross-check   299,098.202 km2 (rel diff 1.04e-13)
+centroid        51.374572, -58.732687
+branches        117, 120  (all same: False)
+```
+
+The generated page is a **live builder**: type a vector and press Add (or paste a
+comma-separated list), remove any row, move rows with **Up**, press **Order by
+bearing** to get a simple ring, or **Clear all**. Preset chips add known vectors in
+one click. Area, perimeter, centroid and the self-intersection check recompute on
+every edit.
+
+![Polygon builder](assets/user-manual/10_polygon_uk4.png)
+
+Above: four branch-117 vectors over Wiltshire. The Stonehenge anchor (blue) sits
+beside Amesbury, where Stonehenge is.
+
+![Polygon builder, live edit](assets/user-manual/12_polygon_builder_live.png)
+
+Above: a fifth vector added through the text box, then reordered by bearing — 5
+vertices, 371.593 km², 223.726 km perimeter, simple ring.
+
+**How the area is computed.** Two independent exact methods must agree:
+L'Huilier's theorem over a fan triangulation, and the Gauss–Bonnet turning-angle
+identity walked around the boundary. A spherical octant comes out at exactly ⅛ of
+the sphere under both. If the two disagree, or the ring crosses itself, **no area is
+reported** — a self-crossing ring has no well-defined interior, and printing a number
+for it would be worse than printing nothing.
+
+Vertex **order** defines the polygon: the same points in a different order enclose a
+different region. The record always says whether the order was `AS_SUPPLIED` or
+`REORDERED_BY_CENTROID_BEARING`.
+
+The page carries a JavaScript port of the V1 kernel so it can project any vector you
+type without a server round-trip. That port is a second implementation of the same
+law, so it is checked: `test_js_kernel_matches_python_exactly` runs the real page
+JavaScript and fails if any known vector drifts by more than a millimetre. Current
+drift is **0.000000 m** on all seven.
+
 ### What is verified and what is not
 
 | question | status |
@@ -277,6 +329,8 @@ anchors cannot tell you.
 | Does the tool place two vectors on a real map and draw the path? | **verified** — screenshots above, real OpenStreetMap basemap |
 | Is the great-circle distance correct? | **verified** — three independent formulas agree to < 1e-6 km; matches recorded pack values |
 | Is the drawn line a true great circle? | **verified** — sampled midpoint is equidistant from both ends; segment lengths sum to the reported distance |
+| Is the polygon area correct? | **verified** — two independent exact methods agree to ~1e-13; a spherical octant comes out at exactly ⅛ of the sphere |
+| Does the browser kernel match the library? | **verified** — 0.000000 m drift across all seven known vectors |
 | Are the endpoints the right places? | **NOT verified** — projector output, underdetermined under B01/B02 |
 
 The first three are properties of the software and are settled. The fourth is the

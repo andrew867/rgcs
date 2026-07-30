@@ -19,7 +19,8 @@ import json
 import os
 import sys
 
-from r1053 import certificate, kernel, ledger, pathmap
+from r1053 import (certificate, kernel, ledger, pathmap, polygon,
+                   polygon_page)
 
 DEFAULT_MAPS = os.path.join("internal-docs", "RGCS_R10_53_V1_EARTH_ROOT",
                             "maps")
@@ -73,6 +74,45 @@ def _cmd_path(args) -> int:
     return 0
 
 
+def _cmd_polygon(args) -> int:
+    words = [w for chunk in args.vectors for w in chunk.replace(",", " ").split()]
+    rec = polygon.build(words, reorder=args.reorder)
+    out = args.out or os.path.join(DEFAULT_MAPS, "rgcs_polygon.html")
+    vendor = os.path.relpath(os.path.join(DEFAULT_MAPS, "vendor"),
+                             os.path.dirname(os.path.abspath(out)))
+    polygon_page.render(out, initial=[v["vector"] for v in rec["vertices"]],
+                        vendor_rel=vendor.replace(os.sep, "/"))
+    for i, v in enumerate(rec["vertices"]):
+        print(f"  {i + 1:2d}. {v['vector']}  {v['lat']:10.6f}, {v['lon']:11.6f}"
+              f"  [{v['coordinate_source']}]  {v['label']}")
+    print()
+    print(f"vertices        {rec['vertex_count']}  ({rec['vertex_order']})")
+    print(f"perimeter       {rec['perimeter_km']:,.3f} km")
+    if rec["is_simple"]:
+        print(f"area            {rec['area_km2']:,.3f} km2")
+        print(f"  cross-check   {rec['area_km2_cross_check']:,.3f} km2 "
+              f"(rel diff {rec['area_methods_agree_rel']:.2e})")
+    else:
+        print(f"area            NOT REPORTED - polygon self-intersects at "
+              f"edge pairs {rec['self_intersections']}")
+        print("                a self-crossing ring has no well-defined "
+              "interior; try --reorder")
+    print(f"centroid        {rec['centroid'][0]:.6f}, {rec['centroid'][1]:.6f}")
+    print(f"branches        {', '.join(rec['branches'])}"
+          f"  (all same: {rec['all_same_branch']})")
+    print()
+    print(f"map written     {out}  ({os.path.getsize(out):,} B)")
+    print("serve it with:  python -m r1053 serve-maps")
+    print()
+    print("NOTE: the polygon geometry is exact for these vertices. The")
+    print("VERTEX POSITIONS are projector output and remain")
+    print("underdetermined under V1-B01/B02.")
+    if args.json:
+        print()
+        print(json.dumps(rec, indent=2))
+    return 0
+
+
 def _cmd_certificate(args) -> int:
     print(json.dumps(certificate.address_certificate(args.vector), indent=2))
     return 0
@@ -113,6 +153,16 @@ def main(argv=None) -> int:
     sp.add_argument("--json", action="store_true", help="also print JSON")
     sp.set_defaults(fn=_cmd_path)
 
+    sg = sub.add_parser("polygon",
+                        help="N-vector polygon: area, perimeter, centroid")
+    sg.add_argument("vectors", nargs="+",
+                    help="3+ vectors, comma- or space-separated")
+    sg.add_argument("-o", "--out", help="output .html path")
+    sg.add_argument("--reorder", action="store_true",
+                    help="order vertices by bearing from their centroid")
+    sg.add_argument("--json", action="store_true", help="also print JSON")
+    sg.set_defaults(fn=_cmd_polygon)
+
     sc = sub.add_parser("certificate", help="typed address certificate")
     sc.add_argument("vector")
     sc.set_defaults(fn=_cmd_certificate)
@@ -126,6 +176,9 @@ def main(argv=None) -> int:
     args = p.parse_args(argv)
     try:
         return args.fn(args)
+    except polygon.PolygonError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
     except kernel.DirectLaneError as exc:
         print(f"error: {exc}", file=sys.stderr)
         if any(str(getattr(args, a, "")).strip() in ledger.GATED_WIDE_ENVELOPE
