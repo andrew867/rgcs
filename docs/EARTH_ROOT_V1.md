@@ -61,7 +61,7 @@ r_SAA(t,s) = argmin_{|r| = r_s} |B(r, t)|
 No separate altitude field is missing for this layer. The address already supplies
 body, shell, epoch, and therefore the magnetic evaluation surface. This is the one
 place in V1 where **epoch is not optional** — see
-[Frames, Epochs and Galactic Directions](RGCS_FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS.md).
+[Frames, Epochs and Galactic Directions](FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS.md).
 
 ---
 
@@ -166,6 +166,6 @@ question the moment a 4th and 5th anchor exist.
 | B06 | Saint-Frédéric is a proxy **and** an observer location |
 | B07 | no transport bridge |
 
-See also: [Variable Codec Spec](RGCS_VARIABLE_CODEC_FINAL_SPEC.md) ·
-[15 km Field Envelope Model](RGCS_15KM_FIELD_ENVELOPE_MODEL.md) ·
-[Frames and Epochs](RGCS_FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS.md)
+See also: [Variable Codec Spec](VARIABLE_LENGTH_CODEC.md) ·
+[15 km Field Envelope Model](15KM_CELL_FIELD_ENVELOPE_MODEL.md) ·
+[Frames and Epochs](FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS.md)

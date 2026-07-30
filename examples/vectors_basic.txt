@@ -1,0 +1,10 @@
+# The seven known RGCS-30 vectors. One per line, '#' comments ignored.
+# Three fit anchors -- these DEFINE the projector and cannot confirm it.
+165876523   # Stonehenge  octal 1170611453  branch 117
+167849523   # Erie        octal 1200227063  branch 120
+168930443   # Toronto     octal 1204326213  branch 120
+# Projected candidates -- NOT located targets (V1-B01/B02).
+165879243   # Drummondville / Saint-Eugene working target; branch 117 -> B03
+165892743   # Orange A    octal branch 117
+165892763   # Orange B
+165892783   # Orange C

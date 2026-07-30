@@ -101,6 +101,6 @@ state/orientation data require both
 
 RGCS therefore emits `FrameManifest` and `AddressCertificate` objects rather than
 unlabeled coordinates. See [`r1053/certificate.py`](../r1053/certificate.py) and
-[Earth Root Final Spec](RGCS_V1_EARTH_ROOT_FINAL_SPEC.md) §1.
+[Earth Root Final Spec](EARTH_ROOT_V1.md) §1.
 
 A worked receipt is shown in the [User Manual](USER_MANUAL.md).

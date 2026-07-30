@@ -1,8 +1,10 @@
 # Archived documents — pre-R10.59
 
-> **This directory is archived.** These documents predate the R10.59 V1 Earth-root
-> documentation set and may contain superseded codec or geography assumptions.
-> They are retained unmodified for provenance and are **not** deleted.
+> **ARCHIVED: superseded by RGCS V1 release-candidate docs. This file may contain old
+> assumptions, including fixed-field parse, rigid icosahedron, old Montreal label, or
+> pre-V1 projector wording.**
+>
+> Retained unmodified for provenance and **not** deleted.
 
 Known superseded content in this directory:
 
@@ -23,6 +25,6 @@ Known superseded content in this directory:
 For current material see:
 
 - [README](../../../README.md)
-- [V1 Earth Root Final Spec](../../RGCS_V1_EARTH_ROOT_FINAL_SPEC.md)
-- [Variable Codec Final Spec](../../RGCS_VARIABLE_CODEC_FINAL_SPEC.md)
+- [V1 Earth Root Final Spec](../../EARTH_ROOT_V1.md)
+- [Variable Codec Final Spec](../../VARIABLE_LENGTH_CODEC.md)
 - [User Manual](../../USER_MANUAL.md)

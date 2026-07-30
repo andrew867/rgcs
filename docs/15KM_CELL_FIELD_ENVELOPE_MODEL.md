@@ -63,7 +63,7 @@ human place label = nearest recognisable witness/city label
 **This is not evidence of a real plasma magnet in RGCS.** It is an engineering-scale
 convergence, and Orion's Arm is a collective hard-science-fiction worldbuilding
 project, not a factual source. See
-[OA Convergence Ledger](RGCS_OA_CONVERGENCE_LEDGER.md).
+[OA Convergence Ledger](OA_CONVERGENCE_LEDGER.md).
 
 ---
 

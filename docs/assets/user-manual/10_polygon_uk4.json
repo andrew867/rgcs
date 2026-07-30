@@ -1,0 +1,21 @@
+{
+  "schema": "rgcs.r1062.screenshot-receipt.v1",
+  "filename": "10_polygon_uk4.png",
+  "captured_utc": "2026-07-30T17:35:00+00:00",
+  "commit": "138a09a8eb882415cb12792d00e84284d0d7483b",
+  "branch": "release/rgcs-v1-map-workbench",
+  "command": "python -m r1053 polygon 165876523,165892743,165892763,165892783",
+  "input_vectors": [
+    "165876523",
+    "165892743",
+    "165892763",
+    "165892783"
+  ],
+  "output_sha256": "d4b5871b1199afc32c68c4b17e2e3ae700393f21b3d33a6f0953c53a9367d561",
+  "bytes": 1401122,
+  "machine": "andrew@THINKDIFFERENT",
+  "platform": "win32",
+  "capture_method": "r1053.screenshots.capture (QtWebEngine offscreen)",
+  "invented": false,
+  "boundary": "The tool verifies geometry. It does not verify that a candidate vertex is physically true."
+}

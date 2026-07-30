@@ -1,0 +1,18 @@
+{
+  "schema": "rgcs.r1062.screenshot-receipt.v1",
+  "filename": "03_decode_toronto_168930443.png",
+  "captured_utc": "2026-07-30T17:35:20+00:00",
+  "commit": "138a09a8eb882415cb12792d00e84284d0d7483b",
+  "branch": "release/rgcs-v1-map-workbench",
+  "command": "workbench /workbench, decode 168930443",
+  "input_vectors": [
+    "168930443"
+  ],
+  "output_sha256": "18dcb3fa4c8fc2be3f3cd6172585505b58997c0eeff8efcace9999052bd93030",
+  "bytes": 536731,
+  "machine": "andrew@THINKDIFFERENT",
+  "platform": "win32",
+  "capture_method": "r1053.screenshots.capture (QtWebEngine offscreen)",
+  "invented": false,
+  "boundary": "The tool verifies geometry. It does not verify that a candidate vertex is physically true."
+}

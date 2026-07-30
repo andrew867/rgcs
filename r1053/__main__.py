@@ -1,15 +1,25 @@
-"""``python -m r1053`` -- V1 coordinate tools from the command line.
+"""``python -m r1053`` -- the RGCS V1 map workbench, standalone.
 
-    python -m r1053 path 167849523 168930443 -o out/path.html
-    python -m r1053 path 165879243 165879243 --b-latlon 45.8418969,-72.6788251
-    python -m r1053 certificate 165879243
-    python -m r1053 serve-maps out/
+This lane is runnable without reading the rest of the repository::
 
-``path`` is the two-vector view: give it two words and it writes an
-interactive map with both endpoints, the great-circle route between
-them, the midpoint, the distance and the bearing -- and prints the same
-numbers to the terminal so the picture and the arithmetic can be checked
-against each other.
+    python -m r1053 --help
+    python -m r1053 parse 168930443
+    python -m r1053 map 168930443
+    python -m r1053 path 167849523 168930443
+    python -m r1053 polygon 165876523,165892743,165892763,165892783
+    python -m r1053 serve
+
+``parse``    structural receipt for one vector: binary, octal, fields,
+             branch, frame, claim class, blockers.
+``map``      one-vector map.
+``path``     two vectors: great-circle route, distance, bearing, midpoint.
+``polygon``  three or more: area, perimeter, centroid, live builder.
+``serve``    loopback HTTP server so generated maps can fetch basemap
+             tiles; a ``file://`` page cannot.
+
+Every command prints the same numbers it draws, so the picture and the
+arithmetic can be checked against each other. And every command states
+the boundary: the geometry is verified, the vertex positions are not.
 """
 
 from __future__ import annotations
@@ -113,6 +123,71 @@ def _cmd_polygon(args) -> int:
     return 0
 
 
+BOUNDARY = (
+    "The tool verifies geometry. It does not verify that a candidate "
+    "vertex is physically true.")
+
+
+def _cmd_parse(args) -> int:
+    """Structural receipt for one vector."""
+    cert = certificate.address_certificate(args.vector)
+    if args.json:
+        print(json.dumps(cert, indent=2))
+        return 0
+    w, f = cert["wire"], cert["fields"]
+    print(f"vector          {w['decimal']}")
+    print(f"lane            {w['lane']}  ({w['width_bits']}-bit direct word)")
+    print(f"binary30        {w['binary30']}")
+    print(f"octal10         {w['octal10']}")
+    print(f"branch          {w['branch_octal']}"
+          f"{'  (British)' if w['branch_octal'] == '117' else ''}"
+          f"{'  (North American)' if w['branch_octal'] == '120' else ''}")
+    print(f"F5 / Q22 / S3   {f['F5']} / {f['Q22']} / {f['S3_m3']}"
+          f"   (S3 is the check digit, not geometry)")
+    print(f"source face     {f['source_face']}  = (F5 + 14) % 20")
+    print(f"Q22 path        {' '.join(str(x) for x in f['q22_path'])}")
+    lab = cert["label"]["active"]
+    if lab:
+        print(f"active label    {lab}")
+    if cert["label"]["retired"]:
+        r = cert["label"]["retired"]
+        print(f"retired label   {r['retired_label']}  ({r['status']})")
+    p = cert["projection"]
+    print(f"V1 projection   {p['v1_pinned_lat']:.6f}, "
+          f"{p['v1_pinned_lon']:.6f}")
+    if "pinning_gap_km" in p:
+        print(f"  operator alt  {p['operator_supplied_lat']:.6f}, "
+              f"{p['operator_supplied_lon']:.6f}"
+              f"   gap {p['pinning_gap_km']:,.1f} km")
+    print(f"claim class     {', '.join(cert['claim_class'])}")
+    print(f"blockers        {', '.join(cert['blockers'])}")
+    print()
+    print(BOUNDARY)
+    return 0
+
+
+def _cmd_map(args) -> int:
+    """One-vector map: a degenerate path from the point to itself."""
+    rec = pathmap.path_between(args.vector, args.vector,
+                               _latlon(args.latlon), _latlon(args.latlon))
+    out = args.out or os.path.join(DEFAULT_MAPS,
+                                   f"rgcs_map_{args.vector}.html")
+    vendor = os.path.relpath(os.path.join(DEFAULT_MAPS, "vendor"),
+                             os.path.dirname(os.path.abspath(out)))
+    polygon_page.render(out, initial=[str(args.vector).strip()],
+                        vendor_rel=vendor.replace(os.sep, "/"))
+    A = rec["endpoints"][0]
+    print(f"vector          {A['vector']}  {A['label']}")
+    print(f"octal           {A['octal10']}  branch {A['branch_octal']}")
+    print(f"position        {A['lat']:.6f}, {A['lon']:.6f}"
+          f"   [{A['coordinate_source']}]")
+    print(f"map written     {out}  ({os.path.getsize(out):,} B)")
+    print("serve it with:  python -m r1053 serve")
+    print()
+    print(BOUNDARY)
+    return 0
+
+
 def _cmd_certificate(args) -> int:
     print(json.dumps(certificate.address_certificate(args.vector), indent=2))
     return 0
@@ -163,15 +238,28 @@ def main(argv=None) -> int:
     sg.add_argument("--json", action="store_true", help="also print JSON")
     sg.set_defaults(fn=_cmd_polygon)
 
+    sr = sub.add_parser("parse", help="structural receipt for one vector")
+    sr.add_argument("vector")
+    sr.add_argument("--json", action="store_true", help="full certificate")
+    sr.set_defaults(fn=_cmd_parse)
+
+    sm = sub.add_parser("map", help="one-vector map")
+    sm.add_argument("vector")
+    sm.add_argument("-o", "--out", help="output .html path")
+    sm.add_argument("--latlon", help="override the position as 'lat,lon'")
+    sm.set_defaults(fn=_cmd_map)
+
     sc = sub.add_parser("certificate", help="typed address certificate")
     sc.add_argument("vector")
     sc.set_defaults(fn=_cmd_certificate)
 
-    ss = sub.add_parser("serve-maps", help="serve a maps directory")
-    ss.add_argument("directory", nargs="?", default=DEFAULT_MAPS)
-    ss.add_argument("--host", default="127.0.0.1")
-    ss.add_argument("--port", type=int, default=8791)
-    ss.set_defaults(fn=_cmd_serve_maps)
+    for name, helptext in (("serve", "serve generated maps over loopback"),
+                           ("serve-maps", "alias for serve")):
+        sv = sub.add_parser(name, help=helptext)
+        sv.add_argument("directory", nargs="?", default=DEFAULT_MAPS)
+        sv.add_argument("--host", default="127.0.0.1")
+        sv.add_argument("--port", type=int, default=8791)
+        sv.set_defaults(fn=_cmd_serve_maps)
 
     args = p.parse_args(argv)
     try:

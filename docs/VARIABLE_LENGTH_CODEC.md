@@ -140,7 +140,7 @@ earlier "2 of 2 exact" was the minimum needed to *define* the map, never a test 
 
 Epoch/state chunks can exist, but **spatial structural parsing does not require a
 solved calendar**. Epoch becomes required only when projecting dynamic references.
-See [Frames, Epochs and Galactic Directions](RGCS_FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS.md).
+See [Frames, Epochs and Galactic Directions](FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS.md).
 
 ```
 STRUCTURAL_DECODE:  epoch optional / may remain unresolved

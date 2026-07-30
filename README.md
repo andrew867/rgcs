@@ -4,169 +4,169 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21387947.svg)](https://doi.org/10.5281/zenodo.21387947)
 
-**V1 Earth Root: variable codec, South-Up frame, 15 km cell/envelope model**
-· MIT license · Author: Andrew Green
+**RGCS V1 Map Workbench — `v1.0.0-rc1`** · MIT · Author: Andrew Green
+
+---
+
+RGCS is a coordinate, mapping, signal, and provenance research workbench. It converts
+received or user-supplied numeric vectors into reproducible binary/octal parse
+receipts, candidate Earth-root positions, great-circle paths, and polygonal map
+regions.
+
+**RGCS does not claim that anomalous sources, craft, crop formations, physical
+propulsion, or non-human communication are proven.**
 
 ```text
-V1_STATUS:       OPERATIONAL
-PHYSICAL_STATUS: NOT_VALIDATED
-OPEN_BLOCKERS:   7 (4 structural)
+RGCS V1 is done-for-now as a frozen candidate codec + Earth-root workbench.
+The mapping, path, and polygon geometry are implemented and testable.
+The projector endpoints remain candidate outputs under B01/B02.
 ```
 
-Frozen history: v2.0.0 (`archive/v2.0.0/`), v3.0.x, v4.0.0, v4.1.x — tags and records
-are never modified. The DOI badge is the latest **minted** DOI (v3.0.1); v4.x Zenodo
-records remain pending human verification.
+This is released as **software**, not as **proof**.
 
 ---
 
-## What this is
-
-> RGCS V1 is a coordinate/research workbench with a candidate Earth-root projection. It can parse and emit structured vector receipts, reproduce the V1 calibration artifacts, and classify residuals under declared cell-scale and operational-envelope hypotheses. It does not prove physical craft, alien sources, crop-circle authorship, Phryll propulsion, or metric engineering.
-
-RGCS is an **evidence-governed research framework** for relational coordinate records,
-nested reference frames, uncertainty, provenance, and explicit scientific refusal. The
-V1 lane parses a family of compact decimal words as **hierarchical recursive
-addresses** and projects them onto Earth under a declared candidate law.
-
-The parsing is exact and tested. The projection is a **candidate that is not yet
-falsifiable**, and the repository is built to keep saying so — in the receipts, the
-maps, the UI, and the tests.
-
-The project's actual standard:
-
-> It appears possible. Can it be proved, measured, implemented, or honestly refused?
-
-For most physical claims so far the answer has been **refused** or **unmeasured**.
-Those results are published alongside everything else, because they are most of the
-science.
-
-## What it is not
-
-This project does **not** claim that the coordinate system is proven, that physical
-craft are proven, that Phryll is proven, that Orion's Arm is a factual authority, that
-"The L's" are externally verified, or that crop circles validate the codec.
-
----
-
-## Quickstart
+## Install and run
 
 ```bash
 python -m pip install -e .
 ```
 
 ```bash
-rgcs-lab doctor
+python -m r1053 --help
 ```
+
+### Parse a vector
 
 ```bash
-rgcs-lab serve --host 127.0.0.1 --port 8787
+python -m r1053 parse 168930443
 ```
 
-Then open <http://127.0.0.1:8787/> — loopback only, telemetry off, no outbound calls.
+```
+vector          168930443
+lane            DIRECT_30BIT  (30-bit direct word)
+binary30        001010000100011010110010001011
+octal10         1204326213
+branch          120  (North American)
+F5 / Q22 / S3   5 / 144785 / 3   (S3 is the check digit, not geometry)
+source face     19  = (F5 + 14) % 20
+active label    Toronto hard anchor
+V1 projection   43.653200, -79.383200
+claim class     EXACT_ARITHMETIC, TRAINING_EQUALITY, NOT_EVIDENCE_FITS_THE_MAP
+blockers        V1-B01, V1-B02, V1-B05
+```
 
-Decode a vector:
+### Map a single vector
 
 ```bash
-rgcs-lab coordinate decode 165876523
+python -m r1053 map 168930443
 ```
 
-Emit a typed address certificate — never a naked coordinate:
-
-```python
-from r1053 import certificate
-cert = certificate.address_certificate(165879243)
-```
-
-Run the coordinate-lane tests:
+### Draw a path between two vectors
 
 ```bash
-pytest tests/test_r1053_v1.py tests/test_r1059_docs.py -q
+python -m r1053 path 167849523 168930443
 ```
 
----
-
-## The V1 law
-
 ```
-direct RGCS-30 word
-  → F5 | Q22 | S3
-  → source_face = (F5 + 14) % 20
-  → 11 × 4-way spherical refinement at split t = 10/19
-  → lat/lon = normalize(A u)
+distance        178.846 km (11.93 depth-9 cell edges)
+initial bearing 18.41 deg
+midpoint        42.891736, -79.738486
+cross-check     3 formulas agree: True (spread 2.67e-11 km)
 ```
 
-Two results worth stating plainly:
+### Build a polygon from three or more
 
-- **`t = 10/19` wins.** Across all 20 face offsets, depths 9–11, and
-  `t ∈ {10/19, 1/2, 9/19}`, the source ratio is the best-performing split at every
-  setting.
-- **A rotation is refuted.** A rotation would have been testable at three anchors; its
-  best anchor RMS is 451.6 km. The free projective form is forced — and with it, the
-  under-determination below.
+```bash
+python -m r1053 polygon 165876523,165892743,165892763,165892783
+```
 
----
+```
+vertices        4  (AS_SUPPLIED)
+perimeter       77.330 km
+area            105.268 km2
+  cross-check   105.268 km2 (rel diff 7.19e-11)
+centroid        51.282952, -1.970409
+branches        117  (all same: True)
+```
 
-## The central limitation
+### View the maps
 
-`A` is used projectively, so it is scale-invariant: **9 entries, 8 free parameters**.
-Three anchors give **6 constraints**. Measured constraint-matrix rank is 6, leaving a
-**2-dimensional free family**.
+```bash
+python -m r1053 serve
+```
 
-Every member of that family reproduces all three anchors to machine precision. Under
-this repository's recorded pinning, all four V1 words land in southern England —
-matching their octal branch `117`. Under the operator-supplied member, `165879243`
-lands **5122 km away in Quebec**.
-
-**The law cannot choose between them.** A zero anchor residual is arithmetic, not
-evidence. **Five** independently sourced hard anchors is the threshold at which `A`
-first becomes over-determined and the projection becomes falsifiable for the first
-time.
+A `file://` page cannot load basemap tiles — serve them, then open
+<http://127.0.0.1:8791/>. Loopback only, no telemetry, no outbound calls beyond the
+basemap tiles themselves.
 
 ---
 
-## Blockers
+## Screenshots
 
-| id | severity | blocker | clears when |
-|---|---|---|---|
-| B01 | structural | Pinning irreproducibility (gaps 177–5122 km) | a pinning rule is recorded upstream, or a 4th and 5th anchor arrive |
-| B02 | structural | Three anchors cannot test a free projective law | ≥5 independently sourced hard anchors |
-| B03 | structural | `165879243` is branch-117 (British) with a Quebec label | an independent coordinate, or a demonstrated crossover |
-| B04 | evidential | 15 km cell-scale reading is n = 1 | ≥3 independent words at the declared relationship |
-| B05 | operational | No coastline; water acceptance cannot score | coastline dataset **and** B01/B02 cleared |
-| B06 | operational | Saint-Frédéric is a proxy and an observer location | exact civic geocode + observer/object distinction |
-| B07 | structural | No transport bridge (affine refuted) | a bridge reproducing all three labelled pairs |
+Real captures from a live run. Each has a companion JSON receipt in
+[`docs/assets/user-manual/`](docs/assets/user-manual/) carrying its UTC timestamp,
+commit SHA, command, input vectors, and output SHA-256. None are mock-ups.
 
----
-
-## Documentation
-
-| document | what it covers |
+| | |
 |---|---|
-| [User Manual](docs/USER_MANUAL.md) | install, workbench, decoding, receipts, maps — with real screenshots |
-| [V1 Earth Root Final Spec](docs/RGCS_V1_EARTH_ROOT_FINAL_SPEC.md) | frame D_V1, SAA phase hand, projection stages, the pinning problem |
-| [Variable Codec Final Spec](docs/RGCS_VARIABLE_CODEC_FINAL_SPEC.md) | direct octal lane, staged grammar, long envelope, the gate |
-| [15 km Field Envelope Model](docs/RGCS_15KM_FIELD_ENVELOPE_MODEL.md) | cell-scale derivation, envelope analogue, scoring bands, **the null** |
-| [Frames, Epochs, Galactic Directions](docs/RGCS_FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS.md) | epoch gating, Ba-130, calendars, SPICE hygiene |
-| [OA Convergence Ledger](docs/RGCS_OA_CONVERGENCE_LEDGER.md) | how hard-SF material is used as a prior and never as evidence |
-| [Manuscript](manuscripts/RGCS_Earth_Root_V1_Manuscript.md) | thesis-length technical treatment |
-| [CHANGELOG](CHANGELOG.md) | release history |
+| ![Erie to Toronto](docs/assets/user-manual/06_path_erie_toronto.png) | **Erie → Toronto**, 178.846 km. Markers on the Lake Erie south shore and Lake Ontario north shore; route across the Niagara peninsula. |
+| ![Polygon builder](docs/assets/user-manual/10_polygon_uk4.png) | **Polygon builder**, four branch-117 vectors over Wiltshire. Add/Remove/reorder on the left; area, perimeter, centroid recompute live. |
+| ![B01](docs/assets/user-manual/08_path_B01_disagreement.png) | **Blocker B01 rendered.** One vector, one octal word, one branch — two admissible positions 5121.7 km apart. Both fit all three anchors exactly. |
 
-Superseded public documents are preserved in
-[`docs/archive/pre-r1059/`](docs/archive/pre-r1059/) with a correction banner. The
-wider evidence-governance document set (claim register, defect register, decision log,
-acceptance criteria) remains in [`docs/`](docs/).
+That last image is in the README on purpose. A tool that only showed its successes
+would be a tool you could not check.
 
 ---
 
-## How claims are handled
+## The claim boundary
 
-Every result carries a **claim class**. The ones that matter most:
+```text
+Vertex POSITIONS are projector output and remain underdetermined under V1-B01/B02.
 
-- `EXACT_ARITHMETIC` — reproducible bit arithmetic; the codec lane is here.
-- `TRAINING_EQUALITY` — fits because it was fitted. **Not evidence.** The three
-  anchors are here.
-- `PROJECTION_UNDERDETERMINED` — output of a law with free parameters remaining.
-- `CANDIDATE_NOT_LOCATED_TARGET` — a projected point, not a place.
+Path, polygon, distance, perimeter, centroid, and area geometry are exact for the
+selected vertices.
+
+The tool verifies geometry.
+It does not verify that a candidate vertex is physically true.
+```
+
+The longer form, unchanged since R10.59:
+
+> RGCS V1 is a coordinate/research workbench with a candidate Earth-root projection. It can parse and emit structured vector receipts, reproduce the V1 calibration artifacts, and classify residuals under declared cell-scale and operational-envelope hypotheses. It does not prove physical craft, alien sources, crop-circle authorship, Phryll propulsion, or metric engineering.
+
+### Verified
+
+| question | how |
+|---|---|
+| Codec parses exactly and reversibly | field reconstruction; `F5<<25 \| Q22<<3 \| S3 == word` |
+| Check digit excluded from geometry | 8 words differing only in `S3` land in the identical cell |
+| Great-circle distances | three independent formulas agree to < 1e-6 km; 90° = exactly ¼ circumference |
+| Drawn paths are true great circles | sampled midpoint equidistant from both ends; segments sum to the distance |
+| Polygon areas | two independent exact methods agree to ~1e-13; a spherical octant is exactly ⅛ of the sphere |
+| Browser kernel matches the library | 0.000000 m drift on all seven known vectors |
+| Wide records refused, never truncated | structural bit-width gate |
+
+### Not verified
+
+**Whether the projected endpoints are the right places.** `A` is scale-invariant —
+9 entries, 8 free parameters — fitted against 6 constraints from 3 anchors. Measured
+rank is 6, leaving a 2-dimensional free family. Every member fits every anchor to
+machine precision, and two members put `165879243` on different continents.
+
+A zero anchor residual is arithmetic, not evidence. **Five** independently sourced hard
+anchors is the threshold at which the projection first becomes falsifiable.
+
+### Never claimed
+
+```text
+the coordinate system is proven
+physical craft are proven
+Phryll is proven
+Orion's Arm is a factual authority
+"The L's" are externally verified
+crop circles validate the codec
+```
 
 Lore and provenance sources may motivate a test. They may never stand in for one. If
 every Orion's Arm reference were deleted from this repository, no verdict and no
@@ -174,10 +174,106 @@ blocker would change.
 
 ---
 
-## Privacy
+## Known blockers
 
-Loopback by default (`127.0.0.1`), telemetry off, no outbound calls, and no private
-operator transcripts in public builds. Verify with `rgcs-lab doctor`.
+| id | severity | blocker | clears when |
+|---|---|---|---|
+| B01 | structural | Pinning irreproducibility (gaps 177–5122 km) | pinning recorded upstream, or 4th+5th anchor |
+| B02 | structural | Three anchors cannot test a free projective law | ≥5 independently sourced hard anchors |
+| B03 | structural | `165879243` is branch-117 (British) with a Quebec label | independent coordinate, or demonstrated crossover |
+| B04 | evidential | 15 km cell-scale reading is n = 1 | ≥3 independent words at the declared relation |
+| B05 | operational | No coastline; water acceptance cannot score | coastline dataset **and** B01/B02 cleared |
+| B06 | operational | Saint-Frédéric is a proxy **and** an observer location | exact civic geocode; observer/object distinction settled |
+| B07 | structural | No transport bridge (affine refuted) | bridge reproducing all three labelled pairs |
+
+Full statements, unsoftened: [docs/BLOCKERS_B01_B07.md](docs/BLOCKERS_B01_B07.md).
+
+---
+
+## Documentation
+
+| document | covers |
+|---|---|
+| [Quickstart](docs/QUICKSTART.md) | clone to map in five minutes |
+| [User Manual](docs/USER_MANUAL.md) | full walkthrough with real screenshots |
+| [V1 Coordinate System](docs/V1_COORDINATE_SYSTEM.md) | the pipeline, one page |
+| [Variable-Length Codec](docs/VARIABLE_LENGTH_CODEC.md) | direct octal lane, staged grammar, wide-envelope gate |
+| [Earth Root V1](docs/EARTH_ROOT_V1.md) | frame D_V1, SAA phase hand, the pinning problem |
+| [Map / Path / Polygon Guide](docs/MAP_PATH_POLYGON_GUIDE.md) | how the geometry is computed and cross-checked |
+| [15 km Cell & Field Envelope Model](docs/15KM_CELL_FIELD_ENVELOPE_MODEL.md) | the cell-scale derivation **and its null** |
+| [Frames, Epochs, Galactic Directions](docs/FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS.md) | epoch gating, Ba-130, SPICE hygiene |
+| [Claim Boundaries](docs/CLAIM_BOUNDARIES.md) | verified vs not, claim classes |
+| [Blockers B01–B07](docs/BLOCKERS_B01_B07.md) | the open problems |
+| [OA Convergence Ledger](docs/OA_CONVERGENCE_LEDGER.md) | hard-SF material as prior, never as evidence |
+| [Manuscript](manuscripts/RGCS_Earth_Root_V1_Manuscript.md) | thesis-length technical treatment |
+| [Release notes](docs/releases/v1.0.0-rc1.md) | what shipped |
+| [Examples](examples/) | ready-to-run vector lists |
+
+Superseded documents are preserved in [`docs/archive/`](docs/archive/) with correction
+banners. The wider evidence-governance set (claim register, defect register, decision
+log) remains in [`docs/`](docs/).
+
+---
+
+## Tests
+
+```bash
+pytest tests/test_r1053_v1.py tests/test_r1059_docs.py tests/test_r1059_polygon.py -q
+```
+
+The suite asserts the boundaries, not just the behaviour: that anchor residuals are
+labelled non-evidential, that the null accompanies the cell-scale claim, that no
+document asserts proof, and that every blocker keeps its detail and clearing
+condition.
+
+### Verification status at the frozen release commit (v8.3.0)
+
+- **8129 tests passed**, 15 skipped, 1 deselected, exit 0
+  (`expect: 8129 passed`).
+- The single deselected node is
+  `tests/regression/test_generator_determinism.py::test_generator_deterministic`
+  — a byte-equality test that requires the archived v2.0.0 build environment. Hosted
+  CI deselects exactly that node id under policy **D-V3-04**. It is the only known
+  environment-dependent test in the repository.
+- Proof-bundle checksums: **115/115**
+  (`rgcs-v4 verify-checksums`).
+
+Counts are derived from a real pytest run into `docs/v4/RELEASE_METADATA.json` and are
+guarded — a document that drifts from the recorded number fails the build.
+
+---
+
+## The wider programme, and what it concluded
+
+The map workbench is one lane. RGCS also contains a validated anisotropic FEM and
+piezoelectric solver stack, and a resonance/coherence research line. Those lanes
+reached **typed refusals**, and the refusals are part of the published result:
+
+| result | typed verdict |
+|---|---|
+| Canonical 110 mm eye-node study | `UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE` — the candidate node sits **3.906 mm** from the nearest conventional comparator, and the uncertainty interval overlaps it. Not a distinct node. |
+| Quartz mechanism firewall | `MECHANISM_NOT_IMPLEMENTED_FOR_MATERIAL` — a mechanism absent from the model is **not implemented**, which is a statement about the software and never a claim of physical impossibility. |
+
+That second distinction is the house rule of this repository: *not implemented* and
+*does not exist* are different claims, and only the first one is ever made here. See
+[docs/CLAIM_REGISTER.md](docs/CLAIM_REGISTER.md) and
+[docs/v4/WHAT_THIS_QUARTZ_MODEL_DOES_NOT_INCLUDE.md](docs/v4/WHAT_THIS_QUARTZ_MODEL_DOES_NOT_INCLUDE.md).
+
+---
+
+## Release status
+
+```text
+current release:   v8.3.0
+this candidate:    v1.0.0-rc1 — RGCS V1 Map Workbench (not yet tagged)
+codec and workbench: frozen
+physical interpretation: candidate, under B01/B02
+```
+
+Current release: [v8.3.0](https://github.com/andrew867/rgcs/releases/tag/v8.3.0).
+
+Frozen history: v2.0.0 (`archive/v2.0.0/`), v3.0.x, v4.0.0, v4.1.x — tags and records
+are never modified. The DOI badge is the latest **minted** DOI (v3.0.1).
 
 ## Citing
 

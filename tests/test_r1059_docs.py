@@ -19,11 +19,11 @@ import pytest
 
 from r1053 import certificate, kernel, ledger, lock, pathmap, projector
 
-DOCS = ("docs/RGCS_V1_EARTH_ROOT_FINAL_SPEC.md",
-        "docs/RGCS_VARIABLE_CODEC_FINAL_SPEC.md",
-        "docs/RGCS_15KM_FIELD_ENVELOPE_MODEL.md",
-        "docs/RGCS_FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS.md",
-        "docs/RGCS_OA_CONVERGENCE_LEDGER.md",
+DOCS = ("docs/EARTH_ROOT_V1.md",
+        "docs/VARIABLE_LENGTH_CODEC.md",
+        "docs/15KM_CELL_FIELD_ENVELOPE_MODEL.md",
+        "docs/FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS.md",
+        "docs/OA_CONVERGENCE_LEDGER.md",
         "docs/USER_MANUAL.md",
         "manuscripts/RGCS_Earth_Root_V1_Manuscript.md")
 
@@ -47,7 +47,7 @@ def test_claim_boundary_is_verbatim_where_it_appears():
     """The exact public phrasing, not a paraphrase."""
     required = certificate.CLAIM_BOUNDARY
     for rel in ("README.md", "docs/USER_MANUAL.md",
-                "docs/RGCS_V1_EARTH_ROOT_FINAL_SPEC.md",
+                "docs/EARTH_ROOT_V1.md",
                 "manuscripts/RGCS_Earth_Root_V1_Manuscript.md"):
         flat = " ".join(_read(rel).split())
         assert " ".join(required.split()) in flat, rel
@@ -123,7 +123,7 @@ def test_codec_spec_path7_decompositions_are_exact():
         "167849523": ("200", "2270", "2002270"),
         "168930443": ("204", "3262", "2043262"),
     }
-    spec = _read("docs/RGCS_VARIABLE_CODEC_FINAL_SPEC.md")
+    spec = _read("docs/VARIABLE_LENGTH_CODEC.md")
     for word, (s8o, p12o, path7) in expected.items():
         v = int(word)
         assert (v >> 26) & 15 == 2                      # R4
@@ -134,7 +134,7 @@ def test_codec_spec_path7_decompositions_are_exact():
 
 
 def test_depth_table_in_the_15km_doc_matches_the_code():
-    doc = _read("docs/RGCS_15KM_FIELD_ENVELOPE_MODEL.md")
+    doc = _read("docs/15KM_CELL_FIELD_ENVELOPE_MODEL.md")
     for depth, edge in ((9, 14.989), (10, 7.495), (11, 3.747)):
         assert kernel.cell_edge_km(depth) == pytest.approx(edge, abs=0.001)
         assert f"{edge}" in doc
@@ -142,7 +142,7 @@ def test_depth_table_in_the_15km_doc_matches_the_code():
 
 def test_the_null_is_stated_wherever_the_cell_scale_claim_is():
     """A cell-scale claim without its null is the failure mode."""
-    for rel in ("docs/RGCS_15KM_FIELD_ENVELOPE_MODEL.md",
+    for rel in ("docs/15KM_CELL_FIELD_ENVELOPE_MODEL.md",
                 "manuscripts/RGCS_Earth_Root_V1_Manuscript.md"):
         text = _read(rel)
         assert "1.046" in text

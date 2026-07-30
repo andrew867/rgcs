@@ -3,6 +3,50 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [1.0.0-rc1] - 2026-07-30
+
+R10.62 public release candidate: **RGCS V1 Map Workbench**.
+
+Released as software, not as proof. The codec and workbench are frozen
+enough to publish; the physical interpretation remains explicitly
+candidate under B01/B02.
+
+**NOT PUSHED, NOT TAGGED.** Awaiting operator approval.
+
+- Isolated CLI. The map lane runs without reading the rest of the
+  repository: `python -m r1053 --help | parse | map | path | polygon |
+  serve`. Added `parse` (structural receipt), `map` (one-vector), and
+  `serve` (loopback HTTP so map pages can fetch basemap tiles; a
+  `file://` page cannot).
+- README rewritten for public users, opening with the required claim:
+  RGCS is a coordinate, mapping, signal, and provenance research
+  workbench, and does not claim anomalous sources, craft, crop
+  formations, physical propulsion, or non-human communication are
+  proven.
+- Documentation set at the release filenames: QUICKSTART,
+  V1_COORDINATE_SYSTEM, VARIABLE_LENGTH_CODEC, EARTH_ROOT_V1,
+  MAP_PATH_POLYGON_GUIDE, 15KM_CELL_FIELD_ENVELOPE_MODEL,
+  CLAIM_BOUNDARIES, BLOCKERS_B01_B07, OA_CONVERGENCE_LEDGER,
+  FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS, releases/v1.0.0-rc1.
+- `examples/`: five ready-to-run vector lists, each validated by test to
+  contain only legal direct-lane words.
+- Screenshot receipts: every PNG now has a companion JSON carrying UTC
+  timestamp, commit SHA, command, input vectors, output SHA-256, and
+  `invented: false`. A test recomputes each hash against the file.
+- Blockers B01-B07 given their own document, unsoftened, with the
+  numbers that make them real (5121.7 km, 0.881, 0.147, 484,856,892,
+  451.6 km, 71 %). Tests fail if a blocker loses its detail, its
+  clearing condition, or acquires hedging language.
+
+Three gaps were found by the new release tests and fixed rather than
+waived: the README documented five of six public commands, B02 had lost
+the 451.6 km rotation-refutation figure, and the verbatim R10.59 claim
+boundary had fallen out of the rewritten README.
+
+Tests: focused set `tests/test_r1053_v1.py`, `test_r1059_docs.py`,
+`test_r1059_polygon.py`, `test_r1062_release.py` = 103 passed.
+Full-suite status recorded in the R10.62 commit message.
+
 ## [8.4.0] - 2026-07-30
 
 R10.59 V1 Earth-root release documentation, 15 km field-envelope model,
@@ -45,11 +89,11 @@ right places. A correctly drawn line between two candidate points is
 still a line between two candidate points.
 
 - Documentation set: `README.md` rewritten; new
-  `docs/RGCS_V1_EARTH_ROOT_FINAL_SPEC.md`,
-  `docs/RGCS_VARIABLE_CODEC_FINAL_SPEC.md`,
-  `docs/RGCS_15KM_FIELD_ENVELOPE_MODEL.md`,
-  `docs/RGCS_FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS.md`,
-  `docs/RGCS_OA_CONVERGENCE_LEDGER.md`, `docs/USER_MANUAL.md`,
+  `docs/EARTH_ROOT_V1.md`,
+  `docs/VARIABLE_LENGTH_CODEC.md`,
+  `docs/15KM_CELL_FIELD_ENVELOPE_MODEL.md`,
+  `docs/FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS.md`,
+  `docs/OA_CONVERGENCE_LEDGER.md`, `docs/USER_MANUAL.md`,
   `manuscripts/RGCS_Earth_Root_V1_Manuscript.md`. Prior public README
   archived to `docs/archive/pre-r1059/` with a correction banner naming
   the four superseded assumptions.
