@@ -1,10 +1,65 @@
 # Public Communication Kit (Agent 12)
 
+> **Reading note (R10.62).** The paragraph and pitches below were written
+> for the v3 crystal programme and remain accurate for that lane. RGCS has
+> since grown to five lanes. For current external wording use the
+> **whole-programme summary** immediately below, and check anything you
+> write against [CLAIM_BOUNDARIES](CLAIM_BOUNDARIES.md) and
+> [BLOCKERS_B01_B07](BLOCKERS_B01_B07.md) — those two win over any
+> promotional text, including this file.
+
+## Whole-programme summary (current — use this first)
+
+> RGCS is an evidence-governed research programme in resonant geometry.
+> It spans crystal and resonator physics on a validated anisotropic
+> FEM/piezoelectric stack, a typed coordinate and state-space framework,
+> a coordinate/mapping workbench that turns numeric vectors into
+> reproducible parse receipts and candidate map positions, and the
+> provenance machinery that keeps all of it honest. Its organising
+> discipline: lore proposes, mathematics translates, software attacks,
+> evidence decides, provenance remains. Most physical claims in the
+> programme have been refused or left unmeasured, and those null results
+> are published beside the positive ones.
+
+**The coordinate lane, stated exactly:**
+
+> RGCS is a coordinate, mapping, signal, and provenance research
+> workbench. It converts received or user-supplied numeric vectors into
+> reproducible binary/octal parse receipts, candidate Earth-root
+> positions, great-circle paths, and polygonal map regions. RGCS does not
+> claim that anomalous sources, craft, crop formations, physical
+> propulsion, or non-human communication are proven.
+
+**The line to keep in every public description of the map lane:**
+
+```text
+The tool verifies geometry.
+It does not verify that a candidate vertex is physically true.
+```
+
+## Never say
+
+```text
+the coordinate system is proven
+physical craft are proven
+Phryll is proven
+Orion's Arm is a factual authority
+crop circles validate the codec
+RGCS has located anything
+```
+
+A projected point is a **candidate**, not a place. The projector retains
+two free parameters at three anchors, and two admissible solutions put the
+same vector on different continents — that contradiction is published, not
+hidden, and any external description that omits it is inaccurate.
+
+## v3 crystal-programme material (still accurate for that lane)
+
 Copy-ready text for the repository page, release, and announcements.
 Everything here obeys the classification policy: no unconfirmed claim is
 presented as fact.
 
-## Project summary (one paragraph)
+## Project summary — v3 crystal programme (one paragraph)
 
 > RGCS is a reproducible research framework for studying acoustic and
 > mechanical resonance in engineered quartz geometries. It pairs a typed,

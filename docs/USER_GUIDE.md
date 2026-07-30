@@ -1,5 +1,15 @@
 # RGCS v2 Desktop Workbench — User Guide
 
+> **Which guide do you want?**
+>
+> | You want to… | Guide |
+> |---|---|
+> | Use the v2 desktop workbench | **this document** |
+> | Use the v4 multiphysics stack (FEM, piezo, eye diagnostics) | [USER_GUIDE_V4](USER_GUIDE_V4.md) |
+> | Map or decode coordinate vectors | [QUICKSTART](QUICKSTART.md) → [USER_MANUAL](USER_MANUAL.md) |
+> | See everything | [documentation index](README.md) |
+
+
 Launch: `python -m rgcs_desktop` (optionally pass a workspace directory:
 `python -m rgcs_desktop ~/rgcs_workspaces/my-project`). The packaged
 binary is `rgcs-workbench` (see `tools/packaging/`).

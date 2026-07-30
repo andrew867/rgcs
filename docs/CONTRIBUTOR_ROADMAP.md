@@ -44,6 +44,30 @@ schema-valid manifests + the pipeline outputs, or it didn't happen.
   *before* bench data exists — issues keyed to claim ids.
 - Accessibility pass on the manuscripts (alt text, tagged PDFs).
 
+## D. Coordinates & mapping lane (added R10.62)
+
+The newest lane, and the one with the sharpest open question. Software
+work here is genuinely useful because the blockers are *structural*, not
+a matter of more compute.
+
+| Item | What it takes | Deliverable | Size |
+|---|---|---|---|
+| **Two more independently sourced hard anchors** | independent coordinate provenance, not a fit | clears **B01** and **B02** at once, and settles **B03** | the highest-value item in the whole lane |
+| Coastline / land-water dataset integration | a licence-clean coastline set | activates the water-acceptance criterion; clears **B05** | S–M |
+| Third-party audit of the projector algebra | linear algebra review, no bench | independent confirmation or refutation of the rank-6 result | S |
+| Transport bridge for wide-envelope records | a map reproducing all three labelled pairs | clears **B07**; the affine was refuted at R10.47C | M–L |
+| Independent cell-scale instances | ≥3 independent hard-labelled words | clears **B04**, currently n = 1 | any |
+| Exact civic geocode for the Saint-Frédéric reference | records research | clears **B06** | S |
+| Map UI work | Leaflet/JS; the geometry layer is already tested | export formats, layer control, measurement tools | S–M |
+
+**What will not help:** fitting the projector to more places. With 8 free
+parameters and 6 constraints, a better fit to the existing three anchors
+is arithmetic, not evidence. See
+[BLOCKERS_B01_B07](BLOCKERS_B01_B07.md) B02.
+
+Blocker statements, unsoftened: [BLOCKERS_B01_B07](BLOCKERS_B01_B07.md).
+Claim classes: [CLAIM_BOUNDARIES](CLAIM_BOUNDARIES.md).
+
 ## The boundary, stated once
 
 **Software work** may never adjudicate a physical hypothesis — it can
@@ -51,3 +75,8 @@ make adjudication possible, cheaper, or better-instrumented.
 **Experimental work** may never bypass the pipeline, the controls, or
 the pre-registered analysis — the bench earns its claims the same way
 the code does: through the registers.
+
+The same boundary applies to the coordinate lane in its own terms:
+**the tool verifies geometry; it does not verify that a candidate vertex
+is physically true.** Improving the software cannot promote a candidate
+position to a located one. Only an independent anchor can.
