@@ -3,6 +3,81 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [8.4.0] - 2026-07-30
+
+R10.59 V1 Earth-root release documentation, 15 km field-envelope model,
+and the two-vector path map. Documentation and tooling only — the
+projector is **not** retuned and no anchor is added.
+
+**PUBLICATION HOLD REMAINS IN FORCE. Not pushed, not tagged.** The
+operator gate is explicit: nothing goes public until a human has
+visually confirmed the mapping on a real basemap.
+
+- `r1053.certificate`: `FrameManifest` and `AddressCertificate`. Earth
+  root D_V1 (Earth COM, mean rotation axis South-Up, Wilkes angular root
+  candidate, SAA phase hand, MSL datum) travels with every coordinate,
+  along with epoch gating, claim class, and the blockers that bear on it.
+  A bare lat/lon is never emitted.
+- `r1053.pathmap`: two-vector great-circle paths. Endpoints, 128-sample
+  slerp polyline, midpoint, distance, initial/final bearing, and a
+  three-formula cross-check (haversine, spherical law of cosines,
+  Vincenty-on-sphere) agreeing to < 1e-6 km.
+- `r1053.screenshots`: reproducible QtWebEngine capture with per-image
+  provenance (UTC, commit, operator/machine, command, SHA-256). A failed
+  capture is recorded as FAILED with a TODO receipt; none are invented.
+- `python -m r1053`: `path`, `certificate`, `serve-maps` subcommands.
+  Gated wide-envelope records exit 2 with the B07 reason.
+- Leaflet vendored to `maps/vendor/`, so map pages need no CDN. Basemap
+  tiles still require network and the page says so if they fail rather
+  than showing a blank pane.
+
+VERIFIED BY VISUAL INSPECTION on a real OpenStreetMap basemap:
+Erie→Toronto 178.846 km (marker on the SE shore of Lake Erie, marker on
+Lake Ontario's north shore, route across the Niagara peninsula);
+Toronto→Drummondville 582.465 km (route via Kingston and Montréal,
+midpoint near Brockville). Both reproduce the recorded pack distances.
+The polyline is a true great circle — its sampled midpoint is
+equidistant from both ends and its segments sum to the reported
+distance.
+
+NOT VERIFIED, and stated as such everywhere: that the endpoints are the
+right places. A correctly drawn line between two candidate points is
+still a line between two candidate points.
+
+- Documentation set: `README.md` rewritten; new
+  `docs/RGCS_V1_EARTH_ROOT_FINAL_SPEC.md`,
+  `docs/RGCS_VARIABLE_CODEC_FINAL_SPEC.md`,
+  `docs/RGCS_15KM_FIELD_ENVELOPE_MODEL.md`,
+  `docs/RGCS_FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS.md`,
+  `docs/RGCS_OA_CONVERGENCE_LEDGER.md`, `docs/USER_MANUAL.md`,
+  `manuscripts/RGCS_Earth_Root_V1_Manuscript.md`. Prior public README
+  archived to `docs/archive/pre-r1059/` with a correction banner naming
+  the four superseded assumptions.
+- The codec spec's six PATH7 decompositions are verified arithmetically
+  by test rather than asserted.
+- The 15 km model is documented in both readings — depth-9 cell edge
+  14.989 km giving 15.684/14.989 = 1.046, and the OA plasma-magnet 30 km
+  envelope as a hard-SF scale prior only — with the null attached: at the
+  ±30 % tolerance the observation was first stated with, 88 % of
+  residuals under 60 km qualify. It survives at ±5 % (coincidence rate
+  0.147) and remains n = 1. B04 unchanged.
+- OA material is classified as design convergence and never as evidence.
+  If every OA reference were deleted, no verdict and no blocker would
+  change.
+- `tests/test_r1059_docs.py`: 27 tests covering the doc set, the
+  certificates, and the path geometry. Includes a proof-assertion guard
+  with its own positive control, so the guard cannot silently stop
+  working.
+- Blockers B01–B07 preserved verbatim in README, manual, spec, and
+  manuscript. B01 now has a rendered picture: one vector, one octal word,
+  one branch, two admissible positions 5121.7 km apart.
+
+Tests: `tests/test_r1053_v1.py` + `tests/test_r1059_docs.py` = 55 passed.
+Pre-existing unrelated failure remains
+`tests/regression/test_generator_determinism.py::test_generator_deterministic`
+(D-V3-04 float drift vs the archived v2 reference environment; the test's
+own docstring records that hosted CI deselects that node id).
+
 ## [8.3.0] - 2026-07-28
 
 R10.13 private release candidate: normal-user custom crystal workflow.
