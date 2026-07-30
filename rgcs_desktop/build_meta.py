@@ -52,6 +52,7 @@ SOURCE_ROOTS = ("rgcs_desktop", "rgcs_workbench", "rgcs_core",
                 # the same R8-D-006 class of gap. Closed here, together
                 # with r1018 and r1019 as they land.
                 "r1016", "r1017", "r1018", "r1019", "r1025", "r1028", "r1034",
+                "r1053",
                 "cwatlas",
                 # Q02 / R10-D-004: the inverse of R8-D-006. This lane
                 # ships in the wheel and sdist and is importable after
