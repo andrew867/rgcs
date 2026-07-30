@@ -1,0 +1,166 @@
+{
+  "module": "metasurface",
+  "version": "0.1.0.dev0",
+  "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
+  "status": "YELLOW",
+  "claim_class": [
+    "IMPLEMENTED_SOFTWARE",
+    "CONVENTIONAL_PHYSICS",
+    "UNDERDETERMINED"
+  ],
+  "inputs": {
+    "example": "corrugated-cell"
+  },
+  "models": [
+    "passive-rlcg-spoof-spp-line-v1"
+  ],
+  "result": {
+    "geometry": {
+      "period_m": 0.005,
+      "cells": 16,
+      "length_m": 0.08
+    },
+    "assumptions": [
+      "passive corrugated conductor represented as distributed RLCG line",
+      "single-mode reduced-order transmission-line approximation"
+    ],
+    "valid_frequency_range_hz": [
+      1000000000.0,
+      4000000000.0
+    ],
+    "dispersion_curve": [
+      {
+        "frequency_hz": 1000000000.0,
+        "beta_rad_per_m": 25.13274130631881,
+        "alpha_np_per_m": 0.0020249999937475604,
+        "phase_velocity_m_per_s": 249999999.22809392,
+        "group_velocity_m_per_s": 250000000.56138608,
+        "surface_impedance_ohm": {
+          "re": 50.000000162198,
+          "im": -0.003929137644819651
+        },
+        "q_estimate": 6205.6151565232785
+      },
+      {
+        "frequency_hz": 1375000000.0,
+        "beta_rad_per_m": 34.55751924592443,
+        "alpha_np_per_m": 0.0020249999966929244,
+        "phase_velocity_m_per_s": 249999999.59171903,
+        "group_velocity_m_per_s": 250000000.44108933,
+        "surface_impedance_ohm": {
+          "re": 50.000000085790674,
+          "im": -0.0028575546551500176
+        },
+        "q_estimate": 8532.720815397812
+      },
+      {
+        "frequency_hz": 1750000000.0,
+        "beta_rad_per_m": 43.98229719460022,
+        "alpha_np_per_m": 0.002024999997958387,
+        "phase_velocity_m_per_s": 249999999.74794906,
+        "group_velocity_m_per_s": 250000000.26418185,
+        "surface_impedance_ohm": {
+          "re": 50.000000052962605,
+          "im": -0.002245221516236652
+        },
+        "q_estimate": 10859.826478751444
+      },
+      {
+        "frequency_hz": 2125000000.0,
+        "beta_rad_per_m": 53.40707514754435,
+        "alpha_np_per_m": 0.002024999998615377,
+        "phase_velocity_m_per_s": 249999999.82905886,
+        "group_velocity_m_per_s": 250000000.1764357,
+        "surface_impedance_ohm": {
+          "re": 50.000000035919285,
+          "im": -0.0018490059551788643
+        },
+        "q_estimate": 13186.932144212891
+      },
+      {
+        "frequency_hz": 2500000000.0,
+        "beta_rad_per_m": 62.83185310283604,
+        "alpha_np_per_m": 0.00202499999899961,
+        "phase_velocity_m_per_s": 249999999.87649503,
+        "group_velocity_m_per_s": 250000000.1263479,
+        "surface_impedance_ohm": {
+          "re": 50.000000025951685,
+          "im": -0.0015716550622157297
+        },
+        "q_estimate": 15514.037810833634
+      },
+      {
+        "frequency_hz": 2875000000.0,
+        "beta_rad_per_m": 72.25663105955671,
+        "alpha_np_per_m": 0.002024999999243561,
+        "phase_velocity_m_per_s": 249999999.90661252,
+        "group_velocity_m_per_s": 250000000.0950035,
+        "surface_impedance_ohm": {
+          "re": 50.0000000196232,
+          "im": -0.001366656576012953
+        },
+        "q_estimate": 17841.143478160044
+      },
+      {
+        "frequency_hz": 3250000000.0,
+        "beta_rad_per_m": 81.68140901721169,
+        "alpha_np_per_m": 0.0020249999994080533,
+        "phase_velocity_m_per_s": 249999999.92692012,
+        "group_velocity_m_per_s": 250000000.07406604,
+        "surface_impedance_ohm": {
+          "re": 50.00000001535603,
+          "im": -0.0012089654327301462
+        },
+        "q_estimate": 20168.24914594784
+      },
+      {
+        "frequency_hz": 3625000000.0,
+        "beta_rad_per_m": 91.10618697551102,
+        "alpha_np_per_m": 0.00202499999952419,
+        "phase_velocity_m_per_s": 249999999.94125804,
+        "group_velocity_m_per_s": 250000000.05937767,
+        "surface_impedance_ohm": {
+          "re": 50.00000001234325,
+          "im": -0.001083900043202763
+        },
+        "q_estimate": 22495.35481405384
+      },
+      {
+        "frequency_hz": 4000000000.0,
+        "beta_rad_per_m": 100.53096493427348,
+        "alpha_np_per_m": 0.0020249999996092226,
+        "phase_velocity_m_per_s": 249999999.9517559,
+        "group_velocity_m_per_s": 250000000.0532351,
+        "surface_impedance_ohm": {
+          "re": 50.00000001013737,
+          "im": -0.0009822844141958932
+        },
+        "q_estimate": 24822.460482388542
+      }
+    ],
+    "field_or_mode_proxy": "complex propagation constant gamma = alpha + i beta",
+    "power_ledger": {
+      "units": "W",
+      "input_electrical_power": 1.0,
+      "transmitted_power_min": 0.9996760524823942,
+      "transmitted_power_max": 0.9996760524833318,
+      "ohmic_and_dielectric_loss_min": 0.0003239475166681993,
+      "ohmic_and_dielectric_loss_max": 0.00032394751760578266,
+      "numerical_residual": 0.0
+    },
+    "warning": "This electromagnetic reduced-order model does not compute gravity or gravity coupling.",
+    "model": "passive-rlcg-spoof-spp-line-v1",
+    "max_conservation_residual": 0.0
+  },
+  "warnings": [
+    "HIGH-FIDELITY SPOOF-SPP SOLVER: YELLOW UNDERDETERMINED",
+    "Does not modify gravity",
+    "backend=rgcs_lab.metasurface"
+  ],
+  "tests": [
+    "metasurface_energy_conservation",
+    "tests/rgcs_lab/test_metasurface.py"
+  ],
+  "artifacts": [],
+  "receipt_sha256": "7c29947f824fc018bca92d27cb019e7f69cd691a95a171b06100c07377f2dc39"
+}

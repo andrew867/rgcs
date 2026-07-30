@@ -1,0 +1,137 @@
+{
+  "schema": "rgcs.codex_numerical_audit.v1",
+  "audit_date": "2026-07-26",
+  "worktree": "audit-worktree",
+  "branch": "program/codex-numerical-audit",
+  "base_commit": "b84e6eb4608b55b951270e07d3af3ffb08f96a61",
+  "verdict": "PASS_WITH_ENVIRONMENT_CAVEAT",
+  "independent_checks": {
+    "total_assertions": 178,
+    "failed_assertions": 0,
+    "golay": {
+      "status": "PASS",
+      "blocks_checked": ["0x000", "0x001", "0x123", "0xA5A", "0xFFF"],
+      "single_bit_flips_per_block": 24,
+      "multi_bit_masks_checked": ["0x81", "0x802010"],
+      "four_bit_boundary": "non-round-trip reported, no silent wrong-data pass"
+    },
+    "quaternion": {
+      "status": "PASS",
+      "checks": [
+        "matrix_orthogonality",
+        "determinant_one",
+        "inverse_round_trip",
+        "norm_preservation",
+        "composition_noncommutativity",
+        "sign_alias_equivalence",
+        "near_zero",
+        "near_pi"
+      ],
+      "round_trip_tolerance": 1e-12
+    },
+    "memory": {
+      "status": "PASS",
+      "corpus": "examples/rgcs_lab/memory",
+      "top_k": 2,
+      "deterministic_repeatability": true,
+      "equal_budget": {
+        "corpus": "same",
+        "generation": "none",
+        "top_k": 2
+      }
+    },
+    "dual_pole": {
+      "status": "PASS",
+      "bad_claim": "resonance gain proves excess energy",
+      "bad_claim_verdict": "BLOCK",
+      "bounded_claim_file": "examples/rgcs_lab/claim_yellow.json",
+      "bounded_claim_status": "YELLOW",
+      "machine_no_evidence_approval_refused": true,
+      "machine_evidence_bound_approval": true
+    },
+    "lattice": {
+      "status": "PASS",
+      "states": 64,
+      "hermitian_residual": 0.0,
+      "coarse_lossless_drift": 2.777655883079433e-11,
+      "fine_lossless_drift": 8.683054275593349e-13,
+      "convergence_final_norm_tolerance": 1e-8,
+      "damped_stored_decreases": true,
+      "damped_dissipated_increases": true,
+      "resonance_gain_excess_energy_label": false
+    },
+    "metasurface": {
+      "status": "PASS",
+      "lane_status": "YELLOW",
+      "power_units": "W",
+      "model_units": {
+        "L": "H/m",
+        "C": "F/m",
+        "R": "ohm/m",
+        "G": "S/m",
+        "frequency": "Hz",
+        "power": "W"
+      },
+      "passive_transmitted_power_within_input": true,
+      "numerical_residual": 0.0,
+      "gravity_warning_present": true
+    },
+    "cli_receipts": {
+      "status": "PASS",
+      "commands": [
+        "golay demo --random-flips 3",
+        "frames example earth-south-up",
+        "memory benchmark examples/rgcs_lab/memory --top-k 2",
+        "dual-pole audit examples/rgcs_lab/claim_yellow.json",
+        "lattice run --steps 10",
+        "metasurface sweep --points 3"
+      ]
+    },
+    "installed_wheel": {
+      "status": "PASS",
+      "wheel": "C:/tmp/rgcs-audit-wheel/rgcs-8.2.0-py3-none-any.whl",
+      "wheel_sha256": "13449f569be9faee0bc264f00031bb6fc7f06553ce3f46670fd47f18b7bedc46",
+      "install_target": "C:/tmp/rgcs-audit-installed",
+      "import_file": "C:/tmp/rgcs-audit-installed/rgcs_lab/__init__.py",
+      "checks": [
+        "rgcs_lab.cli doctor",
+        "rgcs_lab.cli golay demo --random-flips 3",
+        "rgcs_lab.lattice.simulate",
+        "bin/rgcs-lab.exe golay demo --random-flips 3"
+      ],
+      "environment_notes": [
+        "Existing editable RGCS installs were filtered from sys.path for import-level wheel checks.",
+        "Temporary install-tree ACLs were normalized with read/execute permissions before non-escalated verification."
+      ]
+    }
+  },
+  "pytest": {
+    "default_temp_root": {
+      "command": "python -m pytest tests\\rgcs_lab -q",
+      "exit_code": 1,
+      "elapsed_seconds": 10.96,
+      "result": "52 passed, 3 setup errors",
+      "error": "PermissionError WinError 5 on %LOCALAPPDATA%\\Temp\\pytest-of-<user>"
+    },
+    "workspace_basetemp": {
+      "command": "python -m pytest tests\\rgcs_lab -q --basetemp .pytest-basetemp",
+      "exit_code": 0,
+      "elapsed_seconds": 4.209,
+      "result": "55 passed in 3.16s"
+    },
+    "workspace_basetemp_no_plugin_autoload": {
+      "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest tests\\rgcs_lab -q -p faulthandler --basetemp .pytest-basetemp-noplugins",
+      "exit_code": 0,
+      "elapsed_seconds": 3.333,
+      "result": "55 passed in 2.62s"
+    },
+    "teardown_hang_reproduced": false,
+    "final_status": "NO_REPOSITORY_PYTEST_TEARDOWN_HANG_FOUND"
+  },
+  "claim_boundaries": {
+    "never_label_resonance_gain_as_excess_energy": "verified",
+    "never_infer_gravity_coupling_from_em_simulation": "verified",
+    "metasurface_physics_lane": "YELLOW_UNDERDETERMINED"
+  }
+}
+

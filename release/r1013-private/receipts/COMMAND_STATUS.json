@@ -1,0 +1,88 @@
+{
+ "schema": "rgcs.r1013.command-status.v1",
+ "statuses": {
+  "rgcs-v4 *": {
+   "status": "CURRENT",
+   "provider": "rscs2_core.cli"
+  },
+  "rgcs-workbook": {
+   "status": "CURRENT",
+   "provider": "rgcs_workbench.workbook"
+  },
+  "rgcs-workbench": {
+   "status": "CURRENT",
+   "provider": "rgcs_desktop.app.main",
+   "note": "GUI; presence-tested, not driven in CI"
+  },
+  "rgcs --version": {
+   "status": "IMPLEMENTED",
+   "provider": "r1013.cli"
+  },
+  "rgcs doctor": {
+   "status": "IMPLEMENTED",
+   "provider": "r1013.cli"
+  },
+  "rgcs self-test": {
+   "status": "CURRENT",
+   "provider": "r1012.cli (codec workflows), extended by r1013 doctor"
+  },
+  "rgcs schema verify": {
+   "status": "IMPLEMENTED",
+   "provider": "r1013.cli"
+  },
+  "rgcs examples verify": {
+   "status": "IMPLEMENTED",
+   "provider": "r1013.cli"
+  },
+  "rgcs crystal new|validate|inspect|migrate|hash": {
+   "status": "IMPLEMENTED",
+   "provider": "r1013.cli"
+  },
+  "rgcs crystal geometry|density-check|estimate|christoffel": {
+   "status": "IMPLEMENTED",
+   "provider": "r1013.cli"
+  },
+  "rgcs crystal mesh|modes|converge|piezo": {
+   "status": "IMPLEMENTED",
+   "provider": "r1013.cli",
+   "note": "mesh/modes/converge need gmsh on PATH"
+  },
+  "rgcs crystal report|bundle": {
+   "status": "IMPLEMENTED",
+   "provider": "r1013.cli"
+  },
+  "rgcs bundle verify": {
+   "status": "IMPLEMENTED",
+   "provider": "r1013.cli"
+  },
+  "rgcs frequency list|compare": {
+   "status": "IMPLEMENTED",
+   "provider": "r1013.cli over rscs2_core.frequency_keys"
+  },
+  "rgcs frequency coordinate": {
+   "status": "REFUSED",
+   "reason": "a frequency-to-coordinate mapping would assert the S6-state-to-geometry bridge, which is UNDERDETERMINED; shipping it would fabricate geography. The command is removed from release docs."
+  },
+  "rgcs wire parse|explain|roundtrip": {
+   "status": "CURRENT",
+   "provider": "r1012.cli"
+  },
+  "rgcs transition candidates": {
+   "status": "CURRENT",
+   "provider": "r1012.cli"
+  },
+  "rgcs mesh trace": {
+   "status": "CURRENT",
+   "provider": "r1012.cli"
+  },
+  "rgcs help error": {
+   "status": "IMPLEMENTED",
+   "provider": "r1013.cli"
+  },
+  "desktop New Specimen wizard": {
+   "status": "REFUSED",
+   "reason": "deferred from the R10.13 release: the seven-page wizard is not implemented; current-release wording is removed from the desktop guide and the CLI workflow is the supported path. The desktop app itself (rgcs-workbench) is unchanged."
+  }
+ },
+ "rule": "no TARGET-marked command may appear in release-facing docs; every CURRENT/IMPLEMENTED row is executed by tests/r1013/test_doc_execution"
+}

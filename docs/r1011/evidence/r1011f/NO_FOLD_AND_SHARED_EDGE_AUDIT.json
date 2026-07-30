@@ -1,0 +1,17 @@
+{
+  "flat_face_L5": {
+    "depth": 5,
+    "terminal_facets": 20480,
+    "orientation_reversals": 0,
+    "shared_edge_mismatches": 0
+  },
+  "v1_frozen": {
+    "L6_orientation_reversals": 0,
+    "source": "R10.9/R10.11 receipts"
+  },
+  "layer2_global_mesh": {
+    "vertices": 162,
+    "triangles": 320,
+    "euler_ok": true
+  }
+}

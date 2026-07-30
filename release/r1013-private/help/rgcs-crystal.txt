@@ -1,0 +1,8 @@
+usage: rgcs crystal [-h]
+                    {new,validate,inspect,migrate,hash,geometry,density-check,estimate,christoffel,mesh,modes,converge,piezo,report,bundle} ...
+
+positional arguments:
+  {new,validate,inspect,migrate,hash,geometry,density-check,estimate,christoffel,mesh,modes,converge,piezo,report,bundle}
+
+options:
+  -h, --help            show this help message and exit

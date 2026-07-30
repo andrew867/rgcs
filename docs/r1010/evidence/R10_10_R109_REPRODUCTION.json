@@ -1,0 +1,23 @@
+{
+  "schema": "rgcs.r1010.r109-reproduction.v1",
+  "date": "2026-07-27",
+  "t10_fixtures_reproduced": true,
+  "t11_search_v1": {
+    "candidates": 46,
+    "survivors": 0,
+    "status": "NO_CANDIDATE_IN_BOUNDED_SPACE"
+  },
+  "v1_stonehenge_exact": true,
+  "v2_fold_counts": {
+    "L5": 102,
+    "L6": 361
+  },
+  "v1_fold_L6": 0,
+  "montreal_direct": {
+    "f5": 4,
+    "s3": 3,
+    "octal10": "1170616713"
+  },
+  "sealed_intake_sha256": "350c4ffba82e2434896d2b2f57fb925fba035382bed6d0768e52b7d87f3d16f6",
+  "holdout_firewall": "intact (tests/r109 sealed-holdout suite)"
+}

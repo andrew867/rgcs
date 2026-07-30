@@ -1,0 +1,22 @@
+# Claimed by: claude (program/claude-authority-docs), 2026-07-26
+# Scope: authority, schemas, specifications, claim boundaries, docs,
+# adversarial review, proof receipts. Codex core-algorithm files and
+# Cursor app/integration files are NOT claimed here.
+
+rgcs_lab/__init__.py
+rgcs_lab/common/**
+rgcs_lab/authority/**
+tests/rgcs_lab/test_rlab_*.py
+docs/program/**
+pyproject.toml            # ONE bounded hunk only: add rgcs_lab* to
+                          # packages.find + package-data. Cursor owns
+                          # package wiring overall — flagged in every
+                          # handoff receipt as a merge-coordination
+                          # point; integration adapters win on conflict.
+
+# Explicitly NOT claimed (other agents):
+#   rgcs_lab/golay/**  rgcs_lab/frames/**  rgcs_lab/lattice/**
+#   rgcs_lab/metasurface/** solvers, rgcs_lab/memory/** engines,
+#   rgcs_lab/api/**  rgcs_lab/cli/**  rgcs_lab/web/**  static/hub/**
+# Frozen (no agent may edit): r12/icosapacket.py, r12/icosarefine.py,
+#   cwatlas/r1082 sealed calibration, rejected-decoder receipts.

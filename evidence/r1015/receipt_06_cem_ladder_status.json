@@ -1,0 +1,91 @@
+{
+  "schema": "rgcs.r1015.receipt.v1",
+  "command": "cem ladder status",
+  "inputs": {},
+  "input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "outputs": {
+    "schema": "rgcs.r1015.cem-ladder-status.v1",
+    "rungs": [
+      {
+        "rung": 1,
+        "name": "manufactured analytic verification",
+        "status": "EXECUTED",
+        "module": "rgcs_surface_wave.manufactured"
+      },
+      {
+        "rung": 2,
+        "name": "static unit-cell periodic model",
+        "status": "EXECUTED_REDUCED",
+        "note": "declared impedance-surface eigenproblem, not a full-wave periodic solve",
+        "module": "rgcs_surface_wave.impedance"
+      },
+      {
+        "rung": 3,
+        "name": "static full annular eigenmode model",
+        "status": "EXECUTED",
+        "module": "rgcs_surface_wave.eigenmodes"
+      },
+      {
+        "rung": 4,
+        "name": "dielectric-gap sweep",
+        "status": "EXECUTED",
+        "module": "studies"
+      },
+      {
+        "rung": 5,
+        "name": "candidate and null mask comparison",
+        "status": "EXECUTED",
+        "module": "cem.mask_comparison"
+      },
+      {
+        "rung": 6,
+        "name": "frequency-domain sideband model",
+        "status": "EXECUTED",
+        "module": "rgcs_surface_wave.floquet"
+      },
+      {
+        "rung": 7,
+        "name": "harmonic-balance model",
+        "status": "EXECUTED",
+        "module": "floquet.solve_sidebands"
+      },
+      {
+        "rung": 8,
+        "name": "full transient switching",
+        "status": "REDUCED_ORDER_ONLY",
+        "note": "a modal ODE transient is executed and agrees with harmonic balance. FULL-WAVE 3D TRANSIENT FDTD IS NOT EXECUTED: it needs a dedicated CEM package and compute budget outside this repository. No result in this release depends on it.",
+        "module": "cem.reduced_transient"
+      },
+      {
+        "rung": 9,
+        "name": "coupled structural/thermal/acoustic",
+        "status": "NOT_EXECUTED",
+        "note": "artifact magnitudes are estimated analytically in artifacts.py; a coupled multiphysics solve is future work and is required before any bench claim"
+      },
+      {
+        "rung": 10,
+        "name": "independent cross-solver reproduction",
+        "status": "EXECUTED_INTERNAL",
+        "note": "two independent formulations of the annular eigenproblem agree; an independent EXTERNAL package (rung 10 in full) remains future work",
+        "module": "cem.cross_check_eigenmodes"
+      }
+    ],
+    "rule": "no result in this release rests on a NOT_EXECUTED rung",
+    "claim_class": "SIMULATED"
+  },
+  "evidence_class": "SIMULATED",
+  "limitations": [
+    "declares unexecuted rungs"
+  ],
+  "uncertainty": {},
+  "software": {
+    "python": "3.13.2",
+    "rgcs_surface_wave": "0.10.15",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0"
+  },
+  "source_commit": "20545f46d4eeb7967f098b61b579b4cf355e3613",
+  "publication_status": "HOLD",
+  "nonclaim": "Computed values are simulation outputs, not measurements. This work does not demonstrate antigravity, reactionless thrust, gravity modification, free energy, or anomalous propulsion, and makes no claim about the origin or authorship of the source material.",
+  "receipt_hash": "cb3d56c761e34a136071b24af44b5f64e2d95a4c57022482dadd04844efca65a"
+}

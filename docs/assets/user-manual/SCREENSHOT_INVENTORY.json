@@ -1,0 +1,18 @@
+{
+  "schema": "rgcs.r1062.screenshot-inventory.v1",
+  "commit": "138a09a8eb882415cb12792d00e84284d0d7483b",
+  "count": 10,
+  "files": [
+    "01_workbench_hub.png",
+    "02_decode_stonehenge_165876523.png",
+    "03_decode_toronto_168930443.png",
+    "04_decode_drummondville_165879243.png",
+    "06_path_erie_toronto.png",
+    "07_path_toronto_drummondville.png",
+    "08_path_B01_disagreement.png",
+    "09_path_stonehenge_orangeA.png",
+    "10_polygon_uk4.png",
+    "12_polygon_builder_live.png"
+  ],
+  "rule": "real captures only; a failed capture is recorded as FAILED with a TODO receipt, never replaced with an invented image"
+}

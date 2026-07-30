@@ -1,0 +1,40 @@
+{
+  "schema": "rgcs.r1011fa.pi-equation-registry.v1",
+  "frozen_verbatim": "?/? x prime/prime = 2 x pi x sq(r) /57535 ; solve for pi ; you'll get the rest later",
+  "sq_r_readings_tested": [
+    "sqrt(r)",
+    "r^2"
+  ],
+  "prime_pair_tokens_registered": {
+    "2937": "29|37",
+    "8937": "89|37"
+  },
+  "first_fraction_candidate_registered": "33/35",
+  "factorization": "57535 = 5 x 37 x 311",
+  "selection": "NONE \u2014 underdetermined; missing source fields awaited",
+  "implied_r_diagnostics_no_selection": {
+    "33/35 x 29/37": {
+      "sqrt_reading": {
+        "sqrt_r": 6766.972606801647,
+        "r": 45791918.26120388
+      },
+      "square_reading": {
+        "r_squared": 6766.972606801647,
+        "r": 82.26161077198554
+      }
+    },
+    "33/35 x 89/37": {
+      "sqrt_reading": {
+        "sqrt_r": 20767.605586391262,
+        "r": 431293441.7919096
+      },
+      "square_reading": {
+        "r_squared": 20767.605586391262,
+        "r": 144.10969983450545
+      }
+    }
+  },
+  "observations_recorded_not_interpreted": [
+    "33/35 x 29/37 sqrt reading: sqrt(r) = 6766.97 \u2014 if r were in km, sqrt(r)=6767 vs Earth mean radius 6371 km differs by +6.2%; recorded only"
+  ]
+}

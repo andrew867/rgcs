@@ -1,0 +1,345 @@
+{
+  "base": "empirical V1 face convention '102'",
+  "traces": {
+    "165876523": [
+      {
+        "level": 0,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 1,
+        "digit": 3,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": true
+      },
+      {
+        "level": 2,
+        "digit": 3,
+        "orientation": "210",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 3,
+        "digit": 0,
+        "orientation": "210",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 4,
+        "digit": 1,
+        "orientation": "210",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 5,
+        "digit": 2,
+        "orientation": "210",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 6,
+        "digit": 0,
+        "orientation": "210",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 7,
+        "digit": 2,
+        "orientation": "210",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 8,
+        "digit": 1,
+        "orientation": "210",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 9,
+        "digit": 2,
+        "orientation": "210",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 10,
+        "digit": 1,
+        "orientation": "210",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 11,
+        "digit": 1,
+        "orientation": "210",
+        "parity": -1,
+        "inverted": false
+      }
+    ],
+    "167849523": [
+      {
+        "level": 0,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 1,
+        "digit": 0,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 2,
+        "digit": 0,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 3,
+        "digit": 0,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 4,
+        "digit": 0,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 5,
+        "digit": 2,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 6,
+        "digit": 1,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 7,
+        "digit": 1,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 8,
+        "digit": 3,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": true
+      },
+      {
+        "level": 9,
+        "digit": 0,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": true
+      },
+      {
+        "level": 10,
+        "digit": 1,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": true
+      },
+      {
+        "level": 11,
+        "digit": 2,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": true
+      }
+    ],
+    "165879243": [
+      {
+        "level": 0,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 1,
+        "digit": 3,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": true
+      },
+      {
+        "level": 2,
+        "digit": 3,
+        "orientation": "210",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 3,
+        "digit": 0,
+        "orientation": "210",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 4,
+        "digit": 1,
+        "orientation": "210",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 5,
+        "digit": 2,
+        "orientation": "210",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 6,
+        "digit": 0,
+        "orientation": "210",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 7,
+        "digit": 3,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": true
+      },
+      {
+        "level": 8,
+        "digit": 2,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": true
+      },
+      {
+        "level": 9,
+        "digit": 3,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 10,
+        "digit": 2,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 11,
+        "digit": 1,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": false
+      }
+    ],
+    "168930443": [
+      {
+        "level": 0,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 1,
+        "digit": 0,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 2,
+        "digit": 0,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 3,
+        "digit": 2,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 4,
+        "digit": 0,
+        "orientation": "102",
+        "parity": -1,
+        "inverted": false
+      },
+      {
+        "level": 5,
+        "digit": 3,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": true
+      },
+      {
+        "level": 6,
+        "digit": 1,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": true
+      },
+      {
+        "level": 7,
+        "digit": 1,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": true
+      },
+      {
+        "level": 8,
+        "digit": 2,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": true
+      },
+      {
+        "level": 9,
+        "digit": 1,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": true
+      },
+      {
+        "level": 10,
+        "digit": 0,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": true
+      },
+      {
+        "level": 11,
+        "digit": 1,
+        "orientation": "021",
+        "parity": -1,
+        "inverted": true
+      }
+    ]
+  }
+}

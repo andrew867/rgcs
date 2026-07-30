@@ -1,0 +1,19 @@
+{
+  "schema": "rgcs.r1062.screenshot-receipt.v1",
+  "filename": "07_path_toronto_drummondville.png",
+  "captured_utc": "2026-07-30T17:35:00+00:00",
+  "commit": "138a09a8eb882415cb12792d00e84284d0d7483b",
+  "branch": "release/rgcs-v1-map-workbench",
+  "command": "python -m r1053 path 168930443 165879243 --b-latlon 45.8418969,-72.6788251",
+  "input_vectors": [
+    "168930443",
+    "165879243"
+  ],
+  "output_sha256": "c7569b5dd0c5941d024efafd1ba0313d544788b00a04a62bfc09a51d19073b59",
+  "bytes": 1256028,
+  "machine": "andrew@THINKDIFFERENT",
+  "platform": "win32",
+  "capture_method": "r1053.screenshots.capture (QtWebEngine offscreen)",
+  "invented": false,
+  "boundary": "The tool verifies geometry. It does not verify that a candidate vertex is physically true."
+}

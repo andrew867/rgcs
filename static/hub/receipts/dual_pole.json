@@ -1,0 +1,58 @@
+{
+  "module": "dual_pole",
+  "version": "0.1.0.dev0",
+  "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
+  "status": "YELLOW",
+  "claim_class": [
+    "IMPLEMENTED_SOFTWARE",
+    "EXPLORATORY_MODEL"
+  ],
+  "inputs": {
+    "claim": {
+      "statement": "exact structural decode of 165876523",
+      "claim_class": [
+        "EXACT_ARITHMETIC"
+      ],
+      "evidence": [
+        "golden_vector"
+      ]
+    }
+  },
+  "models": [
+    "dual-pole-state-machine-v1"
+  ],
+  "result": {
+    "state_path": [
+      "INTAKE",
+      "DECOMPOSE",
+      "RETRIEVE",
+      "PROPOSE",
+      "EVIDENCE_BIND",
+      "ATTACK",
+      "REATTACK",
+      "ACCEPT_YELLOW",
+      "RECEIPT"
+    ],
+    "proposal": "exact structural decode of 165876523",
+    "claim_class": [
+      "EXACT_ARITHMETIC"
+    ],
+    "evidence_count": 1,
+    "findings": [],
+    "operator_waiver_recorded": false,
+    "verdict": "ACCEPT_YELLOW",
+    "decision": "ACCEPT_YELLOW",
+    "attacks": [],
+    "critic_bypassed": false
+  },
+  "warnings": [
+    "Independent witness status: not established",
+    "backend=rgcs_lab.dual_pole"
+  ],
+  "tests": [
+    "dual_pole_critic_not_bypassed",
+    "tests/rgcs_lab/test_memory_dual.py"
+  ],
+  "artifacts": [],
+  "receipt_sha256": "83dee19b7a8146651eafff675da47ae1c0e01bb4c8862db1ecc1e4701c622c51"
+}

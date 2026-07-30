@@ -1,5 +1,15 @@
 # RGCS v4 User Guide (RSCS 2.0)
 
+> **Which guide do you want?**
+>
+> | You want to… | Guide |
+> |---|---|
+> | Use the v2 desktop workbench | [USER_GUIDE](USER_GUIDE.md) |
+> | Use the v4 multiphysics stack (FEM, piezo, eye diagnostics) | **this document** |
+> | Map or decode coordinate vectors | [QUICKSTART](QUICKSTART.md) → [USER_MANUAL](USER_MANUAL.md) |
+> | See everything | [documentation index](README.md) |
+
+
 RGCS v4 adds a validated 3-D computational stack on top of the frozen
 v3 framework: anisotropic FEM modal analysis, piezoelectric coupling,
 optical/coil/drive projections, an eye diagnostic + consensus engine,

@@ -1,0 +1,116 @@
+{
+  "schema": "rgcs.r1011c.segmented-codec-authority.v1",
+  "locked": {
+    "header": "16 = octal 1|6 = 001|110, Sol|Terra",
+    "terminal_3": "broad surface class",
+    "compact_payload": "E2|S6|S6|S6 (20 bits)",
+    "refined_payload": "E2|S6|S6|S6|C3 (23 bits)",
+    "E2": "finer shell/epoch state (not a face class)",
+    "transition_operator": "T[state, child] -> next_state"
+  },
+  "sparse_table_entries": {
+    "T[15,5]": 5,
+    "T[30,5]": 40,
+    "T[4,5]": 37,
+    "T[26,5]": 30,
+    "T[1,5]": 25,
+    "T[52,5]": 31,
+    "T[15,6]": 49,
+    "T[55,6]": 53,
+    "T[25,6]": 45,
+    "T[14,6]": 51,
+    "T[11,6]": 14,
+    "T[61,6]": 36
+  },
+  "table_status": "UNDERDETERMINED: 12 of 512 cells known (source-reported); no repository or archive table matches; unknown cells REFUSE, never guessed",
+  "table_search": "repository + all internal-docs archives scanned for any file matching >=2 of the 12 transition triples: NONE found; no new table fitted",
+  "pair_verification": [
+    {
+      "compact": 165876523,
+      "refined": 1643789253,
+      "child": 5,
+      "e2": "10",
+      "compact_states": [
+        15,
+        30,
+        4
+      ],
+      "refined_states": [
+        5,
+        40,
+        37
+      ],
+      "transition_verified": true,
+      "parent_reduction_verified": true
+    },
+    {
+      "compact": 168930443,
+      "refined": 1672875493,
+      "child": 5,
+      "e2": "11",
+      "compact_states": [
+        26,
+        1,
+        52
+      ],
+      "refined_states": [
+        30,
+        25,
+        31
+      ],
+      "transition_verified": true,
+      "parent_reduction_verified": true
+    },
+    {
+      "compact": 165892733,
+      "refined": 1658274383,
+      "child": 6,
+      "e2": "10",
+      "compact_states": [
+        15,
+        55,
+        25
+      ],
+      "refined_states": [
+        49,
+        53,
+        45
+      ],
+      "transition_verified": true,
+      "parent_reduction_verified": true
+    },
+    {
+      "compact": 165823973,
+      "refined": 1658729343,
+      "child": 6,
+      "e2": "10",
+      "compact_states": [
+        14,
+        11,
+        61
+      ],
+      "refined_states": [
+        51,
+        14,
+        36
+      ],
+      "transition_verified": true,
+      "parent_reduction_verified": true
+    }
+  ],
+  "middle_state_23_checksum": {
+    "raw": 165872393,
+    "states": [
+      15,
+      23,
+      39
+    ],
+    "holds": true
+  },
+  "monolithic_compatibility": {
+    "status": "FIELDS_DO_NOT_CORRESPOND",
+    "evidence": "old F5=5 vectors split across segmented E2 values (167854923/167849523 -> E2=10, 168724343 -> E2=11); old S3 values {1,3,5,7} appear against uniform terminal-3 surface class",
+    "disposition": "F5|Q22|S3 preserved as EXACT_OLD_STRUCTURAL_PROFILE (historical candidate); segmented parsing is current source-reported authority for the 16...3 family; both readings remain exact and reversible on the same integers"
+  },
+  "firewalls": "no geographic retuning, no holdout reveal, no map change in this patch; segmented authority is a CODEC result only"
+}

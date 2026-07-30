@@ -1,0 +1,710 @@
+{
+  "schema": "rgcs.r10.11d.high-information-probes.v1",
+  "status": "PROBES_OF_THE_AFFINE_PERMUTATION_HYPOTHESIS_ONLY",
+  "probe_summaries": [
+    {
+      "compact_wire": 165872393,
+      "child": 5,
+      "compact_states": [
+        15,
+        23,
+        39
+      ],
+      "outside_positions_1_based": [
+        2,
+        3
+      ],
+      "baseline_outputs": [
+        5,
+        42,
+        16
+      ],
+      "xor_constraints": [
+        {
+          "positions_1_based": [
+            2,
+            3
+          ],
+          "required_output_xor": 58
+        }
+      ],
+      "candidate_refined_wire_count": 32,
+      "reason": "State triple [15,23,39] contains two states outside the child-5 consensus hyperplane. One refined result selects the completion; the second outside output independently checks it."
+    },
+    {
+      "compact_wire": 165879633,
+      "child": 6,
+      "compact_states": [
+        15,
+        34,
+        59
+      ],
+      "outside_positions_1_based": [
+        2,
+        3
+      ],
+      "baseline_outputs": [
+        49,
+        40,
+        24
+      ],
+      "xor_constraints": [
+        {
+          "positions_1_based": [
+            2,
+            3
+          ],
+          "required_output_xor": 48
+        }
+      ],
+      "candidate_refined_wire_count": 32,
+      "reason": "State triple [15,34,59] contains two states outside the child-6 consensus hyperplane. One refined result selects the completion; the second outside output independently checks it."
+    }
+  ],
+  "candidate_refined_wires": {
+    "165872393_child_5": [
+      {
+        "completion_id": 0,
+        "refined_states": [
+          5,
+          42,
+          16
+        ],
+        "refined_wire": 1643797813,
+        "refined_payload": 4379781
+      },
+      {
+        "completion_id": 1,
+        "refined_states": [
+          5,
+          10,
+          48
+        ],
+        "refined_wire": 1643636533,
+        "refined_payload": 4363653
+      },
+      {
+        "completion_id": 2,
+        "refined_states": [
+          5,
+          58,
+          0
+        ],
+        "refined_wire": 1643878453,
+        "refined_payload": 4387845
+      },
+      {
+        "completion_id": 3,
+        "refined_states": [
+          5,
+          26,
+          32
+        ],
+        "refined_wire": 1643717173,
+        "refined_payload": 4371717
+      },
+      {
+        "completion_id": 4,
+        "refined_states": [
+          5,
+          38,
+          28
+        ],
+        "refined_wire": 1643778293,
+        "refined_payload": 4377829
+      },
+      {
+        "completion_id": 5,
+        "refined_states": [
+          5,
+          6,
+          60
+        ],
+        "refined_wire": 1643617013,
+        "refined_payload": 4361701
+      },
+      {
+        "completion_id": 6,
+        "refined_states": [
+          5,
+          54,
+          12
+        ],
+        "refined_wire": 1643858933,
+        "refined_payload": 4385893
+      },
+      {
+        "completion_id": 7,
+        "refined_states": [
+          5,
+          22,
+          44
+        ],
+        "refined_wire": 1643697653,
+        "refined_payload": 4369765
+      },
+      {
+        "completion_id": 8,
+        "refined_states": [
+          5,
+          32,
+          26
+        ],
+        "refined_wire": 1643747413,
+        "refined_payload": 4374741
+      },
+      {
+        "completion_id": 9,
+        "refined_states": [
+          5,
+          0,
+          58
+        ],
+        "refined_wire": 1643586133,
+        "refined_payload": 4358613
+      },
+      {
+        "completion_id": 10,
+        "refined_states": [
+          5,
+          48,
+          10
+        ],
+        "refined_wire": 1643828053,
+        "refined_payload": 4382805
+      },
+      {
+        "completion_id": 11,
+        "refined_states": [
+          5,
+          16,
+          42
+        ],
+        "refined_wire": 1643666773,
+        "refined_payload": 4366677
+      },
+      {
+        "completion_id": 12,
+        "refined_states": [
+          5,
+          44,
+          22
+        ],
+        "refined_wire": 1643808533,
+        "refined_payload": 4380853
+      },
+      {
+        "completion_id": 13,
+        "refined_states": [
+          5,
+          12,
+          54
+        ],
+        "refined_wire": 1643647253,
+        "refined_payload": 4364725
+      },
+      {
+        "completion_id": 14,
+        "refined_states": [
+          5,
+          60,
+          6
+        ],
+        "refined_wire": 1643889173,
+        "refined_payload": 4388917
+      },
+      {
+        "completion_id": 15,
+        "refined_states": [
+          5,
+          28,
+          38
+        ],
+        "refined_wire": 1643727893,
+        "refined_payload": 4372789
+      },
+      {
+        "completion_id": 16,
+        "refined_states": [
+          5,
+          43,
+          17
+        ],
+        "refined_wire": 1643803013,
+        "refined_payload": 4380301
+      },
+      {
+        "completion_id": 17,
+        "refined_states": [
+          5,
+          11,
+          49
+        ],
+        "refined_wire": 1643641733,
+        "refined_payload": 4364173
+      },
+      {
+        "completion_id": 18,
+        "refined_states": [
+          5,
+          59,
+          1
+        ],
+        "refined_wire": 1643883653,
+        "refined_payload": 4388365
+      },
+      {
+        "completion_id": 19,
+        "refined_states": [
+          5,
+          27,
+          33
+        ],
+        "refined_wire": 1643722373,
+        "refined_payload": 4372237
+      },
+      {
+        "completion_id": 20,
+        "refined_states": [
+          5,
+          39,
+          29
+        ],
+        "refined_wire": 1643783493,
+        "refined_payload": 4378349
+      },
+      {
+        "completion_id": 21,
+        "refined_states": [
+          5,
+          7,
+          61
+        ],
+        "refined_wire": 1643622213,
+        "refined_payload": 4362221
+      },
+      {
+        "completion_id": 22,
+        "refined_states": [
+          5,
+          55,
+          13
+        ],
+        "refined_wire": 1643864133,
+        "refined_payload": 4386413
+      },
+      {
+        "completion_id": 23,
+        "refined_states": [
+          5,
+          23,
+          45
+        ],
+        "refined_wire": 1643702853,
+        "refined_payload": 4370285
+      },
+      {
+        "completion_id": 24,
+        "refined_states": [
+          5,
+          33,
+          27
+        ],
+        "refined_wire": 1643752613,
+        "refined_payload": 4375261
+      },
+      {
+        "completion_id": 25,
+        "refined_states": [
+          5,
+          1,
+          59
+        ],
+        "refined_wire": 1643591333,
+        "refined_payload": 4359133
+      },
+      {
+        "completion_id": 26,
+        "refined_states": [
+          5,
+          49,
+          11
+        ],
+        "refined_wire": 1643833253,
+        "refined_payload": 4383325
+      },
+      {
+        "completion_id": 27,
+        "refined_states": [
+          5,
+          17,
+          43
+        ],
+        "refined_wire": 1643671973,
+        "refined_payload": 4367197
+      },
+      {
+        "completion_id": 28,
+        "refined_states": [
+          5,
+          45,
+          23
+        ],
+        "refined_wire": 1643813733,
+        "refined_payload": 4381373
+      },
+      {
+        "completion_id": 29,
+        "refined_states": [
+          5,
+          13,
+          55
+        ],
+        "refined_wire": 1643652453,
+        "refined_payload": 4365245
+      },
+      {
+        "completion_id": 30,
+        "refined_states": [
+          5,
+          61,
+          7
+        ],
+        "refined_wire": 1643894373,
+        "refined_payload": 4389437
+      },
+      {
+        "completion_id": 31,
+        "refined_states": [
+          5,
+          29,
+          39
+        ],
+        "refined_wire": 1643733093,
+        "refined_payload": 4373309
+      }
+    ],
+    "165879633_child_6": [
+      {
+        "completion_id": 0,
+        "refined_states": [
+          49,
+          40,
+          24
+        ],
+        "refined_wire": 1658206143,
+        "refined_payload": 5820614
+      },
+      {
+        "completion_id": 1,
+        "refined_states": [
+          49,
+          24,
+          40
+        ],
+        "refined_wire": 1658125503,
+        "refined_payload": 5812550
+      },
+      {
+        "completion_id": 2,
+        "refined_states": [
+          49,
+          0,
+          48
+        ],
+        "refined_wire": 1658003263,
+        "refined_payload": 5800326
+      },
+      {
+        "completion_id": 3,
+        "refined_states": [
+          49,
+          48,
+          0
+        ],
+        "refined_wire": 1658245183,
+        "refined_payload": 5824518
+      },
+      {
+        "completion_id": 4,
+        "refined_states": [
+          49,
+          44,
+          28
+        ],
+        "refined_wire": 1658226943,
+        "refined_payload": 5822694
+      },
+      {
+        "completion_id": 5,
+        "refined_states": [
+          49,
+          28,
+          44
+        ],
+        "refined_wire": 1658146303,
+        "refined_payload": 5814630
+      },
+      {
+        "completion_id": 6,
+        "refined_states": [
+          49,
+          4,
+          52
+        ],
+        "refined_wire": 1658024063,
+        "refined_payload": 5802406
+      },
+      {
+        "completion_id": 7,
+        "refined_states": [
+          49,
+          52,
+          4
+        ],
+        "refined_wire": 1658265983,
+        "refined_payload": 5826598
+      },
+      {
+        "completion_id": 8,
+        "refined_states": [
+          49,
+          42,
+          26
+        ],
+        "refined_wire": 1658216543,
+        "refined_payload": 5821654
+      },
+      {
+        "completion_id": 9,
+        "refined_states": [
+          49,
+          26,
+          42
+        ],
+        "refined_wire": 1658135903,
+        "refined_payload": 5813590
+      },
+      {
+        "completion_id": 10,
+        "refined_states": [
+          49,
+          2,
+          50
+        ],
+        "refined_wire": 1658013663,
+        "refined_payload": 5801366
+      },
+      {
+        "completion_id": 11,
+        "refined_states": [
+          49,
+          50,
+          2
+        ],
+        "refined_wire": 1658255583,
+        "refined_payload": 5825558
+      },
+      {
+        "completion_id": 12,
+        "refined_states": [
+          49,
+          46,
+          30
+        ],
+        "refined_wire": 1658237343,
+        "refined_payload": 5823734
+      },
+      {
+        "completion_id": 13,
+        "refined_states": [
+          49,
+          30,
+          46
+        ],
+        "refined_wire": 1658156703,
+        "refined_payload": 5815670
+      },
+      {
+        "completion_id": 14,
+        "refined_states": [
+          49,
+          6,
+          54
+        ],
+        "refined_wire": 1658034463,
+        "refined_payload": 5803446
+      },
+      {
+        "completion_id": 15,
+        "refined_states": [
+          49,
+          54,
+          6
+        ],
+        "refined_wire": 1658276383,
+        "refined_payload": 5827638
+      },
+      {
+        "completion_id": 16,
+        "refined_states": [
+          49,
+          9,
+          57
+        ],
+        "refined_wire": 1658050063,
+        "refined_payload": 5805006
+      },
+      {
+        "completion_id": 17,
+        "refined_states": [
+          49,
+          57,
+          9
+        ],
+        "refined_wire": 1658291983,
+        "refined_payload": 5829198
+      },
+      {
+        "completion_id": 18,
+        "refined_states": [
+          49,
+          33,
+          17
+        ],
+        "refined_wire": 1658169743,
+        "refined_payload": 5816974
+      },
+      {
+        "completion_id": 19,
+        "refined_states": [
+          49,
+          17,
+          33
+        ],
+        "refined_wire": 1658089103,
+        "refined_payload": 5808910
+      },
+      {
+        "completion_id": 20,
+        "refined_states": [
+          49,
+          13,
+          61
+        ],
+        "refined_wire": 1658070863,
+        "refined_payload": 5807086
+      },
+      {
+        "completion_id": 21,
+        "refined_states": [
+          49,
+          61,
+          13
+        ],
+        "refined_wire": 1658312783,
+        "refined_payload": 5831278
+      },
+      {
+        "completion_id": 22,
+        "refined_states": [
+          49,
+          37,
+          21
+        ],
+        "refined_wire": 1658190543,
+        "refined_payload": 5819054
+      },
+      {
+        "completion_id": 23,
+        "refined_states": [
+          49,
+          21,
+          37
+        ],
+        "refined_wire": 1658109903,
+        "refined_payload": 5810990
+      },
+      {
+        "completion_id": 24,
+        "refined_states": [
+          49,
+          11,
+          59
+        ],
+        "refined_wire": 1658060463,
+        "refined_payload": 5806046
+      },
+      {
+        "completion_id": 25,
+        "refined_states": [
+          49,
+          59,
+          11
+        ],
+        "refined_wire": 1658302383,
+        "refined_payload": 5830238
+      },
+      {
+        "completion_id": 26,
+        "refined_states": [
+          49,
+          35,
+          19
+        ],
+        "refined_wire": 1658180143,
+        "refined_payload": 5818014
+      },
+      {
+        "completion_id": 27,
+        "refined_states": [
+          49,
+          19,
+          35
+        ],
+        "refined_wire": 1658099503,
+        "refined_payload": 5809950
+      },
+      {
+        "completion_id": 28,
+        "refined_states": [
+          49,
+          15,
+          63
+        ],
+        "refined_wire": 1658081263,
+        "refined_payload": 5808126
+      },
+      {
+        "completion_id": 29,
+        "refined_states": [
+          49,
+          63,
+          15
+        ],
+        "refined_wire": 1658323183,
+        "refined_payload": 5832318
+      },
+      {
+        "completion_id": 30,
+        "refined_states": [
+          49,
+          39,
+          23
+        ],
+        "refined_wire": 1658200943,
+        "refined_payload": 5820094
+      },
+      {
+        "completion_id": 31,
+        "refined_states": [
+          49,
+          23,
+          39
+        ],
+        "refined_wire": 1658120303,
+        "refined_payload": 5812030
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "rgcs.r1011fa2.corrections.v1",
+  "reclassification_144000": {
+    "status": "PRIMED_RETROSPECTIVE_MATCH \u2014 associative/null-control record only",
+    "origin_recalled": "passing YouTube thumbnail (operator recollection)",
+    "consequence": "r ~ 144.1096998 vs 144000 CANNOT support selection of 33/35, 89/37, sq(r)=r^2, the symbolic pi equation, or any 144-frame semantics"
+  },
+  "subtitle_chronology": {
+    "status": "DATED_EXTERNAL_MESSAGING_ARTIFACT registered",
+    "explicit_content": [
+      "savior-vs-destroyer disclosure dichotomy",
+      "warnings about information via government/news",
+      "claimed above-government dark operations",
+      "claimed black-ops advanced craft",
+      "claimed use of some craft to distort disclosure",
+      "fear and narrative manipulation as hazards"
+    ],
+    "not_named": [
+      "QAnon",
+      "Project 2025",
+      "US military-industrial complex"
+    ],
+    "classification": "THEMATIC AND CHRONOLOGICAL CONVERGENCE with the operator record \u2014 NOT independent confirmation of any named actor or external truth"
+  },
+  "verdict_lines": [
+    "NEW_VECTOR_BATCH_FROZEN",
+    "TWENTY_EIGHT_E3_PARSES",
+    "ZERO_PARSE_FAILURES",
+    "CORRECTED_WIRE_168742538943",
+    "MALFORMED_TRANSCRIPTION_PRESERVED_IN_LEDGER",
+    "SUBTITLE_THEMATIC_CHRONOLOGY_REGISTERED",
+    "SPECIFIC_POLITICAL_ACTOR_NOT_ESTABLISHED",
+    "144000_RECLASSIFIED_AS_PRIMED_RETROSPECTIVE_MATCH"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "handoff": "RGCS Integration and Public Release Phase — integration agent",
+  "date": "2026-07-26",
+  "verdict": "RGCS_INTEGRATION_GREEN_READY_FOR_FINAL_AUDIT",
+  "branch": "program/integration",
+  "worktree": "../rgcs-integration",
+  "base_commit": "eb7d7d4a3c9c9d900eeb508a7a9684a0784e099e",
+  "merged_lanes": {
+    "claude": {"branch": "program/claude-authority-docs", "tip": "188caab", "merge_commit": "15afa9e", "dirty_state": "clean"},
+    "codex": {"branch": "program/codex-core-algorithms", "tip": "71e73423031f911c3145ad4fd17ec7dec9c79eca", "merge_commit": "f06a4a8", "dirty_state": "clean"},
+    "cursor": {"branch": "program/cursor-app-integration", "tip": "d4baf0d", "merge_commit": "4b9ec05", "dirty_state": "clean"}
+  },
+  "final_commit": "6b55e6c785c73d13d811f436df71c0bf19c67e29 (+ this handoff commit)",
+  "tag": "none — 'Do not tag yet' per operator command sequence",
+  "gates": {
+    "rgcs_lab_suite": "55 passed, normal exit",
+    "rgcs_coordinate_suite": "30 passed",
+    "full_repo_suite": "7931 passed, 15 skipped, 1 deselected (NR3-001 node, mirrors CI), exit 0",
+    "build": "wheel + sdist built (see PACKAGE_RECEIPT.json for sha256)",
+    "installed_wheel_outside_repo": "all CLI modules + rgcs-lab serve executed",
+    "static_hub": "regenerated from executed Codex cores; disk + static-server verified; no telemetry",
+    "codex_pytest_hang": "not reproduced under prescribed matrix; classified environment (Codex harness), not repository leak"
+  },
+  "single_sources_of_truth": {
+    "module_status": "rgcs_lab.common.status_schema.ModuleStatus (ModuleResult envelope validates through it)",
+    "receipt_schema": "rgcs_lab/common/receipt_schema.json (packaged; schemas/lab/receipt.schema.json is a byte-identical distribution mirror)",
+    "cli_entry_point": "rgcs-lab = rgcs_lab.cli:main (plus python -m rgcs_lab)",
+    "claim_vocabulary": "rgcs_lab.common.status_schema.ClaimClass (Codex core literals rewritten to it)"
+  },
+  "policy_attestations": {
+    "frozen_coordinate_parser_untouched": true,
+    "golden_vectors_unchanged": true,
+    "claude_earned_status_logic_preserved": true,
+    "reference_fallback_cannot_be_green": "enforced in code (rgcs_lab.adapters.guard_fallback)",
+    "no_pytest_plugin_silenced": true,
+    "receipts_generated_only_from_executed_code": true
+  },
+  "documented_exceptions": [
+    "IR-01: module slug unified to plural 'predictions' (2-line authority-side edit; no semantic content changed)",
+    "IR-09: tests/rgcs_lab/test_frames.py renamed to test_rlab_frames_core.py (pytest basename collision; contents unchanged)",
+    "metasurface UI inputs groove_depth_m/loss_tan are declared unmapped by the Codex reduced-order core instead of silently consumed",
+    "predictions hub demo remains the Cursor reference implementation (YELLOW) alongside the stricter Claude authority registry (IR-08)"
+  ],
+  "artifacts": [
+    "docs/program/integration/PREMERGE_INVENTORY.md",
+    "docs/program/integration/PREMERGE_TREE_DIFFS.txt",
+    "docs/program/integration/INTEGRATION_REPORT.md",
+    "docs/program/integration/CONFLICT_RESOLUTION.md",
+    "docs/program/integration/CODEX_PYTEST_HANG_INVESTIGATION.md",
+    "docs/program/integration/RECEIPT_PROMOTION_REPORT.md",
+    "docs/program/integration/TEST_RECEIPT.json",
+    "docs/program/integration/PACKAGE_RECEIPT.json",
+    "docs/program/integration/STATIC_HUB_RECEIPT.json",
+    "docs/program/integration/FINAL_MERGE_HANDOFF.json"
+  ],
+  "next": "Run the three post-merge audit prompts in 02_POST_MERGE/ (Claude adversarial audit, Codex numerical verification, Cursor release build) against program/integration, then 03_FINAL/FINAL_RELEASE_DECISION_PROMPT.md."
+}

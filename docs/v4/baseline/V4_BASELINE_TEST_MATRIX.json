@@ -92,6 +92,80 @@
     ],
     "test_functions": 33
   },
+  "r1010": {
+    "files": [
+      "test_rlab1010_orientation.py",
+      "test_rlab1010_t11_holdouts.py"
+    ],
+    "test_functions": 16
+  },
+  "r1011": {
+    "files": [
+      "test_rlab1011_codec_map.py",
+      "test_rlab1011_e2s6_intake.py",
+      "test_rlab1011_segmented.py",
+      "test_rlab1011d_e3_affine.py",
+      "test_rlab1011e_families_probes.py",
+      "test_rlab1011f_fa.py"
+    ],
+    "test_functions": 51
+  },
+  "r1012": {
+    "files": [
+      "test_rlab1012_release.py"
+    ],
+    "test_functions": 16
+  },
+  "r1013": {
+    "files": [
+      "test_doc_execution.py",
+      "test_rlab1013_release.py"
+    ],
+    "test_functions": 52
+  },
+  "r1015": {
+    "files": [
+      "test_privacy_boundary.py",
+      "test_surface_wave.py"
+    ],
+    "test_functions": 58
+  },
+  "r1015a": {
+    "files": [
+      "test_scale_a.py"
+    ],
+    "test_functions": 35
+  },
+  "r1016": {
+    "files": [
+      "test_atlas_search.py",
+      "test_r1016b_profiles.py",
+      "test_r1016c_surface_metric.py"
+    ],
+    "test_functions": 47
+  },
+  "r1017": {
+    "files": [
+      "test_hedron_shell.py"
+    ],
+    "test_functions": 15
+  },
+  "r1018": {
+    "files": [
+      "test_lineage.py",
+      "test_quarantine.py"
+    ],
+    "test_functions": 13
+  },
+  "r109": {
+    "files": [
+      "test_rlab109_codec.py",
+      "test_rlab109_earth.py",
+      "test_rlab109_sealed_holdout.py",
+      "test_rlab109_t11_headers_shells.py"
+    ],
+    "test_functions": 35
+  },
   "regression": {
     "files": [
       "test_generator_determinism.py",
@@ -102,6 +176,32 @@
       "test_rscs_optical_regression.py"
     ],
     "test_functions": 68
+  },
+  "rgcs_coordinate": {
+    "files": [
+      "test_rcw_claims_corpus_projection.py",
+      "test_rcw_cli.py",
+      "test_rcw_codec_parity.py",
+      "test_rcw_trace_and_static.py"
+    ],
+    "test_functions": 30
+  },
+  "rgcs_lab": {
+    "files": [
+      "test_golay.py",
+      "test_lab_api.py",
+      "test_lab_core.py",
+      "test_lattice.py",
+      "test_memory_dual.py",
+      "test_metasurface.py",
+      "test_rlab_dual_pole.py",
+      "test_rlab_frames_core.py",
+      "test_rlab_hub_catalog.py",
+      "test_rlab_hub_coordinate.py",
+      "test_rlab_memory_predictions.py",
+      "test_rlab_schema_gate.py"
+    ],
+    "test_functions": 57
   },
   "ui": {
     "files": [

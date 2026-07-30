@@ -1,0 +1,184 @@
+family,candidate,survives,rejection
+A,A_BITDEL_off0,False,not all pairs align at this offset
+A,A_BITDEL_off1,False,not all pairs align at this offset
+A,A_BITDEL_off2,False,not all pairs align at this offset
+A,A_BITDEL_off3,False,not all pairs align at this offset
+A,A_BITDEL_off4,False,not all pairs align at this offset
+A,A_BITDEL_off5,False,not all pairs align at this offset
+A,A_BITDEL_off6,False,not all pairs align at this offset
+A,A_BITDEL_off7,False,not all pairs align at this offset
+A,A_BITDEL_off8,False,not all pairs align at this offset
+A,A_BITDEL_off9,False,not all pairs align at this offset
+A,A_BITDEL_off10,False,not all pairs align at this offset
+A,A_BITDEL_off11,False,not all pairs align at this offset
+A,A_BITDEL_off12,False,not all pairs align at this offset
+A,A_BITDEL_off13,False,not all pairs align at this offset
+A,A_BITDEL_off14,False,not all pairs align at this offset
+A,A_BITDEL_off15,False,not all pairs align at this offset
+A,A_BITDEL_off16,False,not all pairs align at this offset
+A,A_BITDEL_off17,False,not all pairs align at this offset
+A,A_BITDEL_off18,False,not all pairs align at this offset
+A,A_BITDEL_off19,False,not all pairs align at this offset
+A,A_BITDEL_off20,False,not all pairs align at this offset
+A,A_BITDEL_off21,False,not all pairs align at this offset
+A,A_BITDEL_off22,False,not all pairs align at this offset
+A,A_BITDEL_off23,False,not all pairs align at this offset
+A,A_BITDEL_off24,False,not all pairs align at this offset
+A,A_BITDEL_off25,False,not all pairs align at this offset
+A,A_BITDEL_off26,False,not all pairs align at this offset
+A,A_BITDEL_off27,False,not all pairs align at this offset
+A,A_BITDEL_off28,False,not all pairs align at this offset
+A,A_BITDEL_off29,False,not all pairs align at this offset
+A,A_BITDEL_off30,False,not all pairs align at this offset
+A,A_OCTDEL_pos0,False,not all pairs align at this octal position
+A,A_OCTDEL_pos1,False,not all pairs align at this octal position
+A,A_OCTDEL_pos2,False,not all pairs align at this octal position
+A,A_OCTDEL_pos3,False,not all pairs align at this octal position
+A,A_OCTDEL_pos4,False,not all pairs align at this octal position
+A,A_OCTDEL_pos5,False,not all pairs align at this octal position
+A,A_OCTDEL_pos6,False,not all pairs align at this octal position
+A,A_OCTDEL_pos7,False,not all pairs align at this octal position
+A,A_OCTDEL_pos8,False,not all pairs align at this octal position
+A,A_OCTDEL_pos9,False,not all pairs align at this octal position
+A,A_OCTDEL_pos10,False,not all pairs align at this octal position
+B,B_CLIP1_BITDEL_off0,False,payload alignment failed
+B,B_CLIP1_BITDEL_off1,False,payload alignment failed
+B,B_CLIP1_BITDEL_off2,False,payload alignment failed
+B,B_CLIP1_BITDEL_off3,False,payload alignment failed
+B,B_CLIP1_BITDEL_off4,False,payload alignment failed
+B,B_CLIP1_BITDEL_off5,False,payload alignment failed
+B,B_CLIP1_BITDEL_off6,False,payload alignment failed
+B,B_CLIP1_BITDEL_off7,False,payload alignment failed
+B,B_CLIP1_BITDEL_off8,False,payload alignment failed
+B,B_CLIP1_BITDEL_off9,False,payload alignment failed
+B,B_CLIP1_BITDEL_off10,False,payload alignment failed
+B,B_CLIP1_BITDEL_off11,False,payload alignment failed
+B,B_CLIP1_BITDEL_off12,False,payload alignment failed
+B,B_CLIP1_BITDEL_off13,False,payload alignment failed
+B,B_CLIP1_BITDEL_off14,False,payload alignment failed
+B,B_CLIP1_BITDEL_off15,False,payload alignment failed
+B,B_CLIP1_BITDEL_off16,False,payload alignment failed
+B,B_CLIP1_BITDEL_off17,False,payload alignment failed
+B,B_CLIP1_BITDEL_off18,False,payload alignment failed
+B,B_CLIP1_BITDEL_off19,False,payload alignment failed
+B,B_CLIP1_BITDEL_off20,False,payload alignment failed
+B,B_CLIP1_BITDEL_off21,False,payload alignment failed
+B,B_CLIP1_BITDEL_off22,False,payload alignment failed
+B,B_CLIP1_BITDEL_off23,False,payload alignment failed
+B,B_CLIP1_BITDEL_off24,False,payload alignment failed
+B,B_CLIP1_BITDEL_off25,False,payload alignment failed
+B,B_CLIP1_BITDEL_off26,False,payload alignment failed
+B,B_CLIP1_BITDEL_off27,False,payload alignment failed
+B,B_CLIP1_BITDEL_off28,False,payload alignment failed
+B,B_CLIP1_BITDEL_off29,False,payload alignment failed
+B,B_CLIP2_BITDEL_off0,False,payload alignment failed
+B,B_CLIP2_BITDEL_off1,False,payload alignment failed
+B,B_CLIP2_BITDEL_off2,False,payload alignment failed
+B,B_CLIP2_BITDEL_off3,False,payload alignment failed
+B,B_CLIP2_BITDEL_off4,False,payload alignment failed
+B,B_CLIP2_BITDEL_off5,False,payload alignment failed
+B,B_CLIP2_BITDEL_off6,False,payload alignment failed
+B,B_CLIP2_BITDEL_off7,False,payload alignment failed
+B,B_CLIP2_BITDEL_off8,False,payload alignment failed
+B,B_CLIP2_BITDEL_off9,False,payload alignment failed
+B,B_CLIP2_BITDEL_off10,False,payload alignment failed
+B,B_CLIP2_BITDEL_off11,False,payload alignment failed
+B,B_CLIP2_BITDEL_off12,False,payload alignment failed
+B,B_CLIP2_BITDEL_off13,False,payload alignment failed
+B,B_CLIP2_BITDEL_off14,False,payload alignment failed
+B,B_CLIP2_BITDEL_off15,False,payload alignment failed
+B,B_CLIP2_BITDEL_off16,False,payload alignment failed
+B,B_CLIP2_BITDEL_off17,False,payload alignment failed
+B,B_CLIP2_BITDEL_off18,False,payload alignment failed
+B,B_CLIP2_BITDEL_off19,False,payload alignment failed
+B,B_CLIP2_BITDEL_off20,False,payload alignment failed
+B,B_CLIP2_BITDEL_off21,False,payload alignment failed
+B,B_CLIP2_BITDEL_off22,False,payload alignment failed
+B,B_CLIP2_BITDEL_off23,False,payload alignment failed
+B,B_CLIP2_BITDEL_off24,False,payload alignment failed
+B,B_CLIP2_BITDEL_off25,False,payload alignment failed
+B,B_CLIP2_BITDEL_off26,False,payload alignment failed
+B,B_CLIP2_BITDEL_off27,False,payload alignment failed
+B,B_CLIP2_BITDEL_off28,False,payload alignment failed
+B,B_CLIP2_BITDEL_off29,False,payload alignment failed
+B,B_CLIP3_BITDEL_off0,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off1,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off2,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off3,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off4,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off5,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off6,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off7,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off8,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off9,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off10,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off11,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off12,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off13,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off14,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off15,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off16,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off17,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off18,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off19,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off20,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off21,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off22,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off23,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off24,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off25,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off26,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off27,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off28,False,header fields differ within a pair
+B,B_CLIP3_BITDEL_off29,False,header fields differ within a pair
+C,C_STAR_SOL_BODY_TYPED,False,"typed star|Sol|body digits do not agree across pair members / not in {165,167} form"
+E,E_LVL_nat_perm012_fwd_bin,False,level sequences differ
+E,E_LVL_nat_perm012_fwd_gray,False,level sequences differ
+E,E_LVL_nat_perm012_rev_bin,False,level sequences differ
+E,E_LVL_nat_perm012_rev_gray,False,level sequences differ
+E,E_LVL_nat_perm021_fwd_bin,False,level sequences differ
+E,E_LVL_nat_perm021_fwd_gray,False,level sequences differ
+E,E_LVL_nat_perm021_rev_bin,False,level sequences differ
+E,E_LVL_nat_perm021_rev_gray,False,level sequences differ
+E,E_LVL_nat_perm102_fwd_bin,False,level sequences differ
+E,E_LVL_nat_perm102_fwd_gray,False,level sequences differ
+E,E_LVL_nat_perm102_rev_bin,False,level sequences differ
+E,E_LVL_nat_perm102_rev_gray,False,level sequences differ
+E,E_LVL_nat_perm120_fwd_bin,False,level sequences differ
+E,E_LVL_nat_perm120_fwd_gray,False,level sequences differ
+E,E_LVL_nat_perm120_rev_bin,False,level sequences differ
+E,E_LVL_nat_perm120_rev_gray,False,level sequences differ
+E,E_LVL_nat_perm201_fwd_bin,False,level sequences differ
+E,E_LVL_nat_perm201_fwd_gray,False,level sequences differ
+E,E_LVL_nat_perm201_rev_bin,False,level sequences differ
+E,E_LVL_nat_perm201_rev_gray,False,level sequences differ
+E,E_LVL_nat_perm210_fwd_bin,False,level sequences differ
+E,E_LVL_nat_perm210_fwd_gray,False,level sequences differ
+E,E_LVL_nat_perm210_rev_bin,False,level sequences differ
+E,E_LVL_nat_perm210_rev_gray,False,level sequences differ
+E,E_LVL_30_33_perm012_fwd_bin,False,level sequences differ
+E,E_LVL_30_33_perm012_fwd_gray,False,level sequences differ
+E,E_LVL_30_33_perm012_rev_bin,False,level sequences differ
+E,E_LVL_30_33_perm012_rev_gray,False,level sequences differ
+E,E_LVL_30_33_perm021_fwd_bin,False,level sequences differ
+E,E_LVL_30_33_perm021_fwd_gray,False,level sequences differ
+E,E_LVL_30_33_perm021_rev_bin,False,level sequences differ
+E,E_LVL_30_33_perm021_rev_gray,False,level sequences differ
+E,E_LVL_30_33_perm102_fwd_bin,False,level sequences differ
+E,E_LVL_30_33_perm102_fwd_gray,False,level sequences differ
+E,E_LVL_30_33_perm102_rev_bin,False,level sequences differ
+E,E_LVL_30_33_perm102_rev_gray,False,level sequences differ
+E,E_LVL_30_33_perm120_fwd_bin,False,level sequences differ
+E,E_LVL_30_33_perm120_fwd_gray,False,level sequences differ
+E,E_LVL_30_33_perm120_rev_bin,False,level sequences differ
+E,E_LVL_30_33_perm120_rev_gray,False,level sequences differ
+E,E_LVL_30_33_perm201_fwd_bin,False,level sequences differ
+E,E_LVL_30_33_perm201_fwd_gray,False,level sequences differ
+E,E_LVL_30_33_perm201_rev_bin,False,level sequences differ
+E,E_LVL_30_33_perm201_rev_gray,False,level sequences differ
+E,E_LVL_30_33_perm210_fwd_bin,False,level sequences differ
+E,E_LVL_30_33_perm210_fwd_gray,False,level sequences differ
+E,E_LVL_30_33_perm210_rev_bin,False,level sequences differ
+E,E_LVL_30_33_perm210_rev_gray,False,level sequences differ
+E,E_SCATTER_DEL3,False,no common 3-bit deletion position-set across all pairs
+F,F_IDENTITY_TRANSDUCER,False,identity transducer reduces to family A (already failed); non-trivial machine spaces are unbounded and are NOT searched (that would silently widen the grammar)

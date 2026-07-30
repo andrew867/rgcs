@@ -1,0 +1,27 @@
+{
+ "carrier_hz": 4096,
+ "nominal_macrocycle_ms": 552.0,
+ "carrier_cycles_nominal": {
+  "integer": 2260,
+  "fraction": [
+   282624,
+   125
+  ],
+  "exact": "2260 + 124/125"
+ },
+ "closure_cycles": 2261,
+ "closed_macrocycle_ms": 552.001953125,
+ "closed_macrocycle_exact_ms": [
+  2261000,
+  4096
+ ],
+ "trim_us": 1.953125,
+ "trim_exact_s": [
+  1,
+  512000
+ ],
+ "phase_states": 125,
+ "phase_step_deg": 2.88,
+ "evidence_class": "SOURCE_PROVENANCE_ONLY",
+ "note": "exact arithmetic on a source-described timing scheme; no physical claim"
+}

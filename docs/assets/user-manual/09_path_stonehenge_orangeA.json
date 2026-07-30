@@ -1,0 +1,19 @@
+{
+  "schema": "rgcs.r1062.screenshot-receipt.v1",
+  "filename": "09_path_stonehenge_orangeA.png",
+  "captured_utc": "2026-07-30T17:35:00+00:00",
+  "commit": "138a09a8eb882415cb12792d00e84284d0d7483b",
+  "branch": "release/rgcs-v1-map-workbench",
+  "command": "python -m r1053 path 165876523 165892743",
+  "input_vectors": [
+    "165876523",
+    "165892743"
+  ],
+  "output_sha256": "9e59a9fa4e3e87cc58599f09c54554894ea187666f2db147ea984aa5cfbca276",
+  "bytes": 1100849,
+  "machine": "andrew@THINKDIFFERENT",
+  "platform": "win32",
+  "capture_method": "r1053.screenshots.capture (QtWebEngine offscreen)",
+  "invented": false,
+  "boundary": "The tool verifies geometry. It does not verify that a candidate vertex is physically true."
+}

@@ -1,0 +1,99 @@
+{
+  "schema": "rgcs.r1015.receipt.v1",
+  "command": "cem convergence",
+  "inputs": {},
+  "input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "outputs": {
+    "schema": "rgcs.r1015.convergence.v2",
+    "surface_refinement": [
+      {
+        "n_phi": 64,
+        "n_z": 24,
+        "n_r": 16,
+        "points": 3584,
+        "lateral_force_n": 7.491941767001017e-13,
+        "axial_force_n": -4.740817479706241e-11,
+        "closure_defect": 1.139350179583539e-15
+      },
+      {
+        "n_phi": 96,
+        "n_z": 36,
+        "n_r": 24,
+        "points": 8064,
+        "lateral_force_n": 7.491940885253831e-13,
+        "axial_force_n": -4.7408174795737875e-11,
+        "closure_defect": 2.3825765953000732e-15
+      },
+      {
+        "n_phi": 128,
+        "n_z": 48,
+        "n_r": 32,
+        "points": 14336,
+        "lateral_force_n": 7.491940885257591e-13,
+        "axial_force_n": -4.740817479573799e-11,
+        "closure_defect": 2.794568943011967e-16
+      },
+      {
+        "n_phi": 192,
+        "n_z": 72,
+        "n_r": 48,
+        "points": 32256,
+        "lateral_force_n": 7.491940885257485e-13,
+        "axial_force_n": -4.740817479573805e-11,
+        "closure_defect": 2.6586912007859075e-14
+      }
+    ],
+    "surface_relative_steps": [
+      1.1769275807762683e-07,
+      5.019098671126012e-13,
+      1.4151593997535949e-14
+    ],
+    "surface_placement": [
+      {
+        "surface_radius_factor": 1.2,
+        "lateral_force_n": 7.4919408852575e-13,
+        "axial_force_n": -4.7408174795738353e-11
+      },
+      {
+        "surface_radius_factor": 1.35,
+        "lateral_force_n": 7.491940885257591e-13,
+        "axial_force_n": -4.740817479573799e-11
+      },
+      {
+        "surface_radius_factor": 1.6,
+        "lateral_force_n": 7.491940885257904e-13,
+        "axial_force_n": -4.740817479573801e-11
+      },
+      {
+        "surface_radius_factor": 2.0,
+        "lateral_force_n": 7.491940885269506e-13,
+        "axial_force_n": -4.7408174795736615e-11
+      }
+    ],
+    "placement_relative_steps": [
+      7.633525643018085e-15,
+      4.089388737331115e-16,
+      2.94435989087849e-14
+    ],
+    "surface_converged": true,
+    "placement_converged": true,
+    "criterion": "last relative step below 1e-3 under both quadrature refinement and independent integration-surface placement",
+    "superseded_model_note": "convergence.v1 tested harmonic truncation of a constructed field that was not a Laplace solution; it did NOT converge and is published as negative result N3. The current model uses exact superposed Coulomb fields and has no truncation dimension.",
+    "claim_class": "SIMULATED"
+  },
+  "evidence_class": "SIMULATED",
+  "limitations": [
+    "surface refinement and placement"
+  ],
+  "uncertainty": {},
+  "software": {
+    "python": "3.13.2",
+    "rgcs_surface_wave": "0.10.15",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0"
+  },
+  "source_commit": "20545f46d4eeb7967f098b61b579b4cf355e3613",
+  "publication_status": "HOLD",
+  "nonclaim": "Computed values are simulation outputs, not measurements. This work does not demonstrate antigravity, reactionless thrust, gravity modification, free energy, or anomalous propulsion, and makes no claim about the origin or authorship of the source material.",
+  "receipt_hash": "8d097f88dfb9c30d3e0441375399f26fccaf4f87de734630e1842329172e4d76"
+}

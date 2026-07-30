@@ -161,9 +161,23 @@ def test_encode_is_deterministic():
 
 def test_no_web_framework_imported():
     # The service layer must be framework-agnostic: importing it must not drag
-    # in FastAPI/Flask/Starlette.
-    for mod in ("fastapi", "flask", "starlette"):
-        assert mod not in sys.modules
+    # in FastAPI/Flask/Starlette. Checked in a fresh interpreter because other
+    # suites in the same pytest process (rgcs_lab API tests, the v51 source
+    # sweep) legitimately import FastAPI — sys.modules of THIS process proves
+    # nothing about cwatlas.service's own import graph.
+    import subprocess
+
+    code = (
+        "import sys; import cwatlas.service; "
+        "leaked = [m for m in ('fastapi', 'flask', 'starlette') "
+        "if m in sys.modules]; "
+        "sys.exit(repr(leaked) if leaked else 0)"
+    )
+    proc = subprocess.run([sys.executable, "-c", code],
+                          capture_output=True, text=True, timeout=120)
+    assert proc.returncode == 0, (
+        f"cwatlas.service import dragged in a web framework: "
+        f"{proc.stderr.strip()}")
 
 
 def test_report_declares_boundary():

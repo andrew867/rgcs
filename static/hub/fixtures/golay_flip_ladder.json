@@ -1,0 +1,701 @@
+{
+  "0": {
+    "module": "golay",
+    "status": "GREEN",
+    "claim_class": [
+      "EXACT_ARITHMETIC",
+      "IMPLEMENTED_SOFTWARE"
+    ],
+    "input": {
+      "flips_per_block": 0,
+      "seed": 1
+    },
+    "models": [
+      "rgcs.golay.g24.systematic-v1"
+    ],
+    "result": {
+      "convention": "rgcs.golay.g24.systematic-v1",
+      "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+      "generator_polynomial_binary": "101011100011",
+      "address36": 165876523,
+      "blocks_in": [
+        9,
+        3633,
+        811
+      ],
+      "codewords": [
+        36987,
+        14882258,
+        3324316
+      ],
+      "corruption": [
+        36987,
+        14882258,
+        3324316
+      ],
+      "decoded_blocks": [
+        9,
+        3633,
+        811
+      ],
+      "correction_status": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "correction_mask": [
+        0,
+        0,
+        0
+      ],
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "exact_round_trip": true
+    },
+    "warnings": [
+      "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
+      "backend=rgcs_lab.golay"
+    ],
+    "receipt": {
+      "module": "golay",
+      "version": "0.1.0.dev0",
+      "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
+      "status": "GREEN",
+      "claim_class": [
+        "EXACT_ARITHMETIC",
+        "IMPLEMENTED_SOFTWARE"
+      ],
+      "inputs": {
+        "flips_per_block": 0,
+        "seed": 1
+      },
+      "models": [
+        "rgcs.golay.g24.systematic-v1"
+      ],
+      "result": {
+        "convention": "rgcs.golay.g24.systematic-v1",
+        "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+        "generator_polynomial_binary": "101011100011",
+        "address36": 165876523,
+        "blocks_in": [
+          9,
+          3633,
+          811
+        ],
+        "codewords": [
+          36987,
+          14882258,
+          3324316
+        ],
+        "corruption": [
+          36987,
+          14882258,
+          3324316
+        ],
+        "decoded_blocks": [
+          9,
+          3633,
+          811
+        ],
+        "correction_status": [
+          "ok",
+          "ok",
+          "ok"
+        ],
+        "correction_mask": [
+          0,
+          0,
+          0
+        ],
+        "distances": [
+          0,
+          0,
+          0
+        ],
+        "exact_round_trip": true
+      },
+      "warnings": [
+        "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
+        "backend=rgcs_lab.golay"
+      ],
+      "tests": [
+        "golay_roundtrip",
+        "golay_flip_demo",
+        "tests/rgcs_lab/test_golay.py"
+      ],
+      "artifacts": [],
+      "receipt_sha256": "b8796385b4f9fd5e6d81f290955ac4ee947133addbc4b98e5d25c1375faeff66"
+    },
+    "does": "Encode/decode a 36-bit address with extended binary Golay G24 blocks.",
+    "does_not": "Does not show that an external civilization uses Golay coding.",
+    "tests": [
+      "golay_roundtrip",
+      "golay_flip_demo",
+      "tests/rgcs_lab/test_golay.py"
+    ],
+    "source": "rgcs_lab.golay"
+  },
+  "1": {
+    "module": "golay",
+    "status": "GREEN",
+    "claim_class": [
+      "EXACT_ARITHMETIC",
+      "IMPLEMENTED_SOFTWARE"
+    ],
+    "input": {
+      "flips_per_block": 1,
+      "seed": 1
+    },
+    "models": [
+      "rgcs.golay.g24.systematic-v1"
+    ],
+    "result": {
+      "convention": "rgcs.golay.g24.systematic-v1",
+      "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+      "generator_polynomial_binary": "101011100011",
+      "address36": 165876523,
+      "blocks_in": [
+        9,
+        3633,
+        811
+      ],
+      "codewords": [
+        36987,
+        14882258,
+        3324316
+      ],
+      "corruption": [
+        168059,
+        14882259,
+        3324188
+      ],
+      "decoded_blocks": [
+        9,
+        3633,
+        811
+      ],
+      "correction_status": [
+        "corrected",
+        "corrected",
+        "corrected"
+      ],
+      "correction_mask": [
+        131072,
+        1,
+        128
+      ],
+      "distances": [
+        1,
+        1,
+        1
+      ],
+      "exact_round_trip": true
+    },
+    "warnings": [
+      "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
+      "backend=rgcs_lab.golay"
+    ],
+    "receipt": {
+      "module": "golay",
+      "version": "0.1.0.dev0",
+      "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
+      "status": "GREEN",
+      "claim_class": [
+        "EXACT_ARITHMETIC",
+        "IMPLEMENTED_SOFTWARE"
+      ],
+      "inputs": {
+        "flips_per_block": 1,
+        "seed": 1
+      },
+      "models": [
+        "rgcs.golay.g24.systematic-v1"
+      ],
+      "result": {
+        "convention": "rgcs.golay.g24.systematic-v1",
+        "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+        "generator_polynomial_binary": "101011100011",
+        "address36": 165876523,
+        "blocks_in": [
+          9,
+          3633,
+          811
+        ],
+        "codewords": [
+          36987,
+          14882258,
+          3324316
+        ],
+        "corruption": [
+          168059,
+          14882259,
+          3324188
+        ],
+        "decoded_blocks": [
+          9,
+          3633,
+          811
+        ],
+        "correction_status": [
+          "corrected",
+          "corrected",
+          "corrected"
+        ],
+        "correction_mask": [
+          131072,
+          1,
+          128
+        ],
+        "distances": [
+          1,
+          1,
+          1
+        ],
+        "exact_round_trip": true
+      },
+      "warnings": [
+        "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
+        "backend=rgcs_lab.golay"
+      ],
+      "tests": [
+        "golay_roundtrip",
+        "golay_flip_demo",
+        "tests/rgcs_lab/test_golay.py"
+      ],
+      "artifacts": [],
+      "receipt_sha256": "8e5cb40c0289ab25053ff7e1ae1d89b84e7ee083735bd96b4d8d6a1554d5555e"
+    },
+    "does": "Encode/decode a 36-bit address with extended binary Golay G24 blocks.",
+    "does_not": "Does not show that an external civilization uses Golay coding.",
+    "tests": [
+      "golay_roundtrip",
+      "golay_flip_demo",
+      "tests/rgcs_lab/test_golay.py"
+    ],
+    "source": "rgcs_lab.golay"
+  },
+  "2": {
+    "module": "golay",
+    "status": "GREEN",
+    "claim_class": [
+      "EXACT_ARITHMETIC",
+      "IMPLEMENTED_SOFTWARE"
+    ],
+    "input": {
+      "flips_per_block": 2,
+      "seed": 1
+    },
+    "models": [
+      "rgcs.golay.g24.systematic-v1"
+    ],
+    "result": {
+      "convention": "rgcs.golay.g24.systematic-v1",
+      "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+      "generator_polynomial_binary": "101011100011",
+      "address36": 165876523,
+      "blocks_in": [
+        9,
+        3633,
+        811
+      ],
+      "codewords": [
+        36987,
+        14882258,
+        3324316
+      ],
+      "corruption": [
+        184443,
+        14882771,
+        3324172
+      ],
+      "decoded_blocks": [
+        9,
+        3633,
+        811
+      ],
+      "correction_status": [
+        "corrected",
+        "corrected",
+        "corrected"
+      ],
+      "correction_mask": [
+        147456,
+        513,
+        144
+      ],
+      "distances": [
+        2,
+        2,
+        2
+      ],
+      "exact_round_trip": true
+    },
+    "warnings": [
+      "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
+      "backend=rgcs_lab.golay"
+    ],
+    "receipt": {
+      "module": "golay",
+      "version": "0.1.0.dev0",
+      "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
+      "status": "GREEN",
+      "claim_class": [
+        "EXACT_ARITHMETIC",
+        "IMPLEMENTED_SOFTWARE"
+      ],
+      "inputs": {
+        "flips_per_block": 2,
+        "seed": 1
+      },
+      "models": [
+        "rgcs.golay.g24.systematic-v1"
+      ],
+      "result": {
+        "convention": "rgcs.golay.g24.systematic-v1",
+        "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+        "generator_polynomial_binary": "101011100011",
+        "address36": 165876523,
+        "blocks_in": [
+          9,
+          3633,
+          811
+        ],
+        "codewords": [
+          36987,
+          14882258,
+          3324316
+        ],
+        "corruption": [
+          184443,
+          14882771,
+          3324172
+        ],
+        "decoded_blocks": [
+          9,
+          3633,
+          811
+        ],
+        "correction_status": [
+          "corrected",
+          "corrected",
+          "corrected"
+        ],
+        "correction_mask": [
+          147456,
+          513,
+          144
+        ],
+        "distances": [
+          2,
+          2,
+          2
+        ],
+        "exact_round_trip": true
+      },
+      "warnings": [
+        "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
+        "backend=rgcs_lab.golay"
+      ],
+      "tests": [
+        "golay_roundtrip",
+        "golay_flip_demo",
+        "tests/rgcs_lab/test_golay.py"
+      ],
+      "artifacts": [],
+      "receipt_sha256": "a6ade4c4998789a94f168bc8b00b211e05a6a8b4dcbb0b9b8bef1133201126cf"
+    },
+    "does": "Encode/decode a 36-bit address with extended binary Golay G24 blocks.",
+    "does_not": "Does not show that an external civilization uses Golay coding.",
+    "tests": [
+      "golay_roundtrip",
+      "golay_flip_demo",
+      "tests/rgcs_lab/test_golay.py"
+    ],
+    "source": "rgcs_lab.golay"
+  },
+  "3": {
+    "module": "golay",
+    "status": "GREEN",
+    "claim_class": [
+      "EXACT_ARITHMETIC",
+      "IMPLEMENTED_SOFTWARE"
+    ],
+    "input": {
+      "flips_per_block": 3,
+      "seed": 1
+    },
+    "models": [
+      "rgcs.golay.g24.systematic-v1"
+    ],
+    "result": {
+      "convention": "rgcs.golay.g24.systematic-v1",
+      "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+      "generator_polynomial_binary": "101011100011",
+      "address36": 165876523,
+      "blocks_in": [
+        9,
+        3633,
+        811
+      ],
+      "codewords": [
+        36987,
+        14882258,
+        3324316
+      ],
+      "corruption": [
+        151675,
+        14899155,
+        3315980
+      ],
+      "decoded_blocks": [
+        9,
+        3633,
+        811
+      ],
+      "correction_status": [
+        "corrected",
+        "corrected",
+        "corrected"
+      ],
+      "correction_mask": [
+        180224,
+        16897,
+        8336
+      ],
+      "distances": [
+        3,
+        3,
+        3
+      ],
+      "exact_round_trip": true
+    },
+    "warnings": [
+      "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
+      "backend=rgcs_lab.golay"
+    ],
+    "receipt": {
+      "module": "golay",
+      "version": "0.1.0.dev0",
+      "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
+      "status": "GREEN",
+      "claim_class": [
+        "EXACT_ARITHMETIC",
+        "IMPLEMENTED_SOFTWARE"
+      ],
+      "inputs": {
+        "flips_per_block": 3,
+        "seed": 1
+      },
+      "models": [
+        "rgcs.golay.g24.systematic-v1"
+      ],
+      "result": {
+        "convention": "rgcs.golay.g24.systematic-v1",
+        "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+        "generator_polynomial_binary": "101011100011",
+        "address36": 165876523,
+        "blocks_in": [
+          9,
+          3633,
+          811
+        ],
+        "codewords": [
+          36987,
+          14882258,
+          3324316
+        ],
+        "corruption": [
+          151675,
+          14899155,
+          3315980
+        ],
+        "decoded_blocks": [
+          9,
+          3633,
+          811
+        ],
+        "correction_status": [
+          "corrected",
+          "corrected",
+          "corrected"
+        ],
+        "correction_mask": [
+          180224,
+          16897,
+          8336
+        ],
+        "distances": [
+          3,
+          3,
+          3
+        ],
+        "exact_round_trip": true
+      },
+      "warnings": [
+        "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
+        "backend=rgcs_lab.golay"
+      ],
+      "tests": [
+        "golay_roundtrip",
+        "golay_flip_demo",
+        "tests/rgcs_lab/test_golay.py"
+      ],
+      "artifacts": [],
+      "receipt_sha256": "52f920d289b9a909e2fcd35d1ff22483fbf7fc44f486cc0d5bd82a6bdc694397"
+    },
+    "does": "Encode/decode a 36-bit address with extended binary Golay G24 blocks.",
+    "does_not": "Does not show that an external civilization uses Golay coding.",
+    "tests": [
+      "golay_roundtrip",
+      "golay_flip_demo",
+      "tests/rgcs_lab/test_golay.py"
+    ],
+    "source": "rgcs_lab.golay"
+  },
+  "4": {
+    "module": "golay",
+    "status": "GREEN",
+    "claim_class": [
+      "EXACT_ARITHMETIC",
+      "IMPLEMENTED_SOFTWARE"
+    ],
+    "input": {
+      "flips_per_block": 4,
+      "seed": 1
+    },
+    "models": [
+      "rgcs.golay.g24.systematic-v1"
+    ],
+    "result": {
+      "convention": "rgcs.golay.g24.systematic-v1",
+      "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+      "generator_polynomial_binary": "101011100011",
+      "address36": 165876523,
+      "blocks_in": [
+        9,
+        3633,
+        811
+      ],
+      "codewords": [
+        36987,
+        14882258,
+        3324316
+      ],
+      "corruption": [
+        147579,
+        6510547,
+        3317004
+      ],
+      "decoded_blocks": [
+        null,
+        null,
+        null
+      ],
+      "correction_status": [
+        "uncorrectable",
+        "uncorrectable",
+        "uncorrectable"
+      ],
+      "correction_mask": [
+        0,
+        0,
+        0
+      ],
+      "distances": [
+        4,
+        4,
+        4
+      ],
+      "exact_round_trip": true
+    },
+    "warnings": [
+      "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
+      "backend=rgcs_lab.golay",
+      "four or more flips may be uncorrectable or miscorrected",
+      "at least one block reported uncorrectable"
+    ],
+    "receipt": {
+      "module": "golay",
+      "version": "0.1.0.dev0",
+      "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
+      "status": "GREEN",
+      "claim_class": [
+        "EXACT_ARITHMETIC",
+        "IMPLEMENTED_SOFTWARE"
+      ],
+      "inputs": {
+        "flips_per_block": 4,
+        "seed": 1
+      },
+      "models": [
+        "rgcs.golay.g24.systematic-v1"
+      ],
+      "result": {
+        "convention": "rgcs.golay.g24.systematic-v1",
+        "bit_order": "flip bit 0 is least-significant bit of each 24-bit block",
+        "generator_polynomial_binary": "101011100011",
+        "address36": 165876523,
+        "blocks_in": [
+          9,
+          3633,
+          811
+        ],
+        "codewords": [
+          36987,
+          14882258,
+          3324316
+        ],
+        "corruption": [
+          147579,
+          6510547,
+          3317004
+        ],
+        "decoded_blocks": [
+          null,
+          null,
+          null
+        ],
+        "correction_status": [
+          "uncorrectable",
+          "uncorrectable",
+          "uncorrectable"
+        ],
+        "correction_mask": [
+          0,
+          0,
+          0
+        ],
+        "distances": [
+          4,
+          4,
+          4
+        ],
+        "exact_round_trip": true
+      },
+      "warnings": [
+        "PHYSICAL ORIGIN OF ANY EXTERNAL SIGNAL: YELLOW \u2014 not demonstrated",
+        "backend=rgcs_lab.golay",
+        "four or more flips may be uncorrectable or miscorrected",
+        "at least one block reported uncorrectable"
+      ],
+      "tests": [
+        "golay_roundtrip",
+        "golay_flip_demo",
+        "tests/rgcs_lab/test_golay.py"
+      ],
+      "artifacts": [],
+      "receipt_sha256": "0557f765fa546d5fa891696ce099d9c0a1d78ceb6c1c160c4fd78d618aec178c"
+    },
+    "does": "Encode/decode a 36-bit address with extended binary Golay G24 blocks.",
+    "does_not": "Does not show that an external civilization uses Golay coding.",
+    "tests": [
+      "golay_roundtrip",
+      "golay_flip_demo",
+      "tests/rgcs_lab/test_golay.py"
+    ],
+    "source": "rgcs_lab.golay"
+  }
+}

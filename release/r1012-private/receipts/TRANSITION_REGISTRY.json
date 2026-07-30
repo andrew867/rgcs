@@ -1,0 +1,91 @@
+{
+  "schema": "rgcs.r1012.transition-registry.v1",
+  "cell_count": 12,
+  "cells": {
+    "(5,1)": {
+      "output_state": 25,
+      "source_record": "R10.11C authority patch (2026-07-28), verified on all four exact pairs",
+      "hash": "6822103ae92c1284",
+      "evidence_tier": "SOURCE_KNOWN",
+      "correction_status": "CURRENT"
+    },
+    "(5,4)": {
+      "output_state": 37,
+      "source_record": "R10.11C authority patch (2026-07-28), verified on all four exact pairs",
+      "hash": "3cfc314e369abde7",
+      "evidence_tier": "SOURCE_KNOWN",
+      "correction_status": "CURRENT"
+    },
+    "(6,11)": {
+      "output_state": 14,
+      "source_record": "R10.11C authority patch (2026-07-28), verified on all four exact pairs",
+      "hash": "bec33ef845154f3b",
+      "evidence_tier": "SOURCE_KNOWN",
+      "correction_status": "CURRENT"
+    },
+    "(6,14)": {
+      "output_state": 51,
+      "source_record": "R10.11C authority patch (2026-07-28), verified on all four exact pairs",
+      "hash": "c0c43b754d5e93e6",
+      "evidence_tier": "SOURCE_KNOWN",
+      "correction_status": "CURRENT"
+    },
+    "(5,15)": {
+      "output_state": 5,
+      "source_record": "R10.11C authority patch (2026-07-28), verified on all four exact pairs",
+      "hash": "4a4347bb2126f534",
+      "evidence_tier": "SOURCE_KNOWN",
+      "correction_status": "CURRENT"
+    },
+    "(6,15)": {
+      "output_state": 49,
+      "source_record": "R10.11C authority patch (2026-07-28), verified on all four exact pairs",
+      "hash": "782e180f4d315ee0",
+      "evidence_tier": "SOURCE_KNOWN",
+      "correction_status": "CURRENT"
+    },
+    "(6,25)": {
+      "output_state": 45,
+      "source_record": "R10.11C authority patch (2026-07-28), verified on all four exact pairs",
+      "hash": "2a612b1228d7dca9",
+      "evidence_tier": "SOURCE_KNOWN",
+      "correction_status": "CURRENT"
+    },
+    "(5,26)": {
+      "output_state": 30,
+      "source_record": "R10.11C authority patch (2026-07-28), verified on all four exact pairs",
+      "hash": "b4ec98e2ec3e583e",
+      "evidence_tier": "SOURCE_KNOWN",
+      "correction_status": "CURRENT"
+    },
+    "(5,30)": {
+      "output_state": 40,
+      "source_record": "R10.11C authority patch (2026-07-28), verified on all four exact pairs",
+      "hash": "d5321af2dc458732",
+      "evidence_tier": "SOURCE_KNOWN",
+      "correction_status": "CURRENT"
+    },
+    "(5,52)": {
+      "output_state": 31,
+      "source_record": "R10.11C authority patch (2026-07-28), verified on all four exact pairs",
+      "hash": "18a47c6e0e300400",
+      "evidence_tier": "SOURCE_KNOWN",
+      "correction_status": "CURRENT"
+    },
+    "(6,55)": {
+      "output_state": 53,
+      "source_record": "R10.11C authority patch (2026-07-28), verified on all four exact pairs",
+      "hash": "81a8870eaea76a93",
+      "evidence_tier": "SOURCE_KNOWN",
+      "correction_status": "CURRENT"
+    },
+    "(6,61)": {
+      "output_state": 36,
+      "source_record": "R10.11C authority patch (2026-07-28), verified on all four exact pairs",
+      "hash": "1117bd50e40f18af",
+      "evidence_tier": "SOURCE_KNOWN",
+      "correction_status": "CURRENT"
+    }
+  },
+  "table_status": "12 of 512 cells known; remainder UNDERDETERMINED"
+}

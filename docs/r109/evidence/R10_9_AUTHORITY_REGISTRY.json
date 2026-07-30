@@ -1,0 +1,359 @@
+{
+  "schema": "rgcs.r109.authority-registry.v1",
+  "pack": "RGCS_R10_9_Variable_Depth_Octal_Codec_Integration_Prompt_Pack_2026-07-27",
+  "evidence_classes": [
+    "SOURCE_REPORTED",
+    "OPERATOR_NOTE",
+    "EXACT_ARITHMETIC",
+    "SOFTWARE_RESULT",
+    "CALIBRATED_CANDIDATE",
+    "HOLDOUT_RESULT",
+    "UNRESOLVED",
+    "SUPERSEDED"
+  ],
+  "entries": [
+    {
+      "authority_id": "R109-PKT-01",
+      "wording": "Decimal wire values are converted to binary/octal before spatial decoding.",
+      "source": "source(L's) via AG, pack 2026-07-27",
+      "evidence_class": "SOURCE_REPORTED",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "r109.codec"
+      ],
+      "affected_tests": [],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-PKT-02",
+      "wording": "The compact nine-digit family retains the 30-bit packet F5|Q22|S3.",
+      "source": "pack 2026-07-27; reproduced by rgcs_coordinate.codecs.federation_terra_30",
+      "evidence_class": "EXACT_ARITHMETIC",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "rgcs_coordinate.codecs.federation_terra_30",
+        "r109.codec"
+      ],
+      "affected_tests": [
+        "tests/rgcs_coordinate",
+        "tests/r109/test_t10.py"
+      ],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-PKT-03",
+      "wording": "Ten octal digits are the compact family (T10); eleven octal digits add one recursive surface-refinement level (T11).",
+      "source": "source(L's) via AG, pack 2026-07-27",
+      "evidence_class": "SOURCE_REPORTED",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "r109.codec"
+      ],
+      "affected_tests": [
+        "tests/r109/test_t10.py",
+        "tests/r109/test_t11.py"
+      ],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-PKT-04",
+      "wording": "The added child digit is at the end of the recursive path, before shell and epoch semantics.",
+      "source": "source(L's) via AG, pack 2026-07-27",
+      "evidence_class": "SOURCE_REPORTED",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "r109.t11_candidates"
+      ],
+      "affected_tests": [],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-PKT-05",
+      "wording": "The eleven-digit family uses a different interleave from the compact family; similar but not identical. The exact T11 interleave is NOT yet known and must not be invented.",
+      "source": "source(L's) via AG, pack 2026-07-27",
+      "evidence_class": "UNRESOLVED",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "r109.t11_candidates"
+      ],
+      "affected_tests": [],
+      "notes": "Finite candidate registry only; aliases reported, none promoted."
+    },
+    {
+      "authority_id": "R109-PKT-06",
+      "wording": "A refined address must be contained by its compact parent: Omega(refined) subset Omega(parent). Extra length refines the surface cell; it does not primarily encode crust depth.",
+      "source": "source(L's) via AG, pack 2026-07-27",
+      "evidence_class": "SOURCE_REPORTED",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [],
+      "affected_tests": [
+        "tests/r109/test_t11.py"
+      ],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-PKT-07",
+      "wording": "The fixed and long forms of Stonehenge (165876523 / 1643789253) and Toronto (168930443 / 1672875493) are the same physical addresses at different precision.",
+      "source": "source(L's) via AG, pack 2026-07-27",
+      "evidence_class": "SOURCE_REPORTED",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [],
+      "affected_tests": [
+        "tests/r109/test_t11.py"
+      ],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-GRP-01",
+      "wording": "16 = Sol members in the GFW/intergalactic-federation group; 16-5 = Terra; 16-7 = Luna.",
+      "source": "source(L's) via AG, pack 2026-07-27",
+      "evidence_class": "SOURCE_REPORTED",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "r109.types"
+      ],
+      "affected_tests": [],
+      "notes": "Typed values only; the exact numeric group ID's wire encoding remains unknown; no transport-header width invented."
+    },
+    {
+      "authority_id": "R109-HDR-01",
+      "wording": "Primary historical header list = 3,5,6,7,8,9,10,12,15; recover its archived binary interpretation first from project history.",
+      "source": "source(L's) via AG + operator(AG), pack 2026-07-27",
+      "evidence_class": "OPERATOR_NOTE",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "r109.header_recovery"
+      ],
+      "affected_tests": [
+        "tests/r109/test_headers.py"
+      ],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-HDR-02",
+      "wording": "The larger list 5,7,24,27,28,48,54,57,64,75,97 is a frequency-channel/key list and must not be used as the primary header table.",
+      "source": "source(L's) via AG, pack 2026-07-27",
+      "evidence_class": "SOURCE_REPORTED",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "r109.header_recovery"
+      ],
+      "affected_tests": [
+        "tests/r109/test_headers.py"
+      ],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-FACE-01",
+      "wording": "node 23 = six-bit 64-state face/node selector; Stonehenge top-six state = 9; 23 - 9 = 14; source_face = (F5 + 14) mod 20.",
+      "source": "source(L's) via AG; arithmetic reproduced",
+      "evidence_class": "EXACT_ARITHMETIC",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "r109.face_node"
+      ],
+      "affected_tests": [
+        "tests/r109/test_face_node.py"
+      ],
+      "notes": "The identity is exact arithmetic; its physical meaning stays source-reported."
+    },
+    {
+      "authority_id": "R109-FACE-02",
+      "wording": "Physical face numbering: root feature Wilkes face; routing graph dodecahedral dual; order clockwise; phase zero = SAA direction.",
+      "source": "source(L's) via AG, pack 2026-07-27",
+      "evidence_class": "SOURCE_REPORTED",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "r109.face_node",
+        "cwatlas.r1082.wilkes",
+        "cwatlas.r1082.saa"
+      ],
+      "affected_tests": [],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-FACE-03",
+      "wording": "Literal five-bit F5=23 does not exist (F5 max 31, faces 20..31 reserved); face 23 as a literal packet face remains refused.",
+      "source": "pack 2026-07-27 + frozen parser behavior",
+      "evidence_class": "EXACT_ARITHMETIC",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "rgcs_coordinate.codecs.federation_terra_30"
+      ],
+      "affected_tests": [
+        "tests/r109/test_face_node.py"
+      ],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-SHL-01",
+      "wording": "S3 is the physical shell field; shell 3 contains the crustal surface as a finite body-relative band (sea floor, land, mountains occupy variable depth within it); shell 7 is an orbital object class; shell thickness differs by planet.",
+      "source": "source(L's) via AG, pack 2026-07-27",
+      "evidence_class": "SOURCE_REPORTED",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "r109.shell_semantics",
+        "cwatlas.r1085a.shell_profile"
+      ],
+      "affected_tests": [
+        "tests/r109/test_shells.py"
+      ],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-SHL-02",
+      "wording": "A source wire ending in decimal 3 is reported as a surface object; ending in decimal 7 as an object in orbit. The decimal terminal marker is preserved SEPARATELY from parsed binary S3 until their exact relationship is proved.",
+      "source": "source(L's) via AG, pack 2026-07-27",
+      "evidence_class": "SOURCE_REPORTED",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "r109.types",
+        "r109.shell_semantics"
+      ],
+      "affected_tests": [
+        "tests/r109/test_shells.py"
+      ],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-SHL-03",
+      "wording": "The current outer-in shell-fraction equation remains provisional production authority (cwatlas.r1085a.outer_in_radial).",
+      "source": "operator(AG), pack 2026-07-27",
+      "evidence_class": "OPERATOR_NOTE",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "cwatlas.r1085a.outer_in_radial"
+      ],
+      "affected_tests": [],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-MTL-01",
+      "wording": "The current source-reported Montréal vector is the DIRECT compact packet 165879243 (binary30 001001111000110001110111001011, octal10 1170616713, F5=4, path 3,3,0,1,2,0,3,2,3,2,1, S3=3).",
+      "source": "source(L's) via AG, pack 2026-07-27; arithmetic reproduced",
+      "evidence_class": "EXACT_ARITHMETIC",
+      "timestamp": "2026-07-27",
+      "supersedes": [
+        "R109-MTL-02-SUPERSEDED",
+        "R109-MTL-03-SUPERSEDED"
+      ],
+      "superseded_by": null,
+      "affected_modules": [
+        "r109.registry"
+      ],
+      "affected_tests": [
+        "tests/r109/test_montreal.py"
+      ],
+      "notes": "Structural decode is exact arithmetic; the LOCATION attribution remains source-reported."
+    },
+    {
+      "authority_id": "R109-MTL-02-SUPERSEDED",
+      "wording": "The bridge 165879243 -> 168500683 (general affine y=(923*x+550585316) mod 2^30) is superseded and is not current authority; preserved as a historical model.",
+      "source": "pack 2026-07-27",
+      "evidence_class": "SUPERSEDED",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": "R109-MTL-01",
+      "affected_modules": [
+        "r109.superseded"
+      ],
+      "affected_tests": [
+        "tests/r109/test_stale_models.py"
+      ],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-MTL-03-SUPERSEDED",
+      "wording": "The older Montréal transcription 168729543 is preserved as superseded provenance and is not the current Montréal packet.",
+      "source": "pack 2026-07-27",
+      "evidence_class": "SUPERSEDED",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": "R109-MTL-01",
+      "affected_modules": [
+        "r109.registry"
+      ],
+      "affected_tests": [
+        "tests/r109/test_stale_models.py"
+      ],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-EAR-01",
+      "wording": "The existing nonlinear Earth operator is preserved as EARTH_ALIGNMENT_V1_LEGACY_CALIBRATED; a new candidate EARTH_ALIGNMENT_V2_MONTREAL_DIRECT is built from Wilkes root, SAA phase, Stonehenge 165876523, Erie 167849523, Montréal 165879243, Toronto 168930443, and the orange-slice plane constraint.",
+      "source": "pack 2026-07-27",
+      "evidence_class": "CALIBRATED_CANDIDATE",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "r109.earth_v2"
+      ],
+      "affected_tests": [
+        "tests/r109/test_earth_v2.py"
+      ],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-HLD-01",
+      "wording": "167854923 is a frozen blind holdout with its existing V1 blind receipt and candidate Ohio output; no retuning of V2 to move that result; Newfoundland records and the corrupted Gander/Argentia collision (1658792343) are excluded from fitting.",
+      "source": "pack 2026-07-27",
+      "evidence_class": "OPERATOR_NOTE",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [
+        "r109.registry",
+        "r109.earth_v2"
+      ],
+      "affected_tests": [
+        "tests/r109/test_stale_models.py"
+      ],
+      "notes": ""
+    },
+    {
+      "authority_id": "R109-PUB-01",
+      "wording": "The manuscript, package, and repository remain private and unpublished; no tag, push, release, merge to public main, manuscript submission, or public claim is authorized in this phase.",
+      "source": "operator(AG), pack 2026-07-27",
+      "evidence_class": "OPERATOR_NOTE",
+      "timestamp": "2026-07-27",
+      "supersedes": [],
+      "superseded_by": null,
+      "affected_modules": [],
+      "affected_tests": [],
+      "notes": ""
+    }
+  ]
+}

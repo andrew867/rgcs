@@ -1,0 +1,32 @@
+{
+  "schema": "rgcs.r1015.receipt.v1",
+  "command": "privacy scan",
+  "inputs": {},
+  "input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "outputs": {
+    "schema": "rgcs.r1015.privacy-scan.v1",
+    "files_scanned": 2452,
+    "allowlisted_public_wires": 1141,
+    "clean": true,
+    "commitments": {
+      "private_capture_sha256": "1a41efe88402dcfb154b2e3fcd2700c58977a88516ec2c77572c8823815ecfd3",
+      "private_wire_list_sha256": "0b079fc6b716b4261d2ba3ab56133a2a8c3515154c2789d58b05db8803ba0d93"
+    },
+    "method": "structural signature + public allowlist; no per-wire digest is stored because a short decimal digest would be brute-forceable"
+  },
+  "evidence_class": "DERIVED",
+  "limitations": [
+    "structural + allowlist"
+  ],
+  "uncertainty": {},
+  "software": {
+    "python": "3.13.2",
+    "rgcs_surface_wave": "0.10.15",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0"
+  },
+  "source_commit": "20545f46d4eeb7967f098b61b579b4cf355e3613",
+  "publication_status": "HOLD",
+  "nonclaim": "Computed values are simulation outputs, not measurements. This work does not demonstrate antigravity, reactionless thrust, gravity modification, free energy, or anomalous propulsion, and makes no claim about the origin or authorship of the source material.",
+  "receipt_hash": "7ac97606915a08d1866f53551cc0a9c810554cde9d75ec790bb6a4e586099f36"
+}

@@ -1,0 +1,15 @@
+usage: rgcs [-h] [--version]
+            {crystal,bundle,frequency,schema,examples,doctor,help,research} ...
+
+RGCS unified interface: crystal workflows plus the R10.12 codec commands
+(wire, corpus, evidence, transition, probe, mesh, self-test, release).
+
+positional arguments:
+  {crystal,bundle,frequency,schema,examples,doctor,help,research}
+    crystal             custom specimen workflow
+    research            research-only reports (typed evidence boundaries; no
+                        physical claims)
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit

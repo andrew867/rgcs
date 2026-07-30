@@ -1,0 +1,11 @@
+{
+  "no_shared_affine_core": true,
+  "frozen_receipt": "docs/r1011/evidence/R10_11E_OPERATOR_FAMILY_REDUCTION.json",
+  "highlights": [
+    "0 conjugacy hits (720 bit perms)",
+    "0 bounded rot/xor/add fits",
+    "1024 relative operators, 34 cycle structures",
+    "16 equivalence classes per child",
+    "child-6 has fixed-point-free completions; child-5 fixes 1-2 states"
+  ]
+}

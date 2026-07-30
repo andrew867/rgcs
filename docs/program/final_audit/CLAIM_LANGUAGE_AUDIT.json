@@ -1,0 +1,60 @@
+{
+  "audit": "claim-language",
+  "date": "2026-07-26",
+  "tree": "program/integration @ b84e6eb (+audit-fix commit)",
+  "vocabulary_source": "rgcs_lab.common.status_schema (ALLOWED_WORDING / BANNED_WORDING, Project Authority Lock)",
+  "surfaces_scanned": [
+    "static/hub/** (html, js, css, json)",
+    "release/lab/** (mirror + README + SHA256SUMS)",
+    "docs/user/rgcs_lab/**",
+    "docs/developer/rgcs_lab/**",
+    "docs/workbench/RGCS_LAB_CLI.md",
+    "README.md",
+    "examples/lab/*",
+    "rgcs_lab/data/memory_corpus/*"
+  ],
+  "banned_wording_hits": [],
+  "banned_wording_input_handling": {
+    "behavior": "claims quoting banned wording are REJECTED with typed attack findings; every echo of the offending text in result/inputs/receipt is replaced with [REDACTED-BANNED-WORDING]; the critic analyzes the original text (AA-02 fix)",
+    "residual_guard": "ModuleStatus raises SchemaError on any banned wording reaching a result payload; API surfaces this as HTTP 422 refusal, never a receipt"
+  },
+  "planted_claims_executed": [
+    {"claim": "anti-gravity confirmed via torsion resonance", "decision": "REJECT", "status": "RED", "attacks": 3},
+    {"claim": "resonance gain proves excess energy with no pump", "decision": "REJECT", "status": "RED", "attacks": 3},
+    {"claim": "packet proves location: hierarchical path indices are coordinates", "decision": "REJECT", "status": "RED", "attacks": 4},
+    {"claim": "validated external transmission from source civilization", "decision": "REJECT", "status": "RED", "attacks": 2, "redacted": true},
+    {"claim": "energy from nowhere powers the drive", "decision": "REJECT", "status": "RED", "attacks": 2},
+    {"claim": "proven source technology recovered and working spacetime drive built", "decision": "REJECT", "status": "RED", "attacks": 2, "redacted": true},
+    {"claim": "confirmed anti-gravity thrust measured", "decision": "REJECT", "status": "RED", "attacks": 3, "redacted": true}
+  ],
+  "waiver_path": {
+    "decision": "ACCEPT_YELLOW",
+    "operator_waiver_recorded": true,
+    "critic_bypassed": false,
+    "can_reach_green": false
+  },
+  "training_equality_framing": {
+    "rule": "every mention must sit with UNDERDETERMINED/YELLOW/candidate qualification",
+    "scanner_flags": [
+      "static/hub/workbench/index.html",
+      "release/lab/static-hub/workbench/index.html"
+    ],
+    "manual_review": "flagged lines render adjacent to the 'PHYSICAL PROJECTION UNDERDETERMINED' badge (line 51) and the 'STONEHENGE IS A TRAINING EQUALITY' badge itself; qualified in displayed context — no violation",
+    "violations": []
+  },
+  "physics_non_claims_verified": [
+    "metasurface: 'does not compute gravity' warning present in core receipt and hub",
+    "lattice: 'does not transport matter' + drift-closed ledger",
+    "golay: external-civilization non-claim in DOES_NOT and catalog",
+    "coordinate: physical projection UNDERDETERMINED on every surface",
+    "memory: consciousness non-claim in warnings",
+    "predictions: 'not evidence before measurement' preserved",
+    "proofs: 'a green UI is not a physical proof' preserved"
+  ],
+  "privacy_scan": {
+    "patterns": ["emails", "C:\\Users paths", "OneDrive paths", "operator transcripts", "personal names"],
+    "hits": "README.md only — intentional public GitHub repo links and author credit; no local paths, no emails, no transcripts on any hub/release surface",
+    "violations": []
+  },
+  "result": "PASS"
+}

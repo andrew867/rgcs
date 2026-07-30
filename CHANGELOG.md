@@ -3,6 +3,152 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [1.0.0-rc1] - 2026-07-30
+
+R10.62 public release candidate: **RGCS V1 Map Workbench**.
+
+Released as software, not as proof. The codec and workbench are frozen
+enough to publish; the physical interpretation remains explicitly
+candidate under B01/B02.
+
+**NOT PUSHED, NOT TAGGED.** Awaiting operator approval.
+
+- Isolated CLI. The map lane runs without reading the rest of the
+  repository: `python -m r1053 --help | parse | map | path | polygon |
+  serve`. Added `parse` (structural receipt), `map` (one-vector), and
+  `serve` (loopback HTTP so map pages can fetch basemap tiles; a
+  `file://` page cannot).
+- README rewritten for public users, opening with the required claim:
+  RGCS is a coordinate, mapping, signal, and provenance research
+  workbench, and does not claim anomalous sources, craft, crop
+  formations, physical propulsion, or non-human communication are
+  proven.
+- Documentation set at the release filenames: QUICKSTART,
+  V1_COORDINATE_SYSTEM, VARIABLE_LENGTH_CODEC, EARTH_ROOT_V1,
+  MAP_PATH_POLYGON_GUIDE, 15KM_CELL_FIELD_ENVELOPE_MODEL,
+  CLAIM_BOUNDARIES, BLOCKERS_B01_B07, OA_CONVERGENCE_LEDGER,
+  FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS, releases/v1.0.0-rc1.
+- `examples/`: five ready-to-run vector lists, each validated by test to
+  contain only legal direct-lane words.
+- Screenshot receipts: every PNG now has a companion JSON carrying UTC
+  timestamp, commit SHA, command, input vectors, output SHA-256, and
+  `invented: false`. A test recomputes each hash against the file.
+- Blockers B01-B07 given their own document, unsoftened, with the
+  numbers that make them real (5121.7 km, 0.881, 0.147, 484,856,892,
+  451.6 km, 71 %). Tests fail if a blocker loses its detail, its
+  clearing condition, or acquires hedging language.
+
+Three gaps were found by the new release tests and fixed rather than
+waived: the README documented five of six public commands, B02 had lost
+the 451.6 km rotation-refutation figure, and the verbatim R10.59 claim
+boundary had fallen out of the rewritten README.
+
+Tests: focused set `tests/test_r1053_v1.py`, `test_r1059_docs.py`,
+`test_r1059_polygon.py`, `test_r1062_release.py` = 103 passed.
+Full-suite status recorded in the R10.62 commit message.
+
+## [8.4.0] - 2026-07-30
+
+R10.59 V1 Earth-root release documentation, 15 km field-envelope model,
+and the two-vector path map. Documentation and tooling only — the
+projector is **not** retuned and no anchor is added.
+
+**PUBLICATION HOLD REMAINS IN FORCE. Not pushed, not tagged.** The
+operator gate is explicit: nothing goes public until a human has
+visually confirmed the mapping on a real basemap.
+
+- `r1053.certificate`: `FrameManifest` and `AddressCertificate`. Earth
+  root D_V1 (Earth COM, mean rotation axis South-Up, Wilkes angular root
+  candidate, SAA phase hand, MSL datum) travels with every coordinate,
+  along with epoch gating, claim class, and the blockers that bear on it.
+  A bare lat/lon is never emitted.
+- `r1053.pathmap`: two-vector great-circle paths. Endpoints, 128-sample
+  slerp polyline, midpoint, distance, initial/final bearing, and a
+  three-formula cross-check (haversine, spherical law of cosines,
+  Vincenty-on-sphere) agreeing to < 1e-6 km.
+- `r1053.screenshots`: reproducible QtWebEngine capture with per-image
+  provenance (UTC, commit, operator/machine, command, SHA-256). A failed
+  capture is recorded as FAILED with a TODO receipt; none are invented.
+- `python -m r1053`: `path`, `certificate`, `serve-maps` subcommands.
+  Gated wide-envelope records exit 2 with the B07 reason.
+- Leaflet vendored to `maps/vendor/`, so map pages need no CDN. Basemap
+  tiles still require network and the page says so if they fail rather
+  than showing a blank pane.
+
+VERIFIED BY VISUAL INSPECTION on a real OpenStreetMap basemap:
+Erie→Toronto 178.846 km (marker on the SE shore of Lake Erie, marker on
+Lake Ontario's north shore, route across the Niagara peninsula);
+Toronto→Drummondville 582.465 km (route via Kingston and Montréal,
+midpoint near Brockville). Both reproduce the recorded pack distances.
+The polyline is a true great circle — its sampled midpoint is
+equidistant from both ends and its segments sum to the reported
+distance.
+
+NOT VERIFIED, and stated as such everywhere: that the endpoints are the
+right places. A correctly drawn line between two candidate points is
+still a line between two candidate points.
+
+- Documentation set: `README.md` rewritten; new
+  `docs/EARTH_ROOT_V1.md`,
+  `docs/VARIABLE_LENGTH_CODEC.md`,
+  `docs/15KM_CELL_FIELD_ENVELOPE_MODEL.md`,
+  `docs/FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS.md`,
+  `docs/OA_CONVERGENCE_LEDGER.md`, `docs/USER_MANUAL.md`,
+  `manuscripts/RGCS_Earth_Root_V1_Manuscript.md`. Prior public README
+  archived to `docs/archive/pre-r1059/` with a correction banner naming
+  the four superseded assumptions.
+- The codec spec's six PATH7 decompositions are verified arithmetically
+  by test rather than asserted.
+- The 15 km model is documented in both readings — depth-9 cell edge
+  14.989 km giving 15.684/14.989 = 1.046, and the OA plasma-magnet 30 km
+  envelope as a hard-SF scale prior only — with the null attached: at the
+  ±30 % tolerance the observation was first stated with, 88 % of
+  residuals under 60 km qualify. It survives at ±5 % (coincidence rate
+  0.147) and remains n = 1. B04 unchanged.
+- OA material is classified as design convergence and never as evidence.
+  If every OA reference were deleted, no verdict and no blocker would
+  change.
+- `tests/test_r1059_docs.py`: 27 tests covering the doc set, the
+  certificates, and the path geometry. Includes a proof-assertion guard
+  with its own positive control, so the guard cannot silently stop
+  working.
+- Blockers B01–B07 preserved verbatim in README, manual, spec, and
+  manuscript. B01 now has a rendered picture: one vector, one octal word,
+  one branch, two admissible positions 5121.7 km apart.
+
+Tests: `tests/test_r1053_v1.py` + `tests/test_r1059_docs.py` = 55 passed.
+Pre-existing unrelated failure remains
+`tests/regression/test_generator_determinism.py::test_generator_deterministic`
+(D-V3-04 float drift vs the archived v2 reference environment; the test's
+own docstring records that hosted CI deselects that node id).
+
+## [8.3.0] - 2026-07-28
+
+R10.13 private release candidate: normal-user custom crystal workflow.
+
+- r1013 package: crystal-specimen schema 1.0 (canonical hash, migration,
+  field-level errors with repair steps), quick estimates, Christoffel API,
+  custom-specimen FEM + convergence + piezo boundaries over the frozen
+  rscs2_core solvers, fixtures (7 types), result certificates, proof
+  bundles, unified `rgcs` CLI (R10.12 codec subcommands delegate to
+  r1012 unchanged; rgcs-v4/rgcs-workbook/rgcs-workbench preserved),
+  stable error codes RGCS-E001..E015, `rgcs doctor`.
+- Research-only (typed evidence boundaries, no physical claims): exact
+  timing compiler (4096 Hz / 552.001953125 ms / 125 states), aperture
+  ring model (35/33/2, 29/89, 3.584 MHz; gap indices refuse selection),
+  conventional gated-wavepacket energy ledger, two-sided variable codec
+  (no extension bit), 19-wire exact-cover solver (typed negative),
+  state-dependent 10/9 edge-law registry (no law selected).
+- Documentation baseline imported and synchronized (docs/r1013/manual);
+  every release-marked command executes in tests; `rgcs frequency
+  coordinate` refused (underdetermined state-to-geometry bridge);
+  desktop New Specimen wizard deferred with wording removed.
+- New optional extra `fem` (scikit-fem + meshio) for the FEM path.
+- Private candidate only: no tag, no push, publication HOLD.
+
+Tests: 8129 passing (1 archived-environment byte test deselected by policy
+D-V3-04).
+
 ## [8.2.0] - 2026-07-25
 
 R10.8.2 Locked Two-Layer Earth Root and Source-Map Calibration. A new

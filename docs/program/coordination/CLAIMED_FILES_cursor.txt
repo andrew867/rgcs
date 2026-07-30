@@ -1,0 +1,65 @@
+# CLAIMED_FILES_cursor.txt
+# Agent: cursor
+# Branch: program/cursor-app-integration
+# Worktree: ../rgcs-cursor
+# Claimed: 2026-07-26
+# Scope: integration, FastAPI, web hub, static distribution, docs site wiring,
+#        browser tests, packaging extras, CI hooks for the Recursive Infrastructure Lab
+
+rgcs_lab/
+rgcs_lab/__init__.py
+rgcs_lab/__main__.py
+rgcs_lab/cli.py
+rgcs_lab/common/
+rgcs_lab/adapters/
+rgcs_lab/api/
+rgcs_lab/reference/
+
+static/hub/
+static/hub/index.html
+static/hub/modules/
+static/hub/fixtures/
+static/hub/receipts/
+static/hub/assets/
+
+schemas/lab/
+examples/lab/
+fixtures/lab/
+proofs/lab/
+scripts/lab/
+release/lab/
+
+docs/program/coordination/CLAIMED_FILES_cursor.txt
+docs/program/coordination/REPO_TRUTH_CURSOR.md
+docs/program/coordination/HANDOFF_cursor.json
+docs/program/lab/
+docs/user/rgcs_lab/
+docs/developer/rgcs_lab/
+
+tests/rgcs_lab/
+
+# Soft claim (wiring only — do not rewrite domain mathematics owned by Codex):
+pyproject.toml          # add rgcs_lab package, scripts, optional workbench deps, testpaths
+.github/workflows/ci.yml  # add program/* branches + focused lab job only
+
+# Explicit non-claims (do not edit without handoff):
+rgcs_coordinate/codecs/
+rgcs_coordinate/domain/
+rgcs_coordinate/projection/
+rgcs_coordinate/provenance/
+workbench/index.html      # approved standalone structural demo — link/reuse only
+cwatlas/
+r6/
+r7/
+r8/
+r9/
+r10/
+r11/
+r12/
+r13/
+r15/
+
+tools/lab/build_static_hub.py
+rgcs_desktop/build_meta.py   # SOURCE_ROOTS wiring only for rgcs_lab + rgcs_coordinate
+tests/v51/test_r8_source_coverage.py  # EXCLUDED static/workbench/examples dirs
+.github/workflows/ci.yml

@@ -1,0 +1,62 @@
+{
+ "geometry": {
+  "positions": 35,
+  "active": 33,
+  "omitted": 2,
+  "occupancy": [
+   33,
+   35
+  ],
+  "area_ratio": [
+   29,
+   89
+  ],
+  "outer_radius": 144.1096998,
+  "inner_radius": 82.26161075228892,
+  "unit": "units",
+  "annular_width": 61.84808904771107,
+  "torus_major": 113.18565527614444,
+  "torus_minor": 30.924044523855535,
+  "delta_theta_deg": 10.285714285714286,
+  "five_positions_deg": 51.42857142857143,
+  "five_positions_exact": "360/7 degrees",
+  "evidence_class": "SOURCE_PROVENANCE_ONLY",
+  "missing_geometry": [
+   "gap indices",
+   "aperture diameter and shape",
+   "plate thickness",
+   "ring offsets",
+   "optical path",
+   "material implementation",
+   "drive and sensor geometry"
+  ]
+ },
+ "rates": {
+  "pattern_hz": 16,
+  "total_passages_per_s": 560,
+  "active_passages_per_s": 528,
+  "gap_passages_per_s": 32,
+  "sub_bins_total": 560,
+  "sub_bins_active": 528,
+  "sub_bins_blank": 32,
+  "evidence_class": "SOURCE_PROVENANCE_ONLY"
+ },
+ "master_clock": {
+  "ticks_per_sub_bin": 400,
+  "ticks_per_revolution": 224000,
+  "master_clock_hz": 3584000,
+  "master_clock_mhz": 3.584,
+  "divisibility": {
+   "by_positions": true,
+   "by_sub_bins": true
+  },
+  "evidence_class": "SOURCE_PROVENANCE_ONLY"
+ },
+ "gap_indices": {
+  "status": "UNDERDETERMINED",
+  "positions": 35,
+  "omitted": 2,
+  "variant_count": 595,
+  "evidence_class": "SOURCE_PROVENANCE_ONLY"
+ }
+}

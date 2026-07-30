@@ -1,0 +1,237 @@
+{
+ "grammar": "F5|Q22|S3 (r12.icosapacket, reused verbatim)",
+ "radix_identity": {
+  "8**12": 68719476736,
+  "2**36": 68719476736,
+  "4096**3": 68719476736,
+  "equal": true
+ },
+ "stonehenge_checks": {
+  "bits": true,
+  "octal": true,
+  "face": true,
+  "shell": true,
+  "path_levels": true,
+  "round_trip": true,
+  "octree": true
+ },
+ "q22_print_typo_note": "prompt's printed Q22 bit string '1110001100010011001010' is off by one bit position; the correct middle-22 window is '1111000110001001100101', whose quaternary pairs are exactly the claimed path (3,3,0,1,2,0,2,1,2,1,1). Values verified independently; typo recorded, not propagated.",
+ "stonehenge_record": {
+  "word": 165876523,
+  "bits": "001001111000110001001100101011",
+  "octal": "1170611453",
+  "decimal": "165876523",
+  "face": 4,
+  "path": "33012021211",
+  "path_levels": [
+   3,
+   3,
+   0,
+   1,
+   2,
+   0,
+   2,
+   1,
+   2,
+   1,
+   1
+  ],
+  "shell": 3,
+  "face_bits": "00100",
+  "path_bits": "1111000110001001100101",
+  "shell_bits": "011",
+  "round_trip": true,
+  "octal_round_trip": true,
+  "claim_class": "EXACT_IDENTITY",
+  "octree": {
+   "spatial_octal": "117061145",
+   "shell_octal": 3,
+   "X_bits": "001010011",
+   "Y_bits": "001010000",
+   "Z_bits": "111001101",
+   "X": 83,
+   "Y": 80,
+   "Z": 461,
+   "note": "hierarchical octree bit paths, not completed global Cartesian coordinates"
+  }
+ },
+ "nine_digit_packets": {
+  "165876523": {
+   "octal": "1170611453",
+   "face": 4,
+   "path": "33012021211",
+   "shell": 3,
+   "octree": {
+    "spatial_octal": "117061145",
+    "shell_octal": 3,
+    "X_bits": "001010011",
+    "Y_bits": "001010000",
+    "Z_bits": "111001101",
+    "X": 83,
+    "Y": 80,
+    "Z": 461,
+    "note": "hierarchical octree bit paths, not completed global Cartesian coordinates"
+   }
+  },
+  "165877623": {
+   "octal": "1170613567",
+   "face": 4,
+   "path": "33012023232",
+   "shell": 7,
+   "octree": {
+    "spatial_octal": "117061356",
+    "shell_octal": 7,
+    "X_bits": "001010011",
+    "Y_bits": "001010101",
+    "Z_bits": "111001110",
+    "X": 83,
+    "Y": 85,
+    "Z": 462,
+    "note": "hierarchical octree bit paths, not completed global Cartesian coordinates"
+   }
+  },
+  "165892743": {
+   "octal": "1170651207",
+   "face": 4,
+   "path": "33012221100",
+   "shell": 7,
+   "octree": {
+    "spatial_octal": "117065120",
+    "shell_octal": 7,
+    "X_bits": "001011000",
+    "Y_bits": "001010010",
+    "Z_bits": "111001100",
+    "X": 88,
+    "Y": 82,
+    "Z": 460,
+    "note": "hierarchical octree bit paths, not completed global Cartesian coordinates"
+   }
+  },
+  "165892763": {
+   "octal": "1170651233",
+   "face": 4,
+   "path": "33012221103",
+   "shell": 3,
+   "octree": {
+    "spatial_octal": "117065123",
+    "shell_octal": 3,
+    "X_bits": "001011000",
+    "Y_bits": "001010011",
+    "Z_bits": "111001101",
+    "X": 88,
+    "Y": 83,
+    "Z": 461,
+    "note": "hierarchical octree bit paths, not completed global Cartesian coordinates"
+   }
+  },
+  "165892783": {
+   "octal": "1170651257",
+   "face": 4,
+   "path": "33012221111",
+   "shell": 7,
+   "octree": {
+    "spatial_octal": "117065125",
+    "shell_octal": 7,
+    "X_bits": "001011001",
+    "Y_bits": "001010010",
+    "Z_bits": "111001101",
+    "X": 89,
+    "Y": 82,
+    "Z": 461,
+    "note": "hierarchical octree bit paths, not completed global Cartesian coordinates"
+   }
+  },
+  "167829573": {
+   "octal": "1200160105",
+   "face": 5,
+   "path": "00001300020",
+   "shell": 5,
+   "octree": {
+    "spatial_octal": "120016010",
+    "shell_octal": 5,
+    "X_bits": "000001000",
+    "Y_bits": "010001000",
+    "Z_bits": "100010010",
+    "X": 8,
+    "Y": 136,
+    "Z": 274,
+    "note": "hierarchical octree bit paths, not completed global Cartesian coordinates"
+   }
+  }
+ },
+ "orange_slice_octal": {
+  "packets": {
+   "165892743": {
+    "octal": "1170651207",
+    "face": 4,
+    "path": "33012221100",
+    "shell": 7
+   },
+   "165892763": {
+    "octal": "1170651233",
+    "face": 4,
+    "path": "33012221103",
+    "shell": 3
+   },
+   "165892783": {
+    "octal": "1170651257",
+    "face": 4,
+    "path": "33012221111",
+    "shell": 7
+   }
+  },
+  "finding": {
+   "faces": [
+    4,
+    4,
+    4
+   ],
+   "shells": [
+    7,
+    3,
+    7
+   ],
+   "common_path_prefix_levels": 9,
+   "path_suffixes": [
+    "00",
+    "03",
+    "11"
+   ],
+   "reading": "under the octal grammar the +20-decimal steps change the low bits: shells are {3,7} and the paths share only the first 9 of 11 levels. The clean single-axis line that the decimal domain shows does NOT survive the binary/octal conversion \u2014 an exact structural discriminant between the two readings, reported as-is."
+  }
+ },
+ "family_separation": {
+  "1678523973": {
+   "decimal_digits": 10,
+   "bits_needed": 31,
+   "fits_30_bit_grammar": false,
+   "status": "BLOCKED_BY_MISSING_INPUT",
+   "note": "outside the nine-digit/30-bit family; no exact version bridge to a 36/40-bit grammar is proven, so it is NOT decoded here (families kept separate as locked)."
+  },
+  "1678295343": {
+   "decimal_digits": 10,
+   "bits_needed": 31,
+   "fits_30_bit_grammar": false,
+   "status": "BLOCKED_BY_MISSING_INPUT",
+   "note": "outside the nine-digit/30-bit family; no exact version bridge to a 36/40-bit grammar is proven, so it is NOT decoded here (families kept separate as locked)."
+  },
+  "16752349783": {
+   "decimal_digits": 11,
+   "bits_needed": 34,
+   "fits_30_bit_grammar": false,
+   "status": "BLOCKED_BY_MISSING_INPUT",
+   "note": "outside the nine-digit/30-bit family; no exact version bridge to a 36/40-bit grammar is proven, so it is NOT decoded here (families kept separate as locked)."
+  },
+  "16782953437": {
+   "decimal_digits": 11,
+   "bits_needed": 34,
+   "fits_30_bit_grammar": false,
+   "status": "BLOCKED_BY_MISSING_INPUT",
+   "note": "outside the nine-digit/30-bit family; no exact version bridge to a 36/40-bit grammar is proven, so it is NOT decoded here (families kept separate as locked)."
+  }
+ },
+ "claims": {
+  "SOURCE_ORIGIN_VALIDATED": "no",
+  "status": "GRAMMAR_EXACT; placements are candidates under the R10.8.2 freeze only"
+ }
+}

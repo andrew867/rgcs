@@ -1,0 +1,14 @@
+{
+  "date": "2026-07-27",
+  "branch": "program/r10-11-flat-face-codec",
+  "parent_commit": "f34bb521c32e7fadd699596401377da3353a4a9a",
+  "descends": true,
+  "worktree_clean_at_start": true,
+  "python": "3.13.2",
+  "package": "rgcs 8.2.0",
+  "r10_10_reproduced": "tests/r1010+tests/r109 55 passed at start",
+  "tests": [
+    "pytest tests/r1011 -q",
+    "pytest tests -q --deselect <NR3-001>"
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "module": "coordinate",
+  "status": "GREEN",
+  "claim_class": [
+    "EXACT_ARITHMETIC",
+    "TRAINING_EQUALITY",
+    "UNDERDETERMINED"
+  ],
+  "input": {
+    "raw_decimal": "165876523"
+  },
+  "models": [
+    "federation-terra-30"
+  ],
+  "result": {
+    "schema": "rgcs.structural-trace.v1",
+    "raw_decimal": "165876523",
+    "width_bits": 30,
+    "binary30": "001001111000110001001100101011",
+    "octal10": "1170611453",
+    "packet_family": "federation-terra-f5-q22-s3-candidate",
+    "face_bits": "00100",
+    "face_id": 4,
+    "face_status": "valid-source-face-range",
+    "q22_bits": "1111000110001001100101",
+    "q22_path": [
+      3,
+      3,
+      0,
+      1,
+      2,
+      0,
+      2,
+      1,
+      2,
+      1,
+      1
+    ],
+    "shell_bits": "011",
+    "extracted_shell": 3,
+    "spatial_octal_path": "117061145",
+    "morton_audit": {
+      "x_bits": "001010011",
+      "y_bits": "001010000",
+      "z_bits": "111001101",
+      "x_index": 83,
+      "y_index": 80,
+      "z_index": 461
+    },
+    "fixture_label": null,
+    "structural_status": "EXACT_STRUCTURAL_DECODE",
+    "physical_projection_status": "UNDERDETERMINED",
+    "claim_class": "EXACT_STRUCTURAL",
+    "claims": {
+      "source_origin_validated": false,
+      "stonehenge_independently_decoded": false,
+      "octal_packet_structure_recovered": true,
+      "physical_projection": "UNDERDETERMINED",
+      "standing": {
+        "SOURCE_ORIGIN_VALIDATED": "no",
+        "STONEHENGE_INDEPENDENTLY_DECODED": "no, until the corrected transform passes",
+        "OCTAL_PACKET_STRUCTURE_RECOVERED": "yes",
+        "PHYSICAL_PROJECTION": "underdetermined unless a later receipt proves otherwise"
+      }
+    }
+  },
+  "warnings": [
+    "PHYSICAL PROJECTION: YELLOW UNDERDETERMINED",
+    "Stonehenge decimal is a training equality"
+  ],
+  "receipt": {
+    "module": "coordinate",
+    "version": "0.1.0.dev0",
+    "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
+    "status": "GREEN",
+    "claim_class": [
+      "EXACT_ARITHMETIC",
+      "TRAINING_EQUALITY",
+      "UNDERDETERMINED"
+    ],
+    "inputs": {
+      "raw_decimal": "165876523",
+      "codec": "federation-terra-30"
+    },
+    "models": [
+      "federation-terra-30"
+    ],
+    "result": {
+      "schema": "rgcs.structural-trace.v1",
+      "raw_decimal": "165876523",
+      "width_bits": 30,
+      "binary30": "001001111000110001001100101011",
+      "octal10": "1170611453",
+      "packet_family": "federation-terra-f5-q22-s3-candidate",
+      "face_bits": "00100",
+      "face_id": 4,
+      "face_status": "valid-source-face-range",
+      "q22_bits": "1111000110001001100101",
+      "q22_path": [
+        3,
+        3,
+        0,
+        1,
+        2,
+        0,
+        2,
+        1,
+        2,
+        1,
+        1
+      ],
+      "shell_bits": "011",
+      "extracted_shell": 3,
+      "spatial_octal_path": "117061145",
+      "morton_audit": {
+        "x_bits": "001010011",
+        "y_bits": "001010000",
+        "z_bits": "111001101",
+        "x_index": 83,
+        "y_index": 80,
+        "z_index": 461
+      },
+      "fixture_label": null,
+      "structural_status": "EXACT_STRUCTURAL_DECODE",
+      "physical_projection_status": "UNDERDETERMINED",
+      "claim_class": "EXACT_STRUCTURAL",
+      "claims": {
+        "source_origin_validated": false,
+        "stonehenge_independently_decoded": false,
+        "octal_packet_structure_recovered": true,
+        "physical_projection": "UNDERDETERMINED",
+        "standing": {
+          "SOURCE_ORIGIN_VALIDATED": "no",
+          "STONEHENGE_INDEPENDENTLY_DECODED": "no, until the corrected transform passes",
+          "OCTAL_PACKET_STRUCTURE_RECOVERED": "yes",
+          "PHYSICAL_PROJECTION": "underdetermined unless a later receipt proves otherwise"
+        }
+      }
+    },
+    "warnings": [
+      "PHYSICAL PROJECTION: YELLOW UNDERDETERMINED",
+      "Stonehenge decimal is a training equality"
+    ],
+    "tests": [
+      "roundtrip_coordinate",
+      "golden_vectors"
+    ],
+    "artifacts": [],
+    "receipt_sha256": "3ec5a94291714dfe5c318610ca200234583d9c4ea6fd8b5004d7a02869f7b467"
+  },
+  "does": "Exact structural decode/encode of the Federation/Terra 30-bit packet.",
+  "does_not": "Does not yet establish a unique physical source map.",
+  "tests": [
+    "roundtrip_coordinate",
+    "golden_vectors"
+  ],
+  "source": "rgcs_coordinate"
+}

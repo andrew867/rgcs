@@ -1,0 +1,112 @@
+{
+  "schema": "rgcs.operator_source_intake.2026_07_28.v1",
+  "operator": "AG",
+  "reported_at_local": "2026-07-28 09:47",
+  "source_attribution": "user-reported communication attributed to The L's",
+  "external_origin_status": "UNVERIFIED_OPERATOR_PROVENANCE",
+  "raw_vectors": [
+    "165892376543",
+    "1687492323",
+    "165874213",
+    "1685723243",
+    "16879462343",
+    "1687954133",
+    "16879432763",
+    "16879053173",
+    "168732567433",
+    "168759874243",
+    "16875421733",
+    "168792375433",
+    "168723618233",
+    "168742987323",
+    "16875654323",
+    "168798424693",
+    "16874328753",
+    "168753684323",
+    "16875632133",
+    "1687098453",
+    "16872368743",
+    "16875412343",
+    "1687982363",
+    "16871438433",
+    "16879895413",
+    "1687425419853",
+    "168726549833",
+    "1687676423"
+  ],
+  "operator_warning": "Fat-finger mushing may have occurred. Longer than 11 or 12 digits may be transcription errors if they do not decode.",
+  "later_ratio_instruction": {
+    "reported_at_local": "2026-07-28 09:59",
+    "wording": "when you find fractions like this, use them, you are smart and dont need us to say yes every time. but for this one. yes. use this one.",
+    "explicit_ratio": "10/9",
+    "status": "SOURCE_APPROVED_PRIMARY_CANDIDATE_WITHIN_PROVENANCE_LANE"
+  },
+  "equation_note": {
+    "reported_at_local": "2026-07-26 06:19 approximately",
+    "raw": "?/? x prime/prime = 2 x pi x sq(r) /57535",
+    "instructions": [
+      "solve for pi",
+      "you'll get the rest later"
+    ],
+    "sq_r_ambiguity": [
+      "sqrt(r)",
+      "r^2"
+    ],
+    "missing_fields": [
+      "first fraction",
+      "prime fraction selection",
+      "r"
+    ]
+  },
+  "additional_notes": [
+    {
+      "time": "2026-07-28 07:14",
+      "raw": "2937 8937"
+    },
+    {
+      "time": "2026-07-27 23:43",
+      "raw": "358355"
+    },
+    {
+      "time": "2026-07-27 23:46",
+      "raw": "396 or 639 Hz"
+    },
+    {
+      "time": "2026-07-28 00:55",
+      "raw": "440-432 Hz = 8 Hz"
+    },
+    {
+      "time": "2026-07-28 00:55",
+      "raw": "528 741 852 963 630 529"
+    },
+    {
+      "time": "2026-07-28 01:20",
+      "raw": "1535"
+    },
+    {
+      "time": "2026-07-28 02:56",
+      "raw": "there are two"
+    },
+    {
+      "time": "2026-07-28 05:14",
+      "raw": "33/35"
+    },
+    {
+      "time": "2026-07-28 07:14",
+      "raw": "the ship is like a tuning fork of the group/collective and the occupants steer with intention and thought",
+      "context": "dream involving an Atlantis advanced craft"
+    },
+    {
+      "time": "2026-07-28 08:53",
+      "raw": "August 11th"
+    },
+    {
+      "time": "context note",
+      "raw": "Mayan base-20 system may be relevant"
+    }
+  ],
+  "operator_correction": {
+    "revoked": "627-step fitted operator",
+    "instruction": "Scrap completely. Active direction is analytic mathematics and recursive compensation, not precomputed complex meshes."
+  }
+}

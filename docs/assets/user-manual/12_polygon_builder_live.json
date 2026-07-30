@@ -1,0 +1,22 @@
+{
+  "schema": "rgcs.r1062.screenshot-receipt.v1",
+  "filename": "12_polygon_builder_live.png",
+  "captured_utc": "2026-07-30T17:35:00+00:00",
+  "commit": "138a09a8eb882415cb12792d00e84284d0d7483b",
+  "branch": "release/rgcs-v1-map-workbench",
+  "command": "polygon builder: add 165879243 via text entry, then Order by bearing",
+  "input_vectors": [
+    "165876523",
+    "165892743",
+    "165892763",
+    "165892783",
+    "165879243"
+  ],
+  "output_sha256": "b05f8e1029aef4a8866f2ba4bcb33e8a6b4b5bb0425363d4f4777aa0e359f3c9",
+  "bytes": 1512052,
+  "machine": "andrew@THINKDIFFERENT",
+  "platform": "win32",
+  "capture_method": "r1053.screenshots.capture (QtWebEngine offscreen)",
+  "invented": false,
+  "boundary": "The tool verifies geometry. It does not verify that a candidate vertex is physically true."
+}

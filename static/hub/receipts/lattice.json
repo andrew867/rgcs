@@ -1,0 +1,119 @@
+{
+  "module": "lattice",
+  "version": "0.1.0.dev0",
+  "source_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
+  "status": "GREEN",
+  "claim_class": [
+    "IMPLEMENTED_SOFTWARE",
+    "CONVENTIONAL_PHYSICS",
+    "EXPLORATORY_MODEL"
+  ],
+  "inputs": {
+    "model": "counterrotating-ring"
+  },
+  "models": [
+    "counterrotating-ring"
+  ],
+  "result": {
+    "states": 64,
+    "dt_s": 0.001,
+    "steps": 100,
+    "hamiltonian_hermitian": true,
+    "final_norm": 1.0000000000000007,
+    "sample_top_states": [
+      [
+        {
+          "state": 0,
+          "amplitude_abs": 0.99999900000025
+        },
+        {
+          "state": 63,
+          "amplitude_abs": 0.0009999994999999999
+        },
+        {
+          "state": 1,
+          "amplitude_abs": 0.0009999994999999999
+        }
+      ],
+      [
+        {
+          "state": 0,
+          "amplitude_abs": 0.999996000004
+        },
+        {
+          "state": 63,
+          "amplitude_abs": 0.0019999960000025
+        },
+        {
+          "state": 1,
+          "amplitude_abs": 0.0019999960000025
+        }
+      ],
+      [
+        {
+          "state": 0,
+          "amplitude_abs": 0.99999100002025
+        },
+        {
+          "state": 63,
+          "amplitude_abs": 0.00299998650002
+        },
+        {
+          "state": 1,
+          "amplitude_abs": 0.00299998650002
+        }
+      ],
+      [
+        {
+          "state": 0,
+          "amplitude_abs": 0.9999840000639999
+        },
+        {
+          "state": 63,
+          "amplitude_abs": 0.003999968000084999
+        },
+        {
+          "state": 1,
+          "amplitude_abs": 0.003999968000084999
+        }
+      ],
+      [
+        {
+          "state": 0,
+          "amplitude_abs": 0.9999750001562496
+        },
+        {
+          "state": 63,
+          "amplitude_abs": 0.004999937500259999
+        },
+        {
+          "state": 1,
+          "amplitude_abs": 0.004999937500259999
+        }
+      ]
+    ],
+    "energy_ledger": {
+      "units": "dimensionless modal norm",
+      "initial": 1.0,
+      "pump": 3.9968028886505635e-15,
+      "stored": 1.0000000000000007,
+      "dissipated": 0.0,
+      "numerical_drift": -3.3306690738754696e-15,
+      "resonance_gain_label": "attributed_to_external_drive_or_declared_parametric_pump"
+    },
+    "hermitian_residual": 0.0,
+    "model": "counterrotating-ring"
+  },
+  "warnings": [
+    "Matter transport: not claimed",
+    "PHYSICAL INTERPRETATION: YELLOW",
+    "backend=rgcs_lab.lattice"
+  ],
+  "tests": [
+    "lattice_hermitian",
+    "lattice_energy_ledger",
+    "tests/rgcs_lab/test_lattice.py"
+  ],
+  "artifacts": [],
+  "receipt_sha256": "309c464d3e9c0bcc132bd6977f8d2e9f557c6749a947e61ad68b5de68c88cbb3"
+}

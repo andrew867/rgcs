@@ -1,0 +1,346 @@
+{
+  "schema": "rgcs.r1010.pre-reveal-predictions.v1",
+  "freeze": {
+    "schema": "rgcs.r1010.holdout-freeze.v1",
+    "intake_id": "SEALED_HOLDOUT_INTAKE_2026-07-27",
+    "intake_sha256": "350c4ffba82e2434896d2b2f57fb925fba035382bed6d0768e52b7d87f3d16f6",
+    "implementation_state_sha256": "7a8ab3fa107b34e4685793306df10a3889f01411eb18a07d760ab5c35a96ae94",
+    "parent_commit": "b422e36ae4a289c0d392f946bf1b604a3b3c5065",
+    "frozen_components": {
+      "codec": "T10 frozen; T11 UNRESOLVED (searches V1+V2 exhausted, 0 survivors)",
+      "orientation": "S3 algebra + dual-graph BFS assignments frozen this run; holonomy incompleteness documented",
+      "body_profile": "UNRESOLVED (typed source-reported only)",
+      "earth_candidate": "V1 current smooth candidate; V2 folded diagnostic; V3 NOT BUILT (no packet-geometry change)"
+    },
+    "operator_gate": "predictions frozen and hashed below \u2014 the operator MAY NOW ask the source whether each result is correct and request labels; replies must be recorded verbatim; NO retuning after reveal"
+  },
+  "predictions": [
+    {
+      "raw": 165892323,
+      "raw_sha256": "99311666b6534f36a22423b2cafb86b7a928c6a0fcb62ce38a67f72240a59ea9",
+      "octal": "1170650343",
+      "octal_depth": 10,
+      "body_group_profile": "UNRESOLVED (16/16-5/16-7 remain typed SOURCE_REPORTED; header table unrecovered)",
+      "shell_epoch_status": "binary S3=3; decimal terminal 3; NOT collapsed (firewall); epoch UNRESOLVED",
+      "prediction_class": "PRE_REVEAL_GEOMETRIC_CANDIDATE \u2014 no label, no gazetteer, no location claim",
+      "f5": 4,
+      "q22_path": [
+        3,
+        3,
+        0,
+        1,
+        2,
+        2,
+        2,
+        0,
+        1,
+        3,
+        0
+      ],
+      "s3": 3,
+      "decimal_terminal_digit": 3,
+      "prediction_v1": {
+        "operator": "EARTH_ALIGNMENT_V1_LEGACY_CALIBRATED (current smooth candidate)",
+        "lat_deg": 49.90754762144906,
+        "lon_deg": -2.20990314205616,
+        "terminal_polygon_latlon": [
+          [
+            49.90443752301553,
+            -2.2600565422238548
+          ],
+          [
+            49.914298033276054,
+            -2.186257246361024
+          ],
+          [
+            49.90344853923614,
+            -2.183934000820214
+          ]
+        ],
+        "uncertainty_radius_deg": 0.03245035935325827,
+        "source_face": 18,
+        "physical_mesh_face": 12,
+        "orientation_state": {
+          "bfs_assignment": "012",
+          "empirical_v1_convention": "102",
+          "note": "one reflection apart; holonomy model incomplete (R10.10 finding)"
+        }
+      },
+      "prediction_v2": {
+        "operator": "EARTH_ALIGNMENT_V2_MONTREAL_DIRECT (FOLDED \u2014 diagnostic only)",
+        "lat_deg": 48.81848576158384,
+        "lon_deg": -1.9132641019914232,
+        "terminal_polygon_latlon": [
+          [
+            48.79000348359288,
+            -1.984611693789479
+          ],
+          [
+            48.84499948838574,
+            -1.8503050146012352
+          ],
+          [
+            48.82053033762595,
+            -1.9060710951023228
+          ]
+        ],
+        "uncertainty_radius_deg": 0.05494980639611674,
+        "source_face": 18,
+        "physical_mesh_face": 12,
+        "orientation_state": {
+          "bfs_assignment": "012",
+          "empirical_v1_convention": "102",
+          "note": "one reflection apart; holonomy model incomplete (R10.10 finding)"
+        }
+      }
+    },
+    {
+      "raw": 1687209343,
+      "raw_sha256": "b4746845581be1f11ed8cce5629539f7622e97058f4af6b7a94752c82114b04c",
+      "octal": "14444142577",
+      "octal_depth": 11,
+      "body_group_profile": "UNRESOLVED (16/16-5/16-7 remain typed SOURCE_REPORTED; header table unrecovered)",
+      "shell_epoch_status": null,
+      "prediction_class": "BLOCKED \u2014 T11 interleave UNRESOLVED after V1(46)+V2(32) searches; no prediction",
+      "family": "T11"
+    },
+    {
+      "raw": 168724343,
+      "raw_sha256": "9a6ce81fc0401792a3bde93e2c00cd8b2b3107e3ea6bc62e8ddb4be5bf198d30",
+      "octal": "1203503567",
+      "octal_depth": 10,
+      "body_group_profile": "UNRESOLVED (16/16-5/16-7 remain typed SOURCE_REPORTED; header table unrecovered)",
+      "shell_epoch_status": "binary S3=7; decimal terminal 3; NOT collapsed (firewall); epoch UNRESOLVED",
+      "prediction_class": "PRE_REVEAL_GEOMETRIC_CANDIDATE \u2014 no label, no gazetteer, no location claim",
+      "f5": 5,
+      "q22_path": [
+        0,
+        0,
+        1,
+        3,
+        1,
+        0,
+        0,
+        3,
+        2,
+        3,
+        2
+      ],
+      "s3": 7,
+      "decimal_terminal_digit": 3,
+      "prediction_v1": {
+        "operator": "EARTH_ALIGNMENT_V1_LEGACY_CALIBRATED (current smooth candidate)",
+        "lat_deg": 44.63406055765325,
+        "lon_deg": -74.6542466953597,
+        "terminal_polygon_latlon": [
+          [
+            44.63068606003838,
+            -74.63174389248759
+          ],
+          [
+            44.630262751075996,
+            -74.68221010939484
+          ],
+          [
+            44.64123006506831,
+            -74.64841560770378
+          ]
+        ],
+        "uncertainty_radius_deg": 0.02025881493123097,
+        "source_face": 19,
+        "physical_mesh_face": 19,
+        "orientation_state": {
+          "bfs_assignment": "210",
+          "empirical_v1_convention": "102",
+          "note": "one reflection apart; holonomy model incomplete (R10.10 finding)"
+        }
+      },
+      "prediction_v2": {
+        "operator": "EARTH_ALIGNMENT_V2_MONTREAL_DIRECT (FOLDED \u2014 diagnostic only)",
+        "lat_deg": 42.015955069342155,
+        "lon_deg": -63.66913229501545,
+        "terminal_polygon_latlon": [
+          [
+            42.01079450732734,
+            -63.590602279872364
+          ],
+          [
+            42.01574374252322,
+            -63.74068852411084
+          ],
+          [
+            42.021321362843686,
+            -63.67634393708675
+          ]
+        ],
+        "uncertainty_radius_deg": 0.05857467593760731,
+        "source_face": 19,
+        "physical_mesh_face": 19,
+        "orientation_state": {
+          "bfs_assignment": "210",
+          "empirical_v1_convention": "102",
+          "note": "one reflection apart; holonomy model incomplete (R10.10 finding)"
+        }
+      }
+    },
+    {
+      "raw": 165872943,
+      "raw_sha256": "f811cdad55561c66615b248eff726c9f81ec0c12ec23b3d511dfb576d3d89a5c",
+      "octal": "1170602457",
+      "octal_depth": 10,
+      "body_group_profile": "UNRESOLVED (16/16-5/16-7 remain typed SOURCE_REPORTED; header table unrecovered)",
+      "shell_epoch_status": "binary S3=7; decimal terminal 3; NOT collapsed (firewall); epoch UNRESOLVED",
+      "prediction_class": "PRE_REVEAL_GEOMETRIC_CANDIDATE \u2014 no label, no gazetteer, no location claim",
+      "f5": 4,
+      "q22_path": [
+        3,
+        3,
+        0,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2,
+        1,
+        1
+      ],
+      "s3": 7,
+      "decimal_terminal_digit": 3,
+      "prediction_v1": {
+        "operator": "EARTH_ALIGNMENT_V1_LEGACY_CALIBRATED (current smooth candidate)",
+        "lat_deg": 52.05086217451152,
+        "lon_deg": -1.7035132957659036,
+        "terminal_polygon_latlon": [
+          [
+            52.017534048346015,
+            -1.6832678671417596
+          ],
+          [
+            52.06109344078688,
+            -1.7355407010308506
+          ],
+          [
+            52.07249701383779,
+            -1.6911173837666569
+          ]
+        ],
+        "uncertainty_radius_deg": 0.03557929397704443,
+        "source_face": 18,
+        "physical_mesh_face": 12,
+        "orientation_state": {
+          "bfs_assignment": "012",
+          "empirical_v1_convention": "102",
+          "note": "one reflection apart; holonomy model incomplete (R10.10 finding)"
+        }
+      },
+      "prediction_v2": {
+        "operator": "EARTH_ALIGNMENT_V2_MONTREAL_DIRECT (FOLDED \u2014 diagnostic only)",
+        "lat_deg": 52.230565560663905,
+        "lon_deg": -1.8297998730749754,
+        "terminal_polygon_latlon": [
+          [
+            51.87918765443425,
+            -0.6372863068650952
+          ],
+          [
+            52.97225300149607,
+            -5.003606226624026
+          ],
+          [
+            52.17269458477731,
+            -1.4606463569902157
+          ]
+        ],
+        "uncertainty_radius_deg": 2.065174268772394,
+        "source_face": 18,
+        "physical_mesh_face": 12,
+        "orientation_state": {
+          "bfs_assignment": "012",
+          "empirical_v1_convention": "102",
+          "note": "one reflection apart; holonomy model incomplete (R10.10 finding)"
+        }
+      }
+    },
+    {
+      "raw": 165829473,
+      "raw_sha256": "25a3ecc87033194ac61eb1143c31952ca4eee75bec62c9f9a3962f802a296db9",
+      "octal": "1170455541",
+      "octal_depth": 10,
+      "body_group_profile": "UNRESOLVED (16/16-5/16-7 remain typed SOURCE_REPORTED; header table unrecovered)",
+      "shell_epoch_status": "binary S3=1; decimal terminal 3; NOT collapsed (firewall); epoch UNRESOLVED",
+      "prediction_class": "PRE_REVEAL_GEOMETRIC_CANDIDATE \u2014 no label, no gazetteer, no location claim",
+      "f5": 4,
+      "q22_path": [
+        3,
+        3,
+        0,
+        1,
+        0,
+        2,
+        3,
+        1,
+        2,
+        3,
+        0
+      ],
+      "s3": 1,
+      "decimal_terminal_digit": 3,
+      "prediction_v1": {
+        "operator": "EARTH_ALIGNMENT_V1_LEGACY_CALIBRATED (current smooth candidate)",
+        "lat_deg": 52.94773215383199,
+        "lon_deg": -2.1289790222965186,
+        "terminal_polygon_latlon": [
+          [
+            52.94902450243811,
+            -2.1613498347356024
+          ],
+          [
+            52.95398469856118,
+            -2.1110704286143642
+          ],
+          [
+            52.93990688447166,
+            -2.114623198937529
+          ]
+        ],
+        "uncertainty_radius_deg": 0.01954729332724855,
+        "source_face": 18,
+        "physical_mesh_face": 12,
+        "orientation_state": {
+          "bfs_assignment": "012",
+          "empirical_v1_convention": "102",
+          "note": "one reflection apart; holonomy model incomplete (R10.10 finding)"
+        }
+      },
+      "prediction_v2": {
+        "operator": "EARTH_ALIGNMENT_V2_MONTREAL_DIRECT (FOLDED \u2014 diagnostic only)",
+        "lat_deg": 54.64346974922951,
+        "lon_deg": -52.45140047790554,
+        "terminal_polygon_latlon": [
+          [
+            53.5522194122686,
+            -57.507591134916574
+          ],
+          [
+            55.628243598514175,
+            -46.70713056780465
+          ],
+          [
+            54.438281317689125,
+            -53.44084210333418
+          ]
+        ],
+        "uncertainty_radius_deg": 3.4269369389314592,
+        "source_face": 18,
+        "physical_mesh_face": 12,
+        "orientation_state": {
+          "bfs_assignment": "012",
+          "empirical_v1_convention": "102",
+          "note": "one reflection apart; holonomy model incomplete (R10.10 finding)"
+        }
+      }
+    }
+  ],
+  "receipt_sha256_of_predictions": "e2d6d7e858c9677f4a7085bf911061aade414f17df8e20a6c42b6fc1f2134475"
+}

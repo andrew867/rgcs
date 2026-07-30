@@ -1,0 +1,181 @@
+=== CLAUDE (eb7d7d4..188caab) ===
+ tests/rgcs_lab/test_rlab_dual_pole.py              |  73 +++++++
+ tests/rgcs_lab/test_rlab_hub_coordinate.py         |  71 +++++++
+ tests/rgcs_lab/test_rlab_memory_predictions.py     | 129 ++++++++++++
+ tests/rgcs_lab/test_rlab_schema_gate.py            |  89 ++++++++
+ 26 files changed, 1893 insertions(+), 1 deletion(-)
+A	docs/program/ADR-001-product-name.md
+A	docs/program/AUTHORITY_AND_SCHEMAS.md
+A	docs/program/coordination/CLAIMED_FILES_claude.txt
+A	docs/program/receipts/HANDOFF_claude_WS01.json
+A	docs/program/receipts/HANDOFF_claude_WS04.json
+A	docs/program/receipts/HANDOFF_claude_WS05.json
+A	docs/program/receipts/HANDOFF_claude_WS07.json
+A	docs/program/receipts/HANDOFF_claude_WS08.json
+A	docs/program/receipts/HANDOFF_claude_WS09.json
+A	docs/program/receipts/coordinate.json
+M	pyproject.toml
+A	rgcs_lab/__init__.py
+A	rgcs_lab/authority/__init__.py
+A	rgcs_lab/authority/coordinate_status.py
+A	rgcs_lab/authority/dual_pole_machine.py
+A	rgcs_lab/authority/hub_registry.py
+A	rgcs_lab/authority/memory_spec.py
+A	rgcs_lab/authority/physics_truth_gate.py
+A	rgcs_lab/authority/prediction_registry.py
+A	rgcs_lab/common/__init__.py
+A	rgcs_lab/common/receipt_schema.json
+A	rgcs_lab/common/status_schema.py
+A	tests/rgcs_lab/test_rlab_dual_pole.py
+A	tests/rgcs_lab/test_rlab_hub_coordinate.py
+A	tests/rgcs_lab/test_rlab_memory_predictions.py
+A	tests/rgcs_lab/test_rlab_schema_gate.py
+
+=== CODEX (eb7d7d4..71e7342) ===
+ tests/rgcs_lab/test_golay.py                      |  24 ++++
+ tests/rgcs_lab/test_lattice.py                    |  23 ++++
+ tests/rgcs_lab/test_memory_dual.py                |  22 ++++
+ tests/rgcs_lab/test_metasurface.py                |  11 ++
+ 22 files changed, 1068 insertions(+), 1 deletion(-)
+A	docs/program/coordination/CLAIMED_FILES_codex.txt
+A	docs/program/coordination/HANDOFF_codex.json
+A	docs/workbench/RGCS_LAB_CLI.md
+A	examples/rgcs_lab/claim_yellow.json
+A	examples/rgcs_lab/memory/doc_current.json
+A	examples/rgcs_lab/memory/doc_rejected.json
+A	examples/rgcs_lab/memory/doc_stale.json
+M	pyproject.toml
+A	rgcs_lab/__init__.py
+A	rgcs_lab/cli.py
+A	rgcs_lab/dual_pole.py
+A	rgcs_lab/frames.py
+A	rgcs_lab/golay.py
+A	rgcs_lab/lattice.py
+A	rgcs_lab/memory.py
+A	rgcs_lab/metasurface.py
+A	rgcs_lab/receipts.py
+A	tests/rgcs_lab/test_frames.py
+A	tests/rgcs_lab/test_golay.py
+A	tests/rgcs_lab/test_lattice.py
+A	tests/rgcs_lab/test_memory_dual.py
+A	tests/rgcs_lab/test_metasurface.py
+
+=== CURSOR (eb7d7d4..d4baf0d) ===
+ tests/rgcs_lab/test_lab_api.py                     |   59 +
+ tests/rgcs_lab/test_lab_core.py                    |  141 ++
+ tests/v51/test_r8_source_coverage.py               |    2 +
+ tools/lab/build_static_hub.py                      |  235 +++
+ 113 files changed, 17836 insertions(+), 5 deletions(-)
+M	.github/workflows/ci.yml
+A	docs/developer/rgcs_lab/README.md
+A	docs/program/coordination/CLAIMED_FILES_cursor.txt
+A	docs/program/coordination/HANDOFF_cursor.json
+A	docs/program/coordination/MERGE_NOTES_cursor.md
+A	docs/program/coordination/REPO_TRUTH_CURSOR.md
+A	docs/user/rgcs_lab/CLAIM_BOUNDARIES.md
+A	docs/user/rgcs_lab/QUICKSTART.md
+A	examples/lab/claim.json
+A	examples/lab/claim_antigravity.json
+A	examples/lab/prediction.json
+A	examples/lab/prediction_frozen.json
+A	proofs/lab/hub_proof_bundle.json
+M	pyproject.toml
+A	release/lab/README.md
+A	release/lab/SHA256SUMS.txt
+A	release/lab/static-hub/assets/hub.css
+A	release/lab/static-hub/assets/hub.js
+A	release/lab/static-hub/fixtures/catalog.json
+A	release/lab/static-hub/fixtures/coordinate.json
+A	release/lab/static-hub/fixtures/dual_pole.json
+A	release/lab/static-hub/fixtures/frames.json
+A	release/lab/static-hub/fixtures/golay.json
+A	release/lab/static-hub/fixtures/golay_flip_ladder.json
+A	release/lab/static-hub/fixtures/lattice.json
+A	release/lab/static-hub/fixtures/memory.json
+A	release/lab/static-hub/fixtures/metasurface.json
+A	release/lab/static-hub/fixtures/predictions.json
+A	release/lab/static-hub/fixtures/proofs.json
+A	release/lab/static-hub/index.html
+A	release/lab/static-hub/modules/coordinate.html
+A	release/lab/static-hub/modules/dual_pole.html
+A	release/lab/static-hub/modules/frames.html
+A	release/lab/static-hub/modules/golay.html
+A	release/lab/static-hub/modules/lattice.html
+A	release/lab/static-hub/modules/memory.html
+A	release/lab/static-hub/modules/metasurface.html
+A	release/lab/static-hub/modules/predictions.html
+A	release/lab/static-hub/modules/proofs.html
+A	release/lab/static-hub/receipts/coordinate.json
+A	release/lab/static-hub/receipts/dual_pole.json
+A	release/lab/static-hub/receipts/frames.json
+A	release/lab/static-hub/receipts/golay.json
+A	release/lab/static-hub/receipts/hub-catalog.json
+A	release/lab/static-hub/receipts/lattice.json
+A	release/lab/static-hub/receipts/memory.json
+A	release/lab/static-hub/receipts/metasurface.json
+A	release/lab/static-hub/receipts/predictions.json
+A	release/lab/static-hub/receipts/proofs.json
+A	release/lab/static-hub/workbench/index.html
+M	rgcs_desktop/build_meta.py
+A	rgcs_lab/__init__.py
+A	rgcs_lab/__main__.py
+A	rgcs_lab/adapters/__init__.py
+A	rgcs_lab/adapters/coordinate.py
+A	rgcs_lab/adapters/frames.py
+A	rgcs_lab/adapters/golay.py
+A	rgcs_lab/adapters/services.py
+A	rgcs_lab/api/__init__.py
+A	rgcs_lab/cli.py
+A	rgcs_lab/common/__init__.py
+A	rgcs_lab/common/gitmeta.py
+A	rgcs_lab/common/privacy.py
+A	rgcs_lab/common/receipts.py
+A	rgcs_lab/common/status.py
+A	rgcs_lab/reference/__init__.py
+A	rgcs_lab/reference/dual_pole.py
+A	rgcs_lab/reference/frames.py
+A	rgcs_lab/reference/golay.py
+A	rgcs_lab/reference/lattice.py
+A	rgcs_lab/reference/memory.py
+A	rgcs_lab/reference/metasurface.py
+A	rgcs_lab/reference/predictions.py
+A	schemas/lab/receipt.schema.json
+A	static/hub/assets/hub.css
+A	static/hub/assets/hub.js
+A	static/hub/fixtures/catalog.json
+A	static/hub/fixtures/coordinate.json
+A	static/hub/fixtures/dual_pole.json
+A	static/hub/fixtures/frames.json
+A	static/hub/fixtures/golay.json
+A	static/hub/fixtures/golay_flip_ladder.json
+A	static/hub/fixtures/lattice.json
+A	static/hub/fixtures/memory.json
+A	static/hub/fixtures/metasurface.json
+A	static/hub/fixtures/predictions.json
+A	static/hub/fixtures/proofs.json
+A	static/hub/index.html
+A	static/hub/modules/coordinate.html
+A	static/hub/modules/dual_pole.html
+A	static/hub/modules/frames.html
+A	static/hub/modules/golay.html
+A	static/hub/modules/lattice.html
+A	static/hub/modules/memory.html
+A	static/hub/modules/metasurface.html
+A	static/hub/modules/predictions.html
+A	static/hub/modules/proofs.html
+A	static/hub/receipts/coordinate.json
+A	static/hub/receipts/dual_pole.json
+A	static/hub/receipts/frames.json
+A	static/hub/receipts/golay.json
+A	static/hub/receipts/hub-catalog.json
+A	static/hub/receipts/lattice.json
+A	static/hub/receipts/memory.json
+A	static/hub/receipts/metasurface.json
+A	static/hub/receipts/predictions.json
+A	static/hub/receipts/proofs.json
+A	static/hub/workbench/index.html
+A	tests/rgcs_lab/browser/test_hub_a11y_static.py
+A	tests/rgcs_lab/test_lab_api.py
+A	tests/rgcs_lab/test_lab_core.py
+M	tests/v51/test_r8_source_coverage.py
+A	tools/lab/build_static_hub.py

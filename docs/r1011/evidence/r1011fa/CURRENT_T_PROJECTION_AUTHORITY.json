@@ -1,0 +1,11 @@
+{
+  "schema": "rgcs.r1011fa.t-projection-authority.v2",
+  "revoked": {
+    "id": "EARTH_ALIGNMENT_V1_LEGACY_CALIBRATED (627-step fitted warp)",
+    "action": "REVOKED from active authority by operator retraction (verbatim in pack 01_AUTHORITY/RETRACTION_627_STEP_OPERATOR.md); not loaded, not compared, not preserved as candidate in active work",
+    "note": "archive files remain on disk as immutable history only"
+  },
+  "also_not_active": "FLAT_FACE fitted node mesh (a fitted object; excluded from active target by the no-fitted-mesh rule; its receipts remain historical)",
+  "active_target": "ANALYTIC recursive Terra construction: frozen B0 + Wilkes/SAA-clocked analytic T frame -> exact root correspondence -> exact layer-2 topology (162/480/320, Euler OK) -> ratio-driven shared-edge refinement -> WGS84 realization -> shell/gravity projection",
+  "ratio_authority": "10/9 source-approved primary; preregistered family + reciprocals; bounded quadratic-irrational secondary class (cannot displace exact rational without held-out justification)"
+}

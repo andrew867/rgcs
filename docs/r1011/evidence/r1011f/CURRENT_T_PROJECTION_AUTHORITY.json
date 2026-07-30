@@ -1,0 +1,22 @@
+{
+  "schema": "rgcs.r1011f.t-projection-authority.v1",
+  "current_registered": [
+    {
+      "id": "EARTH_ALIGNMENT_V1_LEGACY_CALIBRATED",
+      "form": "627-step Gaussian RBF warp",
+      "status": "current smooth calibrated candidate; PRIMARY",
+      "artifact": "docs/r109/earth_v1/.../operator/WARP_STEPS.json.gz"
+    },
+    {
+      "id": "FLAT_FACE_NODE_CURVATURE_V1_CANDIDATE",
+      "form": "12 fitted node directions + spherical midpoint lift",
+      "status": "source-profile CANDIDATE (co-registered)",
+      "artifact": "docs/r1011/evidence/R10_11_NODE_LIFT_PARAMETERS.json"
+    }
+  ],
+  "pack_premise_discrepancy": "the pack references a 1200-step corrected warp; NO such operator exists in this repository. V2 was an 868-step exact-anchor fit REJECTED for folding (361 L6 reversals), preserved only as a failed diagnostic.",
+  "older_operators_only_comparisons": [
+    "EARTH_ALIGNMENT_V2_MONTREAL_DIRECT (folded diagnostic)"
+  ],
+  "b0_authority": "pack 03_DATA B0 node CSVs (frozen)"
+}

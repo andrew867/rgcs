@@ -1,0 +1,12 @@
+{
+  "schema": "rgcs.r1012.corpus-verify.v1",
+  "golden_batch_sha256": "4e426c0f3c3c7ee34b4c552afba28764cb11f0bea3a014978daa9ce624ff3dde",
+  "expected_sha256": "4e426c0f3c3c7ee34b4c552afba28764cb11f0bea3a014978daa9ce624ff3dde",
+  "hash_match": true,
+  "golden_total": 28,
+  "golden_parsed": 28,
+  "golden_failures": 0,
+  "legacy_total": 19,
+  "legacy_parsed": 19,
+  "correction_ledger_note": "1687425419853 lives only in the correction ledger (COR-03)"
+}

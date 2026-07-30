@@ -1,0 +1,194 @@
+{
+  "schema": "rgcs.r10.11d.e3-frame-affine-envelope.v1",
+  "date": "2026-07-28",
+  "operator_reported_claude_commits": {
+    "late_intake": "7922dba",
+    "r10_11c": "dd78fd2",
+    "verification_status": "OPERATOR_REPORTED; PRIVATE_BRANCH_NOT_INDEPENDENTLY_FETCHED"
+  },
+  "source_reported_authority_retained": {
+    "header": "1|6 = 001|110 = Sol|Terra",
+    "terminal_3": "broad surface class",
+    "leading_time_shell_field": "related to finer shell and epoch state",
+    "transition_form": "T[current_state, child] -> next_state"
+  },
+  "frame_correction": {
+    "previous_candidate": "E2 | S6 | S6 | S6 | C3^depth",
+    "problem": "1687209343 leaves payload 8720934, which requires 24 bits and cannot fit the proposed 23-bit one-refinement payload.",
+    "octal_aligned_candidate": "1_3 | 6_3 | E3 | S6 | S6 | S6 | C3^depth | terminal_3",
+    "compact_total_bits": 30,
+    "bits_per_added_refinement": 3,
+    "benefit": "The E3 frame preserves every known state triple and sparse transition while also parsing 1687209343 and the deeper corpus without overflow.",
+    "status": "STRONGLY_SUPPORTED_ARITHMETIC_FRAME; E3 SEMANTICS NOT SOURCE_LOCKED"
+  },
+  "selected_new_parses": {
+    "1687209343": {
+      "wire": 1687209343,
+      "parse_status": "PARSED",
+      "header_symbol_1_bits": "001",
+      "header_symbol_6_bits": "110",
+      "terminal": 3,
+      "payload_text": "8720934",
+      "payload": 8720934,
+      "payload_decimal_digits": 7,
+      "depth": 1,
+      "payload_width_bits": 24,
+      "payload_binary": "100001010001001000100110",
+      "E3": 4,
+      "states": [
+        10,
+        9,
+        4
+      ],
+      "children": [
+        6
+      ]
+    },
+    "16752349783": {
+      "wire": 16752349783,
+      "parse_status": "PARSED",
+      "header_symbol_1_bits": "001",
+      "header_symbol_6_bits": "110",
+      "terminal": 3,
+      "payload_text": "75234978",
+      "payload": 75234978,
+      "payload_decimal_digits": 8,
+      "depth": 2,
+      "payload_width_bits": 27,
+      "payload_binary": "100011110111111111010100010",
+      "E3": 4,
+      "states": [
+        30,
+        63,
+        58
+      ],
+      "children": [
+        4,
+        2
+      ]
+    },
+    "16782953437": {
+      "wire": 16782953437,
+      "parse_status": "PARSED",
+      "header_symbol_1_bits": "001",
+      "header_symbol_6_bits": "110",
+      "terminal": 7,
+      "payload_text": "78295343",
+      "payload": 78295343,
+      "payload_decimal_digits": 8,
+      "depth": 2,
+      "payload_width_bits": 27,
+      "payload_binary": "100101010101011000100101111",
+      "E3": 4,
+      "states": [
+        42,
+        43,
+        4
+      ],
+      "children": [
+        5,
+        7
+      ]
+    }
+  },
+  "affine_permutation_envelope": {
+    "status": "RESTRICTED HYPOTHESIS; NOT THE RECOVERED SOURCE TABLE",
+    "child_5": {
+      "completion_count": 32,
+      "consensus_entry_count": 32,
+      "input_fixed_hyperplane": "parity(state & 10) = 0",
+      "output_fixed_hyperplane": "parity(output & 14) = 1",
+      "canonical_row_masks": [
+        48,
+        23,
+        52,
+        41,
+        36,
+        22
+      ],
+      "canonical_offset": 19
+    },
+    "child_6": {
+      "completion_count": 32,
+      "consensus_entry_count": 32,
+      "input_fixed_hyperplane": "parity(state & 26) = 0",
+      "output_fixed_hyperplane": "parity(output & 57) = 1",
+      "canonical_row_masks": [
+        6,
+        47,
+        36,
+        4,
+        44,
+        52
+      ],
+      "canonical_offset": 29
+    },
+    "honesty_boundary": "The complete source table cannot be derived uniquely from twelve entries. The affine family is a finite, falsifiable envelope."
+  },
+  "high_information_probes": [
+    {
+      "compact_wire": 165872393,
+      "child": 5,
+      "compact_states": [
+        15,
+        23,
+        39
+      ],
+      "outside_positions_1_based": [
+        2,
+        3
+      ],
+      "baseline_outputs": [
+        5,
+        42,
+        16
+      ],
+      "xor_constraints": [
+        {
+          "positions_1_based": [
+            2,
+            3
+          ],
+          "required_output_xor": 58
+        }
+      ],
+      "candidate_refined_wire_count": 32,
+      "reason": "State triple [15,23,39] contains two states outside the child-5 consensus hyperplane. One refined result selects the completion; the second outside output independently checks it."
+    },
+    {
+      "compact_wire": 165879633,
+      "child": 6,
+      "compact_states": [
+        15,
+        34,
+        59
+      ],
+      "outside_positions_1_based": [
+        2,
+        3
+      ],
+      "baseline_outputs": [
+        49,
+        40,
+        24
+      ],
+      "xor_constraints": [
+        {
+          "positions_1_based": [
+            2,
+            3
+          ],
+          "required_output_xor": 48
+        }
+      ],
+      "candidate_refined_wire_count": 32,
+      "reason": "State triple [15,34,59] contains two states outside the child-6 consensus hyperplane. One refined result selects the completion; the second outside output independently checks it."
+    }
+  ],
+  "corpus_warning": {
+    "lunar_vector": "167854923 is source-revealed as lunar. Do not promote a Terra conditional prediction for it.",
+    "terminal_markers": "Several old British-cluster vectors end in 5, 7, or 9 rather than broad-surface marker 3 and must be reclassified before use.",
+    "body_header_ambiguity": "The 167 Luna wording conflicts with the Earth-labelled Erie 167849523. Preserve both until body nesting is resolved."
+  },
+  "verdict": "RGCS_R10_11D_YELLOW_E3_OCTAL_FRAME_CLOSES_FULL_WIDTH_CORPUS_AFFINE_CHILD5_CHILD6_ENVELOPES_COMPUTED_SOURCE_TABLE_UNRESOLVED"
+}

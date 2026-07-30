@@ -1,0 +1,12 @@
+raw,role,label,status,evidence_class,fit_allowed,notes,octal,octal_depth,decimal_terminal_digit
+165876523,compact_training_anchor,Stonehenge,CURRENT,SOURCE_REPORTED,True,fixed compact form; training equality; V2 calibration anchor,1170611453,10,3
+1643789253,refined_training_anchor,Stonehenge,CURRENT_T11_UNRESOLVED,SOURCE_REPORTED,False,same physical address as 165876523 at higher precision; T11 interleave unresolved — parent-child constraint only,14176435705,11,3
+167849523,compact_training_anchor,Erie,CURRENT,SOURCE_REPORTED,True,V2 calibration anchor,1200227063,10,3
+165879243,compact_training_anchor,Montreal,CORRECTED_CURRENT_DIRECT,SOURCE_REPORTED,True,DIRECT compact packet (R109-MTL-01); replaces the affine bridge target 168500683 and the superseded transcription,1170616713,10,3
+168729543,historical_record,Montreal superseded transcription,SUPERSEDED,SUPERSEDED,False,preserved provenance; never a current anchor,1203515707,10,3
+168500683,historical_record,Montreal affine-bridge target (stale),SUPERSEDED,SUPERSEDED,False,output of the superseded general affine bridge; retained in the superseded-model ledger only,1202616713,10,3
+168930443,compact_training_anchor,Toronto,SOURCE_CONFIRMED,SOURCE_REPORTED,True,V2 calibration anchor,1204326213,10,3
+1672875493,refined_training_anchor,Toronto,CURRENT_T11_UNRESOLVED,SOURCE_REPORTED,False,same physical address as 168930443 at higher precision,14355406745,11,3
+1658274383,labelled_record_not_for_fit,CYYT St. John's,T11_UNRESOLVED,SOURCE_REPORTED,False,Newfoundland record — excluded from warp fitting by R109-HLD-01,14265641117,11,3
+1658792343,corrupted_session_record,Gander/Argentia collision,DO_NOT_FIT_REACQUIRE,UNRESOLVED,False,corrupted transcription session; reacquire from source; never fitted,14267624627,11,3
+167854923,frozen_blind_holdout,,DO_NOT_RETUNE,HOLDOUT_RESULT,False,frozen blind holdout with existing V1 blind receipt and candidate Ohio output; V2 is never moved to change it,1200241513,10,3

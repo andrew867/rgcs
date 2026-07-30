@@ -1,0 +1,86 @@
+[
+  {
+    "specimen_id": "my-crystal-001",
+    "frequencies_hz": [
+      31742.547746057764,
+      31745.460318681566
+    ],
+    "n_rigid_modes": 6,
+    "residuals": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      1.2609909335023028e-13,
+      1.141450464226479e-13
+    ],
+    "orthonormality_error": 2.220446049250313e-15,
+    "ndof": 1977,
+    "fixture_applied": {
+      "type": "free",
+      "bc": "none",
+      "approximation": "ideal free body; 6 rigid modes expected",
+      "uncertainty": "lowest; reference condition"
+    },
+    "total_mass_kg": 0.0693966687213619,
+    "warnings": [
+      "orientation not measured: frequencies assume C-axis along body +Z; expect shifts for the real cut"
+    ],
+    "evidence_class": "NUMERICAL_SIMULATION"
+  },
+  {
+    "geometry": {
+      "variant": "specimen_my-crystal-001",
+      "length_mm": "77.8",
+      "length_mm_float": 77.8,
+      "wide_diameter_mm": 30.2,
+      "narrow_diameter_mm": 24.0,
+      "diameter_policy": "SP-Q154 ratios 40/154 and 30/154 x L (documented default; explicit parameters)",
+      "facets": 6,
+      "female_angle_deg": 51.843,
+      "male_angle_deg": 60.0,
+      "angle_mode": "face_slope",
+      "diameter_mode": "across_vertices",
+      "female_cap_height_mm": 16.64356915581121,
+      "male_cap_height_mm": 17.999999999999996,
+      "shaft_length_mm": 43.15643084418879,
+      "frame": "body +Z from female apex (z=0) to male apex (z=L); x_v2 == z_body; quartz C-axis default +Z",
+      "orientation_euler_zxz_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometric_centre_z_mm": 38.9,
+      "rgcs_node_prior": "shaft midpoint prior per frozen rgcs_core.geometry.nodes (RGCS-M.38/39); measured node NOT supplied",
+      "eye_coordinate": null,
+      "region_annotations": {
+        "electrode_candidates": "shaft facets 1 and 4 (opposed), z in [0.35L, 0.65L]",
+        "coil_envelopes": "coaxial, centered z=0.3L and z=0.7L",
+        "optical_entry": "lower shaft facet 1, z ~ 0.4L",
+        "fixture_pads": "3-point cradle at z = 0.224L, 0.776L (free-free flexural node stations)"
+      }
+    },
+    "clmax_mm": 12.0,
+    "order": 1,
+    "gmsh_cmd": "-3 res\\specimen_my-crystal-001_cl12.geo -o res\\specimen_my-crystal-001_cl12.msh -format msh2 -order 1 -v 2",
+    "n_nodes": 119,
+    "n_tets": 313,
+    "quality": {
+      "n_inverted": 0,
+      "total_volume_mm3": 26207.201178762065,
+      "min_dihedral_deg": 19.6753381001741,
+      "max_aspect": 3.2009665124523465,
+      "mean_aspect": 1.746971663372904,
+      "edge_mm_min": 3.9999999999957154,
+      "edge_mm_max": 15.550534557933497
+    },
+    "mesh_volume_mm3": 26207.201178762065,
+    "analytic_volume_mm3": 26207.201178762305,
+    "volume_rel_err": 9.161855920067868e-15,
+    "nodes_sha256": "d1f7e6d1616e29e291c2ab58b7cc765cf477f71be71d857b9060a5777a69f366",
+    "tets_sha256": "6181909adbbd385fdc2ab39a0a4eb8879ca932aa9e633e1d5d22d1639e99f01b",
+    "step_export_status": "NOT_GENERATED (built-in kernel; OCC path IMPLEMENTED_DOCUMENTED_UNTESTED, DV4-013)"
+  }
+]

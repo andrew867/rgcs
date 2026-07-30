@@ -1,0 +1,166 @@
+{
+  "schema": "rgcs.r1011.pre-reveal-predictions.v1",
+  "freeze": {
+    "schema": "rgcs.r1011.holdout-freeze.v1",
+    "intake_id": "SEALED_HOLDOUT_INTAKE_2026-07-27",
+    "intake_sha256": "350c4ffba82e2434896d2b2f57fb925fba035382bed6d0768e52b7d87f3d16f6",
+    "implementation_state_sha256": "7f72241ebd74e0bc68345434fd018d6fc3c0ea653b811a74c99ea047d6e2651b",
+    "parent_commit": "f34bb521c32e7fadd699596401377da3353a4a9a",
+    "frozen": {
+      "codec": "old F5|Q22|S3 profile DEMOTED to exact historical structural profile; unified codec UNRESOLVED (0 survivors)",
+      "map": "FLAT_FACE_NODE_CURVATURE_V1_CANDIDATE (convex, 0 folds L6, exact anchors)",
+      "controls": "see R10_11_MAP_COMPARISON.csv"
+    },
+    "gate": "predictions frozen+hashed; operator may ask the source for labels; verbatim recording; no retuning after reveal"
+  },
+  "predictions": [
+    {
+      "raw": 165892323,
+      "raw_sha256": "99311666b6534f36a22423b2cafb86b7a928c6a0fcb62ce38a67f72240a59ea9",
+      "octal": "1170650343",
+      "family": "T10",
+      "f5": 4,
+      "s3": 3,
+      "mesh_face": 12,
+      "newmap": {
+        "operator": "FLAT_FACE_NODE_CURVATURE_V1_CANDIDATE",
+        "lat": 50.013193605142526,
+        "lon": -1.904400535868305,
+        "terminal_polygon": [
+          [
+            49.99906398798999,
+            -1.9358119030500025
+          ],
+          [
+            50.03928750992212,
+            -1.9162566282530877
+          ],
+          [
+            50.001216431125584,
+            -1.861141059113433
+          ]
+        ],
+        "uncertainty_radius_deg": 0.030272611569015173
+      },
+      "v1_continuity": {
+        "operator": "EARTH_ALIGNMENT_V1_LEGACY_CALIBRATED",
+        "lat": 49.9075476214491,
+        "lon": -2.209903142056184
+      },
+      "prediction_class": "PRE_REVEAL_GEOMETRIC_CANDIDATE - no label, no gazetteer, no location claim"
+    },
+    {
+      "raw": 1687209343,
+      "raw_sha256": "b4746845581be1f11ed8cce5629539f7622e97058f4af6b7a94752c82114b04c",
+      "octal": "14444142577",
+      "family": "T11",
+      "prediction_class": "BLOCKED - unified codec unresolved (261 candidates across R10.9/10/11, 0 survivors)"
+    },
+    {
+      "raw": 168724343,
+      "raw_sha256": "9a6ce81fc0401792a3bde93e2c00cd8b2b3107e3ea6bc62e8ddb4be5bf198d30",
+      "octal": "1203503567",
+      "family": "T10",
+      "f5": 5,
+      "s3": 7,
+      "mesh_face": 19,
+      "newmap": {
+        "operator": "FLAT_FACE_NODE_CURVATURE_V1_CANDIDATE",
+        "lat": 51.74687960294887,
+        "lon": -72.88180799491704,
+        "terminal_polygon": [
+          [
+            51.754153082232854,
+            -72.87398252091928
+          ],
+          [
+            51.726474577168126,
+            -72.90112765638456
+          ],
+          [
+            51.76000874330895,
+            -72.87030047726893
+          ]
+        ],
+        "uncertainty_radius_deg": 0.02365391011551886
+      },
+      "v1_continuity": {
+        "operator": "EARTH_ALIGNMENT_V1_LEGACY_CALIBRATED",
+        "lat": 44.63406055765325,
+        "lon": -74.6542466953597
+      },
+      "prediction_class": "PRE_REVEAL_GEOMETRIC_CANDIDATE - no label, no gazetteer, no location claim"
+    },
+    {
+      "raw": 165872943,
+      "raw_sha256": "f811cdad55561c66615b248eff726c9f81ec0c12ec23b3d511dfb576d3d89a5c",
+      "octal": "1170602457",
+      "family": "T10",
+      "f5": 4,
+      "s3": 7,
+      "mesh_face": 12,
+      "newmap": {
+        "operator": "FLAT_FACE_NODE_CURVATURE_V1_CANDIDATE",
+        "lat": 51.51463595606357,
+        "lon": -1.0472216252809308,
+        "terminal_polygon": [
+          [
+            51.488445413937384,
+            -1.0354820876678863
+          ],
+          [
+            51.5269350701599,
+            -1.0916772399931765
+          ],
+          [
+            51.52851385206772,
+            -1.0145143379942037
+          ]
+        ],
+        "uncertainty_radius_deg": 0.030272676028010304
+      },
+      "v1_continuity": {
+        "operator": "EARTH_ALIGNMENT_V1_LEGACY_CALIBRATED",
+        "lat": 52.05086217451152,
+        "lon": -1.7035132957659036
+      },
+      "prediction_class": "PRE_REVEAL_GEOMETRIC_CANDIDATE - no label, no gazetteer, no location claim"
+    },
+    {
+      "raw": 165829473,
+      "raw_sha256": "25a3ecc87033194ac61eb1143c31952ca4eee75bec62c9f9a3962f802a296db9",
+      "octal": "1170455541",
+      "family": "T10",
+      "f5": 4,
+      "s3": 1,
+      "mesh_face": 12,
+      "newmap": {
+        "operator": "FLAT_FACE_NODE_CURVATURE_V1_CANDIDATE",
+        "lat": 52.98096885446464,
+        "lon": -1.1224650244824126,
+        "terminal_polygon": [
+          [
+            52.99328237198755,
+            -1.1684053852013048
+          ],
+          [
+            52.9948483332448,
+            -1.0887012873900248
+          ],
+          [
+            52.954761603959106,
+            -1.110298029305106
+          ]
+        ],
+        "uncertainty_radius_deg": 0.030273227535680697
+      },
+      "v1_continuity": {
+        "operator": "EARTH_ALIGNMENT_V1_LEGACY_CALIBRATED",
+        "lat": 52.947732153831986,
+        "lon": -2.1289790222965217
+      },
+      "prediction_class": "PRE_REVEAL_GEOMETRIC_CANDIDATE - no label, no gazetteer, no location claim"
+    }
+  ],
+  "receipt_sha256_of_predictions": "a15468098cfbe7fd00232ac6f07584b6fc280227622650cbcee904eee37c9135"
+}

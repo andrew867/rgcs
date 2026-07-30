@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rgcs.local/schemas/result-certificate-1.0.json",
+  "title": "RGCS Result Certificate",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "result_id",
+    "status",
+    "evidence_class",
+    "input_hashes",
+    "software"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "rgcs.result-certificate/1.0"
+    },
+    "result_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "evidence_class": {
+      "type": "string"
+    },
+    "input_hashes": {
+      "type": "object"
+    },
+    "software": {
+      "type": "object"
+    },
+    "frequencies_hz": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "refusals": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

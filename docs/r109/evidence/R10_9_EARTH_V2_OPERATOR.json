@@ -1,0 +1,138 @@
+{
+  "profile_id": "EARTH_ALIGNMENT_V2_MONTREAL_DIRECT",
+  "family": "composed Gaussian radial-basis landmark registration on S2 (same family as V1)",
+  "anchors": [
+    {
+      "name": "WILKES_ROOT",
+      "target_lat": -70.00000000000001,
+      "target_lon": 119.99999999999999,
+      "provenance": "V1 recorded pre-warp source (unchanged anchor)",
+      "final_residual_deg": 8.537736462515939e-07
+    },
+    {
+      "name": "SAA_PHASE_ZERO",
+      "target_lat": -26.220000000000002,
+      "target_lon": -60.03000000000001,
+      "provenance": "V1 recorded pre-warp source (unchanged anchor)",
+      "final_residual_deg": 0.0
+    },
+    {
+      "name": "STONEHENGE",
+      "target_lat": 51.17881944444445,
+      "target_lon": -1.8262805555555555,
+      "provenance": "V1 recorded pre-warp source (unchanged anchor)",
+      "final_residual_deg": 0.0
+    },
+    {
+      "name": "ERIE",
+      "target_lat": 42.11450700000001,
+      "target_lon": -80.076213,
+      "provenance": "V1 recorded pre-warp source (unchanged anchor)",
+      "final_residual_deg": 0.0
+    },
+    {
+      "name": "TORONTO",
+      "target_lat": 43.6532,
+      "target_lon": -79.3832,
+      "provenance": "V1 recorded pre-warp source (unchanged anchor)",
+      "final_residual_deg": 0.0
+    },
+    {
+      "name": "MONTREAL_DIRECT",
+      "target_lat": 45.508822,
+      "target_lon": -73.554077,
+      "provenance": "direct compact packet 165879243, face 4 -> mesh face 12, exact recovered face-12 convention (R109-MTL-01)",
+      "final_residual_deg": 0.0
+    }
+  ],
+  "stages": [
+    {
+      "stage": 0,
+      "sigma": 0.09,
+      "steps_so_far": 842,
+      "max_residual_deg": 1.2074182697257333e-06
+    },
+    {
+      "stage": 1,
+      "sigma": 0.02,
+      "steps_so_far": 868,
+      "max_residual_deg": 8.537736462515939e-07
+    }
+  ],
+  "total_steps": 868,
+  "converged": true,
+  "claim_status": "CALIBRATED_CANDIDATE_NOT_VALIDATED",
+  "mesh_verification_L5": {
+    "vertices": 10242,
+    "triangles": 20480,
+    "orientation_reversals": 102,
+    "min_area_proxy_ratio": 5.825736438424407e-05,
+    "max_area_proxy_ratio": 47.330511343453516,
+    "p01_area_proxy_ratio": 0.09369316199729008,
+    "p99_area_proxy_ratio": 1.3659156087246784,
+    "rms_log_area_proxy": 0.4286387593015089
+  },
+  "mesh_verification_L6": {
+    "vertices": 40962,
+    "triangles": 81920,
+    "orientation_reversals": 361,
+    "min_area_proxy_ratio": 0.00027745718859038755,
+    "max_area_proxy_ratio": 97.69025642950345,
+    "p01_area_proxy_ratio": 0.08069703347037416,
+    "p99_area_proxy_ratio": 1.3349070378547765,
+    "rms_log_area_proxy": 0.44008882771961183
+  },
+  "v1_mesh_verification_L6": {
+    "vertices": 40962,
+    "triangles": 81920,
+    "orientation_reversals": 0,
+    "min_area_proxy_ratio": 0.03875260173869931,
+    "max_area_proxy_ratio": 5.980800601924799,
+    "p01_area_proxy_ratio": 0.39023265259421036,
+    "p99_area_proxy_ratio": 1.2563991006909465,
+    "rms_log_area_proxy": 0.22063777925969422
+  },
+  "inverse_error": {
+    "samples": 200,
+    "mean_deg": 1.963845603162212,
+    "max_deg": 179.99850189946147,
+    "p50_deg": 0.0,
+    "p90_deg": 0.0,
+    "p99_deg": 13.511408439878204
+  },
+  "v1_v2_displacement": {
+    "grid_points": 2562,
+    "mean_displacement_deg": 0.2574405372246305,
+    "max_displacement_deg": 40.19340832122674,
+    "p50_deg": 0.0,
+    "p90_deg": 0.004056752748469214
+  },
+  "orange_under_v2": {
+    "165892743": [
+      48.64626064380461,
+      -2.391906817065548
+    ],
+    "165892763": [
+      48.618060124371446,
+      -2.472857938321811
+    ],
+    "165892783": [
+      48.54808193238396,
+      -2.690440871419373
+    ]
+  },
+  "orange_body_centred_plane_residual": [
+    1.1986136210224801e-05,
+    1.6513807495629108e-05,
+    4.5276956189546416e-06
+  ],
+  "holdout_167854923_v1": [
+    41.73006338758707,
+    -80.83365937278147
+  ],
+  "holdout_167854923_v2": [
+    41.71141147593621,
+    -81.33771174871
+  ],
+  "operator_steps_file": "R10_9_EARTH_V2_WARP_STEPS.json.gz"
+}

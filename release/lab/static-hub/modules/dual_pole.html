@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Dual-Pole · RGCS Lab</title>
+<link rel="stylesheet" href="../assets/hub.css">
+</head>
+<body>
+<main class="module-page hero">
+  <p><a href="../index.html">← Hub</a></p>
+  <p class="brand">Dual-Pole</p>
+  <div class="badges">
+    <span class="badge GREEN">GREEN</span>
+    <span class="badge YELLOW phys">PHYS YELLOW</span>
+  </div>
+  <section>
+    <h2>WHAT THIS DOES</h2>
+    <p>Proposer/critic research loop with typed attack families.</p>
+    <h2>WHAT THIS DOES NOT DO</h2>
+    <p class="does-not">Does not make two models independent witnesses.</p>
+    <h2>STATUS</h2>
+    <p>Implementation <strong>GREEN</strong>. Physical lane <strong>YELLOW</strong>.</p>
+    
+    <h2>INPUT</h2>
+    <p>Server mode calls the Python domain API. Static mode loads a golden fixture — no Golay/quaternion/solver math is reimplemented in the browser.</p>
+    <div class="hero-actions">
+      <button class="btn" type="button" id="run">Run example</button>
+      <button class="btn secondary" type="button" id="download-trace">Download trace JSON</button>
+      <a class="btn secondary" href="../receipts/dual_pole.json" download>Download receipt</a>
+    </div>
+    <h2>TRACE / RESULT</h2>
+    <pre id="out">Press Run example.</pre>
+    <h2>TESTS</h2>
+    <p id="tests">Listed inside the receipt.</p>
+    <h2 id="source">SOURCE</h2>
+    <p>Python adapters under <code>rgcs_lab/adapters</code>; coordinate domain API is <code>rgcs_coordinate</code>.</p>
+  </section>
+</main>
+<script src="../assets/hub.js"></script>
+<script>
+const PATH = '/api/dual_pole/audit';
+const BODY = {"claim":{"statement":"exact structural decode","claim_class":["EXACT_ARITHMETIC"],"evidence":["golden"]}};
+const METHOD = 'POST';
+let last = null;
+async function run() {
+  const out = document.getElementById('out');
+  out.textContent = 'Running…';
+  try {
+    if (METHOD === 'GET') {
+      if (location.protocol === 'file:') {
+        last = await fetch('../fixtures/dual_pole.json').then(r => r.json());
+      } else {
+        try {
+          last = await fetch(PATH).then(r => r.json());
+        } catch (e) {
+          last = await fetch('../fixtures/dual_pole.json').then(r => r.json());
+        }
+      }
+    } else {
+      last = await RGCSLab.run(PATH, BODY);
+    }
+    out.textContent = JSON.stringify(last, null, 2);
+    const tests = (last.tests || (last.receipt && last.receipt.tests) || []);
+    document.getElementById('tests').textContent = tests.join(', ') || 'see receipt';
+  } catch (err) {
+    out.textContent = String(err);
+  }
+}
+document.getElementById('run').addEventListener('click', run);
+document.getElementById('download-trace').addEventListener('click', () => {
+  if (!last) return;
+  RGCSLab.downloadJSON('dual_pole-trace.json', last);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{
+  "schema": "rgcs.r1015.receipt.v1",
+  "command": "cem cross-check",
+  "inputs": {},
+  "input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "outputs": {
+    "schema": "rgcs.r1015.cross-check.v1",
+    "m": 1,
+    "grid_points": 4000,
+    "bessel_determinant_k": [
+      51.38551585717565,
+      101.89751195970852,
+      152.5921502310892,
+      203.33633966184794
+    ],
+    "finite_difference_k": [
+      51.385514566609615,
+      101.89750154721335,
+      152.5921150423926,
+      203.3362562079524
+    ],
+    "relative_differences": [
+      2.5115365899895123e-08,
+      1.0218596088960817e-07,
+      2.3060620439930093e-07,
+      4.1042292627297857e-07
+    ],
+    "max_relative_difference": 4.1042292627297857e-07,
+    "agree": true,
+    "formulations": [
+      "Bessel J/Y determinant root-finding",
+      "Liouville-transformed tridiagonal finite differences"
+    ],
+    "claim_class": "SIMULATED"
+  },
+  "evidence_class": "SIMULATED",
+  "limitations": [
+    "two internal formulations"
+  ],
+  "uncertainty": {},
+  "software": {
+    "python": "3.13.2",
+    "rgcs_surface_wave": "0.10.15",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0"
+  },
+  "source_commit": "20545f46d4eeb7967f098b61b579b4cf355e3613",
+  "publication_status": "HOLD",
+  "nonclaim": "Computed values are simulation outputs, not measurements. This work does not demonstrate antigravity, reactionless thrust, gravity modification, free energy, or anomalous propulsion, and makes no claim about the origin or authorship of the source material.",
+  "receipt_hash": "dc80256af78b58fde017aa48c25b6bb0eaea0e4b36c5ee535b1e44875331c854"
+}

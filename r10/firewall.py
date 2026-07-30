@@ -37,7 +37,16 @@ from pathlib import Path
 #: disclosure.
 FORBIDDEN_PATTERNS = {
     "PERSONAL_IDENTITY": (
-        r"star.?family", r"chosen\s+(?:one|person)", r"zoltron",
+        # R10.12 review: the codec taxonomy tokens SEPARATE_STAR_FAMILY
+        # (underscore-delimited) and the CSV column value ,star-family,
+        # (comma-delimited) in the R10.11 evidence tables are vector-
+        # FAMILY classifications, not personal-identity claims. The
+        # boundary exclusions below skip exactly those delimiter-bound
+        # technical tokens; the prose-sense phrase ("... star family
+        # ...") still matches. Live surfaces were also renamed to
+        # SEPARATE_NONTERRA_VECTOR_FAMILY so the token never recurs.
+        r"(?<![,_])star.?family(?![,_])",
+        r"chosen\s+(?:one|person)", r"zoltron",
     ),
     "PRIVATE_CHANNELLING": (
         r"channell?ed\s+message", r"transcript\s+of\s+session",

@@ -1,0 +1,38 @@
+{
+  "audit": "final-claim-audit",
+  "date": "2026-07-26",
+  "final_implementation_commit": "69f2174009654cf9996c88e976a78ac3b21e065d",
+  "banned_wording_scan": {
+    "surfaces": ["static/hub/**", "release/lab/**", "docs/user/**", "docs/developer/**", "examples/lab/*", "rgcs_lab/data/**", "docs/workbench/RGCS_LAB_CLI.md"],
+    "hits": []
+  },
+  "private_data_scan": {
+    "patterns": ["emails", "local user paths", "OneDrive paths", "operator transcripts"],
+    "hits": []
+  },
+  "external_network_scan": {
+    "scope": "all hub HTML/JS (working + release mirror)",
+    "external_urls": [],
+    "fetches": "same-origin relative only (/api/*, fixtures/*, assets/*), credentials omitted",
+    "telemetry": "none; privacy defaults telemetry=False verified via doctor, /api/health, and hub banner"
+  },
+  "planted_claim_battery": {
+    "path": "integrated adapter (Codex state machine under Claude policy)",
+    "claims_rejected_red_with_typed_attacks": 7,
+    "banned_wording_in_inputs": "redacted in every echo ([REDACTED-BANNED-WORDING]); critic attacks original text; API returns structured REJECT receipt (200) or 422 lock refusal, never 500",
+    "waiver_path": "ACCEPT_YELLOW with waiver recorded; critic never bypassed; GREEN unreachable"
+  },
+  "physics_non_claims": [
+    "coordinate: physical projection UNDERDETERMINED on all surfaces; Stonehenge remains a training equality",
+    "golay: no external-civilization claim",
+    "frames: no physical field effect claim",
+    "memory: no consciousness claim",
+    "dual_pole: no independent-witness claim",
+    "lattice: no matter transport; ledger closes (drift ~1e-15)",
+    "metasurface: no gravity modification; passivity + SI units + warning verified",
+    "predictions: not evidence before measurement; freeze-hash only",
+    "proofs: a green UI is not a physical proof"
+  ],
+  "out_of_family_vectors": "31-bit vectors produce a typed RED refusal (CLI exit 4, API 400); never truncated or padded; frozen parser untouched",
+  "result": "PASS"
+}

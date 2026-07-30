@@ -1,0 +1,13 @@
+{
+  "schema": "rgcs.r1011.holdout-freeze.v1",
+  "intake_id": "SEALED_HOLDOUT_INTAKE_2026-07-27",
+  "intake_sha256": "350c4ffba82e2434896d2b2f57fb925fba035382bed6d0768e52b7d87f3d16f6",
+  "implementation_state_sha256": "7f72241ebd74e0bc68345434fd018d6fc3c0ea653b811a74c99ea047d6e2651b",
+  "parent_commit": "f34bb521c32e7fadd699596401377da3353a4a9a",
+  "frozen": {
+    "codec": "old F5|Q22|S3 profile DEMOTED to exact historical structural profile; unified codec UNRESOLVED (0 survivors)",
+    "map": "FLAT_FACE_NODE_CURVATURE_V1_CANDIDATE (convex, 0 folds L6, exact anchors)",
+    "controls": "see R10_11_MAP_COMPARISON.csv"
+  },
+  "gate": "predictions frozen+hashed; operator may ask the source for labels; verbatim recording; no retuning after reveal"
+}

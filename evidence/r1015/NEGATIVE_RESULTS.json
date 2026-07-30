@@ -1,0 +1,96 @@
+{
+ "schema": "rgcs.r1015.negative-results.v1",
+ "publication_status": "HOLD",
+ "nulls": [
+  {
+   "id": "N1",
+   "title": "4096 Hz is not the electromagnetic surface-wave carrier",
+   "claim_class": "NULL",
+   "result": {
+    "schema": "rgcs.r1015.candidate-carrier-test.v1",
+    "f_candidate_hz": 4096.0,
+    "candidate_free_space_wavelength_m": 73191.51806640625,
+    "annulus_circumference_m": 0.7111664463864444,
+    "circumference_in_wavelengths": 9.71651449750239e-06,
+    "lowest_derived_eigenmode_hz": 1168840407.705314,
+    "ratio_derived_over_candidate": 285361.42766243016,
+    "required_slow_wave_factor_for_m1": 102917.56372689486,
+    "verdict": "FALSIFIED_AS_ELECTROMAGNETIC_CARRIER",
+    "interpretation": "the structure is electrically tiny at the candidate frequency: it cannot support a bound annular surface-wave resonance there. The candidate frequency is retained as a SWITCHING and PHASE reference, which is what the source record actually describes, and NOT as the electromagnetic carrier. This is a NULL result for the carrier reading, not a failure of the device concept.",
+    "claim_class": "NULL"
+   },
+   "ordinary_explanation": "the annulus is 1e-5 wavelengths around at 4096 Hz; it is an electrically tiny quasi-static object there. 4096 Hz is a switching and phase reference, which is what the source record describes.",
+   "what_would_change_it": "a structure with a slow-wave factor above 1e5, i.e. a resonator ~5 orders larger or a genuinely different physical mechanism"
+  },
+  {
+   "id": "N2",
+   "title": "Space-time nonreciprocity does not engage at 16 Hz modulation",
+   "claim_class": "NULL",
+   "result": {
+    "scale_separation": {
+     "f_sw_hz": 1150903450.5317373,
+     "q_factor": 48.81144745021751,
+     "f_mod_hz": 16,
+     "ratio_f_sw_over_f_mod": 71931465.65823358,
+     "linewidth_hz": 23578556.069363374,
+     "half_linewidth_hz": 11789278.034681687,
+     "sidebands_resolved": false,
+     "q_required_to_resolve": 35965732.82911679,
+     "regime": "QUASI_STATIC_UNRESOLVED",
+     "consequence": "all sidebands fall inside one resonance linewidth: the modulation is adiabatic with respect to the mode, and no nonreciprocal space-time gap opens. Any force is the ordinary quasi-static reaction, not a modulation effect",
+     "claim_class": "DERIVED"
+    },
+    "nonreciprocity": {
+     "schema": "rgcs.r1015.nonreciprocity.v1",
+     "forward_asymmetry": -2.915778483016578e-08,
+     "reversed_asymmetry": -2.915778483016578e-08,
+     "nonreciprocity_contrast": 0.0,
+     "linewidth_hz": 23946030.465443727,
+     "sidebands_resolved": false,
+     "regime": "QUASI_STATIC_UNRESOLVED",
+     "verdict": "NO_MEASURABLE_NONRECIPROCITY",
+     "interpretation": "the modulation offset is far smaller than the resonance linewidth, so forward and reversed modulation address the same resonance identically. No space-time nonreciprocal gap opens, and the contrast below is a numerical floor, not a physical effect.",
+     "claim_class": "NULL"
+    }
+   },
+   "ordinary_explanation": "sidebands sit ~6 orders inside one resonance linewidth; the modulation is adiabatic with respect to the mode",
+   "what_would_change_it": "Q above 3.6e7, or modulation raised into the MHz range comparable with the linewidth"
+  },
+  {
+   "id": "N3",
+   "title": "Constructed harmonic field model did not converge and was withdrawn",
+   "claim_class": "NULL",
+   "result": {
+    "symptom": "lateral force changed by 9-44 percent per harmonic-truncation step and never settled",
+    "diagnosis": "the constructed field was not a solution of Laplace's equation and lacked the m-dependent radial decay that makes a multipole sum converge; the finite-aperture sinc factor does not decay over m<=16 for a 35-cell pitch and did not rescue it",
+    "resolution": "replaced with exact superposed Coulomb fields, which need no truncation; force is now invariant to 15 significant figures under integration-surface placement"
+   },
+   "ordinary_explanation": "a modelling error, found by an independent convergence dimension and published rather than hidden",
+   "what_would_change_it": "nothing; the model is withdrawn"
+  },
+  {
+   "id": "N4",
+   "title": "Isolated distribution has zero self-force; no configuration produces unbalanced momentum",
+   "claim_class": "NULL",
+   "result": {
+    "self_force_n": 7.491940885257591e-13,
+    "m1_lateral_correlation": 1.0,
+    "symmetric_mask_lateral_force_n": 5.289017246996075e-27
+   },
+   "ordinary_explanation": "lateral force is an ordinary m=1 asymmetry force balanced by the support reaction; momentum closes",
+   "what_would_change_it": "a momentum ledger that fails to close once every body is included"
+  },
+  {
+   "id": "N5",
+   "title": "Exactly diametric omitted-cell pair is impossible on an odd cell count",
+   "claim_class": "NULL",
+   "result": {
+    "status": "IMPOSSIBLE",
+    "reason": "cells=35 is odd, so no pair of indices is separated by exactly pi; the nearest available separation is used instead and is reported as nearest_diametric_gaps",
+    "claim_class": "NULL"
+   },
+   "ordinary_explanation": "arithmetic: no pair of 35 equally spaced indices differs by exactly pi",
+   "what_would_change_it": "an even cell count"
+  }
+ ]
+}

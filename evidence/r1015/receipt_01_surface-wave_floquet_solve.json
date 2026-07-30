@@ -1,0 +1,50 @@
+{
+  "schema": "rgcs.r1015.receipt.v1",
+  "command": "surface-wave floquet solve",
+  "inputs": {
+    "f_mod": 16.0
+  },
+  "input_hash": "af0e08ee16a100bca782c61d114ab021ebe360738bdcd338a0c9f844ab9fd041",
+  "outputs": {
+    "nonreciprocity": {
+      "schema": "rgcs.r1015.nonreciprocity.v1",
+      "forward_asymmetry": -2.915778483016578e-08,
+      "reversed_asymmetry": -2.915778483016578e-08,
+      "nonreciprocity_contrast": 0.0,
+      "linewidth_hz": 23946030.465443727,
+      "sidebands_resolved": false,
+      "regime": "QUASI_STATIC_UNRESOLVED",
+      "verdict": "NO_MEASURABLE_NONRECIPROCITY",
+      "interpretation": "the modulation offset is far smaller than the resonance linewidth, so forward and reversed modulation address the same resonance identically. No space-time nonreciprocal gap opens, and the contrast below is a numerical floor, not a physical effect.",
+      "claim_class": "NULL"
+    },
+    "scale_separation": {
+      "f_sw_hz": 1150903450.5317373,
+      "q_factor": 48.81144745021751,
+      "f_mod_hz": 16,
+      "ratio_f_sw_over_f_mod": 71931465.65823358,
+      "linewidth_hz": 23578556.069363374,
+      "half_linewidth_hz": 11789278.034681687,
+      "sidebands_resolved": false,
+      "q_required_to_resolve": 35965732.82911679,
+      "regime": "QUASI_STATIC_UNRESOLVED",
+      "consequence": "all sidebands fall inside one resonance linewidth: the modulation is adiabatic with respect to the mode, and no nonreciprocal space-time gap opens. Any force is the ordinary quasi-static reaction, not a modulation effect",
+      "claim_class": "DERIVED"
+    }
+  },
+  "evidence_class": "NULL",
+  "limitations": [
+    "truncated harmonic balance"
+  ],
+  "uncertainty": {},
+  "software": {
+    "python": "3.13.2",
+    "rgcs_surface_wave": "0.10.15",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0"
+  },
+  "source_commit": "20545f46d4eeb7967f098b61b579b4cf355e3613",
+  "publication_status": "HOLD",
+  "nonclaim": "Computed values are simulation outputs, not measurements. This work does not demonstrate antigravity, reactionless thrust, gravity modification, free energy, or anomalous propulsion, and makes no claim about the origin or authorship of the source material.",
+  "receipt_hash": "5049f858db04bef2cf312eee402835e3800ab4b609901bb837318e254e5b28d1"
+}

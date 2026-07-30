@@ -1,0 +1,17 @@
+{
+  "date": "2026-07-27",
+  "root": "rgcs-integration worktree",
+  "branch": "program/r10-10-face-orientation",
+  "parent_commit": "b422e36ae4a289c0d392f946bf1b604a3b3c5065",
+  "descends_from_r109": true,
+  "worktree_clean_at_start": true,
+  "tags": "<= v8.2.0 (none added)",
+  "remote": "origin (nothing pushed)",
+  "python": "3.13.2",
+  "package_version": "rgcs 8.2.0",
+  "test_commands": [
+    "pytest tests/r1010 -q",
+    "pytest tests/r109 -q",
+    "pytest tests -q --deselect <NR3-001 node>"
+  ]
+}

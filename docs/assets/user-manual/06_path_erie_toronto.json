@@ -1,0 +1,19 @@
+{
+  "schema": "rgcs.r1062.screenshot-receipt.v1",
+  "filename": "06_path_erie_toronto.png",
+  "captured_utc": "2026-07-30T17:35:00+00:00",
+  "commit": "138a09a8eb882415cb12792d00e84284d0d7483b",
+  "branch": "release/rgcs-v1-map-workbench",
+  "command": "python -m r1053 path 167849523 168930443",
+  "input_vectors": [
+    "167849523",
+    "168930443"
+  ],
+  "output_sha256": "7adecbb347df6724cc9e38ce9fcac44dbe069af68345ace7dbc3f8e974ed3097",
+  "bytes": 1095589,
+  "machine": "andrew@THINKDIFFERENT",
+  "platform": "win32",
+  "capture_method": "r1053.screenshots.capture (QtWebEngine offscreen)",
+  "invented": false,
+  "boundary": "The tool verifies geometry. It does not verify that a candidate vertex is physically true."
+}

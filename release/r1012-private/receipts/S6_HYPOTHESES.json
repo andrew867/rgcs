@@ -1,0 +1,37 @@
+{
+  "schema": "rgcs.r1012.s6-geometry-hypotheses.v1",
+  "principal_unresolved_bridge": true,
+  "fit_rule": "no family may use place names to fit",
+  "families": [
+    {
+      "id": "H1_ROOT_NODE",
+      "form": "state -> one of 64 lattice nodes (12 vertices + 20 faces + 30 edges + 2 poles?)",
+      "status": "UNDERDETERMINED"
+    },
+    {
+      "id": "H2_FACE_BARYCENTRIC",
+      "form": "state -> (face, coarse barycentric cell)",
+      "status": "UNDERDETERMINED"
+    },
+    {
+      "id": "H3_EDGE_VERTEX_CLASS",
+      "form": "state -> edge/vertex class + index",
+      "status": "UNDERDETERMINED"
+    },
+    {
+      "id": "H4_NODE_LIFT_CONTROL",
+      "form": "state -> recursive node-lift control parameter",
+      "status": "UNDERDETERMINED"
+    },
+    {
+      "id": "H5_TORO_POLO_PHASE",
+      "form": "state -> (toroidal, poloidal) phase pair (e.g. 8x8)",
+      "status": "UNDERDETERMINED"
+    },
+    {
+      "id": "H6_SHELL_RELATIVE",
+      "form": "state -> shell-relative geometric register",
+      "status": "UNDERDETERMINED"
+    }
+  ]
+}

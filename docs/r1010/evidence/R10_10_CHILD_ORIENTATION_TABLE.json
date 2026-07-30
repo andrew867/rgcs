@@ -1,0 +1,30 @@
+{
+  "children": {
+    "0": {
+      "serialized": "012",
+      "permutation_parity": 1,
+      "winding_preserved": true,
+      "geometric_inversion": false
+    },
+    "1": {
+      "serialized": "012",
+      "permutation_parity": 1,
+      "winding_preserved": true,
+      "geometric_inversion": false
+    },
+    "2": {
+      "serialized": "012",
+      "permutation_parity": 1,
+      "winding_preserved": true,
+      "geometric_inversion": false
+    },
+    "3": {
+      "serialized": "201",
+      "permutation_parity": 1,
+      "winding_preserved": true,
+      "geometric_inversion": true
+    }
+  },
+  "derivation": "barycentric zero/max structure + signed chart area",
+  "centre_child_note": "child 3 permutation is CYCLIC (even parity) but geometrically point-inverted — the two flags are independent and both tracked"
+}

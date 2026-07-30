@@ -1,0 +1,21 @@
+{
+  "profile_id": "FLAT_FACE_NODE_CURVATURE_V1_CANDIDATE",
+  "faces": "flat chord triangles between node positions",
+  "subdivision": "affine barycentric inside each flat parent; children flat between LIFTED nodes",
+  "lift": "L(m)=rho(m_hat)*m_hat, rho=1 (spherical control profile); gravity-line rendering",
+  "curvature": "only via node positions and node lifting; NO RBF, NO stored displacement field",
+  "fit_dof": "12 base node directions (24 angular params), reg 0.002 toward frozen V1 rigid mesh",
+  "hard_constraints": [
+    "Wilkes root face-0 centroid (residual 1e-6 deg)",
+    "SAA phase vertex 7 cone (moved 0.0 deg)",
+    "South-Up/axis via rigid-mesh regularization"
+  ],
+  "verification": {
+    "convex_hull_nodes": 12,
+    "outward_faces": 20,
+    "orientation_reversals_L6": 0,
+    "shared_edge_mismatches": 0,
+    "inverse_roundtrip": "60/60 exact",
+    "anchor_max_residual_deg": 4e-05
+  }
+}

@@ -45,7 +45,14 @@ STAMP_NAME = "_build_stamp.json"
 SOURCE_ROOTS = ("rgcs_desktop", "rgcs_workbench", "rgcs_core",
                 "rscs_core", "rscs2_core", "fkey_instrument",
                 "resonator_platform", "cspc", "pmwr", "r3", "r4",
-                "r6", "r7", "r8", "r9", "r10", "r11", "r12", "r13", "r15",
+                "r6", "r7", "r8", "r9", "r10", "r109", "r1010", "r1011", "r1012", "r1013", "r1015a", "rgcs_surface_wave", "r11", "r12", "r13", "r15",
+                # R10.16-R10.19 addressing / atlas lanes. r1016 and
+                # r1017 shipped WITHOUT being registered here, so a
+                # change to either could not invalidate a frozen dist —
+                # the same R8-D-006 class of gap. Closed here, together
+                # with r1018 and r1019 as they land.
+                "r1016", "r1017", "r1018", "r1019", "r1025", "r1028", "r1034",
+                "r1053",
                 "cwatlas",
                 # Q02 / R10-D-004: the inverse of R8-D-006. This lane
                 # ships in the wheel and sdist and is importable after
@@ -56,7 +63,12 @@ SOURCE_ROOTS = ("rgcs_desktop", "rgcs_workbench", "rgcs_core",
                 # decision is that a publicly shipped package must be
                 # hashed unless it is removed from every public
                 # artifact. It ships, so it is hashed.
-                "consciousness_lane")
+                "consciousness_lane",
+                # RCW + Recursive Infrastructure Lab: public structural
+                # codec and unified demonstrator hub both ship in the
+                # wheel, so both must invalidate frozen provenance.
+                "rgcs_coordinate",
+                "rgcs_lab")
 
 
 def repo_root() -> Path:

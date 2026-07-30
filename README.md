@@ -4,514 +4,275 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21387947.svg)](https://doi.org/10.5281/zenodo.21387947)
 
-**Current release: [v8.2.0](https://github.com/andrew867/rgcs/releases/tag/v8.2.0)**
-· includes RSCS 2.0 (capability-aware multiphysics) on the RSCS 1.0
-typed-mathematics layer · MIT license · Author: Andrew Green
-Frozen history: v2.0.0 (`archive/v2.0.0/`), v3.0.x, v4.0.0, v4.1.x — tags and
-records never modified. The DOI badge above is the latest **minted**
-DOI (v3.0.1); the v4.x Zenodo records are pending human verification
-(see Citing).
+An evidence-governed research programme in resonant geometry: crystal and resonator
+physics, typed coordinate systems, signal and phase analysis, and the provenance
+machinery that keeps them honest.
 
-RGCS is an **open, evidence-governed research framework** for relational
-coordinate records, periodic phase ambiguity, nested reference frames,
-uncertainty, provenance, and explicit scientific refusal — built on a
-typed, provenance-checked mathematics library and a validated
-anisotropic FEM + piezoelectric solver stack.
+> **Lore proposes. Mathematics translates. Software attacks. Evidence decides.
+> Provenance remains.**
 
-The motivating question, and the project's actual standard:
+That sentence is the architecture, not a slogan. Every lane below takes a claim,
+translates it into something computable, attacks it with tests, and records the verdict
+— including when the verdict is *no*. **Most physical claims in this repository have
+been refused or left unmeasured, and those results are published beside the positive
+ones.**
 
-> It appears possible. Can it be proved, measured, implemented, or
-> honestly refused?
+---
 
-So far, for every physical claim, the answer has been **refused** or
-**unmeasured**. Those results are published alongside everything else,
-because they are most of the science.
+## Pick your entry point
 
-## Start here
-
-| Document | What it is |
+| I want to… | Go here |
 |---|---|
-| [docs/guide/](docs/guide/README.md) | **user documentation** — install, configure, and run on Linux and Windows |
-| [SCIENTIFIC_BOUNDARIES.md](SCIENTIFIC_BOUNDARIES.md) | what this project has **not** established, with the measured evidence distribution |
-| [NON_CLAIMS.md](NON_CLAIMS.md) | everything not claimed, including claims withdrawn after review |
-| [HUMANITY_COMMONS_CHARTER.md](HUMANITY_COMMONS_CHARTER.md) | the foundation is common infrastructure; evidence labels are mandatory |
-| [LICENSE_MAP.md](LICENSE_MAP.md) | MIT throughout, unchanged; third-party status |
-| [PATENT_NON_ASSERTION_INTENT.md](PATENT_NON_ASSERTION_INTENT.md) | policy intent — **not** a covenant, pending legal review |
+| See something work in 60 seconds | [Map workbench](#map-workbench) ↓ |
+| Model a crystal specimen | [Crystal & resonator lane](#crystal--resonator-physics) ↓ |
+| Understand the typed maths core | [Foundations](#foundations) ↓ |
+| Browse everything | **[Documentation index](docs/README.md)** |
+| Know what's proven and what isn't | [Claim boundaries](docs/CLAIM_BOUNDARIES.md) |
 
-## RGCS v6.3 at a glance
+---
 
-- **Zero bench measurements.** 271 canonical evidence records across
-  every programme generation, and **none** at `BENCH_MEASUREMENT`,
-  `INDEPENDENT_REPLICATION` or any physical class. No coil wound, no
-  crystal driven, no oscillator pair compared, no field mapped, no
-  geophysical data loaded. The software *cannot* emit a physical
-  evidence class — that is enforced in code, not policy.
-- **Coordinate and timing infrastructure** (v4.6 → v5.1): typed roots
-  with alias sets retained rather than collapsed, ordered frame chains
-  with covariance propagation, exact address transcoding, phase
-  authority and epoch declarations, and refusal as a first-class typed
-  output.
-- **Three manuscripts**, each positioned by adversarial prior-art
-  review rather than ambition:
-  [DDS closure](papers/dds/PAPER.md) (short correspondence — the
-  formula is published prior art; the surviving result is that
-  continuous and sampled phase closure differ by `odd_part(gcd K)`),
-  null calibration (tutorial — the principle is the severity
-  requirement and is **not** claimed as new), and the
-  [coordinate technical report](papers/coordinates/TECHNICAL_REPORT.md)
-  (six of seven components are textbook; the contribution is the
-  integration, and its value still needs external evaluation).
-- **The negative results**, which are the bulk of the output: metric
-  actuation refused by arithmetic at ≥17.8 decades, sovereign
-  navigation unsupported, CW vector structure carrying zero
-  informative bits, consumer quartz unable to resolve a metre at any
-  integration time.
-- **Corrections carried in the open**, including to our own earlier
-  claims — a "validation" that compared a formula against itself, a
-  covariance clamp that reported perfect knowledge for an impossible
-  input, a symmetry detector blind at every injection strength, and an
-  anti-stale hash that had covered none of the last three programmes.
-  See [docs/v51/](docs/v51/).
+## The lanes
 
-**Review is invited, and is the point of publishing.** The most useful
-thing a reader can do is attack the integration claim: does
-covariance-aware frame chaining catch real errors, or is it ceremony?
+### Foundations
 
-## RGCS v4.1 quartz stack at a glance
+The typed, deterministic mathematics everything else is built on.
 
-- **All results are computational. No experimental confirmation exists.**
-- Validated quartz core (CORE_VALIDATED): anisotropic elasticity, modal
-  + static FEM, piezoelectric coupling, dielectric response, photoelastic
-  and birefringent optics, mechanical torsion/circulation diagnostics,
-  calibration with uncertainty ([user guide](docs/USER_GUIDE_V4.md),
-  [v4.1 release notes](docs/RELEASE_NOTES_V4_1.md)).
-- **Eye Consensus verdict (canonical 110 mm crystal):**
-  `UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE`. The candidate at
-  (−0.295, −0.205, 102.240) mm sits **3.906 mm** from the nearest
-  conventional station (−0.447, 0.774, 106.018) mm; the localization
-  halfwidth is 3.08 mm (mesh-resolution dominated; convergence shift
-  0.353 mm, material-draw cloud rms 0.032 mm). The implemented
-  conventional model **may** explain the result within current
-  uncertainty — it is **not established that it does**; finer mesh
-  resolution is the discriminating next computation. (v4.1 removed the
-  old 4 mm proximity rule, defect V4C-D-001; the v4.0.0 records are
-  frozen history.)
-- **Capability firewall:** unimplemented quartz mechanisms (magnetic
-  order, magnons, excitons, ferrotoroidic/IOME, dynamic magnetoelectric
-  tensors, metacrystal statistics, microscopic tunnelling, chiral-phonon
-  Zeeman, spacetime torsion) return typed
-  `MECHANISM_NOT_IMPLEMENTED_FOR_MATERIAL` results — never numeric
-  zeros, and **never a claim of physical nonexistence**
-  ([binding scope statement](docs/v4/WHAT_THIS_QUARTZ_MODEL_DOES_NOT_INCLUDE.md),
-  [capability matrix](docs/v4/V4_MATERIAL_CAPABILITY_MATRIX.md)).
-- **Separate reference systems** (REDUCED_ORDER_VALIDATED, never quartz):
-  exciton-magnon, avoided crossings, dressed spin, chiral phonons,
-  dynamic magnetoelectric response, metacrystal g2 transfer, LiNiPO4
-  IOME, MnF2 annealing comparator, nonlinear AFM switching,
-  phonon-controlled exchange. They are comparison systems and hypothesis
-  generators — not evidence those mechanisms operate in the quartz
-  specimen.
-- **Quarantined source hypotheses:** FDT and source-lore material are
-  import-firewalled SOURCE_HYPOTHESIS adapters with pre-registered
-  falsification discriminators ([provenance](sources/registry/),
-  [FDT adapter](docs/v4/V4_FDT_SOURCE_HYPOTHESIS_ADAPTER.md)).
-- **Not implemented anywhere:** DFT, Bethe-Salpeter, ab-initio spin
-  dynamics, QFT, microscopic QED/plasmonics, microscopic proton
-  tunnelling, nonclassical photon-statistics generation, photon creation
-  from classical boundary switching, or a complete microscopic
-  explanation of Eye candidates.
-- **Research expansion (v4.2.1):** the post-v4.1 backlog is translated
-  into equations, protocols, controls, and honest statuses — see the
-  [programme report](docs/v4/V4X_PROGRAMME_REPORT.md) and the
-  [coverage ledger](docs/v4/V4X_COVERAGE_LEDGER.md). **268 items**
-  (248 fixed + 20 found by the orphan sweep) each carry an owner,
-  artifact, status, documentation, test-or-falsification, blocker, and
-  next action, verified mechanically by gates G42A–G42G. The
-  experimental campaigns are **protocols only**: no hardware was
-  operated and no data was measured. The
-  [consciousness lane](consciousness_lane/) is a separate, quarantined
-  research programme whose records may never be used as evidence in
-  quartz computation.
-- **Eye refinement (v4.2.1) — resolved, and the answer changed.** A
-  finer ladder (3.0/2.0/1.5 mm, 30 816 dof) puts the localization
-  halfwidth (**1.803 mm**) below the candidate-station separation
-  (**6.298 mm**) for the first time, so the comparison finally carries
-  information: `NEAR_CONVENTIONAL_NODE_BUT_DISTINCT` — **the
-  conventional model does not explain the candidate**. The candidate
-  also **does not converge on the v4.1 coordinate**: its distance from
-  (−0.295, −0.205, 102.240) mm *grows* with resolution (1.375 → 2.270 →
-  2.476 mm), settling near (−0.048, −0.020, 99.78) mm. The v4.1 record
-  is preserved unchanged (it faithfully records a ~4 mm-spacing
-  computation); what changes is its interpretation — that coordinate was
-  resolution-limited. Computational only; no measurement exists
-  ([Eye refinement V5](docs/v4/EYE_REFINEMENT_V5.md)).
-- **v4.2.1 is a completeness-audit release.** v4.2.0's "248/248
-  coverage" verified that every ID had an owner *string* — it never
-  checked that the work existed. Seven QA attacks succeeded against it:
-  two workstreams were registries wearing an implementation's status,
-  the orphan sweep had never run, and 47 required documents were
-  missing. All eleven defects are closed with regression tests
-  ([QA verdict](docs/v4/V4X_QA_FINAL_VERDICT.md),
-  [defect register](docs/v4/V4X_DEFECT_REGISTER.md)).
-- **Emergent resonator programme (v4.3.0):** a closed-loop resonator
-  design→measure→trim→certify platform
-  ([resonator_platform/](resonator_platform/)) whose every artifact is
-  **synthetic and flagged so** — no hardware exists and every physical
-  path refuses by capability gate; five 2026 papers as firewalled
-  reference models; and the Eye **census correction**: the v4.1 and
-  v4.2.1 coordinates are two resolution-dependent estimates of one
-  apex feature, which has a symmetric family
-  ([claim card v4](docs/v4/EYE_CLAIM_CARD.md),
-  [platform](docs/v4/resonator/CLOSED_LOOP_PLATFORM.md)). Coverage
-  288/288 verified mechanically.
-- **Frequency-key instrument (v4.4.0):** an exact-arithmetic
-  frequency-relation engine (a 4096×5 harmonic is not an 8×2560
-  closure), a mechanism-first drive optimizer whose arithmetic
-  coincidences score zero amplitude by construction, a fail-off
-  ESP32-CYD instrument twin (arm leases, latched faults, hash-chained
-  logs) with firmware source (NOT compiled — no toolchain/hardware),
-  and six SYNTHETIC simulator demos
-  ([fkey docs](docs/v4/fkey/FKEY_INSTRUMENT.md)). The specimen is an
-  eBay listing; all six hypotheses are UNTESTED.
-- **Status at the release commit (v8.2.0):** 7803 tests passed
-  (1 archived-environment byte test deselected by policy D-V3-04);
-  hosted CI 10/10 jobs green (Ubuntu/Windows/macOS); adversarial audit
-  19/19 including the consciousness-lane quarantine check (G51);
-  coverage gates G42A–G42G pass over 268 rows; proof bundle 115/115
-  checksums ([proof bundle](proof_bundle_110mm/), regenerate with
-  `python -m rscs2_core.proofbundle`). The v4.1.0 scientific baseline
-  (`4c2a1cc`, 605 tests) is frozen and unchanged.
-- **iGPU:** Intel Iris Xe (fp32) parity 3.4e-05 and i5-1135G7 CPU-CL
-  (fp64) parity 1.8e-14, measured on real hardware at v4.0.0 and
-  unchanged; CUDA remains interface-only (no hardware).
-
-## Honest scope — read this first
-
-**No RGCS hypothesis has been experimentally confirmed.** The repository
-contains zero confirming measurements of real crystals — and, as of v5.1,
-zero measurements of anything at all. The evidence distribution, measured
-from the canonical store rather than asserted:
-
-| Evidence class | Records |
-|---|---:|
-| `DERIVED_ARITHMETIC` | 140 |
-| `ANALYTIC_MODEL` | 49 |
-| `SOURCE_CLAIM` | 48 |
-| `UNSUPPORTED` | 16 |
-| `NUMERICAL_SIMULATION` | 9 |
-| `GEOMETRY_IDENTITY` | 7 |
-| `SYNTHETIC_RUN` | 1 |
-| `LORE` | 1 |
-| **`BENCH_MEASUREMENT`** | **0** |
-| **`INDEPENDENT_REPLICATION`** | **0** |
-
-What the repository contains is the machinery to test its pre-registered
-claims honestly: every hypothesis ships with an observable, matched
-controls, an uncertainty statement, and a failure condition — several
-directional claims are pre-registered **nulls** (the expected outcome is
-*no effect*). The project makes **no therapeutic, medical, cosmological,
-or consciousness claims**, and a forbidden-vocabulary lint enforces that
-in the test suite.
-
-Most published prior-art claims were **withdrawn** after adversarial
-review found them standard. That is recorded in
-[NON_CLAIMS.md](NON_CLAIMS.md) rather than quietly dropped.
-
-Every scientific statement in code, docs, UI, and manuscripts carries one of
-five machine-checked labels (`docs/SCIENTIFIC_CLASSIFICATION_POLICY.md`):
-
-| Label | Meaning |
+| package | what it is |
 |---|---|
-| **Established** (EST) | textbook math/physics anyone can verify independently |
-| **Derived** (DER) | computed within RGCS from stated inputs by stated math; inherits the weakest input label |
-| **Hypothesis** (HYP) | a falsifiable RGCS conjecture; never presented as fact |
-| **Source claim** (SRC) | an external source's statement, reported with provenance, not endorsed |
-| **Engineering plan** (ENG) | unbuilt software/hardware design; never evidence |
-
-A machine-enforced firewall rejects any Established/Derived output computed
-from Hypothesis/Source/Engineering inputs.
-
-## Architecture
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│ rgcs_desktop      PySide6 workbench (13 panels) + headless,     │
-│                   tested services (provenance graph, waveform/   │
-│                   timing preview, phase-budget views)             │
-├─────────────────────────────────────────────────────────────────┤
-│ rgcs_core         crystal application: geometry, resonance       │
-│                   ladders, coupled modes, anisotropy (Christoffel)│
-│                   optics, timing/drive, experiments, crystal DB,  │
-│                   FEA export — 61 frozen equations RGCS-M.1..61   │
-├─────────────────────────────────────────────────────────────────┤
-│ rscs_core         RSCS 1.0 typed framework: 17 coordinates +     │
-│                   23 operators on declared manifolds, machine     │
-│                   registry, classification firewall, embedding ι  │
-├─────────────────────────────────────────────────────────────────┤
-│ Conservative Extension Property (machine-tested, every commit):   │
-│        O_RSCS(ι(x)) = ι(O_RGCS(x))  on the frozen v2 domain      │
-├─────────────────────────────────────────────────────────────────┤
-│ RGCS v2.0.0 — FROZEN  (tag v2.0.0, archive/v2.0.0/)              │
-└─────────────────────────────────────────────────────────────────┘
-
-experiments/   JSON schemas + validated example manifests (13 schemas)
-manuscripts/   4 XeLaTeX manuscripts, every number generated from code
-embedded/      HG Embedded OS contract (ESP32/CYD; ENG until built)
-scad/          OpenSCAD CAD generators (v7 fixes the v6 D-02 defect)
-docs/          full specification, decision log, QA and audit trail
-release/       v3.0.0-rc1 artifacts, SHA256SUMS, provenance manifest
-```
-
-The layering rule: v3 never edits v2 — it reaches the frozen core only
-through the embedding, and the Conservative Extension Property battery
-proves the round trip on every test run.
-
-## A taste of what's inside
-
-The flagship v3 result — the v2 scalar wave-speed *hypothesis* resolved into
-a measured-orientation anisotropic model that recovers the scalar as its
-special case (its ±5 % band turns out to be the physical X–Z spread):
-
-![Anisotropic wave speed vs direction, with the v2 scalar band](docs/images/anisotropy_sweep.png)
-
-The three frozen macro drive envelopes, rendered by the same code the
-desktop preview and firmware acceptance tests use (the source's ambiguous
-"shorter by half" phrase is preserved as *two* distinctly named modes):
-
-![The three frozen macro drive envelopes](docs/images/macro_envelopes.png)
-
-Desktop workbench screenshots will accompany the T2 panel tranche; until
-then the headless services behind those panels are fully tested and their
-outputs are what you see above.
-
-## Quick start
-
-Python ≥ 3.11 on Windows, Linux, or macOS (CI covers all three).
+| `rgcs_core` | RGCS v2 computational core — deterministic, typed, tested implementation of the v2 mathematical model |
+| `rscs_core` | RSCS 1.0 — typed coordinate/state-space foundation: periodic phase ambiguity, nested frames, uncertainty, provenance |
+| `rscs2_core` | RSCS 2.0 — capability-aware multiphysics platform: anisotropic FEM, piezoelectric solver stack |
 
 ```bash
-git clone https://github.com/andrew867/rgcs && cd rgcs
-python -m pip install -e ".[dev]"
-python -m pip install "scikit-fem>=10" meshio matplotlib gmsh   # v4 solver stack
-python -m pytest -q --deselect tests/regression/test_generator_determinism.py::test_generator_deterministic
-# expect: see docs/v4/RELEASE_METADATA.json, at the v5.1.0 release commit
+rgcs-v4 --help          # RSCS 2.0 multiphysics CLI
 ```
 
-The v4 CLI entry point is `rgcs-v4` (or `python -m rscs2_core.cli`):
+### Crystal & resonator physics
+
+The lane the system is named for: resonant geometry in real materials.
+
+| package | what it is |
+|---|---|
+| `r1013` | Custom crystal specimen workflow — schema, Christoffel API, FEM + convergence + piezo boundaries |
+| `resonator_platform` | Closed-loop platform: design → simulate → fabricate → fixture → excite → measure → identify modes |
+| `fkey_instrument` | Frequency-key harmonic excitation and the ESP32-CYD instrument |
+| `rgcs_surface_wave` | Phase-gated dielectric-loaded annular surface-wave research model |
+| `r1015a` | Scale A mechanical crystal lane |
 
 ```bash
-rgcs-v4 capabilities material.alpha_quartz --check magnon_modes
-#   -> NOT_APPLICABLE with reason_code MECHANISM_NOT_IMPLEMENTED_FOR_MATERIAL
-rgcs-v4 modes ideal_n7 --n 12          # anisotropic modal solve (needs gmsh)
-rgcs-v4 proof-bundle canonical-110     # the full reproducibility bundle
-rgcs-v4 verify-checksums               # 115/115 expected
-python tools/demo_v4.py --fast         # 10-step clean-workspace demo
+rgcs --help             # unified crystal workflow CLI
 ```
 
-Then try the library:
+Guides: [Calibration](docs/CALIBRATION_GUIDE.md) ·
+[Bench hardware](docs/BENCH_HARDWARE.md) ·
+[Canonical 110 mm case study](docs/CANONICAL_110MM_CASE_STUDY.md)
 
-```python
-from rscs_core.coupling import couple_modes
-couple_modes([1000.0, 1000.0], [[0.0, 10.0], [10.0, 0.0]])
-# hybrid frequencies 990/1010 Hz — the 2g splitting, anti-Hermitian K = i·2πg
+### Coordinates & mapping
 
-from rgcs_core.anisotropy import axis_speeds
-axis_speeds()["Z"]["v_quasi_long_m_s"]   # 6330 m/s = sqrt(c33/rho)
-```
+> RGCS is a coordinate, mapping, signal, and provenance research workbench. It converts
+> received or user-supplied numeric vectors into reproducible binary/octal parse
+> receipts, candidate Earth-root positions, great-circle paths, and polygonal map
+> regions.
 
-Desktop workbench: `pip install -e ".[desktop]"` then
-`python -m rgcs_desktop` (or `--smoke-check` headless).
-Validate experiment manifests: `python experiments/schemas/validate.py`.
+| package | what it is |
+|---|---|
+| `rgcs_coordinate` | Typed structural decoder/encoder for the 30-bit candidate codec |
+| `cwatlas` | CW Atlas and bidirectional geocoder |
+| `r1053` | **V1 Earth-root map workbench** — parse, path, polygon, live builder |
 
-## Build the manuscripts
+### Discovery & experiment architecture
+
+| package | what it is |
+|---|---|
+| `r13` | Cross-domain discovery architecture: response functions, Green functions, S-matrices |
+| `r15` | Experimental phase infrastructure — turns the R13 architecture instrument-ready and calibration-bound |
+
+### Speculative lanes, explicitly gated
+
+These exist so that speculative source material can be *attacked* rather than believed.
+None of them is load-bearing for any established result.
+
+| package | status |
+|---|---|
+| `cspc` | Crystalline Spacetime Coordinate Program — lore-derived, evidence-gated |
+| `pmwr` | Phase memory / worldline multipath recovery / Phryll translation hypothesis |
+| `consciousness_lane` | **Quarantined** under an explicit contract; isolated from every other lane |
+
+---
+
+## Map workbench
+
+The most immediately demonstrable lane, and the newest.
+
+![Erie to Toronto](docs/assets/user-manual/06_path_erie_toronto.png)
 
 ```bash
-python tools/make_v3_artifacts.py       # regenerate every table/figure
-cd manuscripts/rscs_foundations
-xelatex rscs_foundations.tex && bibtex rscs_foundations \
-  && xelatex rscs_foundations.tex && xelatex rscs_foundations.tex
+python -m pip install -e .
+python -m r1053 parse   168930443
+python -m r1053 map     168930443
+python -m r1053 path    167849523 168930443
+python -m r1053 polygon 165876523,165892743,165892763,165892783
+python -m r1053 serve
 ```
 
-(Each manuscript directory has a `BUILD.md`; `latexmk -xelatex` works where
-perl is available.) The v2 manuscript builds the same way in `manuscript/`.
+```
+distance        178.846 km (11.93 depth-9 cell edges)
+initial bearing 18.41 deg
+midpoint        42.891736, -79.738486
+cross-check     3 formulas agree: True (spread 2.67e-11 km)
+```
 
-## Publications
+**The polygon builder** takes any number of vectors — type one and press Add, paste a
+comma-separated list, Remove any row, reorder, or hit *Order by bearing*. Area,
+perimeter, centroid and the self-intersection check recompute on every edit.
 
-| Work | What it covers | Source |
-|---|---|---|
-| **RSCS Foundations** | the typed framework, conservative extension, coupling keystone | `manuscripts/rscs_foundations/` |
-| **RGCS Crystal Application** | anisotropic propagation, node menu, optical probe layer | `manuscripts/rgcs_crystal_application/` |
-| **Software & Hardware Roadmap** | platform layering, timing architecture, safety envelope, embedded contract | `manuscripts/software_hardware_plan/` |
-| **Historical & Source Companion** | the source corpus in its own words, adaptations and binding exclusions | `manuscripts/historical_source_companion/` |
-| RGCS v2 manuscript (28 pp.) | the frozen v2 system | `manuscript/rgcs_v2.pdf` |
+![Polygon builder](docs/assets/user-manual/10_polygon_uk4.png)
 
-Every numeric table, figure, and inline value in all five documents is
-generated from the tested libraries at build time — no number is hand-typed.
+→ [Quickstart](docs/QUICKSTART.md) · [User Manual](docs/USER_MANUAL.md) ·
+[Map/Path/Polygon Guide](docs/MAP_PATH_POLYGON_GUIDE.md)
 
-### v5.1 papers — positioned by prior-art review, not by ambition
+### What this lane will not tell you
 
-| Work | Status after review | Source |
-|---|---|---|
-| **Two Notions of Phase Closure in Multi-Tone DDS** | short correspondence. The closure formula is **published prior art**; the surviving result is that continuous and sampled closure differ by `odd_part(gcd K)` | [`papers/dds/PAPER.md`](papers/dds/PAPER.md) |
-| **Adversarial null calibration** | tutorial. The principle is the **severity requirement** and is not claimed as new; the contribution is an executable harness and three worked failures from this project's own history | [`r8/nullcal.py`](r8/nullcal.py) |
-| **Relational Root-Space Coordinates** | **technical report, not a research paper.** Six of seven components are textbook | [`papers/coordinates/TECHNICAL_REPORT.md`](papers/coordinates/TECHNICAL_REPORT.md) |
+![B01](docs/assets/user-manual/08_path_B01_disagreement.png)
 
-Each was downgraded from its original framing after an adversarial
-literature search. The reviews are recorded in full — including what
-they could *not* determine — in
-[`docs/v51/R8_PRIOR_ART_REVIEW.md`](docs/v51/R8_PRIOR_ART_REVIEW.md).
+*One vector. One octal word `1170616713`. One branch. Two positions 5121.7 km apart —
+both fitting all three calibration anchors to machine precision.*
 
-## Lessons learned
+The projector matrix is scale-invariant: 9 entries, **8 free parameters**, fitted
+against **6 constraints** from 3 anchors. A 2-dimensional family survives, and two of
+its members put the same vector on different continents. **A zero anchor residual is
+arithmetic, not evidence.**
 
-- Independent QA is most valuable when it is allowed to overturn the
-  project's own mathematics. A v2 review found an incorrect time-domain
-  coupling map; fixing it (anti-Hermitian `K = i·2πg`) changed the physical
-  interpretation and produced a permanent regression test.
-- Provenance and classification matter as much as equations. Separating
-  Established, Derived, Hypothesis, Source, and Engineering claims allowed
-  historical material to inspire tests without becoming evidence by
-  repetition — and a machine-enforced firewall keeps it that way.
-- Historical or unconventional claims can often be translated into
-  measurable variables without presuming they are true: "the eye" became an
-  eight-definition node menu with failure conditions; "a single crystal
-  tone" became a scalar wave speed that anisotropic modelling then explained.
-- A resonant system cannot be characterized by geometry and nominal
-  frequency alone: boundary conditions, anisotropy, mode overlap, phase,
-  delay, damping, loading, uncertainty, and measurement fidelity all matter.
-  The phase-at-coordinate model exists because commanded phase is never the
-  phase at the crystal.
-- Cross-platform numerical reproducibility requires declared environments
-  plus tolerance-aware portability tests. Two of our "Windows defects"
-  turned out to be an undeclared dependency; the third was a real
-  path-separator bug. A two-OS CI matrix caught what code review had not.
-- Frozen registries and conservative-extension tests made it possible to
-  expand the framework without silently rewriting earlier results.
-- Software and modelling advanced faster than the measurement programme.
-  The project's strongest current output is a reproducible framework and
-  falsification plan, not experimental confirmation — and every
-  claim-bearing surface says so.
-- Independent review, negative results, and explicit failure conditions
-  strengthened rather than weakened the project.
+```text
+Vertex POSITIONS are projector output and remain underdetermined under V1-B01/B02.
 
-Fuller engineering version: `docs/SOFTWARE_HARDWARE_ARCHITECTURE.md`.
+Path, polygon, distance, perimeter, centroid, and area geometry are exact for the
+selected vertices.
 
-## Roadmap
+The tool verifies geometry.
+It does not verify that a candidate vertex is physically true.
+```
 
-**The single next step is the differential clock-link baseline** — a
-common-source split of one oscillator into two channels. It costs
-almost nothing, and it is the only way to learn what the measurement
-chain itself contributes. Every later claim depends on that number,
-and the project currently has zero measurements of any kind.
+Open blockers **B01–B07**, stated in full with the numbers that make them real:
+**[docs/BLOCKERS_B01_B07.md](docs/BLOCKERS_B01_B07.md)** — pinning irreproducibility
+(B01), three anchors cannot test an eight-parameter law (B02), the branch-117 conflict
+(B03), the cell-scale n=1 reading (B04), no coastline data (B05), the Saint-Frédéric
+proxy (B06), no transport bridge (B07).
 
-A second finding worth acting on first: at the minimal budget tier the
-**counter**, not the oscillator, sets the short-τ floor until about
-2000 s. Spend on the counter before the clock. (`r8/measurement.py`)
+---
 
-| Item | Content | Status |
-|---|---|---|
-| **M1** | Clock-link baseline: common-source split, instrument floor | **specified, unbuilt — start here** |
-| M2 | Two independent oscillators; Allan/MDEV/TDEV decomposition | specified |
-| M3 | External review of the integration claim | **invited now** |
-| M4 | Covariance frame chain evaluated against a real pipeline | needs an outside user |
-| T2–T5 | Desktop panels, FEA import, embedded firmware, timing hardware | contracts published, ENG until measured |
-| — | Bench campaigns for the pre-registered crystal claims | pre-registered, unrun |
+## Applications
 
-No physical tranche will be marked done on modelling. `r8/bench.py`
-and `r6/bench.py` refuse to promote a synthetic result into a
-measurement.
+| command | what it opens |
+|---|---|
+| `rgcs-lab serve` | Local web hub — nine inspectable modules, each with receipts and claim badges. Loopback, no telemetry. |
+| `rgcs-workbench` | PySide6 desktop research workbench |
+| `rgcs-workbook` | Workbook / reporting CLI |
+| `rgcs-coordinate` | Coordinate codec CLI |
+| `python -m r1053` | Map workbench CLI |
 
-## Limitations (honest list)
+---
 
-1. **No bench data anywhere: nothing physical is confirmed**, and the
-   corpus holds zero records at any physical evidence class (see
-   Honest scope).
-1a. **Almost nothing here is novel, and the documents say so.** The DDS
-   closure formula is published (Nicholas & Samueli 1987; Hwang et al.
-   2017; Fujifilm US12422666B2). The null-calibration principle is the
-   severity requirement (Mayo & Spanos) and the positive control. Six
-   of seven coordinate components are textbook — LAMBDA, wide-lane,
-   IAU/SPICE frames, Coll–Ferrando–Morales emission coordinates. The
-   one integration claim that may be useful is **unproven**: no case
-   exists where it caught an error the standard tools miss.
-1b. **The DDS prior-art search is explicitly incomplete.** `analog.com`
-   was unreachable throughout the review, so ADI AN-1396 and the full
-   FSK/PSK article were never read directly. Either could close the
-   remaining gap.
-2. Eye localization is mesh-resolution dominated (±3.08 mm at shipped
-   mesh levels): whether the 3.906 mm candidate/station separation is
-   real structure or discretization is an OPEN question — finer meshes
-   are the discriminating computation.
-3. New-wave source papers (Toyoda, Schlauderer, Afanasiev, …) are
-   registered metadata-only; numeric comparisons against their measured
-   values are marked pending until full texts are supplied locally.
-4. One inherited test is byte-exact only in the archived v2 reference
-   environment (deselected everywhere per policy D-V3-04; a
-   tolerance-aware equivalent runs on every platform).
-5. v4-specific GUI views are staged past 4.1 (the CLI + offscreen
-   rendering cover every function); desktop panels beyond the v3
-   workbench, firmware, and hardware remain contracts.
-6. No DFT/BSE/ab-initio/QFT/microscopic solvers anywhere; the metacrystal
-   transfer is a declared reduced rule; optical walk-off is not modelled.
+## What this project does not claim
 
-Full lists with evidence: [docs/RELEASE_NOTES_V4_1.md](docs/RELEASE_NOTES_V4_1.md),
-`docs/v4/V4_WHAT_IS_NOT_MODELLED.md`, and the historical
-`release/RELEASE_NOTES.md` / `docs/QA_REPORT_V3.md`.
+**RGCS does not claim that anomalous sources, craft, crop formations, physical
+propulsion, or non-human communication are proven.**
 
-## Contributing, support, and conduct
+The longer form, emitted by the software itself as `r1053.certificate.CLAIM_BOUNDARY`:
 
-See [CONTRIBUTING.md](CONTRIBUTING.md), [SUPPORT.md](SUPPORT.md),
-[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), [SECURITY.md](SECURITY.md),
-[FAQ.md](FAQ.md), and — for the *why* behind the unusual discipline —
-[DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md) and
-[RESEARCH_HISTORY.md](RESEARCH_HISTORY.md).
+> RGCS V1 is a coordinate/research workbench with a candidate Earth-root projection. It can parse and emit structured vector receipts, reproduce the V1 calibration artifacts, and classify residuals under declared cell-scale and operational-envelope hypotheses. It does not prove physical craft, alien sources, crop-circle authorship, Phryll propulsion, or metric engineering.
 
-### Review is actively wanted
+Two more, at the root of the repository:
+[SCIENTIFIC_BOUNDARIES.md](SCIENTIFIC_BOUNDARIES.md) — what the project has **not**
+established, with the measured evidence distribution — and
+[NON_CLAIMS.md](NON_CLAIMS.md), everything not claimed, including claims withdrawn
+after review.
 
-This repository was made public to be checked, not to be admired. The
-questions that would help most:
+### Published null results
 
-1. **Does covariance-aware frame chaining catch real errors, or is it
-   ceremony?** SPICE, astropy and ROS tf2 verifiably do not propagate
-   covariance through a frame chain — but we have no case where our
-   version caught something they would miss. That is the whole
-   integration claim and it is unproven.
-2. Are the refusal states useful in practice, or burdensome?
-3. Is the continuous/sampled DDS distinction real and worth a
-   correspondence — or did we miss prior art? **ADI AN-1396 and the
-   full Analog Dialogue FSK/PSK article were never read directly**
-   (analog.com was unreachable during review), so that search is
-   incomplete and we say so.
-4. Is [IVOA STC 1.33](https://www.ivoa.net/documents/latest/STC.html)
-   close enough to make our root certificate redundant?
-5. What should be **deleted**?
+Refusals are results. A sample of what has been recorded rather than buried:
 
-Negative answers are as welcome as positive ones. Several of this
-project's most useful results came from an adversarial review
-demolishing a claim we liked.
+| finding | class |
+|---|---|
+| 4096 Hz is **not** the electromagnetic surface-wave carrier — the annulus is electrically tiny there | NULL |
+| Space-time nonreciprocity does **not** engage at 16 Hz modulation | NULL |
+| A constructed harmonic field model **did not converge and was withdrawn** | NULL |
+| An isolated distribution has zero self-force; no configuration produces unbalanced momentum | NULL |
 
-## Citing
+Full ledger: [`negative_results/`](negative_results/)
 
-See [`CITATION.cff`](CITATION.cff) (GitHub renders a "Cite this repository"
-button from it). Minted DOIs: 10.5281/zenodo.21387947 (v3.0.1 version DOI)
-and 10.5281/zenodo.21387946 (concept DOI, always latest). **The v4.x
-Zenodo records (v4.1.x, v4.2.0) are pending human
-verification/publication** (see `docs/ZENODO_METADATA_V4.md`); their
-version DOIs will be added to CITATION.cff in follow-up commits once
-minted. Release provenance —
-commit, environment, checksums, test evidence: the `PROVENANCE.json` and
-`SHA256SUMS.txt` assets on each GitHub release.
+### Two typed verdicts worth understanding
 
-## Acknowledgements
+| result | verdict |
+|---|---|
+| Canonical 110 mm eye-node study | `UNCERTAINTY_OVERLAPS_CONVENTIONAL_NODE` — the candidate sits **3.906 mm** from the nearest conventional comparator and the uncertainty interval overlaps it. Not a distinct node. |
+| Quartz mechanism firewall | `MECHANISM_NOT_IMPLEMENTED_FOR_MATERIAL` — a mechanism absent from the model is *not implemented*. That is a statement about software, never a claim of physical impossibility. |
 
-- The historical crystal-practice corpus and personal working logs that
-  posed the questions this programme formalizes (preserved, with authorship
-  and original wording, in the Historical & Source Companion).
-- K. Arisaka (UCLA) for the publicly presented NHT/HAL proposals whose
-  *structure* inspired the Hydrogenuine memory record — adapted as
-  engineering, with the neuroscience explicitly quarantined.
-- The authors of the six photonics/magnonics papers whose published
-  mathematics is adapted (and only the mathematics — every forbidden
-  transfer is registered): Sohn, Orsel & Bahl; Cheng et al.; Lapointe,
-  Coia & Vallée; Wang et al.; Zhang, Zhan, Gong & Niu; Chao, Yam, Vivien
-  & Dagens; and Koster et al. for the coherence-metric methodology.
-- The open-source stack this project stands on: NumPy, SciPy, matplotlib,
-  PySide6, pytest, Hypothesis, jsonschema, TeX Gyre/XeLaTeX.
+*Not implemented* and *does not exist* are different claims. Only the first is ever
+made here. The same rule governs every lore and provenance source — they may motivate a
+test; they may never stand in for one.
+
+---
+
+## Documentation
+
+**→ [Full documentation index](docs/README.md)** — every document, grouped by lane.
+
+Fast paths:
+
+| | |
+|---|---|
+| [Quickstart](docs/QUICKSTART.md) | clone to a working map in five minutes |
+| [User Manual](docs/USER_MANUAL.md) | the map workbench, with real screenshots |
+| [Architecture](docs/ARCHITECTURE.md) | how the packages fit together |
+| [Claim Boundaries](docs/CLAIM_BOUNDARIES.md) | claim classes; what is and isn't established |
+| [Claim Register](docs/CLAIM_REGISTER.md) | machine-lintable register — EST / DER / HYP / SRC / ENG |
+| [Blockers B01–B07](docs/BLOCKERS_B01_B07.md) | the open problems, unsoftened |
+| [Manuscripts](manuscripts/) · [Examples](examples/) | long-form treatments; runnable inputs |
+
+Superseded documents live in [`docs/archive/`](docs/archive/) with correction banners.
+They are never deleted.
+
+---
+
+## Tests
+
+```bash
+pytest -q                                    # everything
+pytest tests/test_r1053_v1.py -q             # map workbench
+```
+
+The suite asserts the boundaries, not just the behaviour: that fitted residuals are
+labelled non-evidential, that nulls travel with the claims they qualify, that no
+document asserts proof, and that every blocker keeps its detail and clearing condition.
+
+**Verification status at the frozen release commit (v8.3.0):**
+**8129 tests passed**, 15 skipped, 1 deselected, exit 0 (`expect: 8129 passed`);
+proof-bundle checksums **115/115** via `rgcs-v4 verify-checksums`. Counts derive from a
+real pytest run recorded in `docs/v4/RELEASE_METADATA.json` — a document that drifts
+from the recorded number fails the build.
+
+The one deselected node is
+`tests/regression/test_generator_determinism.py::test_generator_deterministic`, a
+byte-equality check requiring the archived v2.0.0 build environment. Hosted CI
+deselects exactly that node id under policy **D-V3-04**. It is the only known
+environment-dependent test in the repository.
+
+---
+
+## Release status
+
+```text
+current release:   v8.3.0
+pending candidate: v1.0.0-rc1 — RGCS V1 Map Workbench
+```
+
+Current release: [v8.3.0](https://github.com/andrew867/rgcs/releases/tag/v8.3.0).
+Frozen history — v2.0.0 (`archive/v2.0.0/`), v3.0.x, v4.0.0, v4.1.x — tags and records
+are never modified. The DOI badge is the latest **minted** DOI (v3.0.1).
+
+The pending candidate publishes the map workbench as **software, not proof**.
+
+---
+
+MIT licensed · Author: Andrew Green · Citing: [CITATION.cff](CITATION.cff)

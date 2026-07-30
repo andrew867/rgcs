@@ -1,0 +1,16 @@
+{
+  "schema": "rgcs.r1062.screenshot-receipt.v1",
+  "filename": "01_workbench_hub.png",
+  "captured_utc": "2026-07-30T17:35:11+00:00",
+  "commit": "138a09a8eb882415cb12792d00e84284d0d7483b",
+  "branch": "release/rgcs-v1-map-workbench",
+  "command": "rgcs-lab serve --host 127.0.0.1 --port 8787",
+  "input_vectors": [],
+  "output_sha256": "ab6903a0cf0128e29bc22a6319988a4a6474ce9875807a9fd7d1a22d1b62818e",
+  "bytes": 49072,
+  "machine": "andrew@THINKDIFFERENT",
+  "platform": "win32",
+  "capture_method": "r1053.screenshots.capture (QtWebEngine offscreen)",
+  "invented": false,
+  "boundary": "The tool verifies geometry. It does not verify that a candidate vertex is physically true."
+}

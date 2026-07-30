@@ -1,0 +1,13 @@
+{
+  "parse_known_wire": true,
+  "roundtrip": true,
+  "transition_evidence": true,
+  "refine_source_known": true,
+  "candidate_set_for_ambiguous": true,
+  "unknown_cell_refuses": true,
+  "analytic_level2_mesh": true,
+  "sparse_trace": true,
+  "corpus_28_of_28": true,
+  "machine_receipt": true,
+  "ALL_PASS": true
+}

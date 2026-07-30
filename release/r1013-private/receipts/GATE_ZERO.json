@@ -1,0 +1,82 @@
+{
+ "schema": "rgcs.r1013.gate-zero.v1",
+ "branch": "program/r10-11-flat-face-codec",
+ "head": "d7eaeebf3c9cc5fdc17b96091dd92521f475e622",
+ "full_suite_at_gate": 8069,
+ "mismatches": [
+  {
+   "id": "GZ-01",
+   "field": "public release",
+   "baseline": "v8.0.0",
+   "actual": "v8.2.0 (tag) + unreleased R10.8.5A/R10.11x/R10.12 commits on program branches",
+   "resolution": "target version 8.3.0 for the R10.13 private candidate; public history preserved"
+  },
+  {
+   "id": "GZ-02",
+   "field": "console entry points",
+   "baseline": "rgcs-v4, rgcs-workbook",
+   "actual": "rgcs-v4, rgcs-workbook, rgcs-coordinate, rgcs-lab, rgcs (bound to the R10.12 codec CLI r1012.cli:main)",
+   "resolution": "the unified normal-user CLI r1013.cli:main takes the rgcs name and DELEGATES every R10.12 codec subcommand to r1012.cli unchanged; nothing breaks"
+  },
+  {
+   "id": "GZ-03",
+   "field": "python",
+   "baseline": ">=3.11",
+   "actual": ">=3.11 (pyproject), 3.13.2 in the working venv",
+   "resolution": "no change"
+  },
+  {
+   "id": "GZ-04",
+   "field": "canonical variants",
+   "baseline": "ideal_n7, nominal",
+   "actual": "confirmed",
+   "resolution": "custom specimens construct CanonicalCrystal records directly; the two canonical variants are unchanged"
+  },
+  {
+   "id": "GZ-05",
+   "field": "19-wire dataset shape",
+   "baseline": "eight compact/refined pairs and one three-depth chain (source-stated)",
+   "actual": "the corrected 19 wires parse as 15 compact + 4 refined records; 8 pairs each requiring a refined member cannot exist under the executable link tests",
+   "resolution": "the exact-cover solver exhausts the bounded partition space and reports the typed negative with the next source request; the source statement is preserved as provenance, not promoted to fact"
+  }
+ ],
+ "corrections": [
+  {
+   "id": "COR-09",
+   "supersedes": "one-bit extension field",
+   "current": "NO extension bit; variable refinement exists on the left and right of the fixed core (C_L^dL|E3|S|S|S|C_R^dR, W = 21+3(dL+dR))",
+   "status": "ACTIVE"
+  },
+  {
+   "id": "COR-10",
+   "supersedes": "unlabelled S6 state triple",
+   "current": "toroidal/poloidal/radial phase semantics are SOURCE-REPORTED labels carried as provenance; the state-to-geometry mapping remains UNDERDETERMINED",
+   "status": "ACTIVE"
+  },
+  {
+   "id": "COR-11",
+   "supersedes": "global 10/9 edge law",
+   "current": "global law REJECTED (R10.11F-A); the state-dependent 10/9 BASE ratio family remains an active bounded hypothesis with no selected modifier",
+   "status": "ACTIVE"
+  },
+  {
+   "id": "COR-12",
+   "supersedes": "627-step fitted warp",
+   "current": "REVOKED (unchanged); no fitted or precomputed warp may substitute",
+   "status": "ACTIVE"
+  },
+  {
+   "id": "COR-13",
+   "supersedes": "E2 frame",
+   "current": "E3 octal-aligned frame (unchanged from R10.11D)",
+   "status": "ACTIVE"
+  },
+  {
+   "id": "COR-14",
+   "supersedes": null,
+   "current": "publication remains on HOLD; no tag, push, public release, or manuscript submission",
+   "status": "ACTIVE"
+  }
+ ],
+ "command_status_entries": 20
+}

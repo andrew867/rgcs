@@ -1,0 +1,48 @@
+{
+  "audit": "receipt-authority",
+  "date": "2026-07-26",
+  "tree": "program/integration @ b84e6eb (+audit-fix commit)",
+  "canonical_contract": {
+    "module_status": "rgcs_lab.common.status_schema.ModuleStatus (single definition; envelope ModuleResult validates through it)",
+    "claim_vocabulary": "rgcs_lab.common.status_schema.ClaimClass (single definition; CLAIM_CLASSES derived)",
+    "receipt_schema": "rgcs_lab/common/receipt_schema.json (packaged canonical; schemas/lab/receipt.schema.json byte-identical mirror)",
+    "validator": "rgcs_lab.common.status_schema.validate_receipt"
+  },
+  "receipt_builders": {
+    "rgcs_lab.common.receipts.build_receipt": "validates via canonical validator before returning (AA-01 fix)",
+    "rgcs_lab.receipts.receipt": "validates via canonical validator before returning",
+    "rgcs_lab.authority.dual_pole_machine.DualPoleMachine.receipt": "Claude authority surface; exercised by tests/rgcs_lab/test_rlab_dual_pole.py"
+  },
+  "hub_badge_vs_receipt_verification": {
+    "method": "for each of the 9 modules: load static/hub/fixtures/<id>.json and static/hub/receipts/<id>.json; assert canonical validation, fixture-embedded receipt byte-equality with the receipt file, badge==receipt status, release-mirror byte-equality, backend attribution",
+    "modules": {
+      "coordinate":  {"badge": "GREEN",  "receipt": "GREEN",  "valid": true, "embedded_equal": true, "mirror_equal": true, "backend": "rgcs_coordinate (frozen domain package)"},
+      "golay":       {"badge": "GREEN",  "receipt": "GREEN",  "valid": true, "embedded_equal": true, "mirror_equal": true, "backend": "rgcs_lab.golay"},
+      "frames":      {"badge": "GREEN",  "receipt": "GREEN",  "valid": true, "embedded_equal": true, "mirror_equal": true, "backend": "rgcs_lab.frames"},
+      "memory":      {"badge": "GREEN",  "receipt": "GREEN",  "valid": true, "embedded_equal": true, "mirror_equal": true, "backend": "rgcs_lab.memory"},
+      "dual_pole":   {"badge": "YELLOW (sample audit outcome; catalog standing badge GREEN — see AA-05)", "receipt": "YELLOW", "valid": true, "embedded_equal": true, "mirror_equal": true, "backend": "rgcs_lab.dual_pole"},
+      "lattice":     {"badge": "GREEN",  "receipt": "GREEN",  "valid": true, "embedded_equal": true, "mirror_equal": true, "backend": "rgcs_lab.lattice"},
+      "metasurface": {"badge": "YELLOW", "receipt": "YELLOW", "valid": true, "embedded_equal": true, "mirror_equal": true, "backend": "rgcs_lab.metasurface"},
+      "predictions": {"badge": "YELLOW", "receipt": "YELLOW", "valid": true, "embedded_equal": true, "mirror_equal": true, "backend": "rgcs_lab.reference.predictions (hub demo by design; authority contract rgcs_lab.authority.prediction_registry)"},
+      "proofs":      {"badge": "GREEN",  "receipt": "GREEN",  "valid": true, "embedded_equal": true, "mirror_equal": true, "backend": "rgcs_lab.adapters aggregate"}
+    },
+    "source_commit_all": "4b9ec05b40191bcac35e56f03f6afdb6498ea1f9 (generating commit; rebuild at same commit is byte-identical after audit fixes)"
+  },
+  "fallback_promotion_test": {
+    "method": "runtime-forced ImportError on rgcs_lab.golay, adapter reloaded",
+    "observed": {"status": "YELLOW", "warning": "REFERENCE FALLBACK IN USE — …", "source": "rgcs_lab.reference.golay"},
+    "shipped_receipts_with_fallback_marker": 0,
+    "result": "fallback cannot reach GREEN; enforced by rgcs_lab.adapters.guard_fallback"
+  },
+  "self_asserted_status_review": {
+    "hub_js_catalog": "hand-maintained; verified exact-match in sync with module_catalog() for all 9 entries (AA-03 YELLOW — recommend generating it in build_static_hub.py)",
+    "per_run_statuses": "derived from executed adapters/receipts, not hand-written"
+  },
+  "coordinate_freeze": {
+    "diff_vs_base": "empty (rgcs_coordinate/ and tests/rgcs_coordinate/ untouched since eb7d7d4)",
+    "tests": "30 passed"
+  },
+  "post_fix_test_run": "tests/rgcs_lab + tests/rgcs_coordinate + tests/cwatlas = 1419 passed, exit 0",
+  "result": "PASS_WITH_YELLOW",
+  "open_yellows": ["AA-03 hub.js hand-maintained badge catalog (in sync today)"]
+}

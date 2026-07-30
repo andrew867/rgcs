@@ -1,0 +1,117 @@
+{
+ "sweep_configs": 480,
+ "sh_in_face_configs": 24,
+ "sh_final_cell_containment_configs": 0,
+ "best": {
+  "family": "F4_ROTATED_DIRECT_LE",
+  "face": 5,
+  "order": [
+   0,
+   1,
+   2
+  ],
+  "compensation": "C0_none",
+  "in_face": true,
+  "excluded_at": 2,
+  "attribution": "X_AND_Y",
+  "contained_final": false,
+  "min_distance_km": 248.04
+ },
+ "compensation": {
+  "C0_none": {
+   "contained_any": false,
+   "best_min_distance_km": 248.04,
+   "best_frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "face": 5,
+    "order": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  "C1_tangential_10_9": {
+   "contained_any": false,
+   "best_min_distance_km": 426.4,
+   "best_frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "face": 5,
+    "order": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  "C2_radial_10_9": {
+   "contained_any": false,
+   "best_min_distance_km": 248.04,
+   "best_frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "face": 5,
+    "order": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  "C3_metric_10_9": {
+   "contained_any": false,
+   "best_min_distance_km": 426.4,
+   "best_frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "face": 5,
+    "order": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  "CTRL_tangential_9_8": {
+   "contained_any": false,
+   "best_min_distance_km": 491.1,
+   "best_frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "face": 5,
+    "order": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  "CTRL_tangential_81_80": {
+   "contained_any": false,
+   "best_min_distance_km": 206.33,
+   "best_frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "face": 5,
+    "order": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  "CTRL_tangential_55_54": {
+   "contained_any": false,
+   "best_min_distance_km": 191.19,
+   "best_frame": {
+    "family": "F4_ROTATED_DIRECT_LE",
+    "face": 5,
+    "order": [
+     0,
+     1,
+     2
+    ]
+   }
+  }
+ },
+ "claims": {
+  "SOURCE_ORIGIN_VALIDATED": "no",
+  "PHYSICAL_ANOMALOUS_GRAVITY_VALIDATED": "no"
+ }
+}

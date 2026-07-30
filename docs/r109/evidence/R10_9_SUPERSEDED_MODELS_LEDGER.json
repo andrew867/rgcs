@@ -1,0 +1,21 @@
+{
+  "schema": "rgcs.r109.superseded-models.v1",
+  "models": {
+    "HISTORICAL_R10_8_AFFINE_CANONICALIZATION": {
+      "model": "y = (923*x + 550585316) mod 2^30",
+      "purpose": "general long->compact canonicalization bridge",
+      "status": "SUPERSEDED (R109-MTL-02-SUPERSEDED)",
+      "superseded_by": "typed T10/T11 depth families (r109.codec)",
+      "known_products": {
+        "165879243": 168500683
+      },
+      "why_stale": "the source confirmed 165879243 is itself a DIRECT compact packet; the bridge is unjustified unless an independently recovered source transform revives it"
+    },
+    "HISTORICAL_MONTREAL_TRANSCRIPTION": {
+      "value": 168729543,
+      "status": "SUPERSEDED (R109-MTL-03-SUPERSEDED)",
+      "superseded_by": "direct compact Montréal 165879243 (R109-MTL-01)",
+      "why_stale": "older transcription; preserved as provenance only"
+    }
+  }
+}
