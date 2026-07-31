@@ -9,6 +9,7 @@ import sys
 import time
 
 from rgcs_archive import catalog as C
+from rgcs_archive import framing as FR
 from rgcs_archive import streams as S
 from rgcs_archive import text_lanes as TL
 from rgcs_archive import transport as T
@@ -178,6 +179,26 @@ def cmd_scan_text(a):
     return 0
 
 
+def cmd_profiles(a):
+    """All framing profiles, side by side, with no winner."""
+    r = FR.all_profiles(a.record)
+    print(f"record {r['record']}" + chr(10))
+    print(f"{'id':6s} {'name':32s} {'status':17s} {'W':>4} {'D':>4} "
+          f"{'splits':>6}")
+    for p in r["profiles"]:
+        if "error" in p:
+            print(f"{p['framing_profile_id']:6s} ERROR {p['error']}")
+            continue
+        print(f"{p['framing_profile_id']:6s} {p['name']:32s} "
+              f"{p['status']:17s} {str(p.get('envelope_width_bits','-')):>4} "
+              f"{str(p.get('D','-')):>4} {str(p.get('legal_splits','-')):>6}")
+        print(f"       octal {p['octal_payload']}")
+    print(chr(10) + f"route-capable  {r['route_capable']}")
+    print(f"selected       {r['selected_profile']}")
+    print(f"selection needs {r['selection_requires']}")
+    return 0
+
+
 def cmd_verify(a):
     r = W.fixture_receipt()
     for k, c in r["checks"].items():
@@ -233,13 +254,17 @@ def main(argv=None) -> int:
     s = sub.add_parser("scan-text"); s.add_argument("payload_octal")
     s.add_argument("--trials", type=int, default=100)
     s.set_defaults(fn=cmd_scan_text)
+    s = sub.add_parser("profiles",
+                       help="all framing profiles, no default winner")
+    s.add_argument("record")
+    s.set_defaults(fn=cmd_profiles)
     sub.add_parser("verify").set_defaults(fn=cmd_verify)
 
     a = p.parse_args(argv)
     try:
         return a.fn(a)
     except (C.CatalogError, T.TransportError, S.StreamError,
-            W.EnvelopeError) as exc:
+            W.EnvelopeError, FR.FramingError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
 

@@ -24,6 +24,15 @@ Every result computed on the first string was computed on the wrong
 payload. :data:`SUPERSEDED_PAYLOAD_OCTAL` records it so the error cannot
 quietly reappear, and :func:`fixture_receipt` asserts the correct one.
 
+SUPERSEDED AS THE FRAMING AUTHORITY (R10.61A)
+---------------------------------------------
+This module treated 126 bits as arithmetically forced. It is not: the
+payload's 123 significant bits are ALREADY a legal width (21 + 3*34), so
+padding to 126 is a CHOICE. :mod:`rgcs_archive.framing` now carries five
+profiles side by side with no default winner, and it is the framing
+authority. What remains here is the split/grammar machinery, which is
+profile-independent.
+
 WIDTH LAW
 ---------
     W = 21 + 3D          126 = 21 + 3(35)        D = 35
@@ -58,7 +67,12 @@ WIDTH_STEP = 3
 CORE_FIELDS = ("E3", "S_tor", "S_pol", "S_rad")
 CORE_OCTAL_DIGITS = 7          # E3(1) + 2 + 2 + 2
 
-#: The reference fixture.
+#: SUPERSEDED as framing authority -- see rgcs_archive.framing.
+FRAMING_AUTHORITY = "rgcs_archive.framing"
+SUPERSEDED_AS_SINGLE_AUTHORITY = True
+
+#: The reference fixture, under framing profile FP-B specifically.
+FIXTURE_PROFILE = "FP-B"
 FIXTURE_RECORD = "1687549873523387598456323376543328567433"
 FIXTURE_PAYLOAD_DECIMAL = "8754987352338759845632337654332856743"
 FIXTURE_SIGNIFICANT_BITS = 123
@@ -233,6 +247,10 @@ def fixture_receipt() -> dict:
         raise EnvelopeError("parser reproduced the superseded R10.63 payload")
     return {
         "schema": "rgcs.r1061.fixture-receipt.v1",
+        "framing_profile_id": FIXTURE_PROFILE,
+        "framing_authority": FRAMING_AUTHORITY,
+        "note": "these values hold for FP-B only; FP-A gives 123 bits/D=34 "
+                "and FP-C gives a different 126-bit payload",
         "record": FIXTURE_RECORD,
         "parse": p,
         "checks": {k: {"computed": a, "expected": b, "match": a == b}

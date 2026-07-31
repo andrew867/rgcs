@@ -8,24 +8,17 @@
   "branch": "main",
   "dirty_files": [
     " M docs/v4/baseline/V4_REPO_INVENTORY.json",
-    " M pyproject.toml",
-    " M rgcs_desktop/build_meta.py",
-    "?? docs/BATSE_ADAPTER.md",
-    "?? docs/FERMI_GBM_ADAPTER.md",
-    "?? docs/NASA_ARCHIVE_CODEC_QUICKSTART.md",
-    "?? docs/NULL_AND_SIGNIFICANCE_POLICY.md",
-    "?? docs/RGCS_126BIT_WIDE_ENVELOPE.md",
-    "?? docs/ROUTE_RENDERING.md",
-    "?? docs/SOURCE_AND_REPRESENTATION_BOUNDARIES.md",
-    "?? docs/STREAM_RECIPES.md",
-    "?? docs/VELA5B_ADAPTER.md",
-    "?? docs/VOYAGER_PWS_ADAPTER.md",
-    "?? rgcs_archive/",
-    "?? tests/test_r1061_archive.py",
-    "?? tests/test_r1061_wide_envelope.py",
-    "M docs/v4/baseline/V4_FROZEN_ARTIFACT_CHECKSUMS.json"
+    "A  docs/VELA_GRB_1969_1972_RECOVERY.md",
+    "A  rgcs_archive/__main__.py",
+    "A  rgcs_archive/evidence.py",
+    "A  rgcs_archive/fermi_lat.py",
+    "A  rgcs_archive/framing.py",
+    "A  tests/test_r1061a_framing.py",
+    "M  docs/RGCS_126BIT_WIDE_ENVELOPE.md",
+    "M  rgcs_archive/cli.py",
+    "M  rgcs_archive/wide_envelope.py"
   ],
-  "head": "5eb6b510acf58e430ed58c18e73d0d88898224fa",
+  "head": "01b310fe579b9c05e0ee590ad70ba510a04236bd",
   "protected_tags_present": {
     "v2.0.0": "f9fd2c20a05334e12ac9113ba86853c6591fc84e",
     "v3.0.0": "83521f73d6ad02b009ada88f3b8d33a8a00fc253",
@@ -106,6 +99,6 @@
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS/codex-worktree                                  71e7342 [program/codex-core-algorithms]",
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-claude                                          188caab [program/claude-authority-docs]",
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-cursor                                          d4baf0d [program/cursor-app-integration]",
-    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-integration                                     5eb6b51 [main]"
+    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-integration                                     01b310f [main]"
   ]
 }

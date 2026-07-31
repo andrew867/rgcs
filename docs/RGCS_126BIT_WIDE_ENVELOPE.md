@@ -1,4 +1,12 @@
-# The 126-bit wide envelope
+# The wide envelope — five framing profiles
+
+> **R10.61A correction.** An earlier version of this document treated 126 bits
+> as arithmetically forced. It is not. The payload's **123 significant bits are
+> already a legal width** (21 + 3x34), so padding to 126 is a *choice*. Five
+> framing profiles are now carried side by side with **no default winner** —
+> see [the profile table](#framing-profiles) below.
+
+## The 126-bit wide envelope
 
 How a long decimal record frames, pads, and splits — and the two framing errors
 that produced wrong answers before this was written down.
@@ -45,6 +53,33 @@ had to be re-established on measurement instead.
 
 ---
 
+## Framing profiles
+
+| id | name | status | W | D | splits | octal payload |
+|---|---|---|---|---|---|---|
+| **FP-A** | `DECIMAL_AFFIX_MINIMAL` | ACTIVE_CANDIDATE | 123 | 34 | 35 | `64542306375724625654273330377576404214647` |
+| **FP-B** | `DECIMAL_AFFIX_STRICT_NEXT` | ACTIVE_CANDIDATE | 126 | 35 | 36 | `064542306375724625654273330377576404214647` |
+| **FP-C** | `FIXED132_EDGE_FIELDS` | ACTIVE_CANDIDATE | 126 | 35 | 36 | `365444442152520604177466460607536105260021` |
+| **FP-D** | `WHOLE132_CONTAINER` | DIAGNOSTIC_ONLY | 132 | — | — | no route authority |
+| **FP-E** | `SUPERSEDED_OCTAL_TERMINAL_STRIP` | SUPERSEDED | — | — | — | must never auto-select |
+
+**FP-C is not FP-B.** Both are 126 bits with D=35, but stripping a 3-bit field
+from each edge of the 132-bit container (`prefix 010`, `suffix 001`) is a
+different operation from removing decimal characters, and it yields a different
+payload. Asserted by test.
+
+### No profile is selected
+
+`selected_profile` is permanently `None`. A profile may **never** be promoted
+because it yields readable text, a smooth route, a famous place, a preferred
+state triple, a smaller geometry residual, or a better-looking visualisation.
+Promotion requires an independently frozen framing rule, or multiple external
+records that prospectively discriminate.
+
+```bash
+python -m rgcs_archive profiles 1687549873523387598456323376543328567433
+```
+
 ## Padding, and a convention worth noticing
 
 The payload integer is **123 significant bits**. The width law is:
@@ -53,9 +88,12 @@ The payload integer is **123 significant bits**. The width law is:
 W = 21 + 3D
 ```
 
-and **123 is itself a legal width** — `123 = 21 + 3(34)`. The specification
-nonetheless pads to **126**. So "next legal width" means the next one *strictly
-greater*: the envelope always carries at least one leading pad bit.
+and **123 is itself a legal width** — `123 = 21 + 3(34)`. That is FP-A, and it
+needs no padding at all.
+
+FP-B instead pads to **126**. The correct phrasing for that rule is **"the first
+legal width strictly greater than the significant width"** — never "the next
+legal width", which conceals that 123 already qualified.
 
 ```
 REQUIRE_PAD_BIT = True
