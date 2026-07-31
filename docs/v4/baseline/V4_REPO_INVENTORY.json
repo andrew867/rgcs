@@ -5,16 +5,27 @@
     "7962817": "commit",
     "9165594": "commit"
   },
-  "branch": "release/rgcs-v1-map-workbench",
+  "branch": "main",
   "dirty_files": [
-    " M docs/CONTRIBUTOR_ROADMAP.md",
-    " M docs/PUBLIC_COMMUNICATION.md",
-    " M docs/USER_GUIDE.md",
-    " M docs/USER_GUIDE_V4.md",
     " M docs/v4/baseline/V4_REPO_INVENTORY.json",
-    "M docs/ARCHITECTURE.md"
+    " M pyproject.toml",
+    " M rgcs_desktop/build_meta.py",
+    "?? docs/BATSE_ADAPTER.md",
+    "?? docs/FERMI_GBM_ADAPTER.md",
+    "?? docs/NASA_ARCHIVE_CODEC_QUICKSTART.md",
+    "?? docs/NULL_AND_SIGNIFICANCE_POLICY.md",
+    "?? docs/RGCS_126BIT_WIDE_ENVELOPE.md",
+    "?? docs/ROUTE_RENDERING.md",
+    "?? docs/SOURCE_AND_REPRESENTATION_BOUNDARIES.md",
+    "?? docs/STREAM_RECIPES.md",
+    "?? docs/VELA5B_ADAPTER.md",
+    "?? docs/VOYAGER_PWS_ADAPTER.md",
+    "?? rgcs_archive/",
+    "?? tests/test_r1061_archive.py",
+    "?? tests/test_r1061_wide_envelope.py",
+    "M docs/v4/baseline/V4_FROZEN_ARTIFACT_CHECKSUMS.json"
   ],
-  "head": "27f9435b4994b0fd5e7719c4c7b272171cb3939c",
+  "head": "5eb6b510acf58e430ed58c18e73d0d88898224fa",
   "protected_tags_present": {
     "v2.0.0": "f9fd2c20a05334e12ac9113ba86853c6591fc84e",
     "v3.0.0": "83521f73d6ad02b009ada88f3b8d33a8a00fc253",
@@ -28,6 +39,7 @@
     "origin\thttps://github.com/andrew867/rgcs.git (push)"
   ],
   "tags": [
+    "v1.0.0-rc1",
     "v2.0.0",
     "v3.0.0",
     "v3.0.0-rc1",
@@ -94,6 +106,6 @@
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/RGCS/codex-worktree                                  71e7342 [program/codex-core-algorithms]",
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-claude                                          188caab [program/claude-authority-docs]",
     "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-cursor                                          d4baf0d [program/cursor-app-integration]",
-    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-integration                                     27f9435 [release/rgcs-v1-map-workbench]"
+    "C:/Users/andrew/OneDrive - Green O365/Documents/GitHub/rgcs-integration                                     5eb6b51 [main]"
   ]
 }

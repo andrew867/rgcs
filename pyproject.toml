@@ -27,6 +27,16 @@ workbench = [
     "uvicorn>=0.27",
     "httpx>=0.27",
 ]
+# R10.61 NASA archive codec workbench. Optional: the wide-envelope codec,
+# the text lanes and the route lane run on the base dependencies alone.
+# These are needed only for the catalog/download/FITS lanes.
+archive = [
+    "httpx>=0.27",          # bounded, resumable downloads
+    "astropy>=6.0",         # FITS inspection and binary tables
+    "unlzw3>=0.2",          # legacy Unix .Z (LZW) -- NOT gzip
+    "duckdb>=1.0",          # result ledger
+    "pyarrow>=15.0",        # derived tables
+]
 dev = [
     "pytest>=7.4",
     "hypothesis>=6.90",
@@ -60,7 +70,7 @@ rgcs-workbench = "rgcs_desktop.app.main:main"
 include = ["r1015a*", "rgcs_surface_wave*", "rgcs_core*", "rgcs_desktop*", "rscs_core*", "rscs2_core*", "cspc*", "pmwr*", "r3*", "r4*",
            "r6*", "r7*", "r8*", "r9*", "r10*", "r11*", "r12*", "r13*", "r15*",
            "cwatlas*", "rgcs_coordinate*", "rgcs_lab*",
-           "rgcs_workbench*", "fkey_instrument*",
+           "rgcs_workbench*", "fkey_instrument*", "rgcs_archive*",
            "resonator_platform*", "consciousness_lane*"]
 
 [tool.setuptools.package-data]
