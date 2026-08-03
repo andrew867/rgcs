@@ -68,7 +68,10 @@ SOURCE_ROOTS = ("rgcs_desktop", "rgcs_workbench", "rgcs_core",
                 # codec and unified demonstrator hub both ship in the
                 # wheel, so both must invalidate frozen provenance.
                 "rgcs_coordinate",
-                "rgcs_lab")
+                "rgcs_lab",
+                # Audited public engineering packages replayed from
+                # R10.71 and R10.72.
+                "rgcs_phyrll_v06", "rgcs_terra_release", "rgcs_phyrll_v07")
 
 
 def repo_root() -> Path:

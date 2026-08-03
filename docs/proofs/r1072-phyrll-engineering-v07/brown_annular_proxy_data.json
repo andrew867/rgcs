@@ -1,0 +1,38 @@
+{
+  "centered_symmetric": {
+    "asymmetry_scalar": 2.6901333023835684e-16,
+    "direction_deg": null,
+    "total_energy_proxy": 1.2639198381944743e-10,
+    "claim": "MODEL_OUTPUT",
+    "is_a_force": false,
+    "note": "energy-density direction proxy; no thrust claim"
+  },
+  "physical_displacement": {
+    "asymmetry_scalar": 0.32572367036067756,
+    "direction_deg": 2.2343839849794077e-13,
+    "total_energy_proxy": 1.336186645912783e-10,
+    "claim": "MODEL_OUTPUT",
+    "is_a_force": false,
+    "note": "energy-density direction proxy; no thrust claim"
+  },
+  "binary_mask_displacement": {
+    "asymmetry_scalar": 0.029408040410800442,
+    "direction_deg": 197.12290539574826,
+    "total_energy_proxy": 1.2281903441303464e-10,
+    "claim": "MODEL_OUTPUT",
+    "is_a_force": false,
+    "note": "energy-density direction proxy; no thrust claim",
+    "ratio_to_physical": 0.09028524202197703
+  },
+  "weighted_mask_displacement": {
+    "asymmetry_scalar": 0.15056580566285324,
+    "direction_deg": 199.35486372199935,
+    "total_energy_proxy": 1.0809609237199694e-10,
+    "claim": "MODEL_OUTPUT",
+    "is_a_force": false,
+    "note": "energy-density direction proxy; no thrust claim",
+    "ratio_to_physical": 0.4622501198519899
+  },
+  "claim": "PRIOR_ART_ANALOGUE",
+  "no_force_function": true
+}

@@ -1,0 +1,16 @@
+{
+ "total": 1498,
+ "counts": {
+  "PRIVATE_ARCHIVED": 1,
+  "PRIVATE_EXCLUDED": 7,
+  "PUBLIC_RELEASE_ALLOWED": 219,
+  "REVIEW_REQUIRED": 1271
+ },
+ "no_excluded_term_released": true
+}
+ EXCLUDED: docs/proofs/r1064b-vertex-root-crabwood/MANIFEST.json
+ EXCLUDED: docs/proofs/r1064b-vertex-root-crabwood/SHA256SUMS.txt
+ EXCLUDED: docs/proofs/r1064b-vertex-root-crabwood/logs/run.log
+ EXCLUDED: docs/proofs/r1064b-vertex-root-crabwood/report.json
+ EXCLUDED: docs/r1064b/CRABWOOD_PARSES_AND_CONTROLS.md
+ EXCLUDED: docs/r1064b/CRABWOOD_RADIX_AND_228.md

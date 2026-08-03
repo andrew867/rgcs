@@ -1,0 +1,348 @@
+{
+  "authority": "R10.72 constrained optimum",
+  "mod": 0.5,
+  "lag_rad": 3.141592653589793,
+  "rows": [
+    {
+      "cell_index": 0,
+      "angular_position_deg": 0.0,
+      "amplitude_weight": 0.0,
+      "phase_offset_rad": 0.0,
+      "phase_offset_deg": 0.0,
+      "capacitive_or_gap_loading_weight": 0.0,
+      "active_floor_status": "BLANKED"
+    },
+    {
+      "cell_index": 1,
+      "angular_position_deg": 9.72972972972973,
+      "amplitude_weight": 0.0,
+      "phase_offset_rad": 0.0,
+      "phase_offset_deg": 0.0,
+      "capacitive_or_gap_loading_weight": 0.0,
+      "active_floor_status": "BLANKED"
+    },
+    {
+      "cell_index": 2,
+      "angular_position_deg": 19.45945945945946,
+      "amplitude_weight": 0.0,
+      "phase_offset_rad": 0.0,
+      "phase_offset_deg": 0.0,
+      "capacitive_or_gap_loading_weight": 0.0,
+      "active_floor_status": "BLANKED"
+    },
+    {
+      "cell_index": 3,
+      "angular_position_deg": 29.18918918918919,
+      "amplitude_weight": 0.0,
+      "phase_offset_rad": 0.0,
+      "phase_offset_deg": 0.0,
+      "capacitive_or_gap_loading_weight": 0.0,
+      "active_floor_status": "BLANKED"
+    },
+    {
+      "cell_index": 4,
+      "angular_position_deg": 38.91891891891892,
+      "amplitude_weight": 0.5443857548059321,
+      "phase_offset_rad": -2.125707920271894,
+      "phase_offset_deg": -121.79409230911122,
+      "capacitive_or_gap_loading_weight": 0.5443857548059322,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 5,
+      "angular_position_deg": 48.648648648648646,
+      "amplitude_weight": 0.585745175378079,
+      "phase_offset_rad": -1.4609762634439274,
+      "phase_offset_deg": -83.70777386413013,
+      "capacitive_or_gap_loading_weight": 0.5857451753780789,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 6,
+      "angular_position_deg": 58.37837837837838,
+      "amplitude_weight": 0.6390219530227378,
+      "phase_offset_rad": -0.8861268968911433,
+      "phase_offset_deg": -50.77133130488678,
+      "capacitive_or_gap_loading_weight": 0.6390219530227378,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 7,
+      "angular_position_deg": 68.10810810810811,
+      "amplitude_weight": 0.7026834118478567,
+      "phase_offset_rad": -0.4743095486790534,
+      "phase_offset_deg": -27.175935322064632,
+      "capacitive_or_gap_loading_weight": 0.7026834118478567,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 8,
+      "angular_position_deg": 77.83783783783784,
+      "amplitude_weight": 0.7748981275911633,
+      "phase_offset_rad": -0.22404796644167096,
+      "phase_offset_deg": -12.837002885596448,
+      "capacitive_or_gap_loading_weight": 0.7748981275911633,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 9,
+      "angular_position_deg": 87.56756756756756,
+      "amplitude_weight": 0.8535886143617247,
+      "phase_offset_rad": -0.09339708779573763,
+      "phase_offset_deg": -5.351258949508575,
+      "capacitive_or_gap_loading_weight": 0.8535886143617247,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 10,
+      "angular_position_deg": 97.29729729729729,
+      "amplitude_weight": 0.9364910901265607,
+      "phase_offset_rad": -0.03435886846533609,
+      "phase_offset_deg": -1.9686181519088939,
+      "capacitive_or_gap_loading_weight": 0.9364910901265607,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 11,
+      "angular_position_deg": 107.02702702702703,
+      "amplitude_weight": 1.0212206015980738,
+      "phase_offset_rad": -0.011154691422912361,
+      "phase_offset_deg": -0.6391167403036572,
+      "capacitive_or_gap_loading_weight": 1.021220601598074,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 12,
+      "angular_position_deg": 116.75675675675676,
+      "amplitude_weight": 1.105339634997863,
+      "phase_offset_rad": -0.0031958726001596106,
+      "phase_offset_deg": -0.18311001185064615,
+      "capacitive_or_gap_loading_weight": 1.1053396349978633,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 13,
+      "angular_position_deg": 126.48648648648648,
+      "amplitude_weight": 1.1864282388901544,
+      "phase_offset_rad": -0.00080804313646782,
+      "phase_offset_deg": -0.046297461384119706,
+      "capacitive_or_gap_loading_weight": 1.1864282388901544,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 14,
+      "angular_position_deg": 136.21621621621622,
+      "amplitude_weight": 1.262153641778616,
+      "phase_offset_rad": -0.00018029879444690416,
+      "phase_offset_deg": -0.010330359973104372,
+      "capacitive_or_gap_loading_weight": 1.2621536417786159,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 15,
+      "angular_position_deg": 145.94594594594594,
+      "amplitude_weight": 1.3303373616950407,
+      "phase_offset_rad": -3.5502937651836545e-05,
+      "phase_offset_deg": -0.0020341684877663354,
+      "capacitive_or_gap_loading_weight": 1.3303373616950407,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 16,
+      "angular_position_deg": 155.67567567567568,
+      "amplitude_weight": 1.3890178771592199,
+      "phase_offset_rad": -6.1694854798349216e-06,
+      "phase_offset_deg": -0.00035348547976178456,
+      "capacitive_or_gap_loading_weight": 1.3890178771592196,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 17,
+      "angular_position_deg": 165.40540540540542,
+      "amplitude_weight": 1.4365070565805942,
+      "phase_offset_rad": -9.461212412103521e-07,
+      "phase_offset_deg": -5.420875402903211e-05,
+      "capacitive_or_gap_loading_weight": 1.4365070565805942,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 18,
+      "angular_position_deg": 175.13513513513513,
+      "amplitude_weight": 1.471438722730542,
+      "phase_offset_rad": -1.2804358615537857e-07,
+      "phase_offset_deg": -7.336357080422931e-06,
+      "capacitive_or_gap_loading_weight": 1.471438722730542,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 19,
+      "angular_position_deg": 184.86486486486487,
+      "amplitude_weight": 1.4928079551738542,
+      "phase_offset_rad": -1.5292625562052308e-08,
+      "phase_offset_deg": -8.762029023794756e-07,
+      "capacitive_or_gap_loading_weight": 1.4928079551738542,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 20,
+      "angular_position_deg": 194.59459459459458,
+      "amplitude_weight": 1.5,
+      "phase_offset_rad": -1.611830875755258e-09,
+      "phase_offset_deg": -9.235110646965165e-08,
+      "capacitive_or_gap_loading_weight": 1.5,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 21,
+      "angular_position_deg": 204.32432432432432,
+      "amplitude_weight": 1.4928079551738542,
+      "phase_offset_rad": -1.5292625562052308e-08,
+      "phase_offset_deg": -8.762029023794756e-07,
+      "capacitive_or_gap_loading_weight": 1.4928079551738542,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 22,
+      "angular_position_deg": 214.05405405405406,
+      "amplitude_weight": 1.471438722730542,
+      "phase_offset_rad": -1.2804358615537857e-07,
+      "phase_offset_deg": -7.336357080422931e-06,
+      "capacitive_or_gap_loading_weight": 1.471438722730542,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 23,
+      "angular_position_deg": 223.78378378378378,
+      "amplitude_weight": 1.4365070565805942,
+      "phase_offset_rad": -9.461212412103521e-07,
+      "phase_offset_deg": -5.420875402903211e-05,
+      "capacitive_or_gap_loading_weight": 1.4365070565805942,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 24,
+      "angular_position_deg": 233.51351351351352,
+      "amplitude_weight": 1.3890178771592199,
+      "phase_offset_rad": -6.1694854798349216e-06,
+      "phase_offset_deg": -0.00035348547976178456,
+      "capacitive_or_gap_loading_weight": 1.3890178771592196,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 25,
+      "angular_position_deg": 243.24324324324326,
+      "amplitude_weight": 1.330337361695041,
+      "phase_offset_rad": -3.550293765183655e-05,
+      "phase_offset_deg": -0.002034168487766336,
+      "capacitive_or_gap_loading_weight": 1.330337361695041,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 26,
+      "angular_position_deg": 252.97297297297297,
+      "amplitude_weight": 1.2621536417786157,
+      "phase_offset_rad": -0.00018029879444690416,
+      "phase_offset_deg": -0.010330359973104372,
+      "capacitive_or_gap_loading_weight": 1.2621536417786157,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 27,
+      "angular_position_deg": 262.7027027027027,
+      "amplitude_weight": 1.1864282388901544,
+      "phase_offset_rad": -0.00080804313646782,
+      "phase_offset_deg": -0.046297461384119706,
+      "capacitive_or_gap_loading_weight": 1.1864282388901544,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 28,
+      "angular_position_deg": 272.43243243243245,
+      "amplitude_weight": 1.1053396349978628,
+      "phase_offset_rad": -0.003195872600159611,
+      "phase_offset_deg": -0.18311001185064618,
+      "capacitive_or_gap_loading_weight": 1.105339634997863,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 29,
+      "angular_position_deg": 282.1621621621622,
+      "amplitude_weight": 1.0212206015980736,
+      "phase_offset_rad": -0.01115469142291236,
+      "phase_offset_deg": -0.6391167403036571,
+      "capacitive_or_gap_loading_weight": 1.0212206015980738,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 30,
+      "angular_position_deg": 291.8918918918919,
+      "amplitude_weight": 0.9364910901265605,
+      "phase_offset_rad": -0.03435886846533609,
+      "phase_offset_deg": -1.9686181519088939,
+      "capacitive_or_gap_loading_weight": 0.9364910901265605,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 31,
+      "angular_position_deg": 301.6216216216216,
+      "amplitude_weight": 0.853588614361725,
+      "phase_offset_rad": -0.09339708779573763,
+      "phase_offset_deg": -5.351258949508575,
+      "capacitive_or_gap_loading_weight": 0.853588614361725,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 32,
+      "angular_position_deg": 311.35135135135135,
+      "amplitude_weight": 0.7748981275911633,
+      "phase_offset_rad": -0.22404796644167096,
+      "phase_offset_deg": -12.837002885596448,
+      "capacitive_or_gap_loading_weight": 0.7748981275911633,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 33,
+      "angular_position_deg": 321.0810810810811,
+      "amplitude_weight": 0.7026834118478564,
+      "phase_offset_rad": -0.4743095486790534,
+      "phase_offset_deg": -27.175935322064632,
+      "capacitive_or_gap_loading_weight": 0.7026834118478564,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 34,
+      "angular_position_deg": 330.81081081081084,
+      "amplitude_weight": 0.6390219530227375,
+      "phase_offset_rad": -0.8861268968911433,
+      "phase_offset_deg": -50.77133130488678,
+      "capacitive_or_gap_loading_weight": 0.6390219530227375,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 35,
+      "angular_position_deg": 340.5405405405405,
+      "amplitude_weight": 0.585745175378079,
+      "phase_offset_rad": -1.4609762634439274,
+      "phase_offset_deg": -83.70777386413013,
+      "capacitive_or_gap_loading_weight": 0.5857451753780789,
+      "active_floor_status": "OK"
+    },
+    {
+      "cell_index": 36,
+      "angular_position_deg": 350.27027027027026,
+      "amplitude_weight": 0.5443857548059321,
+      "phase_offset_rad": -2.125707920271894,
+      "phase_offset_deg": -121.79409230911122,
+      "capacitive_or_gap_loading_weight": 0.5443857548059322,
+      "active_floor_status": "OK"
+    }
+  ],
+  "predicted_d_eff": {
+    "real": -0.367263067260861,
+    "imag": -0.1875637125500548,
+    "magnitude": 0.4123861137810236,
+    "angle_deg": 207.0537059313759,
+    "offset_from_blank_axis_deg": 12.45911133678132,
+    "claim": "MODEL_OUTPUT"
+  }
+}
