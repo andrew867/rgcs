@@ -30,6 +30,17 @@ BERMUDA_METRICS_KM = {
 #: The candidate, exactly.
 CANDIDATE = F(236805, 142)
 
+#: v0.7 status assignments -- retagged per the R10.72 correction, and
+#: fixed here so no later lane can quietly promote them.
+LANE_STATUS = {
+    "236805/142": "RECORDED_POSTHOC_LEAD",
+    "1680769543": "UNRESOLVED_VECTOR_CANDIDATE_NO_SUPPORTING_PARSE",
+    "168593073": "UNRESOLVED_VECTOR_CANDIDATE_NO_SUPPORTING_PARSE",
+    "BERMUDA_FLORIDA_VERTEX": "CANDIDATE_LABEL_ONLY",
+    "projector_fitting": "FORBIDDEN",
+    "release_as_solved": "FORBIDDEN",
+}
+
 #: Reference vertex coordinates used ONLY for reporting distances of
 #: projector outputs. They select nothing and fit nothing.
 MIAMI = (25.7743, -80.1937)

@@ -72,7 +72,7 @@ include = ["r1015a*", "rgcs_surface_wave*", "rgcs_core*", "rgcs_desktop*", "rscs
            "cwatlas*", "rgcs_coordinate*", "rgcs_lab*",
            "rgcs_workbench*", "fkey_instrument*", "rgcs_archive*",
            "resonator_platform*", "consciousness_lane*",
-           "rgcs_phyrll_v06*", "rgcs_terra_release*"]
+           "rgcs_phyrll_v06*", "rgcs_terra_release*", "rgcs_phyrll_v07*"]
 
 [tool.setuptools.package-data]
 rscs_core = ["registry/*.yaml"]

@@ -33,7 +33,7 @@ def _grid(n: int) -> list:
 
 def _electrode_masks(n: int, outer_r: float, inner_r: float,
                      inner_dx: float = 0.0, cell_mask=None,
-                     n_cells: int = 37):
+                     n_cells: int = 37, cell_weights=None):
     """Boolean maps of fixed-potential sites.
 
     The outer annulus sits at radius ``outer_r`` (grid units, centre
@@ -50,12 +50,19 @@ def _electrode_masks(n: int, outer_r: float, inner_r: float,
             x, y = i - c, j - c
             r = math.hypot(x, y)
             if abs(r - outer_r) <= band:
-                keep = True
-                if cell_mask is not None:
-                    k = int((math.atan2(y, x) % (2 * math.pi))
-                            / (2 * math.pi) * n_cells) % n_cells
-                    keep = bool(cell_mask[k])
-                ring[j][i] = 1.0 if keep else 0.0
+                k = int((math.atan2(y, x) % (2 * math.pi))
+                        / (2 * math.pi) * n_cells) % n_cells
+                if cell_weights is not None:
+                    # v0.7 upgrade: graded per-sector drive. The ring
+                    # site carries a WEIGHT, applied to the electrode
+                    # potential, so a taper is a real boundary condition
+                    # rather than a post-hoc scaling.
+                    ring[j][i] = float(cell_weights[k])
+                else:
+                    keep = True
+                    if cell_mask is not None:
+                        keep = bool(cell_mask[k])
+                    ring[j][i] = 1.0 if keep else 0.0
             if math.hypot(x - inner_dx, y) <= inner_r:
                 disc[j][i] = 1.0
     return ring, disc
@@ -63,15 +70,22 @@ def _electrode_masks(n: int, outer_r: float, inner_r: float,
 
 def solve_potential(n: int, outer_r: float, inner_r: float,
                     v_ring: float, v_disc: float, inner_dx: float = 0.0,
-                    cell_mask=None, iters: int = 1500) -> list:
-    """Gauss-Seidel Laplace relaxation with fixed electrode potentials."""
-    ring, disc = _electrode_masks(n, outer_r, inner_r, inner_dx, cell_mask)
+                    cell_mask=None, iters: int = 1500,
+                    cell_weights=None) -> list:
+    """Gauss-Seidel Laplace relaxation with fixed electrode potentials.
+
+    With ``cell_weights`` the outer-ring potential is v_ring * w_k per
+    angular sector (v0.7 graded-drive upgrade); zero-weight sectors are
+    open (not fixed at zero volts).
+    """
+    ring, disc = _electrode_masks(n, outer_r, inner_r, inner_dx,
+                                  cell_mask, cell_weights=cell_weights)
     v = _grid(n)
     fixed = _grid(n)
     for j in range(n):
         for i in range(n):
             if ring[j][i]:
-                v[j][i], fixed[j][i] = v_ring, 1.0
+                v[j][i], fixed[j][i] = v_ring * ring[j][i], 1.0
             elif disc[j][i]:
                 v[j][i], fixed[j][i] = v_disc, 1.0
     for _ in range(iters):
