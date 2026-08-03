@@ -1,0 +1,197 @@
+net_name,class,description
+DRV_00,sector_drive,Drive/load electrode for sector 00
+SENSE_00,sector_sense,Phase-position pickup for sector 00
+LOAD_00,sector_loading,Configurable capacitive/gap loading for sector 00
+KELVIN_P_00,kelvin_voltage_current_sense,Positive Kelvin sense for sector 00
+KELVIN_N_00,kelvin_voltage_current_sense,Negative Kelvin sense for sector 00
+DRV_01,sector_drive,Drive/load electrode for sector 01
+SENSE_01,sector_sense,Phase-position pickup for sector 01
+LOAD_01,sector_loading,Configurable capacitive/gap loading for sector 01
+KELVIN_P_01,kelvin_voltage_current_sense,Positive Kelvin sense for sector 01
+KELVIN_N_01,kelvin_voltage_current_sense,Negative Kelvin sense for sector 01
+DRV_02,sector_drive,Drive/load electrode for sector 02
+SENSE_02,sector_sense,Phase-position pickup for sector 02
+LOAD_02,sector_loading,Configurable capacitive/gap loading for sector 02
+KELVIN_P_02,kelvin_voltage_current_sense,Positive Kelvin sense for sector 02
+KELVIN_N_02,kelvin_voltage_current_sense,Negative Kelvin sense for sector 02
+DRV_03,sector_drive,Drive/load electrode for sector 03
+SENSE_03,sector_sense,Phase-position pickup for sector 03
+LOAD_03,sector_loading,Configurable capacitive/gap loading for sector 03
+KELVIN_P_03,kelvin_voltage_current_sense,Positive Kelvin sense for sector 03
+KELVIN_N_03,kelvin_voltage_current_sense,Negative Kelvin sense for sector 03
+DRV_04,sector_drive,Drive/load electrode for sector 04
+SENSE_04,sector_sense,Phase-position pickup for sector 04
+LOAD_04,sector_loading,Configurable capacitive/gap loading for sector 04
+KELVIN_P_04,kelvin_voltage_current_sense,Positive Kelvin sense for sector 04
+KELVIN_N_04,kelvin_voltage_current_sense,Negative Kelvin sense for sector 04
+DRV_05,sector_drive,Drive/load electrode for sector 05
+SENSE_05,sector_sense,Phase-position pickup for sector 05
+LOAD_05,sector_loading,Configurable capacitive/gap loading for sector 05
+KELVIN_P_05,kelvin_voltage_current_sense,Positive Kelvin sense for sector 05
+KELVIN_N_05,kelvin_voltage_current_sense,Negative Kelvin sense for sector 05
+DRV_06,sector_drive,Drive/load electrode for sector 06
+SENSE_06,sector_sense,Phase-position pickup for sector 06
+LOAD_06,sector_loading,Configurable capacitive/gap loading for sector 06
+KELVIN_P_06,kelvin_voltage_current_sense,Positive Kelvin sense for sector 06
+KELVIN_N_06,kelvin_voltage_current_sense,Negative Kelvin sense for sector 06
+DRV_07,sector_drive,Drive/load electrode for sector 07
+SENSE_07,sector_sense,Phase-position pickup for sector 07
+LOAD_07,sector_loading,Configurable capacitive/gap loading for sector 07
+KELVIN_P_07,kelvin_voltage_current_sense,Positive Kelvin sense for sector 07
+KELVIN_N_07,kelvin_voltage_current_sense,Negative Kelvin sense for sector 07
+DRV_08,sector_drive,Drive/load electrode for sector 08
+SENSE_08,sector_sense,Phase-position pickup for sector 08
+LOAD_08,sector_loading,Configurable capacitive/gap loading for sector 08
+KELVIN_P_08,kelvin_voltage_current_sense,Positive Kelvin sense for sector 08
+KELVIN_N_08,kelvin_voltage_current_sense,Negative Kelvin sense for sector 08
+DRV_09,sector_drive,Drive/load electrode for sector 09
+SENSE_09,sector_sense,Phase-position pickup for sector 09
+LOAD_09,sector_loading,Configurable capacitive/gap loading for sector 09
+KELVIN_P_09,kelvin_voltage_current_sense,Positive Kelvin sense for sector 09
+KELVIN_N_09,kelvin_voltage_current_sense,Negative Kelvin sense for sector 09
+DRV_10,sector_drive,Drive/load electrode for sector 10
+SENSE_10,sector_sense,Phase-position pickup for sector 10
+LOAD_10,sector_loading,Configurable capacitive/gap loading for sector 10
+KELVIN_P_10,kelvin_voltage_current_sense,Positive Kelvin sense for sector 10
+KELVIN_N_10,kelvin_voltage_current_sense,Negative Kelvin sense for sector 10
+DRV_11,sector_drive,Drive/load electrode for sector 11
+SENSE_11,sector_sense,Phase-position pickup for sector 11
+LOAD_11,sector_loading,Configurable capacitive/gap loading for sector 11
+KELVIN_P_11,kelvin_voltage_current_sense,Positive Kelvin sense for sector 11
+KELVIN_N_11,kelvin_voltage_current_sense,Negative Kelvin sense for sector 11
+DRV_12,sector_drive,Drive/load electrode for sector 12
+SENSE_12,sector_sense,Phase-position pickup for sector 12
+LOAD_12,sector_loading,Configurable capacitive/gap loading for sector 12
+KELVIN_P_12,kelvin_voltage_current_sense,Positive Kelvin sense for sector 12
+KELVIN_N_12,kelvin_voltage_current_sense,Negative Kelvin sense for sector 12
+DRV_13,sector_drive,Drive/load electrode for sector 13
+SENSE_13,sector_sense,Phase-position pickup for sector 13
+LOAD_13,sector_loading,Configurable capacitive/gap loading for sector 13
+KELVIN_P_13,kelvin_voltage_current_sense,Positive Kelvin sense for sector 13
+KELVIN_N_13,kelvin_voltage_current_sense,Negative Kelvin sense for sector 13
+DRV_14,sector_drive,Drive/load electrode for sector 14
+SENSE_14,sector_sense,Phase-position pickup for sector 14
+LOAD_14,sector_loading,Configurable capacitive/gap loading for sector 14
+KELVIN_P_14,kelvin_voltage_current_sense,Positive Kelvin sense for sector 14
+KELVIN_N_14,kelvin_voltage_current_sense,Negative Kelvin sense for sector 14
+DRV_15,sector_drive,Drive/load electrode for sector 15
+SENSE_15,sector_sense,Phase-position pickup for sector 15
+LOAD_15,sector_loading,Configurable capacitive/gap loading for sector 15
+KELVIN_P_15,kelvin_voltage_current_sense,Positive Kelvin sense for sector 15
+KELVIN_N_15,kelvin_voltage_current_sense,Negative Kelvin sense for sector 15
+DRV_16,sector_drive,Drive/load electrode for sector 16
+SENSE_16,sector_sense,Phase-position pickup for sector 16
+LOAD_16,sector_loading,Configurable capacitive/gap loading for sector 16
+KELVIN_P_16,kelvin_voltage_current_sense,Positive Kelvin sense for sector 16
+KELVIN_N_16,kelvin_voltage_current_sense,Negative Kelvin sense for sector 16
+DRV_17,sector_drive,Drive/load electrode for sector 17
+SENSE_17,sector_sense,Phase-position pickup for sector 17
+LOAD_17,sector_loading,Configurable capacitive/gap loading for sector 17
+KELVIN_P_17,kelvin_voltage_current_sense,Positive Kelvin sense for sector 17
+KELVIN_N_17,kelvin_voltage_current_sense,Negative Kelvin sense for sector 17
+DRV_18,sector_drive,Drive/load electrode for sector 18
+SENSE_18,sector_sense,Phase-position pickup for sector 18
+LOAD_18,sector_loading,Configurable capacitive/gap loading for sector 18
+KELVIN_P_18,kelvin_voltage_current_sense,Positive Kelvin sense for sector 18
+KELVIN_N_18,kelvin_voltage_current_sense,Negative Kelvin sense for sector 18
+DRV_19,sector_drive,Drive/load electrode for sector 19
+SENSE_19,sector_sense,Phase-position pickup for sector 19
+LOAD_19,sector_loading,Configurable capacitive/gap loading for sector 19
+KELVIN_P_19,kelvin_voltage_current_sense,Positive Kelvin sense for sector 19
+KELVIN_N_19,kelvin_voltage_current_sense,Negative Kelvin sense for sector 19
+DRV_20,sector_drive,Drive/load electrode for sector 20
+SENSE_20,sector_sense,Phase-position pickup for sector 20
+LOAD_20,sector_loading,Configurable capacitive/gap loading for sector 20
+KELVIN_P_20,kelvin_voltage_current_sense,Positive Kelvin sense for sector 20
+KELVIN_N_20,kelvin_voltage_current_sense,Negative Kelvin sense for sector 20
+DRV_21,sector_drive,Drive/load electrode for sector 21
+SENSE_21,sector_sense,Phase-position pickup for sector 21
+LOAD_21,sector_loading,Configurable capacitive/gap loading for sector 21
+KELVIN_P_21,kelvin_voltage_current_sense,Positive Kelvin sense for sector 21
+KELVIN_N_21,kelvin_voltage_current_sense,Negative Kelvin sense for sector 21
+DRV_22,sector_drive,Drive/load electrode for sector 22
+SENSE_22,sector_sense,Phase-position pickup for sector 22
+LOAD_22,sector_loading,Configurable capacitive/gap loading for sector 22
+KELVIN_P_22,kelvin_voltage_current_sense,Positive Kelvin sense for sector 22
+KELVIN_N_22,kelvin_voltage_current_sense,Negative Kelvin sense for sector 22
+DRV_23,sector_drive,Drive/load electrode for sector 23
+SENSE_23,sector_sense,Phase-position pickup for sector 23
+LOAD_23,sector_loading,Configurable capacitive/gap loading for sector 23
+KELVIN_P_23,kelvin_voltage_current_sense,Positive Kelvin sense for sector 23
+KELVIN_N_23,kelvin_voltage_current_sense,Negative Kelvin sense for sector 23
+DRV_24,sector_drive,Drive/load electrode for sector 24
+SENSE_24,sector_sense,Phase-position pickup for sector 24
+LOAD_24,sector_loading,Configurable capacitive/gap loading for sector 24
+KELVIN_P_24,kelvin_voltage_current_sense,Positive Kelvin sense for sector 24
+KELVIN_N_24,kelvin_voltage_current_sense,Negative Kelvin sense for sector 24
+DRV_25,sector_drive,Drive/load electrode for sector 25
+SENSE_25,sector_sense,Phase-position pickup for sector 25
+LOAD_25,sector_loading,Configurable capacitive/gap loading for sector 25
+KELVIN_P_25,kelvin_voltage_current_sense,Positive Kelvin sense for sector 25
+KELVIN_N_25,kelvin_voltage_current_sense,Negative Kelvin sense for sector 25
+DRV_26,sector_drive,Drive/load electrode for sector 26
+SENSE_26,sector_sense,Phase-position pickup for sector 26
+LOAD_26,sector_loading,Configurable capacitive/gap loading for sector 26
+KELVIN_P_26,kelvin_voltage_current_sense,Positive Kelvin sense for sector 26
+KELVIN_N_26,kelvin_voltage_current_sense,Negative Kelvin sense for sector 26
+DRV_27,sector_drive,Drive/load electrode for sector 27
+SENSE_27,sector_sense,Phase-position pickup for sector 27
+LOAD_27,sector_loading,Configurable capacitive/gap loading for sector 27
+KELVIN_P_27,kelvin_voltage_current_sense,Positive Kelvin sense for sector 27
+KELVIN_N_27,kelvin_voltage_current_sense,Negative Kelvin sense for sector 27
+DRV_28,sector_drive,Drive/load electrode for sector 28
+SENSE_28,sector_sense,Phase-position pickup for sector 28
+LOAD_28,sector_loading,Configurable capacitive/gap loading for sector 28
+KELVIN_P_28,kelvin_voltage_current_sense,Positive Kelvin sense for sector 28
+KELVIN_N_28,kelvin_voltage_current_sense,Negative Kelvin sense for sector 28
+DRV_29,sector_drive,Drive/load electrode for sector 29
+SENSE_29,sector_sense,Phase-position pickup for sector 29
+LOAD_29,sector_loading,Configurable capacitive/gap loading for sector 29
+KELVIN_P_29,kelvin_voltage_current_sense,Positive Kelvin sense for sector 29
+KELVIN_N_29,kelvin_voltage_current_sense,Negative Kelvin sense for sector 29
+DRV_30,sector_drive,Drive/load electrode for sector 30
+SENSE_30,sector_sense,Phase-position pickup for sector 30
+LOAD_30,sector_loading,Configurable capacitive/gap loading for sector 30
+KELVIN_P_30,kelvin_voltage_current_sense,Positive Kelvin sense for sector 30
+KELVIN_N_30,kelvin_voltage_current_sense,Negative Kelvin sense for sector 30
+DRV_31,sector_drive,Drive/load electrode for sector 31
+SENSE_31,sector_sense,Phase-position pickup for sector 31
+LOAD_31,sector_loading,Configurable capacitive/gap loading for sector 31
+KELVIN_P_31,kelvin_voltage_current_sense,Positive Kelvin sense for sector 31
+KELVIN_N_31,kelvin_voltage_current_sense,Negative Kelvin sense for sector 31
+DRV_32,sector_drive,Drive/load electrode for sector 32
+SENSE_32,sector_sense,Phase-position pickup for sector 32
+LOAD_32,sector_loading,Configurable capacitive/gap loading for sector 32
+KELVIN_P_32,kelvin_voltage_current_sense,Positive Kelvin sense for sector 32
+KELVIN_N_32,kelvin_voltage_current_sense,Negative Kelvin sense for sector 32
+DRV_33,sector_drive,Drive/load electrode for sector 33
+SENSE_33,sector_sense,Phase-position pickup for sector 33
+LOAD_33,sector_loading,Configurable capacitive/gap loading for sector 33
+KELVIN_P_33,kelvin_voltage_current_sense,Positive Kelvin sense for sector 33
+KELVIN_N_33,kelvin_voltage_current_sense,Negative Kelvin sense for sector 33
+DRV_34,sector_drive,Drive/load electrode for sector 34
+SENSE_34,sector_sense,Phase-position pickup for sector 34
+LOAD_34,sector_loading,Configurable capacitive/gap loading for sector 34
+KELVIN_P_34,kelvin_voltage_current_sense,Positive Kelvin sense for sector 34
+KELVIN_N_34,kelvin_voltage_current_sense,Negative Kelvin sense for sector 34
+DRV_35,sector_drive,Drive/load electrode for sector 35
+SENSE_35,sector_sense,Phase-position pickup for sector 35
+LOAD_35,sector_loading,Configurable capacitive/gap loading for sector 35
+KELVIN_P_35,kelvin_voltage_current_sense,Positive Kelvin sense for sector 35
+KELVIN_N_35,kelvin_voltage_current_sense,Negative Kelvin sense for sector 35
+DRV_36,sector_drive,Drive/load electrode for sector 36
+SENSE_36,sector_sense,Phase-position pickup for sector 36
+LOAD_36,sector_loading,Configurable capacitive/gap loading for sector 36
+KELVIN_P_36,kelvin_voltage_current_sense,Positive Kelvin sense for sector 36
+KELVIN_N_36,kelvin_voltage_current_sense,Negative Kelvin sense for sector 36
+GUARD_INNER,guard,inner guard/reference ring
+GUARD_OUTER,guard,outer guard/reference ring
+CENTER_REF,reference,center reference pickup
+COMPASS_0,coarse_compass_sense,Coarse compass pickup 0
+COMPASS_1,coarse_compass_sense,Coarse compass pickup 1
+COMPASS_2,coarse_compass_sense,Coarse compass pickup 2
+COMPASS_3,coarse_compass_sense,Coarse compass pickup 3
+COMPASS_4,coarse_compass_sense,Coarse compass pickup 4
+COMPASS_5,coarse_compass_sense,Coarse compass pickup 5
+COMPASS_6,coarse_compass_sense,Coarse compass pickup 6
+COMPASS_7,coarse_compass_sense,Coarse compass pickup 7

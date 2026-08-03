@@ -71,7 +71,8 @@ SOURCE_ROOTS = ("rgcs_desktop", "rgcs_workbench", "rgcs_core",
                 "rgcs_lab",
                 # Audited public engineering packages replayed from
                 # R10.71 and R10.72.
-                "rgcs_phyrll_v06", "rgcs_terra_release", "rgcs_phyrll_v07")
+                "rgcs_phyrll_v06", "rgcs_terra_release", "rgcs_phyrll_v07",
+                "rgcs_ardk")
 
 
 def repo_root() -> Path:

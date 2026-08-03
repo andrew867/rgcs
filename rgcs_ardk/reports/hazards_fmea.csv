@@ -1,0 +1,7 @@
+hazard,cause,mitigation,verification,status
+unexpected high current,driver fault or short,"hardware current limit; fuse; default-off","dummy-load fault injection",OPEN_PHYSICAL
+hot copper or PCB,RF loss or excess current,"temperature sensing; derating; abort","thermal-rise test",OPEN_PHYSICAL
+transient overvoltage,reactive load switching,"rated clamp; snubber; insulation review","oscilloscope capture",OPEN_PHYSICAL
+EMI or pickup contamination,carrier and harmonics,"shielding; grounding; differential sensing","dummy-load and unpowered baselines",OPEN_PHYSICAL
+mechanical movement,loose stack or clamp,"registered spacers; torque log; no-motion rule","remount and vibration controls",OPEN_PHYSICAL
+claim inflation,positive-looking residual,"structural receipt refusal; claim firewall","negative tests and review",CONTROLLED_IN_CODE

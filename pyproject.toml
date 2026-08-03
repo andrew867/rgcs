@@ -72,7 +72,8 @@ include = ["r1015a*", "rgcs_surface_wave*", "rgcs_core*", "rgcs_desktop*", "rscs
            "cwatlas*", "rgcs_coordinate*", "rgcs_lab*",
            "rgcs_workbench*", "fkey_instrument*", "rgcs_archive*",
            "resonator_platform*", "consciousness_lane*",
-           "rgcs_phyrll_v06*", "rgcs_terra_release*", "rgcs_phyrll_v07*"]
+           "rgcs_phyrll_v06*", "rgcs_terra_release*", "rgcs_phyrll_v07*",
+           "rgcs_ardk*"]
 
 [tool.setuptools.package-data]
 rscs_core = ["registry/*.yaml"]
@@ -80,6 +81,15 @@ rscs2_core = ["registry/*.yaml"]
 r15 = ["schemas/*.json"]
 cwatlas = ["schemas/*.json", "fixtures/*.json"]
 "cwatlas.r1082" = ["schemas/*.json", "fixtures/*.json"]
+rgcs_ardk = [
+    "params/*.json", "params/*.yaml",
+    "pcb/*.csv", "pcb/*.json", "pcb/*.md",
+    "drive/*.json", "drive/authority/*", "drive/seed/*",
+    "firmware/*.md",
+    "bench/*.md", "bench/schemas/*.json",
+    "mech/*.md", "mech/*.json", "mech/*.scad",
+    "reports/*.md", "reports/*.csv",
+]
 # RCW P04: the parity guard resolves package-data by the TOP-LEVEL
 # source root (right-anchored match), so the fixtures glob must live on
 # the top-level key, not only a dotted subpackage key (R10.8.2 lesson).
@@ -93,7 +103,7 @@ r1013 = ["data/schemas/*.json", "data/examples/*.json", "data/examples/*.csv", "
 r1011 = ["data/*.csv"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial", "tests/v4", "tests/v49", "tests/v50", "tests/v51", "tests/v52", "tests/v6", "tests/v8", "tests/cwatlas", "tests/rgcs_coordinate", "tests/rgcs_lab"]
+testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial", "tests/v4", "tests/v49", "tests/v50", "tests/v51", "tests/v52", "tests/v6", "tests/v8", "tests/cwatlas", "tests/rgcs_coordinate", "tests/rgcs_lab", "rgcs_ardk/tests"]
 pythonpath = ["."]
 markers = [
     "slow: long-running tests (dataset regeneration)",

@@ -1,0 +1,149 @@
+refdes,footprint,net_1,net_2,role
+CLOAD_00,C_0603_0805_C0G_NP0_OPTION,LOAD_00,GUARD_INNER,optional trim/loading capacitor
+RLOAD_00,R_0603_0805_OPTION,DRV_00,LOAD_00,optional series/loading resistor or jumper
+TPDRV_00,TESTPAD_SMALL,DRV_00,,drive test pad
+TPSENSE_00,TESTPAD_SMALL,SENSE_00,,sense test pad
+CLOAD_01,C_0603_0805_C0G_NP0_OPTION,LOAD_01,GUARD_INNER,optional trim/loading capacitor
+RLOAD_01,R_0603_0805_OPTION,DRV_01,LOAD_01,optional series/loading resistor or jumper
+TPDRV_01,TESTPAD_SMALL,DRV_01,,drive test pad
+TPSENSE_01,TESTPAD_SMALL,SENSE_01,,sense test pad
+CLOAD_02,C_0603_0805_C0G_NP0_OPTION,LOAD_02,GUARD_INNER,optional trim/loading capacitor
+RLOAD_02,R_0603_0805_OPTION,DRV_02,LOAD_02,optional series/loading resistor or jumper
+TPDRV_02,TESTPAD_SMALL,DRV_02,,drive test pad
+TPSENSE_02,TESTPAD_SMALL,SENSE_02,,sense test pad
+CLOAD_03,C_0603_0805_C0G_NP0_OPTION,LOAD_03,GUARD_INNER,optional trim/loading capacitor
+RLOAD_03,R_0603_0805_OPTION,DRV_03,LOAD_03,optional series/loading resistor or jumper
+TPDRV_03,TESTPAD_SMALL,DRV_03,,drive test pad
+TPSENSE_03,TESTPAD_SMALL,SENSE_03,,sense test pad
+CLOAD_04,C_0603_0805_C0G_NP0_OPTION,LOAD_04,GUARD_INNER,optional trim/loading capacitor
+RLOAD_04,R_0603_0805_OPTION,DRV_04,LOAD_04,optional series/loading resistor or jumper
+TPDRV_04,TESTPAD_SMALL,DRV_04,,drive test pad
+TPSENSE_04,TESTPAD_SMALL,SENSE_04,,sense test pad
+CLOAD_05,C_0603_0805_C0G_NP0_OPTION,LOAD_05,GUARD_INNER,optional trim/loading capacitor
+RLOAD_05,R_0603_0805_OPTION,DRV_05,LOAD_05,optional series/loading resistor or jumper
+TPDRV_05,TESTPAD_SMALL,DRV_05,,drive test pad
+TPSENSE_05,TESTPAD_SMALL,SENSE_05,,sense test pad
+CLOAD_06,C_0603_0805_C0G_NP0_OPTION,LOAD_06,GUARD_INNER,optional trim/loading capacitor
+RLOAD_06,R_0603_0805_OPTION,DRV_06,LOAD_06,optional series/loading resistor or jumper
+TPDRV_06,TESTPAD_SMALL,DRV_06,,drive test pad
+TPSENSE_06,TESTPAD_SMALL,SENSE_06,,sense test pad
+CLOAD_07,C_0603_0805_C0G_NP0_OPTION,LOAD_07,GUARD_INNER,optional trim/loading capacitor
+RLOAD_07,R_0603_0805_OPTION,DRV_07,LOAD_07,optional series/loading resistor or jumper
+TPDRV_07,TESTPAD_SMALL,DRV_07,,drive test pad
+TPSENSE_07,TESTPAD_SMALL,SENSE_07,,sense test pad
+CLOAD_08,C_0603_0805_C0G_NP0_OPTION,LOAD_08,GUARD_INNER,optional trim/loading capacitor
+RLOAD_08,R_0603_0805_OPTION,DRV_08,LOAD_08,optional series/loading resistor or jumper
+TPDRV_08,TESTPAD_SMALL,DRV_08,,drive test pad
+TPSENSE_08,TESTPAD_SMALL,SENSE_08,,sense test pad
+CLOAD_09,C_0603_0805_C0G_NP0_OPTION,LOAD_09,GUARD_INNER,optional trim/loading capacitor
+RLOAD_09,R_0603_0805_OPTION,DRV_09,LOAD_09,optional series/loading resistor or jumper
+TPDRV_09,TESTPAD_SMALL,DRV_09,,drive test pad
+TPSENSE_09,TESTPAD_SMALL,SENSE_09,,sense test pad
+CLOAD_10,C_0603_0805_C0G_NP0_OPTION,LOAD_10,GUARD_INNER,optional trim/loading capacitor
+RLOAD_10,R_0603_0805_OPTION,DRV_10,LOAD_10,optional series/loading resistor or jumper
+TPDRV_10,TESTPAD_SMALL,DRV_10,,drive test pad
+TPSENSE_10,TESTPAD_SMALL,SENSE_10,,sense test pad
+CLOAD_11,C_0603_0805_C0G_NP0_OPTION,LOAD_11,GUARD_INNER,optional trim/loading capacitor
+RLOAD_11,R_0603_0805_OPTION,DRV_11,LOAD_11,optional series/loading resistor or jumper
+TPDRV_11,TESTPAD_SMALL,DRV_11,,drive test pad
+TPSENSE_11,TESTPAD_SMALL,SENSE_11,,sense test pad
+CLOAD_12,C_0603_0805_C0G_NP0_OPTION,LOAD_12,GUARD_INNER,optional trim/loading capacitor
+RLOAD_12,R_0603_0805_OPTION,DRV_12,LOAD_12,optional series/loading resistor or jumper
+TPDRV_12,TESTPAD_SMALL,DRV_12,,drive test pad
+TPSENSE_12,TESTPAD_SMALL,SENSE_12,,sense test pad
+CLOAD_13,C_0603_0805_C0G_NP0_OPTION,LOAD_13,GUARD_INNER,optional trim/loading capacitor
+RLOAD_13,R_0603_0805_OPTION,DRV_13,LOAD_13,optional series/loading resistor or jumper
+TPDRV_13,TESTPAD_SMALL,DRV_13,,drive test pad
+TPSENSE_13,TESTPAD_SMALL,SENSE_13,,sense test pad
+CLOAD_14,C_0603_0805_C0G_NP0_OPTION,LOAD_14,GUARD_INNER,optional trim/loading capacitor
+RLOAD_14,R_0603_0805_OPTION,DRV_14,LOAD_14,optional series/loading resistor or jumper
+TPDRV_14,TESTPAD_SMALL,DRV_14,,drive test pad
+TPSENSE_14,TESTPAD_SMALL,SENSE_14,,sense test pad
+CLOAD_15,C_0603_0805_C0G_NP0_OPTION,LOAD_15,GUARD_INNER,optional trim/loading capacitor
+RLOAD_15,R_0603_0805_OPTION,DRV_15,LOAD_15,optional series/loading resistor or jumper
+TPDRV_15,TESTPAD_SMALL,DRV_15,,drive test pad
+TPSENSE_15,TESTPAD_SMALL,SENSE_15,,sense test pad
+CLOAD_16,C_0603_0805_C0G_NP0_OPTION,LOAD_16,GUARD_INNER,optional trim/loading capacitor
+RLOAD_16,R_0603_0805_OPTION,DRV_16,LOAD_16,optional series/loading resistor or jumper
+TPDRV_16,TESTPAD_SMALL,DRV_16,,drive test pad
+TPSENSE_16,TESTPAD_SMALL,SENSE_16,,sense test pad
+CLOAD_17,C_0603_0805_C0G_NP0_OPTION,LOAD_17,GUARD_INNER,optional trim/loading capacitor
+RLOAD_17,R_0603_0805_OPTION,DRV_17,LOAD_17,optional series/loading resistor or jumper
+TPDRV_17,TESTPAD_SMALL,DRV_17,,drive test pad
+TPSENSE_17,TESTPAD_SMALL,SENSE_17,,sense test pad
+CLOAD_18,C_0603_0805_C0G_NP0_OPTION,LOAD_18,GUARD_INNER,optional trim/loading capacitor
+RLOAD_18,R_0603_0805_OPTION,DRV_18,LOAD_18,optional series/loading resistor or jumper
+TPDRV_18,TESTPAD_SMALL,DRV_18,,drive test pad
+TPSENSE_18,TESTPAD_SMALL,SENSE_18,,sense test pad
+CLOAD_19,C_0603_0805_C0G_NP0_OPTION,LOAD_19,GUARD_INNER,optional trim/loading capacitor
+RLOAD_19,R_0603_0805_OPTION,DRV_19,LOAD_19,optional series/loading resistor or jumper
+TPDRV_19,TESTPAD_SMALL,DRV_19,,drive test pad
+TPSENSE_19,TESTPAD_SMALL,SENSE_19,,sense test pad
+CLOAD_20,C_0603_0805_C0G_NP0_OPTION,LOAD_20,GUARD_INNER,optional trim/loading capacitor
+RLOAD_20,R_0603_0805_OPTION,DRV_20,LOAD_20,optional series/loading resistor or jumper
+TPDRV_20,TESTPAD_SMALL,DRV_20,,drive test pad
+TPSENSE_20,TESTPAD_SMALL,SENSE_20,,sense test pad
+CLOAD_21,C_0603_0805_C0G_NP0_OPTION,LOAD_21,GUARD_INNER,optional trim/loading capacitor
+RLOAD_21,R_0603_0805_OPTION,DRV_21,LOAD_21,optional series/loading resistor or jumper
+TPDRV_21,TESTPAD_SMALL,DRV_21,,drive test pad
+TPSENSE_21,TESTPAD_SMALL,SENSE_21,,sense test pad
+CLOAD_22,C_0603_0805_C0G_NP0_OPTION,LOAD_22,GUARD_INNER,optional trim/loading capacitor
+RLOAD_22,R_0603_0805_OPTION,DRV_22,LOAD_22,optional series/loading resistor or jumper
+TPDRV_22,TESTPAD_SMALL,DRV_22,,drive test pad
+TPSENSE_22,TESTPAD_SMALL,SENSE_22,,sense test pad
+CLOAD_23,C_0603_0805_C0G_NP0_OPTION,LOAD_23,GUARD_INNER,optional trim/loading capacitor
+RLOAD_23,R_0603_0805_OPTION,DRV_23,LOAD_23,optional series/loading resistor or jumper
+TPDRV_23,TESTPAD_SMALL,DRV_23,,drive test pad
+TPSENSE_23,TESTPAD_SMALL,SENSE_23,,sense test pad
+CLOAD_24,C_0603_0805_C0G_NP0_OPTION,LOAD_24,GUARD_INNER,optional trim/loading capacitor
+RLOAD_24,R_0603_0805_OPTION,DRV_24,LOAD_24,optional series/loading resistor or jumper
+TPDRV_24,TESTPAD_SMALL,DRV_24,,drive test pad
+TPSENSE_24,TESTPAD_SMALL,SENSE_24,,sense test pad
+CLOAD_25,C_0603_0805_C0G_NP0_OPTION,LOAD_25,GUARD_INNER,optional trim/loading capacitor
+RLOAD_25,R_0603_0805_OPTION,DRV_25,LOAD_25,optional series/loading resistor or jumper
+TPDRV_25,TESTPAD_SMALL,DRV_25,,drive test pad
+TPSENSE_25,TESTPAD_SMALL,SENSE_25,,sense test pad
+CLOAD_26,C_0603_0805_C0G_NP0_OPTION,LOAD_26,GUARD_INNER,optional trim/loading capacitor
+RLOAD_26,R_0603_0805_OPTION,DRV_26,LOAD_26,optional series/loading resistor or jumper
+TPDRV_26,TESTPAD_SMALL,DRV_26,,drive test pad
+TPSENSE_26,TESTPAD_SMALL,SENSE_26,,sense test pad
+CLOAD_27,C_0603_0805_C0G_NP0_OPTION,LOAD_27,GUARD_INNER,optional trim/loading capacitor
+RLOAD_27,R_0603_0805_OPTION,DRV_27,LOAD_27,optional series/loading resistor or jumper
+TPDRV_27,TESTPAD_SMALL,DRV_27,,drive test pad
+TPSENSE_27,TESTPAD_SMALL,SENSE_27,,sense test pad
+CLOAD_28,C_0603_0805_C0G_NP0_OPTION,LOAD_28,GUARD_INNER,optional trim/loading capacitor
+RLOAD_28,R_0603_0805_OPTION,DRV_28,LOAD_28,optional series/loading resistor or jumper
+TPDRV_28,TESTPAD_SMALL,DRV_28,,drive test pad
+TPSENSE_28,TESTPAD_SMALL,SENSE_28,,sense test pad
+CLOAD_29,C_0603_0805_C0G_NP0_OPTION,LOAD_29,GUARD_INNER,optional trim/loading capacitor
+RLOAD_29,R_0603_0805_OPTION,DRV_29,LOAD_29,optional series/loading resistor or jumper
+TPDRV_29,TESTPAD_SMALL,DRV_29,,drive test pad
+TPSENSE_29,TESTPAD_SMALL,SENSE_29,,sense test pad
+CLOAD_30,C_0603_0805_C0G_NP0_OPTION,LOAD_30,GUARD_INNER,optional trim/loading capacitor
+RLOAD_30,R_0603_0805_OPTION,DRV_30,LOAD_30,optional series/loading resistor or jumper
+TPDRV_30,TESTPAD_SMALL,DRV_30,,drive test pad
+TPSENSE_30,TESTPAD_SMALL,SENSE_30,,sense test pad
+CLOAD_31,C_0603_0805_C0G_NP0_OPTION,LOAD_31,GUARD_INNER,optional trim/loading capacitor
+RLOAD_31,R_0603_0805_OPTION,DRV_31,LOAD_31,optional series/loading resistor or jumper
+TPDRV_31,TESTPAD_SMALL,DRV_31,,drive test pad
+TPSENSE_31,TESTPAD_SMALL,SENSE_31,,sense test pad
+CLOAD_32,C_0603_0805_C0G_NP0_OPTION,LOAD_32,GUARD_INNER,optional trim/loading capacitor
+RLOAD_32,R_0603_0805_OPTION,DRV_32,LOAD_32,optional series/loading resistor or jumper
+TPDRV_32,TESTPAD_SMALL,DRV_32,,drive test pad
+TPSENSE_32,TESTPAD_SMALL,SENSE_32,,sense test pad
+CLOAD_33,C_0603_0805_C0G_NP0_OPTION,LOAD_33,GUARD_INNER,optional trim/loading capacitor
+RLOAD_33,R_0603_0805_OPTION,DRV_33,LOAD_33,optional series/loading resistor or jumper
+TPDRV_33,TESTPAD_SMALL,DRV_33,,drive test pad
+TPSENSE_33,TESTPAD_SMALL,SENSE_33,,sense test pad
+CLOAD_34,C_0603_0805_C0G_NP0_OPTION,LOAD_34,GUARD_INNER,optional trim/loading capacitor
+RLOAD_34,R_0603_0805_OPTION,DRV_34,LOAD_34,optional series/loading resistor or jumper
+TPDRV_34,TESTPAD_SMALL,DRV_34,,drive test pad
+TPSENSE_34,TESTPAD_SMALL,SENSE_34,,sense test pad
+CLOAD_35,C_0603_0805_C0G_NP0_OPTION,LOAD_35,GUARD_INNER,optional trim/loading capacitor
+RLOAD_35,R_0603_0805_OPTION,DRV_35,LOAD_35,optional series/loading resistor or jumper
+TPDRV_35,TESTPAD_SMALL,DRV_35,,drive test pad
+TPSENSE_35,TESTPAD_SMALL,SENSE_35,,sense test pad
+CLOAD_36,C_0603_0805_C0G_NP0_OPTION,LOAD_36,GUARD_INNER,optional trim/loading capacitor
+RLOAD_36,R_0603_0805_OPTION,DRV_36,LOAD_36,optional series/loading resistor or jumper
+TPDRV_36,TESTPAD_SMALL,DRV_36,,drive test pad
+TPSENSE_36,TESTPAD_SMALL,SENSE_36,,sense test pad

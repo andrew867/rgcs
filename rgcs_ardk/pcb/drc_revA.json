@@ -1,0 +1,14 @@
+{
+  "profile": "safe_low_power_revA",
+  "status": "DESIGN_SCAFFOLD_NOT_MANUFACTURER_APPROVED",
+  "units": "mm",
+  "minimum_clearance": 0.25,
+  "minimum_track_width": 0.25,
+  "minimum_annular_width": 0.15,
+  "minimum_through_hole_diameter": 0.8,
+  "minimum_via_diameter": 0.8,
+  "copper_to_edge_clearance": 0.5,
+  "declared_board_thickness": 1.6,
+  "manufacturer_stackup": null,
+  "local_kicad_drc_required": true
+}
