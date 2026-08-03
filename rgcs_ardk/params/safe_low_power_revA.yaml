@@ -1,0 +1,24 @@
+profile: safe_low_power_revA
+status: bench_development_only
+voltage:
+  initial_commissioning: low_voltage_current_limited
+  source_note_desktop_peak_to_peak: "100-120 V DC/pulsed p-p, not RMS"
+  source_note_not_authorized_for_first_unshielded_test: true
+current:
+  initial_limit_a: TBD_BY_BENCH_RISK_REVIEW
+  source_note_nominal_a: 3
+thermal:
+  require_temperature_sensors: true
+  require_derating: true
+  abort_on_overtemperature: true
+interlocks:
+  default_off: true
+  current_limit_hardware: true
+  enclosure_open_abort: true
+  heartbeat_abort: true
+  sensor_failure_abort: true
+emi:
+  shielded_cables_required: true
+  differential_measurements_preferred: true
+laser_or_optical:
+  not_in_revA: true

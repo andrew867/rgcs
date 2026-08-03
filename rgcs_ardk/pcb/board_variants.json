@@ -1,0 +1,19 @@
+{
+  "revision": "RevA",
+  "combined_board_allowed": false,
+  "board_a": {
+    "id": "RGCS_ARDK_001_BoardA_PassiveSensor",
+    "passive_only": true,
+    "active_components": false,
+    "sector_pickups": 37,
+    "compass_pickups": 8,
+    "center_reference_interface": true
+  },
+  "board_b": {
+    "id": "RGCS_ARDK_001_BoardB_ActiveDrive",
+    "drive_sectors": 37,
+    "loading_sectors": 37,
+    "sense_breakout_preserved": true,
+    "external_driver_required": true
+  }
+}

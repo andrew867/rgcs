@@ -309,7 +309,10 @@ def quasi_energies(monodromy, T: float) -> np.ndarray:
     """
     period = _positive(T, "the period")
     mu = floquet_multipliers(monodromy)
-    return np.array([1j * np.log(m) / period for m in mu])
+    # ``np.linalg.eigvals`` can return real dtype when an unstable pair lies
+    # on the negative real axis.  The real logarithm is NaN there, while the
+    # Floquet logarithm is explicitly complex and must retain the pi branch.
+    return np.array([1j * np.log(complex(m)) / period for m in mu])
 
 
 def drive_frequency_from_period(T: float) -> float:

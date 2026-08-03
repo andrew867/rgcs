@@ -25,6 +25,7 @@ from __future__ import annotations
 import csv
 import json
 import os
+import platform
 import shutil
 import subprocess
 import sys
@@ -35,6 +36,17 @@ import pytest
 # One unit in the last printed decimal: the goldens serialize 8 decimal
 # places, so platform last-ulp drift moves a printed cell by <= 1e-8.
 PRINT_ATOL = 2e-8
+
+
+def _archived_byte_environment() -> bool:
+    """True only for the environment that produced the checked-in bytes."""
+    return (
+        platform.platform() == "Linux-6.18.5-x86_64-with-glibc2.39"
+        and platform.machine() == "x86_64"
+        and sys.version_info[:3] == (3, 11, 15)
+        and np.__version__ == "2.4.4"
+        and __import__("scipy").__version__ == "1.17.1"
+    )
 
 
 @pytest.fixture(scope="module")
@@ -133,6 +145,10 @@ def test_generator_numerically_equivalent(golden_dir, regenerated):
 
 
 @pytest.mark.slow
+@pytest.mark.skipif(
+    not _archived_byte_environment(),
+    reason="byte equality requires the archived v2 build environment (D-V3-04)",
+)
 def test_generator_deterministic(golden_dir, regenerated):
     """Byte equality — archived v2 reference environment ONLY (see module
     docstring; hosted CI deselects exactly this node id per D-V3-04)."""

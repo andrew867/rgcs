@@ -1,0 +1,19 @@
+{
+  "revision": "RevA",
+  "status": "MECHANICAL_SCAFFOLD_PUBLICATION_HOLD",
+  "base_outer_diameter_mm": 320.0,
+  "base_inner_clearance_mm": 180.0,
+  "base_thickness_mm": 8.0,
+  "board_outer_diameter_mm": 288.0,
+  "board_inner_diameter_mm": 188.0,
+  "pcb_mount_radius_mm": 136.0,
+  "pcb_mount_hole_diameter_mm": 3.2,
+  "pcb_mount_angles_deg": [45, 135, 225, 315],
+  "probe_radius_mm": 119.0,
+  "probe_count": 37,
+  "ptfe_sleeve_required": true,
+  "dielectric_spacers_required": true,
+  "mechanical_rotation": false,
+  "clamp_torque": "TBD_MEASURED_PER_RUN",
+  "adjustable_spacer_heights_mm": [8.0, 10.0, 12.0, 15.0, 20.0]
+}

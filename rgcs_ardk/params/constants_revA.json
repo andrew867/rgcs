@@ -1,0 +1,19 @@
+{
+  "N_sectors": 37,
+  "outer_diameter_mm": 288.0,
+  "inner_diameter_mm": 188.0,
+  "outer_radius_mm": 144.0,
+  "inner_radius_mm": 94.0,
+  "mean_radius_mm": 119.0,
+  "sector_pitch_deg": 9.72972972972973,
+  "carrier_hz": 1683456,
+  "envelope_hz": 4096,
+  "lc_product_s2": 8.9379e-15,
+  "active_count_steering": 33,
+  "run_count": 35,
+  "open_count_steering": 4,
+  "modulation_constrained": 0.5,
+  "lag_rad_constrained": 3.141592653589793,
+  "d_eff_magnitude_authority": 0.4124,
+  "direction_offset_deg_authority": 12.46
+}

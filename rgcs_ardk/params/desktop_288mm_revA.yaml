@@ -1,0 +1,48 @@
+project: RGCS-ARDK-001
+revision: RevA
+status: PUBLICATION_HOLD
+geometry:
+  units: mm
+  outer_diameter: 288.0
+  inner_diameter: 188.0
+  outer_radius: 144.0
+  inner_radius: 94.0
+  mean_radius: 119.0
+  sector_count: 37
+  sector_pitch_deg: 9.729729729730
+  inner_outer_ratio_exact: "47/72"
+  open_sector_count_steering: 4
+  active_sector_count_steering: 33
+frequencies:
+  carrier_hz: 1683456
+  envelope_reference_hz: 4096
+  crystal_excitation_first_target_hz: 20480
+r1073_recipe:
+  modulation: 0.5
+  lag_rad: 3.141592653589793
+  active_floor: 0.5
+  winner_min_active_amplitude: 0.544
+  d_eff_magnitude: 0.4124
+  direction_offset_deg: 12.46
+pcb:
+  board_a: passive_sensor_calibration
+  board_b: active_drive_loading
+  target_core: aluminum_core_pcb
+  copper_thickness_source_target_mil: [3, 5]
+  first_fab_copper_thickness: TBD_BY_MANUFACTURER
+  connector_style: SYMBOLIC_PLACEHOLDER
+  design_rule_profile: safe_low_power_revA
+sense:
+  sector_pickups: 37
+  compass_pickups: 8
+  center_reference: true
+  external_above_plane_points: 4
+  external_below_plane_points: 4
+fixture:
+  ptfe_sleeve: required
+  dielectric_hangers: required
+  no_movement_when_clamped: required
+  clamp_torque: TBD_MEASURED
+claim_boundary:
+  force_thrust_allowed: false
+  propulsion_claim_allowed: false
