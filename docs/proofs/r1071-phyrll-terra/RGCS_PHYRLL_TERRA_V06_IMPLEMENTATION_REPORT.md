@@ -109,8 +109,9 @@ principle (asserted).
 
 ## 5. Force firewall
 
-Delegates to the audited `r1070tb` Townsend Brown lane rather than
-duplicating it. Even/odd decomposition; harmonic extraction for
+Keeps the bounded conventional-subtraction arithmetic in the public
+firewall without importing the mixed R10.62-R10.70 research lane.
+Even/odd decomposition; harmonic extraction for
 a₁V + a₂V² + a₃V³ with the closed-form check that DC+h1+h2+h3
 reconstructs the polynomial at phase zero; h3 = a₃V_ac³/4 isolates the
 cubic fingerprint; EHD F ≈ Id/μ (vanishes in vacuum, by refusal);
@@ -134,5 +135,5 @@ tests also pass in place, untouched.
 ## 8. Next physical measurements needed
 
 1. η_couple (wall→ring), L_eff, C_eff, Q of a physical ring;
-2. a KPFM/field map of any bench article (the r1070tb protocol);
+2. a KPFM/field map of any bench article (public control protocol);
 3. polarity-reversal force data to run the firewall decomposition on.

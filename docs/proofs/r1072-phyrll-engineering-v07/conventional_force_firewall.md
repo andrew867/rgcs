@@ -33,9 +33,8 @@ single term (`F_Maxwell = NaN`) voids an otherwise complete budget.
 
 The arithmetic (even/odd decomposition, cubic-harmonic extraction with
 h₃ = a₃V_ac³/4 isolating the cubic fingerprint, EHD F ≈ Id/μ that refuses
-vacuum) is the audited `r1070tb` / v0.6 implementation, reused not
-reimplemented. What v0.7 adds is the *ledger*: named terms, named
-controls, and a quotability gate.
+vacuum) is the bounded v0.6 public-firewall implementation. What v0.7
+adds is the *ledger*: named terms, named controls, and a quotability gate.
 
 Standing interpretation, unchanged since the Townsend Brown audit:
 

@@ -69,7 +69,7 @@ def test_power_sweep_is_monotone_in_current():
     assert powers == sorted(powers)
 
 
-# ---- firewall (delegating to the audited r1070tb lane) ----
+# ---- public conventional-subtraction firewall ----
 
 def test_even_odd_decomposition_matches_the_audit_form():
     r = FW.even_odd_decomposition(7.0, 3.0)
@@ -92,10 +92,9 @@ def test_harmonics_reconstruct_the_polynomial_at_phase_zero():
     assert h["dc"] + h["h1"] + h["h2"] + h["h3"] == pytest.approx(poly)
 
 
-def test_ehd_estimator_delegates_to_the_audited_lane():
+def test_ehd_estimator_matches_the_conventional_identity():
     r = FW.ehd_drift_force(1e-6, 0.05, 2e-4)
-    from r1070tb.sources import arl_force_from_mobility
-    assert r["force_N"] == arl_force_from_mobility(1e-6, 0.05, 2e-4)
+    assert r["force_N"] == 1e-6 * 0.05 / 2e-4
     assert r["vanishes_in_vacuum"] is True
 
 

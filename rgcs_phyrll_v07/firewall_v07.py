@@ -10,7 +10,7 @@
 with the residual quotable ONLY when every required control test is
 present. A missing control does not shrink the residual; it voids it.
 
-Reuses the audited arithmetic from ``r1070tb`` and
+Reuses the public conventional-subtraction arithmetic from
 ``rgcs_phyrll_v06.force_firewall`` -- one implementation, several lanes.
 """
 

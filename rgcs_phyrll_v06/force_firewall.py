@@ -1,8 +1,8 @@
 """Force firewall, v0.6 -- the conventional-subtraction ledger.
 
-Delegates to ``r1070tb.sources`` (the Townsend Brown audit lane) wherever
-the arithmetic already exists there, so the same audited code serves both
-lanes rather than a second copy drifting.
+The public lane keeps the small conventional arithmetic local so it does
+not depend on the mixed R10.62-R10.70 research branch. These functions
+remain subtraction controls, never a device-performance model.
 
     measured response
     = ordinary EHD momentum
@@ -19,9 +19,60 @@ conventional term.
 
 from __future__ import annotations
 
-from r1070tb.sources import (arl_force_from_mobility,  # noqa: F401
-                             momentum_accounting, nonlinear_dielectric_force,
-                             polarity_classification)
+
+def arl_force_from_mobility(current: float, gap: float,
+                            mobility: float) -> float:
+    """Conventional ion-drift momentum term, valid only in a medium."""
+    if mobility <= 0.0:
+        raise ValueError("mobility must be positive")
+    return current * gap / mobility
+
+
+def nonlinear_dielectric_force(voltage: float, c1: float, c2: float,
+                               c3: float) -> float:
+    """Diagnostic polynomial used only to separate reversal parity."""
+    return c1 * voltage + c2 * voltage ** 2 + c3 * voltage ** 3
+
+
+def polarity_classification(voltage: float, c1: float, c2: float,
+                            c3: float) -> dict:
+    """Split the diagnostic response into polarity-even and odd parts."""
+    plus = nonlinear_dielectric_force(voltage, c1, c2, c3)
+    minus = nonlinear_dielectric_force(-voltage, c1, c2, c3)
+    even = (plus + minus) / 2.0
+    odd = (plus - minus) / 2.0
+    return {
+        "even_E2_like": even,
+        "odd_current_like": odd,
+        "even_is_quadratic_term": c2 * voltage ** 2,
+        "classification": (
+            "EVEN_DOMINANT_FIELD_STRESS"
+            if abs(even) > abs(odd)
+            else "ODD_DOMINANT_CURRENT_LIKE"
+        ),
+    }
+
+
+def momentum_accounting(current: float, voltage: float, gap: float,
+                        mobility: float, measured_force: float) -> dict:
+    """Close the conventional momentum budget; a residual is not evidence."""
+    del voltage  # API parity; the mobility form already uses I*d/mu.
+    predicted = arl_force_from_mobility(current, gap, mobility)
+    residual = measured_force - predicted
+    fraction = residual / measured_force if measured_force else float("nan")
+    return {
+        "predicted_ion_drift_force": predicted,
+        "measured_force": measured_force,
+        "residual": residual,
+        "residual_fraction": fraction,
+        "budget_closed": abs(fraction) < 0.10 if measured_force else False,
+        "interpretation": "RESIDUAL_IS_NOT_EVIDENCE_OF_NEW_PHYSICS",
+        "next_terms_to_subtract": (
+            "Maxwell/electrostrictive stress, piezoelectric response, "
+            "charge memory, chamber-wall and cable forces, thermal, "
+            "acoustic and vibration artifacts"
+        ),
+    }
 
 
 def even_odd_decomposition(y_plus: float, y_minus: float) -> dict:
@@ -54,7 +105,7 @@ def harmonic_coefficients(v_dc: float, v_ac: float, a1: float, a2: float,
 
 
 def ehd_drift_force(current: float, gap: float, mobility: float) -> dict:
-    """F ~ I*d/mu_i, via the audited r1070tb implementation."""
+    """F ~ I*d/mu_i as a conventional subtraction control."""
     return {"force_N": arl_force_from_mobility(current, gap, mobility),
             "claim": "PRIOR_ART_ANALOGUE",
             "vanishes_in_vacuum": True}

@@ -7,6 +7,15 @@ import pytest
 from rgcs_terra_release import release_filter as RF
 
 
+REQUIRED_RC_TERMS = (
+    "crabwood", "ascii", "plaintext", "message decode",
+    "message decoding", "decoded message", "glyph message",
+    "private comms", "deuterium", "tritium", "heavy water", "neutron",
+    "fusion", "transmutation", "helium generation", "reactor",
+    "UHV gas fill",
+)
+
+
 @pytest.mark.parametrize("bad", [
     "docs/Crabwood_message.md", "notes/ascii_dump.txt",
     "x/plaintext_read.md", "y/message_decode_run.py",
@@ -15,6 +24,18 @@ from rgcs_terra_release import release_filter as RF
 ])
 def test_every_declared_exclusion_term_excludes(bad):
     assert RF.classify(bad)["class"] == RF.CLASS_EXCLUDED
+
+
+@pytest.mark.parametrize("term", REQUIRED_RC_TERMS)
+def test_every_rc_term_excludes_from_file_content(term):
+    row = RF.classify("docs/coordinate_public.md", content=f"prefix {term} suffix")
+    assert row["class"] == RF.CLASS_EXCLUDED
+    assert row["excluded_term"]
+
+
+def test_space_underscore_and_hyphen_variants_are_equivalent():
+    assert RF.classify("docs/vector.md", content="heavy_water")["class"] == RF.CLASS_EXCLUDED
+    assert RF.classify("docs/vector.md", content="glyph-message")["class"] == RF.CLASS_EXCLUDED
 
 
 @pytest.mark.parametrize("good", [
