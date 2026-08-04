@@ -17,7 +17,7 @@ the complex electromagnetic field-asymmetry quantity `DeltaB`.
 - Positive performance inference raises before a bench verdict.
 - PASS and FAIL remain reachable with complete bounded inputs.
 - An AST audit scanned 27 executable files and 3,032 identifiers with zero prohibited namespace leaks.
-- The public-path filter excludes private message/ASCII and phenomenology lanes.
+- The public-path filter excludes private communication and phenomenology lanes.
 - `PUBLICATION_HOLD` is a constant true return and a checked-in report.
 
 ## Hardware safeguards

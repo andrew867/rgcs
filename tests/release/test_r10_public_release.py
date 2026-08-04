@@ -97,6 +97,16 @@ def test_public_coordinate_file_requires_no_exclusion_hit() -> None:
     assert row["classification"] == release.CLASS_PUBLIC
 
 
+def test_public_workbench_hub_and_lab_examples_are_explicit() -> None:
+    for path in (
+        "workbench/index.html",
+        "static/hub/index.html",
+        "examples/rgcs_lab/claim_yellow.json",
+    ):
+        row = release.classify_blob(blob(path, "bounded public artifact"))
+        assert row["classification"] == release.CLASS_PUBLIC, path
+
+
 def test_mixed_r1073_branch_is_quarantined() -> None:
     classification = release.classify_branch(
         "claude/rgcs-r10-62-terminal-vertex-4aca40",

@@ -121,6 +121,7 @@ PUBLIC_EXACT_FILES = {
 }
 
 PUBLIC_PREFIXES = (
+    "workbench/",
     "docs/workbench/",
     "docs/proofs/workbench-release/",
     "rgcs_coordinate/",
@@ -129,7 +130,9 @@ PUBLIC_PREFIXES = (
     "rgcs_lab/",
     "tests/rgcs_lab/",
     "tests/release_public/",
+    "examples/rgcs_lab/",
     "examples/rgcs_lab_",
+    "static/hub/",
     "cwatlas/",
     "docs/cwatlas/",
     "tests/cwatlas/",
