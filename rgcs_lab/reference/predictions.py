@@ -9,8 +9,7 @@ from typing import Any
 
 
 def _canonical(obj: Any) -> str:
-    return json.dumps(obj, sort_keys=True, separators=(",", ":"),
-                      ensure_ascii=True)
+    return json.dumps(obj, sort_keys=True, separators=(",", ":"))
 
 
 def _base_body(prediction: dict[str, Any]) -> dict[str, Any]:

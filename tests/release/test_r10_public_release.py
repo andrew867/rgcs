@@ -10,6 +10,8 @@ from tools import r10_public_release as release
 
 REQUIRED_TERMS = (
     "crabwood",
+    "cnt",
+    "carbon nanotube",
     "ascii",
     "plaintext",
     "message decode",
@@ -131,3 +133,39 @@ def test_registered_proof_packages_and_hold_exist() -> None:
     seed_files = list(Path(registry["authority"]["seed_root"]).iterdir())
     assert seed_files
     assert all("NOT_AUTHORITY" in path.name for path in seed_files)
+
+
+def test_performance_path_modules_remain_review_only() -> None:
+    for path in (
+        "rgcs_phyrll_v06/resonance.py",
+        "rgcs_phyrll_v07/force_boundary.py",
+        "rgcs_phyrll_v07/resonator.py",
+    ):
+        row = release.classify_blob(blob(path, "bounded implementation"))
+        assert row["classification"] == release.CLASS_REVIEW
+
+
+def test_namespace_audit_detects_wall_power_path(tmp_path: Path) -> None:
+    source = tmp_path / "source"
+    source.mkdir()
+    (source / "bad.py").write_text(
+        "def ring_power_from_wall(): return 1\n"
+        "def candidate_force(): return ring_power_from_wall()\n",
+        encoding="utf-8",
+    )
+    audit = release._namespace_and_power_audit(source)
+    assert audit["force_thrust_namespace_leak_count"] == 1
+    assert audit["wall_power_path_count"] == 1
+
+
+def test_namespace_audit_allows_explicit_firewall(tmp_path: Path) -> None:
+    path = tmp_path / "rgcs_ardk" / "reports" / "firewall.py"
+    path.parent.mkdir(parents=True)
+    path.write_text(
+        "def ring_power_from_wall(): return 1\n"
+        "def candidate_force(): return ring_power_from_wall()\n",
+        encoding="utf-8",
+    )
+    audit = release._namespace_and_power_audit(tmp_path)
+    assert audit["force_thrust_namespace_leak_count"] == 0
+    assert audit["wall_power_path_count"] == 0

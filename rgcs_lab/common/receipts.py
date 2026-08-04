@@ -11,8 +11,7 @@ from rgcs_lab import __version__
 
 
 def _canonical(obj: Any) -> str:
-    return json.dumps(obj, sort_keys=True, separators=(",", ":"),
-                      ensure_ascii=True)
+    return json.dumps(obj, sort_keys=True, separators=(",", ":"))
 
 
 def receipt_sha256(payload: dict[str, Any]) -> str:

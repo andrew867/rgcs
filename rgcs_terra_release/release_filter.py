@@ -19,7 +19,7 @@ import re
 #: RC1 exclusion terms, matched case-insensitively in path, title, tag,
 #: or file content. Spaces, underscores, and hyphens are equivalent.
 EXCLUDE_TERMS = (
-    "crabwood", "ascii", "plaintext", "message decode",
+    "crabwood", "cnt", "carbon nanotube", "ascii", "plaintext", "message decode",
     "message decoding", "decoded message", "glyph message",
     "private comms", "deuterium", "tritium", "heavy water", "neutron",
     "fusion", "transmutation", "helium generation", "reactor",

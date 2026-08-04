@@ -8,9 +8,12 @@ explicit inclusion rule matches and no path or content exclusion matches.
 from __future__ import annotations
 
 import argparse
+import ast
+import csv
 import hashlib
 import json
 import re
+import shutil
 import subprocess
 from dataclasses import dataclass
 from datetime import datetime
@@ -26,6 +29,8 @@ CLASS_REVIEW = "review-needed"
 
 EXCLUDED_TERMS = (
     "crabwood",
+    "cnt",
+    "carbon nanotube",
     "ascii",
     "plaintext",
     "message decode",
@@ -107,16 +112,21 @@ PUBLIC_EXACT_FILES = {
     "docs/NOTATION_AND_UNITS.md",
     "docs/ADAPTATION_MATRIX.md",
     "docs/EXCLUSION_MATRIX.md",
-    "r1028/varcodec36.py",
+    "docs/FRAMES_EPOCHS_AND_GALACTIC_DIRECTIONS.md",
+    "docs/MAP_PATH_POLYGON_GUIDE.md",
+    "docs/program/receipts/coordinate.json",
+    "r1025/hedra.py",
 }
 
 PUBLIC_PREFIXES = (
     "docs/workbench/",
+    "docs/proofs/workbench-release/",
     "rgcs_coordinate/",
     "rgcs_workbench/",
     "tests/rgcs_coordinate/",
     "rgcs_lab/",
     "tests/rgcs_lab/",
+    "tests/release_public/",
     "examples/rgcs_lab_",
     "cwatlas/",
     "docs/cwatlas/",
@@ -132,14 +142,23 @@ PUBLIC_PREFIXES = (
     "docs/proofs/r1074-annular-devkit/",
 )
 
+REVIEW_ONLY_FILES = {
+    "r1053/__main__.py",
+    "r1053/certificate.py",
+    "r1053/lock.py",
+    "rgcs_phyrll_v06/resonance.py",
+    "rgcs_phyrll_v07/force_boundary.py",
+    "rgcs_phyrll_v07/resonator.py",
+    "tests/test_phyrll_v06_resonance.py",
+    "tests/test_phyrll_v07_engineering.py",
+}
+
 PUBLIC_TEST_FILES = {
     "tests/test_miami_bermuda_calibration.py",
     "tests/test_phyrll_v06_annular_proxy.py",
     "tests/test_phyrll_v06_coefficients.py",
-    "tests/test_phyrll_v06_resonance.py",
     "tests/test_phyrll_v06_ring37.py",
     "tests/test_terra_public_release_filter.py",
-    "tests/test_phyrll_v07_engineering.py",
     "tests/test_phyrll_v07_composed_sweep.py",
     "tests/test_phyrll_v07_bench_drive.py",
 }
@@ -154,6 +173,18 @@ SAFE_OVERLAY_COMMITS = (
 
 PHASE0_CAPTURED_AT = "2026-08-03T21:05:50.0848944-02:30"
 SAFETY_SNAPSHOT_BRANCH = "release-safety-snapshot-20260803-2105"
+
+RC_NAME = "R10_PUBLIC_RC1"
+R10_73_AUTHORITY_COMMIT = "710e5947c80ea7a2299dc0a40fd63a4262891e39"
+R10_74_SOURCE_COMMIT = "dfab636c4bf5e165103d7ebc72a693ef828b9987"
+
+NAMESPACE_FIREWALL_PATHS = {
+    "rgcs_phyrll_v06/force_firewall.py",
+    "rgcs_phyrll_v07/firewall_v07.py",
+    "rgcs_phyrll_v07/force_boundary.py",
+    "rgcs_ardk/reports/firewall.py",
+    "rgcs_ardk/bench/gate.py",
+}
 
 PROOF_DIR_NAMES = {
     "test",
@@ -302,6 +333,9 @@ def classify_blob(record: BlobRecord) -> dict[str, object]:
     elif archive or quarantine:
         classification = CLASS_QUARANTINE
         reason = f"non-release marker: {archive or quarantine}"
+    elif path in REVIEW_ONLY_FILES:
+        classification = CLASS_REVIEW
+        reason = "depends on a quarantined historical parser lane"
     elif public_rule:
         classification = CLASS_PUBLIC
         reason = public_rule
@@ -325,7 +359,7 @@ def collect_filter_audit(
     repo: Path,
     revision: str = "main",
     overlays: Sequence[str] = SAFE_OVERLAY_COMMITS,
-    existing_filter_test_count: int = 36,
+    existing_filter_test_count: int = 38,
 ) -> dict[str, object]:
     tree = collect_overlay_tree(repo, revision, overlays)
     rows = [classify_blob(tree[path]) for path in sorted(tree)]
@@ -897,11 +931,443 @@ def write_safety_snapshot(repo: Path, snapshot_worktree: Path) -> None:
     )
 
 
+def _load_json(path: Path, default: object) -> object:
+    if not path.is_file():
+        return default
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _current_public_rows(repo: Path) -> tuple[list[dict[str, object]], dict[str, bytes]]:
+    head = run_git(repo, "rev-parse", "HEAD").strip()
+    rows: list[dict[str, object]] = []
+    data_by_path: dict[str, bytes] = {}
+    for path in git_lines(repo, "ls-files"):
+        normalized = normalize(path)
+        data = (repo / normalized).read_bytes()
+        data_by_path[normalized] = data
+        rows.append(classify_blob(BlobRecord(normalized, head, data)))
+    return rows, data_by_path
+
+
+def _replace_release_directory(repo: Path, destination: Path) -> None:
+    releases = (repo / "dist" / "releases").resolve()
+    target = destination.resolve()
+    try:
+        target.relative_to(releases)
+    except ValueError as exc:
+        raise RuntimeError(f"refusing to replace path outside {releases}: {target}") from exc
+    releases.mkdir(parents=True, exist_ok=True)
+    if target.exists():
+        shutil.rmtree(target)
+    target.mkdir(parents=True)
+
+
+def _write_text(path: Path, content: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(content.rstrip() + "\n", encoding="utf-8", newline="\n")
+
+
+def _tree_file_rows(root: Path) -> list[dict[str, object]]:
+    rows: list[dict[str, object]] = []
+    for path in sorted((item for item in root.rglob("*") if item.is_file()),
+                       key=lambda item: item.relative_to(root).as_posix()):
+        data = path.read_bytes()
+        rows.append(
+            {
+                "path": path.relative_to(root).as_posix(),
+                "size_bytes": len(data),
+                "sha256": hashlib.sha256(data).hexdigest(),
+            }
+        )
+    return rows
+
+
+def _write_csv_manifest(path: Path, rows: Sequence[dict[str, object]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=("path", "size_bytes", "sha256"),
+            lineterminator="\n",
+        )
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def _identifier_names(tree: ast.AST) -> set[str]:
+    names: set[str] = set()
+    for node in ast.walk(tree):
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+            names.add(node.name)
+        elif isinstance(node, ast.Name):
+            names.add(node.id)
+        elif isinstance(node, ast.Attribute):
+            names.add(node.attr)
+        elif isinstance(node, ast.arg):
+            names.add(node.arg)
+        elif isinstance(node, (ast.Import, ast.ImportFrom)):
+            names.update(alias.asname or alias.name.rsplit(".", 1)[-1]
+                         for alias in node.names)
+    return names
+
+
+def _namespace_and_power_audit(source_root: Path) -> dict[str, object]:
+    namespace_pattern = re.compile(r"(?:^|_)(?:force|thrust)(?:$|_)", re.IGNORECASE)
+    namespace_leaks: list[dict[str, str]] = []
+    wall_power_paths: list[dict[str, object]] = []
+    for path in sorted(source_root.rglob("*.py")):
+        rel = path.relative_to(source_root).as_posix()
+        if rel.startswith("tests/") or "/tests/" in rel:
+            continue
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=rel)
+        names = _identifier_names(tree)
+        boundary = rel in NAMESPACE_FIREWALL_PATHS or "firewall" in Path(rel).name
+        force_names = sorted(name for name in names if namespace_pattern.search(name))
+        if force_names and not boundary:
+            namespace_leaks.extend(
+                {"path": rel, "identifier": name} for name in force_names
+            )
+        wall_names = sorted(
+            name for name in names
+            if ("wall" in name.lower() and "power" in name.lower())
+            or "power_from_wall" in name.lower()
+        )
+        if wall_names and force_names and not boundary:
+            wall_power_paths.append(
+                {"path": rel, "wall_identifiers": wall_names,
+                 "performance_identifiers": force_names}
+            )
+    return {
+        "force_thrust_namespace_leak_count": len(namespace_leaks),
+        "force_thrust_namespace_leaks": namespace_leaks,
+        "wall_power_path_count": len(wall_power_paths),
+        "wall_power_paths": wall_power_paths,
+        "wall_power_path_status": "NONE" if not wall_power_paths else "STOP",
+    }
+
+
+def _restricted_output_hits(paths: Sequence[Path], base: Path) -> list[dict[str, object]]:
+    hits: list[dict[str, object]] = []
+    for path in paths:
+        data = path.read_bytes()
+        text = data.decode("utf-8", errors="ignore")
+        rel = path.relative_to(base).as_posix() if path.is_relative_to(base) else path.name
+        matched = excluded_hits(f"{rel}\n{text}")
+        if matched:
+            hits.append({"path": rel, "terms": matched})
+    return hits
+
+
+def _render_rc_readme(head: str) -> str:
+    return f"""# RGCS R10 Public RC1
+
+This is a local public software and documentation candidate built from `{head}`. No remote publication is performed by the build.
+
+Included surfaces:
+
+- the RGCS coordinate workbench and structural coordinate adapters;
+- the 27/30/33/36-bit variable-length vector codec;
+- public maps, paths, polygons, calibration notes, and parse receipts;
+- R10.71 through R10.74 bounded annular engineering scaffolds;
+- public tests, provenance records, and safety/claim boundaries.
+
+The ARDK is a controllable annular electromagnetic field-asymmetry demonstrator with no mechanical rotation. Fabrication readiness is `REFUSED`. Seed drive inputs remain `NOT_AUTHORITY`; the R10.73 authority is pinned to `{R10_73_AUTHORITY_COMMIT}`.
+"""
+
+
+def _render_rc_release_notes(head: str, test_report: dict[str, object]) -> str:
+    summary = test_report.get("summary", {}) if isinstance(test_report, dict) else {}
+    passed = summary.get("passed", "PENDING")
+    skipped = summary.get("skipped", "PENDING")
+    warnings = summary.get("warnings", "PENDING")
+    return f"""# R10 Public RC1 Release Notes
+
+Source commit: `{head}`.
+
+This candidate consolidates the public coordinate workbench, variable-length structural codec, bounded annular optimizer, R10.73 authority receipts, and R10.74 development-kit scaffold. File-level inclusion is allowlisted and content-filtered; unmatched source material remains held for review.
+
+Full-suite result: `{passed}` passed, `{skipped}` skipped, `{warnings}` warnings. See `REPRODUCTION.md` for commands.
+
+ARDK fabrication readiness remains `REFUSED`. This candidate is not a fabrication release.
+"""
+
+
+def _render_rc_limitations(review_count: int) -> str:
+    return f"""# R10 Public RC1 Known Limitations
+
+- ARDK fabrication readiness is `REFUSED`; physical manufacturing evidence is incomplete.
+- Seed drive inputs are `NOT_AUTHORITY` and cannot authorize generation or fabrication.
+- Physical projection profiles remain bounded by their checked-in claim classes and calibration evidence.
+- {review_count} tracked source files remain outside the candidate pending human review.
+- This is a local candidate. No remote publication has been performed.
+"""
+
+
+def _render_rc_review_queue(review_count: int, quarantine_count: int,
+                            withheld_count: int) -> str:
+    return f"""# R10 Public RC1 Review Queue
+
+No item in this queue is part of the candidate payload.
+
+- Human-review source files: **{review_count}**
+- Archive/quarantine source files: **{quarantine_count}**
+- Policy-withheld source files: **{withheld_count}**
+
+The detailed internal queue remains in the repository release-control records. A future candidate requires an explicit file-level decision; absence from this summary is not approval.
+"""
+
+
+def _render_rc_reproduction(test_report: dict[str, object]) -> str:
+    command = "python -m pytest -q --basetemp build/pytest-r10-public-rc1"
+    if isinstance(test_report, dict):
+        command = str(test_report.get("command", command))
+    return f"""# R10 Public RC1 Reproduction
+
+From the repository revision recorded in `SOURCE_MANIFEST.json`:
+
+```text
+python -m pip install -e .
+{command}
+python -m pytest tests/rgcs_coordinate tests/release_public rgcs_ardk/tests -q
+```
+
+For the filtered candidate tree itself, set `PYTHONPATH=source` and run the test paths present under `source/tests` and `source/rgcs_ardk/tests`.
+
+All generated hashes use SHA-256 and paths relative to the candidate root.
+"""
+
+
+def build_public_rc(repo: Path) -> dict[str, object]:
+    repo = repo.resolve()
+    branch = run_git(repo, "branch", "--show-current").strip()
+    status = git_lines(repo, "status", "--porcelain=v1", "--untracked-files=normal")
+    if branch != "main":
+        raise RuntimeError(f"release candidate must be built from main, not {branch}")
+    if status:
+        raise RuntimeError(f"release candidate requires a clean tree: {status}")
+
+    head = run_git(repo, "rev-parse", "HEAD").strip()
+    commit_time = run_git(repo, "show", "-s", "--format=%cI", "HEAD").strip()
+    rows, data_by_path = _current_public_rows(repo)
+    public_rows = sorted(
+        (row for row in rows if row["classification"] == CLASS_PUBLIC),
+        key=lambda row: str(row["path"]),
+    )
+    counts = {
+        classification: sum(row["classification"] == classification for row in rows)
+        for classification in (CLASS_PUBLIC, CLASS_PRIVATE, CLASS_QUARANTINE, CLASS_REVIEW)
+    }
+
+    required = {
+        "LICENSE",
+        "rgcs_coordinate/codecs/variable_length_36.py",
+        "tests/rgcs_coordinate/test_variable_length_36.py",
+        "docs/proofs/workbench-release/VARIABLE_LENGTH_CODEC_RECEIPT.json",
+        "docs/proofs/r1072-phyrll-engineering-v07/ring_steering_optimizer_report.json",
+        "docs/proofs/r1073-bench-drive/drive_table.json",
+        "docs/proofs/r1074-annular-devkit/manufacturing_readiness_report.md",
+        "rgcs_ardk/drive/authority_manifest.json",
+    }
+    selected_paths = {str(row["path"]) for row in public_rows}
+    missing = sorted(required - selected_paths)
+    if missing:
+        raise RuntimeError(f"required public candidate paths are not eligible: {missing}")
+    prohibited = {
+        "rgcs_phyrll_v06/resonance.py",
+        "rgcs_phyrll_v07/force_boundary.py",
+        "rgcs_phyrll_v07/resonator.py",
+        "rgcs_terra_release/release_filter.py",
+    }
+    leaked_prohibited = sorted(prohibited & selected_paths)
+    if leaked_prohibited:
+        raise RuntimeError(f"prohibited implementation paths selected: {leaked_prohibited}")
+
+    releases = repo / "dist" / "releases"
+    rc_root = releases / RC_NAME
+    _replace_release_directory(repo, rc_root)
+    source_root = rc_root / "source"
+    for row in public_rows:
+        rel = str(row["path"])
+        destination = source_root / rel
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(data_by_path[rel])
+
+    registry = _load_json(repo / "docs/release/r10_public_package_registry.json", {})
+    test_report = _load_json(repo / "docs/release/r10_full_test_report.json", {})
+    source_manifest = {
+        "schema_version": 1,
+        "release": RC_NAME,
+        "main_head": head,
+        "source_commit_time": commit_time,
+        "r10_73_authority_commit": R10_73_AUTHORITY_COMMIT,
+        "r10_74_source_commit": R10_74_SOURCE_COMMIT,
+        "fabrication_readiness": "REFUSED",
+        "seed_status": "NOT_AUTHORITY",
+        "release_resolution": registry.get("release_resolution", {}),
+        "source_file_count": len(public_rows),
+        "files": [
+            {
+                "path": row["path"],
+                "size_bytes": row["size_bytes"],
+                "sha256": row["sha256"],
+            }
+            for row in public_rows
+        ],
+    }
+    _write_text(rc_root / "README.md", _render_rc_readme(head))
+    release_notes = _render_rc_release_notes(head, test_report)
+    limitations = _render_rc_limitations(counts[CLASS_REVIEW])
+    review_queue = _render_rc_review_queue(
+        counts[CLASS_REVIEW], counts[CLASS_QUARANTINE], counts[CLASS_PRIVATE]
+    )
+    _write_text(rc_root / "RELEASE_NOTES.md", release_notes)
+    _write_text(rc_root / "KNOWN_LIMITATIONS.md", limitations)
+    _write_text(rc_root / "REVIEW_QUEUE.md", review_queue)
+    _write_text(rc_root / "REPRODUCTION.md", _render_rc_reproduction(test_report))
+    _write_text(
+        rc_root / "REQUIREMENTS.txt",
+        "numpy\nscipy\nPyYAML\npytest",
+    )
+    (rc_root / "LICENSE").write_bytes((repo / "LICENSE").read_bytes())
+    _write_text(
+        rc_root / "SOURCE_MANIFEST.json",
+        json.dumps(source_manifest, indent=2, sort_keys=True),
+    )
+
+    payload_rows = _tree_file_rows(rc_root)
+    _write_csv_manifest(rc_root / "FILE_MANIFEST.csv", payload_rows)
+    all_rows = _tree_file_rows(rc_root)
+
+    external_json = releases / f"{RC_NAME}_MANIFEST.json"
+    external_csv = releases / f"{RC_NAME}_MANIFEST.csv"
+    external_sums = releases / f"{RC_NAME}_SHA256SUMS.txt"
+    external_notes = releases / f"{RC_NAME}_RELEASE_NOTES.md"
+    external_limits = releases / f"{RC_NAME}_KNOWN_LIMITATIONS.md"
+    external_review = releases / f"{RC_NAME}_REVIEW_QUEUE.md"
+    external_manifest = {
+        "schema_version": 1,
+        "release": RC_NAME,
+        "main_head": head,
+        "generated_from_commit_time": commit_time,
+        "file_count": len(all_rows),
+        "files": all_rows,
+    }
+    _write_text(external_json, json.dumps(external_manifest, indent=2, sort_keys=True))
+    _write_csv_manifest(external_csv, all_rows)
+    _write_text(
+        external_sums,
+        "\n".join(f"{row['sha256']}  {RC_NAME}/{row['path']}" for row in all_rows),
+    )
+    _write_text(external_notes, release_notes)
+    _write_text(external_limits, limitations)
+    _write_text(external_review, review_queue)
+
+    output_files = [
+        path for path in rc_root.rglob("*") if path.is_file()
+    ] + [
+        external_json,
+        external_csv,
+        external_sums,
+        external_notes,
+        external_limits,
+        external_review,
+    ]
+    restricted_hits = _restricted_output_hits(output_files, releases)
+    code_audit = _namespace_and_power_audit(source_root)
+    authority = json.loads(
+        (source_root / "rgcs_ardk/drive/authority_manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    seed_files = sorted((source_root / "rgcs_ardk/drive/seed").iterdir())
+    manufacturing_text = (
+        source_root
+        / "docs/proofs/r1074-annular-devkit/manufacturing_readiness_report.md"
+    ).read_text(encoding="utf-8")
+    structural_gates = {
+        "restricted_output_hit_count": len(restricted_hits),
+        "restricted_output_hits": restricted_hits,
+        **code_audit,
+        "r10_73_authority_pinned": authority.get("source_commit")
+        == R10_73_AUTHORITY_COMMIT,
+        "seed_files_not_authority": bool(seed_files)
+        and all("NOT_AUTHORITY" in path.name for path in seed_files),
+        "fabrication_readiness_refused": "REFUSED" in manufacturing_text,
+        "license_present": (rc_root / "LICENSE").is_file(),
+        "sha256_manifest_present": external_sums.is_file(),
+        "review_queue_present": (rc_root / "REVIEW_QUEUE.md").is_file(),
+    }
+    structural_pass = (
+        not restricted_hits
+        and code_audit["force_thrust_namespace_leak_count"] == 0
+        and code_audit["wall_power_path_count"] == 0
+        and all(
+            structural_gates[key]
+            for key in (
+                "r10_73_authority_pinned",
+                "seed_files_not_authority",
+                "fabrication_readiness_refused",
+                "license_present",
+                "sha256_manifest_present",
+                "review_queue_present",
+            )
+        )
+    )
+    gate_report = {
+        "schema_version": 1,
+        "release": RC_NAME,
+        "main_head": head,
+        "status": "PASS" if structural_pass else "REFUSED",
+        "source_file_count": len(public_rows),
+        "release_file_count": len(all_rows),
+        "classification_counts": counts,
+        "gates": structural_gates,
+    }
+    gate_path = releases / f"{RC_NAME}_GATE_REPORT.json"
+    _write_text(gate_path, json.dumps(gate_report, indent=2, sort_keys=True))
+    if not structural_pass:
+        raise RuntimeError(f"release candidate structural gates refused: {gate_report}")
+    return gate_report
+
+
+def verify_public_rc(repo: Path) -> dict[str, object]:
+    repo = repo.resolve()
+    releases = repo / "dist" / "releases"
+    rc_root = releases / RC_NAME
+    manifest_path = releases / f"{RC_NAME}_MANIFEST.json"
+    if not rc_root.is_dir() or not manifest_path.is_file():
+        raise RuntimeError("release candidate or manifest is missing")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    actual = _tree_file_rows(rc_root)
+    hashes_match = actual == manifest.get("files")
+    output_files = [path for path in rc_root.rglob("*") if path.is_file()]
+    output_files.extend(
+        path for path in releases.glob(f"{RC_NAME}_*") if path.is_file()
+        and path.name != f"{RC_NAME}_GATE_REPORT.json"
+    )
+    hits = _restricted_output_hits(output_files, releases)
+    code_audit = _namespace_and_power_audit(rc_root / "source")
+    result = {
+        "manifest_hashes_match": hashes_match,
+        "restricted_output_hit_count": len(hits),
+        **code_audit,
+        "status": "PASS" if (
+            hashes_match
+            and not hits
+            and code_audit["force_thrust_namespace_leak_count"] == 0
+            and code_audit["wall_power_path_count"] == 0
+        ) else "REFUSED",
+    }
+    return result
+
+
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo", type=Path, default=Path.cwd())
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("inventory")
+    sub.add_parser("build")
+    sub.add_parser("verify")
     snapshot = sub.add_parser("snapshot")
     snapshot.add_argument("--snapshot-worktree", type=Path, required=True)
     audit = sub.add_parser("audit")
@@ -926,6 +1392,13 @@ def main(argv: Sequence[str] | None = None) -> int:
     if args.command == "inventory":
         write_inventory(repo)
         return 0
+    if args.command == "build":
+        print(json.dumps(build_public_rc(repo), indent=2, sort_keys=True))
+        return 0
+    if args.command == "verify":
+        result = verify_public_rc(repo)
+        print(json.dumps(result, indent=2, sort_keys=True))
+        return 0 if result["status"] == "PASS" else 1
     if args.command == "snapshot":
         write_safety_snapshot(repo, args.snapshot_worktree.resolve())
         return 0

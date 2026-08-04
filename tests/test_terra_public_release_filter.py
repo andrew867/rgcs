@@ -8,7 +8,7 @@ from rgcs_terra_release import release_filter as RF
 
 
 REQUIRED_RC_TERMS = (
-    "crabwood", "ascii", "plaintext", "message decode",
+    "crabwood", "cnt", "carbon nanotube", "ascii", "plaintext", "message decode",
     "message decoding", "decoded message", "glyph message",
     "private comms", "deuterium", "tritium", "heavy water", "neutron",
     "fusion", "transmutation", "helium generation", "reactor",

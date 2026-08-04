@@ -1,0 +1,16 @@
+{
+  "schema": "rgcs.public-variable-codec-receipt.v1",
+  "codec_id": "terra-variable-r4-s8-p12",
+  "layout": "R4|S8|P12|tail",
+  "valid_width_bits": [
+    27,
+    30,
+    33,
+    36
+  ],
+  "tail_rule": "zero to three optional 3-bit groups followed by one mandatory 3-bit check group",
+  "scope": "reversible structural parsing",
+  "physical_projection": "NOT_PERFORMED",
+  "authority": "PUBLIC_STRUCTURAL_ADAPTER",
+  "test": "tests/rgcs_coordinate/test_variable_length_36.py"
+}

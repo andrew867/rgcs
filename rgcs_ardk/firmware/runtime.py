@@ -14,7 +14,7 @@ class RuntimeRefused(RuntimeError):
 
 def _config_digest(authority: AuthorityBundle) -> str:
     joined = "".join(f"{name}:{authority.hashes[name]}\n" for name in sorted(authority.hashes))
-    return hashlib.sha256(joined.encode("ascii")).hexdigest()
+    return hashlib.sha256(joined.encode("utf-8")).hexdigest()
 
 
 @dataclass
