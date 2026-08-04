@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
   "status": "PASS",
-  "generated_at": "2026-08-04T00:01:37.6808871-02:30",
-  "tested_commit": "cdb702288bc7aa7083851719d1942df4d8a29a3e",
-  "tested_tree": "b2d0201dc208c1ab685cfba8ff785f885c89cc87",
-  "command": "python -m pytest tests rgcs_ardk/tests -q --basetemp build/pytest-r10-public-full-final3 --junitxml=build/r10-public-full-final3-junit.xml",
+  "generated_at": "2026-08-04T00:53:40.4364093-02:30",
+  "tested_commit": "350a7c3fb60be673f38f92a26ce9cbffab2c0617",
+  "tested_tree": "b4aad42696e10eabf5f77de51d19b1bd24131743",
+  "command": "python -m pytest tests rgcs_ardk/tests -q --basetemp build/pytest-r10-public-full-final4 --junitxml=build/r10-public-full-final4-junit.xml",
   "process_exit_code": 0,
-  "junit_path": "build/r10-public-full-final3-junit.xml",
+  "junit_path": "build/r10-public-full-final4-junit.xml",
   "summary": {
-    "collected": 8935,
-    "passed": 8919,
+    "collected": 8936,
+    "passed": 8920,
     "skipped": 16,
     "warnings": 3,
     "failures": 0,
@@ -17,9 +17,9 @@
     "xfailed": 0
   },
   "runtime_seconds": {
-    "pytest": 1561.58,
-    "junit": 1561.446,
-    "wall": 1566.3
+    "pytest": 1639.97,
+    "junit": 1639.847,
+    "wall": 1644.1
   },
   "environment": {
     "python": "3.13.2",
@@ -42,18 +42,29 @@
       "status": "PASS"
     },
     "release_filter_privacy": {
-      "passed": 63,
+      "passed": 64,
       "status": "PASS"
     },
     "qt_webengine_exit_control": {
       "passed": 1,
       "process_exit_code": 0,
       "status": "PASS"
+    },
+    "isolated_public_candidate": {
+      "command": "python -m pytest tests rgcs_ardk/tests -q --rootdir . -c NUL --basetemp build/pytest-r10-candidate-contained3 --junitxml=build/r10-candidate-contained3-junit.xml",
+      "source_root": "dist/releases/R10_PUBLIC_RC1/source",
+      "passed": 1508,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "runtime_seconds": 136.91,
+      "process_exit_code": 0,
+      "status": "PASS"
     }
   },
   "filter_evidence": {
     "report": "docs/release/r10_release_filter_report.json",
-    "base_commit": "cdb702288bc7aa7083851719d1942df4d8a29a3e",
+    "base_commit": "6b9de342ab9e7cdd704af1a4c87e7d2ec7355447",
     "result": "PASS",
     "existing_filter_tests_passed": 38,
     "excluded_term_public_leaks": 0

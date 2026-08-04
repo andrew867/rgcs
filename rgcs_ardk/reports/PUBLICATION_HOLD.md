@@ -13,7 +13,7 @@ bench receipts, and a clean public-path audit.
 
 The R10 public release gates explicitly resolve the software-publication part
 of this hold for the filtered local `r10-public-rc1` software and documentation
-candidate only. The gate evidence records 8,919 passed tests, zero failures,
+candidate only. The gate evidence records 8,920 passed tests, zero failures,
 zero excluded-term public leaks, zero force/thrust namespace leaks, zero
 wall-power paths, pinned R10.73 authority, and hash-verified candidate files.
 

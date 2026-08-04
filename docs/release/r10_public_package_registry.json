@@ -37,7 +37,7 @@
     "resolution_scope": "filtered software and documentation candidate only",
     "resolution_authority": "R10_PUBLIC_RC1_RELEASE_GATES",
     "full_suite_tested_commit": "cdb702288bc7aa7083851719d1942df4d8a29a3e",
-    "full_suite_result": "8919 passed, 16 skipped, 3 warnings, 0 failures",
+    "full_suite_result": "8920 passed, 16 skipped, 3 warnings, 0 failures",
     "release_filter_result": "PASS_ZERO_PUBLIC_EXCLUDED_TERM_LEAKS",
     "remote_push_authorized": false,
     "ardk_fabrication_hold": "REMAINS_ASSERTED"
