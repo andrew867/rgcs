@@ -16,6 +16,7 @@ evidence must come from the GitHub API and is recorded separately.
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import subprocess
@@ -123,8 +124,12 @@ def module_status() -> dict:
     return mods
 
 
-def main() -> int:
-    OUT.mkdir(parents=True, exist_ok=True)
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output-dir", type=Path, default=OUT)
+    args = parser.parse_args(argv)
+    output_dir = args.output_dir.resolve()
+    output_dir.mkdir(parents=True, exist_ok=True)
     artifacts = {
         "V4_REPO_INVENTORY.json": repo_inventory(),
         "V4_FROZEN_ARTIFACT_CHECKSUMS.json": frozen_checksums(),
@@ -132,7 +137,7 @@ def main() -> int:
         "V4_MODULE_STATUS.json": module_status(),
     }
     for name, obj in artifacts.items():
-        (OUT / name).write_text(
+        (output_dir / name).write_text(
             json.dumps(obj, indent=2, sort_keys=True) + "\n",
             encoding="utf-8")
         print(f"wrote {name}")

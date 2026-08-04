@@ -117,7 +117,7 @@ def test_geometry_partitions_anchors_like_the_addresses():
     for p in training_points():
         geo[p.point_id] = classify_point(p.lat, p.lon, rot)["root_face"]
         addr[p.point_id] = surface_word_face(p.surface_word)
-    na = ["MONTREAL_CORRECTED_ANCHOR", "ERIE_ANCHOR", "TORONTO_ANCHOR"]
+    na = ["ERIE_ANCHOR", "TORONTO_ANCHOR"]
     assert len({geo[k] for k in na}) == 1
     assert len({addr[k] for k in na}) == 1
     assert geo["STONEHENGE_ANCHOR"] not in {geo[k] for k in na}
@@ -151,12 +151,12 @@ def test_height_span_is_small_against_shell_thickness():
     assert height_span_m()["span_m"] / m.thickness_m[3] < 0.10
 
 
-def test_montreal_shell_assignment_is_flagged_marginal():
-    """Honest limitation: Montreal straddles the datum at 3 sigma."""
+def test_current_training_anchor_shell_assignments_are_robust():
+    """Every current training anchor remains in shell 3 at 3 sigma."""
     m = _model("REPO_ATMOSPHERIC_LADDER_V1",
                "DECLARED_ALTERNATIVE_MSL_0M")
-    p = [x for x in SEED_POINTS
-         if x.point_id == "MONTREAL_CORRECTED_ANCHOR"][0]
-    lo = m.classify(p.height_m - 3 * p.height_sigma_m)
-    hi = m.classify(p.height_m + 3 * p.height_sigma_m)
-    assert lo["status"] != hi["status"]
+    for p in training_points():
+        lo = m.classify(p.height_m - 3 * p.height_sigma_m)
+        hi = m.classify(p.height_m + 3 * p.height_sigma_m)
+        assert lo["status"] == hi["status"] == "IN_OPERATIONAL_STACK"
+        assert lo["shell"] == hi["shell"] == 3

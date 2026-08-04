@@ -13,11 +13,12 @@ OUT = REPO / "docs" / "v4" / "baseline"
 def test_scanner_runs_and_is_deterministic(tmp_path):
     """Two runs produce byte-identical inventory apart from none —
     the scanner contains no timestamps or RNG."""
-    cmd = [sys.executable, "tools/v4/baseline/scan_baseline.py"]
+    cmd = [sys.executable, "tools/v4/baseline/scan_baseline.py",
+           "--output-dir", str(tmp_path)]
     subprocess.run(cmd, cwd=REPO, check=True, capture_output=True)
-    first = {p.name: p.read_bytes() for p in OUT.glob("*.json")}
+    first = {p.name: p.read_bytes() for p in tmp_path.glob("*.json")}
     subprocess.run(cmd, cwd=REPO, check=True, capture_output=True)
-    second = {p.name: p.read_bytes() for p in OUT.glob("*.json")}
+    second = {p.name: p.read_bytes() for p in tmp_path.glob("*.json")}
     # dirty_files may legitimately differ between runs when the
     # working tree is being edited (observed dev-time race);
     # everything else must be bit-stable

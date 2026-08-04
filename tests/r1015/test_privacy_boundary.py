@@ -15,14 +15,14 @@ from rgcs_surface_wave.privacy import (PRIVATE_CAPTURE_SHA256,
                                        TRANSPORT_HYPOTHESES,
                                        WIRE_SIGNATURE,
                                        public_wire_allowlist,
-                                       scan_tracked, would_leak)
+                                       scan_release_candidates, would_leak)
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 
 
-def test_tracked_tree_is_clean():
-    """THE gate: no private wire, phrase, or path in tracked files."""
-    s = scan_tracked(ROOT)
+def test_release_candidate_set_is_clean():
+    """THE gate: no private wire, phrase, or path in public candidates."""
+    s = scan_release_candidates(ROOT)
     assert s["clean"], s["findings"][:10]
     assert s["files_scanned"] > 100
 

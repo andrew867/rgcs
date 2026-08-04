@@ -62,7 +62,8 @@ def test_face_field_separates_the_continents():
 def test_surface_hierarchy_is_negative_and_cleanly_separated():
     from r1016.hierarchy import surface_prefix_proximity_test
     r = surface_prefix_proximity_test()
-    assert abs(r["spearman_rho_prefix_vs_distance"] + 0.8783) < 1e-4
+    assert r["spearman_rho_prefix_vs_distance"] == pytest.approx(
+        -0.8660254037844387)
     assert r["hierarchy_consistent"] is True
     assert r["cleanly_separated_by_prefix_level"] is True
     assert r["verdict"] == "SURFACE_OCTAL10_HIERARCHY_NEGATIVE_RHO"

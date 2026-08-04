@@ -145,6 +145,7 @@ PUBLIC_PREFIXES = (
 REVIEW_ONLY_FILES = {
     "r1053/__main__.py",
     "r1053/certificate.py",
+    "r1053/ledger.py",
     "r1053/lock.py",
     "rgcs_phyrll_v06/resonance.py",
     "rgcs_phyrll_v07/force_boundary.py",

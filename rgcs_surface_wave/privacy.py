@@ -27,6 +27,8 @@ lane is meant to be used.
 
 from __future__ import annotations
 
+import hashlib
+import json
 import re
 import subprocess
 from pathlib import Path
@@ -131,6 +133,11 @@ SELF_EXEMPT = ("rgcs_surface_wave/privacy.py",
 #: catch NEW private material entering after it.
 BASELINE_COMMIT = "20545f4"
 
+#: Public calibration candidates intentionally released in the R10 Terra
+#: calibration receipt. All other post-baseline wire-shaped values must be
+#: rejected by the release-candidate scan.
+PUBLIC_RELEASE_WIRES = frozenset({"1680769543", "168593073"})
+
 _ALLOW_CACHE: set[str] | None = None
 
 
@@ -167,6 +174,7 @@ def public_wire_allowlist(repo_root: Path | str | None = None
                       else set(v))
         except Exception:                  # pragma: no cover - optional
             pass
+    allow |= PUBLIC_RELEASE_WIRES
     _ALLOW_CACHE = allow
     return allow
 
@@ -228,6 +236,90 @@ def scan_tracked(repo_root: Path | str | None = None) -> dict:
             "method": "structural signature + public allowlist; no "
                       "per-wire digest is stored because a short "
                       "decimal digest would be brute-forceable"}
+
+
+def scan_release_candidates(
+    repo_root: Path | str | None = None,
+    report_path: Path | str | None = None,
+) -> dict:
+    """Scan only the hash-pinned safe-public set selected for release.
+
+    The repository intentionally contains private, quarantined, and review
+    lanes. Treating the whole tracked tree as public defeats that boundary,
+    so this gate consumes the exclusion-first release report and refuses a
+    stale or missing manifest entry before scanning its selected files.
+    """
+    root = (Path(repo_root) if repo_root else
+            Path(__file__).resolve().parents[1])
+    report = (Path(report_path) if report_path else
+              root / "docs" / "release" / "r10_release_filter_report.json")
+    findings: list[dict] = []
+    scanned = 0
+    try:
+        payload = json.loads(report.read_text(encoding="utf-8"))
+        rows = payload["rows"]
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        return {
+            "schema": "rgcs.r1015.release-privacy-scan.v1",
+            "files_scanned": 0,
+            "allowlisted_public_wires": len(public_wire_allowlist(root)),
+            "findings": [{"kind": "RELEASE_REPORT_INVALID",
+                          "file": str(report), "detail": str(exc)}],
+            "clean": False,
+        }
+
+    allow = public_wire_allowlist(root)
+    for row in rows:
+        if row.get("classification") != "safe-public":
+            continue
+        rel = str(row.get("path", ""))
+        p = root / rel
+        if not p.is_file():
+            findings.append({"kind": "RELEASE_FILE_MISSING", "file": rel})
+            continue
+        digest = hashlib.sha256(p.read_bytes()).hexdigest()
+        if digest != row.get("sha256"):
+            findings.append({"kind": "RELEASE_FILE_HASH_MISMATCH",
+                             "file": rel})
+            continue
+        if p.suffix.lower() not in SCAN_SUFFIXES:
+            continue
+        try:
+            text = p.read_text(encoding="utf-8", errors="replace")
+        except OSError as exc:  # pragma: no cover - platform-specific
+            findings.append({"kind": "RELEASE_FILE_UNREADABLE",
+                             "file": rel, "detail": str(exc)})
+            continue
+        scanned += 1
+        for match in WIRE_SIGNATURE.finditer(text):
+            if match.group(0) not in allow:
+                findings.append({
+                    "kind": "UNKNOWN_WIRE_SIGNATURE", "file": rel,
+                    "line": text[:match.start()].count("\n") + 1,
+                    "detail": "wire-shaped token is not in the reviewed "
+                              "public corpus allowlist",
+                    "value_withheld": True,
+                })
+        low = text.lower()
+        for phrase in FORBIDDEN_PHRASES:
+            if phrase.lower() in low:
+                findings.append({"kind": "FORBIDDEN_PHRASE", "file": rel,
+                                 "detail": phrase})
+        for fragment in PRIVATE_PATH_FRAGMENTS:
+            if fragment.lower() in low:
+                findings.append({"kind": "PRIVATE_PATH_FRAGMENT",
+                                 "file": rel, "detail": fragment})
+
+    return {
+        "schema": "rgcs.r1015.release-privacy-scan.v1",
+        "files_scanned": scanned,
+        "allowlisted_public_wires": len(allow),
+        "findings": findings,
+        "clean": not findings,
+        "report": report.relative_to(root).as_posix(),
+        "method": "hash-pinned safe-public rows + structural signature + "
+                  "explicit public allowlist",
+    }
 
 
 def would_leak(text: str) -> list[dict]:

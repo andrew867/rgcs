@@ -20,7 +20,7 @@ EXCLUDED = {
     "embedded", "firmware", "references", "schemas", "papers",
     # consciousness_lane was here until Q02. It ships in the
     # wheel, so it is now in SOURCE_ROOTS and must NOT be excluded.
-    "build", "demo_out", "proof_bundle_110mm", "source_claims",
+    "build", "dist", "demo_out", "proof_bundle_110mm", "source_claims",
     # provenance registry, imported by tests only and not shipped in
     # the desktop app; surfaced when the namespace-package hole was
     # closed (R9-D-003)

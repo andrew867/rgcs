@@ -41,6 +41,8 @@ dev = [
     "pytest>=7.4",
     "hypothesis>=6.90",
     "pytest-qt>=4.2",
+    # The full suite exercises the optional archive FITS lanes.
+    "astropy>=6.0",
     # MIG-CODE-07: schema validation deps were imported but undeclared
     # (V2-PKG-01 family); experiments/schemas/validate.py needs both.
     "jsonschema>=4.21",
@@ -95,6 +97,7 @@ rgcs_ardk = [
 # the top-level key, not only a dotted subpackage key (R10.8.2 lesson).
 rgcs_coordinate = ["fixtures/*.json"]
 "rgcs_coordinate.fixtures" = ["*.json"]
+rgcs_lab = ["common/*.json", "data/memory_corpus/*.json"]
 "rgcs_lab.common" = ["*.json"]
 "rgcs_lab.data" = ["memory_corpus/*.json"]
 r1012 = ["data/*.json", "data/*.csv"]

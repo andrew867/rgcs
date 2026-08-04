@@ -5,12 +5,10 @@ Where a record carries a canonical packet or candidate, THAT is the
 surface word, and projecting the raw wire instead can collapse a
 vector into the wrong cluster.
 
-The concrete case that forced this patch: raw Montreal 165879243 has
-payload octal 2174224, one symbol away from the old
-Cotswolds/Moreton-in-Marsh candidate 165879253 -> 2174225. Projecting
-the raw transport wire therefore pulls Montreal into the British
-cluster. Its canonical surface word 168500683 has payload octal
-3174224 -- identical except for the LEADING symbol, 2 -> 3.
+The historical record that forced this distinction was removed from all
+anchor lanes by the later R10.18 operator authority. The generic resolver
+remains because future records can still distinguish transport and surface
+words; removed records must not be reintroduced as examples or anchors.
 
 Any projection from a raw wire where a canonical word exists must be
 labelled RAW_TRANSPORT_WIRE_DIAGNOSTIC and kept separate.

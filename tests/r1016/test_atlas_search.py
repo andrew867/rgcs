@@ -123,13 +123,13 @@ def test_pairwise_angles_are_rotation_invariant_and_mismatched():
         return math.degrees(math.acos(
             min(1.0, max(-1.0, float(np.dot(a, b))))))
 
+    pairs = tuple(itertools.combinations(range(len(md)), 2))
+    assert len(md) == len(td) == len(STRICT_ANCHORS) >= 3
     diffs = [abs(ang(md[i], md[j]) - ang(td[i], td[j]))
-             for i, j in itertools.combinations(range(4), 2)]
+             for i, j in pairs]
     # decoded set is a tight cluster; claimed set is spread out
-    assert max(ang(md[i], md[j])
-               for i, j in itertools.combinations(range(4), 2)) < 6.0
-    assert max(ang(td[i], td[j])
-               for i, j in itertools.combinations(range(4), 2)) > 45.0
+    assert max(ang(md[i], md[j]) for i, j in pairs) < 6.0
+    assert max(ang(td[i], td[j]) for i, j in pairs) > 45.0
     assert max(diffs) > 40.0, "mismatch must be rotation-invariant"
 
 
