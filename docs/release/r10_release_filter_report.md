@@ -1,7 +1,7 @@
 # R10 Public Release Filter Report
 
-Generated: `2026-08-04T00:13:43.109018-02:30`
-Base: `debb6f4a42d9440ae1819f12a5adb4b80d4388d0`
+Generated: `2026-08-04T00:21:18.086782-02:30`
+Base: `6b9de342ab9e7cdd704af1a4c87e7d2ec7355447`
 Result: **PASS**
 
 The audit is exclusion-first: an exclusion hit always defeats an inclusion rule, archive/private/quarantine material cannot be included, and an unmatched file is sent to `REVIEW`. This report is release-control evidence and is not itself copied into the public candidate because it necessarily enumerates the restricted vocabulary.
@@ -18,11 +18,11 @@ The consolidated revision was scanned directly with no overlays.
 ## Counts
 
 - Files scanned: **3018**
-- Explicit public candidates: **533**
-- Excluded/private: **95**
+- Explicit public candidates: **575**
+- Excluded/private: **94**
 - Quarantine/archive: **410**
-- Review: **1980**
-- Files with excluded-term hits: **95**
+- Review: **1939**
+- Files with excluded-term hits: **94**
 - Excluded-term files classified public: **0**
 
 ## Required Vocabulary
@@ -55,7 +55,6 @@ The consolidated revision was scanned directly with no overlays.
 | `docs/cwatlas/receipts/P21.json` | none | ascii | private |
 | `docs/proofs/r1071-phyrll-terra/RGCS_TERRA_PUBLIC_RELEASE_FILTER_REPORT.md` | none | ascii, crabwood, glyph message, glyph-message, glyph_message, message decode, message decoding, message-decode, message-decoding, message_decode, message_decoding, plaintext, private comms, private-comms, private_comms | private |
 | `docs/proofs/r1071-phyrll-terra/r1071_filter_scan.txt` | none | crabwood | private |
-| `docs/proofs/r1074-annular-devkit/safety_and_claim_firewall.md` | none | ascii | private |
 | `docs/r1015a/README.md` | none | ascii | private |
 | `docs/r109/earth_v1/RGCS_Earth_Alignment_Candidate_2026-07-26/figures/earth_alignment_equirectangular.png` | none | cnt | private |
 | `docs/r109/earth_v1/RGCS_Earth_Alignment_Candidate_2026-07-26/figures/earth_alignment_globe.png` | none | cnt | private |
