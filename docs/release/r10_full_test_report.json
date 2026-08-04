@@ -51,13 +51,13 @@
       "status": "PASS"
     },
     "isolated_public_candidate": {
-      "command": "python -m pytest tests rgcs_ardk/tests -q --rootdir . -c NUL --basetemp build/pytest-r10-candidate-contained3 --junitxml=build/r10-candidate-contained3-junit.xml",
+      "command": "python -m pytest tests rgcs_ardk/tests -q --rootdir . -c NUL --basetemp build/pytest-r10-candidate-contained-final --junitxml=build/r10-candidate-contained-final-junit.xml",
       "source_root": "dist/releases/R10_PUBLIC_RC1/source",
       "passed": 1508,
       "skipped": 0,
       "failures": 0,
       "errors": 0,
-      "runtime_seconds": 136.91,
+      "runtime_seconds": 140.29,
       "process_exit_code": 0,
       "status": "PASS"
     }
