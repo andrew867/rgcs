@@ -233,7 +233,10 @@ def git_lines(repo: Path, *args: str) -> list[str]:
 
 
 def normalize(path: str) -> str:
-    return path.replace("\\", "/").lstrip("./")
+    normalized = path.replace("\\", "/")
+    while normalized.startswith("./"):
+        normalized = normalized[2:]
+    return normalized.lstrip("/")
 
 
 def term_pattern(term: str) -> re.Pattern[str]:

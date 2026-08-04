@@ -34,6 +34,12 @@ def blob(path: str, content: str = "") -> release.BlobRecord:
     return release.BlobRecord(path, "test", content.encode("utf-8"))
 
 
+def test_normalize_preserves_dotfiles() -> None:
+    assert release.normalize(".gitattributes") == ".gitattributes"
+    assert release.normalize("./docs/file.md") == "docs/file.md"
+    assert release.normalize(r".\docs\file.md") == "docs/file.md"
+
+
 def test_every_required_term_is_an_exclusion() -> None:
     for term in REQUIRED_TERMS:
         row = release.classify_blob(blob("docs/workbench/public.md", term))
