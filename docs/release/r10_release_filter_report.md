@@ -1,7 +1,7 @@
 # R10 Public Release Filter Report
 
-Generated: `2026-08-04T00:06:17.332354-02:30`
-Base: `d201550ac9644353053ce9336874d9c3ca3328b1`
+Generated: `2026-08-04T00:13:43.109018-02:30`
+Base: `debb6f4a42d9440ae1819f12a5adb4b80d4388d0`
 Result: **PASS**
 
 The audit is exclusion-first: an exclusion hit always defeats an inclusion rule, archive/private/quarantine material cannot be included, and an unmatched file is sent to `REVIEW`. This report is release-control evidence and is not itself copied into the public candidate because it necessarily enumerates the restricted vocabulary.
@@ -18,11 +18,11 @@ The consolidated revision was scanned directly with no overlays.
 ## Counts
 
 - Files scanned: **3018**
-- Explicit public candidates: **532**
-- Excluded/private: **96**
+- Explicit public candidates: **533**
+- Excluded/private: **95**
 - Quarantine/archive: **410**
 - Review: **1980**
-- Files with excluded-term hits: **96**
+- Files with excluded-term hits: **95**
 - Excluded-term files classified public: **0**
 
 ## Required Vocabulary
@@ -44,7 +44,6 @@ The consolidated revision was scanned directly with no overlays.
 | `cwatlas/ingest.py` | none | ascii | private |
 | `cwatlas/privacy.py` | none | private comms, private-comms, private_comms | private |
 | `cwatlas/provenance_ledger.py` | none | private comms, private-comms, private_comms | private |
-| `cwatlas/r1082/route_core.py` | none | ascii | private |
 | `cwatlas/share.py` | none | ascii | private |
 | `docs/DEFECT_REGISTER.md` | none | ascii | private |
 | `docs/RGCS_126BIT_WIDE_ENVELOPE.md` | none | ascii, plaintext | private |
