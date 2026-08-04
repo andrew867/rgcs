@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
   "status": "PASS",
-  "generated_at": "2026-08-03T23:29:16.5157932-02:30",
-  "tested_commit": "592a1654897a488f432c66fde8d922ef4f40714b",
-  "tested_tree": "76ed57d532f93f3b94baf7ae82908c1f204ede51",
-  "command": "python -m pytest tests rgcs_ardk/tests -q --basetemp build/pytest-r10-public-full-final2 --junitxml=build/r10-public-full-final2-junit.xml",
+  "generated_at": "2026-08-04T00:01:37.6808871-02:30",
+  "tested_commit": "cdb702288bc7aa7083851719d1942df4d8a29a3e",
+  "tested_tree": "b2d0201dc208c1ab685cfba8ff785f885c89cc87",
+  "command": "python -m pytest tests rgcs_ardk/tests -q --basetemp build/pytest-r10-public-full-final3 --junitxml=build/r10-public-full-final3-junit.xml",
   "process_exit_code": 0,
-  "junit_path": "build/r10-public-full-final2-junit.xml",
+  "junit_path": "build/r10-public-full-final3-junit.xml",
   "summary": {
-    "collected": 8934,
-    "passed": 8918,
+    "collected": 8935,
+    "passed": 8919,
     "skipped": 16,
     "warnings": 3,
     "failures": 0,
@@ -17,9 +17,9 @@
     "xfailed": 0
   },
   "runtime_seconds": {
-    "pytest": 1617.44,
-    "junit": 1617.289,
-    "wall": 1623.2
+    "pytest": 1561.58,
+    "junit": 1561.446,
+    "wall": 1566.3
   },
   "environment": {
     "python": "3.13.2",
@@ -42,7 +42,7 @@
       "status": "PASS"
     },
     "release_filter_privacy": {
-      "passed": 62,
+      "passed": 63,
       "status": "PASS"
     },
     "qt_webengine_exit_control": {
@@ -53,7 +53,7 @@
   },
   "filter_evidence": {
     "report": "docs/release/r10_release_filter_report.json",
-    "base_commit": "592a1654897a488f432c66fde8d922ef4f40714b",
+    "base_commit": "cdb702288bc7aa7083851719d1942df4d8a29a3e",
     "result": "PASS",
     "existing_filter_tests_passed": 38,
     "excluded_term_public_leaks": 0
