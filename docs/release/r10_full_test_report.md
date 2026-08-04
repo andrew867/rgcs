@@ -2,7 +2,8 @@
 
 Status: **PASS**
 
-Tested commit: `592a1654897a488f432c66fde8d922ef4f40714b`  
+Tested commit: `592a1654897a488f432c66fde8d922ef4f40714b`
+
 Tested tree: `76ed57d532f93f3b94baf7ae82908c1f204ede51`
 
 ## Full Suite
