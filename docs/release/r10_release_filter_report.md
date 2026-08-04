@@ -1,7 +1,7 @@
 # R10 Public Release Filter Report
 
-Generated: `2026-08-03T21:44:56.890594-02:30`
-Base: `7f3fec98162e909ecd15cb969c74479e467fdcbe`
+Generated: `2026-08-03T22:29:56.529987-02:30`
+Base: `47c23403ac223bbdf01550e73c187f43c11c7e19`
 Result: **PASS**
 
 The audit is exclusion-first: an exclusion hit always defeats an inclusion rule, archive/private/quarantine material cannot be included, and an unmatched file is sent to `REVIEW`. This report is release-control evidence and is not itself copied into the public candidate because it necessarily enumerates the restricted vocabulary.
@@ -18,10 +18,10 @@ The consolidated revision was scanned directly with no overlays.
 ## Counts
 
 - Files scanned: **3016**
-- Explicit public candidates: **533**
+- Explicit public candidates: **532**
 - Excluded/private: **96**
 - Quarantine/archive: **410**
-- Review: **1977**
+- Review: **1978**
 - Files with excluded-term hits: **96**
 - Excluded-term files classified public: **0**
 
@@ -62,8 +62,8 @@ The consolidated revision was scanned directly with no overlays.
 | `docs/r109/earth_v1/RGCS_Earth_Alignment_Candidate_2026-07-26/figures/earth_alignment_globe.png` | none | cnt | private |
 | `docs/r109/earth_v1/RGCS_Earth_Alignment_Candidate_2026-07-26/operator/WARP_STEPS.json.gz` | none | cnt | private |
 | `docs/release/r10_branch_worktree_inventory.json` | none | crabwood | private |
-| `docs/release/r10_release_filter_report.json` | none | ascii, crabwood, decoded message, decoded-message, decoded_message, deuterium, fusion, glyph message, glyph-message, glyph_message, heavy water, heavy-water, heavy_water, helium generation, helium-generation, helium_generation, message decode, message decoding, message-decode, message-decoding, message_decode, message_decoding, neutron, plaintext, private comms, private-comms, private_comms, reactor, transmutation, tritium, uhv gas fill, uhv-gas-fill, uhv_gas_fill | private |
-| `docs/release/r10_release_filter_report.md` | none | ascii, crabwood, decoded message, decoded-message, decoded_message, deuterium, fusion, glyph message, glyph-message, glyph_message, heavy water, heavy-water, heavy_water, helium generation, helium-generation, helium_generation, message decode, message decoding, message-decode, message-decoding, message_decode, message_decoding, neutron, plaintext, private comms, private-comms, private_comms, reactor, transmutation, tritium, uhv gas fill, uhv-gas-fill, uhv_gas_fill | private |
+| `docs/release/r10_release_filter_report.json` | none | ascii, carbon nanotube, cnt, crabwood, decoded message, decoded-message, decoded_message, deuterium, fusion, glyph message, glyph-message, glyph_message, heavy water, heavy-water, heavy_water, helium generation, helium-generation, helium_generation, message decode, message decoding, message-decode, message-decoding, message_decode, message_decoding, neutron, plaintext, private comms, private-comms, private_comms, reactor, transmutation, tritium, uhv gas fill, uhv-gas-fill, uhv_gas_fill | private |
+| `docs/release/r10_release_filter_report.md` | none | ascii, carbon nanotube, cnt, crabwood, decoded message, decoded-message, decoded_message, deuterium, fusion, glyph message, glyph-message, glyph_message, heavy water, heavy-water, heavy_water, helium generation, helium-generation, helium_generation, message decode, message decoding, message-decode, message-decoding, message_decode, message_decoding, neutron, plaintext, private comms, private-comms, private_comms, reactor, transmutation, tritium, uhv gas fill, uhv-gas-fill, uhv_gas_fill | private |
 | `docs/v4/FABRICATION_CONTRACT.md` | none | ascii | private |
 | `docs/v4/R6_MANUSCRIPT.md` | none | fusion | private |
 | `docs/v4/RELEASE_NOTES_V4_3_0.md` | none | neutron | private |
