@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import os
+import stat
 from pathlib import Path
 
 from tools import r10_public_release as release
@@ -38,6 +40,23 @@ def test_normalize_preserves_dotfiles() -> None:
     assert release.normalize(".gitattributes") == ".gitattributes"
     assert release.normalize("./docs/file.md") == "docs/file.md"
     assert release.normalize(r".\docs\file.md") == "docs/file.md"
+
+
+def test_release_directory_replacement_handles_readonly_entries(
+    tmp_path: Path,
+) -> None:
+    target = tmp_path / "dist" / "releases" / release.RC_NAME
+    nested = target / "source" / "fixtures"
+    nested.mkdir(parents=True)
+    payload = nested / "receipt.json"
+    payload.write_text("{}\n", encoding="utf-8")
+    os.chmod(payload, stat.S_IREAD)
+    os.chmod(nested, stat.S_IREAD)
+
+    release._replace_release_directory(tmp_path, target)
+
+    assert target.is_dir()
+    assert list(target.iterdir()) == []
 
 
 def test_every_required_term_is_an_exclusion() -> None:

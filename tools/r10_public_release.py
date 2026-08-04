@@ -12,8 +12,10 @@ import ast
 import csv
 import hashlib
 import json
+import os
 import re
 import shutil
+import stat
 import subprocess
 from dataclasses import dataclass
 from datetime import datetime
@@ -962,7 +964,14 @@ def _replace_release_directory(repo: Path, destination: Path) -> None:
         raise RuntimeError(f"refusing to replace path outside {releases}: {target}") from exc
     releases.mkdir(parents=True, exist_ok=True)
     if target.exists():
-        shutil.rmtree(target)
+        def clear_readonly(function, path, exception):
+            try:
+                os.chmod(path, stat.S_IWRITE)
+                function(path)
+            except OSError:
+                raise exception
+
+        shutil.rmtree(target, onexc=clear_readonly)
     target.mkdir(parents=True)
 
 
