@@ -55,7 +55,7 @@ _POLICIES = frozenset({POLICY_LEFT_PAD, POLICY_EXPLICIT})
 
 #: Separators accepted between tokens in a human-written route.
 _SEPARATORS = "| ,-_/"
-_ASCII_DIGITS = frozenset("0123456789")
+_DECIMAL_DIGITS = frozenset("0123456789")
 
 
 class RouteError(ClaimError):
@@ -135,9 +135,9 @@ def normalize(text: str, *, leading_zero_policy: str = POLICY_LEFT_PAD) -> str:
     digits = _strip_separators(text)
     if not digits:
         raise RouteError("route input has no digits after separator stripping.")
-    if any(ch not in _ASCII_DIGITS for ch in digits):
+    if any(ch not in _DECIMAL_DIGITS for ch in digits):
         raise RouteError(
-            "route input must be ASCII decimal digits (with optional "
+            "route input must be base-10 decimal digits (with optional "
             f"separators {_SEPARATORS!r}); refused (no silent repair).")
     if len(digits) % _TOKEN_DIGITS != 0:
         if leading_zero_policy == POLICY_EXPLICIT:
