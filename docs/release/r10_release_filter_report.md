@@ -1,7 +1,7 @@
 # R10 Public Release Filter Report
 
-Generated: `2026-08-04T00:21:18.086782-02:30`
-Base: `6b9de342ab9e7cdd704af1a4c87e7d2ec7355447`
+Generated: `2026-08-04T00:56:18.498106-02:30`
+Base: `3688d0e4b19824448490399ff229c7deb397945b`
 Result: **PASS**
 
 The audit is exclusion-first: an exclusion hit always defeats an inclusion rule, archive/private/quarantine material cannot be included, and an unmatched file is sent to `REVIEW`. This report is release-control evidence and is not itself copied into the public candidate because it necessarily enumerates the restricted vocabulary.

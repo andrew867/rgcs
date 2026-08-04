@@ -64,7 +64,7 @@
   },
   "filter_evidence": {
     "report": "docs/release/r10_release_filter_report.json",
-    "base_commit": "6b9de342ab9e7cdd704af1a4c87e7d2ec7355447",
+    "base_commit": "3688d0e4b19824448490399ff229c7deb397945b",
     "result": "PASS",
     "existing_filter_tests_passed": 38,
     "excluded_term_public_leaks": 0
