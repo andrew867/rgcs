@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "generated_at": "2026-08-03T23:29:16.5157932-02:30",
+  "tested_commit": "592a1654897a488f432c66fde8d922ef4f40714b",
+  "tested_tree": "76ed57d532f93f3b94baf7ae82908c1f204ede51",
+  "command": "python -m pytest tests rgcs_ardk/tests -q --basetemp build/pytest-r10-public-full-final2 --junitxml=build/r10-public-full-final2-junit.xml",
+  "process_exit_code": 0,
+  "junit_path": "build/r10-public-full-final2-junit.xml",
+  "summary": {
+    "collected": 8934,
+    "passed": 8918,
+    "skipped": 16,
+    "warnings": 3,
+    "failures": 0,
+    "errors": 0,
+    "xfailed": 0
+  },
+  "runtime_seconds": {
+    "pytest": 1617.44,
+    "junit": 1617.289,
+    "wall": 1623.2
+  },
+  "environment": {
+    "python": "3.13.2",
+    "pytest": "9.0.2",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "warnings_detail": [
+    {
+      "count": 3,
+      "category": "DeprecationWarning",
+      "source": "skfem.element.discrete_field",
+      "message": "Writing u.value is unnecessary and can be replaced by u."
+    }
+  ],
+  "focused_evidence": {
+    "original_failure_sites": {
+      "command_scope": "R10.16, R10.17, archive, package registry, source coverage, and baseline scanner tests",
+      "passed": 147,
+      "skipped": 2,
+      "status": "PASS"
+    },
+    "release_filter_privacy": {
+      "passed": 62,
+      "status": "PASS"
+    },
+    "qt_webengine_exit_control": {
+      "passed": 1,
+      "process_exit_code": 0,
+      "status": "PASS"
+    }
+  },
+  "filter_evidence": {
+    "report": "docs/release/r10_release_filter_report.json",
+    "base_commit": "592a1654897a488f432c66fde8d922ef4f40714b",
+    "result": "PASS",
+    "existing_filter_tests_passed": 38,
+    "excluded_term_public_leaks": 0
+  }
+}
