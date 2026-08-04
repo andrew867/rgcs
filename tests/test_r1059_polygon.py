@@ -220,7 +220,7 @@ def test_js_kernel_matches_python_exactly():
     os.environ.setdefault("QTWEBENGINE_CHROMIUM_FLAGS",
                           "--disable-gpu --no-sandbox")
     os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
-    from PySide6.QtCore import QEventLoop, QTimer
+    from PySide6.QtCore import QCoreApplication, QEvent, QEventLoop, QTimer
     from PySide6.QtWebEngineWidgets import QWebEngineView
     from PySide6.QtWidgets import QApplication
 
@@ -240,12 +240,16 @@ def test_js_kernel_matches_python_exactly():
                               lambda r: (box.update(r=r), run.quit()))
     QTimer.singleShot(30000, run.quit)
     run.exec()
-    view.deleteLater()
-
-    assert box.get("r"), "JS probe returned nothing"
-    result = json.loads(box["r"])
-    assert result["worst_drift_m"] < 1e-3, result
-    assert len(result["rows"]) == 7
+    try:
+        assert box.get("r"), "JS probe returned nothing"
+        result = json.loads(box["r"])
+        assert result["worst_drift_m"] < 1e-3, result
+        assert len(result["rows"]) == 7
+    finally:
+        view.close()
+        view.deleteLater()
+        QCoreApplication.sendPostedEvents(None, QEvent.DeferredDelete)
+        app.processEvents()
 
 
 def test_parity_probe_covers_every_known_vector():
