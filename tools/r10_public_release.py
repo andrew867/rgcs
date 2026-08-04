@@ -325,7 +325,7 @@ def collect_filter_audit(
     repo: Path,
     revision: str = "main",
     overlays: Sequence[str] = SAFE_OVERLAY_COMMITS,
-    existing_filter_test_count: int = 18,
+    existing_filter_test_count: int = 36,
 ) -> dict[str, object]:
     tree = collect_overlay_tree(repo, revision, overlays)
     rows = [classify_blob(tree[path]) for path in sorted(tree)]
@@ -407,16 +407,29 @@ def render_filter_report(report: dict[str, object]) -> str:
         f"- Command: `{report['existing_filter']['command']}`",
         f"- Result: **{report['existing_filter']['status']}** ({report['existing_filter']['passed']} passed)",
         "",
-        "## Prospective Overlay",
-        "",
-        "The following independently selected commits were overlaid on `main` for the pre-merge scan; the mixed 37-commit branch was not treated as a release input.",
-        "",
-        "| Commit | Files | Subject |",
-        "|---|---:|---|",
     ]
-    for row in overlays:  # type: ignore[assignment]
-        lines.append(
-            f"| `{str(row['commit'])[:12]}` | {row['changed_files']} | {md_escape(row['subject'])} |"
+    if overlays:
+        lines.extend(
+            [
+                "## Prospective Overlay",
+                "",
+                "The following independently selected commits were overlaid on the base for the scan; the mixed 37-commit branch was not treated as a release input.",
+                "",
+                "| Commit | Files | Subject |",
+                "|---|---:|---|",
+            ]
+        )
+        for row in overlays:  # type: ignore[assignment]
+            lines.append(
+                f"| `{str(row['commit'])[:12]}` | {row['changed_files']} | {md_escape(row['subject'])} |"
+            )
+    else:
+        lines.extend(
+            [
+                "## Scan Revision",
+                "",
+                "The consolidated revision was scanned directly with no overlays.",
+            ]
         )
     lines.extend(
         [
@@ -899,6 +912,11 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         default=None,
         help="commit to overlay; repeat in application order",
     )
+    audit.add_argument(
+        "--no-overlays",
+        action="store_true",
+        help="scan the selected revision exactly as committed",
+    )
     return parser.parse_args(argv)
 
 
@@ -912,7 +930,11 @@ def main(argv: Sequence[str] | None = None) -> int:
         write_safety_snapshot(repo, args.snapshot_worktree.resolve())
         return 0
     if args.command == "audit":
-        overlays = tuple(args.overlay) if args.overlay else SAFE_OVERLAY_COMMITS
+        if args.no_overlays and args.overlay:
+            raise SystemExit("--no-overlays cannot be combined with --overlay")
+        overlays = () if args.no_overlays else (
+            tuple(args.overlay) if args.overlay else SAFE_OVERLAY_COMMITS
+        )
         write_filter_audit(repo, args.revision, overlays)
         return 0
     raise AssertionError(args.command)

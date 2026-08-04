@@ -94,3 +94,40 @@ def test_generated_report_has_no_public_exclusion_leak() -> None:
     report = json.loads(path.read_text(encoding="utf-8"))
     assert report["result"] == "PASS"
     assert report["counts"]["excluded_term_public_leaks"] == 0
+
+
+def test_public_package_registry_pins_authority_and_holds() -> None:
+    from rgcs_desktop.build_meta import SOURCE_ROOTS
+
+    registry = json.loads(
+        Path("docs/release/r10_public_package_registry.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    commits = registry["source_commits"]
+    assert commits["r10_73_authority"] == (
+        "710e5947c80ea7a2299dc0a40fd63a4262891e39"
+    )
+    assert commits["r10_74_source"] == (
+        "dfab636c4bf5e165103d7ebc72a693ef828b9987"
+    )
+    assert set(registry["source_roots"]).issubset(SOURCE_ROOTS)
+    assert registry["authority"]["seed_status"] == "NOT_AUTHORITY"
+    assert registry["ardk"]["fabrication_readiness"] == "REFUSED"
+    assert registry["ardk"]["publication_hold"] is True
+    assert registry["release_resolution"]["ardk_fabrication_hold"] == (
+        "REMAINS_ASSERTED"
+    )
+
+
+def test_registered_proof_packages_and_hold_exist() -> None:
+    registry = json.loads(
+        Path("docs/release/r10_public_package_registry.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert all(Path(path).is_dir() for path in registry["proof_packages"].values())
+    assert Path(registry["ardk"]["publication_hold_path"]).is_file()
+    seed_files = list(Path(registry["authority"]["seed_root"]).iterdir())
+    assert seed_files
+    assert all("NOT_AUTHORITY" in path.name for path in seed_files)

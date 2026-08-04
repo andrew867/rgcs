@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-03T21:28:21.6743899-02:30",
+  "baseline_main_commit": "8077e04395b04464ad57d99a4b6b49e6b72a2e60",
+  "release_control_commit": "2cb48397f9a9de031ceebdf2c576bb100b32ba52",
+  "integrations": [
+    {
+      "branch": "release/r10-public-engineering",
+      "branch_head": "561d00f80b79fc0b45f39410d6811055578163d5",
+      "merge_commit": "dd298d6d471c1b8810aca0c2d0f48234a24aefc5",
+      "method": "no-ff merge of a clean branch based on main",
+      "source_branch": "claude/rgcs-r10-62-terminal-vertex-4aca40",
+      "source_branch_merged": false,
+      "source_commits": [
+        "35312e29c8db1b164975991b1df07a8c8653cd47",
+        "4e762851d083c31238f582b4b29497943a1a0407",
+        "a10a3bb11a1c05fd6f7676a97ac12b3417d877ec",
+        "710e5947c80ea7a2299dc0a40fd63a4262891e39"
+      ],
+      "replayed_commits": [
+        "20d9588",
+        "47977a8",
+        "64b2ab4",
+        "24af887"
+      ],
+      "public_adaptation_commit": "561d00f80b79fc0b45f39410d6811055578163d5",
+      "conflict_resolution": "retained current main package roots; registered only rgcs_phyrll_v06, rgcs_phyrll_v07, and rgcs_terra_release; no R10.62-R10.70 package was imported",
+      "focused_premerge": {
+        "status": "PASS",
+        "passed": 155,
+        "runtime_seconds": 10.434
+      },
+      "focused_postmerge": {
+        "status": "PASS",
+        "passed": 155,
+        "runtime_seconds": 12.108
+      }
+    },
+    {
+      "branch": "rcw-public-workbench",
+      "branch_head": "dfab636c4bf5e165103d7ebc72a693ef828b9987",
+      "merge_commit": "f2034069adccdf6cf7620d42dab240337b7723ac",
+      "method": "no-ff merge",
+      "source_commits": [
+        "dfab636c4bf5e165103d7ebc72a693ef828b9987"
+      ],
+      "conflict_resolution": "retained consolidated package and test registries, then added rgcs_ardk; retained the R10.74 Floquet, deterministic-byte-environment, and linked-worktree coverage fixes",
+      "focused_first_attempt": {
+        "status": "ENVIRONMENT_ERROR",
+        "passed_before_error": 68,
+        "errors": 3,
+        "reason": "the ignored build parent for --basetemp did not exist"
+      },
+      "focused_postmerge": {
+        "status": "PASS",
+        "passed": 71,
+        "runtime_seconds": 3.188
+      }
+    }
+  ],
+  "not_merged": [
+    {
+      "branch": "claude/rgcs-r10-62-terminal-vertex-4aca40",
+      "classification": "quarantine",
+      "reason": "37-commit delta mixes public engineering work with private decode and privacy lanes"
+    },
+    {
+      "branch": "release-safety-snapshot-20260803-2105",
+      "classification": "safety-pointer",
+      "reason": "retained as the immutable pre-change pointer; never a merge input"
+    },
+    {
+      "branches": [
+        "program/r10-9-variable-depth",
+        "program/r10-10-face-orientation",
+        "program/r10-11-flat-face-codec"
+      ],
+      "classification": "private",
+      "reason": "private glyph/message research lanes"
+    },
+    {
+      "classification": "already-contained",
+      "reason": "all other safe historical branches were ancestors of the Phase 0 main and had no delta to merge; see r10_branch_worktree_inventory.json"
+    },
+    {
+      "classification": "review-needed",
+      "reason": "historical and ambiguous branches remain listed in r10_review_queue.md and were not merged"
+    }
+  ],
+  "constraints": {
+    "worktrees_deleted": false,
+    "push_performed": false,
+    "tag_created_during_merge_phase": false,
+    "force_push_performed": false
+  }
+}

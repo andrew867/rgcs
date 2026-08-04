@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "status": "PENDING_RELEASE_GATES",
+  "source_commits": {
+    "r10_73_authority": "710e5947c80ea7a2299dc0a40fd63a4262891e39",
+    "r10_74_source": "dfab636c4bf5e165103d7ebc72a693ef828b9987",
+    "r10_73_public_merge": "dd298d6d471c1b8810aca0c2d0f48234a24aefc5",
+    "r10_74_public_merge": "f2034069adccdf6cf7620d42dab240337b7723ac"
+  },
+  "source_roots": [
+    "rgcs_phyrll_v06",
+    "rgcs_phyrll_v07",
+    "rgcs_terra_release",
+    "rgcs_ardk"
+  ],
+  "proof_packages": {
+    "r10_71": "docs/proofs/r1071-phyrll-terra",
+    "r10_72": "docs/proofs/r1072-phyrll-engineering-v07",
+    "r10_73": "docs/proofs/r1073-bench-drive",
+    "r10_74": "docs/proofs/r1074-annular-devkit"
+  },
+  "authority": {
+    "drive_table": "rgcs_ardk/drive/authority/drive_table.json",
+    "authority_manifest": "rgcs_ardk/drive/authority_manifest.json",
+    "seed_root": "rgcs_ardk/drive/seed",
+    "seed_status": "NOT_AUTHORITY"
+  },
+  "ardk": {
+    "fabrication_readiness": "REFUSED",
+    "publication_hold": true,
+    "publication_hold_path": "rgcs_ardk/reports/PUBLICATION_HOLD.md",
+    "release_scope": "software and documentation candidate only",
+    "mechanical_rotation": false
+  },
+  "release_resolution": {
+    "software_publication_hold": "PENDING_RELEASE_GATES",
+    "ardk_fabrication_hold": "REMAINS_ASSERTED"
+  }
+}
