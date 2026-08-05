@@ -62,6 +62,13 @@ ALLOWED_CONTEXT_MARKERS = (
     "prohibit",
     "forbid",
     "without",
+    # Explicit negation shapes ("Not a free-energy project", "what it
+    # is not") and adversarial attack lists ("sixteen named attacks
+    # ... each fails") are refusals, found by the full-tree scan.
+    "is not",
+    "not a ",
+    "nothing physical",
+    "attack",
 )
 
 #: Lines that begin with an explicit negation are refusal sentences.
@@ -102,8 +109,8 @@ def _in_refused_context(lines: list[str], idx: int) -> bool:
     stripped = lines[idx].strip().lower()
     if stripped.startswith(_NEGATION_STARTS):
         return True
-    # A question is not a claim.
-    if stripped.endswith("?"):
+    # A question is not a claim; markdown emphasis may wrap it.
+    if stripped.rstrip("*_`").endswith("?"):
         return True
     return False
 
@@ -175,6 +182,20 @@ def cage_public_surface(root: str | pathlib.Path) -> list[pathlib.Path]:
     return [p for p in surface if p.is_file()]
 
 
+def scan_tracked_markdown(root: str | pathlib.Path) -> list[dict]:
+    """The packaging-time full-tree scan: every git-tracked markdown
+    file in the public repository. Untracked files are not release
+    content; tracked non-markdown claim text is gated by the cage
+    surface scan and the module registries."""
+    import subprocess
+    root = pathlib.Path(root)
+    out = subprocess.run(["git", "ls-files", "*.md"], cwd=root,
+                         capture_output=True, text=True, check=True)
+    paths = [root / line for line in out.stdout.splitlines() if line]
+    return scan_paths(p for p in paths if p.is_file())
+
+
 __all__ = ["BANNED_PHRASES", "ALLOWED_CONTEXT_MARKERS",
            "CONTEXT_WINDOW_BEFORE", "scan_text", "scan_file", "scan_paths",
-           "firewall_report", "cage_public_surface"]
+           "firewall_report", "cage_public_surface",
+           "scan_tracked_markdown"]

@@ -113,6 +113,20 @@ class CraftPathRegistry:
         return list(self._records)
 
 
+def load_public_records() -> "CraftPathRegistry":
+    """Load the imported public-safe seed records through the same
+    validation door every other record uses."""
+    import json
+    import pathlib
+    data = json.loads(
+        (pathlib.Path(__file__).resolve().parent
+         / "craft_path_records.json").read_text(encoding="utf-8"))
+    registry = CraftPathRegistry()
+    for record in data["records"]:
+        registry.add_record(record)
+    return registry
+
+
 def spine_roles_are_separated() -> bool:
     roles = [entry["role"] for entry in FREQUENCY_SPINE]
     values = [entry["value_hz"] for entry in FREQUENCY_SPINE]
@@ -121,4 +135,5 @@ def spine_roles_are_separated() -> bool:
 
 __all__ = ["STATUS", "RECORD_STATUSES", "FREQUENCY_SPINE",
            "SOURCE_PROVENANCE_FIELDS", "ValidationRefused",
-           "CraftPathRegistry", "spine_roles_are_separated"]
+           "CraftPathRegistry", "load_public_records",
+           "spine_roles_are_separated"]

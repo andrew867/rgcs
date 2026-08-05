@@ -79,3 +79,12 @@ def test_cage_public_surface_is_nonempty_and_scans_clean():
     assert any(p.name == "module_registry.json" for p in surface)
     report = CF.firewall_report(CF.scan_paths(surface))
     assert report["clean"], report
+
+
+def test_full_tree_tracked_markdown_scans_clean():
+    """The packaging-time scan, run as a standing release gate: all
+    git-tracked markdown in the public repository, zero banned claims
+    outside refused contexts."""
+    findings = CF.scan_tracked_markdown(ROOT)
+    report = CF.firewall_report(findings)
+    assert report["clean"], findings[:10]

@@ -66,23 +66,25 @@
       "id": "MOD-006",
       "name": "Craft-Path Hypothesis Registry",
       "status": "HYPOTHESIS_REGISTRY",
-      "mapping_status": "PARTIAL_EXISTING",
+      "mapping_status": "MAPPED_EXISTING",
       "repo_paths": [
-        "rgcs_workbench/public_cage/craft_path_registry.py"
+        "rgcs_workbench/public_cage/craft_path_registry.py",
+        "rgcs_workbench/public_cage/craft_path_records.json"
       ],
-      "boundary": "This module does provenance-tracked archival of craft-scale geometry and frequency hypotheses. It does not claim flight capability or validated hardware. Record data import remains pending."
+      "boundary": "This module does provenance-tracked archival of craft-scale geometry and frequency hypotheses with a public-safe seed set. It does not claim flight capability or validated hardware. Bench receipts and replication remain pending for every record."
     },
     {
       "id": "MOD-007",
       "name": "Source and Provenance Archive",
       "status": "PUBLIC_ARCHIVE_RECORD",
-      "mapping_status": "PARTIAL_EXISTING",
+      "mapping_status": "MAPPED_EXISTING",
       "repo_paths": [
         "rgcs_coordinate/provenance",
         "rgcs_workbench/canonical.py",
-        "rgcs_workbench/public_cage/archive_schema.py"
+        "rgcs_workbench/public_cage/archive_schema.py",
+        "rgcs_workbench/public_cage/archive_records.json"
       ],
-      "boundary": "This module does provenance ledgers for source material with hashes and correction history. It does not claim source authentication. Public archive schema import remains pending."
+      "boundary": "This module does provenance ledgers for source material with hashes and a public-safe seed set. It does not claim source authentication. Private corpus curation remains pending."
     },
     {
       "id": "MOD-008",

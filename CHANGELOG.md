@@ -3,6 +3,30 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [workbench-1.0.0-rc1] - 2026-08-05
+
+**RGCS Workbench Public RC1** (tag `workbench-v1.0.0-rc1`). The
+public workbench release cage plus all eight public modules from the
+2026-08-04 spec pack, released as software and protocol, not as
+proof.
+
+- Release cage in `rgcs_workbench/public_cage`: module registry
+  MOD-001..008, claim firewall with refused-context scanning, frozen
+  Terra RC4 reference (physical-validation promotion raises).
+- Codec parse receipts and append-only correction ledger over the
+  `rgcs_coordinate` variable-length codec.
+- Crystal measurement-record validation with a bench-receipt gate;
+  Phyrll measurement-lane schema that refuses force output fields;
+  append-only craft-path hypothesis registry and archive provenance
+  schema, each with public-safe seed records imported.
+- Full-tree claim scan over every tracked markdown file runs as a
+  standing release-gated test.
+- Release manifest and SHA256SUMS generator; sealed artifacts in
+  `release/workbench-rc1/`.
+- Verdict: `RGCS_WORKBENCH_PUBLIC_RC1_READY`,
+  `NO_PHYSICAL_CLAIM_ADVANCED`, `TERRA_RC4_PRESERVED`,
+  `RELEASE_FILTER_CLEAN`, `ALL_TESTS_PASS`.
+
 ## [1.0.0-rc1] - 2026-07-30
 
 R10.62 public release candidate: **RGCS V1 Map Workbench**.

@@ -1,0 +1,83 @@
+{
+  "registry": "CRAFT_PATH_HYPOTHESIS_REGISTRY",
+  "imported_at": "2026-08-05",
+  "import_note": "Seed set from the 2026-08-04 spec pack public-safe lists. Every record stays hypothesis-gated; nothing here is bench-measured or replicated.",
+  "records": [
+    {
+      "record_id": "CPR-0001",
+      "status": "SOURCE_REPORTED",
+      "statement": "Annular aperture with 37 physical angular cells, 288 mm outer diameter, 188 mm inner diameter, stationary hardware with traveling phase patterns and no mechanical rotation.",
+      "source_id": "SPEC_PACK_2026_08_04/MOD_005",
+      "source_type": "OPERATOR_NOTE",
+      "capture_datetime": "2026-08-04T00:00:00Z"
+    },
+    {
+      "record_id": "CPR-0002",
+      "status": "SOURCE_REPORTED",
+      "statement": "Run mask 35 of 37, steering condition 33 active, inactive and open sector steering asymmetry.",
+      "source_id": "SPEC_PACK_2026_08_04/MOD_005",
+      "source_type": "OPERATOR_NOTE",
+      "capture_datetime": "2026-08-04T00:00:00Z"
+    },
+    {
+      "record_id": "CPR-0003",
+      "status": "SOURCE_REPORTED",
+      "statement": "4096 Hz phase authority; right-hand winding maps to +90 degree quadrature, left-hand winding maps to -90 degree quadrature; coil tilt approximately 45 to 50 degrees from vertical.",
+      "source_id": "SPEC_PACK_2026_08_04/MOD_005",
+      "source_type": "OPERATOR_NOTE",
+      "capture_datetime": "2026-08-04T00:00:00Z"
+    },
+    {
+      "record_id": "CPR-0004",
+      "status": "DERIVED_ARITHMETIC",
+      "statement": "Sector angle = 360 / 37 = 9.72972972972973 degrees.",
+      "inputs": {
+        "degrees_per_turn": 360,
+        "sector_count": 37
+      }
+    },
+    {
+      "record_id": "CPR-0005",
+      "status": "DERIVED_ARITHMETIC",
+      "statement": "External resonance = 4096 x 411 = 1683456 Hz.",
+      "inputs": {
+        "phase_authority_hz": 4096,
+        "multiplier": 411
+      }
+    },
+    {
+      "record_id": "CPR-0006",
+      "status": "DERIVED_ARITHMETIC",
+      "statement": "Outer sector pitch = pi x 0.288 m / 37 = 24.453478 mm approximately; one guided period per sector at 1683456 Hz gives a loaded slow-wave phase velocity near 41000 m/s, far below free-space electromagnetic speed.",
+      "inputs": {
+        "outer_diameter_m": 0.288,
+        "sector_count": 37,
+        "external_resonance_hz": 1683456
+      }
+    },
+    {
+      "record_id": "CPR-0007",
+      "status": "ENGINEERING_TRANSLATION",
+      "statement": "Frequency spine role assignment: 4096 Hz phase authority; 1683456 Hz annular external resonance; 1695000 Hz Earth or outer-envelope lane candidate; 1600000 Hz rounded ring or injection geometry candidate; 13183593.75 Hz craft operating carrier candidate; 20480 Hz and 40960 Hz crystal burst controls. One role per value, no role sharing.",
+      "source_id": "SPEC_PACK_2026_08_04/MOD_006",
+      "source_type": "OPERATOR_NOTE",
+      "capture_datetime": "2026-08-04T00:00:00Z"
+    },
+    {
+      "record_id": "CPR-0008",
+      "status": "BENCH_PROTOCOL",
+      "statement": "H-ME-SSP-001 measurement protocol reference: all null controls required before any response is interpreted; see h_me_ssp_001_protocol.json for the control list.",
+      "source_id": "SPEC_PACK_2026_08_04/MOD_005",
+      "source_type": "OPERATOR_NOTE",
+      "capture_datetime": "2026-08-04T00:00:00Z"
+    },
+    {
+      "record_id": "CPR-0009",
+      "status": "REFUSED_PUBLIC_CLAIM",
+      "statement": "Refused public claims for every craft-path record: thrust, lift, antigravity, gravity control, barycentric field coupling, reactionless propulsion, free energy, source authentication, validated craft performance. No record in this registry advances any of these.",
+      "source_id": "SPEC_PACK_2026_08_04/CLAIM_FIREWALL",
+      "source_type": "OPERATOR_NOTE",
+      "capture_datetime": "2026-08-04T00:00:00Z"
+    }
+  ]
+}

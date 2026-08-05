@@ -98,6 +98,23 @@ def promote_community_submission(record: dict, steps_completed) -> dict:
     return promoted
 
 
+def load_public_records() -> list[dict]:
+    """Load the imported public-safe seed records; each must validate."""
+    import json
+    import pathlib
+    data = json.loads(
+        (pathlib.Path(__file__).resolve().parent
+         / "archive_records.json").read_text(encoding="utf-8"))
+    records = data["records"]
+    for record in records:
+        problems = validate_record(record)
+        if problems:
+            raise ValueError(f"invalid imported archive record "
+                             f"{record.get('record_id')}: {problems}")
+    return records
+
+
 __all__ = ["STATUS", "REQUIRED_FIELDS", "SOURCE_TYPES",
            "PROMOTION_STEPS", "PromotionRefused", "validate_record",
-           "community_intake", "promote_community_submission"]
+           "community_intake", "promote_community_submission",
+           "load_public_records"]
