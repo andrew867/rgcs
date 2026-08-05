@@ -3,6 +3,21 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [workbench-1.0.0-rc2] - 2026-08-05
+
+**RGCS Workbench Public RC2** (tag `workbench-v1.0.0-rc2`). RC1 plus
+the three fixes from the first public CI run; cut from a tree green
+both locally and on CI (run 31028439454).
+
+- Privacy: a test comment and skip reason named the private
+  repository literally; reworded, committed tree clean, history
+  residual declared per policy.
+- Portability: manifest tamper test now mutates deterministically
+  (line-ending-dependent hashes made the old mutation a no-op on CI);
+  diatomic Gamma eigensolver assert widened to 1e-7 for BLAS noise,
+  closed-form assert unchanged at 1e-12.
+- Sealed artifacts in `release/workbench-rc2/`.
+
 ## [workbench-1.0.0-rc1] - 2026-08-05
 
 **RGCS Workbench Public RC1** (tag `workbench-v1.0.0-rc1`). The
