@@ -309,15 +309,17 @@ def test_path_map_warns_when_tiles_fail_rather_than_showing_blank(tmp_path):
 
 
 def test_vendored_leaflet_is_present():
-    # internal-docs moved to the private RGCS-private repository and
-    # resolves here only through a local symlink on the dev machine.
-    # A fresh public clone has no internal-docs at all, so absence is
-    # an expected environment, not a defect.
+    # The internal-docs folder moved out of this repository into the
+    # separate private archive and resolves here only through a local
+    # symlink on the dev machine. A fresh public clone has no
+    # internal-docs at all, so absence is an expected environment,
+    # not a defect. (The private repo is deliberately not named here;
+    # the privacy firewall forbids the literal.)
     vd = os.path.join(ROOT, "internal-docs", "RGCS_R10_53_V1_EARTH_ROOT",
                       "maps", "vendor")
     if not os.path.isdir(vd):
-        pytest.skip("private pack not present (internal-docs lives in "
-                    "RGCS-private; local symlink only, expected on CI)")
+        pytest.skip("private pack not present (folder moved to the "
+                    "private archive; local symlink only, expected on CI)")
     for f in pathmap.VENDOR_FILES:
         p = os.path.join(vd, f)
         assert os.path.exists(p) and os.path.getsize(p) > 10000, f

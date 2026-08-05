@@ -61,9 +61,15 @@ def test_4_validation_catches_missing_and_unknown_files():
 
 
 def test_5_tampered_sums_are_detected():
+    # Flip the first hex digit deterministically. The old form used
+    # str.replace on whatever digit happened to be first, which was a
+    # no-op when that digit was already "0" -- and the first digit
+    # differs across platforms because checkout line endings change
+    # the file hashes (caught on CI).
     manifest = _manifest()
-    manifest["sha256sums"] = manifest["sha256sums"].replace(
-        manifest["sha256sums"][0], "0", 1)
+    first = manifest["sha256sums"][0]
+    swapped = "1" if first == "0" else "0"
+    manifest["sha256sums"] = swapped + manifest["sha256sums"][1:]
     problems = MF.validate_manifest(manifest, ROOT, _surface())
     assert any("sha256sums_hash" in p for p in problems)
 

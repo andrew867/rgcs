@@ -46,7 +46,11 @@ def test_diatomic_gap_edges_at_zone_boundary():
 def test_diatomic_acoustic_branch_goes_to_zero_at_gamma():
     chain = A.Chain1D.diatomic(m1=1.0, m2=2.5, K=1.7, a=1.0)
     omega = chain.dispersion(0.0)
-    assert omega[0] == pytest.approx(0.0, abs=1e-9)     # acoustic -> 0
+    # Eigensolver path: the zero eigenvalue carries BLAS-dependent
+    # noise (omega ~ sqrt(eps)); CI's runner produced 7.3e-9 where
+    # Windows gives <1e-9. 1e-7 is still eight decades below the
+    # optical branch. The closed-form check below keeps abs=1e-12.
+    assert omega[0] == pytest.approx(0.0, abs=1e-7)     # acoustic -> 0
     assert omega[1] > 1e-3                              # optical stays finite
     ac, op = A.diatomic_dispersion(0.0, m1=1.0, m2=2.5, K=1.7, a=1.0)
     assert ac == pytest.approx(0.0, abs=1e-12)
