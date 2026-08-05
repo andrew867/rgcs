@@ -95,6 +95,9 @@ rgcs_ardk = [
 # RCW P04: the parity guard resolves package-data by the TOP-LEVEL
 # source root (right-anchored match), so the fixtures glob must live on
 # the top-level key, not only a dotted subpackage key (R10.8.2 lesson).
+# Public workbench release cage registries (RC1 cage, 2026-08-04).
+rgcs_workbench = ["public_cage/*.json"]
+"rgcs_workbench.public_cage" = ["*.json"]
 rgcs_coordinate = ["fixtures/*.json"]
 "rgcs_coordinate.fixtures" = ["*.json"]
 rgcs_lab = ["common/*.json", "data/memory_corpus/*.json"]
@@ -106,7 +109,7 @@ r1013 = ["data/schemas/*.json", "data/examples/*.json", "data/examples/*.csv", "
 r1011 = ["data/*.csv"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial", "tests/v4", "tests/v49", "tests/v50", "tests/v51", "tests/v52", "tests/v6", "tests/v8", "tests/cwatlas", "tests/rgcs_coordinate", "tests/rgcs_lab", "rgcs_ardk/tests"]
+testpaths = ["tests/unit", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial", "tests/v4", "tests/v49", "tests/v50", "tests/v51", "tests/v52", "tests/v6", "tests/v8", "tests/cwatlas", "tests/rgcs_coordinate", "tests/rgcs_lab", "rgcs_ardk/tests", "tests/release_cage"]
 pythonpath = ["."]
 markers = [
     "slow: long-running tests (dataset regeneration)",

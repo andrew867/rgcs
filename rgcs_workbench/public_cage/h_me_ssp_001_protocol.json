@@ -1,0 +1,43 @@
+{
+  "id": "H-ME-SSP-001",
+  "status": "PUBLIC_RESEARCH_HYPOTHESIS_NOT_VALIDATED",
+  "geometry": {
+    "outer_diameter_m": 0.288,
+    "inner_diameter_m": 0.188,
+    "sector_count": 37,
+    "run_active_count": 35,
+    "steering_active_count": 33
+  },
+  "frequencies": {
+    "phase_authority_hz": 4096,
+    "external_resonance_hz": 1683456,
+    "quartz_target_hz": 20480
+  },
+  "claims_refused": [
+    "thrust",
+    "lift",
+    "antigravity",
+    "gravity control",
+    "barycentric field coupling",
+    "reactionless propulsion",
+    "free energy",
+    "source authentication",
+    "validated craft performance"
+  ],
+  "required_controls": [
+    "all-active mask",
+    "35/37 run mask",
+    "33/37 steering mask",
+    "mirrored mask",
+    "reversed phase progression",
+    "dummy resistive load",
+    "dummy crystal",
+    "nonmagnetic ring",
+    "cable reroute",
+    "thermal blank",
+    "acoustic isolation",
+    "magnetic background record",
+    "Helmholtz null",
+    "magnetic shielding or field cancellation"
+  ]
+}

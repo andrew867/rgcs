@@ -1,0 +1,107 @@
+{
+  "release_target": "RGCS_WORKBENCH_PUBLIC_RC1",
+  "cage_stage": "RGCS_WORKBENCH_PUBLIC_RC1_CAGE",
+  "created_at": "2026-08-04",
+  "source_pack": "RGCS_Workbench_Full_Public_Release_Spec_Tests_Plans_2026-08-04",
+  "modules": [
+    {
+      "id": "MOD-001",
+      "name": "Variable-Length Coordinate Codec",
+      "status": "PUBLIC_WORKBENCH",
+      "mapping_status": "MAPPED_EXISTING",
+      "repo_paths": [
+        "rgcs_coordinate",
+        "cwatlas",
+        "rgcs_workbench/public_cage/codec_receipts.py"
+      ],
+      "boundary": "This module does reproducible parse receipts for received numeric vectors. It does not claim a physical or geographic endpoint. Endpoint interpretation remains pending."
+    },
+    {
+      "id": "MOD-002",
+      "name": "Terra Public Profile Adapter",
+      "status": "OPERATIONAL_CALIBRATED_PROFILE_REFERENCE",
+      "mapping_status": "MAPPED_EXISTING",
+      "repo_paths": [
+        "rgcs_terra_release",
+        "rgcs_workbench/public_cage/terra_frozen.py"
+      ],
+      "boundary": "This module does read-only reference of the frozen rgcs-terra RC4 profile. It does not claim physical endpoint validation. Independent physical endpoint validation remains HOLDOUT_REQUIRED."
+    },
+    {
+      "id": "MOD-003",
+      "name": "Crystal Phase Engine",
+      "status": "MEASUREMENT_HYPOTHESIS_NOT_VALIDATED",
+      "mapping_status": "PARTIAL_EXISTING",
+      "repo_paths": [
+        "rgcs_core",
+        "rscs2_core",
+        "rgcs_workbench/public_cage/crystal_objects.py"
+      ],
+      "boundary": "This module does computational phase, resonance, and transfer models for crystal specimens. It does not claim healing, consciousness, propulsion, or energy generation effects. Bench receipts remain pending."
+    },
+    {
+      "id": "MOD-004",
+      "name": "Phyrll Generator Measurement Lane",
+      "status": "BENCH_PROTOCOL",
+      "mapping_status": "MAPPED_EXISTING",
+      "repo_paths": [
+        "rgcs_phyrll_v06",
+        "rgcs_phyrll_v07",
+        "rgcs_workbench/public_cage/phyrll_lane.py"
+      ],
+      "boundary": "This module does low-power measurement planning for crystal excitation and response logging. It does not claim force output or anomalous energy. Bench measurement remains pending."
+    },
+    {
+      "id": "MOD-005",
+      "name": "H-ME-SSP-001 Annular Slow-Wave Magnetoelastic Coupling Hypothesis",
+      "status": "PUBLIC_RESEARCH_HYPOTHESIS_NOT_VALIDATED",
+      "mapping_status": "PARTIAL_EXISTING",
+      "repo_paths": [
+        "rgcs_surface_wave",
+        "rgcs_workbench/public_cage/h_me_ssp_001_protocol.json"
+      ],
+      "boundary": "This module does a testable slow-wave annular measurement hypothesis with derived arithmetic. It does not claim thrust, lift, gravity control, or source validation. Bench measurement and independent replication remain pending."
+    },
+    {
+      "id": "MOD-006",
+      "name": "Craft-Path Hypothesis Registry",
+      "status": "HYPOTHESIS_REGISTRY",
+      "mapping_status": "PARTIAL_EXISTING",
+      "repo_paths": [
+        "rgcs_workbench/public_cage/craft_path_registry.py"
+      ],
+      "boundary": "This module does provenance-tracked archival of craft-scale geometry and frequency hypotheses. It does not claim flight capability or validated hardware. Record data import remains pending."
+    },
+    {
+      "id": "MOD-007",
+      "name": "Source and Provenance Archive",
+      "status": "PUBLIC_ARCHIVE_RECORD",
+      "mapping_status": "PARTIAL_EXISTING",
+      "repo_paths": [
+        "rgcs_coordinate/provenance",
+        "rgcs_workbench/canonical.py",
+        "rgcs_workbench/public_cage/archive_schema.py"
+      ],
+      "boundary": "This module does provenance ledgers for source material with hashes and correction history. It does not claim source authentication. Public archive schema import remains pending."
+    },
+    {
+      "id": "MOD-008",
+      "name": "Release Filter and Manifest",
+      "status": "RELEASE_GATE",
+      "mapping_status": "MAPPED_EXISTING",
+      "repo_paths": [
+        "rgcs_terra_release/release_filter.py",
+        "rgcs_workbench/public_cage/claim_firewall.py",
+        "rgcs_workbench/public_cage/manifest.py"
+      ],
+      "boundary": "This module does release gating, claim scanning, and manifest checks. It does not claim anything about physics. Public RC1 manifest and checksums remain pending."
+    }
+  ],
+  "hard_boundaries": [
+    "NO_PHYSICAL_CLAIM_ADVANCED",
+    "TERRA_RC4_PRESERVED",
+    "NO_THRUST_OR_LIFT_CLAIM",
+    "NO_ANTIGRAVITY_CLAIM",
+    "NO_SOURCE_AUTHENTICATION_CLAIM"
+  ]
+}
