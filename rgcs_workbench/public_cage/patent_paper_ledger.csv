@@ -16,3 +16,4 @@ P014,government,Operation Plumbbob timing and firing report,NTIS PB97123947,high
 P015,patent,Triggered spark gap,US3207947A,high,EG&G pulsed high-speed switching lineage,Historical/pulsed-power context only
 P016,patent,Electric discharge system,US2933647A,high,EG&G flash/pulse discharge lineage,Historical/pulsed-power context only
 P017,contractor,J-Tech II / JT4 range technical support,JT4 public site,medium-high,current contractor-range lineage,Do not overstate Area 51 specifics
+P018,paper,Spoof surface plasmon polaritons on corrugated conductor waveguides,"Erementchouk, Joy, Mazumder 2016",high,SSPP corrugated-waveguide lane; 37-cell sector pitch as corrugation period,Dispersion engineering and sensing only

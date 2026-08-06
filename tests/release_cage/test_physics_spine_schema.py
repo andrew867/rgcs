@@ -31,7 +31,9 @@ def test_positron_and_dce_lanes_are_analogy_only():
 def test_ledger_validates_and_agrees_across_formats():
     assert PS.validate_ledger() == []
     ids = [r["id"] for r in PS.load_ledger_json()]
-    assert len(ids) == 17
+    # 17 anchors from the RC2 spine pack plus P018, the SSPP
+    # corrugated-waveguide anchor added with the V4B lane.
+    assert len(ids) == 18
     assert ids == [r["id"] for r in PS.load_ledger_csv()]
 
 

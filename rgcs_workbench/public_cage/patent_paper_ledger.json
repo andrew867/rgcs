@@ -151,5 +151,14 @@
     "source_quality": "medium-high",
     "relevance_to_rgcs": "current contractor-range lineage",
     "claim_boundary": "Do not overstate Area 51 specifics"
+  },
+  {
+    "id": "P018",
+    "type": "paper",
+    "title": "Spoof surface plasmon polaritons on corrugated conductor waveguides",
+    "identifier_or_url": "Erementchouk, Joy, Mazumder 2016",
+    "source_quality": "high",
+    "relevance_to_rgcs": "SSPP corrugated-waveguide lane; 37-cell sector pitch as corrugation period",
+    "claim_boundary": "Dispersion engineering and sensing only"
   }
 ]
