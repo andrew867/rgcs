@@ -95,9 +95,10 @@ rgcs_ardk = [
 # RCW P04: the parity guard resolves package-data by the TOP-LEVEL
 # source root (right-anchored match), so the fixtures glob must live on
 # the top-level key, not only a dotted subpackage key (R10.8.2 lesson).
-# Public workbench release cage registries (RC1 cage, 2026-08-04).
-rgcs_workbench = ["public_cage/*.json"]
-"rgcs_workbench.public_cage" = ["*.json"]
+# Public workbench release cage registries (RC1 cage, 2026-08-04;
+# CSV ledger added by the RC2 physics-spine pack, 2026-08-06).
+rgcs_workbench = ["public_cage/*.json", "public_cage/*.csv"]
+"rgcs_workbench.public_cage" = ["*.json", "*.csv"]
 rgcs_coordinate = ["fixtures/*.json"]
 "rgcs_coordinate.fixtures" = ["*.json"]
 rgcs_lab = ["common/*.json", "data/memory_corpus/*.json"]

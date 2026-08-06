@@ -1,0 +1,18 @@
+id,type,title,identifier_or_url,source_quality,relevance_to_rgcs,claim_boundary
+P001,patent,Magnetic-free non-reciprocal devices exhibiting non-reciprocity through angular momentum biasing,US9405136B2,high,37-cell spatiotemporal resonator-ring model,Supports nonreciprocal/spatiotemporal modulation only
+P002,paper,Magnetic-free non-reciprocity and isolation based on parametrically modulated coupled-resonator loops,Nature Physics nphys3134,high,LC/coupled-resonator angular-momentum bias,No propulsion claim
+P003,paper,Angular-Momentum-Biased Nanorings To Realize Magnetic-Free Integrated Optical Isolation,ACS Photonics DOI 10.1021/ph400058y,high,optical ring angular-momentum bias,No craft claim
+P004,patent,Optical modulator with tunable loss ring resonator,US7561759B2,high,controlled loss/hole/aperture implementation,No anomalous effect claim
+P005,paper,Time-reflection of microwaves by fast optically-controlled time-boundary,Nature Communications s41467-024-51171-6,high,time-varying boundary physics,Temporal spectral translation only
+P006,paper,Linear frequency conversion via sudden merging of meta-atoms,Nature Photonics s41566-018-0259-4,high,time-variant metasurface frequency conversion,No free energy claim
+P007,paper,Observation of dynamical Casimir effect in superconducting circuit,Nature 479 376-379,high,rapid electrical boundary analogue,High-frequency quantum analogue only
+P008,patent,Acousto-optic devices,US7894125B2,high,phonon-to-optical phase/frequency modulation,No exotic communication claim
+P009,patent,Acousto-optic device and method,WO2021069873A1,medium-high,selectable acoustic transducer direction control,No craft claim
+P010,paper,RF magnet-free circulators based on spatiotemporal modulation of SAW filters,arXiv:1905.13252,medium-high,phonon/SAW nonreciprocal low-frequency bridge,Preprint unless peer publication located
+P011,patent,System and method for Alfvenic reconnecting plasmoid plasma acceleration,US12028960B2,high,plasma/rotating-field residue and propulsion-control analogue,Conventional plasma acceleration only
+P012,patent,Method and apparatus for generating gamma-ray laser,US5617443A,medium,positronium coherence analogy,Not near-term hardware
+P013,government,CERN AEgIS positronium laser cooling,CERN news/CDS,high,positronium/gamma-laser research context,No bench use
+P014,government,Operation Plumbbob timing and firing report,NTIS PB97123947,high,EG&G timing/firing contractor lineage,Historical control-structure only
+P015,patent,Triggered spark gap,US3207947A,high,EG&G pulsed high-speed switching lineage,Historical/pulsed-power context only
+P016,patent,Electric discharge system,US2933647A,high,EG&G flash/pulse discharge lineage,Historical/pulsed-power context only
+P017,contractor,J-Tech II / JT4 range technical support,JT4 public site,medium-high,current contractor-range lineage,Do not overstate Area 51 specifics

@@ -1,0 +1,155 @@
+[
+  {
+    "id": "P001",
+    "type": "patent",
+    "title": "Magnetic-free non-reciprocal devices exhibiting non-reciprocity through angular momentum biasing",
+    "identifier_or_url": "US9405136B2",
+    "source_quality": "high",
+    "relevance_to_rgcs": "37-cell spatiotemporal resonator-ring model",
+    "claim_boundary": "Supports nonreciprocal/spatiotemporal modulation only"
+  },
+  {
+    "id": "P002",
+    "type": "paper",
+    "title": "Magnetic-free non-reciprocity and isolation based on parametrically modulated coupled-resonator loops",
+    "identifier_or_url": "Nature Physics nphys3134",
+    "source_quality": "high",
+    "relevance_to_rgcs": "LC/coupled-resonator angular-momentum bias",
+    "claim_boundary": "No propulsion claim"
+  },
+  {
+    "id": "P003",
+    "type": "paper",
+    "title": "Angular-Momentum-Biased Nanorings To Realize Magnetic-Free Integrated Optical Isolation",
+    "identifier_or_url": "ACS Photonics DOI 10.1021/ph400058y",
+    "source_quality": "high",
+    "relevance_to_rgcs": "optical ring angular-momentum bias",
+    "claim_boundary": "No craft claim"
+  },
+  {
+    "id": "P004",
+    "type": "patent",
+    "title": "Optical modulator with tunable loss ring resonator",
+    "identifier_or_url": "US7561759B2",
+    "source_quality": "high",
+    "relevance_to_rgcs": "controlled loss/hole/aperture implementation",
+    "claim_boundary": "No anomalous effect claim"
+  },
+  {
+    "id": "P005",
+    "type": "paper",
+    "title": "Time-reflection of microwaves by fast optically-controlled time-boundary",
+    "identifier_or_url": "Nature Communications s41467-024-51171-6",
+    "source_quality": "high",
+    "relevance_to_rgcs": "time-varying boundary physics",
+    "claim_boundary": "Temporal spectral translation only"
+  },
+  {
+    "id": "P006",
+    "type": "paper",
+    "title": "Linear frequency conversion via sudden merging of meta-atoms",
+    "identifier_or_url": "Nature Photonics s41566-018-0259-4",
+    "source_quality": "high",
+    "relevance_to_rgcs": "time-variant metasurface frequency conversion",
+    "claim_boundary": "No free energy claim"
+  },
+  {
+    "id": "P007",
+    "type": "paper",
+    "title": "Observation of dynamical Casimir effect in superconducting circuit",
+    "identifier_or_url": "Nature 479 376-379",
+    "source_quality": "high",
+    "relevance_to_rgcs": "rapid electrical boundary analogue",
+    "claim_boundary": "High-frequency quantum analogue only"
+  },
+  {
+    "id": "P008",
+    "type": "patent",
+    "title": "Acousto-optic devices",
+    "identifier_or_url": "US7894125B2",
+    "source_quality": "high",
+    "relevance_to_rgcs": "phonon-to-optical phase/frequency modulation",
+    "claim_boundary": "No exotic communication claim"
+  },
+  {
+    "id": "P009",
+    "type": "patent",
+    "title": "Acousto-optic device and method",
+    "identifier_or_url": "WO2021069873A1",
+    "source_quality": "medium-high",
+    "relevance_to_rgcs": "selectable acoustic transducer direction control",
+    "claim_boundary": "No craft claim"
+  },
+  {
+    "id": "P010",
+    "type": "paper",
+    "title": "RF magnet-free circulators based on spatiotemporal modulation of SAW filters",
+    "identifier_or_url": "arXiv:1905.13252",
+    "source_quality": "medium-high",
+    "relevance_to_rgcs": "phonon/SAW nonreciprocal low-frequency bridge",
+    "claim_boundary": "Preprint unless peer publication located"
+  },
+  {
+    "id": "P011",
+    "type": "patent",
+    "title": "System and method for Alfvenic reconnecting plasmoid plasma acceleration",
+    "identifier_or_url": "US12028960B2",
+    "source_quality": "high",
+    "relevance_to_rgcs": "plasma/rotating-field residue and propulsion-control analogue",
+    "claim_boundary": "Conventional plasma acceleration only"
+  },
+  {
+    "id": "P012",
+    "type": "patent",
+    "title": "Method and apparatus for generating gamma-ray laser",
+    "identifier_or_url": "US5617443A",
+    "source_quality": "medium",
+    "relevance_to_rgcs": "positronium coherence analogy",
+    "claim_boundary": "Not near-term hardware"
+  },
+  {
+    "id": "P013",
+    "type": "government",
+    "title": "CERN AEgIS positronium laser cooling",
+    "identifier_or_url": "CERN news/CDS",
+    "source_quality": "high",
+    "relevance_to_rgcs": "positronium/gamma-laser research context",
+    "claim_boundary": "No bench use"
+  },
+  {
+    "id": "P014",
+    "type": "government",
+    "title": "Operation Plumbbob timing and firing report",
+    "identifier_or_url": "NTIS PB97123947",
+    "source_quality": "high",
+    "relevance_to_rgcs": "EG&G timing/firing contractor lineage",
+    "claim_boundary": "Historical control-structure only"
+  },
+  {
+    "id": "P015",
+    "type": "patent",
+    "title": "Triggered spark gap",
+    "identifier_or_url": "US3207947A",
+    "source_quality": "high",
+    "relevance_to_rgcs": "EG&G pulsed high-speed switching lineage",
+    "claim_boundary": "Historical/pulsed-power context only"
+  },
+  {
+    "id": "P016",
+    "type": "patent",
+    "title": "Electric discharge system",
+    "identifier_or_url": "US2933647A",
+    "source_quality": "high",
+    "relevance_to_rgcs": "EG&G flash/pulse discharge lineage",
+    "claim_boundary": "Historical/pulsed-power context only"
+  },
+  {
+    "id": "P017",
+    "type": "contractor",
+    "title": "J-Tech II / JT4 range technical support",
+    "identifier_or_url": "JT4 public site",
+    "source_quality": "medium-high",
+    "relevance_to_rgcs": "current contractor-range lineage",
+    "claim_boundary": "Do not overstate Area 51 specifics"
+  }
+]
