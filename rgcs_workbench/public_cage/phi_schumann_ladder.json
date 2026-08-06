@@ -1,0 +1,147 @@
+[
+  {
+    "family": "PHI_SCHUMANN",
+    "n": -6,
+    "frequency_hz": 0.43635094470658664
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": -5,
+    "frequency_hz": 0.7060306595583832
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": -4,
+    "frequency_hz": 1.14238160426497
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": -3,
+    "frequency_hz": 1.848412263823353
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": -2,
+    "frequency_hz": 2.9907938680883235
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": -1,
+    "frequency_hz": 4.839206131911676
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 0,
+    "frequency_hz": 7.83
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 1,
+    "frequency_hz": 12.669206131911677
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 2,
+    "frequency_hz": 20.499206131911677
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 3,
+    "frequency_hz": 33.168412263823356
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 4,
+    "frequency_hz": 53.66761839573504
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 5,
+    "frequency_hz": 86.8360306595584
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 6,
+    "frequency_hz": 140.50364905529344
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 7,
+    "frequency_hz": 227.33967971485185
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 8,
+    "frequency_hz": 367.8433287701453
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 9,
+    "frequency_hz": 595.1830084849972
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 10,
+    "frequency_hz": 963.0263372551425
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 11,
+    "frequency_hz": 1558.2093457401397
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 12,
+    "frequency_hz": 2521.235682995283
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 13,
+    "frequency_hz": 4079.445028735422
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 14,
+    "frequency_hz": 6600.680711730705
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 15,
+    "frequency_hz": 10680.125740466128
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 16,
+    "frequency_hz": 17280.806452196834
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 17,
+    "frequency_hz": 27960.932192662964
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 18,
+    "frequency_hz": 45241.738644859804
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 19,
+    "frequency_hz": 73202.67083752276
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 20,
+    "frequency_hz": 118444.40948238257
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 21,
+    "frequency_hz": 191647.08031990533
+  },
+  {
+    "family": "PHI_SCHUMANN",
+    "n": 22,
+    "frequency_hz": 310091.48980228795
+  }
+]
