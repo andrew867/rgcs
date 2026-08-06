@@ -1,0 +1,16 @@
+# V6 Null Priority Matrix
+
+A good null changes one variable, removes or shifts exactly one
+predicted observable, is easy to measure, and separates two
+candidate mechanisms.
+
+- NULL_ALL_ACTIVE_RING: candidate V6C_0275, claim MEASUREMENT_TARGET
+- NULL_NO_CRYSTAL_DRIVE: candidate V6C_0276, claim MEASUREMENT_TARGET
+- NULL_OFF_FREQUENCY_CRYSTAL: candidate V6C_0277, claim MEASUREMENT_TARGET
+- NULL_RANDOMIZED_37_PHASE_ORDER: candidate V6C_0278, claim MEASUREMENT_TARGET
+- NULL_NO_WITNESS_LAYER: candidate V6C_0279, claim MEASUREMENT_TARGET
+- NULL_DUMMY_DIELECTRIC_LAYER: candidate V6C_0280, claim MEASUREMENT_TARGET
+- NULL_NO_SAW_CONVOLVER: candidate V6C_0281, claim MEASUREMENT_TARGET
+- NULL_NO_SSPP_CORRUGATION: candidate V6C_0282, claim MEASUREMENT_TARGET
+- NULL_NON_QUARTZ_CONTROL: candidate V6C_0283, claim MEASUREMENT_TARGET
+- NULL_SALE_CRYSTAL_UNMEASURED_ESTIMATE: candidate V6C_0284, claim MEASUREMENT_TARGET
