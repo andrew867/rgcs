@@ -150,8 +150,12 @@ def ingest_cookbook(data_dir: str | pathlib.Path) -> list[dict]:
     base = pathlib.Path(data_dir)
     rows: list[dict] = []
     seen: set[str] = set()
-    for name in ("formations.json",
-                 "multisite_all_years_calculated/formations.json"):
+    # Prefer the VERIFIED dataset (unique-image, measurable-metric
+    # records only) when the curation pass has produced it.
+    multisite = "multisite_all_years_verified/formations.json"
+    if not (base / multisite).is_file():
+        multisite = "multisite_all_years_calculated/formations.json"
+    for name in ("formations.json", multisite):
         payload = json.loads((base / name).read_text(encoding="utf-8"))
         for raw in payload.get("formations", []):
             row = sanitize_row(raw)

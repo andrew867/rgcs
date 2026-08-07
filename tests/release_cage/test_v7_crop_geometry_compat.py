@@ -51,7 +51,9 @@ def test_plan_view_cannot_directly_claim_groove_depth():
 
 def test_features_ingested_without_invention(result):
     rows = CG.load_features()
-    assert len(rows) >= 2000
+    # The VERIFIED pass shrank the census on purpose: junk index
+    # pages, shared images, photo-perspective ring claims all gone.
+    assert len(rows) >= 1500
     for row in rows[:200]:
         assert row["provenance"].startswith("COOKBOOK_EXTRACTED")
         # a parsed dimension always has its raw text preserved
@@ -131,7 +133,9 @@ def test_37_count_reporting_is_background_honest(result):
 
 def test_ratio_hits_stay_at_or_below_chance_floor(result):
     rates = CG.ratio_base_rate(result)
-    assert rates["ratio_rows"] >= 500
+    # Drawing-sourced plan-view ratios only, by rule; the honest
+    # measurable core is a few hundred rows, not two thousand.
+    assert rates["ratio_rows"] >= 300
     assert rates["observed"] >= 1
     # the honesty gate: the report must not claim excess without it
     assert isinstance(rates["excess_over_chance"], bool)
