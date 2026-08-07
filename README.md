@@ -189,9 +189,11 @@ The desktop workbench (`rgcs-workbench`) has two modes:
 |---|---|---|
 | Validate a crystal | Crystal Validator | geometry receipt, derived values, certification PDF |
 | Generate printable parts | Phyrll Generator Designer | SCAD, STL (when OpenSCAD is installed), build PDF, receipt JSON |
+| Design a crystal-first Phryll cone | Phryll Generator v2 | custom cone + coil sleeve: SCAD, STL, 3MF, DXF, SVG, PDFs, receipts |
 | Design coils and pulses | Coil / Pulse Designer | wire estimates, pulse table, sidebands, build PDF |
 | Design an annular ring | Annular Ring Designer | ring diagram, masks, SVG/SCAD, engineering PDF |
 | Use frequency keys | Frequency Key Library | sourced key list, sidebands, key relations |
+| Make binaural / frequency-key audio | Frequency Key Studio | WAV, recipe JSON, session PDF, YouTube metadata sheet |
 | Inspect the research model | Advanced Scientific Workbench | models, sources, experiments, reports, bundles |
 
 Install and launch:
@@ -307,11 +309,11 @@ environment-dependent test in the repository.
 ## Release status
 
 ```text
-current release:   v8.4.0 — RGCS Design Studio v1
+current release:   v8.5.0 — Frequency Key Studio (Sonic Lab)
 workbench RCs:     workbench-v1.0.0-rc1 / -rc2 (pre-releases, shipped)
 ```
 
-Current release: [v8.4.0](https://github.com/andrew867/rgcs/releases/tag/v8.4.0).
+Current release: [v8.5.0](https://github.com/andrew867/rgcs/releases/tag/v8.5.0).
 Frozen history — v2.0.0 (`archive/v2.0.0/`), v3.0.x, v4.0.0, v4.1.x — tags and records
 are never modified. The DOI badge is the latest **minted** DOI (v3.0.1).
 

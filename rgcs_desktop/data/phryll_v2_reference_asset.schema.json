@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://phryll-v2/reference_asset_profile.schema.json",
+  "title": "Phryll v2 reference asset profile (CC-SA reference only)",
+  "description": "Reference assets provide style, wall thickness, tolerance, and size-family examples ONLY. Generated geometry is never a scaled copy of a reference mesh.",
+  "type": "object",
+  "required": ["asset_id", "file_name", "role", "license_status"],
+  "properties": {
+    "asset_id": {"type": "string", "minLength": 1},
+    "file_name": {"type": "string", "minLength": 1},
+    "asset_type": {"type": "string"},
+    "role": {"type": "string"},
+    "license_status": {"type": "string"},
+    "sha256": {"type": "string"},
+    "measured_dimensions": {"type": "object"},
+    "profile_points": {"type": "array"},
+    "notes": {"type": "string"}
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/frequency_session.schema.json",
+  "title": "Frequency Key Studio session",
+  "description": "A renderable audio session: timeline segments plus layers. Sessions are experimental audio recipes; results vary.",
+  "type": "object",
+  "required": ["schema_version", "session_id", "title", "duration_s",
+               "segments"],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^1\\."},
+    "session_id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "intent": {"type": "string"},
+    "family": {"type": "string"},
+    "duration_s": {"type": "number", "exclusiveMinimum": 0},
+    "sample_rate": {"type": "integer", "minimum": 8000},
+    "segments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["kind", "duration_s"],
+        "properties": {
+          "kind": {
+            "enum": ["intro", "relax", "ramp_down", "hold",
+                     "exploration", "ramp_up", "return", "outro"]
+          },
+          "duration_s": {"type": "number", "exclusiveMinimum": 0},
+          "beat_start_hz": {"type": "number", "minimum": 0},
+          "beat_end_hz": {"type": "number", "minimum": 0},
+          "curve": {"enum": ["linear", "cosine", "exponential",
+                             "stepped"]}
+        }
+      }
+    },
+    "layers": {
+      "type": "array",
+      "items": {"$ref": "audio_layer.schema.json"}
+    },
+    "exports": {"type": "object"},
+    "notes": {"type": "string"},
+    "source_ids": {"type": "array", "items": {"type": "string"}},
+    "sha256": {"type": "string"}
+  }
+}

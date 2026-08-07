@@ -61,9 +61,18 @@ The task-first entry points for the desktop workbench (`rgcs-workbench`).
 | Validate a crystal | [user/CRYSTAL_VALIDATOR](user/CRYSTAL_VALIDATOR.md) |
 | Generate a certification sheet | [user/CERTIFICATION_SHEETS](user/CERTIFICATION_SHEETS.md) |
 | Generate a Phyrll generator holder | [user/PHYRLL_GENERATOR_DESIGNER](user/PHYRLL_GENERATOR_DESIGNER.md) |
+| Design a crystal-first Phryll cone (v2) | [user/PHRYLL_GENERATOR_V2](user/PHRYLL_GENERATOR_V2.md) |
+| Phryll v2 CAD engine (developers) | [developer/PHRYLL_V2_CAD_ENGINE](developer/PHRYLL_V2_CAD_ENGINE.md) |
 | Design coils and pulse settings | [user/COIL_PULSE_DESIGNER](user/COIL_PULSE_DESIGNER.md) |
 | Design an annular ring prototype | [user/ANNULAR_RING_DESIGNER](user/ANNULAR_RING_DESIGNER.md) |
 | Use frequency keys | [user/FREQUENCY_KEYS](user/FREQUENCY_KEYS.md) |
+| Make binaural / frequency-key audio | [user/FREQUENCY_KEY_STUDIO](user/FREQUENCY_KEY_STUDIO.md) |
+| Build an audio session | [user/SONIC_SESSION_BUILDER](user/SONIC_SESSION_BUILDER.md) |
+| Binaural methodology companion | [user/BINAURAL_COMPANION](user/BINAURAL_COMPANION.md) |
+| Browse the seed recipe library | [user/RECIPE_LIBRARY](user/RECIPE_LIBRARY.md) |
+| Collect a web/video recipe corpus | [user/YOUTUBE_RECIPE_CORPUS](user/YOUTUBE_RECIPE_CORPUS.md) |
+| Sonic audio engine (developers) | [developer/SONIC_AUDIO_ENGINE](developer/SONIC_AUDIO_ENGINE.md) |
+| Sonic ingest pipeline (developers) | [developer/SONIC_INGEST_PIPELINE](developer/SONIC_INGEST_PIPELINE.md) |
 | Open Advanced Mode | [user/ADVANCED_MODE](user/ADVANCED_MODE.md) |
 | Packaging (developers) | [developer/PACKAGING](developer/PACKAGING.md) |
 

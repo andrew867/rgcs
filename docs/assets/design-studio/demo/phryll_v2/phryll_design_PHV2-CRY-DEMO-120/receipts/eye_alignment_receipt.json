@@ -1,0 +1,7 @@
+{
+  "alignment_error_mm": 0.0,
+  "pass": true,
+  "tolerance_mm": 0.5,
+  "z_cross_mm": 62.5,
+  "z_eye_mm": 62.5
+}

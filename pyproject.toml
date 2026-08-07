@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rgcs"
-version = "8.4.0"
+version = "8.5.0"
 description = "RGCS v4.1 / RSCS 2.0: typed resonant-coordinate framework (rscs_core), the deterministic RGCS crystal-application core (rgcs_core), and the capability-aware v4 multiphysics stack (rscs2_core: anisotropic FEM, piezoelectricity, projections, uncertainty-aware Eye Consensus, reduced-order reference systems, quarantined source hypotheses, proof bundles)."
 requires-python = ">=3.11"
 license = { text = "MIT" }
@@ -63,6 +63,7 @@ rgcs-v4 = "rscs2_core.cli:main"
 rgcs-workbook = "rgcs_workbench.workbook:main"
 rgcs-coordinate = "rgcs_coordinate.cli:main"
 rgcs-lab = "rgcs_lab.cli:main"
+rgcs-sonic = "rgcs_desktop.services.sonic_cli:main"
 rgcs = "r1013.cli:main"
 
 [project.gui-scripts]

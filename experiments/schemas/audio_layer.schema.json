@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/audio_layer.schema.json",
+  "title": "Frequency Key Studio audio layer",
+  "type": "object",
+  "required": ["layer_id", "type", "gain_db"],
+  "properties": {
+    "layer_id": {"type": "string", "minLength": 1},
+    "type": {
+      "enum": ["binaural", "monaural", "isochronic", "white_noise",
+               "pink_noise", "brown_noise", "surf_noise", "music_bed",
+               "voice_cue"]
+    },
+    "carrier_hz": {"type": "number", "exclusiveMinimum": 0},
+    "beat_hz": {"type": "number", "minimum": 0},
+    "pulse_hz": {"type": "number", "exclusiveMinimum": 0},
+    "duty": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+    "gain_db": {"type": "number", "maximum": 0},
+    "pan": {"type": "number", "minimum": -1, "maximum": 1},
+    "fade_in_s": {"type": "number", "minimum": 0},
+    "fade_out_s": {"type": "number", "minimum": 0},
+    "seed": {"type": "integer", "minimum": 0},
+    "file": {"type": "string"},
+    "start_s": {"type": "number", "minimum": 0}
+  }
+}

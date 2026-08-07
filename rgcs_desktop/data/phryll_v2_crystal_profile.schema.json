@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://phryll-v2/crystal_profile_v2.schema.json",
+  "title": "Phryll v2 crystal profile (measured)",
+  "type": "object",
+  "required": ["schema_version", "crystal_id", "length_mm",
+               "top_diameter_mm", "base_diameter_mm", "max_body_width_mm",
+               "facet_count", "uncertainty"],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^2\\."},
+    "crystal_id": {"type": "string", "minLength": 1},
+    "length_mm": {"type": "number", "exclusiveMinimum": 0},
+    "top_diameter_mm": {"type": "number", "exclusiveMinimum": 0},
+    "base_diameter_mm": {"type": "number", "exclusiveMinimum": 0},
+    "max_body_width_mm": {"type": "number", "exclusiveMinimum": 0},
+    "facet_count": {"type": "integer", "minimum": 3},
+    "top_angle_deg": {"type": "number"},
+    "base_angle_deg": {"type": "number"},
+    "mass_g": {"type": "number", "exclusiveMinimum": 0},
+    "z_eye_mm": {"type": "number", "minimum": 0},
+    "eye_source": {"type": "string"},
+    "eye_uncertainty_mm": {"type": "number", "minimum": 0},
+    "uncertainty": {"type": "object"},
+    "provenance": {"type": "object"}
+  }
+}

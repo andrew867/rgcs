@@ -1,0 +1,15 @@
+Title:
+925 Hz + 7.83 Hz RGCS Schumann bridge Binaural Beat | RGCS Frequency Key Studio
+
+Description:
+Rendered with RGCS Frequency Key Studio.
+
+Recipe:
+- Carrier: 925 Hz
+- Beat: 7.83 Hz
+- Left: 921.085 Hz
+- Right: 928.915 Hz
+- Layers: binaural, brown_noise
+- Duration: 0.333333 min
+
+Experimental audio recipe. Use comfortable volume. Results vary.

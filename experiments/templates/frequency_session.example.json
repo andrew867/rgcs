@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "session_id": "SES-EXAMPLE-001",
+  "title": "925 Hz Schumann Bridge (example)",
+  "intent": "RGCS Schumann bridge",
+  "family": "rgcs_bridge",
+  "duration_s": 60.0,
+  "sample_rate": 48000,
+  "segments": [
+    {"kind": "intro", "duration_s": 5.0, "beat_start_hz": 10.0,
+     "beat_end_hz": 10.0, "curve": "linear"},
+    {"kind": "ramp_down", "duration_s": 15.0, "beat_start_hz": 10.0,
+     "beat_end_hz": 7.83, "curve": "cosine"},
+    {"kind": "hold", "duration_s": 30.0, "beat_start_hz": 7.83,
+     "beat_end_hz": 7.83, "curve": "linear"},
+    {"kind": "outro", "duration_s": 10.0, "beat_start_hz": 7.83,
+     "beat_end_hz": 7.83, "curve": "linear"}
+  ],
+  "layers": [
+    {"layer_id": "L1", "type": "binaural", "carrier_hz": 925.0,
+     "beat_hz": 7.83, "gain_db": -6.0, "pan": 0.0,
+     "fade_in_s": 2.0, "fade_out_s": 3.0},
+    {"layer_id": "L2", "type": "pink_noise", "gain_db": -18.0,
+     "pan": 0.0, "seed": 7, "fade_in_s": 2.0, "fade_out_s": 3.0}
+  ],
+  "notes": "Experimental audio recipe. Use comfortable volume. Results vary.",
+  "source_ids": ["RGCS"]
+}

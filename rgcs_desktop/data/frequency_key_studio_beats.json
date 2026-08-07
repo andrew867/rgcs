@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "note": "Beat targets for Frequency Key Studio (plan pack 07_RECIPE_COLLECTION). Status vocabulary: standard_band (conventional EEG-band label), source_patent / source_lead (recorded from sources, not endorsed), candidate, project (RGCS).",
+  "beats": [
+    {"hz": 1.5, "label": "deep FFR family", "use": "deep experimental seed", "status": "source_patent"},
+    {"hz": 2.0, "label": "delta", "use": "sleep/deep relaxation", "status": "standard_band"},
+    {"hz": 4.0, "label": "theta-delta boundary", "use": "Focus 10 style seed", "status": "source_patent"},
+    {"hz": 5.0, "label": "theta", "use": "Gateway-style seed", "status": "candidate"},
+    {"hz": 6.3, "label": "astral source lead", "use": "OBE/astral source recipe", "status": "source_lead"},
+    {"hz": 7.0, "label": "theta", "use": "meditation", "status": "standard_band"},
+    {"hz": 7.83, "label": "Schumann bridge", "use": "RGCS bridge", "status": "project"},
+    {"hz": 10.0, "label": "alpha", "use": "relaxed focus", "status": "standard_band"},
+    {"hz": 14.0, "label": "beta", "use": "focus/study", "status": "standard_band"},
+    {"hz": 20.48, "label": "RGCS low key", "use": "RGCS bridge", "status": "project"},
+    {"hz": 33.0, "label": "high source lead", "use": "advanced experimental", "status": "source_lead"}
+  ]
+}

@@ -3,6 +3,68 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [8.5.0] - 2026-08-07
+
+**RGCS Frequency Key Studio / Sonic Lab + Phryll Generator v2**
+(tag `v8.5.0`). Design Studio gains a full audio creation and recipe
+system — an independent engine (no Hemi-Sync recordings, tape
+structures, narration, or branding; no audio downloader, enforced by
+test) — and a crystal-first parametric CAD generator.
+
+**Phryll Generator Designer v2** (crystal-first parametric CAD):
+
+- Measured crystal profile (schema major 2) → custom cone: inner =
+  crystal envelope + clearance, outer = inner + wall; per-station fit
+  check; no stock M1/M2/L/L2/V3 mesh is chosen or scaled (enforced by
+  test — generated SCAD contains no import()/mesh reference).
+- Coil sleeve with the source spacing rules: clear gap >= 2×wire Ø
+  (enforced), groove pitch = 3×wire Ø (AWG 28 → 0.66/0.99 mm),
+  standoff = clearance + wall − groove depth (+ wire Ø/2 centerline).
+- Eye alignment solver: crossed copper-CW/silver-CCW helices phased so
+  a crossing plane lands exactly on z_eye (demo residual 0.0 mm);
+  crystal/cone midpoints never substitute for the Eye.
+- Exports: deterministic SCAD module set (cone, sleeve, groove paths,
+  Eye marker, base adapter, cap, LED holder, jack holder, locker),
+  built-in mesh backend (watertight shell → binary STL + minimal 3MF,
+  no OpenSCAD required; OpenSCAD CLI optional), SVG axial/top
+  templates, DXF winding template, compatibility + build PDF sheets,
+  JSON receipts, bundle with MANIFEST + CHECKSUMS.sha256.
+- Reference asset registry: 12 CC-SA assets with roles/licenses and
+  mesh-decode seed data; M2 text profile and M2 mesh profile stored
+  separately, never reconciled; direct STL measurement tools.
+- Annular-ring craft locks stay out of cone sizing (source-scan test).
+- Panel + home card, docs, demo bundle (18 files, verified), 41 tests.
+
+**Frequency Key Studio details:**
+
+- Audio engine (numpy + stdlib wave, no new dependencies): binaural
+  (102 Hz carrier / 4 Hz beat → the 100/104 patent example), monaural,
+  isochronic with click-free gating, seeded white/pink/brown/surf
+  noise, constant-power pan, a mixer that never clips (normalizes
+  above 0.95 peak and records it), 48 kHz 16-bit PCM WAV export.
+- Timeline engine: 8 segment kinds, 4 ramp curves, phase-integrated
+  beat ramps; standard session shape (fade/settle/ramp/hold/return).
+- 7 seed recipes + 11 beat targets as packaged data; recipe → session
+  conversion; search by text/frequency/family.
+- Exports: schema-valid render receipts, session PDF sheet with
+  receipt hash, deterministic recipe JSON, YouTube metadata sheet,
+  checksummed bundle zip; `rgcs-sonic` CLI (list/beats/render/batch).
+- v1.1: live preview playback (QtMultimedia, optional backend, stated
+  degradation), STFT spectrogram preview, Timeline Editor page,
+  voice-cue/music-bed WAV import with start offsets, multi-carrier
+  stacks, RMS loudness normalization (peak-capped, recorded), batch
+  render with manifest.
+- v1.2: metadata-only web/video ingest (frequency extraction with
+  roles, claimed-use taxonomy on word boundaries), corpus store
+  (URL-deduped JSON + CSV export), duplicate clustering, deterministic
+  recipe recommendation with reasons.
+- Four new JSON schemas (audio_layer, frequency_session,
+  render_receipt, source_recipe) in the shared registry.
+- Docs: 5 user + 2 developer docs, README row, index links.
+- Every session export carries: "Experimental audio recipe. Use
+  comfortable volume. Results vary." Claimed uses are recorded from
+  sources, not endorsed.
+
 ## [8.4.0] - 2026-08-07
 
 **RGCS Design Studio v1** (tag `v8.4.0`). The desktop workbench gains a

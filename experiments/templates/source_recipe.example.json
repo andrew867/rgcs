@@ -1,0 +1,19 @@
+{
+  "source_id": "SRC-EXAMPLE-001",
+  "url": "https://example.invalid/watch?v=example",
+  "platform": "youtube",
+  "title": "528Hz + 6.3 Hz Astral Projection Binaural Beat",
+  "channel": "example channel",
+  "description": "Example description with 7.83 Hz Schumann reference.",
+  "duration_s": 1800,
+  "language": "en",
+  "extracted_frequencies_hz": [
+    {"hz": 528.0, "role": "carrier_candidate", "found_in": "title"},
+    {"hz": 6.3, "role": "beat_target_candidate", "found_in": "title"},
+    {"hz": 7.83, "role": "description_only", "found_in": "description"}
+  ],
+  "claimed_uses": ["astral projection"],
+  "recipe_type_guess": "binaural",
+  "source_status": "source-language",
+  "review_status": "unreviewed"
+}

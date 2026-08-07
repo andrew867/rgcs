@@ -17,6 +17,15 @@ REQUIRED_DOCS = [
     "docs/user/FREQUENCY_KEYS.md",
     "docs/user/ADVANCED_MODE.md",
     "docs/developer/PACKAGING.md",
+    "docs/user/FREQUENCY_KEY_STUDIO.md",
+    "docs/user/SONIC_SESSION_BUILDER.md",
+    "docs/user/BINAURAL_COMPANION.md",
+    "docs/user/RECIPE_LIBRARY.md",
+    "docs/user/YOUTUBE_RECIPE_CORPUS.md",
+    "docs/developer/SONIC_AUDIO_ENGINE.md",
+    "docs/developer/SONIC_INGEST_PIPELINE.md",
+    "docs/user/PHRYLL_GENERATOR_V2.md",
+    "docs/developer/PHRYLL_V2_CAD_ENGINE.md",
 ]
 
 
@@ -54,7 +63,15 @@ def test_design_studio_doc_relative_links_resolve():
 
 def test_design_studio_docs_carry_claim_boundaries():
     for rel in REQUIRED_DOCS:
-        if rel in ("INSTALL.md", "docs/developer/PACKAGING.md", "docs/user/ADVANCED_MODE.md"):
+        if rel in ("INSTALL.md", "docs/developer/PACKAGING.md",
+                   "docs/user/ADVANCED_MODE.md",
+                   "docs/developer/SONIC_AUDIO_ENGINE.md",
+                   "docs/developer/SONIC_INGEST_PIPELINE.md",
+                   "docs/developer/PHRYLL_V2_CAD_ENGINE.md"):
             continue
         text = (REPO / rel).read_text(encoding="utf-8").lower()
-        assert "claim boundary" in text or "claim-boundary" in text, rel
+        # design docs carry the claim-boundary block; sonic-lab docs
+        # carry the lightweight boundary ("results vary" + recorded,
+        # not endorsed)
+        assert ("claim boundary" in text or "claim-boundary" in text
+                or "results vary" in text or "not endorsed" in text), rel
