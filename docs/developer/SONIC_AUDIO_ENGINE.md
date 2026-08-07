@@ -18,7 +18,19 @@ Modules under `rgcs_desktop/services/`:
   the shared `pdf_sheets` writer, deterministic recipe JSON, YouTube
   metadata sheet, bundle zip with embedded manifest + verification.
 - `sonic_cli.py` — the `rgcs-sonic` console script (list / beats /
-  render).
+  render / batch).
+- `sonic_corpus.py` (v1.2) — `CorpusStore` (URL-deduped JSON + CSV
+  export), `cluster_corpus` (frequency signature + title Jaccard),
+  `recommend_recipes` (declared deterministic scoring).
+
+v1.1 engine additions: `load_wav` (16/24/32-bit PCM, mono/stereo),
+`resample_linear`, `normalize_rms` (peak-capped, gain recorded),
+`multi_carrier_layers`, `spectrogram` (Hann STFT, dB). Timeline
+renders voice_cue/music_bed layers from files with `start_s` offsets
+and applies optional session loudness normalization. Live playback
+lives in `viewers/sonic_playback.py` (QtMultimedia, optional — every
+entry point degrades to a stated message without a backend; the
+PyInstaller spec keeps QtMultimedia in).
 
 Schemas: `experiments/schemas/{audio_layer, frequency_session,
 render_receipt, source_recipe}.schema.json`, registered in the shared

@@ -92,17 +92,33 @@ claimed-use tags correct after fixing a real substring bug found during
 this run ("aura" fired inside "binaural", "sleep" inside "asleep" —
 now word-boundary matched with a regression test).
 
+## v1.1 / v1.2 completion (second pass, same branch)
+
+On user instruction the v1.1 and v1.2 scope was completed before
+release:
+
+- **v1.1**: live preview playback (QtMultimedia, optional backend with
+  stated degradation; spec keeps QtMultimedia), STFT spectrogram
+  preview, Timeline Editor page (custom segments replace the standard
+  shape when enabled; refusals stated), voice-cue/music-bed WAV import
+  with start offsets (16/24/32-bit PCM, linear resample), multi-carrier
+  stacks, RMS loudness normalization (peak-capped, recorded), batch
+  render (UI + `rgcs-sonic batch` + manifest).
+- **v1.2**: corpus builder (URL-deduped JSON store + CSV export),
+  duplicate clustering (frequency signature + title similarity), and
+  deterministic recipe recommendation with reasons, all wired into the
+  Web Corpus page.
+- 31 additional tests (15 service + 16 UI). Layer-mixer-as-a-page was
+  folded into the wizard's layer controls rather than a separate panel.
+
 ## Blockers / honest list
 
-- Live playback, timeline editor panel, layer mixer panel, voice-cue
-  and music-bed file import, loudness normalization, spectrogram
-  preview, batch render: deliberately not implemented (PRD v1.1).
-  File layers are skipped with a statement when present in a session.
-- LM Studio classifier, duplicate clustering, recipe recommendation,
-  live web search: v1.2 scope, not implemented. The corpus page parses
-  metadata the user pastes; it performs no network access.
-- Branch is unmerged and unreleased by design — this pack's master
-  prompt ends at branch + report. Merge/release on request.
+- LM Studio vision/classifier integration (feature matrix FKS-011,
+  "later") and any live web search remain out of scope: the corpus
+  page parses metadata the user supplies and performs no network
+  access.
+- The linear resampler for voice cues is adequate, not
+  mastering-grade, and says so in code and docs.
 
 ## Boundary
 

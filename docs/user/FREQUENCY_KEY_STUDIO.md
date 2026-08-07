@@ -27,9 +27,13 @@ rgcs-sonic render RGCS-SCH-0001 --duration 60 --out exports/
 
 ## Pages
 
-- **New Session** — the wizard ([details](SONIC_SESSION_BUILDER.md))
-- **Recipe Library** — seed recipes with search ([details](RECIPE_LIBRARY.md))
-- **Web Corpus** — metadata-only ingestion ([details](YOUTUBE_RECIPE_CORPUS.md))
+- **New Session** — the wizard: playback preview, spectrogram,
+  multi-carrier, voice cues, loudness ([details](SONIC_SESSION_BUILDER.md))
+- **Timeline Editor** — custom segment timelines with validation
+- **Recipe Library** — seed recipes with search + batch render
+  ([details](RECIPE_LIBRARY.md))
+- **Web Corpus** — metadata-only ingestion, corpus store, clustering,
+  recipe recommendations ([details](YOUTUBE_RECIPE_CORPUS.md))
 
 ## Note
 
