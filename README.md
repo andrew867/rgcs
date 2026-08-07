@@ -287,7 +287,10 @@ The suite asserts the boundaries, not just the behaviour: that fitted residuals 
 labelled non-evidential, that nulls travel with the claims they qualify, that no
 document asserts proof, and that every blocker keeps its detail and clearing condition.
 
-**Verification status at the frozen release commit (v8.3.0):**
+**Verification status at v8.4.0 (Design Studio):** 8362 passed, 9 skipped,
+1 deselected, exit 0.
+
+**Verification status at the frozen v8.3.0 release commit:**
 **8129 tests passed**, 15 skipped, 1 deselected, exit 0 (`expect: 8129 passed`);
 proof-bundle checksums **115/115** via `rgcs-v4 verify-checksums`. Counts derive from a
 real pytest run recorded in `docs/v4/RELEASE_METADATA.json` — a document that drifts
@@ -304,11 +307,11 @@ environment-dependent test in the repository.
 ## Release status
 
 ```text
-current release:   v8.3.0
-pending candidate: v1.0.0-rc1 — RGCS V1 Map Workbench
+current release:   v8.4.0 — RGCS Design Studio v1
+workbench RCs:     workbench-v1.0.0-rc1 / -rc2 (pre-releases, shipped)
 ```
 
-Current release: [v8.3.0](https://github.com/andrew867/rgcs/releases/tag/v8.3.0).
+Current release: [v8.4.0](https://github.com/andrew867/rgcs/releases/tag/v8.4.0).
 Frozen history — v2.0.0 (`archive/v2.0.0/`), v3.0.x, v4.0.0, v4.1.x — tags and records
 are never modified. The DOI badge is the latest **minted** DOI (v3.0.1).
 
