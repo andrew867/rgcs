@@ -1,8 +1,8 @@
 {
   "bundle_kind": "phryll_v2_design",
   "design_id": "PHV2-CRY-DEMO-120",
-  "generated_utc": "2026-08-07T22:04:32+00:00",
-  "git_commit": "f57fda016d3d15f66f1ea8c0f8b28d6299188521",
+  "generated_utc": "2026-08-07T23:36:27+00:00",
+  "git_commit": "f76dd2ca037787655a097dfb385a0e420b5d28c9",
   "layout": [
     "inputs",
     "cad",

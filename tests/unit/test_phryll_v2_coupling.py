@@ -167,3 +167,38 @@ def test_craft_skin_doc_exists_and_stays_out_of_generator():
     for module in (cone_generator, coil_sleeve, pipeline):
         source = inspect.getsource(module)
         assert "aerofoil" not in source.lower()
+
+
+def test_lattice_is_45_degrees_multi_start(crystal):
+    """Reference geometry: ±45° crossed multi-start lattice, not
+    near-horizontal rings — rise per turn equals one circumference at
+    the mean band radius, and the perpendicular wire gap keeps the
+    source rule."""
+    cone = make_cone_design(crystal)
+    coil = generate_crossed_coil_paths(crystal, cone, {})
+    paths = coil["paths"]
+    spacing = coil["spacing"]
+    assert paths["helix_angle_deg"] == 45.0
+    r_mean = paths["mean_band_radius_mm"]
+    assert paths["rise_per_turn_mm"] == pytest.approx(
+        2 * math.pi * r_mean, rel=1e-9)
+    # steep lattice: far more than one circumference per band-height
+    # of rise (the old bug had rise = 0.99 mm per turn)
+    assert paths["rise_per_turn_mm"] > 50.0
+    band = paths["band_top_mm"] - paths["band_bottom_mm"]
+    assert paths["turns_per_strand"] == pytest.approx(
+        band / paths["rise_per_turn_mm"])
+    assert 0.3 < paths["turns_per_strand"] < 1.5   # partial diagonal wrap
+    # multi-start family fills the circumference
+    assert paths["n_starts_per_coil"] >= 50
+    assert paths["n_starts_per_coil"] == int(
+        paths["rise_per_turn_mm"] / spacing["axial_strand_spacing_mm"])
+    # perpendicular spacing keeps the >= 2 wire-diameter clear gap
+    wire_d = coil["wire"]["wire_diameter_mm"]
+    perp = spacing["axial_strand_spacing_mm"] * math.cos(
+        math.radians(45.0))
+    assert perp == pytest.approx(spacing["perpendicular_pitch_mm"])
+    assert perp - wire_d >= 2 * wire_d - 1e-9
+    # lattice crossing centered on the Eye
+    assert coil["eye_alignment"]["z_cross_mm"] == 62.5
+    assert coil["eye_alignment"]["alignment_error_mm"] == 0.0

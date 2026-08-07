@@ -52,9 +52,11 @@ groove_depth_mm = 0.2500;
 z_eye_mm = 62.5000;
 band_bottom_mm = 32.5000;
 band_top_mm = 92.5000;
-coil_turns = 60;
-phase_cu_rad = 5.458121;
-phase_ag_rad = 0.825065;
+helix_angle_deg = 45.0000;
+rise_per_turn_mm = 116.6986;
+n_starts = 83;
+phase_cu_rad = 2.918114;
+phase_ag_rad = 3.365071;
 
 function outer_r_at(z) = outer_profile[
     min(len(outer_profile) - 1,
@@ -65,21 +67,25 @@ band_r_bottom_mm = outer_r_at(band_bottom_mm);
 band_r_top_mm = outer_r_at(band_top_mm);
 
 module groove_helix(phase_rad, handed) {
-    // CONTINUOUS helical slot: a wire-diameter circle at
-    // the outer surface, twist-extruded up the band. The
-    // linear_extrude scale factor tracks the cone taper,
-    // so the cutter hugs the outer wall the whole way.
-    twist_deg = -handed * 360 * band_h_mm / groove_pitch_mm;
+    // ±45° MULTI-START lattice family: n_starts parallel
+    // wire-diameter circles arranged around the surface,
+    // twist-extruded as CONTINUOUS diagonal slots. The
+    // steep helix rises one circumference per turn at 45°
+    // (rise_per_turn_mm); linear_extrude scale tracks the
+    // cone taper so cutters hug the outer wall.
+    twist_deg = -handed * 360 * band_h_mm / rise_per_turn_mm;
     start_deg = phase_rad * 180 / PI
-        + handed * 360 * band_bottom_mm / groove_pitch_mm;
+        + handed * 360 * band_bottom_mm / rise_per_turn_mm;
     translate([0, 0, band_bottom_mm])
         linear_extrude(height = band_h_mm,
                        twist = twist_deg,
                        scale = band_r_top_mm / band_r_bottom_mm,
-                       slices = coil_turns * 90, convexity = 10)
+                       slices = 400, convexity = 10)
             rotate([0, 0, start_deg])
-                translate([band_r_bottom_mm - groove_depth_mm + wire_d_mm / 2, 0])
-                    circle(d = wire_d_mm + 0.1, $fn = 24);
+                for (k = [0 : n_starts - 1])
+                    rotate([0, 0, k * 360 / n_starts])
+                        translate([band_r_bottom_mm - groove_depth_mm + wire_d_mm / 2, 0])
+                            circle(d = wire_d_mm + 0.1, $fn = 16);
 }
 
 module copper_groove_path() {

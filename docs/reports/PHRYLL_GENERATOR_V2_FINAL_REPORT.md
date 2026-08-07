@@ -54,17 +54,35 @@ CRY-DEMO-120: length 120.0 mm, top Ø 26.0 mm (60°), base Ø 39.0 mm
 
 `phryll_design_PHV2-CRY-DEMO-120/` — 21 files, checksums verified:
 custom_cone.scad + coil_sleeve.scad (deterministic, full module set;
-grooves are CONTINUOUS twist-extruded helical slots, not dotted
-cutters), custom_cone.stl/3mf (36 864-triangle smooth shell) plus
-**coil_sleeve.stl/3mf (104 976-triangle circular shell with the
-crossed helical wire slots carved in — built-in mesh backend, no
-OpenSCAD needed)**, axial_section.svg, top_template.svg,
+grooves are CONTINUOUS twist-extruded slots forming the reference
+±45° crossed multi-start lattice — 83 starts per coil, rise one
+circumference (116.7 mm) per turn, each strand sweeping ~185°
+diagonally across the band, X centered on the Eye), custom_cone.stl/
+3mf (36 864-triangle smooth shell) plus **coil_sleeve.stl/3mf
+(140 160-triangle circular shell with the crossed ±45° wire slots
+carved in — built-in mesh backend, no OpenSCAD needed)**, axial_section.svg, top_template.svg,
 winding_template.dxf, compatibility_sheet.pdf, build_sheet.pdf
 (now with crystal-bottom coupling + excitation-path sections),
 design/coil/bottom-coupling/eye/fit receipts, MANIFEST.json,
 CHECKSUMS.sha256, backend_status log. Screenshot proof:
 `docs/assets/design-studio/screenshots/11_phryll_generator_v2.png`
 (live app, in-app bundle export verified).
+
+## Winding correction (user reference review)
+
+The first implementation wound near-horizontal rings (helix rise was
+set to the 0.99 mm groove pitch). The user's reference diagram/render
+shows the true geometry: copper CW and silver CCW as ±45° MULTI-START
+families crossing in an X lattice centered on the Eye. Corrected: the
+helix rises one circumference per turn at 45°, the 3×wire-Ø pitch is
+the strand-to-strand spacing measured perpendicular to the strands
+(source gap rule kept: 0.66 mm ≥ 2×wire Ø), 83 starts per coil on the
+demo, and SCAD/STL/3MF/DXF all carry the diagonal lattice. Reference
+meshes were re-measured directly from the supplied files (M2 cone
+48.41→35.98 mm outer over 103.71 mm — agrees with the seed decode) and
+the section drawings added M2/L text profiles (crystal max 29/39 and
+30/46 mm, apertures 30/40 and 31/47 mm) to the registry, kept separate
+from mesh decodes.
 
 ## Coupling update (PHRYLL_V2_COUPLING_UPDATE)
 
@@ -96,9 +114,10 @@ CHECKSUMS.sha256, backend_status log. Screenshot proof:
   60.0 mm is 2.5 mm away and is *not* used).
 - **Coil standoff**: nearest conductor 2.21 mm; coil centerline
   2.375 mm (≈7.2 wire diameters).
-- **Wire pitch**: AWG 28 (0.33 mm) → clear gap 0.66 mm, groove pitch
-  0.99 mm; crossing ladder spaced 0.495 mm with one rung exactly on
-  the Eye.
+- **Wire pitch**: AWG 28 (0.33 mm) → perpendicular clear gap 0.66 mm,
+  perpendicular strand pitch 0.99 mm, axial strand spacing 1.400 mm at
+  the 45° helix angle; 83 starts per coil, meridian crossing ladder
+  spaced 0.700 mm with one rung exactly on the Eye.
 
 ## Reference assets used
 

@@ -168,7 +168,11 @@
       "height_mm": 120.0,
       "source": "M2 compatibility text (SRC-M2-TEXT)",
       "status": "kept_as_source_profile",
-      "note": "Deliberately NOT merged with M2_MESH \u2014 the mesh decode disagrees and both are preserved verbatim."
+      "note": "Deliberately NOT merged with M2_MESH \u2014 the mesh decode disagrees and both are preserved verbatim. Section drawing (vue-en-coupe-cone-M2): crystal max 29/39 mm, aperture 30/40 mm.",
+      "crystal_max_top_d_mm": 29.0,
+      "crystal_max_base_d_mm": 39.0,
+      "aperture_top_d_mm": 30.0,
+      "aperture_base_d_mm": 40.0
     },
     {
       "profile_id": "M2_MESH",
@@ -198,6 +202,17 @@
       "height_mm": 113.084,
       "source": "L2 3MF decode",
       "status": "reference"
+    },
+    {
+      "profile_id": "L_TEXT",
+      "kind": "compatibility_text",
+      "crystal_max_top_d_mm": 30.0,
+      "crystal_max_base_d_mm": 46.0,
+      "aperture_top_d_mm": 31.0,
+      "aperture_base_d_mm": 47.0,
+      "source": "L section drawing (vue-en-coupe-L)",
+      "status": "kept_as_source_profile",
+      "note": "Text/drawing profile kept separate from L_MESH decode."
     },
     {
       "profile_id": "V3_NOTE",
@@ -291,5 +306,57 @@
       "mechanical / acoustic",
       "electrical / coil"
     ]
+  },
+  "measurement_log": {
+    "note": "Direct measurements of the CC-SA reference meshes (RGCS-private references/set6), 2026-08-07, via reference_assets.measure_stl_bounds/measure_cone_profile.",
+    "measured": [
+      {
+        "file": "Vogel cristal stimulation cone size M2 v1.0.stl",
+        "triangles": 544222,
+        "size_mm": [
+          48.41,
+          48.41,
+          103.71
+        ],
+        "outer_d_base_to_top_mm": [
+          48.41,
+          35.98
+        ],
+        "agrees_with": "M2_MESH seed decode"
+      },
+      {
+        "file": "Vogel cristal stimulation cone size L v1.0.stl",
+        "triangles": 639092,
+        "size_mm": [
+          52.41,
+          59.46,
+          113.31
+        ],
+        "note": "multi-component mesh (711 parts); bbox includes coil/attachments"
+      },
+      {
+        "file": "Vogel Crystal holder_size M_1.0.0.stl",
+        "triangles": 3196,
+        "size_mm": [
+          66.94,
+          66.94,
+          27.23
+        ]
+      },
+      {
+        "file": "Vogel Crystal holder_size L_3.0.0.stl",
+        "triangles": 4124,
+        "size_mm": [
+          113.57,
+          113.57,
+          47.09
+        ],
+        "agrees_with": "V3_NOTE 113 x 113 x 48 base note"
+      }
+    ]
+  },
+  "winding_reference": {
+    "note": "Reference diagram/render geometry: copper wound clockwise and silver counter-clockwise as multi-start families at ~45 degrees, crossing in an X lattice centered on the Eye plane; generators A/B pulse the two coils alternately at 4096 Hz (source-language, recorded not validated).",
+    "helix_angle_deg": 45.0
   }
 }

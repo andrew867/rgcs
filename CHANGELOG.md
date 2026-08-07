@@ -33,6 +33,12 @@ test) — and a crystal-first parametric CAD generator.
   mesh-decode seed data; M2 text profile and M2 mesh profile stored
   separately, never reconciled; direct STL measurement tools.
 - Annular-ring craft locks stay out of cone sizing (source-scan test).
+- Winding correction: coils are the reference ±45° crossed
+  multi-start lattice (83 starts/coil on the demo, rise one
+  circumference per turn, perpendicular 3×wire-Ø strand pitch, X
+  centered on the Eye) in SCAD, STL/3MF, and the DXF developed
+  template; reference meshes re-measured directly and M2/L section-
+  drawing text profiles registered.
 - Coupling update: crystal-bottom coupling chain (open gap → flat
   pickup → annular ring; bottom never solid — mesh-tested), O-ring
   compliant-mount records (compression bounded 5–30 %), continuous

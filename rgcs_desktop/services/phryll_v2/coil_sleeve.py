@@ -1,8 +1,19 @@
-"""Coil sleeve and groove generator.
+"""Coil sleeve and groove generator — crossed ±45° multi-start lattice.
+
+Winding geometry (per the reference diagrams/renders): copper winds
+clockwise at ~+45 degrees and silver counter-clockwise at ~-45
+degrees, as MULTI-START families of parallel strands that cross in an
+X lattice centered on the Eye plane. The steep helix rises one full
+circumference per turn at 45 degrees; the 3x-wire-diameter pitch is
+the strand-to-strand spacing measured PERPENDICULAR to the strands
+(source rule: clear gap >= 2 wire diameters between wires).
 
 Spacing model (04_GEOMETRY_MATH/COIL_SPACING_MODEL):
-    clear gap   = 2 * wire_d          (source rule: >= 2 diameters)
-    groove pitch = 3 * wire_d          (wire + gap, center-to-center)
+    clear gap (perpendicular)  = 2 * wire_d
+    strand pitch (perpendicular) = 3 * wire_d
+    axial strand spacing       = perpendicular pitch / cos(helix angle)
+    rise per turn              = 2*pi*r_mean * tan(helix angle)
+    n starts per coil          = rise per turn / axial spacing
     nearest conductor standoff = clearance + wall - groove_depth
     coil center standoff       = nearest + wire_d / 2
 
@@ -12,6 +23,7 @@ electrical contact; alternately pulsed at 4096 Hz through user limits.
 """
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 
 from rgcs_core.provenance import sha256_of_jsonable
@@ -25,6 +37,9 @@ from rgcs_desktop.services.phryll_v2.schemas import validate
 
 #: AWG -> bare-wire diameter (mm); AWG 28 is the source default
 AWG_DIAMETER_MM = {24: 0.511, 26: 0.405, 28: 0.33, 30: 0.255, 32: 0.202}
+
+#: helix angle from horizontal (deg) — the reference lattice is ~45°
+DEFAULT_HELIX_ANGLE_DEG = 45.0
 
 
 class CoilSleeveError(ValueError):
@@ -121,26 +136,48 @@ def generate_crossed_coil_paths(profile: CrystalProfile,
         raise CoilSleeveError(
             f"no winding band fits around the Eye at {z_eye} mm on a "
             f"{profile.length_mm} mm crystal")
-    turns = int((band_top - band_bottom) / pitch)
-    if turns < 3:
-        raise CoilSleeveError(
-            f"winding band only fits {turns} turns; widen the band or "
-            f"use finer wire")
-
     clearance = float(cone.fit["clearance_mm"])
     wall = float(cone.fit["wall_thickness_mm"])
     standoff = compute_coil_standoff(clearance, wall, groove_depth,
                                      wire_d)
+
+    # ±45° multi-start lattice (reference-image geometry)
+    helix_angle = float(coil_settings.get("helix_angle_deg",
+                                          DEFAULT_HELIX_ANGLE_DEG))
+    if not 20.0 <= helix_angle <= 70.0:
+        raise CoilSleeveError(
+            f"helix angle {helix_angle}° outside the lattice range "
+            f"[20°, 70°] — the reference crossed winding sits near 45°")
+    radii = [p.r_mm for p in cone.outer_profile
+             if band_bottom <= p.z_mm <= band_top]
+    r_mean = sum(radii) / len(radii)
+    rise_per_turn = 2.0 * math.pi * r_mean * math.tan(
+        math.radians(helix_angle))
+    axial_spacing = spacing.groove_pitch_mm / math.cos(
+        math.radians(helix_angle))
+    n_starts = int(rise_per_turn / axial_spacing)
+    if n_starts < 8:
+        raise CoilSleeveError(
+            f"only {n_starts} lattice starts fit — widen the band, "
+            f"steepen the angle, or use finer wire")
+    turns_per_strand = (band_top - band_bottom) / rise_per_turn
+
     try:
-        phase_cu = solve_helix_phase_for_eye(z_eye, pitch, "clockwise")
-        phase_ag = solve_helix_phase_for_eye(z_eye, pitch,
+        # angular position 0 at the Eye plane for both families:
+        # every strand k is offset by k*2*pi/n_starts from these
+        phase_cu = solve_helix_phase_for_eye(z_eye, rise_per_turn,
+                                             "clockwise")
+        phase_ag = solve_helix_phase_for_eye(z_eye, rise_per_turn,
                                              "counter_clockwise")
     except EyeAlignmentError as exc:
         raise CoilSleeveError(str(exc)) from exc
-    # phased construction puts a crossing exactly on the Eye plane
-    z_cross = z_eye
+    # the lattice crossing region is centered on the band center,
+    # which is centered on the Eye; strand pairs also cross exactly
+    # at (theta=0, z_eye) by the phasing above
+    z_cross = (band_bottom + band_top) / 2.0
     alignment = compute_eye_alignment(z_eye, z_cross, tolerance)
-    ladder = crossing_ladder(z_eye, pitch, profile.length_mm)
+    # crossings along the theta=0 meridian: every half axial spacing
+    ladder = crossing_ladder(z_eye, axial_spacing, profile.length_mm)
 
     design = {
         "schema_version": "2.0.0",
@@ -158,6 +195,8 @@ def generate_crossed_coil_paths(profile: CrystalProfile,
         "spacing": {
             "clear_gap_mm": spacing.clear_gap_mm,
             "groove_pitch_mm": spacing.groove_pitch_mm,
+            "perpendicular_pitch_mm": spacing.groove_pitch_mm,
+            "axial_strand_spacing_mm": axial_spacing,
             "groove_depth_mm": groove_depth,
             "coil_center_standoff_mm":
                 standoff.coil_center_standoff_mm,
@@ -166,14 +205,22 @@ def generate_crossed_coil_paths(profile: CrystalProfile,
         },
         "eye_alignment": alignment.to_json(),
         "paths": {
+            "lattice": "crossed multi-start, X centered on the Eye",
+            "helix_angle_deg": helix_angle,
+            "rise_per_turn_mm": rise_per_turn,
+            "mean_band_radius_mm": r_mean,
+            "n_starts_per_coil": n_starts,
+            "turns_per_strand": turns_per_strand,
             "copper": {"handedness": "clockwise",
-                       "pitch_mm": pitch,
+                       "pitch_mm": rise_per_turn,
                        "phase_rad_at_z0": phase_cu,
-                       "turns": turns},
+                       "turns": turns_per_strand,
+                       "n_starts": n_starts},
             "silver": {"handedness": "counter_clockwise",
-                       "pitch_mm": pitch,
+                       "pitch_mm": rise_per_turn,
                        "phase_rad_at_z0": phase_ag,
-                       "turns": turns},
+                       "turns": turns_per_strand,
+                       "n_starts": n_starts},
             "band_bottom_mm": band_bottom,
             "band_top_mm": band_top,
             "crossing_ladder_mm": ladder,

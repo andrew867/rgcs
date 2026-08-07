@@ -137,16 +137,32 @@ def winding_template_dxf(coil: dict, cone: ConeDesign,
                      band_top, "FRAME")
     # eye plane
     entities += line(0, z_eye, circumference, z_eye, "EYE_PLANE")
-    # groove centerlines: developed helix = straight diagonal per turn
-    turns = int(paths["copper"]["turns"])
-    for layer, direction in (("COPPER_CW", 1), ("SILVER_CCW", -1)):
-        for t in range(turns):
-            z_lo = band_bottom + t * pitch
-            z_hi = min(z_lo + pitch, band_top)
-            if direction > 0:
-                entities += line(0, z_lo, circumference, z_hi, layer)
-            else:
-                entities += line(circumference, z_lo, 0, z_hi, layer)
+    # crossed ±45° multi-start lattice, developed flat: two families
+    # of parallel diagonal strands (slope ±tan(helix angle)), spaced
+    # one axial strand spacing apart, anchored so a strand of each
+    # family passes (x=0, z_eye)
+    slope = math.tan(math.radians(
+        float(paths.get("helix_angle_deg", 45.0))))
+    axial = float(coil["spacing"].get("axial_strand_spacing_mm",
+                                      pitch))
+    for layer, s in (("COPPER_CW", 1.0), ("SILVER_CCW", -1.0)):
+        span = circumference * slope
+        c = z_eye
+        while c > band_bottom - span - axial:
+            c -= axial
+        while c < band_top + span:
+            # y(x) = c + s*slope*x, clipped to the band rectangle
+            xs = []
+            for y_edge in (band_bottom, band_top):
+                x_at = (y_edge - c) / (s * slope)
+                xs.append(x_at)
+            x_lo = max(0.0, min(xs))
+            x_hi = min(circumference, max(xs))
+            if x_hi > x_lo:
+                y_lo = c + s * slope * x_lo
+                y_hi = c + s * slope * x_hi
+                entities += line(x_lo, y_lo, x_hi, y_hi, layer)
+            c += axial
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(_dxf_lines(entities), encoding="utf-8")

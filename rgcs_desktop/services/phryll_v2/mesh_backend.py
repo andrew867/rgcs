@@ -144,8 +144,8 @@ def mesh_stats(triangles: np.ndarray) -> dict:
 
 
 def tessellate_coil_sleeve(design: ConeDesign, coil: dict,
-                           segments: int = 72,
-                           band_z_step_mm: float = 0.1) -> np.ndarray:
+                           segments: int = 192,
+                           band_z_step_mm: float = 0.25) -> np.ndarray:
     """Cone shell with CONTINUOUS helical wire slots carved into the
     outer surface (both crossed coils), as displaced-surface mesh.
 
@@ -187,19 +187,32 @@ def tessellate_coil_sleeve(design: ConeDesign, coil: dict,
     helices = [(1.0, float(paths["copper"]["phase_rad_at_z0"])),
                (-1.0, float(paths["silver"]["phase_rad_at_z0"]))]
 
+    helix_angle = math.radians(float(paths.get("helix_angle_deg",
+                                               45.0)))
+    r_mean = float(paths.get("mean_band_radius_mm", 1.0))
+    axial_spacing = float(spacing.get("axial_strand_spacing_mm",
+                                      pitch / math.cos(helix_angle)))
+    cos_a = math.cos(helix_angle)
+
     def groove_depth_at(theta: float, z: float) -> float:
         if not band_lo <= z <= band_hi:
             return 0.0
         best = 0.0
-        for s, phi in helices:
-            # groove centerlines pass angle theta at
-            # z_line = s*(theta - phi)*p/(2*pi) + k*p; the axial
-            # distance from this vertex to the nearest line:
-            rel = (z - s * (theta - phi) * pitch
-                   / (2 * math.pi)) % pitch
-            dz = min(rel, pitch - rel)
-            if dz < wire_d / 2:
-                frac = math.sqrt(max(0.0, 1.0 - (2 * dz / wire_d) ** 2))
+        z_eye = float(coil["eye_alignment"]["z_eye_mm"])
+        for s, _phi in helices:
+            # ±45° multi-start family: in unrolled coordinates
+            # (x = r_mean*theta, y = z) the strands are parallel
+            # diagonal lines y - s*x*tan(a) = c_k spaced
+            # axial_spacing apart in c; one strand of each family
+            # passes (theta=0, z_eye) by phasing.
+            rel = (z - z_eye
+                   - s * r_mean * theta * math.tan(helix_angle)) \
+                % axial_spacing
+            dz = min(rel, axial_spacing - rel)
+            perp = dz * cos_a
+            if perp < wire_d / 2:
+                frac = math.sqrt(max(0.0,
+                                     1.0 - (2 * perp / wire_d) ** 2))
                 best = max(best, depth * frac)
         return best
 

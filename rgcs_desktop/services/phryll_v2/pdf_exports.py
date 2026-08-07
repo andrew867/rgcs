@@ -120,21 +120,31 @@ def export_build_sheet(crystal: CrystalProfile, cone: ConeDesign,
              cone.fit.get("print_tolerance_mm")),
             ("suggested material", "PLA / PETG"),
         ])),
-        ("Coil settings", pdf_sheets.rows_block([
+        ("Coil settings (crossed ±45° multi-start lattice)",
+         pdf_sheets.rows_block([
             ("wire", f"{wire.get('wire_gauge', '?')} "
                      f"({wire['wire_diameter_mm']:g} mm)"),
             ("copper", f"{wire.get('copper_material')} — "
-                       f"{paths['copper']['handedness']}"),
+                       f"{paths['copper']['handedness']} at "
+                       f"+{paths['helix_angle_deg']:g}°"),
             ("silver", f"{wire.get('silver_material')} — "
-                       f"{paths['silver']['handedness']}"),
-            ("turns per coil", paths["copper"]["turns"]),
+                       f"{paths['silver']['handedness']} at "
+                       f"-{paths['helix_angle_deg']:g}°"),
+            ("starts per coil", paths["n_starts_per_coil"]),
+            ("rise per turn (mm)", paths["rise_per_turn_mm"]),
+            ("turns per strand across band",
+             round(paths["turns_per_strand"], 3)),
             ("winding band (mm)",
              f"{paths['band_bottom_mm']:g} – {paths['band_top_mm']:g}"),
+            ("lattice crossing", "X centered on the Eye plane"),
             ("electrical contact", "none permitted between coils"),
         ])),
         ("Wire spacing", pdf_sheets.rows_block([
-            ("clear gap (mm)", spacing["clear_gap_mm"]),
-            ("groove pitch (mm)", spacing["groove_pitch_mm"]),
+            ("clear gap, perpendicular (mm)", spacing["clear_gap_mm"]),
+            ("strand pitch, perpendicular (mm)",
+             spacing["groove_pitch_mm"]),
+            ("axial strand spacing (mm)",
+             spacing["axial_strand_spacing_mm"]),
             ("groove depth (mm)", spacing["groove_depth_mm"]),
         ])),
         ("Coil-to-crystal standoff", pdf_sheets.rows_block([
