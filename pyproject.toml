@@ -63,6 +63,7 @@ rgcs-v4 = "rscs2_core.cli:main"
 rgcs-workbook = "rgcs_workbench.workbook:main"
 rgcs-coordinate = "rgcs_coordinate.cli:main"
 rgcs-lab = "rgcs_lab.cli:main"
+rgcs-sonic = "rgcs_desktop.services.sonic_cli:main"
 rgcs = "r1013.cli:main"
 
 [project.gui-scripts]

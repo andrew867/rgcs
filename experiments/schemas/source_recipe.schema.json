@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/source_recipe.schema.json",
+  "title": "Frequency Key Studio web/video source recipe (metadata only)",
+  "description": "Metadata collected from public web/video sources: titles, descriptions, extracted frequencies, claimed uses. Never audio files. Claimed uses are recorded from source text, not endorsed.",
+  "type": "object",
+  "required": ["source_id", "url", "title", "extracted_frequencies_hz",
+               "claimed_uses"],
+  "properties": {
+    "source_id": {"type": "string", "minLength": 1},
+    "url": {"type": "string", "minLength": 1},
+    "platform": {"type": "string"},
+    "title": {"type": "string"},
+    "channel": {"type": "string"},
+    "description": {"type": "string"},
+    "duration_s": {"type": "number", "minimum": 0},
+    "published": {"type": "string"},
+    "language": {"type": "string"},
+    "extracted_frequencies_hz": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["hz", "role"],
+        "properties": {
+          "hz": {"type": "number", "exclusiveMinimum": 0},
+          "role": {"enum": ["carrier_candidate", "beat_target_candidate",
+                            "modulation_key_candidate", "ambiguous",
+                            "title_only", "description_only"]},
+          "found_in": {"enum": ["title", "description"]}
+        }
+      }
+    },
+    "claimed_uses": {"type": "array", "items": {"type": "string"}},
+    "recipe_type_guess": {"type": "string"},
+    "source_status": {"type": "string"},
+    "review_status": {"type": "string"}
+  }
+}

@@ -34,6 +34,10 @@ SCHEMA_FILES = [
     "phyrll_generator_design.schema.json",
     "coil_pulse_design.schema.json",
     "annular_ring_design.schema.json",
+    "audio_layer.schema.json",
+    "frequency_session.schema.json",
+    "render_receipt.schema.json",
+    "source_recipe.schema.json",
 ]
 
 # instance path (relative to repo root) -> schema file
@@ -61,6 +65,8 @@ DEFAULT_TARGETS = {
     "experiments/templates/phyrll_generator_design.example.json": "phyrll_generator_design.schema.json",
     "experiments/templates/coil_pulse_design.example.json": "coil_pulse_design.schema.json",
     "experiments/templates/annular_ring_design.example.json": "annular_ring_design.schema.json",
+    "experiments/templates/frequency_session.example.json": "frequency_session.schema.json",
+    "experiments/templates/source_recipe.example.json": "source_recipe.schema.json",
     "experiments/sample_data/modal_survey_run_manifest.json": "run_manifest.schema.json",
     "experiments/sample_data/opposed_coil_run_manifest.json": "run_manifest.schema.json",
 }

@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "note": "Seed recipes for Frequency Key Studio (plan pack 07_RECIPE_COLLECTION). Experimental audio recipes. Use comfortable volume. Results vary. Claimed uses and source-language intents are recorded from sources, not endorsed.",
+  "recipes": [
+    {
+      "recipe_id": "RGCS-BIN-0001",
+      "title": "Simple 4 Hz Patent Seed",
+      "family": "binaural",
+      "carrier_hz": 102.0,
+      "beat_hz": 4.0,
+      "duration_min": 20,
+      "layers": ["binaural"],
+      "intent": "basic FFR-style test",
+      "source_basis": "PAT-US5213562A"
+    },
+    {
+      "recipe_id": "RGCS-GWY-0001",
+      "title": "Gateway-Style Focus 10 Seed",
+      "family": "gateway_style",
+      "carrier_hz": 200.0,
+      "beat_hz": 5.0,
+      "duration_min": 30,
+      "layers": ["binaural", "pink_noise", "surf_noise"],
+      "intent": "mind-awake body-relaxed style",
+      "source_basis": "GOV-GATEWAY-1983"
+    },
+    {
+      "recipe_id": "RGCS-AST-0001",
+      "title": "6.3 Hz Astral Source Lead",
+      "family": "source_language",
+      "carrier_hz": 528.0,
+      "beat_hz": 6.3,
+      "duration_min": 30,
+      "layers": ["binaural", "pink_noise"],
+      "intent": "astral/OBE-style source-language test",
+      "source_basis": "BWGen/BinauralPure-style lead"
+    },
+    {
+      "recipe_id": "RGCS-SCH-0001",
+      "title": "7.83 Hz Schumann Bridge",
+      "family": "rgcs_bridge",
+      "carrier_hz": 925.0,
+      "beat_hz": 7.83,
+      "duration_min": 24,
+      "layers": ["binaural", "brown_noise"],
+      "intent": "RGCS Schumann bridge",
+      "source_basis": "RGCS"
+    },
+    {
+      "recipe_id": "RGCS-FKY-0925",
+      "title": "925 Hz Frequency Key Carrier",
+      "family": "frequency_key",
+      "carrier_hz": 925.0,
+      "beat_hz": 7.83,
+      "duration_min": 20,
+      "layers": ["binaural", "pink_noise"],
+      "intent": "925 carrier A/B test",
+      "source_basis": "RGCS"
+    },
+    {
+      "recipe_id": "RGCS-FKY-1337",
+      "title": "1337 Hz Frequency Key Carrier",
+      "family": "frequency_key",
+      "carrier_hz": 1337.0,
+      "beat_hz": 4.0,
+      "duration_min": 20,
+      "layers": ["binaural", "pink_noise"],
+      "intent": "1337 carrier A/B test",
+      "source_basis": "RGCS"
+    },
+    {
+      "recipe_id": "RGCS-ISO-0001",
+      "title": "Isochronic 4 Hz Pulse Seed",
+      "family": "isochronic",
+      "carrier_hz": 200.0,
+      "beat_hz": 4.0,
+      "duration_min": 20,
+      "layers": ["isochronic", "pink_noise"],
+      "intent": "compare binaural vs isochronic",
+      "source_basis": "standard comparison"
+    }
+  ]
+}
