@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://phryll-v2/phryll_cone_design.schema.json",
+  "title": "Phryll v2 generated cone design",
+  "type": "object",
+  "required": ["schema_version", "design_id", "crystal_id", "fit",
+               "generated_dimensions"],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^2\\."},
+    "design_id": {"type": "string", "minLength": 1},
+    "crystal_id": {"type": "string", "minLength": 1},
+    "source_style_profile_id": {"type": "string"},
+    "fit": {
+      "type": "object",
+      "required": ["clearance_mm", "wall_thickness_mm",
+                   "print_tolerance_mm"],
+      "properties": {
+        "clearance_mm": {"type": "number", "minimum": 0},
+        "wall_thickness_mm": {"type": "number", "exclusiveMinimum": 0},
+        "print_tolerance_mm": {"type": "number", "minimum": 0}
+      }
+    },
+    "generated_dimensions": {"type": "object"},
+    "fit_report": {"type": "object"},
+    "exports": {"type": "object"},
+    "sha256": {"type": "string"}
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://phryll-v2/coil_sleeve_design.schema.json",
+  "title": "Phryll v2 coil sleeve design",
+  "type": "object",
+  "required": ["schema_version", "design_id", "crystal_id", "wire",
+               "spacing", "eye_alignment"],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^2\\."},
+    "design_id": {"type": "string", "minLength": 1},
+    "crystal_id": {"type": "string", "minLength": 1},
+    "wire": {
+      "type": "object",
+      "required": ["wire_diameter_mm"],
+      "properties": {
+        "wire_gauge": {"type": "string"},
+        "wire_diameter_mm": {"type": "number", "exclusiveMinimum": 0},
+        "copper_material": {"type": "string"},
+        "silver_material": {"type": "string"}
+      }
+    },
+    "spacing": {
+      "type": "object",
+      "required": ["clear_gap_mm", "groove_pitch_mm"],
+      "properties": {
+        "clear_gap_mm": {"type": "number", "minimum": 0},
+        "groove_pitch_mm": {"type": "number", "exclusiveMinimum": 0},
+        "groove_depth_mm": {"type": "number", "minimum": 0},
+        "coil_center_standoff_mm": {"type": "number"},
+        "nearest_conductor_standoff_mm": {"type": "number"}
+      }
+    },
+    "eye_alignment": {
+      "type": "object",
+      "required": ["z_eye_mm", "z_cross_mm", "alignment_error_mm"],
+      "properties": {
+        "z_eye_mm": {"type": "number"},
+        "z_cross_mm": {"type": "number"},
+        "alignment_error_mm": {"type": "number", "minimum": 0},
+        "tolerance_mm": {"type": "number", "minimum": 0},
+        "pass": {"type": "boolean"}
+      }
+    },
+    "paths": {"type": "object"},
+    "exports": {"type": "object"},
+    "sha256": {"type": "string"}
+  }
+}

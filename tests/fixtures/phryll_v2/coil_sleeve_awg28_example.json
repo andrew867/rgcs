@@ -1,0 +1,22 @@
+{
+  "schema_version": "2.0.0",
+  "design_id": "COIL-DEMO-AWG28",
+  "crystal_id": "CRY-DEMO-120",
+  "wire": {
+    "wire_gauge": "AWG28",
+    "wire_diameter_mm": 0.33,
+    "copper_material": "enameled copper",
+    "silver_material": "silver or non-ferrous source-selected conductor"
+  },
+  "spacing": {
+    "clear_gap_mm": 0.66,
+    "groove_pitch_mm": 0.99,
+    "groove_depth_mm": 0.25,
+    "coil_center_standoff_mm": 2.38
+  },
+  "eye_alignment": {
+    "z_eye_mm": 62.5,
+    "z_cross_mm": 62.5,
+    "alignment_error_mm": 0.0
+  }
+}
