@@ -39,6 +39,14 @@ def test_normalize_frequency_units():
         normalize_frequency(1, "bpm")
 
 
+def test_claimed_tags_respect_word_boundaries():
+    # "aura" must not fire inside "binaural"; "sleep" not inside "asleep"
+    assert extract_claimed_tags("925 Hz binaural") == []
+    assert extract_claimed_tags("mind awake body asleep theta") == []
+    assert "energy claims" in extract_claimed_tags("aura cleansing")
+    assert "sleep" in extract_claimed_tags("deep sleep delta")
+
+
 def test_claimed_tags():
     tags = extract_claimed_tags(
         "Deep Sleep Schumann 7.83 Hz | third eye healing meditation")

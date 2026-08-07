@@ -95,10 +95,18 @@ def extract_frequencies(text: str) -> list[dict]:
 
 
 def extract_claimed_tags(text: str) -> list[str]:
-    """Claimed-use tags found in text (taxonomy order, deduplicated)."""
+    """Claimed-use tags found in text (taxonomy order, deduplicated).
+
+    Triggers match on word boundaries: "aura" must not fire inside
+    "binaural", nor "sleep" inside "asleep"."""
     low = text.lower()
-    return [tag for tag, triggers in CLAIMED_USE_TAXONOMY.items()
-            if any(trigger in low for trigger in triggers)]
+    out = []
+    for tag, triggers in CLAIMED_USE_TAXONOMY.items():
+        for trigger in triggers:
+            if re.search(rf"\b{re.escape(trigger)}\b", low):
+                out.append(tag)
+                break
+    return out
 
 
 def _recipe_type_guess(text: str, freqs: list[dict]) -> str:
