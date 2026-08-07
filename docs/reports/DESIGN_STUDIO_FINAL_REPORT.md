@@ -89,9 +89,11 @@ UI smoke: QT_QPA_PLATFORM=offscreen python -m rgcs_desktop --smoke-check
   covered by the ubuntu CI matrix (offscreen Qt with system EGL). A WSL
   run was attempted and blocked: the Debian image lacks libEGL and sudo
   requires a password, so Qt cannot load there without operator action.
-- **Windows**: `tools/packaging/windows/build_windows.ps1` present and
-  guard-tested (reuses the existing spec; smoke + SHA-256 + release
-  manifest). A full frozen build was not run in this session.
+- **Windows**: `tools/packaging/windows/build_windows.ps1` executed after
+  the v8.4.0 tag from tag commit `2c9834a`: PyInstaller onedir build,
+  frozen `--smoke-check` passed (20 panels + background job), SHA256SUMS
+  and schema-conformant `release_manifest.json` written; the zipped build
+  is attached to the v8.4.0 GitHub release.
 
 ## Demo artifacts (`docs/assets/design-studio/demo/`)
 
@@ -131,8 +133,6 @@ artifacts and recorded 10 rows in the workspace export ledger.
 
 ## Remaining blockers / honest list
 
-- Windows frozen build (`build_windows.ps1`) is guard-tested but was not
-  executed this session; run it before shipping a binary installer.
 - True-Linux (non-WSL) installer execution not performed locally; relies
   on CI ubuntu matrix for the Linux desktop stack.
 - STL export requires an external OpenSCAD install; without it the app
