@@ -56,6 +56,7 @@ a = Analysis(
     hooksconfig={},
     runtime_hooks=[],
     excludes=[
+        # QtMultimedia stays IN (Frequency Key Studio live playback)
         "tkinter",
         "PySide6.QtWebEngineCore",
         "PySide6.QtWebEngineWidgets",

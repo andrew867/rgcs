@@ -12,6 +12,7 @@ from rgcs_desktop.services.sonic_recipes import (USER_NOTE, load_recipes)
 from rgcs_desktop.viewers.base import Panel
 from rgcs_desktop.viewers.sonic_new_session import NewSessionPage
 from rgcs_desktop.viewers.sonic_recipe_library import RecipeLibraryPage
+from rgcs_desktop.viewers.sonic_timeline_editor import TimelineEditorPage
 from rgcs_desktop.viewers.sonic_web_corpus import WebCorpusPage
 
 
@@ -26,10 +27,14 @@ class FrequencyKeyStudioPanel(Panel):
         layout.addWidget(heading)
 
         self.pages = QTabWidget()
-        self.new_session = NewSessionPage(context, self._log)
+        self.timeline_editor = TimelineEditorPage(context, self._log)
+        self.new_session = NewSessionPage(
+            context, self._log,
+            timeline_provider=self.timeline_editor.custom_segments)
         self.recipe_library = RecipeLibraryPage(context, self._log)
         self.web_corpus = WebCorpusPage(context, self._log)
         self.pages.addTab(self.new_session, "New Session")
+        self.pages.addTab(self.timeline_editor, "Timeline Editor")
         self.pages.addTab(self.recipe_library, "Recipe Library")
         self.pages.addTab(self.web_corpus, "Web Corpus")
         self.pages.currentChanged.connect(

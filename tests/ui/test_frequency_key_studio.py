@@ -16,7 +16,8 @@ def test_studio_pages_present(main_window):
     studio = main_window.panels["Frequency Key Studio"]
     titles = [studio.pages.tabText(i)
               for i in range(studio.pages.count())]
-    assert titles == ["New Session", "Recipe Library", "Web Corpus"]
+    assert titles == ["New Session", "Timeline Editor", "Recipe Library",
+                      "Web Corpus"]
     info = studio.inspector_info()
     for key in ("properties", "classification", "units", "provenance"):
         assert key in info
