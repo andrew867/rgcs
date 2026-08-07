@@ -60,7 +60,9 @@ def test_render_skips_file_layers_with_statement():
                               "gain_db": -12.0})
     _, stats = render_session(session, sample_rate=8000)
     assert len(stats["skipped_layers"]) == 1
-    assert "v1.1" in stats["skipped_layers"][0]
+    # v1.1: file layers render when a file is attached; without one the
+    # skip is stated explicitly
+    assert "no file attached" in stats["skipped_layers"][0]
 
 
 def test_render_refuses_empty_layers():
