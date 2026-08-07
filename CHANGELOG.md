@@ -3,6 +3,41 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [8.5.0] - 2026-08-07
+
+**RGCS Frequency Key Studio / Sonic Lab** (tag `v8.5.0`). Design
+Studio gains a full audio creation and recipe system — an independent
+engine (no Hemi-Sync recordings, tape structures, narration, or
+branding; no audio downloader, enforced by test).
+
+- Audio engine (numpy + stdlib wave, no new dependencies): binaural
+  (102 Hz carrier / 4 Hz beat → the 100/104 patent example), monaural,
+  isochronic with click-free gating, seeded white/pink/brown/surf
+  noise, constant-power pan, a mixer that never clips (normalizes
+  above 0.95 peak and records it), 48 kHz 16-bit PCM WAV export.
+- Timeline engine: 8 segment kinds, 4 ramp curves, phase-integrated
+  beat ramps; standard session shape (fade/settle/ramp/hold/return).
+- 7 seed recipes + 11 beat targets as packaged data; recipe → session
+  conversion; search by text/frequency/family.
+- Exports: schema-valid render receipts, session PDF sheet with
+  receipt hash, deterministic recipe JSON, YouTube metadata sheet,
+  checksummed bundle zip; `rgcs-sonic` CLI (list/beats/render/batch).
+- v1.1: live preview playback (QtMultimedia, optional backend, stated
+  degradation), STFT spectrogram preview, Timeline Editor page,
+  voice-cue/music-bed WAV import with start offsets, multi-carrier
+  stacks, RMS loudness normalization (peak-capped, recorded), batch
+  render with manifest.
+- v1.2: metadata-only web/video ingest (frequency extraction with
+  roles, claimed-use taxonomy on word boundaries), corpus store
+  (URL-deduped JSON + CSV export), duplicate clustering, deterministic
+  recipe recommendation with reasons.
+- Four new JSON schemas (audio_layer, frequency_session,
+  render_receipt, source_recipe) in the shared registry.
+- Docs: 5 user + 2 developer docs, README row, index links.
+- Every session export carries: "Experimental audio recipe. Use
+  comfortable volume. Results vary." Claimed uses are recorded from
+  sources, not endorsed.
+
 ## [8.4.0] - 2026-08-07
 
 **RGCS Design Studio v1** (tag `v8.4.0`). The desktop workbench gains a
