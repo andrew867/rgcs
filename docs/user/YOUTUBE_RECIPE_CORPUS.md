@@ -16,8 +16,7 @@ structured source-recipe records:
 
 There is **no audio downloader** (decision DR-004, enforced by test).
 The corpus records titles, descriptions, URLs, durations, and claimed
-uses — claimed uses are recorded from source text and are never
-endorsed. Official Hemi-Sync tracks and reuploaded Gateway tapes are
+uses — claimed uses are recorded from source text and are not endorsed. Official Hemi-Sync tracks and reuploaded Gateway tapes are
 out of scope entirely.
 
 ## Example
