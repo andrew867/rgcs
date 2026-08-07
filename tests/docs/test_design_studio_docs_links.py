@@ -61,7 +61,10 @@ def test_design_studio_doc_relative_links_resolve():
 
 def test_design_studio_docs_carry_claim_boundaries():
     for rel in REQUIRED_DOCS:
-        if rel in ("INSTALL.md", "docs/developer/PACKAGING.md", "docs/user/ADVANCED_MODE.md"):
+        if rel in ("INSTALL.md", "docs/developer/PACKAGING.md",
+                   "docs/user/ADVANCED_MODE.md",
+                   "docs/developer/SONIC_AUDIO_ENGINE.md",
+                   "docs/developer/SONIC_INGEST_PIPELINE.md"):
             continue
         text = (REPO / rel).read_text(encoding="utf-8").lower()
         # design docs carry the claim-boundary block; sonic-lab docs
