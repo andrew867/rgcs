@@ -41,6 +41,7 @@ class ConeDesign:
     generated_dimensions: dict
     fit_report: FitReport
     source_style_profile_id: str = "CUSTOM_GENERATED"
+    bottom_coupling: dict = field(default_factory=dict)
 
     def to_json(self) -> dict:
         body = {
@@ -50,6 +51,7 @@ class ConeDesign:
             "source_style_profile_id": self.source_style_profile_id,
             "fit": dict(self.fit),
             "generated_dimensions": dict(self.generated_dimensions),
+            "bottom_coupling": dict(self.bottom_coupling),
             "fit_report": {
                 "ok": self.fit_report.ok,
                 "min_clearance_mm": self.fit_report.min_clearance_mm,

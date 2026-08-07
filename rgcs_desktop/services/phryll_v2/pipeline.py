@@ -13,10 +13,9 @@ from rgcs_desktop.services.phryll_v2.crystal_profile import (
     normalize_crystal_profile, validate_eye_coordinate)
 from rgcs_desktop.services.phryll_v2.flat_templates import (
     axial_section_svg, top_template_svg, winding_template_dxf)
-from rgcs_desktop.services.phryll_v2.mesh_backend import (mesh_stats,
-                                                          tessellate_cone_shell,
-                                                          write_3mf,
-                                                          write_binary_stl)
+from rgcs_desktop.services.phryll_v2.mesh_backend import (
+    mesh_stats, tessellate_coil_sleeve, tessellate_cone_shell, write_3mf,
+    write_binary_stl)
 from rgcs_desktop.services.phryll_v2.openscad_export import (
     export_stl_if_openscad, render_scad, write_scad)
 from rgcs_desktop.services.phryll_v2.pdf_exports import (
@@ -25,7 +24,8 @@ from rgcs_desktop.services.phryll_v2.pdf_exports import (
 
 def generate_full_design(raw_crystal: dict, out_root: str | Path,
                          fit_settings: dict | None = None,
-                         coil_settings: dict | None = None) -> dict:
+                         coil_settings: dict | None = None,
+                         coupling_settings: dict | None = None) -> dict:
     """Generate cone + coil sleeve + all exports + verified bundle.
 
     Returns a summary dict: bundle path, verification, key numbers
@@ -38,11 +38,15 @@ def generate_full_design(raw_crystal: dict, out_root: str | Path,
     crystal = normalize_crystal_profile(raw_crystal)
     eye_check = validate_eye_coordinate(crystal)
     cone = make_cone_design(crystal, fit_settings)
+    from rgcs_desktop.services.phryll_v2.bottom_coupling import \
+        design_bottom_coupling
+    coupling = design_bottom_coupling(crystal, coupling_settings)
+    cone.bottom_coupling = coupling
     coil = generate_crossed_coil_paths(crystal, cone,
                                        coil_settings or {})
 
     # CAD
-    scad_text = render_scad(cone, coil)
+    scad_text = render_scad(cone, coil, coupling)
     scad_receipt = write_scad(scad_text, work / "coil_sleeve.scad")
     cone_only_receipt = write_scad(render_scad(cone),
                                    work / "custom_cone.scad")
@@ -50,8 +54,14 @@ def generate_full_design(raw_crystal: dict, out_root: str | Path,
     stl_path = write_binary_stl(triangles, work / "custom_cone.stl")
     mf_path = write_3mf(triangles, work / "custom_cone.3mf")
     stats = mesh_stats(triangles)
-    openscad_stl = export_stl_if_openscad(work / "coil_sleeve.scad",
-                                          work / "coil_sleeve.stl")
+    # grooved coil sleeve: continuous helical wire slots, built-in
+    sleeve_tris = tessellate_coil_sleeve(cone, coil)
+    sleeve_stl = write_binary_stl(sleeve_tris,
+                                  work / "coil_sleeve.stl")
+    sleeve_3mf = write_3mf(sleeve_tris, work / "coil_sleeve.3mf")
+    sleeve_stats = mesh_stats(sleeve_tris)
+    openscad_stl = export_stl_if_openscad(
+        work / "coil_sleeve.scad", work / "coil_sleeve_openscad.stl")
 
     # flat templates
     axial = axial_section_svg(cone, crystal.z_eye_mm,
@@ -65,11 +75,14 @@ def generate_full_design(raw_crystal: dict, out_root: str | Path,
     compat = export_compatibility_sheet(crystal, cone,
                                         work / "compatibility_sheet.pdf")
     build = export_build_sheet(crystal, cone, coil,
-                               work / "build_sheet.pdf")
+                               work / "build_sheet.pdf",
+                               coupling=coupling)
 
     backend_notes = [
         f"mesh backend: built-in tessellation "
-        f"({stats['n_triangles']} triangles, watertight shell)",
+        f"({stats['n_triangles']} triangles cone shell; "
+        f"{sleeve_stats['n_triangles']} triangles grooved coil sleeve "
+        f"with continuous helical wire slots)",
         f"openscad CLI: {openscad_stl.get('status', 'n/a')} — "
         f"{openscad_stl.get('reason', openscad_stl.get('path', ''))}",
         "3mf: built-in minimal writer",
@@ -77,9 +90,11 @@ def generate_full_design(raw_crystal: dict, out_root: str | Path,
     cad_files = {"custom_cone.scad": cone_only_receipt["path"],
                  "coil_sleeve.scad": scad_receipt["path"],
                  "custom_cone.stl": str(stl_path),
-                 "custom_cone.3mf": str(mf_path)}
+                 "custom_cone.3mf": str(mf_path),
+                 "coil_sleeve.stl": str(sleeve_stl),
+                 "coil_sleeve.3mf": str(sleeve_3mf)}
     if openscad_stl.get("status") == "rendered":
-        cad_files["coil_sleeve.stl"] = openscad_stl["path"]
+        cad_files["coil_sleeve_openscad.stl"] = openscad_stl["path"]
 
     bundle = export_bundle(
         design_id=cone.design_id,
@@ -95,6 +110,7 @@ def generate_full_design(raw_crystal: dict, out_root: str | Path,
              "build_sheet.pdf": build["path"]},
         receipts={"design_receipt": cone.to_json(),
                   "coil_sleeve_receipt": coil,
+                  "bottom_coupling_receipt": coupling,
                   "eye_alignment_receipt": coil["eye_alignment"],
                   "fit_receipt": {
                       "ok": cone.fit_report.ok,
@@ -114,6 +130,7 @@ def generate_full_design(raw_crystal: dict, out_root: str | Path,
         "cone": cone,
         "coil": coil,
         "mesh_stats": stats,
+        "sleeve_mesh_stats": sleeve_stats,
         "eye_alignment_residual_mm":
             coil["eye_alignment"]["alignment_error_mm"],
         "coil_center_standoff_mm":

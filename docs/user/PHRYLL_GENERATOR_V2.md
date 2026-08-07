@@ -30,6 +30,24 @@ clear gap = 2 × wire Ø · groove pitch = 3 × wire Ø (AWG 28 → 0.66 /
 depth · coil-center standoff adds wire Ø / 2 (defaults land at ≈7–8
 wire diameters — a design default to sweep, not a proven optimum).
 
+## Crystal-bottom coupling
+
+The coupling chain is: crystal bottom → open or lightly coupled gap →
+flat pickup surface → annular pickup ring. The cone is **open below
+the crystal base aperture** — the bottom is never overconstrained with
+solid plastic, and the coupling path stays exposed. O-rings are
+allowed as compliant mounts: contact stabilizes the crystal without
+hard damping of internal oscillation (compression is bounded 5–30 %
+and the material, cord diameter, ID, compression, and contact height
+are all recorded on the build sheet).
+
+## Excitation paths
+
+Hardware excitation is implemented first, in this order: photonic /
+laser · magneto-acoustic / pulsed coils · mechanical / acoustic ·
+electrical / coil. Intention/focus-only operation is recorded as
+source language only — it is not an implemented mode.
+
 ## Kept separate
 
 Annular-ring craft locks (35/37 running, 33 steering, 47/72, 288/188 mm,

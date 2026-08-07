@@ -52,15 +52,39 @@ CRY-DEMO-120: length 120.0 mm, top Ø 26.0 mm (60°), base Ø 39.0 mm
 
 ## Generated artifacts (`docs/assets/design-studio/demo/phryll_v2/`)
 
-`phryll_design_PHV2-CRY-DEMO-120/` — 18 files, checksums verified:
-custom_cone.scad + coil_sleeve.scad (deterministic, full module set),
-custom_cone.stl (36 864-triangle watertight shell, 43.92 mm max Ø,
-120 mm height) + custom_cone.3mf from the built-in mesh backend,
-axial_section.svg, top_template.svg, winding_template.dxf,
-compatibility_sheet.pdf, build_sheet.pdf, design/coil/eye/fit receipts,
-MANIFEST.json, CHECKSUMS.sha256, backend_status log. Screenshot proof:
+`phryll_design_PHV2-CRY-DEMO-120/` — 21 files, checksums verified:
+custom_cone.scad + coil_sleeve.scad (deterministic, full module set;
+grooves are CONTINUOUS twist-extruded helical slots, not dotted
+cutters), custom_cone.stl/3mf (36 864-triangle smooth shell) plus
+**coil_sleeve.stl/3mf (104 976-triangle circular shell with the
+crossed helical wire slots carved in — built-in mesh backend, no
+OpenSCAD needed)**, axial_section.svg, top_template.svg,
+winding_template.dxf, compatibility_sheet.pdf, build_sheet.pdf
+(now with crystal-bottom coupling + excitation-path sections),
+design/coil/bottom-coupling/eye/fit receipts, MANIFEST.json,
+CHECKSUMS.sha256, backend_status log. Screenshot proof:
 `docs/assets/design-studio/screenshots/11_phryll_generator_v2.png`
 (live app, in-app bundle export verified).
+
+## Coupling update (PHRYLL_V2_COUPLING_UPDATE)
+
+- Crystal-bottom coupling model: crystal bottom → open/lightly-coupled
+  gap → flat pickup surface → annular pickup ring; the cone is open
+  below the base aperture (asserted by mesh test — no solid plastic
+  under the crystal); "solid" is deliberately not a coupling mode.
+- O-ring compliant mounts recorded (material, cord Ø, ID, compression
+  5–30 % bounded against hard damping, contact height).
+- Source-language entries registered: SRC-AG-BIRDWING, SRC-L-1520/
+  1526/1527 (contents preserved in the operator's private notes — not
+  transcribed into the public repo; entry stubs are ready for
+  transcription), SRC-INTENTION-ONLY.
+- Excitation paths ordered hardware-first (photonic/laser,
+  magneto-acoustic/pulsed coils, mechanical/acoustic, electrical/coil);
+  intention/focus-only stays source-language.
+- Circular aerofoil craft-skin concept recorded in the craft-docs lane
+  only (`docs/research/circular_aerofoil_craft_skin.md`) with refused
+  claims and conventional research handles; generator code never
+  references it (tested).
 
 ## Key numbers
 

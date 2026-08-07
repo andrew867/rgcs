@@ -33,7 +33,15 @@ test) — and a crystal-first parametric CAD generator.
   mesh-decode seed data; M2 text profile and M2 mesh profile stored
   separately, never reconciled; direct STL measurement tools.
 - Annular-ring craft locks stay out of cone sizing (source-scan test).
-- Panel + home card, docs, demo bundle (18 files, verified), 41 tests.
+- Coupling update: crystal-bottom coupling chain (open gap → flat
+  pickup → annular ring; bottom never solid — mesh-tested), O-ring
+  compliant-mount records (compression bounded 5–30 %), continuous
+  twist-extruded helical wire slots in both SCAD and the shipped
+  grooved-sleeve STL/3MF, source-language entries (AG bird/wing
+  vision, L 15:20/15:26/15:27, intention-only) and hardware-first
+  excitation ordering, circular-aerofoil craft-skin concept recorded
+  in craft docs only.
+- Panel + home card, docs, demo bundle (21 files, verified), 54 tests.
 
 **Frequency Key Studio details:**
 

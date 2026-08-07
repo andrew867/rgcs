@@ -141,3 +141,115 @@ def mesh_stats(triangles: np.ndarray) -> dict:
         "max_diameter_mm": float(
             2.0 * np.max(np.hypot(flat[:, 0], flat[:, 1]))),
     }
+
+
+def tessellate_coil_sleeve(design: ConeDesign, coil: dict,
+                           segments: int = 72,
+                           band_z_step_mm: float = 0.1) -> np.ndarray:
+    """Cone shell with CONTINUOUS helical wire slots carved into the
+    outer surface (both crossed coils), as displaced-surface mesh.
+
+    In unrolled surface coordinates the phased helix
+    theta(z) = s*2*pi*z/p + phi is a family of lines spaced one pitch
+    apart in z; the outer-surface radius is pulled inward by the
+    circular wire cross-section wherever a vertex sits within
+    wire_d/2 (in z) of a groove centerline. Fine axial sampling inside
+    the winding band resolves the slot walls.
+    """
+    inner = design.inner_profile
+    outer = design.outer_profile
+    height = design.generated_dimensions["height_mm"]
+    paths = coil["paths"]
+    spacing = coil["spacing"]
+    wire_d = float(coil["wire"]["wire_diameter_mm"])
+    pitch = float(spacing["groove_pitch_mm"])
+    depth = float(spacing["groove_depth_mm"])
+    band_lo = float(paths["band_bottom_mm"])
+    band_hi = float(paths["band_top_mm"])
+
+    def outer_r(z: float) -> float:
+        zs = [p.z_mm for p in outer]
+        rs = [p.r_mm for p in outer]
+        return float(np.interp(z, zs, rs))
+
+    def inner_r(z: float) -> float:
+        zs = [p.z_mm for p in inner]
+        rs = [p.r_mm for p in inner]
+        return float(np.interp(z, zs, rs))
+
+    # axial stations: coarse outside the band, fine inside it
+    coarse = np.arange(0.0, height + 1e-9, 2.0)
+    fine = np.arange(band_lo - wire_d, band_hi + wire_d, band_z_step_mm)
+    z_list = np.unique(np.clip(np.concatenate(
+        [coarse, fine, [height]]), 0.0, height))
+
+    angles = np.linspace(0.0, 2.0 * math.pi, segments, endpoint=False)
+    helices = [(1.0, float(paths["copper"]["phase_rad_at_z0"])),
+               (-1.0, float(paths["silver"]["phase_rad_at_z0"]))]
+
+    def groove_depth_at(theta: float, z: float) -> float:
+        if not band_lo <= z <= band_hi:
+            return 0.0
+        best = 0.0
+        for s, phi in helices:
+            # groove centerlines pass angle theta at
+            # z_line = s*(theta - phi)*p/(2*pi) + k*p; the axial
+            # distance from this vertex to the nearest line:
+            rel = (z - s * (theta - phi) * pitch
+                   / (2 * math.pi)) % pitch
+            dz = min(rel, pitch - rel)
+            if dz < wire_d / 2:
+                frac = math.sqrt(max(0.0, 1.0 - (2 * dz / wire_d) ** 2))
+                best = max(best, depth * frac)
+        return best
+
+    # outer surface rings with groove displacement
+    outer_rings = []
+    for z in z_list:
+        base_r = outer_r(z)
+        ring = np.empty((segments, 3))
+        for i, theta in enumerate(angles):
+            r = base_r - groove_depth_at(theta, z)
+            ring[i] = (r * math.cos(theta), r * math.sin(theta), z)
+        outer_rings.append(ring)
+    # inner surface: smooth, coarse stations only
+    inner_rings = []
+    for z in coarse if coarse[-1] == height else np.append(coarse, height):
+        r = inner_r(z)
+        ring = np.stack([r * np.cos(angles), r * np.sin(angles),
+                         np.full(segments, z)], axis=1)
+        inner_rings.append(ring)
+
+    triangles: list[np.ndarray] = []
+
+    def stitch(rings, flip: bool) -> None:
+        for lo, hi in zip(rings[:-1], rings[1:]):
+            for i in range(segments):
+                j = (i + 1) % segments
+                t1 = np.stack([lo[i], lo[j], hi[i]])
+                t2 = np.stack([lo[j], hi[j], hi[i]])
+                if flip:
+                    t1, t2 = t1[::-1], t2[::-1]
+                triangles.append(t1)
+                triangles.append(t2)
+
+    stitch(outer_rings, flip=False)
+    stitch(inner_rings, flip=True)
+
+    def annulus(z, r_in, r_out, flip):
+        ri = np.stack([r_in * np.cos(angles), r_in * np.sin(angles),
+                       np.full(segments, z)], axis=1)
+        ro = np.stack([r_out * np.cos(angles), r_out * np.sin(angles),
+                       np.full(segments, z)], axis=1)
+        for i in range(segments):
+            j = (i + 1) % segments
+            t1 = np.stack([ri[i], ro[i], ro[j]])
+            t2 = np.stack([ri[i], ro[j], ri[j]])
+            if flip:
+                t1, t2 = t1[::-1], t2[::-1]
+            triangles.append(t1)
+            triangles.append(t2)
+
+    annulus(0.0, inner_r(0.0), outer_r(0.0), flip=True)
+    annulus(height, inner_r(height), outer_r(height), flip=False)
+    return np.asarray(triangles, dtype=np.float64)

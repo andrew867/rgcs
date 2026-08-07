@@ -1,4 +1,22 @@
 {
+  "bottom_coupling": {
+    "bottom_aperture_open": true,
+    "coupling_chain": [
+      "crystal bottom",
+      "open or lightly coupled gap",
+      "flat pickup surface",
+      "annular pickup ring"
+    ],
+    "coupling_mode": "open",
+    "gap_mm": 2.0,
+    "note": "bottom coupling path preserved; no solid plastic under the crystal base",
+    "pickup_ring": {
+      "id_mm": 31.0,
+      "od_mm": 45.0,
+      "thickness_mm": 2.0
+    },
+    "pickup_surface": "flat"
+  },
   "crystal_id": "CRY-DEMO-120",
   "design_id": "PHV2-CRY-DEMO-120",
   "fit": {
@@ -24,6 +42,6 @@
     "wall_thickness_mm": 1.8
   },
   "schema_version": "2.0.0",
-  "sha256": "b98e67e323946f07c208f376c8261dcb269303f0a3e116078ca181c14c97dee1",
+  "sha256": "344c7675ac5746ab0c593a15713fcb711268bcf213fd1b34c033375f581f0e1f",
   "source_style_profile_id": "CUSTOM_GENERATED"
 }

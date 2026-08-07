@@ -1,0 +1,18 @@
+{
+  "bottom_aperture_open": true,
+  "coupling_chain": [
+    "crystal bottom",
+    "open or lightly coupled gap",
+    "flat pickup surface",
+    "annular pickup ring"
+  ],
+  "coupling_mode": "open",
+  "gap_mm": 2.0,
+  "note": "bottom coupling path preserved; no solid plastic under the crystal base",
+  "pickup_ring": {
+    "id_mm": 31.0,
+    "od_mm": 45.0,
+    "thickness_mm": 2.0
+  },
+  "pickup_surface": "flat"
+}

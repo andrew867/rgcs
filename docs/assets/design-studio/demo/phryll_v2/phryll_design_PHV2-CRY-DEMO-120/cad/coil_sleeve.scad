@@ -60,17 +60,26 @@ function outer_r_at(z) = outer_profile[
     min(len(outer_profile) - 1,
         floor(z / height_mm * (len(outer_profile) - 1)))][0];
 
+band_h_mm = band_top_mm - band_bottom_mm;
+band_r_bottom_mm = outer_r_at(band_bottom_mm);
+band_r_top_mm = outer_r_at(band_top_mm);
+
 module groove_helix(phase_rad, handed) {
-    // groove path: one torus segment per step, following
-    // the outer cone at the phased helix angle
-    steps = coil_turns * 36;
-    for (i = [0 : steps - 1]) {
-        z = band_bottom_mm + (band_top_mm - band_bottom_mm) * i / steps;
-        ang = handed * (360 * (z - band_bottom_mm) / groove_pitch_mm) + phase_rad * 180 / PI;
-        translate([outer_r_at(z) * cos(ang),
-                   outer_r_at(z) * sin(ang), z])
-            sphere(d = wire_d_mm + 0.1);
-    }
+    // CONTINUOUS helical slot: a wire-diameter circle at
+    // the outer surface, twist-extruded up the band. The
+    // linear_extrude scale factor tracks the cone taper,
+    // so the cutter hugs the outer wall the whole way.
+    twist_deg = -handed * 360 * band_h_mm / groove_pitch_mm;
+    start_deg = phase_rad * 180 / PI
+        + handed * 360 * band_bottom_mm / groove_pitch_mm;
+    translate([0, 0, band_bottom_mm])
+        linear_extrude(height = band_h_mm,
+                       twist = twist_deg,
+                       scale = band_r_top_mm / band_r_bottom_mm,
+                       slices = coil_turns * 90, convexity = 10)
+            rotate([0, 0, start_deg])
+                translate([band_r_bottom_mm - groove_depth_mm + wire_d_mm / 2, 0])
+                    circle(d = wire_d_mm + 0.1, $fn = 24);
 }
 
 module copper_groove_path() {
@@ -94,6 +103,10 @@ module eye_marker() {
     translate([0, 0, z_eye_mm])
         cylinder(h = 0.4, d = outer_base_d_mm + 4, center = true);
 }
+
+// The cone is OPEN below the crystal base aperture:
+// the crystal bottom is never overconstrained with solid
+// plastic; the bottom coupling path stays exposed.
 
 module base_adapter() {
     // socket ring keyed to the outer base diameter
@@ -126,6 +139,20 @@ module jack_holder() {
     difference() {
         cube([14, 14, 12], center = true);
         cylinder(h = 12.2, d = 6.2, center = true);
+    }
+}
+
+module annular_pickup_ring() {
+    // flat pickup surface + annular pickup ring below the
+    // open bottom gap (crystal-bottom coupling chain:
+    // crystal bottom -> gap -> flat pickup -> annular ring)
+    ring_od = 45.0000;
+    ring_id = 31.0000;
+    ring_t = 2.0000;
+    difference() {
+        cylinder(h = ring_t, d = ring_od);
+        translate([0, 0, -0.01])
+            cylinder(h = ring_t + 0.02, d = ring_id);
     }
 }
 

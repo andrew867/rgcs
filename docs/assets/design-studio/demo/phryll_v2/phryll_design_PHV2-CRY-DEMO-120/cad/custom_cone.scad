@@ -46,6 +46,10 @@ module cone_shell() {
     }
 }
 
+// The cone is OPEN below the crystal base aperture:
+// the crystal bottom is never overconstrained with solid
+// plastic; the bottom coupling path stays exposed.
+
 module base_adapter() {
     // socket ring keyed to the outer base diameter
     difference() {
@@ -77,6 +81,20 @@ module jack_holder() {
     difference() {
         cube([14, 14, 12], center = true);
         cylinder(h = 12.2, d = 6.2, center = true);
+    }
+}
+
+module annular_pickup_ring() {
+    // flat pickup surface + annular pickup ring below the
+    // open bottom gap (crystal-bottom coupling chain:
+    // crystal bottom -> gap -> flat pickup -> annular ring)
+    ring_od = inner_base_d_mm + 6;
+    ring_id = inner_base_d_mm - 8;
+    ring_t = 2;
+    difference() {
+        cylinder(h = ring_t, d = ring_od);
+        translate([0, 0, -0.01])
+            cylinder(h = ring_t + 0.02, d = ring_id);
     }
 }
 

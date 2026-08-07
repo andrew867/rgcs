@@ -91,7 +91,8 @@ def export_compatibility_sheet(crystal: CrystalProfile,
 
 
 def export_build_sheet(crystal: CrystalProfile, cone: ConeDesign,
-                       coil: dict, out_path: str | Path) -> dict:
+                       coil: dict, out_path: str | Path,
+                       coupling: dict | None = None) -> dict:
     dims = cone.generated_dimensions
     spacing = coil["spacing"]
     eye = coil["eye_alignment"]
@@ -148,6 +149,34 @@ def export_build_sheet(crystal: CrystalProfile, cone: ConeDesign,
             ("alignment residual (mm)", eye["alignment_error_mm"]),
             ("tolerance (mm)", eye["tolerance_mm"]),
             ("aligned", "PASS" if eye["pass"] else "FAIL"),
+        ])),
+        ("Crystal-bottom coupling (crystal bottom -> gap -> flat "
+         "pickup -> annular ring; bottom stays open)",
+         pdf_sheets.rows_block([
+             ("coupling mode", (coupling or {}).get("coupling_mode")),
+             ("gap (mm)", (coupling or {}).get("gap_mm")),
+             ("pickup ring OD / ID (mm)",
+              (f"{coupling['pickup_ring']['od_mm']:g} / "
+               f"{coupling['pickup_ring']['id_mm']:g}")
+              if coupling else None),
+             ("O-ring",
+              (f"{coupling['o_ring']['material']}, cord "
+               f"{coupling['o_ring']['cord_diameter_mm']:g} mm, ID "
+               f"{coupling['o_ring']['id_mm']:g} mm, "
+               f"{coupling['o_ring']['compression_pct']:g}% at "
+               f"{coupling['o_ring']['contact_height_mm']:g} mm")
+              if coupling and coupling.get("o_ring")
+              else "none (open coupling)"),
+             ("bottom aperture", "open — no solid plastic under the "
+                                 "crystal base"),
+         ])),
+        ("Excitation paths (hardware first)", pdf_sheets.rows_block([
+            ("1", "photonic / laser"),
+            ("2", "magneto-acoustic / pulsed coils"),
+            ("3", "mechanical / acoustic"),
+            ("4", "electrical / coil"),
+            ("intention/focus-only",
+             "source-language only — not an implemented mode"),
         ])),
         ("Pulse metadata (source-language, recorded not validated)",
          pdf_sheets.rows_block([
