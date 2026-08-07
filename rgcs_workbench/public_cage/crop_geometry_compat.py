@@ -131,12 +131,15 @@ def sanitize_row(raw: dict) -> dict:
         "archive_status": raw.get("archive_status"),
         "satellite_count": sat.get("count"),
         "satellite_confidence": sat.get("confidence"),
+        "satellite_count_disagreement": rg.get(
+            "satellite_count_disagreement_across_images"),
+        "images_analyzed": raw.get("images_analyzed"),
         "radius_fractions": fractions,
         "inner_outer_ratio": ratio,
         "outer_diameter_m": outer_m,
         "inner_diameter_m": inner_m,
         "raw_measurement_text": text[:400],
-        "provenance": "COOKBOOK_EXTRACTED",
+        "provenance": "COOKBOOK_EXTRACTED_ALL_IMAGES",
     }
 
 
@@ -358,6 +361,30 @@ def score_all() -> dict:
 
 # -------------------------------------------------------- base rates
 
+def count_37_background(result: dict) -> dict:
+    """Is a detected 37-count in EXCESS of neighboring counts, or at
+    the detector's background rate? The honesty gate for any 37-cell
+    claim: a flat histogram across 30..48 means a 37 detection is
+    background, not signature."""
+    from collections import Counter
+    counts = Counter(r["satellite_count"] for r in result["rows"]
+                     if r.get("satellite_count"))
+    n37 = counts.get(CELLS, 0)
+    neighbors = [counts.get(n, 0) for n in range(30, 49) if n != CELLS]
+    neighbor_mean = (sum(neighbors) / len(neighbors)) if neighbors else 0.0
+    disagreement_rows = sum(
+        1 for r in result["rows"]
+        if r.get("satellite_count_disagreement"))
+    return {"count_37": n37,
+            "neighbor_mean_30_48": round(neighbor_mean, 2),
+            "excess_over_neighbors": n37 > 2.0 * neighbor_mean,
+            "cross_image_disagreement_rows": disagreement_rows,
+            "note": ("detected counts are HoughCircles output on "
+                     "archive imagery; a detected count is not a "
+                     "surveyed count"),
+            "claim_status": "ARITHMETIC"}
+
+
 def ratio_base_rate(result: dict, window_percent: float = 1.0) -> dict:
     """How many 47/72 hits chance alone would produce: observed ratio
     rows spread over their empirical range, one target, +/- window.
@@ -428,8 +455,33 @@ def write_outputs(outdir: str | pathlib.Path,
          _SCORE_COLUMNS + ("v6_candidate_proximity_score",))
 
     rates = ratio_base_rate(result)
+    background = count_37_background(result)
     counts = result["counts"]
     hits = [r for r in ranked if r["ratio_band"] in ("EXACT", "STRONG")]
+
+    n37 = background["count_37"]
+    if n37 == 0:
+        headline = ("Zero formations in the archive carry a detected "
+                    "37-element count. The 37-cell ring signature is "
+                    "absent from the measured crop record as extracted.")
+    elif not background["excess_over_neighbors"]:
+        headline = (
+            f"{n37} formations carry a detected 37-element count, "
+            f"against a neighbor-count background mean of "
+            f"{background['neighbor_mean_30_48']} per count value "
+            f"across 30 to 48. 37 shows NO excess over its neighbors: "
+            f"a detected 37 sits at the detector's background rate "
+            f"and is not a 37-cell signature. "
+            f"{background['cross_image_disagreement_rows']} rows also "
+            f"show cross-image count disagreement, so detected counts "
+            f"carry real uncertainty.")
+    else:
+        headline = (
+            f"{n37} formations carry a detected 37-element count, "
+            f"which EXCEEDS the neighbor background mean of "
+            f"{background['neighbor_mean_30_48']}. This is a "
+            f"measurement target for count verification on source "
+            f"imagery, not a validation of anything.")
 
     _md("crop_physics_compatibility_report.md", [
         "# Crop Physics Compatibility Report", "",
@@ -441,11 +493,8 @@ def write_outputs(outdir: str | pathlib.Path,
         f"{counts['scored']}. Insufficient geometry (listed, not "
         f"dropped): {counts['insufficient']}. Rejected with reasons: "
         f"{counts['rejected']}.", "",
-        "## Headline negative result", "",
-        "Zero formations in the archive carry a detected 37-element "
-        "count. Counts of 35 and 36 exist in single digits. The "
-        "37-cell ring signature is absent from the measured crop "
-        "record as extracted.", "",
+        "## The 37-count question, answered from the data", "",
+        headline, "",
         "## 47/72 ratio hits and the chance floor", "",
         f"{len(hits)} formations sit within 1 percent of 47/72; "
         f"{sum(1 for r in hits if r['ratio_band'] == 'EXACT')} within "
@@ -506,9 +555,14 @@ def write_outputs(outdir: str | pathlib.Path,
         "against the RGCS modeled geometry families. Every row "
         "carries claim status MODEL_COMPARISON_ONLY.", "",
         "## What was found", "",
-        "1. The 37-element signature of the RGCS ring does not "
-        "appear in the archive's detected counts. This is a clean "
-        "negative result.",
+        f"1. Detected 37-element counts: {background['count_37']} "
+        f"formations, against a neighbor background mean of "
+        f"{background['neighbor_mean_30_48']} per count value. "
+        + ("A detected 37 sits at the detector's background rate; "
+           "no 37-cell signature stands out."
+           if not background["excess_over_neighbors"] else
+           "The 37 count exceeds its neighbor background and needs "
+           "count verification on source imagery."),
         f"2. {len(hits)} formations match the 47/72 ring ratio "
         f"within 1 percent, including "
         f"{', '.join(r['formation_id'] for r in hits[:2])} inside "
@@ -541,4 +595,5 @@ __all__ = ["RATIO_47_72", "CELLS", "COUNT_NEAR", "FIELD_REFERENCE_M",
            "parse_dimensions_m", "sanitize_row", "ingest_cookbook",
            "load_features", "geometry_ratio_score",
            "count_symmetry_score", "rgcs_scale_score", "score_row",
-           "score_all", "ratio_base_rate", "write_outputs"]
+           "score_all", "ratio_base_rate", "count_37_background",
+           "write_outputs"]

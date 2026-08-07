@@ -4,8 +4,8 @@ This run compared the extracted geometry of 2249 archived crop-formation records
 
 ## What was found
 
-1. The 37-element signature of the RGCS ring does not appear in the archive's detected counts. This is a clean negative result.
-2. 6 formations match the 47/72 ring ratio within 1 percent, including CC-2009-05-10-ROUNDWAY-DEVIZES-WILTSHIRE, CC-2005-07-24-AVEBURY-WILTSHIRE-3 inside 0.25 percent. The hit count sits at the chance floor for the measured ratio population, so these are measurement targets, not evidence.
+1. Detected 37-element counts: 6 formations, against a neighbor background mean of 8.56 per count value. A detected 37 sits at the detector's background rate; no 37-cell signature stands out.
+2. 15 formations match the 47/72 ring ratio within 1 percent, including CC-2020-06-02-BREDA-NOORD-BRABANT, CC-2020-06-02-HOEVEN-NOORD-BRABANT-2 inside 0.25 percent. The hit count sits at the chance floor for the measured ratio population, so these are measurement targets, not evidence.
 3. Absolute scale is the dominant missing variable: 1077 scored rows need a source dimension before ring-scale comparison is possible.
 4. Three curated formations with absolute sizes were rejected because their dimensions sit far from the 188 m and 288 m field-profile anchors; photogrammetry or diagram scale could still salvage or refute them.
 

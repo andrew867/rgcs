@@ -7,18 +7,18 @@
 
 ## Per-formation needs
 
-- CC-2009-05-10-ROUNDWAY-DEVIZES-WILTSHIRE: absolute diameter by drone photogrammetry or diagram scale
-- CC-2005-07-24-AVEBURY-WILTSHIRE-3: absolute diameter by drone photogrammetry or diagram scale
-- CC-2020-07-25-LOCATION-WITHHELD-HAMPSHIRE: absolute diameter by drone photogrammetry or diagram scale
-- CC-2026-04-04-ILCHESTER-SOMERSET: absolute diameter by drone photogrammetry or diagram scale
-- CC-2015-06-19-AVEBURY-WILTSHIRE: absolute diameter by drone photogrammetry or diagram scale
-- CC-2007-05-22-WEXCOMBE-WILTSHIRE: absolute diameter by drone photogrammetry or diagram scale
-- CC-2008-08-08-BISHOPS-CANNINGS-WILTSHIRE: absolute diameter by drone photogrammetry or diagram scale
-- CC-2008-11-09-IPUACU-RIO-GRANDE-DO-SUL: absolute diameter by drone photogrammetry or diagram scale
-- CC-2015-07-15-ROLLRIGHT-STONES-OXFORDSHIRE-2: absolute diameter by drone photogrammetry or diagram scale
-- CC-2016-07-13-MONTERONI-ARBIA-TOSCANA: absolute diameter by drone photogrammetry or diagram scale
-- CC-2011-07-31-OBERSCHLEI-HEIM-BAYERN: absolute diameter by drone photogrammetry or diagram scale
-- CC-2006-06-21-SILBURY-HILL-WILTSHIRE-3: absolute diameter by drone photogrammetry or diagram scale
-- CC-2008-07-17-WESTWOODS-WILTSHIRE-2: absolute diameter by drone photogrammetry or diagram scale
-- CC-2009-06-15-MURSKA-SOBOTA-POMURSKA: absolute diameter by drone photogrammetry or diagram scale
-- CC-2011-01-30-TEGALREJO-JAWA-TENGAH: absolute diameter by drone photogrammetry or diagram scale
+- CC-2020-06-02-BREDA-NOORD-BRABANT: absolute diameter by drone photogrammetry or diagram scale
+- CC-2020-06-02-HOEVEN-NOORD-BRABANT-2: absolute diameter by drone photogrammetry or diagram scale
+- CC-2006-07-09-BRAGBURY-LANE-HERTFORDSHIRE: absolute diameter by drone photogrammetry or diagram scale
+- CC-2017-04-26-RUCPHEN-NOORD-BRABANT: absolute diameter by drone photogrammetry or diagram scale
+- CC-2017-09-09-BOOSCHENHOOFD-NOORD-BRABANT: absolute diameter by drone photogrammetry or diagram scale
+- CC-2010-07-12-STOCKBRIDGE-HAMPSHIRE-2: absolute diameter by drone photogrammetry or diagram scale
+- CC-2010-08-15-BALLESTAD-TELEMARK: absolute diameter by drone photogrammetry or diagram scale
+- CC-2014-UNKNOWN-LANDAU-RHEINLAND-PFALZ-2: absolute diameter by drone photogrammetry or diagram scale
+- CC-2021-08-30-TODWICK-SOUTH-YORKSHIRE: absolute diameter by drone photogrammetry or diagram scale
+- CC-2022-08-03-CROP-CIRCLES-2022-DURING-AUGUST-THE-CROP-CIRCLE-CONNECT: absolute diameter by drone photogrammetry or diagram scale
+- CC-2007-08-26-ABBOTSFORD-BRITISH-COLUMBIA: absolute diameter by drone photogrammetry or diagram scale
+- CC-2020-09-01-STOKE-MANDEVILLE-BUCKINGHAMSHIRE: absolute diameter by drone photogrammetry or diagram scale
+- CC-2023-07-16-RUSHOCK-WORCESTERSHIRE: absolute diameter by drone photogrammetry or diagram scale
+- CC-1992-06-19-BRIGHTON-SUSSEX: absolute diameter by drone photogrammetry or diagram scale
+- CC-2006-10-20-HOEVEN-NOORD-BRABANT: absolute diameter by drone photogrammetry or diagram scale
