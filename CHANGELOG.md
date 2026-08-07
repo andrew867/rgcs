@@ -5,10 +5,37 @@ v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
 ## [8.5.0] - 2026-08-07
 
-**RGCS Frequency Key Studio / Sonic Lab** (tag `v8.5.0`). Design
-Studio gains a full audio creation and recipe system — an independent
-engine (no Hemi-Sync recordings, tape structures, narration, or
-branding; no audio downloader, enforced by test).
+**RGCS Frequency Key Studio / Sonic Lab + Phryll Generator v2**
+(tag `v8.5.0`). Design Studio gains a full audio creation and recipe
+system — an independent engine (no Hemi-Sync recordings, tape
+structures, narration, or branding; no audio downloader, enforced by
+test) — and a crystal-first parametric CAD generator.
+
+**Phryll Generator Designer v2** (crystal-first parametric CAD):
+
+- Measured crystal profile (schema major 2) → custom cone: inner =
+  crystal envelope + clearance, outer = inner + wall; per-station fit
+  check; no stock M1/M2/L/L2/V3 mesh is chosen or scaled (enforced by
+  test — generated SCAD contains no import()/mesh reference).
+- Coil sleeve with the source spacing rules: clear gap >= 2×wire Ø
+  (enforced), groove pitch = 3×wire Ø (AWG 28 → 0.66/0.99 mm),
+  standoff = clearance + wall − groove depth (+ wire Ø/2 centerline).
+- Eye alignment solver: crossed copper-CW/silver-CCW helices phased so
+  a crossing plane lands exactly on z_eye (demo residual 0.0 mm);
+  crystal/cone midpoints never substitute for the Eye.
+- Exports: deterministic SCAD module set (cone, sleeve, groove paths,
+  Eye marker, base adapter, cap, LED holder, jack holder, locker),
+  built-in mesh backend (watertight shell → binary STL + minimal 3MF,
+  no OpenSCAD required; OpenSCAD CLI optional), SVG axial/top
+  templates, DXF winding template, compatibility + build PDF sheets,
+  JSON receipts, bundle with MANIFEST + CHECKSUMS.sha256.
+- Reference asset registry: 12 CC-SA assets with roles/licenses and
+  mesh-decode seed data; M2 text profile and M2 mesh profile stored
+  separately, never reconciled; direct STL measurement tools.
+- Annular-ring craft locks stay out of cone sizing (source-scan test).
+- Panel + home card, docs, demo bundle (18 files, verified), 41 tests.
+
+**Frequency Key Studio details:**
 
 - Audio engine (numpy + stdlib wave, no new dependencies): binaural
   (102 Hz carrier / 4 Hz beat → the 100/104 patent example), monaural,
