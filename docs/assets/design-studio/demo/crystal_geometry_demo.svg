@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="688" height="248" font-family="sans-serif" font-size="12">
+<title>specimen CRY-NODES-001</title>
+<rect x="60.0" y="60.0" width="440.0" height="128.0" fill="none" stroke="#111" stroke-width="1.5"/>
+<path d="M 500.0 60.0 L 628.0 124.0 L 500.0 188.0" fill="none" stroke="#111" stroke-width="1.5"/>
+<line x1="60.0" y1="212.0" x2="500.0" y2="212.0" stroke="#555"/>
+<text x="280.0" y="207.0" text-anchor="middle">length 110 mm</text>
+<text x="50.0" y="124.0" text-anchor="end">diameter 32 mm</text>
+<text x="628.0" y="52.0" text-anchor="end">termination 51.7°</text>
+<line x1="170.0" y1="54.0" x2="170.0" y2="194.0" stroke="#b26a00" stroke-dasharray="4 3"/>
+<text x="170.0" y="50.0" text-anchor="middle" fill="#b26a00">27.5</text>
+<line x1="280.0" y1="54.0" x2="280.0" y2="194.0" stroke="#b26a00" stroke-dasharray="4 3"/>
+<text x="280.0" y="50.0" text-anchor="middle" fill="#b26a00">55</text>
+<line x1="390.0" y1="54.0" x2="390.0" y2="194.0" stroke="#b26a00" stroke-dasharray="4 3"/>
+<text x="390.0" y="50.0" text-anchor="middle" fill="#b26a00">82.5</text>
+<text x="60.0" y="32.0" font-size="14" font-weight="bold">specimen CRY-NODES-001</text>
+</svg>
