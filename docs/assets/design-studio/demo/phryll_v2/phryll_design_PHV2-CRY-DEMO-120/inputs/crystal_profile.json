@@ -1,0 +1,24 @@
+{
+  "base_angle_deg": 51.84,
+  "base_diameter_mm": 39.0,
+  "crystal_id": "CRY-DEMO-120",
+  "eye_source": "demo_entered",
+  "eye_uncertainty_mm": 0.25,
+  "facet_count": 6,
+  "length_mm": 120.0,
+  "mass_g": 140.0,
+  "max_body_width_mm": 39.0,
+  "provenance": {
+    "operator": "demo",
+    "source": "fixture"
+  },
+  "schema_version": "2.0.0",
+  "top_angle_deg": 60.0,
+  "top_diameter_mm": 26.0,
+  "uncertainty": {
+    "angle_deg": 0.5,
+    "diameter_mm": 0.2,
+    "length_mm": 0.5
+  },
+  "z_eye_mm": 62.5
+}

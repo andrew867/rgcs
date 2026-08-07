@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="286" font-family="sans-serif" font-size="12">
+<title>PHV2-CRY-DEMO-120 top template</title>
+<circle cx="127.84" cy="127.84" r="87.8" fill="none" stroke="#111" stroke-width="1.5"/>
+<circle cx="127.84" cy="127.84" r="80.6" fill="none" stroke="#1258a8" stroke-width="1.5"/>
+<polygon points="127.8,47.2 197.7,87.5 197.7,168.2 127.8,208.5 58.0,168.2 58.0,87.5" fill="none" stroke="#b26a00" stroke-dasharray="4 3"/>
+<text x="127.84" y="275.7" text-anchor="middle">outer 43.92 mm · inner 40.32 mm · 6 facets</text>
+</svg>

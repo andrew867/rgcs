@@ -1,0 +1,29 @@
+{
+  "crystal_id": "CRY-DEMO-120",
+  "design_id": "PHV2-CRY-DEMO-120",
+  "fit": {
+    "clearance_mm": 0.66,
+    "print_tolerance_mm": 0.2,
+    "wall_thickness_mm": 1.8
+  },
+  "fit_report": {
+    "failures": [],
+    "max_clearance_mm": 0.6600000000000001,
+    "min_clearance_mm": 0.6599999999999984,
+    "ok": true,
+    "stations_checked": 96
+  },
+  "generated_dimensions": {
+    "clearance_mm": 0.66,
+    "generation": "crystal_envelope_plus_clearance",
+    "height_mm": 120.0,
+    "inner_base_diameter_mm": 40.32,
+    "inner_top_diameter_mm": 27.32,
+    "outer_base_diameter_mm": 43.92,
+    "outer_top_diameter_mm": 30.92,
+    "wall_thickness_mm": 1.8
+  },
+  "schema_version": "2.0.0",
+  "sha256": "b98e67e323946f07c208f376c8261dcb269303f0a3e116078ca181c14c97dee1",
+  "source_style_profile_id": "CUSTOM_GENERATED"
+}

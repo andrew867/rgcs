@@ -59,6 +59,15 @@ WORKFLOWS: list[dict] = [
         "outputs": "SCAD, STL (if OpenSCAD), build PDF, receipt JSON",
     },
     {
+        "key": "phryll_v2",
+        "card": "Design a crystal-first Phryll cone (v2)",
+        "panel": "Phryll Generator v2",
+        "inputs": "measured crystal profile, Eye coordinate, fit + "
+                  "coil settings",
+        "outputs": "custom cone + coil sleeve: SCAD, STL, 3MF, DXF, "
+                   "SVG, PDFs, receipts, bundle",
+    },
+    {
         "key": "coil_pulse",
         "card": "Design coils and pulse settings",
         "panel": "Coil / Pulse Designer",

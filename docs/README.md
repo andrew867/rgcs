@@ -61,6 +61,8 @@ The task-first entry points for the desktop workbench (`rgcs-workbench`).
 | Validate a crystal | [user/CRYSTAL_VALIDATOR](user/CRYSTAL_VALIDATOR.md) |
 | Generate a certification sheet | [user/CERTIFICATION_SHEETS](user/CERTIFICATION_SHEETS.md) |
 | Generate a Phyrll generator holder | [user/PHYRLL_GENERATOR_DESIGNER](user/PHYRLL_GENERATOR_DESIGNER.md) |
+| Design a crystal-first Phryll cone (v2) | [user/PHRYLL_GENERATOR_V2](user/PHRYLL_GENERATOR_V2.md) |
+| Phryll v2 CAD engine (developers) | [developer/PHRYLL_V2_CAD_ENGINE](developer/PHRYLL_V2_CAD_ENGINE.md) |
 | Design coils and pulse settings | [user/COIL_PULSE_DESIGNER](user/COIL_PULSE_DESIGNER.md) |
 | Design an annular ring prototype | [user/ANNULAR_RING_DESIGNER](user/ANNULAR_RING_DESIGNER.md) |
 | Use frequency keys | [user/FREQUENCY_KEYS](user/FREQUENCY_KEYS.md) |

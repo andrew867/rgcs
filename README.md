@@ -189,6 +189,7 @@ The desktop workbench (`rgcs-workbench`) has two modes:
 |---|---|---|
 | Validate a crystal | Crystal Validator | geometry receipt, derived values, certification PDF |
 | Generate printable parts | Phyrll Generator Designer | SCAD, STL (when OpenSCAD is installed), build PDF, receipt JSON |
+| Design a crystal-first Phryll cone | Phryll Generator v2 | custom cone + coil sleeve: SCAD, STL, 3MF, DXF, SVG, PDFs, receipts |
 | Design coils and pulses | Coil / Pulse Designer | wire estimates, pulse table, sidebands, build PDF |
 | Design an annular ring | Annular Ring Designer | ring diagram, masks, SVG/SCAD, engineering PDF |
 | Use frequency keys | Frequency Key Library | sourced key list, sidebands, key relations |

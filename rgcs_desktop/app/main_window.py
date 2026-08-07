@@ -23,6 +23,7 @@ from rgcs_desktop.viewers.evidence_ledger_panel import EvidenceLedgerPanel
 from rgcs_desktop.viewers.frequency_key_studio import \
     FrequencyKeyStudioPanel
 from rgcs_desktop.viewers.frequency_keys_panel import FrequencyKeyPanel
+from rgcs_desktop.viewers.phryll_v2_panel import PhryllV2Panel
 from rgcs_desktop.viewers.phyrll_generator_panel import PhyrllGeneratorPanel
 from rgcs_desktop.viewers.coherence_analyzer import CoherenceAnalyzerPanel
 from rgcs_desktop.viewers.comparison_view import ComparisonPanel
@@ -40,7 +41,7 @@ from rgcs_desktop.viewers.workspace_browser import WorkspaceBrowserPanel
 PANEL_CLASSES = [
     # Design Studio (guided mode) — home first so it opens by default
     DesignStudioHomePanel, CrystalValidatorPanel, PhyrllGeneratorPanel,
-    CoilPulsePanel, AnnularRingPanel, FrequencyKeyPanel,
+    PhryllV2Panel, CoilPulsePanel, AnnularRingPanel, FrequencyKeyPanel,
     FrequencyKeyStudioPanel,
     # Advanced Scientific Workbench (existing research panels)
     WorkspaceBrowserPanel, SourceLibraryPanel, SpecimenEditorPanel,

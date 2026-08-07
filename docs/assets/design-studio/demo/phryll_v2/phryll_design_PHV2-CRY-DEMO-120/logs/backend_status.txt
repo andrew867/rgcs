@@ -1,0 +1,3 @@
+mesh backend: built-in tessellation (36864 triangles, watertight shell)
+openscad CLI: unavailable — OpenSCAD CLI not installed; use the built-in mesh backend STL instead
+3mf: built-in minimal writer

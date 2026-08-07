@@ -24,6 +24,8 @@ REQUIRED_DOCS = [
     "docs/user/YOUTUBE_RECIPE_CORPUS.md",
     "docs/developer/SONIC_AUDIO_ENGINE.md",
     "docs/developer/SONIC_INGEST_PIPELINE.md",
+    "docs/user/PHRYLL_GENERATOR_V2.md",
+    "docs/developer/PHRYLL_V2_CAD_ENGINE.md",
 ]
 
 
@@ -64,7 +66,8 @@ def test_design_studio_docs_carry_claim_boundaries():
         if rel in ("INSTALL.md", "docs/developer/PACKAGING.md",
                    "docs/user/ADVANCED_MODE.md",
                    "docs/developer/SONIC_AUDIO_ENGINE.md",
-                   "docs/developer/SONIC_INGEST_PIPELINE.md"):
+                   "docs/developer/SONIC_INGEST_PIPELINE.md",
+                   "docs/developer/PHRYLL_V2_CAD_ENGINE.md"):
             continue
         text = (REPO / rel).read_text(encoding="utf-8").lower()
         # design docs carry the claim-boundary block; sonic-lab docs

@@ -1,0 +1,18 @@
+{
+  "bundle_kind": "phryll_v2_design",
+  "design_id": "PHV2-CRY-DEMO-120",
+  "generated_utc": "2026-08-07T21:00:30+00:00",
+  "git_commit": "38348495a234dc1041fe75e518ddc560db4e3534",
+  "layout": [
+    "inputs",
+    "cad",
+    "flat",
+    "pdf",
+    "receipts",
+    "logs"
+  ],
+  "software": {
+    "python": "3.13.2",
+    "rgcs_desktop": "3.0.1"
+  }
+}
