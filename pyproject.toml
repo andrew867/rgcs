@@ -78,6 +78,7 @@ include = ["r1015a*", "rgcs_surface_wave*", "rgcs_core*", "rgcs_desktop*", "rscs
            "rgcs_ardk*"]
 
 [tool.setuptools.package-data]
+rgcs_desktop = ["data/*.json"]
 rscs_core = ["registry/*.yaml"]
 rscs2_core = ["registry/*.yaml"]
 r15 = ["schemas/*.json"]

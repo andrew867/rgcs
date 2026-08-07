@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "specimen_id": "CRY-MIN-001",
+  "material_family": "quartz",
+  "dimensions": {
+    "length_mm": 90.0,
+    "diameter_mm": 25.0
+  },
+  "uncertainty": {
+    "length_mm": 0.5
+  },
+  "provenance": {
+    "entered_by": "fixture",
+    "method": "calipers"
+  },
+  "classification": "MEASURED_INPUT"
+}

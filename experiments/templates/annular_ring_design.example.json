@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "design_id": "RING-EXAMPLE-001",
+  "od_mm": 288.0,
+  "id_mm": 188.0,
+  "cell_count": 37,
+  "active_mask": [true, true, true, true, true, true, true, true, true,
+                  true, true, true, true, true, true, true, true, true,
+                  true, true, true, true, true, true, true, true, true,
+                  true, true, true, true, true, true, false, false, false,
+                  false],
+  "blanked_cells": [33, 34, 35, 36],
+  "probe_plan": {
+    "probes": [
+      {"label": "P1", "cell": 0},
+      {"label": "P2", "cell": 9},
+      {"label": "P3", "cell": 18}
+    ]
+  },
+  "drive": {
+    "base_hz": 4096.0,
+    "modulation_key_hz": 925.0
+  },
+  "material": "FR4",
+  "classification": "MODEL_OUTPUT"
+}

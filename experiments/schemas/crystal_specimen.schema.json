@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/crystal_specimen.schema.json",
+  "title": "Design Studio crystal specimen",
+  "description": "A measured crystal specimen: dimensions, uncertainty, provenance, classification. Uncertainty is required — there is no validation without it.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "specimen_id",
+    "material_family",
+    "dimensions",
+    "uncertainty",
+    "provenance",
+    "classification"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^1\\."
+    },
+    "specimen_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "material_family": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dimensions": {
+      "type": "object",
+      "required": ["length_mm"],
+      "properties": {
+        "length_mm": {"type": "number", "exclusiveMinimum": 0},
+        "width_mm": {"type": "number", "exclusiveMinimum": 0},
+        "diameter_mm": {"type": "number", "exclusiveMinimum": 0},
+        "facet_count": {"type": "integer", "minimum": 1},
+        "side_count": {"type": "integer", "minimum": 3},
+        "termination_angle_deg": {"type": "number"}
+      },
+      "anyOf": [
+        {"required": ["width_mm"]},
+        {"required": ["diameter_mm"]}
+      ]
+    },
+    "mass_g": {"type": "number", "exclusiveMinimum": 0},
+    "measured_nodes_mm": {
+      "type": "array",
+      "items": {"type": "number"}
+    },
+    "uncertainty": {
+      "type": "object",
+      "required": ["length_mm"],
+      "properties": {
+        "length_mm": {"type": "number", "minimum": 0},
+        "width_mm": {"type": "number", "minimum": 0},
+        "angle_deg": {"type": "number", "minimum": 0}
+      }
+    },
+    "photos": {"type": "array", "items": {"type": "string"}},
+    "diagram_files": {"type": "array", "items": {"type": "string"}},
+    "source_notes": {"type": "string"},
+    "supplier": {"type": "string"},
+    "operator": {"type": "string"},
+    "provenance": {"type": "object"},
+    "classification": {"type": "string"},
+    "sha256": {"type": "string"}
+  }
+}
