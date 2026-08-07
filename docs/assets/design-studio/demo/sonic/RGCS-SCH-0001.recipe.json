@@ -1,0 +1,73 @@
+{
+  "duration_s": 20.0,
+  "exports": {
+    "wav": "RGCS-SCH-0001.wav"
+  },
+  "family": "rgcs_bridge",
+  "intent": "RGCS Schumann bridge",
+  "layers": [
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 925.0,
+      "fade_in_s": 2.0,
+      "fade_out_s": 2.5,
+      "gain_db": -6.0,
+      "layer_id": "L1",
+      "type": "binaural"
+    },
+    {
+      "fade_in_s": 2.0,
+      "fade_out_s": 2.5,
+      "gain_db": -18.0,
+      "layer_id": "L2",
+      "seed": 0,
+      "type": "brown_noise"
+    }
+  ],
+  "notes": "Experimental audio recipe. Use comfortable volume. Results vary.",
+  "sample_rate": 48000,
+  "schema_version": "1.0.0",
+  "segments": [
+    {
+      "beat_end_hz": 10.0,
+      "beat_start_hz": 10.0,
+      "curve": "linear",
+      "duration_s": 2.0,
+      "kind": "intro"
+    },
+    {
+      "beat_end_hz": 10.0,
+      "beat_start_hz": 10.0,
+      "curve": "linear",
+      "duration_s": 2.0,
+      "kind": "relax"
+    },
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 10.0,
+      "curve": "cosine",
+      "duration_s": 3.0,
+      "kind": "ramp_down"
+    },
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 7.83,
+      "curve": "linear",
+      "duration_s": 11.0,
+      "kind": "hold"
+    },
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 7.83,
+      "curve": "linear",
+      "duration_s": 2.0,
+      "kind": "outro"
+    }
+  ],
+  "session_id": "SES-RGCS-SCH-0001",
+  "sha256": "8f13bb02b6f9b19deab5c8b0074786e6bff77b4a3fd5bb9ead1a3fad1d0851d5",
+  "source_ids": [
+    "RGCS"
+  ],
+  "title": "7.83 Hz Schumann Bridge"
+}
