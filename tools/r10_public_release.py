@@ -967,14 +967,25 @@ def _replace_release_directory(repo: Path, destination: Path) -> None:
         raise RuntimeError(f"refusing to replace path outside {releases}: {target}") from exc
     releases.mkdir(parents=True, exist_ok=True)
     if target.exists():
-        def clear_readonly(function, path, exception):
+        # Make every entry deletable before rmtree. Two portability
+        # traps: shutil.rmtree(onexc=...) is Python 3.12+ only, and on
+        # POSIX a read-only *directory* blocks removal of its children
+        # (Windows instead blocks removal of read-only *files*).
+        # os.walk is top-down, so each directory regains rwx before the
+        # walk descends into it.
+        def make_deletable(path: str, dir_bits: bool) -> None:
+            bits = stat.S_IRWXU if dir_bits else stat.S_IWRITE
             try:
-                os.chmod(path, stat.S_IWRITE)
-                function(path)
+                os.chmod(path, os.stat(path).st_mode | bits)
             except OSError:
-                raise exception
-
-        shutil.rmtree(target, onexc=clear_readonly)
+                pass  # rmtree will surface anything genuinely stuck
+        make_deletable(str(target), dir_bits=True)
+        for root, dirs, files in os.walk(target):
+            for name in dirs:
+                make_deletable(os.path.join(root, name), dir_bits=True)
+            for name in files:
+                make_deletable(os.path.join(root, name), dir_bits=False)
+        shutil.rmtree(target)
     target.mkdir(parents=True)
 
 
