@@ -13,7 +13,10 @@ from rgcs_desktop.jobs.manager import JobStatus
 
 def test_window_opens_and_panels_construct(main_window):
     assert main_window.isVisible()
-    expected = {"Workspace", "Sources", "Specimen editor", "Models",
+    expected = {"Design Studio", "Crystal Validator",
+                "Phyrll Generator Designer", "Coil / Pulse Designer",
+                "Annular Ring Designer", "Frequency Key Library",
+                "Workspace", "Sources", "Specimen editor", "Models",
                 "Compact-mode spectrum", "Avoided crossing",
                 "Coherence analyzer", "Pulse designer", "Experiment builder",
                 "Results", "Model vs measured", "Report / export", "Settings",

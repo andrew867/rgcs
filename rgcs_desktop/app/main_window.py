@@ -14,8 +14,14 @@ from rgcs_desktop.app.command_palette import CommandPalette
 from rgcs_desktop.app.context import AppContext
 from rgcs_desktop.app.inspector import InspectorDock
 from rgcs_desktop.app.jobs_panel import JobsPanel
+from rgcs_desktop.viewers.annular_ring_panel import AnnularRingPanel
 from rgcs_desktop.viewers.avoided_crossing import AvoidedCrossingPanel
+from rgcs_desktop.viewers.coil_pulse_panel import CoilPulsePanel
+from rgcs_desktop.viewers.crystal_validator_panel import CrystalValidatorPanel
+from rgcs_desktop.viewers.design_studio_home import DesignStudioHomePanel
 from rgcs_desktop.viewers.evidence_ledger_panel import EvidenceLedgerPanel
+from rgcs_desktop.viewers.frequency_keys_panel import FrequencyKeyPanel
+from rgcs_desktop.viewers.phyrll_generator_panel import PhyrllGeneratorPanel
 from rgcs_desktop.viewers.coherence_analyzer import CoherenceAnalyzerPanel
 from rgcs_desktop.viewers.comparison_view import ComparisonPanel
 from rgcs_desktop.viewers.experiment_builder import ExperimentBuilderPanel
@@ -30,6 +36,10 @@ from rgcs_desktop.viewers.spectrum_panel import SpectrumPanel
 from rgcs_desktop.viewers.workspace_browser import WorkspaceBrowserPanel
 
 PANEL_CLASSES = [
+    # Design Studio (guided mode) — home first so it opens by default
+    DesignStudioHomePanel, CrystalValidatorPanel, PhyrllGeneratorPanel,
+    CoilPulsePanel, AnnularRingPanel, FrequencyKeyPanel,
+    # Advanced Scientific Workbench (existing research panels)
     WorkspaceBrowserPanel, SourceLibraryPanel, SpecimenEditorPanel,
     ModelEditorPanel, SpectrumPanel, AvoidedCrossingPanel,
     CoherenceAnalyzerPanel, PulseDesignerPanel, ExperimentBuilderPanel,
@@ -44,7 +54,7 @@ SIDEBAR_SECTIONS = ["Workspaces", "Specimens", "Models", "Experiments",
 class MainWindow(QMainWindow):
     def __init__(self, context: AppContext | None = None, parent=None):
         super().__init__(parent)
-        self.setWindowTitle("RGCS v2 — Research Workbench")
+        self.setWindowTitle("RGCS Design Studio — Research Workbench")
         self.resize(1440, 900)
         self.context = context or AppContext()
         self.context.workspace_changed.connect(self._workspace_changed)
@@ -88,6 +98,9 @@ class MainWindow(QMainWindow):
             panel.status_message.connect(self.jobs_panel.log)
             self.panels[cls.TITLE] = panel
             self.tabs.addTab(panel, cls.TITLE)
+            if hasattr(panel, "navigate"):
+                # Design Studio home cards route to other panels
+                panel.navigate.connect(self.open_panel)
 
         # command palette + actions
         self._actions = self._build_actions()
