@@ -24,6 +24,7 @@ ones.**
 | I want to… | Go here |
 |---|---|
 | See something work in 60 seconds | [Map workbench](#map-workbench) ↓ |
+| Validate a crystal, design parts, export build sheets | [RGCS Design Studio](#rgcs-design-studio) ↓ |
 | Model a crystal specimen | [Crystal & resonator lane](#crystal--resonator-physics) ↓ |
 | Understand the typed maths core | [Foundations](#foundations) ↓ |
 | Browse everything | **[Documentation index](docs/README.md)** |
@@ -170,6 +171,46 @@ proxy (B06), no transport bridge (B07).
 | `rgcs-workbook` | Workbook / reporting CLI |
 | `rgcs-coordinate` | Coordinate codec CLI |
 | `python -m r1053` | Map workbench CLI |
+
+---
+
+## RGCS Design Studio
+
+The desktop workbench (`rgcs-workbench`) has two modes:
+
+| Mode | Use it for |
+|---|---|
+| **Design Studio** | guided crystal validation, certification sheets, printable Phyrll generator templates, coil/pulse design, annular ring prototype design |
+| **Advanced Scientific Workbench** | source library, specimen/model editors, experiment builder, comparison views, reports and bundles |
+
+### Start by task
+
+| I want to… | Open | Output |
+|---|---|---|
+| Validate a crystal | Crystal Validator | geometry receipt, derived values, certification PDF |
+| Generate printable parts | Phyrll Generator Designer | SCAD, STL (when OpenSCAD is installed), build PDF, receipt JSON |
+| Design coils and pulses | Coil / Pulse Designer | wire estimates, pulse table, sidebands, build PDF |
+| Design an annular ring | Annular Ring Designer | ring diagram, masks, SVG/SCAD, engineering PDF |
+| Use frequency keys | Frequency Key Library | sourced key list, sidebands, key relations |
+| Inspect the research model | Advanced Scientific Workbench | models, sources, experiments, reports, bundles |
+
+Install and launch:
+
+```bash
+python -m pip install -e ".[desktop]"
+rgcs-workbench
+```
+
+Guides: [INSTALL.md](INSTALL.md) ·
+[Design Studio](docs/user/DESIGN_STUDIO.md) ·
+[Crystal Validator](docs/user/CRYSTAL_VALIDATOR.md) ·
+[Phyrll Generator Designer](docs/user/PHYRLL_GENERATOR_DESIGNER.md) ·
+[Coil / Pulse Designer](docs/user/COIL_PULSE_DESIGNER.md) ·
+[Annular Ring Designer](docs/user/ANNULAR_RING_DESIGNER.md)
+
+Every exported sheet carries a claim boundary: designs and estimates are model
+outputs and reproducibility records — they do not by themselves validate any
+anomalous physical effect. Measurements decide.
 
 ---
 
