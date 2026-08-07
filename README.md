@@ -192,6 +192,7 @@ The desktop workbench (`rgcs-workbench`) has two modes:
 | Design coils and pulses | Coil / Pulse Designer | wire estimates, pulse table, sidebands, build PDF |
 | Design an annular ring | Annular Ring Designer | ring diagram, masks, SVG/SCAD, engineering PDF |
 | Use frequency keys | Frequency Key Library | sourced key list, sidebands, key relations |
+| Make binaural / frequency-key audio | Frequency Key Studio | WAV, recipe JSON, session PDF, YouTube metadata sheet |
 | Inspect the research model | Advanced Scientific Workbench | models, sources, experiments, reports, bundles |
 
 Install and launch:
