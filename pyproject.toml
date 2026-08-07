@@ -111,7 +111,7 @@ r1013 = ["data/schemas/*.json", "data/examples/*.json", "data/examples/*.csv", "
 r1011 = ["data/*.csv"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests/unit", "tests/docs", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial", "tests/v4", "tests/v49", "tests/v50", "tests/v51", "tests/v52", "tests/v6", "tests/v8", "tests/cwatlas", "tests/rgcs_coordinate", "tests/rgcs_lab", "rgcs_ardk/tests", "tests/release_cage"]
+testpaths = ["tests/unit", "tests/docs", "tests/release", "tests/property", "tests/golden", "tests/regression", "tests/ui", "tests/integration", "tests/adversarial", "tests/v4", "tests/v49", "tests/v50", "tests/v51", "tests/v52", "tests/v6", "tests/v8", "tests/cwatlas", "tests/rgcs_coordinate", "tests/rgcs_lab", "rgcs_ardk/tests", "tests/release_cage"]
 pythonpath = ["."]
 markers = [
     "slow: long-running tests (dataset regeneration)",

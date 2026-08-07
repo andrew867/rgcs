@@ -24,6 +24,8 @@ block_cipher = None
 
 datas = [
     (str(REPO / "experiments" / "schemas"), "experiments/schemas"),
+    # Design Studio frequency key library
+    (str(REPO / "rgcs_desktop" / "data"), "rgcs_desktop/data"),
     (str(REPO / "docs" / "model_registry.yaml"), "docs"),
     (str(REPO / "docs" / "NOTATION_AND_UNITS.md"), "docs"),
     (str(REPO / "docs" / "SCIENTIFIC_CLASSIFICATION_POLICY.md"), "docs"),

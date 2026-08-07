@@ -43,4 +43,4 @@ enforce this.
 Release builds write a manifest conforming to
 `schemas/release/release_manifest.schema.json`: platform, commit, build
 command, artifact list with SHA-256 per file, and the smoke-check status and
-command. `python -m tools.packaging.release_manifest` generates one.
+command. `python tools/packaging/release_manifest.py` generates one.
