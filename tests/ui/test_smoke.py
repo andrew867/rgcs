@@ -16,6 +16,7 @@ def test_window_opens_and_panels_construct(main_window):
     expected = {"Design Studio", "Crystal Validator",
                 "Phyrll Generator Designer", "Coil / Pulse Designer",
                 "Annular Ring Designer", "Frequency Key Library",
+                "Frequency Key Studio",
                 "Workspace", "Sources", "Specimen editor", "Models",
                 "Compact-mode spectrum", "Avoided crossing",
                 "Coherence analyzer", "Pulse designer", "Experiment builder",

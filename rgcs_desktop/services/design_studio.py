@@ -73,6 +73,13 @@ WORKFLOWS: list[dict] = [
         "outputs": "ring diagram, masks CSV, SCAD, engineering PDF",
     },
     {
+        "key": "frequency_key_studio",
+        "card": "Make binaural / frequency-key audio",
+        "panel": "Frequency Key Studio",
+        "inputs": "carrier or frequency key, beat target, layers",
+        "outputs": "WAV, recipe JSON, session PDF, YouTube sheet",
+    },
+    {
         "key": "frequency_keys",
         "card": "Open Frequency Key Library",
         "panel": "Frequency Key Library",

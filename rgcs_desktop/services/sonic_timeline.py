@@ -169,9 +169,9 @@ def render_session(session: dict,
 def standard_session_shape(beat_hz: float, duration_s: float) -> list[dict]:
     """The companion's standard shape: settle at a gentle start beat,
     ramp to target, hold, return. Durations scale with the session."""
-    if duration_s < 8:
+    if duration_s < 10:
         raise TimelineError("session too short for the standard shape "
-                            "(need >= 8 s)")
+                            "(need >= 10 s)")
     intro = max(2.0, min(60.0, duration_s * 0.05))
     settle = max(2.0, min(180.0, duration_s * 0.10))
     ramp_s = max(2.0, min(300.0, duration_s * 0.15))
