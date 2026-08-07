@@ -50,6 +50,26 @@ first, then the current-practice sections below, then per-generation archives, t
 | [LAB_MANUAL](LAB_MANUAL.md) | working against real hardware |
 | [CONTRIBUTOR_ROADMAP](CONTRIBUTOR_ROADMAP.md) | where help is wanted |
 
+## Start here — Design Studio
+
+The task-first entry points for the desktop workbench (`rgcs-workbench`).
+
+| Task | Document |
+|---|---|
+| Install RGCS | [`../INSTALL.md`](../INSTALL.md) |
+| Launch Design Studio | [user/DESIGN_STUDIO](user/DESIGN_STUDIO.md) |
+| Validate a crystal | [user/CRYSTAL_VALIDATOR](user/CRYSTAL_VALIDATOR.md) |
+| Generate a certification sheet | [user/CERTIFICATION_SHEETS](user/CERTIFICATION_SHEETS.md) |
+| Generate a Phyrll generator holder | [user/PHYRLL_GENERATOR_DESIGNER](user/PHYRLL_GENERATOR_DESIGNER.md) |
+| Design coils and pulse settings | [user/COIL_PULSE_DESIGNER](user/COIL_PULSE_DESIGNER.md) |
+| Design an annular ring prototype | [user/ANNULAR_RING_DESIGNER](user/ANNULAR_RING_DESIGNER.md) |
+| Use frequency keys | [user/FREQUENCY_KEYS](user/FREQUENCY_KEYS.md) |
+| Open Advanced Mode | [user/ADVANCED_MODE](user/ADVANCED_MODE.md) |
+| Packaging (developers) | [developer/PACKAGING](developer/PACKAGING.md) |
+
+Historical guides remain below; the Design Studio user docs are the current
+task-first entry points.
+
 ## Governance
 
 | File | What it is |

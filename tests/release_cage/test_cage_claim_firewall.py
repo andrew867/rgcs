@@ -20,8 +20,11 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 def test_every_banned_phrase_is_detected_in_claim_text(phrase):
     findings = CF.scan_text(f"Our device {phrase} at bench scale.")
     assert findings, f"'{phrase}' escaped the firewall"
-    assert findings[0]["phrase"] == phrase
-    assert findings[0]["reason"]
+    # A longer phrase may ALSO trip a shorter one ("non-human source
+    # authenticated" contains "source authenticated"); order is not
+    # part of the contract, presence is.
+    assert phrase in {f["phrase"] for f in findings}
+    assert all(f["reason"] for f in findings)
 
 
 def test_separator_variants_are_equivalent():

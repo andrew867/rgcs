@@ -1,0 +1,34 @@
+{
+  "saw_convolver_example": {
+    "f1_mhz": 123.0,
+    "f2_mhz": 132.0,
+    "sum_mhz": 255.0,
+    "interaction_length_cm": 1.5,
+    "finger_count_a": 45,
+    "finger_count_b": 44,
+    "reported_gain_db_per_cm": 6.0,
+    "claim_status": "SOURCE_REPORTED_EXAMPLE"
+  },
+  "saw_geometry_ratios": {
+    "overlap_spacing": "lambda/2",
+    "electrode_width": "lambda/4",
+    "electrode_gap": "lambda/4",
+    "strip_width": "lambda/8",
+    "strip_gap": "lambda/8",
+    "claim_status": "SOURCE_REPORTED_GEOMETRY"
+  },
+  "thyr_resonances_thz": [
+    2.0,
+    5.2,
+    7.0,
+    13.4,
+    14.3,
+    16.3
+  ],
+  "thyr_unresolved_feature_thz": "9 to 10",
+  "alpha_quartz_sphp_band_cm1": {
+    "reststrahlen_start": 1040,
+    "reststrahlen_end": 1220,
+    "feature": 1160
+  }
+}

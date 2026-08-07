@@ -76,6 +76,24 @@
       "redirect_status": "NO_REDIRECT",
       "copyright_status_note": "MIT-licensed repository",
       "claim_boundary": "reference record, not a validated claim"
+    },
+    {
+      "record_id": "ARC-0005",
+      "source_type": "PDF_SOURCE",
+      "original_url": "NOT_APPLICABLE",
+      "access_datetime": "2026-08-06T00:00:00Z",
+      "local_datetime": "2026-08-06T12:00:00-04:00",
+      "title": "21-Justin.pdf: surface plasmon polaritons and Raman/SERS dielectric sensitivity",
+      "author_or_channel": "uploaded source, author per document",
+      "capture_method": "uploaded PDF retained in the private archive; hash recorded here",
+      "raw_file_hash": "9fe40926bb43ebef665a9622224b45a4d6f2cc3977a99cd3271acedf8321d156",
+      "rendered_file_hash": "NOT_APPLICABLE",
+      "transcript_hash": "NOT_APPLICABLE",
+      "operator_note_hash": "NOT_APPLICABLE",
+      "repost_status": "ORIGINAL",
+      "redirect_status": "NO_REDIRECT",
+      "copyright_status_note": "academic source retained privately; metadata and hash only in public repo",
+      "claim_boundary": "supports SPP and dielectric-sensitivity physics only; no formation-causality claim"
     }
   ]
 }

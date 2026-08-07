@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "design_id": "CPD-EXAMPLE-001",
+  "source_assembly_id": "PHY-EXAMPLE-001",
+  "wire": {
+    "gauge_awg": 26,
+    "material": "copper"
+  },
+  "coil": {
+    "radius_mm": 25.0,
+    "height_mm": 40.0,
+    "turns": 200,
+    "count": 2
+  },
+  "pulse": {
+    "base_hz": 4096.0,
+    "modulation_key_hz": 925.0,
+    "mode": "am_key",
+    "duty_cycle": 0.5
+  },
+  "limits": {
+    "voltage_v": 45.0,
+    "current_a": 2.0
+  },
+  "classification": "MODEL_OUTPUT"
+}

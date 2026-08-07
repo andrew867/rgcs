@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/annular_ring_design.schema.json",
+  "title": "Design Studio annular ring prototype design",
+  "description": "Annular ring geometry, cell masks, and probe plan. The design records geometry and model outputs; it is not evidence of physical performance until measured.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "design_id",
+    "od_mm",
+    "id_mm",
+    "cell_count",
+    "active_mask",
+    "classification"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^1\\."},
+    "design_id": {"type": "string", "minLength": 1},
+    "od_mm": {"type": "number", "exclusiveMinimum": 0},
+    "id_mm": {"type": "number", "exclusiveMinimum": 0},
+    "cell_count": {"type": "integer", "minimum": 3},
+    "active_mask": {
+      "type": "array",
+      "items": {"type": "boolean"}
+    },
+    "blanked_cells": {
+      "type": "array",
+      "items": {"type": "integer", "minimum": 0}
+    },
+    "probe_plan": {"type": "object"},
+    "drive": {"type": "object"},
+    "material": {"type": "string"},
+    "classification": {"type": "string"},
+    "sha256": {"type": "string"}
+  }
+}

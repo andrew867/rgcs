@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/phyrll_generator_design.schema.json",
+  "title": "Design Studio Phyrll generator holder design",
+  "description": "A custom-fit holder design derived from a validated crystal specimen. All geometry is derived; the design is a model output, not a measurement.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "design_id",
+    "source_specimen_id",
+    "clearance_mm",
+    "holder_geometry",
+    "classification"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^1\\."},
+    "design_id": {"type": "string", "minLength": 1},
+    "source_specimen_id": {"type": "string", "minLength": 1},
+    "clearance_mm": {"type": "number", "minimum": 0},
+    "holder_style": {"type": "string"},
+    "wall_thickness_mm": {"type": "number", "exclusiveMinimum": 0},
+    "base_thickness_mm": {"type": "number", "exclusiveMinimum": 0},
+    "material": {"type": "string"},
+    "holder_geometry": {"type": "object"},
+    "coil_channels": {"type": "object"},
+    "mounting_holes": {"type": "object"},
+    "label_text": {"type": "string"},
+    "exports": {"type": "object"},
+    "classification": {"type": "string"},
+    "sha256": {"type": "string"}
+  }
+}

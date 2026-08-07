@@ -1,0 +1,82 @@
+[
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 160,
+    "frequency_hz": 2699242187.4224997
+  },
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 161,
+    "frequency_hz": 1668223415.6947188
+  },
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 162,
+    "frequency_hz": 1031018771.7277808
+  },
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 163,
+    "frequency_hz": 637204643.9669377
+  },
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 164,
+    "frequency_hz": 393814127.76084316
+  },
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 165,
+    "frequency_hz": 243390516.20609456
+  },
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 166,
+    "frequency_hz": 150423611.55474854
+  },
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 167,
+    "frequency_hz": 92966904.65134601
+  },
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 168,
+    "frequency_hz": 57456706.90340252
+  },
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 169,
+    "frequency_hz": 35510197.74794348
+  },
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 170,
+    "frequency_hz": 21946509.155459046
+  },
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 171,
+    "frequency_hz": 13563688.592484437
+  },
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 172,
+    "frequency_hz": 8382820.562974604
+  },
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 173,
+    "frequency_hz": 5180868.029509833
+  },
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 174,
+    "frequency_hz": 3201952.53346477
+  },
+  {
+    "family": "PHI_PLANCK_TIME",
+    "n": 175,
+    "frequency_hz": 1978915.496045063
+  }
+]

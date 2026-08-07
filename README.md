@@ -24,6 +24,7 @@ ones.**
 | I want to… | Go here |
 |---|---|
 | See something work in 60 seconds | [Map workbench](#map-workbench) ↓ |
+| Validate a crystal, design parts, export build sheets | [RGCS Design Studio](#rgcs-design-studio) ↓ |
 | Model a crystal specimen | [Crystal & resonator lane](#crystal--resonator-physics) ↓ |
 | Understand the typed maths core | [Foundations](#foundations) ↓ |
 | Browse everything | **[Documentation index](docs/README.md)** |
@@ -173,6 +174,46 @@ proxy (B06), no transport bridge (B07).
 
 ---
 
+## RGCS Design Studio
+
+The desktop workbench (`rgcs-workbench`) has two modes:
+
+| Mode | Use it for |
+|---|---|
+| **Design Studio** | guided crystal validation, certification sheets, printable Phyrll generator templates, coil/pulse design, annular ring prototype design |
+| **Advanced Scientific Workbench** | source library, specimen/model editors, experiment builder, comparison views, reports and bundles |
+
+### Start by task
+
+| I want to… | Open | Output |
+|---|---|---|
+| Validate a crystal | Crystal Validator | geometry receipt, derived values, certification PDF |
+| Generate printable parts | Phyrll Generator Designer | SCAD, STL (when OpenSCAD is installed), build PDF, receipt JSON |
+| Design coils and pulses | Coil / Pulse Designer | wire estimates, pulse table, sidebands, build PDF |
+| Design an annular ring | Annular Ring Designer | ring diagram, masks, SVG/SCAD, engineering PDF |
+| Use frequency keys | Frequency Key Library | sourced key list, sidebands, key relations |
+| Inspect the research model | Advanced Scientific Workbench | models, sources, experiments, reports, bundles |
+
+Install and launch:
+
+```bash
+python -m pip install -e ".[desktop]"
+rgcs-workbench
+```
+
+Guides: [INSTALL.md](INSTALL.md) ·
+[Design Studio](docs/user/DESIGN_STUDIO.md) ·
+[Crystal Validator](docs/user/CRYSTAL_VALIDATOR.md) ·
+[Phyrll Generator Designer](docs/user/PHYRLL_GENERATOR_DESIGNER.md) ·
+[Coil / Pulse Designer](docs/user/COIL_PULSE_DESIGNER.md) ·
+[Annular Ring Designer](docs/user/ANNULAR_RING_DESIGNER.md)
+
+Every exported sheet carries a claim boundary: designs and estimates are model
+outputs and reproducibility records — they do not by themselves validate any
+anomalous physical effect. Measurements decide.
+
+---
+
 ## What this project does not claim
 
 **RGCS does not claim that anomalous sources, craft, crop formations, physical
@@ -246,7 +287,10 @@ The suite asserts the boundaries, not just the behaviour: that fitted residuals 
 labelled non-evidential, that nulls travel with the claims they qualify, that no
 document asserts proof, and that every blocker keeps its detail and clearing condition.
 
-**Verification status at the frozen release commit (v8.3.0):**
+**Verification status at v8.4.0 (Design Studio):** 8362 passed, 9 skipped,
+1 deselected, exit 0.
+
+**Verification status at the frozen v8.3.0 release commit:**
 **8129 tests passed**, 15 skipped, 1 deselected, exit 0 (`expect: 8129 passed`);
 proof-bundle checksums **115/115** via `rgcs-v4 verify-checksums`. Counts derive from a
 real pytest run recorded in `docs/v4/RELEASE_METADATA.json` — a document that drifts
@@ -263,11 +307,11 @@ environment-dependent test in the repository.
 ## Release status
 
 ```text
-current release:   v8.3.0
-pending candidate: v1.0.0-rc1 — RGCS V1 Map Workbench
+current release:   v8.4.0 — RGCS Design Studio v1
+workbench RCs:     workbench-v1.0.0-rc1 / -rc2 (pre-releases, shipped)
 ```
 
-Current release: [v8.3.0](https://github.com/andrew867/rgcs/releases/tag/v8.3.0).
+Current release: [v8.4.0](https://github.com/andrew867/rgcs/releases/tag/v8.4.0).
 Frozen history — v2.0.0 (`archive/v2.0.0/`), v3.0.x, v4.0.0, v4.1.x — tags and records
 are never modified. The DOI badge is the latest **minted** DOI (v3.0.1).
 

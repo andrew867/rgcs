@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rgcs://schemas/coil_pulse_design.schema.json",
+  "title": "Design Studio coil and pulse design",
+  "description": "Coil/wire estimates and pulse programme for a generator assembly. Estimates are model outputs from declared formulas, never measurements.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "design_id",
+    "source_assembly_id",
+    "wire",
+    "pulse",
+    "classification"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^1\\."},
+    "design_id": {"type": "string", "minLength": 1},
+    "source_assembly_id": {"type": "string", "minLength": 1},
+    "wire": {"type": "object"},
+    "coil": {"type": "object"},
+    "pulse": {
+      "type": "object",
+      "required": ["base_hz", "modulation_key_hz", "mode"],
+      "properties": {
+        "base_hz": {"type": "number", "exclusiveMinimum": 0},
+        "modulation_key_hz": {"type": "number", "minimum": 0},
+        "mode": {
+          "type": "string",
+          "enum": ["base_4096", "am_key", "pwm_key", "timing_fm_key",
+                   "phase_dither_key", "quadrature_key"]
+        },
+        "duty_cycle": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "phase_mode": {"type": "string"}
+      }
+    },
+    "sidebands": {"type": "array", "items": {"type": "object"}},
+    "estimates": {"type": "object"},
+    "limits": {"type": "object"},
+    "classification": {"type": "string"},
+    "sha256": {"type": "string"}
+  }
+}

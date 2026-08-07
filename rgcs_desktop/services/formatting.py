@@ -18,17 +18,36 @@ CLASSIFICATION_COLORS: dict[str, str] = {
     "Derived": "#1258a8",       # blue
     "Hypothesis": "#b26a00",    # amber
     "Source claim": "#8e24aa",  # purple
+    "Model output": "#455a64",  # slate — Design Studio computed outputs
 }
 
 VALID_LABELS = tuple(CLASSIFICATION_COLORS)
 
+#: Deliberate mapping from repo-wide claim vocabulary to badge labels
+#: (EST/DER/HYP/SRC per docs/CLAIM_REGISTER.md; MODEL_OUTPUT and
+#: MEASURED_INPUT from the phyrll/terra and Design Studio lanes).
+#: Unknown vocabulary no longer silently renders as "Derived".
+_VOCAB_TO_LABEL = {
+    "EST": "Established",
+    "DER": "Derived",
+    "HYP": "Hypothesis",
+    "SRC": "Source claim",
+    "ENG": "Model output",
+    "MODEL_OUTPUT": "Model output",
+    "MEASURED_INPUT": "Established",
+}
+
 
 def classification_label(text: str) -> str:
     """Extract the bare label from a classification string like
-    'Hypothesis H-01 [RGCS-M.13]' or 'Derived [RG-12]'."""
+    'Hypothesis H-01 [RGCS-M.13]', 'Derived [RG-12]', or the repo-wide
+    tag vocabulary ('MODEL_OUTPUT', 'EST', ...)."""
     for label in VALID_LABELS:
         if text.startswith(label):
             return label
+    token = text.split()[0].strip("[](),") if text.strip() else ""
+    if token in _VOCAB_TO_LABEL:
+        return _VOCAB_TO_LABEL[token]
     return "Source claim" if "source" in text.lower() else "Derived"
 
 

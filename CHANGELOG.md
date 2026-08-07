@@ -3,6 +3,51 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [8.4.0] - 2026-08-07
+
+**RGCS Design Studio v1** (tag `v8.4.0`). The desktop workbench gains a
+guided, task-first Design Studio mode over the existing Advanced
+Scientific Workbench (all research panels preserved).
+
+- Design Studio home with task cards; opens by default; Advanced Mode
+  one click away.
+- Crystal Validator: schema + semantic validation of measured
+  specimens (uncertainty required), derived geometry, labelled SVG
+  diagram, certification-sheet PDF with receipt hash and claim
+  boundary.
+- Phyrll Generator Designer: holder geometry derived from the selected
+  validated specimen (cavity = specimen + 2×clearance), deterministic
+  SCAD export, STL via external OpenSCAD when installed, build-sheet
+  PDF with print settings.
+- Coil / Pulse Designer: wire length and resistance estimates from
+  declared formulas, six pulse modes with duty validation, exact
+  sideband arithmetic (4096 ± 925 = 3171 / 5021; 4096 ± 1337 =
+  2759 / 5433; 4096 ± 963.026 = 3132.974 / 5059.026), build sheet.
+- Annular Ring Designer: exact-closure cell geometry (default 37-cell
+  288/188 mm fixture, 33 active / 4 blanked), mask validation, probe
+  plan, ring SVG/SCAD, phase-map and mask CSVs, engineering sheet.
+- Frequency Key Library: 17 keys as sourced/candidate/mathematical
+  records loaded from a packaged data file; custom keys allowed only
+  with an explicit custom status and warning.
+- Four new JSON schemas (major 1) registered in the shared
+  experiments/schemas registry with example templates.
+- Export receipts (input/output hashes, git commit, claim boundary),
+  bundle MANIFEST + CHECKSUMS with verification, dependency-free
+  pure-Python PDF writer (text-extractable; no NaN can reach a sheet;
+  unavailable estimates say "unavailable", never zero).
+- Docs: INSTALL.md, task-first user docs under docs/user/, developer
+  packaging guide, README Design Studio section, docs-index section.
+- Installers: scripts/install_linux.sh (+ launcher, install receipt),
+  tools/packaging/windows/build_windows.ps1 reusing the existing
+  PyInstaller spec, release-manifest schema + generator.
+- Tests: suite grows to 8362 passed / 9 skipped / 1 deselected
+  (D-V3-04); new unit, integration, UI-navigation, docs, and
+  packaging suites; tests/docs and tests/release added to the default
+  pytest gate.
+- Claim boundary: every exported sheet states that designs and
+  estimates are model outputs and reproducibility records — none of
+  them validates an anomalous physical effect. Measurements decide.
+
 ## [workbench-1.0.0-rc2] - 2026-08-05
 
 **RGCS Workbench Public RC2** (tag `workbench-v1.0.0-rc2`). RC1 plus

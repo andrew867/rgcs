@@ -1,0 +1,143 @@
+{
+  "spine": "RGCS_CANDIDATE_PHYSICS_SPINE",
+  "imported_at": "2026-08-06",
+  "import_note": "Candidate physics spine as public research infrastructure. Every lane is a simulation and measurement target with conventional anchors. No lane advances a physical claim.",
+  "approved_observables": [
+    "S11", "S21", "S-parameters", "sidebands", "nonreciprocity",
+    "delta_B_phase", "near-field delta-B vector", "thermal map",
+    "vibration map", "phonon map", "optical phase shift",
+    "particle redistribution", "ringdown", "impedance"
+  ],
+  "entries": [
+    {
+      "id": "PS-001",
+      "lane": "PHASE_AUTHORITY",
+      "source_class": "RGCS_DERIVED_MATH",
+      "external_anchor": "internal frequency plan; 4096 Hz supervisory base",
+      "rgcs_operator": "supervisory clock tree: 4096 Hz base; 20480 and 40960 Hz crystal burst controls; 1683456 Hz annular external resonance candidate; 13183593.75 Hz carrier candidate",
+      "variables": ["f_base_hz", "f_burst_hz", "f_annular_hz", "f_carrier_hz"],
+      "observables": ["S-parameters", "sidebands"],
+      "controls": ["clock-source swap", "frequency-plan scramble null"],
+      "forbidden_claims": ["validated thrust", "free energy"],
+      "bench_priority": 1,
+      "public_status": "PUBLIC_RESEARCH"
+    },
+    {
+      "id": "PS-002",
+      "lane": "PHONON_ENGINE",
+      "source_class": "EXTERNAL_TECH_ANCHOR",
+      "external_anchor": "US7894125B2; WO2021069873A1; arXiv:1905.13252",
+      "rgcs_operator": "u(x,t) = sum_n q_n(t) psi_n(x); acoustic modulation converts omega_out = omega_in +/- m*Omega_phonon and k_out = k_in +/- m*K_phonon",
+      "variables": ["q_n", "Omega_phonon", "K_phonon", "m"],
+      "observables": ["sidebands", "optical phase shift", "vibration map", "ringdown"],
+      "controls": ["dummy crystal", "fixture reversal", "sensor reversal", "equal-power randomized-phase heating null"],
+      "forbidden_claims": ["free energy"],
+      "bench_priority": 1,
+      "public_status": "PUBLIC_RESEARCH"
+    },
+    {
+      "id": "PS-003",
+      "lane": "TIME_VARYING_BOUNDARY",
+      "source_class": "EXTERNAL_TECH_ANCHOR",
+      "external_anchor": "Nature Communications s41467-024-51171-6; Nature Photonics s41566-018-0259-4",
+      "rgcs_operator": "boundary state B(t) in {open, shorted, capacitive, resistive, driven, lossy, clamped, released}; parameter change during wave interaction yields partial reflection, transmission, sidebands, and mode mixing; switching work supplies or removes the energy",
+      "variables": ["B(t)", "switch_time", "switch_work_J"],
+      "observables": ["sidebands", "S-parameters", "ringdown"],
+      "controls": ["static-boundary null", "switch-outside-packet null", "thermal blank"],
+      "forbidden_claims": ["free energy", "DCE power source"],
+      "bench_priority": 1,
+      "public_status": "PUBLIC_RESEARCH"
+    },
+    {
+      "id": "PS-004",
+      "lane": "SPATIOTEMPORAL_RING",
+      "source_class": "PATENT_ANCHOR",
+      "external_anchor": "US9405136B2; Nature Physics nphys3134; ACS Photonics ph400058y; US7561759B2",
+      "rgcs_operator": "37 cells, theta_k = 2*pi*k/37; X_k(t) = X_0 + dX cos(m theta_k - Omega t + phi_0) for X in {Z, C, L, R}; stationary hardware, synthetic angular-momentum bias, no mechanical rotation",
+      "variables": ["k", "theta_k", "m", "Omega", "phi_0", "dX"],
+      "observables": ["S-parameters", "nonreciprocity", "sidebands", "near-field delta-B vector"],
+      "controls": ["all-active mask", "mirrored mask", "reversed phase progression", "nonmagnetic ring", "Helmholtz null"],
+      "forbidden_claims": ["validated thrust"],
+      "bench_priority": 1,
+      "public_status": "PUBLIC_RESEARCH"
+    },
+    {
+      "id": "PS-005",
+      "lane": "APERTURE_STEERING",
+      "source_class": "RGCS_DERIVED_MATH",
+      "external_anchor": "US7561759B2 tunable-loss ring lane",
+      "rgcs_operator": "occupancy masks: 35/37 running, 33 active steering; open, loaded, and lossy sectors redirect the guided field; commanded direction is arg of the effective cell weighting",
+      "variables": ["mask", "open_sector", "d_eff"],
+      "observables": ["near-field delta-B vector", "thermal map", "S-parameters"],
+      "controls": ["all-active mask", "mirrored mask", "sector-rotation shift check"],
+      "forbidden_claims": ["validated thrust"],
+      "bench_priority": 1,
+      "public_status": "PUBLIC_RESEARCH"
+    },
+    {
+      "id": "PS-006",
+      "lane": "SLOW_WAVE_SURFACE_MODE",
+      "source_class": "RGCS_DERIVED_MATH",
+      "external_anchor": "loaded-line, metasurface, SAW, and spoof-SPP literature lanes",
+      "rgcs_operator": "one guided period per sector at 1683456 Hz implies phase velocity near 41000 m/s, far below c; candidate mode is LC, metasurface, SAW, or acoustic-loaded",
+      "variables": ["v_phase", "sector_pitch", "f_external"],
+      "observables": ["S-parameters", "impedance", "near-field delta-B vector"],
+      "controls": ["cable reroute", "acoustic isolation", "magnetic background record"],
+      "forbidden_claims": ["validated thrust"],
+      "bench_priority": 2,
+      "public_status": "PUBLIC_RESEARCH"
+    },
+    {
+      "id": "PS-007",
+      "lane": "PLASMA_RESIDUE",
+      "source_class": "PATENT_ANCHOR",
+      "external_anchor": "US12028960B2",
+      "rgcs_operator": "particulate or magnetite redistribution under a commanded rotating field as a conventional signature lane; near-term test is redistribution, not lift",
+      "variables": ["field_rotation_hz", "particle_size", "substrate"],
+      "observables": ["particle redistribution", "near-field delta-B vector", "thermal map"],
+      "controls": ["static-field null", "no-field blank", "vibration blank"],
+      "forbidden_claims": ["validated thrust", "crop circle authorship proven"],
+      "bench_priority": 2,
+      "public_status": "PUBLIC_RESEARCH"
+    },
+    {
+      "id": "PS-008",
+      "lane": "DCE_ANALOGY",
+      "source_class": "EXTERNAL_TECH_ANCHOR",
+      "external_anchor": "Nature 479 376-379 superconducting-circuit dynamical Casimir effect",
+      "rgcs_operator": "rapid electrical-length modulation as a high-frequency boundary-condition analogy; informs the time-varying boundary lane conceptually",
+      "variables": ["L_eff(t)"],
+      "observables": ["sidebands"],
+      "controls": ["not applicable; analogy lane, no bench plan"],
+      "forbidden_claims": ["DCE power source", "free energy"],
+      "bench_priority": 0,
+      "public_status": "LONG_TERM_ANALOGY_ONLY"
+    },
+    {
+      "id": "PS-009",
+      "lane": "POSITRON_LANE",
+      "source_class": "EXTERNAL_TECH_ANCHOR",
+      "external_anchor": "US5617443A; CERN AEgIS positronium laser cooling",
+      "rgcs_operator": "positronium coherence research context only; conceptual long-term reading lane for gamma-coherence literature",
+      "variables": [],
+      "observables": [],
+      "controls": ["not applicable; no bench use, no hardware path"],
+      "forbidden_claims": ["positron bench device"],
+      "bench_priority": 0,
+      "public_status": "LONG_TERM_ANALOGY_ONLY"
+    },
+    {
+      "id": "PS-010",
+      "lane": "CONTRACTOR_RESEARCH_MAP",
+      "source_class": "SOURCE_REPORTED_CLAIM",
+      "external_anchor": "NTIS PB97123947; US3207947A; US2933647A; JT4 public site",
+      "rgcs_operator": "research graph: principle to patent to contractor capability to range programme to public procurement traces; a research map, never proof",
+      "variables": ["entity", "contract", "period"],
+      "observables": [],
+      "controls": ["source-quality scoring", "primary-document requirement"],
+      "forbidden_claims": ["external source proven", "non-human source authenticated"],
+      "bench_priority": 3,
+      "public_status": "PUBLIC_RESEARCH"
+    }
+  ]
+}

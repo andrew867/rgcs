@@ -36,6 +36,14 @@ BANNED_PHRASES = (
     "wall-power thrust",
     "wall-power force",
     "N/W output validated",
+    # RC2 physics-spine additions (2026-08-06 pack).
+    "validated thrust",
+    "external source proven",
+    "non-human source authenticated",
+    "crop circle authorship proven",
+    "positron bench device",
+    "DCE power source",
+    "CIA has the magic file",
 )
 
 #: A banned phrase near one of these (same line or a few lines above)
@@ -69,6 +77,13 @@ ALLOWED_CONTEXT_MARKERS = (
     "not a ",
     "nothing physical",
     "attack",
+    # RC2 physics-spine refusal shapes: forbidden-claims lists in the
+    # spine entries, analogy-only lane statements, and claim-boundary
+    # ledger fields ("claim_boundary": "No free energy claim").
+    "forbidden",
+    "analogy",
+    "claim_bound",
+    "claim bound",
 )
 
 #: Lines that begin with an explicit negation are refusal sentences.
@@ -179,6 +194,7 @@ def cage_public_surface(root: str | pathlib.Path) -> list[pathlib.Path]:
     cage = root / "rgcs_workbench" / "public_cage"
     surface.extend(sorted(cage.glob("*.py")))
     surface.extend(sorted(cage.glob("*.json")))
+    surface.extend(sorted(cage.glob("*.csv")))
     return [p for p in surface if p.is_file()]
 
 

@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "design_id": "PHY-BASIC-001",
+  "source_specimen_id": "CRY-NODES-001",
+  "clearance_mm": 0.4,
+  "holder_style": "cradle",
+  "wall_thickness_mm": 3.0,
+  "base_thickness_mm": 4.0,
+  "material": "PLA",
+  "holder_geometry": {},
+  "coil_channels": {
+    "enabled": true,
+    "width_mm": 2.0,
+    "depth_mm": 1.5
+  },
+  "label_text": "PHY-BASIC-001",
+  "classification": "MODEL_OUTPUT"
+}
