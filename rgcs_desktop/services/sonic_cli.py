@@ -28,6 +28,14 @@ def main(argv: list[str] | None = None) -> int:
                        help="recipe ids (default: all)")
     batch.add_argument("--duration", type=float, default=None)
     batch.add_argument("--out", type=Path, default=Path("."))
+    rfile = sub.add_parser(
+        "render-file",
+        help="render an imported frequency_session JSON file")
+    rfile.add_argument("session_file", type=Path)
+    rfile.add_argument("--duration", type=float, default=None,
+                       help="override duration in seconds (regenerates "
+                            "the standard timeline shape)")
+    rfile.add_argument("--out", type=Path, default=Path("."))
     args = ap.parse_args(argv)
 
     from rgcs_desktop.services.sonic_recipes import (RecipeError,
@@ -64,19 +72,37 @@ def main(argv: list[str] | None = None) -> int:
               f"{len(manifest['results'])} rendered -> {args.out}")
         return 1 if failed else 0
 
-    # render
+    # render / render-file
     from rgcs_desktop.services.sonic_exports import (
         export_bundle, export_recipe_json, export_session_pdf,
         export_youtube_metadata_sheet, render_session_wav, verify_bundle)
-    try:
-        recipe = recipe_by_id(args.recipe_id)
-        session = recipe_to_session(recipe, duration_s=args.duration)
-    except RecipeError as exc:
-        print(f"refused: {exc}", file=sys.stderr)
-        return 1
+    if args.command == "render-file":
+        import json
+        from rgcs_desktop.services.schemas import validate_instance
+        try:
+            session = json.loads(
+                args.session_file.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            print(f"cannot read session file: {exc}", file=sys.stderr)
+            return 1
+        errors = validate_instance(session,
+                                   "frequency_session.schema.json")
+        if errors:
+            print("session file invalid:", file=sys.stderr)
+            for err in errors[:8]:
+                print(f"  {err}", file=sys.stderr)
+            return 1
+        stem = session.get("session_id", args.session_file.stem)
+    else:
+        try:
+            recipe = recipe_by_id(args.recipe_id)
+            session = recipe_to_session(recipe, duration_s=args.duration)
+        except RecipeError as exc:
+            print(f"refused: {exc}", file=sys.stderr)
+            return 1
+        stem = recipe["recipe_id"]
     out = args.out
     out.mkdir(parents=True, exist_ok=True)
-    stem = recipe["recipe_id"]
     wav = out / f"{stem}.wav"
     receipt = render_session_wav(session, wav,
                                  duration_s=args.duration)

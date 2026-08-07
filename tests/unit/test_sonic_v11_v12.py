@@ -217,3 +217,26 @@ def test_recommend_recipes_by_frequency_and_use():
     ranked2 = recommend_recipes(schumann)
     ids = [r["recipe"]["recipe_id"] for r in ranked2]
     assert ids and set(ids) <= {"RGCS-SCH-0001", "RGCS-FKY-0925"}
+
+
+def test_render_file_cli_imports_session(tmp_path):
+    """rgcs-sonic render-file renders an imported frequency_session
+    JSON (the shipped sample) and refuses invalid files with reasons."""
+    sample = ROOT / "examples" / "sonic" / "binaural_session_sample.json"
+    proc = subprocess.run(
+        [sys.executable, "-m", "rgcs_desktop.services.sonic_cli",
+         "render-file", str(sample), "--duration", "12",
+         "--out", str(tmp_path)],
+        capture_output=True, text=True, timeout=300, cwd=ROOT)
+    assert proc.returncode == 0, proc.stderr
+    assert (tmp_path / "SES-SAMPLE-IMPORT.wav").is_file()
+    assert (tmp_path / "SES-SAMPLE-IMPORT_bundle.zip").is_file()
+
+    bad = tmp_path / "bad.json"
+    bad.write_text('{"schema_version": "1.0.0"}', encoding="utf-8")
+    proc2 = subprocess.run(
+        [sys.executable, "-m", "rgcs_desktop.services.sonic_cli",
+         "render-file", str(bad), "--out", str(tmp_path)],
+        capture_output=True, text=True, timeout=120, cwd=ROOT)
+    assert proc2.returncode == 1
+    assert "invalid" in proc2.stderr

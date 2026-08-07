@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "session_id": "SES-SAMPLE-IMPORT",
+  "title": "Sample importable binaural session (925 Hz / Schumann ramp)",
+  "intent": "importable frequency-waveform sample for Frequency Key Studio",
+  "family": "binaural",
+  "duration_s": 1200.0,
+  "sample_rate": 48000,
+  "segments": [
+    {"kind": "intro", "duration_s": 60.0,
+     "beat_start_hz": 10.0, "beat_end_hz": 10.0, "curve": "linear"},
+    {"kind": "relax", "duration_s": 120.0,
+     "beat_start_hz": 10.0, "beat_end_hz": 10.0, "curve": "linear"},
+    {"kind": "ramp_down", "duration_s": 180.0,
+     "beat_start_hz": 10.0, "beat_end_hz": 7.83, "curve": "cosine"},
+    {"kind": "hold", "duration_s": 240.0,
+     "beat_start_hz": 7.83, "beat_end_hz": 7.83, "curve": "linear"},
+    {"kind": "ramp_down", "duration_s": 120.0,
+     "beat_start_hz": 7.83, "beat_end_hz": 4.0, "curve": "cosine"},
+    {"kind": "exploration", "duration_s": 240.0,
+     "beat_start_hz": 4.0, "beat_end_hz": 4.0, "curve": "linear"},
+    {"kind": "ramp_up", "duration_s": 120.0,
+     "beat_start_hz": 4.0, "beat_end_hz": 7.83, "curve": "cosine"},
+    {"kind": "outro", "duration_s": 120.0,
+     "beat_start_hz": 7.83, "beat_end_hz": 7.83, "curve": "linear"}
+  ],
+  "layers": [
+    {"layer_id": "L1", "type": "binaural", "carrier_hz": 925.0,
+     "beat_hz": 7.83, "gain_db": -6.0, "pan": 0.0,
+     "fade_in_s": 4.0, "fade_out_s": 6.0},
+    {"layer_id": "L2", "type": "binaural", "carrier_hz": 200.0,
+     "beat_hz": 7.83, "gain_db": -12.0, "pan": 0.0,
+     "fade_in_s": 4.0, "fade_out_s": 6.0},
+    {"layer_id": "N1", "type": "pink_noise", "gain_db": -18.0,
+     "pan": 0.0, "seed": 7, "fade_in_s": 4.0, "fade_out_s": 6.0},
+    {"layer_id": "N2", "type": "surf_noise", "gain_db": -20.0,
+     "pan": 0.0, "seed": 11, "fade_in_s": 6.0, "fade_out_s": 6.0}
+  ],
+  "loudness": {"target_rms_db": -20.0},
+  "notes": "Experimental audio recipe. Use comfortable volume. Use stereo headphones for binaural layers. Results vary. Edit any number in this file and re-render: rgcs-sonic render-file examples/sonic/binaural_session_sample.json --out exports/ (add --duration 30 for a quick preview; the standard shape is regenerated to fit). The beat ramp here runs 10 -> 7.83 -> 4 -> 7.83 Hz over 20 minutes on a 925 Hz + 200 Hz dual carrier.",
+  "source_ids": ["RGCS"]
+}
