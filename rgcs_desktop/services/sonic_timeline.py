@@ -122,13 +122,38 @@ _NOISE_FNS = {
 }
 
 
+def _render_file_layer(layer: dict, duration_s: float,
+                       sample_rate: int) -> np.ndarray:
+    """voice_cue / music_bed from a WAV file, resampled to the session
+    rate and placed at layer['start_s'] (default 0), truncated/padded
+    to the session length."""
+    path = layer.get("file")
+    if not path:
+        raise TimelineError(
+            f"layer {layer.get('layer_id')} ({layer.get('type')}) has "
+            f"no file — attach a WAV or remove the layer")
+    audio, src_rate = sonic_audio.load_wav(path)
+    audio = sonic_audio.resample_linear(audio, src_rate, sample_rate)
+    n_total = int(round(duration_s * sample_rate))
+    start = int(round(float(layer.get("start_s", 0.0)) * sample_rate))
+    if start < 0:
+        raise TimelineError("layer start_s must be >= 0")
+    out = np.zeros((n_total, 2), dtype=np.float32)
+    end = min(n_total, start + audio.shape[0])
+    if start < n_total:
+        out[start:end] = audio[:end - start]
+    return out
+
+
 def render_session(session: dict,
                    sample_rate: int | None = None) -> tuple[np.ndarray, dict]:
     """Render a full session to stereo float32 + mix stats.
 
-    music_bed / voice_cue layers with no file are skipped and listed in
-    stats["skipped_layers"] (import is a v1.1 feature) — a stated
-    absence, never a silent one.
+    voice_cue / music_bed layers render from their WAV file when one is
+    attached; a file layer without a file is skipped and listed in
+    stats["skipped_layers"] — a stated absence, never a silent one.
+    Optional session["loudness"]["target_rms_db"] applies RMS
+    normalization after the mix (peak-capped; recorded in stats).
     """
     sample_rate = int(sample_rate or session.get("sample_rate",
                                                  DEFAULT_SAMPLE_RATE))
@@ -149,9 +174,13 @@ def render_session(session: dict,
             entry["audio"] = _NOISE_FNS[kind](duration_s, sample_rate,
                                               layer.get("seed", 0))
         elif kind in ("music_bed", "voice_cue"):
-            skipped.append(f"{layer.get('layer_id')} ({kind}: file "
-                           f"import is a v1.1 feature)")
-            continue
+            if layer.get("file"):
+                entry["audio"] = _render_file_layer(layer, duration_s,
+                                                    sample_rate)
+            else:
+                skipped.append(f"{layer.get('layer_id')} ({kind}: no "
+                               f"file attached)")
+                continue
         else:
             raise TimelineError(f"unknown layer type {kind!r}")
         rendered.append(entry)
@@ -160,6 +189,14 @@ def render_session(session: dict,
         raise TimelineError("session has no renderable layers")
     audio, stats = sonic_audio.mix_layers(rendered, duration_s,
                                           sample_rate)
+    loudness = (session.get("loudness") or {}).get("target_rms_db")
+    if loudness is not None:
+        audio, norm = sonic_audio.normalize_rms(audio, float(loudness))
+        stats["peak"] = sonic_audio.peak(audio)
+        stats["rms"] = sonic_audio.rms(audio)
+        stats["loudness_target_rms_db"] = float(loudness)
+        stats["loudness_gain_db"] = norm["gain_db"]
+        stats["loudness_peak_limited"] = norm["peak_limited"]
     stats["skipped_layers"] = skipped
     stats["beat_start_hz"] = float(env[0]) if env.size else None
     stats["beat_end_hz"] = float(env[-1]) if env.size else None

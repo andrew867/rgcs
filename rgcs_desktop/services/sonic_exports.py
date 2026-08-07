@@ -209,3 +209,43 @@ def verify_bundle(out_zip: Path) -> dict:
                 mismatched.append(name)
     return {"ok": not mismatched, "n_members": len(manifest.get("files", {})),
             "mismatched": mismatched}
+
+
+# ---------------------------------------------------- v1.1 batch render
+
+def batch_render(recipe_ids: list[str], out_dir: Path,
+                 duration_s: float | None = None) -> dict:
+    """Render several seed recipes in one pass. Per-recipe failures are
+    recorded, never silently dropped; a batch manifest with checksums
+    lands beside the renders."""
+    from rgcs_desktop.services.sonic_recipes import (RecipeError,
+                                                     recipe_by_id,
+                                                     recipe_to_session)
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    results = []
+    for recipe_id in recipe_ids:
+        try:
+            recipe = recipe_by_id(recipe_id)
+            session = recipe_to_session(recipe, duration_s=duration_s)
+            wav = out_dir / f"{recipe_id}.wav"
+            receipt = render_session_wav(session, wav,
+                                         duration_s=duration_s)
+            results.append({"recipe_id": recipe_id, "status": "rendered",
+                            "wav": wav.name,
+                            "sha256": receipt["output_sha256"],
+                            "peak": receipt["peak"],
+                            "rms": receipt["rms"]})
+        except (RecipeError, Exception) as exc:  # noqa: BLE001
+            results.append({"recipe_id": recipe_id, "status": "failed",
+                            "error": str(exc)})
+    manifest = {
+        "batch_kind": "frequency_key_studio_batch",
+        "software": software_versions(),
+        "results": results,
+        "generated_utc": _dt.datetime.now(_dt.timezone.utc)
+                            .isoformat(timespec="seconds"),
+    }
+    (out_dir / "batch_manifest.json").write_text(
+        json_dumps(manifest, indent=2, sort_keys=True), encoding="utf-8")
+    return manifest

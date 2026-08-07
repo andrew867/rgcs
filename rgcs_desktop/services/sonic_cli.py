@@ -23,6 +23,11 @@ def main(argv: list[str] | None = None) -> int:
                         help="override duration in seconds")
     render.add_argument("--out", type=Path, default=Path("."),
                         help="output directory")
+    batch = sub.add_parser("batch", help="render several seed recipes")
+    batch.add_argument("recipe_ids", nargs="*",
+                       help="recipe ids (default: all)")
+    batch.add_argument("--duration", type=float, default=None)
+    batch.add_argument("--out", type=Path, default=Path("."))
     args = ap.parse_args(argv)
 
     from rgcs_desktop.services.sonic_recipes import (RecipeError,
@@ -42,6 +47,22 @@ def main(argv: list[str] | None = None) -> int:
             print(f"{beat['hz']:g} Hz — {beat['label']} "
                   f"[{beat['status']}]: {beat['use']}")
         return 0
+    if args.command == "batch":
+        from rgcs_desktop.services.sonic_exports import batch_render
+        ids = args.recipe_ids or [r["recipe_id"] for r in load_recipes()]
+        manifest = batch_render(ids, args.out, duration_s=args.duration)
+        failed = [r for r in manifest["results"]
+                  if r["status"] != "rendered"]
+        for result in manifest["results"]:
+            if result["status"] == "rendered":
+                print(f"{result['recipe_id']}: {result['wav']} "
+                      f"(peak {result['peak']:.3f})")
+            else:
+                print(f"{result['recipe_id']}: FAILED — "
+                      f"{result['error']}", file=sys.stderr)
+        print(f"batch: {len(manifest['results']) - len(failed)}/"
+              f"{len(manifest['results'])} rendered -> {args.out}")
+        return 1 if failed else 0
 
     # render
     from rgcs_desktop.services.sonic_exports import (

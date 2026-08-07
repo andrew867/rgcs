@@ -273,3 +273,116 @@ def read_wav_info(path: str | Path) -> dict:
                 "frames": wf.getnframes()}
     info["duration_s"] = info["frames"] / info["sample_rate"]
     return info
+
+
+# ---------------------------------------------------- v1.1 additions
+
+def load_wav(path: str | Path) -> tuple[np.ndarray, int]:
+    """Read a 16/24/32-bit PCM WAV into stereo float32 (n, 2) + rate.
+
+    For voice-cue and music-bed imports. Refuses compressed or float
+    formats with a stated reason instead of importing garbage."""
+    path = Path(path)
+    with wave.open(str(path), "rb") as wf:
+        channels = wf.getnchannels()
+        width = wf.getsampwidth()
+        rate = wf.getframerate()
+        frames = wf.readframes(wf.getnframes())
+    if width == 2:
+        data = np.frombuffer(frames, dtype="<i2").astype(np.float32)
+        data /= 32768.0
+    elif width == 4:
+        data = np.frombuffer(frames, dtype="<i4").astype(np.float32)
+        data /= 2147483648.0
+    elif width == 3:
+        raw = np.frombuffer(frames, dtype=np.uint8).reshape(-1, 3)
+        ints = (raw[:, 0].astype(np.int32)
+                | (raw[:, 1].astype(np.int32) << 8)
+                | (raw[:, 2].astype(np.int32) << 16))
+        ints = np.where(ints >= 1 << 23, ints - (1 << 24), ints)
+        data = ints.astype(np.float32) / float(1 << 23)
+    else:
+        raise AudioError(f"unsupported WAV sample width {width} bytes "
+                         f"in {path.name} (16/24/32-bit PCM only)")
+    if channels == 1:
+        stereo = np.stack([data, data], axis=1)
+    elif channels == 2:
+        stereo = data.reshape(-1, 2)
+    else:
+        raise AudioError(f"{path.name} has {channels} channels; only "
+                         f"mono/stereo imports are supported")
+    return stereo, rate
+
+
+def resample_linear(audio: np.ndarray, src_rate: int,
+                    dst_rate: int) -> np.ndarray:
+    """Linear-interpolation resample (adequate for voice cues and
+    ambient beds; not a mastering-grade resampler and labelled so)."""
+    if src_rate == dst_rate:
+        return audio.astype(np.float32)
+    stereo = _to_stereo(np.asarray(audio, dtype=np.float32))
+    n_src = stereo.shape[0]
+    n_dst = int(round(n_src * dst_rate / src_rate))
+    x_src = np.arange(n_src, dtype=np.float64)
+    x_dst = np.linspace(0.0, n_src - 1, n_dst)
+    out = np.stack([np.interp(x_dst, x_src, stereo[:, ch])
+                    for ch in range(2)], axis=1)
+    return out.astype(np.float32)
+
+
+def normalize_rms(audio: np.ndarray, target_rms_db: float) -> tuple[np.ndarray, dict]:
+    """Loudness-normalize to a target RMS (dBFS), capped so the peak
+    never exceeds PEAK_CEILING. Returns (audio, stats) where stats
+    records the applied gain and whether the peak cap limited it."""
+    if target_rms_db > 0:
+        raise AudioError(f"target RMS must be <= 0 dBFS, got "
+                         f"{target_rms_db}")
+    current = rms(audio)
+    if current <= 0:
+        return audio.astype(np.float32), {"gain_db": 0.0,
+                                          "peak_limited": False}
+    target = 10.0 ** (target_rms_db / 20.0)
+    gain = target / current
+    out = audio.astype(np.float64) * gain
+    peak_limited = False
+    out_peak = peak(out)
+    if out_peak > PEAK_CEILING:
+        out *= PEAK_CEILING / out_peak
+        gain *= PEAK_CEILING / out_peak
+        peak_limited = True
+    return out.astype(np.float32), {
+        "gain_db": float(20.0 * np.log10(max(gain, 1e-12))),
+        "peak_limited": peak_limited}
+
+
+def multi_carrier_layers(carriers_hz: list[float], beat_hz: float,
+                         gain_db: float = -9.0) -> list[dict]:
+    """Layer dicts for a multi-carrier binaural stack (each carrier
+    gets the same beat; gain leaves headroom for the mixer)."""
+    if not carriers_hz:
+        raise AudioError("need at least one carrier")
+    return [{"layer_id": f"C{i + 1}", "type": "binaural",
+             "carrier_hz": float(c), "beat_hz": float(beat_hz),
+             "gain_db": gain_db, "fade_in_s": 2.0, "fade_out_s": 3.0}
+            for i, c in enumerate(carriers_hz)]
+
+
+def spectrogram(audio: np.ndarray, sample_rate: int = DEFAULT_SAMPLE_RATE,
+                frame: int = 2048, hop: int = 512) -> dict:
+    """Magnitude spectrogram (dB) of the mono mix of ``audio``.
+
+    Returns {db: 2-D array [n_frames, n_bins], freqs_hz, times_s}."""
+    stereo = _to_stereo(np.asarray(audio, dtype=np.float32))
+    mono = stereo.mean(axis=1).astype(np.float64)
+    if len(mono) < frame:
+        raise AudioError(f"audio too short for a {frame}-sample frame")
+    window = np.hanning(frame)
+    n_frames = 1 + (len(mono) - frame) // hop
+    mags = np.empty((n_frames, frame // 2 + 1))
+    for i in range(n_frames):
+        seg = mono[i * hop:i * hop + frame] * window
+        mags[i] = np.abs(np.fft.rfft(seg))
+    db = 20.0 * np.log10(np.maximum(mags, 1e-9))
+    return {"db": db,
+            "freqs_hz": np.fft.rfftfreq(frame, 1.0 / sample_rate),
+            "times_s": np.arange(n_frames) * hop / sample_rate}

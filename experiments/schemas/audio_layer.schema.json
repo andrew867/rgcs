@@ -20,6 +20,7 @@
     "fade_in_s": {"type": "number", "minimum": 0},
     "fade_out_s": {"type": "number", "minimum": 0},
     "seed": {"type": "integer", "minimum": 0},
-    "file": {"type": "string"}
+    "file": {"type": "string"},
+    "start_s": {"type": "number", "minimum": 0}
   }
 }
