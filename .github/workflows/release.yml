@@ -27,14 +27,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-tags: true
       - name: Create the release if it does not exist
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # NOTE: gh refuses --notes-from-tag combined with --repo; the
-        # checked-out repository provides the context instead.
+        # NOTES: gh refuses --notes-from-tag combined with --repo, so
+        # the checked-out repo provides context. checkout's fetch-tags
+        # conflicts with the triggering tag ref on tag events
+        # (actions/checkout#1467) and leaves only a lightweight local
+        # tag — force-fetch the real annotated tag object so
+        # --notes-from-tag reads the tag message.
         run: |
+          git fetch origin --no-tags --force \
+            "+refs/tags/$GITHUB_REF_NAME:refs/tags/$GITHUB_REF_NAME"
           gh release view "$GITHUB_REF_NAME" \
             || gh release create "$GITHUB_REF_NAME" --verify-tag \
                  --title "RGCS $GITHUB_REF_NAME" --notes-from-tag
