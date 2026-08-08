@@ -308,11 +308,11 @@ environment-dependent test in the repository.
 ## Release status
 
 ```text
-current release:   v8.5.1 — wobbles, lattice coils, automated release builds
+current release:   v8.5.2 — Frequency Studio CRUD, curated AHA/Halo library, workspace lifecycle
 workbench RCs:     workbench-v1.0.0-rc1 / -rc2 (pre-releases, shipped)
 ```
 
-Current release: [v8.5.1](https://github.com/andrew867/rgcs/releases/tag/v8.5.1).
+Current release: [v8.5.2](https://github.com/andrew867/rgcs/releases/tag/v8.5.2).
 Frozen history — v2.0.0 (`archive/v2.0.0/`), v3.0.x, v4.0.0, v4.1.x — tags and records
 are never modified. The DOI badge is the latest **minted** DOI (v3.0.1).
 

@@ -90,7 +90,7 @@ def test_no_physical_nonexistence_claims():
         assert "MECHANISM_NOT_IMPLEMENTED_FOR_MATERIAL" in _read(rel)
 
 
-VERSION = "8.5.1"
+VERSION = "8.5.2"
 
 
 def test_version_consistency():

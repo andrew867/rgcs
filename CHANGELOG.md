@@ -3,6 +3,49 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [8.5.2] - 2026-08-08
+
+**Frequency Studio session CRUD, curated AHA/Halo factory library,
+workspace lifecycle fixes, single-file exports, Phryll v1 retired.**
+
+- **Session CRUD**: File menu with New / Open / Open Recent / Save /
+  Save As / Close / Duplicate / Delete (to workspace trash) / Import;
+  stable session identity across previews; dirty-state prompts on
+  session close and workspace open/switch/close; recent-sessions list.
+  `SessionStore` service backs it (atomic schema-preserving saves,
+  never-clobber names, both open gates: schema + timeline).
+- **Curated AHA/Halo factory library**: 61 curated binaural sessions
+  (Schumann, sleep, focus/memory, relaxation/emotional, chakra/pineal,
+  altered-state buckets) install into every workspace under
+  `library/frequency_sessions/factory/aha_halo_curated/` with a
+  per-file-hash factory manifest. Source-language claimed uses are
+  recorded, not endorsed; none of it is a medical claim. New Session
+  Library page with origin badges; factory files read-only with
+  duplicate-to-edit.
+- **Workspace lifecycle**: first run and reinstalls never crash when
+  the workspace folder already exists (`Workspace.open_or_create`);
+  a failed open/create leaves the current workspace usable; factory
+  content syncs idempotently on every open (upgrade path) — adds
+  missing files, updates only unmodified factory copies, never touches
+  user-edited files; Close/Switch/Reveal/Repair workspace commands;
+  panel teardown stops playback on close/switch/exit.
+- **Export selection**: Frequency Studio exports only the checked
+  types (recipe JSON / session JSON / WAV preview / WAV full / PDF /
+  YouTube draft / bundle), with the expected-file list shown before
+  writing. Phryll v2 gains single-artifact export (STL/3MF/SCAD of
+  cone or sleeve, SVG/DXF templates, PDFs, receipt JSON) — one file
+  per call, never a bundle.
+- **Phryll v1 retired from the UI**: v2 is the only Phryll path;
+  the v1 geometry service and docs remain for legacy exports.
+- **PDF fix**: section and table-header rules were drawn 3 pt above
+  the text baseline, striking through the letters on every sheet;
+  they now sit below the baseline (regression-tested); all committed
+  demo sheets regenerated.
+- **CI/CD**: the tag-triggered release workflow now runs the full
+  test suite + leak firewall as a `validate` gate before any build or
+  upload. `rgcs-sonic render-file` refuses structurally-broken files
+  with a stated reason instead of a traceback.
+
 ## [8.5.1] - 2026-08-08
 
 **Wobbles, corrected lattice coils, session import, and automated
