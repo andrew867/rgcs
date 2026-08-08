@@ -308,7 +308,7 @@
     ]
   },
   "measurement_log": {
-    "note": "Direct measurements of the CC-SA reference meshes (RGCS-private references/set6), 2026-08-07, via reference_assets.measure_stl_bounds/measure_cone_profile.",
+    "note": "Direct measurements of the CC-SA reference meshes (operator-supplied local reference set, held outside this repository), 2026-08-07, via reference_assets.measure_stl_bounds/measure_cone_profile.",
     "measured": [
       {
         "file": "Vogel cristal stimulation cone size M2 v1.0.stl",
