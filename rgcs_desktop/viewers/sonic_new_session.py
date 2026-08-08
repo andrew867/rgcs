@@ -1,7 +1,7 @@
 """Frequency Key Studio — New Session page (wizard-style form)."""
 from __future__ import annotations
 
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QThread, Signal
 from PySide6.QtWidgets import (QCheckBox, QComboBox, QDoubleSpinBox,
                                QFileDialog, QFormLayout, QGroupBox,
                                QHBoxLayout, QLabel, QLineEdit,
@@ -23,6 +23,22 @@ from rgcs_desktop.services.sonic_timeline import (TimelineError,
 
 SESSION_TYPES = ("binaural", "monaural", "isochronic", "noise_bed",
                  "composite")
+
+
+class _RenderThread(QThread):
+    """Runs a service-layer export off the UI thread (v8.5.3)."""
+    ok = Signal(object)
+    err = Signal(str)
+
+    def __init__(self, fn, parent=None):
+        super().__init__(parent)
+        self._fn = fn
+
+    def run(self):  # pragma: no cover — thin thread shim
+        try:
+            self.ok.emit(self._fn())
+        except Exception as exc:  # noqa: BLE001 — surfaced to the UI
+            self.err.emit(str(exc))
 CARRIER_FAMILY = [100.0, 110.0, 136.1, 174.0, 200.0, 256.0, 285.0,
                   396.0, 432.0, 512.0, 525.0, 528.0, 587.0, 639.0,
                   640.0, 644.0, 741.0, 852.0, 925.0, 963.0, 963.026,
@@ -53,6 +69,10 @@ class NewSessionPage(QWidget):
         self._undo_stack: list[dict] = []
         self._redo_stack: list[dict] = []
         self._restoring = False
+        # v8.5.3 render job control
+        self._rendering = False
+        self._render_cancelled = False
+        self._render_thread = None
         self.autosave_cb = None   # panel injects; called when dirty
         from PySide6.QtCore import QTimer
         self._autosave_timer = QTimer(self)
@@ -156,8 +176,16 @@ class NewSessionPage(QWidget):
         left.addWidget(self.preview_btn)
         self.render_btn = QPushButton("Render WAV + export "
                                       "(JSON / PDF / bundle)")
-        self.render_btn.clicked.connect(self.render_and_export)
+        self.render_btn.clicked.connect(self.render_clicked)
         left.addWidget(self.render_btn)
+        self.cancel_btn = QPushButton("Cancel render")
+        self.cancel_btn.setEnabled(False)
+        self.cancel_btn.clicked.connect(self.cancel_render)
+        left.addWidget(self.cancel_btn)
+        self.render_error = QLabel("")
+        self.render_error.setWordWrap(True)
+        self.render_error.setStyleSheet("color: #b00020;")
+        left.addWidget(self.render_error)
 
         export_box = QGroupBox("Export selected types only")
         ev = QVBoxLayout(export_box)
@@ -356,6 +384,8 @@ class NewSessionPage(QWidget):
             return
         self._dirty = True
         self._session = None    # cached preview is stale after any edit
+        if self.render_error.text():
+            self.render_error.setText("")   # input changed: clear error
         self._push_snapshot()
 
     # ------------------------------------------------ undo/redo (v8.5.3)
@@ -562,6 +592,83 @@ class NewSessionPage(QWidget):
     @property
     def last_exports(self) -> dict:
         return self._last_exports
+
+    # ------------------------------------- v8.5.3: render job control
+    def render_clicked(self, *_a):
+        """Button path: full render + export set off the UI thread,
+        with duplicate-click protection and cancel."""
+        if self._rendering:
+            self._status_cb("render already running — cancel it first")
+            return None
+        session = self.current_session()
+        if session is None:
+            return None
+        from rgcs_desktop.viewers.design_studio_common import export_dir
+        out = export_dir(self.context) / "sonic"
+
+        def work():
+            from rgcs_desktop.services.sonic_export_selection import \
+                export_selected
+            return export_selected(session, ["bundle_zip"], out)
+
+        self._rendering = True
+        self._render_cancelled = False
+        self.render_btn.setEnabled(False)
+        self.export_selected_btn.setEnabled(False)
+        self.cancel_btn.setEnabled(True)
+        self.render_error.setText("")
+        self._status_cb(
+            f"rendering {session['session_id']} "
+            f"({session['duration_s']:g} s) …")
+        self._render_thread = _RenderThread(work, self)
+        self._render_thread.ok.connect(self._render_done)
+        self._render_thread.err.connect(self._render_failed)
+        self._render_thread.start()
+        return self._render_thread
+
+    def cancel_render(self, *_a) -> None:
+        if not self._rendering:
+            return
+        self._render_cancelled = True
+        self.cancel_btn.setEnabled(False)
+        self._status_cb("render cancelled — its files will be discarded")
+
+    def _render_finished_ui(self) -> None:
+        self._rendering = False
+        self.render_btn.setEnabled(True)
+        self.export_selected_btn.setEnabled(True)
+        self.cancel_btn.setEnabled(False)
+
+    def _render_done(self, written: dict) -> None:
+        self._render_finished_ui()
+        if self._render_cancelled:
+            from pathlib import Path as _Path
+            for kind, path in written.items():
+                if kind != "receipt":
+                    _Path(path).unlink(missing_ok=True)
+            self._status_cb("cancelled render discarded")
+            return
+        from rgcs_desktop.viewers.design_studio_common import \
+            record_export_safe
+        for kind, path in written.items():
+            if kind != "receipt":
+                record_export_safe(self.context, f"sonic_{kind}", path)
+        self._last_exports = {"wav": written.get("wav_full"),
+                              "json": written.get("recipe_json"),
+                              "pdf": written.get("session_pdf"),
+                              "youtube": written.get("youtube_txt"),
+                              "bundle": written.get("bundle_zip")}
+        receipt = written.get("receipt") or {}
+        self._status_cb(
+            f"rendered: peak {receipt.get('peak', 0):.3f} -> "
+            f"{written.get('bundle_zip', '')}")
+
+    def _render_failed(self, message: str) -> None:
+        self._render_finished_ui()
+        self.render_error.setText(
+            f"Render failed: {message} — fix the input and the message "
+            f"clears on your next edit.")
+        self._status_cb(f"render failed: {message}")
 
     # ------------------------------------ v8.5.2: export-type selection
     def checked_export_kinds(self) -> list[str]:

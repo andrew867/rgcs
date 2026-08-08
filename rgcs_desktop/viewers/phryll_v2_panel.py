@@ -139,9 +139,13 @@ class PhryllV2Panel(Panel):
         for label, kind in ARTIFACT_CHOICES:
             self.artifact_kind.addItem(label, kind)
         srow.addWidget(self.artifact_kind)
-        self.single_btn = QPushButton("Export selected file only")
-        self.single_btn.clicked.connect(self.export_single)
+        self.single_btn = QPushButton("Export selected file only…")
+        self.single_btn.clicked.connect(self.export_single_dialog)
         srow.addWidget(self.single_btn)
+        self.reveal_btn = QPushButton("Reveal last export")
+        self.reveal_btn.setEnabled(False)
+        self.reveal_btn.clicked.connect(self.reveal_last_export)
+        srow.addWidget(self.reveal_btn)
         left.addWidget(single_box)
         left.addStretch(1)
         layout.addLayout(left)
@@ -259,26 +263,65 @@ class PhryllV2Panel(Panel):
         self.inspector_changed.emit()
         return result
 
-    def export_single(self, *_a):
+    def export_single(self, *_a, out_dir=None):
         if self._cone is None and self.generate() is None:
-            self.status_message.emit(
-                f"export blocked: {self._last_error or 'no design'}")
+            msg = f"export blocked: {self._last_error or 'no design'}"
+            self.status.setText(msg)
+            self.status_message.emit(msg)
             return None
         kind = self.artifact_kind.currentData()
-        out = export_dir(self.context) / "phryll_v2"
-        receipt = export_single_artifact(
-            self.raw_crystal(), out, kind,
-            fit_settings=self.fit_settings(),
-            coil_settings=self.coil_settings())
+        out = out_dir if out_dir is not None \
+            else export_dir(self.context) / "phryll_v2"
+        try:
+            receipt = export_single_artifact(
+                self.raw_crystal(), out, kind,
+                fit_settings=self.fit_settings(),
+                coil_settings=self.coil_settings())
+        except Exception as exc:  # noqa: BLE001 — show, don't vanish
+            msg = f"export failed: {exc}"
+            self.status.setText(msg)
+            self.status_message.emit(f"phryll v2 {msg}")
+            return None
         from pathlib import Path as _Path
         record_export_safe(self.context, f"phryll_v2_{kind}",
                            _Path(receipt["path"]))
         self._last_single = receipt
+        self.reveal_btn.setEnabled(True)
+        # the full path in the panel itself — the file's location must
+        # never be a mystery (v8.5.3 fix)
+        self.status.setText(f"Exported: {receipt['path']}")
         self.status_message.emit(
             f"phryll v2 single-file export: {receipt['path']} "
             f"(sha256 {receipt['sha256'][:12]}…, no bundle)")
         self.inspector_changed.emit()
         return receipt
+
+    def export_single_dialog(self, *_a):
+        """Button path: ask where the file goes, then export there."""
+        if self._cone is None and self.generate() is None:
+            msg = f"export blocked: {self._last_error or 'no design'}"
+            self.status.setText(msg)
+            self.status_message.emit(msg)
+            return None
+        from PySide6.QtWidgets import QFileDialog
+        default = export_dir(self.context) / "phryll_v2"
+        default.mkdir(parents=True, exist_ok=True)
+        chosen = QFileDialog.getExistingDirectory(
+            self, "Export folder for the selected file", str(default))
+        if not chosen:
+            return None
+        return self.export_single(out_dir=chosen)
+
+    def reveal_last_export(self, *_a) -> None:
+        last = getattr(self, "_last_single", None)
+        if not last:
+            return
+        from pathlib import Path as _Path
+
+        from PySide6.QtCore import QUrl
+        from PySide6.QtGui import QDesktopServices
+        QDesktopServices.openUrl(QUrl.fromLocalFile(
+            str(_Path(last["path"]).parent)))
 
     def inspector_info(self):
         eye = (self._coil or {}).get("eye_alignment", {})

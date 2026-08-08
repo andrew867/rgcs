@@ -158,6 +158,33 @@ class FrequencyKeyStudioPanel(Panel):
         self._log("new session (unsaved)")
         return True
 
+    # import_error_handler is injectable for tests; the default shows
+    # the exact reason with Copy error / Open as text options.
+    import_error_handler = None
+
+    def _report_import_error(self, path, message: str) -> None:
+        self._log(f"open refused: {message}")
+        handler = self.import_error_handler
+        if handler is not None:
+            handler(str(path), message)
+            return
+        from PySide6.QtWidgets import QApplication, QMessageBox
+        box = QMessageBox(self)
+        box.setWindowTitle("Session file refused")
+        box.setText(f"{path}\n\n{message}")
+        copy_btn = box.addButton("Copy error",
+                                 QMessageBox.ButtonRole.ActionRole)
+        text_btn = box.addButton("Open as text",
+                                 QMessageBox.ButtonRole.ActionRole)
+        box.addButton(QMessageBox.StandardButton.Ok)
+        box.exec()
+        if box.clickedButton() is copy_btn:
+            QApplication.clipboard().setText(f"{path}\n{message}")
+        elif box.clickedButton() is text_btn:
+            from PySide6.QtCore import QUrl
+            from PySide6.QtGui import QDesktopServices
+            QDesktopServices.openUrl(QUrl.fromLocalFile(str(path)))
+
     def open_session(self, path=None) -> bool:
         """Open a session file into the editor (both gates)."""
         from rgcs_desktop.services.session_store import (
@@ -174,7 +201,7 @@ class FrequencyKeyStudioPanel(Panel):
         try:
             session = load_session_file(path)
         except SessionStoreError as exc:
-            self._log(f"open refused: {exc}")
+            self._report_import_error(path, str(exc))
             return False
         self.new_session.apply_session(session, path)
         if session.get("segments"):
@@ -292,7 +319,7 @@ class FrequencyKeyStudioPanel(Panel):
         try:
             path = self._store().import_session(src)
         except SessionStoreError as exc:
-            self._log(f"import refused: {exc}")
+            self._report_import_error(src, str(exc))
             return False
         self._log(f"imported into library: {path.name}")
         return self.open_session(path)
