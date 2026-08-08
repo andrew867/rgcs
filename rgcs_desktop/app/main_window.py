@@ -112,6 +112,7 @@ class MainWindow(QMainWindow):
         palette_action.setShortcut(QKeySequence("Ctrl+K"))
         palette_action.triggered.connect(self.show_command_palette)
         self.addAction(palette_action)
+        self._build_menus()
 
         # job queue pump
         self._job_timer = QTimer(self)
@@ -136,6 +137,16 @@ class MainWindow(QMainWindow):
         actions["Workspace: reveal folder"] = self._reveal_workspace
         actions["Workspace: repair factory content"] = \
             self._repair_factory_content
+        studio = self.panels["Frequency Key Studio"]
+        actions["Session: new"] = studio.new_session_action
+        actions["Session: open…"] = studio.open_session
+        actions["Session: save"] = studio.save_session
+        actions["Session: save as…"] = studio.save_session_as
+        actions["Session: close"] = studio.close_session
+        actions["Session: duplicate"] = studio.duplicate_session
+        actions["Session: delete (to workspace trash)"] = \
+            studio.delete_session
+        actions["Session: import…"] = studio.import_session
         actions["Report: generate markdown"] = (
             lambda: self.panels["Report / export"].generate())
         actions["Export: reproducibility bundle"] = (
@@ -146,6 +157,61 @@ class MainWindow(QMainWindow):
             lambda: self.context.job_manager.submit(
                 "trivial", {"steps": 5}, name="demo job"))
         return actions
+
+    def _build_menus(self) -> None:
+        """File menu (v8.5.2): session CRUD + workspace lifecycle."""
+        studio = self.panels["Frequency Key Studio"]
+        file_menu = self.menuBar().addMenu("&File")
+
+        def add(menu, text, slot, shortcut=None):
+            action = QAction(text, self)
+            if shortcut:
+                action.setShortcut(QKeySequence(shortcut))
+            action.triggered.connect(lambda *_: slot())
+            menu.addAction(action)
+            return action
+
+        add(file_menu, "New Session", studio.new_session_action,
+            "Ctrl+N")
+        add(file_menu, "Open Session…", studio.open_session, "Ctrl+O")
+        self._recent_menu = file_menu.addMenu("Open Recent")
+        self._recent_menu.aboutToShow.connect(self._fill_recent_menu)
+        add(file_menu, "Save", studio.save_session, "Ctrl+S")
+        add(file_menu, "Save As…", studio.save_session_as,
+            "Ctrl+Shift+S")
+        add(file_menu, "Close Session", studio.close_session, "Ctrl+W")
+        file_menu.addSeparator()
+        add(file_menu, "Duplicate Session", studio.duplicate_session)
+        add(file_menu, "Delete Session (to workspace trash)",
+            studio.delete_session)
+        add(file_menu, "Import Session…", studio.import_session)
+        add(file_menu, "Export Selected Types",
+            studio.new_session.export_selected)
+        add(file_menu, "Render Full + Export Set",
+            studio.new_session.render_and_export)
+        file_menu.addSeparator()
+        ws_menu = file_menu.addMenu("Workspace")
+        add(ws_menu, "Open Workspace…", self._open_workspace_dialog)
+        add(ws_menu, "Switch Workspace…", self._open_workspace_dialog)
+        add(ws_menu, "Close Workspace", self.close_workspace)
+        add(ws_menu, "Reveal Workspace Folder", self._reveal_workspace)
+        add(ws_menu, "Repair Workspace (factory content)",
+            self._repair_factory_content)
+
+    def _fill_recent_menu(self) -> None:
+        studio = self.panels["Frequency Key Studio"]
+        self._recent_menu.clear()
+        recent = self.context.settings.recent_sessions
+        if not recent:
+            action = QAction("(no recent sessions)", self)
+            action.setEnabled(False)
+            self._recent_menu.addAction(action)
+            return
+        for path in recent:
+            action = QAction(path, self)
+            action.triggered.connect(
+                lambda *_, p=path: studio.open_session(p))
+            self._recent_menu.addAction(action)
 
     def command_names(self) -> list[str]:
         return sorted(self._actions)
@@ -177,6 +243,8 @@ class MainWindow(QMainWindow):
     def close_workspace(self) -> None:
         """Close Workspace: teardown panels (stop playback), cancel
         jobs, release the database, and return to the home screen."""
+        if not self.panels["Frequency Key Studio"]._resolve_dirty():
+            return   # user cancelled at the unsaved-changes prompt
         for panel in self.panels.values():
             panel.teardown()
         self.context.close_workspace()
@@ -207,6 +275,8 @@ class MainWindow(QMainWindow):
         self.context.notify_workspace_changed()
 
     def _open_workspace_dialog(self) -> None:
+        if not self.panels["Frequency Key Studio"]._resolve_dirty():
+            return   # user cancelled at the unsaved-changes prompt
         root = QFileDialog.getExistingDirectory(self, "Open workspace")
         if not root:
             return

@@ -41,6 +41,14 @@ class NewSessionPage(QWidget):
         self._timeline_provider = timeline_provider
         self._session: dict | None = None
         self._last_exports: dict = {}
+        # v8.5.2 session identity: a stable id (not re-minted per
+        # preview), the file it was loaded from / saved to, and a
+        # dirty flag for unsaved edits.
+        self._session_id: str | None = None
+        self._title_override: str | None = None
+        self._session_path = None
+        self._dirty = False
+        self._loading = False
         from rgcs_desktop.viewers.sonic_playback import PreviewPlayer
         self._player = PreviewPlayer(status_cb)
 
@@ -205,6 +213,19 @@ class NewSessionPage(QWidget):
         self.minutes.valueChanged.connect(self.preview)
         self.preview()
 
+        # dirty tracking: any editing widget change marks the session
+        # dirty (title/metadata edits arrive through these too)
+        for combo in (self.session_type, self.carrier, self.beat,
+                      self.wobble, self.wobble_target):
+            combo.currentIndexChanged.connect(self._mark_dirty)
+        for spin in (self.duty, self.minutes, self.wobble_dwell,
+                     self.voice_start, self.loudness_db):
+            spin.valueChanged.connect(self._mark_dirty)
+        for edit in (self.extra_carriers, self.voice_file):
+            edit.textChanged.connect(self._mark_dirty)
+        self.loudness_on.toggled.connect(self._mark_dirty)
+        self.noise_list.itemChanged.connect(self._mark_dirty)
+
     # ------------------------------------------------------------------
     def _pick_voice_file(self, *_a) -> None:
         path, _ = QFileDialog.getOpenFileName(
@@ -274,10 +295,13 @@ class NewSessionPage(QWidget):
             duration = sum(s["duration_s"] for s in custom)
         else:
             segments = standard_session_shape(beat, duration)
+        if self._session_id is None:
+            self._session_id = new_object_id("SES")
         session = {
             "schema_version": "1.0.0",
-            "session_id": new_object_id("SES"),
-            "title": (f"{carrier:g} Hz + {beat:g} Hz {kind} session"),
+            "session_id": self._session_id,
+            "title": (self._title_override
+                      or f"{carrier:g} Hz + {beat:g} Hz {kind} session"),
             "intent": "user session",
             "family": kind,
             "duration_s": duration,
@@ -314,6 +338,109 @@ class NewSessionPage(QWidget):
 
     def current_session(self) -> dict | None:
         return self._session or self.preview()
+
+    # ------------------------------------- v8.5.2 session identity/CRUD
+    def _mark_dirty(self, *_a) -> None:
+        if not self._loading:
+            self._dirty = True
+
+    @property
+    def is_dirty(self) -> bool:
+        return self._dirty
+
+    @property
+    def session_path(self):
+        return self._session_path
+
+    def mark_saved(self, path) -> None:
+        self._session_path = path
+        self._dirty = False
+
+    def reset_identity(self) -> None:
+        """New/Close Session: fresh id, no file, unsaved by definition."""
+        self._session_id = None
+        self._title_override = None
+        self._session_path = None
+        self._session = None
+        self._dirty = True     # a brand-new session is unsaved
+        self.preview()
+
+    def set_title(self, title: str) -> None:
+        self._title_override = title
+        self._session = None
+        self._mark_dirty()
+
+    def apply_session(self, session: dict, path=None) -> None:
+        """Inverse of build_session: load a session dict into the form.
+
+        Values outside the stock combo lists are added as items so any
+        library/imported session opens editable.
+        """
+        self._loading = True
+        try:
+            family = session.get("family", "binaural")
+            if family in SESSION_TYPES:
+                self.session_type.setCurrentText(family)
+            binaurals = [la for la in session.get("layers", [])
+                         if la.get("type") in ("binaural", "monaural",
+                                               "isochronic")]
+            if binaurals:
+                first = binaurals[0]
+                carrier = float(first.get("carrier_hz", 200.0))
+                idx = self.carrier.findData(carrier)
+                if idx < 0:
+                    self.carrier.addItem(f"{carrier:g} Hz", carrier)
+                    idx = self.carrier.count() - 1
+                self.carrier.setCurrentIndex(idx)
+                beat = float(first.get("beat_hz", 0.0) or 0.0)
+                bidx = self.beat.findData(beat)
+                if bidx < 0:
+                    self.beat.addItem(f"{beat:g} Hz — from session "
+                                      f"[imported]", beat)
+                    bidx = self.beat.count() - 1
+                self.beat.setCurrentIndex(bidx)
+                if first.get("type") == "isochronic":
+                    self.duty.setValue(float(first.get("duty", 0.5)))
+                wobble = first.get("wobble") or {}
+                widx = self.wobble.findData(wobble.get("name"))
+                self.wobble.setCurrentIndex(max(widx, 0))
+                if wobble:
+                    self.wobble_dwell.setValue(
+                        float(wobble.get("dwell_s", 1.0)))
+                    self.wobble_target.setCurrentText(
+                        wobble.get("target", "carrier"))
+                extras = [f"{la['carrier_hz']:g}"
+                          for la in binaurals[1:]
+                          if la.get("carrier_hz")]
+                self.extra_carriers.setText(", ".join(extras))
+            minutes = max(1, round(float(session.get("duration_s", 60))
+                                   / 60.0))
+            self.minutes.setValue(minutes)
+            noise_types = {la.get("type")
+                           for la in session.get("layers", [])}
+            for i in range(self.noise_list.count()):
+                item = self.noise_list.item(i)
+                item.setCheckState(
+                    Qt.CheckState.Checked if item.text() in noise_types
+                    else Qt.CheckState.Unchecked)
+            voice = next((la for la in session.get("layers", [])
+                          if la.get("type") == "voice_cue"), None)
+            self.voice_file.setText((voice or {}).get("file", ""))
+            if voice and voice.get("start_s") is not None:
+                self.voice_start.setValue(float(voice["start_s"]))
+            loudness = session.get("loudness") or {}
+            self.loudness_on.setChecked(bool(loudness))
+            if loudness.get("target_rms_db") is not None:
+                self.loudness_db.setValue(
+                    float(loudness["target_rms_db"]))
+            self._session_id = session.get("session_id")
+            self._title_override = session.get("title")
+            self._session_path = path
+            self._session = None
+            self.preview()
+            self._dirty = False
+        finally:
+            self._loading = False
 
     def render_and_export(self, *_a, duration_s: float | None = None):
         session = self.current_session()

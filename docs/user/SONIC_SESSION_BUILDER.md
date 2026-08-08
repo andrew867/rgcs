@@ -50,11 +50,35 @@
   "target": "carrier"}`. Wobbles are modulation recipes, not claims of
   outcome.
 
+## Sessions and the library (v8.5.2)
+
+The **File menu** gives sessions a full life cycle: New, Open, Open
+Recent, Save (Ctrl+S), Save As, Close, Duplicate, Delete, Import.
+Saves land in your workspace at
+`library/frequency_sessions/user/`; Delete moves the file to
+`library/trash/` (never a hard delete); unsaved changes prompt
+Save / Discard / Cancel before anything closes or switches away.
+
+The **Session Library** page lists factory and user sessions with
+origin badges. The factory set ships with 61 curated AHA/Halo-derived
+binaural sessions (Schumann, sleep, focus, relaxation, chakra/pineal,
+altered-state families). Factory files are read-only — **Duplicate to
+my library** makes an editable copy; a repair command restores any
+missing factory file. Factory session notes carry the source's
+claimed-use language as source-language records: claimed uses are
+recorded, not endorsed, and none of it is a medical claim.
+
 ## Exports
 
 WAV · recipe JSON (schema-validated, content-hashed) · session PDF
 (recipe, carrier/beat table, segment timeline, layer table, render
 stats, receipt hash) · YouTube title/description draft · bundle zip
 with embedded MANIFEST and checksums · batch manifest for batch runs.
+
+**Export selected types only** (v8.5.2): check exactly the file types
+you want — recipe JSON, session JSON, WAV preview, WAV full, session
+PDF, YouTube draft, or the full bundle — and the expected file list is
+shown before anything is written. A single selection produces exactly
+one file, never the whole bundle.
 
 Experimental audio recipes. Use comfortable volume. Results vary.

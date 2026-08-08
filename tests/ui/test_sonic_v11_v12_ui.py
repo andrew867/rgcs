@@ -13,7 +13,7 @@ def test_studio_has_timeline_editor_page(main_window):
     titles = [studio.pages.tabText(i)
               for i in range(studio.pages.count())]
     assert titles == ["New Session", "Timeline Editor", "Recipe Library",
-                      "Web Corpus"]
+                      "Session Library", "Web Corpus"]
 
 
 def test_timeline_editor_validates_and_feeds_wizard(main_window):

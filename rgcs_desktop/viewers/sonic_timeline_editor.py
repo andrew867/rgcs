@@ -117,6 +117,18 @@ class TimelineEditorPage(QWidget):
         self._status_cb("custom timeline valid")
         return True
 
+    def load_segments(self, segments: list[dict],
+                      enable: bool = True) -> None:
+        """Populate the table from a session's segments (Open/Recent)."""
+        self.table.setRowCount(0)
+        for s in segments:
+            self._add_row((s.get("kind", "hold"),
+                           float(s.get("duration_s", 60.0)),
+                           float(s.get("beat_start_hz", 0.0) or 0.0),
+                           float(s.get("beat_end_hz", 0.0) or 0.0),
+                           s.get("curve", "linear")))
+        self.enabled.setChecked(enable)
+
     def custom_segments(self) -> list[dict] | None:
         """The custom timeline when enabled and valid, else None."""
         if not self.enabled.isChecked():

@@ -110,9 +110,13 @@ class _SheetWriter:
             + _esc(text) + b") Tj ET\n")
 
     def _rule(self) -> None:
+        # self.y is the baseline of the text just drawn; the rule must
+        # clear its descenders, so draw BELOW the baseline (a positive
+        # offset strikes through the letters — v8.5.2 fix).
+        rule_y = self.y - 3
         self.pages[-1].append(
             b"0.6 0.6 0.6 RG 0.5 w %.1f %.1f m %.1f %.1f l S\n"
-            % (_MARGIN, self.y + 3, _PAGE_W - _MARGIN, self.y + 3))
+            % (_MARGIN, rule_y, _PAGE_W - _MARGIN, rule_y))
 
     def line(self, text: str, size: float = 9.0, bold: bool = False,
              x: float = _MARGIN, wrap_width: float = _BODY_W) -> None:
@@ -149,6 +153,7 @@ class _SheetWriter:
         for i, h in enumerate(headers):
             self._text(_MARGIN + i * col_w, 9.0, h, bold=True)
         self._rule()
+        self.y -= 3   # keep the first row clear of the header rule
         for row in rows:
             wrapped = [_wrap(c, col_w - 6) for c in row]
             height = max(len(w) for w in wrapped) if wrapped else 1

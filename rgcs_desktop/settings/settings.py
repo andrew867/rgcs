@@ -49,6 +49,21 @@ class AppSettings:
     def last_workspace(self, value: str) -> None:
         self._qs.setValue("paths/last_workspace", value)
 
+    # recent sessions (v8.5.2 Frequency Studio CRUD) ----------------------
+    @property
+    def recent_sessions(self) -> list[str]:
+        v = self._qs.value("sessions/recent")
+        if not v:
+            return []
+        if isinstance(v, str):
+            return [v]
+        return [str(item) for item in v]
+
+    def add_recent_session(self, path: str, limit: int = 10) -> None:
+        items = [p for p in self.recent_sessions if p != str(path)]
+        items.insert(0, str(path))
+        self._qs.setValue("sessions/recent", items[:limit])
+
     # first-run wizard ----------------------------------------------------
     @property
     def first_run_done(self) -> bool:
