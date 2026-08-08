@@ -140,6 +140,32 @@ class NewSessionPage(QWidget):
                                       "(JSON / PDF / bundle)")
         self.render_btn.clicked.connect(self.render_and_export)
         left.addWidget(self.render_btn)
+
+        export_box = QGroupBox("Export selected types only")
+        ev = QVBoxLayout(export_box)
+        self.export_kinds = QListWidget()
+        for kind, label in (
+                ("recipe_json", "Recipe JSON (hashed)"),
+                ("session_json", "Session JSON"),
+                ("wav_preview", "WAV preview (12 s)"),
+                ("wav_full", "WAV full"),
+                ("session_pdf", "Session sheet PDF"),
+                ("youtube_txt", "YouTube draft TXT"),
+                ("bundle_zip", "Bundle ZIP (full set)")):
+            item = QListWidgetItem(label)
+            item.setData(Qt.ItemDataRole.UserRole, kind)
+            item.setCheckState(Qt.CheckState.Unchecked)
+            self.export_kinds.addItem(item)
+        self.export_kinds.item(3).setCheckState(Qt.CheckState.Checked)
+        self.export_kinds.itemChanged.connect(self._update_expected)
+        ev.addWidget(self.export_kinds)
+        self.expected_label = QLabel("—")
+        self.expected_label.setWordWrap(True)
+        ev.addWidget(self.expected_label)
+        self.export_selected_btn = QPushButton("Export selected types")
+        self.export_selected_btn.clicked.connect(self.export_selected)
+        ev.addWidget(self.export_selected_btn)
+        left.addWidget(export_box)
         play_row = QHBoxLayout()
         self.play_btn = QPushButton("Play 12 s preview")
         self.play_btn.clicked.connect(self.play_preview)
@@ -328,6 +354,59 @@ class NewSessionPage(QWidget):
     @property
     def last_exports(self) -> dict:
         return self._last_exports
+
+    # ------------------------------------ v8.5.2: export-type selection
+    def checked_export_kinds(self) -> list[str]:
+        kinds = []
+        for i in range(self.export_kinds.count()):
+            item = self.export_kinds.item(i)
+            if item.checkState() == Qt.CheckState.Checked:
+                kinds.append(item.data(Qt.ItemDataRole.UserRole))
+        return kinds
+
+    def _update_expected(self, *_a) -> None:
+        from rgcs_desktop.services.sonic_export_selection import (
+            ExportSelectionError, expected_export_files)
+        session = self.current_session()
+        kinds = self.checked_export_kinds()
+        if session is None or not kinds:
+            self.expected_label.setText("no export types selected")
+            return
+        try:
+            names = expected_export_files(session, kinds)
+        except ExportSelectionError as exc:
+            self.expected_label.setText(str(exc))
+            return
+        self.expected_label.setText("will write: " + ", ".join(names))
+
+    def export_selected(self, *_a) -> dict | None:
+        """Write only the checked export types (never the full bundle
+        unless the bundle itself is checked)."""
+        from rgcs_desktop.services.sonic_export_selection import (
+            ExportSelectionError, export_selected)
+        session = self.current_session()
+        if session is None:
+            self._status_cb("nothing to export — preview a recipe first")
+            return None
+        kinds = self.checked_export_kinds()
+        from rgcs_desktop.viewers.design_studio_common import (
+            export_dir, record_export_safe)
+        out = export_dir(self.context) / "sonic"
+        try:
+            written = export_selected(session, kinds, out)
+        except ExportSelectionError as exc:
+            self._status_cb(f"export refused: {exc}")
+            return None
+        except Exception as exc:  # surface, don't crash
+            self._status_cb(f"export failed: {exc}")
+            raise
+        for kind, path in written.items():
+            if kind != "receipt":
+                record_export_safe(self.context, f"sonic_{kind}", path)
+        files = [p.name for k, p in written.items() if k != "receipt"]
+        self._status_cb(f"exported {len(files)} file(s): "
+                        + ", ".join(sorted(files)))
+        return written
 
     # -------------------------------------------- v1.1: play + spectro
     def _render_preview_wav(self, duration_s: float = 12.0):
