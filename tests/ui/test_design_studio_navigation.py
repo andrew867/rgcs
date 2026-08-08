@@ -70,31 +70,30 @@ def test_crystal_validator_blocks_invalid(main_window):
     assert panel.export_all() == {}
 
 
-def test_phyrll_inherits_validated_specimen(main_window):
-    validator = main_window.panels["Crystal Validator"]
-    validator.load_example()
-    assert validator.validate()
-    phyrll = main_window.panels["Phyrll Generator Designer"]
-    phyrll.use_current_specimen()
-    design = phyrll.current_design()
-    assert design is not None
-    assert design["source_specimen_id"] == "CRY-EXAMPLE-001"
-    assert design["holder_geometry"]["cavity_length_mm"] == \
-        110.0 + 2 * phyrll.clearance.value()
-    scad = phyrll.generate_scad()
-    assert scad.is_file()
-    sheet = phyrll.export_build_sheet()
-    assert sheet.is_file()
+def test_phryll_v1_retired_from_ui(main_window):
+    # v8.5.2: the v1 box-holder designer no longer appears anywhere in
+    # the UI — v2 is the only Phryll path (service kept for legacy
+    # exports).
+    assert "Phyrll Generator Designer" not in main_window.panels
+    assert "Phryll Generator v2" in main_window.panels
+    cards = [c.workflow["panel"]
+             for c in main_window.panels["Design Studio"].cards]
+    assert "Phyrll Generator Designer" not in cards
+    assert "Phryll Generator v2" in cards
 
 
-def test_phyrll_refuses_bad_channel(main_window):
-    validator = main_window.panels["Crystal Validator"]
-    validator.load_example()
-    phyrll = main_window.panels["Phyrll Generator Designer"]
-    phyrll.use_current_specimen()
-    phyrll.channel_depth.setValue(phyrll.wall.value() + 1.0)
-    assert phyrll.current_design() is None
-    assert "Refused" in phyrll.status.text()
+def test_phryll_v2_stl_only_export(main_window):
+    panel = main_window.panels["Phryll Generator v2"]
+    receipt = panel.export_single()
+    assert receipt is not None
+    from pathlib import Path
+    path = Path(receipt["path"])
+    assert path.is_file() and path.suffix == ".stl"
+    # single-file export: exactly one artifact, no bundle directory
+    out = path.parent
+    assert not any(p.name.startswith("phryll_design_")
+                   for p in out.iterdir())
+    assert [p for p in out.iterdir() if p.is_file()] == [path]
 
 
 def test_coil_pulse_panel_sidebands(main_window):
@@ -151,7 +150,7 @@ def test_frequency_key_library(main_window):
 
 def test_design_studio_inspector_contract(main_window):
     for title in ("Design Studio", "Crystal Validator",
-                  "Phyrll Generator Designer", "Coil / Pulse Designer",
+                  "Phryll Generator v2", "Coil / Pulse Designer",
                   "Annular Ring Designer", "Frequency Key Library"):
         info = main_window.panels[title].inspector_info()
         for key in ("properties", "classification", "units", "provenance"):

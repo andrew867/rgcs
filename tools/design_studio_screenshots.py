@@ -60,16 +60,13 @@ def main() -> int:
     assert exports["pdf"].is_file()
     shot("02_crystal_validator")
 
-    # 3. phyrll generator inheriting the validated specimen
-    phyrll = window.panels["Phyrll Generator Designer"]
-    window.open_panel("Phyrll Generator Designer")
-    phyrll.use_current_specimen()
-    assert phyrll.current_design() is not None
-    scad = phyrll.generate_scad()
-    assert scad.is_file()
-    sheet = phyrll.export_build_sheet()
-    assert sheet.is_file()
-    shot("03_phyrll_generator_designer")
+    # 3. phryll generator v2 (v1 retired from the UI in v8.5.2)
+    phryll = window.panels["Phryll Generator v2"]
+    window.open_panel("Phryll Generator v2")
+    assert phryll.generate() is not None
+    single = phryll.export_single()
+    assert single is not None
+    shot("03_phryll_generator_v2")
 
     # 4. coil / pulse designer (925 key selected by default)
     coil = window.panels["Coil / Pulse Designer"]

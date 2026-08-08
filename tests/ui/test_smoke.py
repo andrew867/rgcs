@@ -14,7 +14,7 @@ from rgcs_desktop.jobs.manager import JobStatus
 def test_window_opens_and_panels_construct(main_window):
     assert main_window.isVisible()
     expected = {"Design Studio", "Crystal Validator",
-                "Phyrll Generator Designer", "Coil / Pulse Designer",
+                "Coil / Pulse Designer",
                 "Annular Ring Designer", "Frequency Key Library",
                 "Frequency Key Studio", "Phryll Generator v2",
                 "Workspace", "Sources", "Specimen editor", "Models",

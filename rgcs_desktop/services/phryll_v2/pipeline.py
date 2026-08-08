@@ -22,6 +22,23 @@ from rgcs_desktop.services.phryll_v2.pdf_exports import (
     export_build_sheet, export_compatibility_sheet)
 
 
+def _design_stack(raw_crystal: dict,
+                  fit_settings: dict | None,
+                  coil_settings: dict | None,
+                  coupling_settings: dict | None):
+    """Shared normalize -> cone -> coupling -> coil prefix."""
+    crystal = normalize_crystal_profile(raw_crystal)
+    eye_check = validate_eye_coordinate(crystal)
+    cone = make_cone_design(crystal, fit_settings)
+    from rgcs_desktop.services.phryll_v2.bottom_coupling import \
+        design_bottom_coupling
+    coupling = design_bottom_coupling(crystal, coupling_settings)
+    cone.bottom_coupling = coupling
+    coil = generate_crossed_coil_paths(crystal, cone,
+                                       coil_settings or {})
+    return crystal, eye_check, cone, coupling, coil
+
+
 def generate_full_design(raw_crystal: dict, out_root: str | Path,
                          fit_settings: dict | None = None,
                          coil_settings: dict | None = None,
@@ -36,15 +53,8 @@ def generate_full_design(raw_crystal: dict, out_root: str | Path,
     work = out_root / "_work"
     work.mkdir(parents=True, exist_ok=True)
 
-    crystal = normalize_crystal_profile(raw_crystal)
-    eye_check = validate_eye_coordinate(crystal)
-    cone = make_cone_design(crystal, fit_settings)
-    from rgcs_desktop.services.phryll_v2.bottom_coupling import \
-        design_bottom_coupling
-    coupling = design_bottom_coupling(crystal, coupling_settings)
-    cone.bottom_coupling = coupling
-    coil = generate_crossed_coil_paths(crystal, cone,
-                                       coil_settings or {})
+    crystal, eye_check, cone, coupling, coil = _design_stack(
+        raw_crystal, fit_settings, coil_settings, coupling_settings)
 
     # CAD
     scad_text = render_scad(cone, coil, coupling)
@@ -142,3 +152,100 @@ def generate_full_design(raw_crystal: dict, out_root: str | Path,
         "groove_pitch_mm": coil["spacing"]["groove_pitch_mm"],
         "openscad_status": openscad_stl.get("status"),
     }
+
+
+# Single-artifact export: one file per call, never a bundle.
+SINGLE_ARTIFACT_KINDS = (
+    "cone_stl", "cone_3mf", "cone_scad",
+    "sleeve_stl", "sleeve_3mf", "sleeve_scad",
+    "axial_section_svg", "top_template_svg", "winding_template_dxf",
+    "build_pdf", "compatibility_pdf", "receipt_json",
+)
+
+_ARTIFACT_FILENAMES = {
+    "cone_stl": "custom_cone.stl",
+    "cone_3mf": "custom_cone.3mf",
+    "cone_scad": "custom_cone.scad",
+    "sleeve_stl": "coil_sleeve.stl",
+    "sleeve_3mf": "coil_sleeve.3mf",
+    "sleeve_scad": "coil_sleeve.scad",
+    "axial_section_svg": "axial_section.svg",
+    "top_template_svg": "top_template.svg",
+    "winding_template_dxf": "winding_template.dxf",
+    "build_pdf": "build_sheet.pdf",
+    "compatibility_pdf": "compatibility_sheet.pdf",
+    "receipt_json": "design_receipt.json",
+}
+
+
+def export_single_artifact(raw_crystal: dict, out_dir: str | Path,
+                           kind: str,
+                           fit_settings: dict | None = None,
+                           coil_settings: dict | None = None,
+                           coupling_settings: dict | None = None) -> dict:
+    """Export exactly one artifact for the design.
+
+    Runs the same normalize -> cone -> coupling -> coil stack as the
+    full pipeline, then writes only the requested file into ``out_dir``.
+    Returns {"kind", "path", "sha256", "design_id"}.
+    """
+    if kind not in SINGLE_ARTIFACT_KINDS:
+        raise ValueError(
+            f"unknown artifact kind {kind!r}; "
+            f"expected one of {', '.join(SINGLE_ARTIFACT_KINDS)}")
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    crystal, eye_check, cone, coupling, coil = _design_stack(
+        raw_crystal, fit_settings, coil_settings, coupling_settings)
+    name = _ARTIFACT_FILENAMES[kind]
+    target = out_dir / f"{cone.design_id}_{name}"
+
+    if kind in ("cone_stl", "cone_3mf"):
+        triangles = tessellate_cone_shell(cone)
+        path = (write_binary_stl(triangles, target) if kind == "cone_stl"
+                else write_3mf(triangles, target))
+    elif kind in ("sleeve_stl", "sleeve_3mf"):
+        triangles = tessellate_coil_sleeve(cone, coil)
+        path = (write_binary_stl(triangles, target)
+                if kind == "sleeve_stl" else write_3mf(triangles, target))
+    elif kind == "cone_scad":
+        path = Path(write_scad(render_scad(cone), target)["path"])
+    elif kind == "sleeve_scad":
+        path = Path(write_scad(render_scad(cone, coil, coupling),
+                               target)["path"])
+    elif kind == "axial_section_svg":
+        path = Path(axial_section_svg(cone, crystal.z_eye_mm,
+                                      target)["path"])
+    elif kind == "top_template_svg":
+        path = Path(top_template_svg(cone, crystal.facet_count,
+                                     target)["path"])
+    elif kind == "winding_template_dxf":
+        path = Path(winding_template_dxf(coil, cone, target)["path"])
+    elif kind == "build_pdf":
+        path = Path(export_build_sheet(crystal, cone, coil, target,
+                                       coupling=coupling)["path"])
+    elif kind == "compatibility_pdf":
+        path = Path(export_compatibility_sheet(crystal, cone,
+                                               target)["path"])
+    else:  # receipt_json
+        import json
+        receipt = {
+            "design": cone.to_json(),
+            "coil_sleeve": coil,
+            "bottom_coupling": coupling,
+            "eye_alignment": coil["eye_alignment"],
+            "fit": {"ok": cone.fit_report.ok,
+                    "min_clearance_mm": cone.fit_report.min_clearance_mm,
+                    "max_clearance_mm": cone.fit_report.max_clearance_mm,
+                    "stations_checked": cone.fit_report.stations_checked,
+                    "eye_validation_notes": eye_check.reasons},
+        }
+        target.write_text(json.dumps(receipt, indent=2, sort_keys=True,
+                                     default=str), encoding="utf-8")
+        path = target
+
+    import hashlib
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    return {"kind": kind, "path": str(path), "sha256": digest,
+            "design_id": cone.design_id}

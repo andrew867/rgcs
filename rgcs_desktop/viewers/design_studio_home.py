@@ -70,7 +70,7 @@ class DesignStudioHomePanel(Panel):
             "properties": {
                 "workflows": len(WORKFLOWS),
                 "golden path": "Crystal Validator -> Certification Sheet "
-                               "-> Phyrll Generator -> Coil and Pulse "
+                               "-> Phryll Generator v2 -> Coil and Pulse "
                                "-> Export Bundle",
             },
             "classification": "Derived (navigation metadata)",

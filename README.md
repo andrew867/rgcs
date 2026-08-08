@@ -188,8 +188,7 @@ The desktop workbench (`rgcs-workbench`) has two modes:
 | I want to… | Open | Output |
 |---|---|---|
 | Validate a crystal | Crystal Validator | geometry receipt, derived values, certification PDF |
-| Generate printable parts | Phyrll Generator Designer | SCAD, STL (when OpenSCAD is installed), build PDF, receipt JSON |
-| Design a crystal-first Phryll cone | Phryll Generator v2 | custom cone + coil sleeve: SCAD, STL, 3MF, DXF, SVG, PDFs, receipts |
+| Design a crystal-first Phryll cone | Phryll Generator v2 | custom cone + coil sleeve: SCAD, STL, 3MF, DXF, SVG, PDFs, receipts — single file or full bundle |
 | Design coils and pulses | Coil / Pulse Designer | wire estimates, pulse table, sidebands, build PDF |
 | Design an annular ring | Annular Ring Designer | ring diagram, masks, SVG/SCAD, engineering PDF |
 | Use frequency keys | Frequency Key Library | sourced key list, sidebands, key relations |
@@ -206,7 +205,7 @@ rgcs-workbench
 Guides: [INSTALL.md](INSTALL.md) ·
 [Design Studio](docs/user/DESIGN_STUDIO.md) ·
 [Crystal Validator](docs/user/CRYSTAL_VALIDATOR.md) ·
-[Phyrll Generator Designer](docs/user/PHYRLL_GENERATOR_DESIGNER.md) ·
+[Phryll Generator v2](docs/user/PHRYLL_GENERATOR_V2.md) ·
 [Coil / Pulse Designer](docs/user/COIL_PULSE_DESIGNER.md) ·
 [Annular Ring Designer](docs/user/ANNULAR_RING_DESIGNER.md)
 

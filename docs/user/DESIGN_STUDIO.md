@@ -16,7 +16,7 @@ The app opens on the **Design Studio** home tab — a set of task cards:
 
 - **Validate a crystal** → [Crystal Validator](CRYSTAL_VALIDATOR.md)
 - **Generate a certification sheet** → [Certification Sheets](CERTIFICATION_SHEETS.md)
-- **Design a Phyrll generator** → [Phyrll Generator Designer](PHYRLL_GENERATOR_DESIGNER.md)
+- **Design a crystal-first Phryll cone (v2)** → [Phryll Generator v2](PHRYLL_GENERATOR_V2.md)
 - **Design coils and pulse settings** → [Coil / Pulse Designer](COIL_PULSE_DESIGNER.md)
 - **Design an annular ring prototype** → [Annular Ring Designer](ANNULAR_RING_DESIGNER.md)
 - **Open Frequency Key Library** → [Frequency Keys](FREQUENCY_KEYS.md)
@@ -27,10 +27,17 @@ The app opens on the **Design Studio** home tab — a set of task cards:
 ```text
 Crystal Validator
   -> Certification Sheet
-  -> Phyrll Generator Designer
+  -> Phryll Generator v2
   -> Coil and Pulse Designer
   -> Export Bundle
 ```
+
+The original box-holder designer ("Phyrll Generator Designer", v1) is
+retired from the UI as of v8.5.2 — the crystal-first
+[Phryll Generator v2](PHRYLL_GENERATOR_V2.md) is the only Phryll path.
+Existing v1 exports (SCAD, build PDFs, receipts) remain valid files, and
+the v1 service is kept in the codebase for legacy reading; see the
+retired [Phyrll Generator Designer](PHYRLL_GENERATOR_DESIGNER.md) page.
 
 Each workflow writes a JSON receipt, a human-readable PDF, diagrams or generated
 geometry where relevant, a checksum, and a claim-boundary block.

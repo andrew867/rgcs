@@ -1,4 +1,11 @@
-# Phyrll Generator Designer
+# Phyrll Generator Designer (retired in v8.5.2)
+
+> **Retired.** This v1 box-holder designer no longer appears in the app.
+> New designs use [Phryll Generator v2](PHRYLL_GENERATOR_V2.md), the
+> crystal-first parametric cone + coil sleeve generator with single-file
+> and full-bundle exports. Existing v1 exports (SCAD, build sheet PDFs,
+> receipts) remain valid files, and the v1 geometry service stays in the
+> codebase so old outputs can be regenerated or read.
 
 Generate custom-fit printable holder templates from a validated crystal
 specimen.

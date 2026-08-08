@@ -52,20 +52,13 @@ WORKFLOWS: list[dict] = [
         "outputs": "certification PDF with receipt hash",
     },
     {
-        "key": "phyrll_generator",
-        "card": "Design a Phyrll generator",
-        "panel": "Phyrll Generator Designer",
-        "inputs": "validated specimen, clearance, wall thickness",
-        "outputs": "SCAD, STL (if OpenSCAD), build PDF, receipt JSON",
-    },
-    {
         "key": "phryll_v2",
         "card": "Design a crystal-first Phryll cone (v2)",
         "panel": "Phryll Generator v2",
         "inputs": "measured crystal profile, Eye coordinate, fit + "
                   "coil settings",
         "outputs": "custom cone + coil sleeve: SCAD, STL, 3MF, DXF, "
-                   "SVG, PDFs, receipts, bundle",
+                   "SVG, PDFs, receipts — single file or full bundle",
     },
     {
         "key": "coil_pulse",

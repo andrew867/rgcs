@@ -22,6 +22,12 @@ size-family examples only.
    STL + 3MF from the built-in mesh backend (OpenSCAD optional), SVG
    axial/top templates, DXF winding template, compatibility PDF, build
    PDF, JSON receipts, and a `CHECKSUMS.sha256`-verified bundle.
+5. **Single-file export** — when you only want one artifact, pick it
+   from the *Single-file export* selector: STL, 3MF, or SCAD of the
+   cone or the grooved coil sleeve; axial-section or top-template SVG;
+   winding-template DXF; build or compatibility PDF; or the design
+   receipt JSON. Exactly one file is written — never a bundle — and
+   the export ledger records its SHA-256.
 
 ## Spacing model
 

@@ -19,7 +19,8 @@ from rgcs_desktop.services.phryll_v2.coil_sleeve import (
 from rgcs_desktop.services.phryll_v2.cone_generator import make_cone_design
 from rgcs_desktop.services.phryll_v2.crystal_profile import (
     ProfileError, normalize_crystal_profile, validate_eye_coordinate)
-from rgcs_desktop.services.phryll_v2.pipeline import generate_full_design
+from rgcs_desktop.services.phryll_v2.pipeline import (export_single_artifact,
+                                                      generate_full_design)
 from rgcs_desktop.viewers.base import Panel
 from rgcs_desktop.viewers.design_studio_common import (export_dir,
                                                        record_export_safe,
@@ -29,6 +30,22 @@ from rgcs_desktop.widgets import ClassificationBadge
 BOUNDARY = ("Generated geometry is a model output and engineering "
             "plan. Reference profiles are advisory. Source-language "
             "pulse notes are recorded, not validated.")
+
+# (label, artifact kind) pairs for the single-file export selector
+ARTIFACT_CHOICES = (
+    ("STL — coil sleeve (grooved)", "sleeve_stl"),
+    ("STL — cone", "cone_stl"),
+    ("3MF — coil sleeve", "sleeve_3mf"),
+    ("3MF — cone", "cone_3mf"),
+    ("SCAD — coil sleeve", "sleeve_scad"),
+    ("SCAD — cone", "cone_scad"),
+    ("SVG — axial section", "axial_section_svg"),
+    ("SVG — top template", "top_template_svg"),
+    ("DXF — winding template", "winding_template_dxf"),
+    ("PDF — build sheet", "build_pdf"),
+    ("PDF — compatibility sheet", "compatibility_pdf"),
+    ("JSON — design receipt", "receipt_json"),
+)
 
 
 class PhryllV2Panel(Panel):
@@ -115,6 +132,17 @@ class PhryllV2Panel(Panel):
             "Export bundle (SCAD/STL/3MF/DXF/SVG/PDF/JSON)")
         self.export_btn.clicked.connect(self.export_bundle)
         left.addWidget(self.export_btn)
+
+        single_box = QGroupBox("Single-file export (no bundle)")
+        srow = QVBoxLayout(single_box)
+        self.artifact_kind = QComboBox()
+        for label, kind in ARTIFACT_CHOICES:
+            self.artifact_kind.addItem(label, kind)
+        srow.addWidget(self.artifact_kind)
+        self.single_btn = QPushButton("Export selected file only")
+        self.single_btn.clicked.connect(self.export_single)
+        srow.addWidget(self.single_btn)
+        left.addWidget(single_box)
         left.addStretch(1)
         layout.addLayout(left)
 
@@ -230,6 +258,27 @@ class PhryllV2Panel(Panel):
             f"{result['openscad_status']})")
         self.inspector_changed.emit()
         return result
+
+    def export_single(self, *_a):
+        if self._cone is None and self.generate() is None:
+            self.status_message.emit(
+                f"export blocked: {self._last_error or 'no design'}")
+            return None
+        kind = self.artifact_kind.currentData()
+        out = export_dir(self.context) / "phryll_v2"
+        receipt = export_single_artifact(
+            self.raw_crystal(), out, kind,
+            fit_settings=self.fit_settings(),
+            coil_settings=self.coil_settings())
+        from pathlib import Path as _Path
+        record_export_safe(self.context, f"phryll_v2_{kind}",
+                           _Path(receipt["path"]))
+        self._last_single = receipt
+        self.status_message.emit(
+            f"phryll v2 single-file export: {receipt['path']} "
+            f"(sha256 {receipt['sha256'][:12]}…, no bundle)")
+        self.inspector_changed.emit()
+        return receipt
 
     def inspector_info(self):
         eye = (self._coil or {}).get("eye_alignment", {})
