@@ -58,9 +58,14 @@ jobs:
           pyinstaller tools/packaging/rgcs_desktop.spec --noconfirm `
             --distpath release/windows --workpath build/pyi-win
       - name: Smoke check portable build
+        # rgcs-workbench.exe is a GUI-subsystem binary: PowerShell's &
+        # does not wait for it, so Start-Process -Wait is required for
+        # a real exit code.
         run: |
-          & "release\windows\rgcs-workbench\rgcs-workbench.exe" --smoke-check
-          if ($LASTEXITCODE -ne 0) { throw "portable smoke failed" }
+          $p = Start-Process -Wait -PassThru -NoNewWindow `
+            -FilePath "release\windows\rgcs-workbench\rgcs-workbench.exe" `
+            -ArgumentList "--smoke-check"
+          if ($p.ExitCode -ne 0) { throw "portable smoke failed ($($p.ExitCode))" }
       - name: Package portable zip + manifest + sha256
         run: |
           $tag = "${env:GITHUB_REF_NAME}"
