@@ -6,3 +6,8 @@
 *.xlsx binary
 
 release/*.zip export-ignore
+
+# v8.5.2: factory content is hash-manifested — line endings must be
+# identical on every platform, so pin LF and never autocrlf these.
+rgcs_desktop/data/factory_sessions/** text eol=lf
+rgcs_desktop/data/factory_manifest.json text eol=lf
