@@ -12,8 +12,8 @@ folder so that first runs, re-runs, and upgrades all converge:
   a newer version,
 - an existing workspace folder is never a reason to fail.
 
-Curated AHA/Halo sessions are source-language frequency records:
-claimed uses are recorded, not endorsed. No Qt imports here.
+Curated sessions are source-language frequency records: claimed uses
+are recorded, not endorsed. No Qt imports here.
 """
 from __future__ import annotations
 
@@ -108,7 +108,9 @@ def sync_factory_content(workspace_root: str | Path,
     installed = load_factory_state(workspace_root)
 
     report: dict = {"added": [], "updated": [], "kept_user_modified": [],
-                    "unchanged": [], "hidden": []}
+                    "unchanged": [], "hidden": [],
+                    "migrated_legacy": _migrate_legacy_factory_dirs(
+                        workspace_root, body)}
     for item in body["items"]:
         fid = item["factory_id"]
         if item["install_policy"] not in INSTALL_POLICIES:
@@ -156,6 +158,44 @@ def sync_factory_content(workspace_root: str | Path,
     report["state_path"] = str(_write_factory_state(workspace_root,
                                                     installed))
     return report
+
+
+def _migrate_legacy_factory_dirs(workspace_root: Path,
+                                 manifest: dict) -> list[str]:
+    """Move factory subdirs the manifest no longer references into the
+    workspace trash (never delete). The factory tree is fully managed:
+    renamed factory families from older releases would otherwise list
+    duplicate sessions forever. User files live under user/, which is
+    never touched.
+    """
+    import time
+    factory = workspace_root / "library" / "frequency_sessions" / \
+        "factory"
+    if not factory.is_dir():
+        return []
+    known = set()
+    for item in manifest.get("items", []):
+        rel = Path(item["relative_path"])
+        parts = rel.parts
+        if "factory" in parts:
+            idx = parts.index("factory")
+            if idx + 1 < len(parts) - 1:
+                known.add(parts[idx + 1])
+    migrated = []
+    for sub in factory.iterdir():
+        if not sub.is_dir() or sub.name in known:
+            continue
+        trash = workspace_root / "library" / "trash"
+        trash.mkdir(parents=True, exist_ok=True)
+        stamp = time.strftime("%Y%m%d-%H%M%S")
+        target = trash / f"legacy_factory_{sub.name}_{stamp}"
+        n = 2
+        while target.exists():
+            target = trash / f"legacy_factory_{sub.name}_{stamp}_{n}"
+            n += 1
+        sub.rename(target)
+        migrated.append(sub.name)
+    return migrated
 
 
 def repair_factory_content(workspace_root: str | Path) -> dict:

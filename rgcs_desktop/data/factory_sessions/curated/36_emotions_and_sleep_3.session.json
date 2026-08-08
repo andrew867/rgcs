@@ -1,0 +1,136 @@
+{
+  "duration_s": 720.0,
+  "family": "binaural",
+  "intent": "curated binaural session for Frequency Key Studio",
+  "layers": [
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 47.0,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0,
+      "gain_db": -6.0,
+      "layer_id": "L1",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 48.0,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0,
+      "gain_db": -12.0,
+      "layer_id": "L2",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0,
+      "gain_db": -18.0,
+      "layer_id": "N1",
+      "pan": 0.0,
+      "seed": 7852,
+      "type": "pink_noise"
+    },
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 49.0,
+      "fade_in_s": 6.0,
+      "fade_out_s": 6.0,
+      "gain_db": -16.0,
+      "layer_id": "L3",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 50.0,
+      "fade_in_s": 6.0,
+      "fade_out_s": 6.0,
+      "gain_db": -16.0,
+      "layer_id": "L4",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 51.0,
+      "fade_in_s": 6.0,
+      "fade_out_s": 6.0,
+      "gain_db": -16.0,
+      "layer_id": "L5",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 52.0,
+      "fade_in_s": 6.0,
+      "fade_out_s": 6.0,
+      "gain_db": -16.0,
+      "layer_id": "L6",
+      "pan": 0.0,
+      "type": "binaural"
+    }
+  ],
+  "loudness": {
+    "target_rms_db": -20.0
+  },
+  "meta": {
+    "folded_carriers_hz": [
+      47.0,
+      48.0,
+      49.0,
+      50.0,
+      51.0,
+      52.0,
+      53.0,
+      54.0,
+      55.0,
+      56.0,
+      57.0,
+      58.0
+    ],
+    "provenance": "curated frequency-corpus import",
+    "source_line": 7844,
+    "source_name": "Emotions and Sleep 3"
+  },
+  "notes": "Curated import (source line 7844). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Emotions play a key role in overall mental health, and sleep plays a crucial role in maintaining the optimal homeostasis of emotional functioning. Deficient sleep, both in the form of sleep deprivatio Stereo headphones recommended. Experimental; not a medical claim.",
+  "sample_rate": 48000,
+  "schema_version": "1.0.0",
+  "segments": [
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 7.83,
+      "curve": "linear",
+      "duration_s": 72.0,
+      "kind": "intro"
+    },
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 10.0,
+      "curve": "cosine",
+      "duration_s": 108.0,
+      "kind": "ramp_down"
+    },
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 7.83,
+      "curve": "linear",
+      "duration_s": 396.0,
+      "kind": "hold"
+    },
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 7.83,
+      "curve": "linear",
+      "duration_s": 144.0,
+      "kind": "outro"
+    }
+  ],
+  "session_id": "SES-CURATED-36",
+  "source_ids": [
+    "curated-frequency-corpus"
+  ],
+  "title": "Emotions and Sleep 3 \u2014 curated binaural"
+}

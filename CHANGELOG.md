@@ -5,7 +5,7 @@ v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
 ## [8.5.2] - 2026-08-08
 
-**Frequency Studio session CRUD, curated AHA/Halo factory library,
+**Frequency Studio session CRUD, curated session factory library,
 workspace lifecycle fixes, single-file exports, Phryll v1 retired.**
 
 - **Session CRUD**: File menu with New / Open / Open Recent / Save /
@@ -14,10 +14,10 @@ workspace lifecycle fixes, single-file exports, Phryll v1 retired.**
   session close and workspace open/switch/close; recent-sessions list.
   `SessionStore` service backs it (atomic schema-preserving saves,
   never-clobber names, both open gates: schema + timeline).
-- **Curated AHA/Halo factory library**: 61 curated binaural sessions
+- **Curated session factory library**: 61 curated binaural sessions
   (Schumann, sleep, focus/memory, relaxation/emotional, chakra/pineal,
   altered-state buckets) install into every workspace under
-  `library/frequency_sessions/factory/aha_halo_curated/` with a
+  `library/frequency_sessions/factory/curated/` with a
   per-file-hash factory manifest. Source-language claimed uses are
   recorded, not endorsed; none of it is a medical claim. New Session
   Library page with origin badges; factory files read-only with

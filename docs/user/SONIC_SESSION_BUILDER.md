@@ -60,9 +60,9 @@ Saves land in your workspace at
 Save / Discard / Cancel before anything closes or switches away.
 
 The **Session Library** page lists factory and user sessions with
-origin badges. The factory set ships with 61 curated AHA/Halo-derived
-binaural sessions (Schumann, sleep, focus, relaxation, chakra/pineal,
-altered-state families). Factory files are read-only — **Duplicate to
+origin badges. The factory set ships with 61 curated binaural
+sessions from an imported frequency corpus (Schumann, sleep, focus,
+relaxation, chakra/pineal, altered-state families). Factory files are read-only — **Duplicate to
 my library** makes an editable copy; a repair command restores any
 missing factory file. Factory session notes carry the source's
 claimed-use language as source-language records: claimed uses are

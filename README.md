@@ -308,7 +308,7 @@ environment-dependent test in the repository.
 ## Release status
 
 ```text
-current release:   v8.5.2 — Frequency Studio CRUD, curated AHA/Halo library, workspace lifecycle
+current release:   v8.5.2 — Frequency Studio CRUD, curated session library, workspace lifecycle
 workbench RCs:     workbench-v1.0.0-rc1 / -rc2 (pre-releases, shipped)
 ```
 

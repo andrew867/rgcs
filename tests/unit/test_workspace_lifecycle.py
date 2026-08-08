@@ -55,7 +55,7 @@ def test_first_run_installs_curated_factory_sessions(qt_context,
     root = tmp_path / "ws"
     apply_first_run(qt_context, root, seed_demo=False)
     factory = root / "library" / "frequency_sessions" / "factory" / \
-        "aha_halo_curated"
+        "curated"
     assert len(list(factory.glob("*.json"))) == 61
     assert qt_context.last_factory_sync is not None
     assert len(qt_context.last_factory_sync["added"]) == 61
@@ -106,5 +106,5 @@ def test_upgrade_adds_new_factory_files_to_old_workspace(qt_context,
     ws.close()
     qt_context.open_workspace(root)
     factory = root / "library" / "frequency_sessions" / "factory" / \
-        "aha_halo_curated"
+        "curated"
     assert len(list(factory.glob("*.json"))) == 61

@@ -1,6 +1,6 @@
-# v8.5.2 Final Report — Frequency Studio UX, Curated AHA/Halo, CI/CD
+# v8.5.2 Final Report — Frequency Studio UX, Curated Session Library, CI/CD
 
-Plan pack: `RGCS_v8_5_2_Frequency_Studio_Curated_AHA_Halo_UI_CICD_Spec_Tests_Plans_2026-08-08`
+Plan pack: v8.5.2 Frequency Studio / curated-library / UI / CI-CD pack (2026-08-08)
 Date: 2026-08-08
 
 ## Release identity
@@ -16,7 +16,7 @@ Date: 2026-08-08
 
 ## What shipped
 
-1. **Curated AHA/Halo factory library** (61 sessions: astral/meditation,
+1. **Curated session factory library** (61 sessions: astral/meditation,
    Schumann, sleep, focus/study/memory, creative, relaxation/emotional,
    chakra/pineal, stress buckets) as package data with a per-file-hash
    factory manifest (`rgcs_desktop/data/factory_manifest.json`:
@@ -77,7 +77,7 @@ Date: 2026-08-08
 
 Existing workspaces (any version) gain the curated library on next
 open: the sync adds `library/frequency_sessions/factory/
-aha_halo_curated/` (61 files) and records install hashes in
+curated/` (61 files) and records install hashes in
 `library/factory_state.json`. Files the user edited after install are
 detected by hash mismatch and left untouched (reported as
 `kept_user_modified`); pre-existing files the installer never wrote
@@ -89,8 +89,8 @@ the workspace manifest or user library.
 ## Known limits
 
 - The optional Level 2/3 corpus features (full 22k-row searchable
-  index + on-demand import) are deferred: the full `s2d_aha_halo.zip`
-  corpus is not part of this pack — only the 61 curated selections
+  index + on-demand import) are deferred: the full source corpus
+  archive is not part of this pack — only the 61 curated selections
   (and their step-format `rgcs.frequency_session/v1` variants, which
   use a sequential-steps format the desktop engine does not render).
 - Crystal Validator keeps its existing single-button export set

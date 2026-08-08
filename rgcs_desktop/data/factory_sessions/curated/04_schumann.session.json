@@ -1,0 +1,119 @@
+{
+  "duration_s": 450.0,
+  "family": "binaural",
+  "intent": "curated binaural session for Frequency Key Studio",
+  "layers": [
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 62.64,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0,
+      "gain_db": -6.0,
+      "layer_id": "L1",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 57.2,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0,
+      "gain_db": -12.0,
+      "layer_id": "L2",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0,
+      "gain_db": -18.0,
+      "layer_id": "N1",
+      "pan": 0.0,
+      "seed": 18731,
+      "type": "pink_noise"
+    },
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 41.6,
+      "fade_in_s": 6.0,
+      "fade_out_s": 6.0,
+      "gain_db": -16.0,
+      "layer_id": "L3",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 54.6,
+      "fade_in_s": 6.0,
+      "fade_out_s": 6.0,
+      "gain_db": -16.0,
+      "layer_id": "L4",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 67.6,
+      "fade_in_s": 6.0,
+      "fade_out_s": 6.0,
+      "gain_db": -16.0,
+      "layer_id": "L5",
+      "pan": 0.0,
+      "type": "binaural"
+    }
+  ],
+  "loudness": {
+    "target_rms_db": -20.0
+  },
+  "meta": {
+    "folded_carriers_hz": [
+      62.64,
+      57.2,
+      41.6,
+      54.6,
+      67.6
+    ],
+    "provenance": "curated frequency-corpus import",
+    "source_line": 18727,
+    "source_name": "Schumann"
+  },
+  "notes": "Curated import (source line 18727). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Earth's fundamental frequency and harmonics. Accelerate/enhance healing, increase stress tolerance, stimulate study, improve mental function, advance learning, boost creative thought and concentration Stereo headphones recommended. Experimental; not a medical claim.",
+  "sample_rate": 48000,
+  "schema_version": "1.0.0",
+  "segments": [
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 7.83,
+      "curve": "linear",
+      "duration_s": 45.0,
+      "kind": "intro"
+    },
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 10.0,
+      "curve": "cosine",
+      "duration_s": 67.5,
+      "kind": "ramp_down"
+    },
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 7.83,
+      "curve": "linear",
+      "duration_s": 247.5,
+      "kind": "hold"
+    },
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 7.83,
+      "curve": "linear",
+      "duration_s": 90.0,
+      "kind": "outro"
+    }
+  ],
+  "session_id": "SES-CURATED-04",
+  "source_ids": [
+    "curated-frequency-corpus"
+  ],
+  "title": "Schumann \u2014 curated binaural"
+}

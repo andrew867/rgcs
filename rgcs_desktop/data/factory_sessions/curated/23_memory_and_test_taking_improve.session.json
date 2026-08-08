@@ -1,0 +1,85 @@
+{
+  "duration_s": 180.0,
+  "family": "binaural",
+  "intent": "curated binaural session for Frequency Key Studio",
+  "layers": [
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 398.0,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0,
+      "gain_db": -6.0,
+      "layer_id": "L1",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 200.0,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0,
+      "gain_db": -12.0,
+      "layer_id": "L2",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0,
+      "gain_db": -18.0,
+      "layer_id": "N1",
+      "pan": 0.0,
+      "seed": 13571,
+      "type": "pink_noise"
+    }
+  ],
+  "loudness": {
+    "target_rms_db": -20.0
+  },
+  "meta": {
+    "folded_carriers_hz": [
+      398.0
+    ],
+    "provenance": "curated frequency-corpus import",
+    "source_line": 13565,
+    "source_name": "Memory and Test-taking Improve"
+  },
+  "notes": "Curated import (source line 13565). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Taking good notes, and correctly utilizing your notes, is one of the most effective strategies for improving test performance. For those looking to improve their memory and reduce anxiety before a tes Stereo headphones recommended. Experimental; not a medical claim.",
+  "sample_rate": 48000,
+  "schema_version": "1.0.0",
+  "segments": [
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 7.83,
+      "curve": "linear",
+      "duration_s": 18.0,
+      "kind": "intro"
+    },
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 10.0,
+      "curve": "cosine",
+      "duration_s": 27.0,
+      "kind": "ramp_down"
+    },
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 7.83,
+      "curve": "linear",
+      "duration_s": 99.0,
+      "kind": "hold"
+    },
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 7.83,
+      "curve": "linear",
+      "duration_s": 36.0,
+      "kind": "outro"
+    }
+  ],
+  "session_id": "SES-CURATED-23",
+  "source_ids": [
+    "curated-frequency-corpus"
+  ],
+  "title": "Memory and Test-taking Improve \u2014 curated binaural"
+}

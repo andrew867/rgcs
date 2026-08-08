@@ -34,7 +34,7 @@ rgcs-sonic render RGCS-SCH-0001 --duration 60 --out exports/
   ([details](RECIPE_LIBRARY.md))
 - **Session Library** (v8.5.2) — factory + user sessions in the
   workspace with origin badges; open, duplicate, delete-to-trash.
-  Ships with 61 curated AHA/Halo-derived binaural sessions
+  Ships with 61 curated binaural sessions from an imported frequency corpus
   ([details](SONIC_SESSION_BUILDER.md))
 - **Web Corpus** — metadata-only ingestion, corpus store, clustering,
   recipe recommendations ([details](YOUTUBE_RECIPE_CORPUS.md))

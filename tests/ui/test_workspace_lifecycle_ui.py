@@ -29,7 +29,7 @@ def test_switch_workspace_installs_factory_content(main_window,
     root = tmp_path / "second-ws"
     main_window.context.create_workspace(root, "second")
     factory = root / "library" / "frequency_sessions" / "factory" / \
-        "aha_halo_curated"
+        "curated"
     assert len(list(factory.glob("*.json"))) == 61
 
 

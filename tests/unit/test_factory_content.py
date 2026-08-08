@@ -1,5 +1,5 @@
-"""Factory content: curated AHA/Halo library validity + idempotent
-workspace sync (v8.5.2 plan pack 07_TESTS)."""
+"""Factory content: curated session library validity + idempotent
+workspace sync (v8.5.2 plan pack 07_TESTS; neutral naming v8.5.3)."""
 import json
 from pathlib import Path
 
@@ -14,7 +14,7 @@ from rgcs_desktop.services.sonic_timeline import validate_session
 def test_manifest_lists_61_curated_sessions():
     items = fc.factory_items()
     curated = [i for i in items
-               if i["content_family"] == "aha_halo_curated"]
+               if i["content_family"] == "curated_binaural"]
     assert len(curated) == 61
     assert len({i["factory_id"] for i in items}) == len(items)
 
@@ -139,6 +139,36 @@ def test_unknown_policy_refused(tmp_path):
                            "sha256": "0" * 64}]}
     with pytest.raises(fc.FactoryContentError, match="install policy"):
         fc.sync_factory_content(tmp_path, manifest)
+
+
+def test_legacy_factory_dir_migrates_to_trash(tmp_path):
+    """A factory subdir from an older release (renamed family) moves to
+    the workspace trash — never deleted, never left to double-list."""
+    legacy = (tmp_path / "library" / "frequency_sessions" / "factory"
+              / "old_family_name")
+    legacy.mkdir(parents=True)
+    (legacy / "old.json").write_text("{\"session_id\": \"OLD\"}",
+                                     encoding="utf-8")
+    report = fc.sync_factory_content(tmp_path)
+    assert report["migrated_legacy"] == ["old_family_name"]
+    assert not legacy.exists()
+    trash = tmp_path / "library" / "trash"
+    moved = list(trash.glob("legacy_factory_old_family_name_*/old.json"))
+    assert len(moved) == 1
+    # a second sync has nothing left to migrate
+    assert fc.sync_factory_content(tmp_path)["migrated_legacy"] == []
+
+
+def test_curated_content_carries_no_vendor_branding():
+    """v8.5.3: no device/vendor names in filenames, ids, or content."""
+    import re
+    banned = re.compile(r"aha.?halo|spooky|s2d", re.IGNORECASE)
+    body = fc.load_factory_manifest()
+    assert not banned.search(json.dumps(body))
+    for item in fc.factory_items():
+        text = fc.factory_file_bytes(item).decode("utf-8")
+        assert not banned.search(text), item["factory_id"]
+        assert not banned.search(item["package_relpath"])
 
 
 def test_sync_reports_state_path(tmp_path):

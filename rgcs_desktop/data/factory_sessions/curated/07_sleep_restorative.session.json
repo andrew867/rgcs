@@ -1,0 +1,136 @@
+{
+  "duration_s": 720.0,
+  "family": "binaural",
+  "intent": "curated binaural session for Frequency Key Studio",
+  "layers": [
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 64.0,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0,
+      "gain_db": -6.0,
+      "layer_id": "L1",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 70.4,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0,
+      "gain_db": -12.0,
+      "layer_id": "L2",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0,
+      "gain_db": -18.0,
+      "layer_id": "N1",
+      "pan": 0.0,
+      "seed": 19171,
+      "type": "pink_noise"
+    },
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 76.8,
+      "fade_in_s": 6.0,
+      "fade_out_s": 6.0,
+      "gain_db": -16.0,
+      "layer_id": "L3",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 41.6,
+      "fade_in_s": 6.0,
+      "fade_out_s": 6.0,
+      "gain_db": -16.0,
+      "layer_id": "L4",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 44.8,
+      "fade_in_s": 6.0,
+      "fade_out_s": 6.0,
+      "gain_db": -16.0,
+      "layer_id": "L5",
+      "pan": 0.0,
+      "type": "binaural"
+    },
+    {
+      "beat_hz": 7.83,
+      "carrier_hz": 48.0,
+      "fade_in_s": 6.0,
+      "fade_out_s": 6.0,
+      "gain_db": -16.0,
+      "layer_id": "L6",
+      "pan": 0.0,
+      "type": "binaural"
+    }
+  ],
+  "loudness": {
+    "target_rms_db": -20.0
+  },
+  "meta": {
+    "folded_carriers_hz": [
+      64.0,
+      70.4,
+      76.8,
+      41.6,
+      44.8,
+      48.0,
+      51.2,
+      54.4,
+      57.6,
+      60.8,
+      64.0,
+      67.2
+    ],
+    "provenance": "curated frequency-corpus import",
+    "source_line": 19167,
+    "source_name": "Sleep Restorative"
+  },
+  "notes": "Curated import (source line 19167). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Other use: relaxation/peace. Stereo headphones recommended. Experimental; not a medical claim.",
+  "sample_rate": 48000,
+  "schema_version": "1.0.0",
+  "segments": [
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 7.83,
+      "curve": "linear",
+      "duration_s": 72.0,
+      "kind": "intro"
+    },
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 10.0,
+      "curve": "cosine",
+      "duration_s": 108.0,
+      "kind": "ramp_down"
+    },
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 7.83,
+      "curve": "linear",
+      "duration_s": 396.0,
+      "kind": "hold"
+    },
+    {
+      "beat_end_hz": 7.83,
+      "beat_start_hz": 7.83,
+      "curve": "linear",
+      "duration_s": 144.0,
+      "kind": "outro"
+    }
+  ],
+  "session_id": "SES-CURATED-07",
+  "source_ids": [
+    "curated-frequency-corpus"
+  ],
+  "title": "Sleep Restorative \u2014 curated binaural"
+}
