@@ -111,6 +111,10 @@ def sync_factory_content(workspace_root: str | Path,
                     "unchanged": [], "hidden": [],
                     "migrated_legacy": _migrate_legacy_factory_dirs(
                         workspace_root, body)}
+
+    # PLAN pass: decide every action before touching anything, so a
+    # tiny backup manifest can record the prior state first (v8.5.3).
+    plan: list[tuple[str, dict, bytes]] = []   # (action, item, payload)
     for item in body["items"]:
         fid = item["factory_id"]
         if item["install_policy"] not in INSTALL_POLICIES:
@@ -119,16 +123,12 @@ def sync_factory_content(workspace_root: str | Path,
                 f"{item['install_policy']!r}")
         target = workspace_root / item["relative_path"]
         if item["install_policy"] == "deprecated_hide":
-            # never install; leave any existing copy alone
             report["hidden"].append(fid)
             continue
 
         payload = factory_file_bytes(item)
         if not target.exists():
-            target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_bytes(payload)
-            installed[fid] = _sha256(payload)
-            report["added"].append(fid)
+            plan.append(("add", item, payload))
             continue
 
         current = _sha256(target.read_bytes())
@@ -151,13 +151,55 @@ def sync_factory_content(workspace_root: str | Path,
                                       "never_overwrite_user_file"):
             report["unchanged"].append(fid)
             continue
+        plan.append(("update", item, payload))
+
+    if any(action == "update" for action, _i, _p in plan) \
+            or report["migrated_legacy"]:
+        report["backup_manifest"] = str(_write_backup_manifest(
+            workspace_root, plan, installed, report["migrated_legacy"]))
+    else:
+        report["backup_manifest"] = None
+
+    # APPLY pass
+    for action, item, payload in plan:
+        fid = item["factory_id"]
+        target = workspace_root / item["relative_path"]
+        target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(payload)
         installed[fid] = _sha256(payload)
-        report["updated"].append(fid)
+        report["added" if action == "add" else "updated"].append(fid)
 
     report["state_path"] = str(_write_factory_state(workspace_root,
                                                     installed))
     return report
+
+
+def _write_backup_manifest(workspace_root: Path, plan, installed: dict,
+                           migrated: list[str]) -> Path:
+    """Tiny pre-upgrade record: what is about to change and the hash it
+    had before. Written under library/factory_backup/."""
+    import time
+    backup_dir = workspace_root / "library" / "factory_backup"
+    backup_dir.mkdir(parents=True, exist_ok=True)
+    entries = [{"factory_id": item["factory_id"],
+                "relative_path": item["relative_path"],
+                "action": action,
+                "prior_sha256": installed.get(item["factory_id"]),
+                "new_sha256": item["sha256"]}
+               for action, item, _payload in plan]
+    body = {"schema_version": "1.0.0",
+            "backup_kind": "rgcs.factory_backup/v1",
+            "migrated_legacy_dirs": migrated,
+            "changes": entries}
+    stamp = time.strftime("%Y%m%d-%H%M%S")
+    target = backup_dir / f"factory_backup_{stamp}.json"
+    n = 2
+    while target.exists():
+        target = backup_dir / f"factory_backup_{stamp}_{n}.json"
+        n += 1
+    target.write_text(json.dumps(body, indent=2, sort_keys=True) + "\n",
+                      encoding="utf-8")
+    return target
 
 
 def _migrate_legacy_factory_dirs(workspace_root: Path,

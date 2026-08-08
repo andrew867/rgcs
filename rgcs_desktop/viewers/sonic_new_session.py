@@ -208,6 +208,17 @@ class NewSessionPage(QWidget):
         self.expected_label = QLabel("—")
         self.expected_label.setWordWrap(True)
         ev.addWidget(self.expected_label)
+        crow = QHBoxLayout()
+        self.collision_mode = QComboBox()
+        self.collision_mode.addItem("Overwrite existing files",
+                                    "overwrite")
+        self.collision_mode.addItem("Auto-increment names (keep both)",
+                                    "increment")
+        crow.addWidget(self.collision_mode, stretch=1)
+        self.reveal_exports_btn = QPushButton("Reveal folder")
+        self.reveal_exports_btn.clicked.connect(self.reveal_exports)
+        crow.addWidget(self.reveal_exports_btn)
+        ev.addLayout(crow)
         self.export_selected_btn = QPushButton("Export selected types")
         self.export_selected_btn.clicked.connect(self.export_selected)
         ev.addWidget(self.export_selected_btn)
@@ -644,14 +655,14 @@ class NewSessionPage(QWidget):
         if self._render_cancelled:
             from pathlib import Path as _Path
             for kind, path in written.items():
-                if kind != "receipt":
+                if kind not in ("receipt", "provenance"):
                     _Path(path).unlink(missing_ok=True)
             self._status_cb("cancelled render discarded")
             return
         from rgcs_desktop.viewers.design_studio_common import \
             record_export_safe
         for kind, path in written.items():
-            if kind != "receipt":
+            if kind not in ("receipt", "provenance"):
                 record_export_safe(self.context, f"sonic_{kind}", path)
         self._last_exports = {"wav": written.get("wav_full"),
                               "json": written.get("recipe_json"),
@@ -708,7 +719,10 @@ class NewSessionPage(QWidget):
             export_dir, record_export_safe)
         out = export_dir(self.context) / "sonic"
         try:
-            written = export_selected(session, kinds, out)
+            written = export_selected(
+                session, kinds, out,
+                on_collision=self.collision_mode.currentData()
+                or "overwrite")
         except ExportSelectionError as exc:
             self._status_cb(f"export refused: {exc}")
             return None
@@ -716,12 +730,21 @@ class NewSessionPage(QWidget):
             self._status_cb(f"export failed: {exc}")
             raise
         for kind, path in written.items():
-            if kind != "receipt":
+            if kind not in ("receipt", "provenance"):
                 record_export_safe(self.context, f"sonic_{kind}", path)
-        files = [p.name for k, p in written.items() if k != "receipt"]
-        self._status_cb(f"exported {len(files)} file(s): "
+        files = [p.name for k, p in written.items()
+                 if k not in ("receipt", "provenance")]
+        self._status_cb(f"exported {len(files)} file(s) -> {out}: "
                         + ", ".join(sorted(files)))
         return written
+
+    def reveal_exports(self, *_a) -> None:
+        from rgcs_desktop.viewers.design_studio_common import export_dir
+        out = export_dir(self.context) / "sonic"
+        out.mkdir(parents=True, exist_ok=True)
+        from PySide6.QtCore import QUrl
+        from PySide6.QtGui import QDesktopServices
+        QDesktopServices.openUrl(QUrl.fromLocalFile(str(out)))
 
     # -------------------------------------------- v1.1: play + spectro
     def _render_preview_wav(self, duration_s: float = 12.0):

@@ -45,7 +45,8 @@ def test_expected_files_match_what_export_writes(session, tmp_path):
     kinds = ["recipe_json", "wav_full", "youtube_txt"]
     names = expected_export_files(session, kinds)
     written = export_selected(session, kinds, tmp_path)
-    produced = {p.name for k, p in written.items() if k != "receipt"}
+    produced = {p.name for k, p in written.items()
+                if k not in ("receipt", "provenance")}
     assert set(names) == produced == _files(tmp_path)
 
 

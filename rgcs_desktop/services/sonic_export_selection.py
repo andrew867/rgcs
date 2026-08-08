@@ -67,23 +67,54 @@ def expected_export_files(session: dict, kinds) -> list[str]:
     return [names[k] for k in EXPORT_KINDS if k in kinds]
 
 
+COLLISION_MODES = ("overwrite", "increment")
+
+
+def _resolve_collisions(out_dir: Path, names: dict, kinds: set,
+                        mode: str) -> dict:
+    """Auto-increment planned filenames that already exist."""
+    if mode == "overwrite":
+        return names
+    resolved = dict(names)
+    for kind in kinds:
+        base = Path(names[kind])
+        stem = base.name[: -len("".join(base.suffixes))] \
+            if base.suffixes else base.stem
+        suffix = "".join(base.suffixes)
+        candidate = names[kind]
+        n = 2
+        while (out_dir / candidate).exists():
+            candidate = f"{stem}_{n}{suffix}"
+            n += 1
+        resolved[kind] = candidate
+    return resolved
+
+
 def export_selected(session: dict, kinds, out_dir: str | Path,
-                    preview_duration_s: float = PREVIEW_DURATION_S) -> dict:
+                    preview_duration_s: float = PREVIEW_DURATION_S,
+                    on_collision: str = "overwrite") -> dict:
     """Write the selected export kinds into ``out_dir``.
 
     Returns {kind: Path} for every file written, plus "receipt" (the
-    render receipt) when a render happened. The session sheet PDF
-    always reports a real render: if the full WAV is not part of the
+    render receipt) when a render happened and "provenance" (app
+    version, git commit, input hash). The session sheet PDF always
+    reports a real render: if the full WAV is not part of the
     selection, the render still runs and its stats feed the PDF, but
-    the WAV itself is not kept.
+    the WAV itself is not kept. ``on_collision``: "overwrite" replaces
+    existing files, "increment" writes name_2, name_3, …
     """
+    if on_collision not in COLLISION_MODES:
+        raise ExportSelectionError(
+            f"unknown collision mode {on_collision!r}; expected "
+            f"{' or '.join(COLLISION_MODES)}")
     kinds = set(_check_kinds(kinds))
     if "bundle_zip" in kinds:
         kinds |= {"wav_full", "recipe_json", "session_pdf",
                   "youtube_txt"}
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    names = _filenames(session)
+    names = _resolve_collisions(out_dir, _filenames(session), kinds,
+                                on_collision)
     written: dict = {}
     work = dict(session)
 
@@ -135,4 +166,15 @@ def export_selected(session: dict, kinds, out_dir: str | Path,
 
     if receipt is not None:
         written["receipt"] = receipt
+    from rgcs_core.provenance import sha256_of_jsonable
+
+    from rgcs_desktop.services.export_receipts import (git_commit,
+                                                       software_versions)
+    body = dict(session)
+    body.pop("sha256", None)
+    written["provenance"] = {
+        "software": software_versions(),
+        "git_commit": git_commit(),
+        "input_sha256": sha256_of_jsonable(body),
+    }
     return written

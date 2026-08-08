@@ -94,7 +94,8 @@ class SessionStore:
 
     # --------------------------------------------------------- listing
     def list_sessions(self) -> list[dict]:
-        """Factory + user sessions, shallow metadata only."""
+        """Factory + user sessions with search/sort metadata."""
+        favorites = self.favorites()
         rows: list[dict] = []
         for origin, base in (("factory", self.factory_dir),
                              ("user", self.user_dir)):
@@ -107,16 +108,65 @@ class SessionStore:
                     continue
                 if not isinstance(body, dict) or "session_id" not in body:
                     continue
+                meta = body.get("meta") or {}
+                carrier = beat = None
+                for layer in body.get("layers", []):
+                    if layer.get("type") in ("binaural", "monaural",
+                                             "isochronic"):
+                        carrier = layer.get("carrier_hz")
+                        beat = layer.get("beat_hz",
+                                         layer.get("pulse_hz"))
+                        break
+                sid = body.get("session_id", "")
+                row_origin = origin
+                if origin == "user" and meta.get("imported"):
+                    row_origin = "imported"
                 rows.append({
                     "path": str(path),
-                    "origin": origin,
-                    "session_id": body.get("session_id", ""),
+                    "origin": row_origin,
+                    "session_id": sid,
                     "title": body.get("title", path.stem),
                     "family": body.get("family", ""),
+                    "category": meta.get("source_name",
+                                         body.get("family", "")),
+                    "tags": " ".join(
+                        str(t) for t in (body.get("source_ids") or [])),
+                    "carrier_hz": carrier,
+                    "beat_hz": beat,
                     "duration_s": body.get("duration_s"),
                     "n_layers": len(body.get("layers", [])),
+                    "favorite": sid in favorites,
+                    "mtime": path.stat().st_mtime,
                 })
         return rows
+
+    # ------------------------------------------------ favorites (v8.5.3)
+    @property
+    def _favorites_path(self) -> Path:
+        return self.root / "library" / "favorites.json"
+
+    def favorites(self) -> set[str]:
+        try:
+            body = json.loads(self._favorites_path
+                              .read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            return set()
+        return set(body.get("session_ids", []))
+
+    def toggle_favorite(self, session_id: str) -> bool:
+        """Flip favorite state; returns the new state."""
+        favs = self.favorites()
+        state = session_id not in favs
+        if state:
+            favs.add(session_id)
+        else:
+            favs.discard(session_id)
+        self._favorites_path.parent.mkdir(parents=True, exist_ok=True)
+        self._favorites_path.write_text(
+            json.dumps({"schema_version": "1.0.0",
+                        "session_ids": sorted(favs)},
+                       indent=2) + "\n", encoding="utf-8")
+        return state
 
     # ------------------------------------------------------------ CRUD
     def open(self, path: str | Path) -> dict:
@@ -250,7 +300,8 @@ class SessionStore:
         body = load_session_file(src)
         sid = body.get("session_id", "")
         existing = {row["session_id"] for row in self.list_sessions()
-                    if row["origin"] == "user"}
+                    if row["origin"] in ("user", "imported")}
         if sid in existing:
             body["session_id"] = new_object_id("SES")
+        body.setdefault("meta", {})["imported"] = True
         return self.save_as(body, body.get("title"))
