@@ -3,6 +3,39 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [8.5.1] - 2026-08-08
+
+**Wobbles, corrected lattice coils, session import, and automated
+release builds** (tag `v8.5.1`).
+
+- Frequency Key Studio: wobble stage-table modulation — 38 packaged
+  presets (±0.02/0.05 % feathering, staged % wobbles, octave/odd/
+  Fibonacci ladders, golden-ratio and PHI ramps); per-layer
+  {name, dwell_s, target carrier|beat}; phase-integrated stepping
+  (click-free) with a Nyquist guard; wizard controls + schema +
+  imported-session support. Wobbles are modulation recipes, not
+  claims of outcome.
+- `rgcs-sonic render-file`: schema-validated import of external
+  frequency_session JSON with the full export set; documented sample
+  at `examples/sonic/binaural_session_sample.json`.
+- Phryll v2: coils corrected to the reference ±45° crossed multi-start
+  lattice (rise one circumference per turn; perpendicular 3×wire-Ø
+  strand pitch; X centered on the Eye) across SCAD/STL/3MF/DXF;
+  crystal-bottom coupling model (open bottom enforced, O-ring records),
+  source-language entries and hardware-first excitation ordering;
+  reference meshes re-measured; private-path literal scrubbed after
+  the R10 firewall correctly blocked it.
+- OpenSCAD integration: detection covers standard Windows install
+  locations (installer does not set PATH) with RGCS_OPENSCAD override;
+  the .exe is invoked directly (the .com wrapper strands renders on
+  timeout); nightly/Manifold auto-detected (full lattice boolean
+  renders in ~4 min); stated render timeouts.
+- CI/CD: new tag-triggered `release` workflow — pushing a `v*` tag
+  creates the release from the tag message and builds, smoke-checks,
+  manifests, and uploads Windows portable zip + per-user Inno Setup
+  installer, Linux tar.gz, and macOS tar.gz automatically (all
+  unsigned per policy, each with SHA-256).
+
 ## [8.5.0] - 2026-08-07
 
 **RGCS Frequency Key Studio / Sonic Lab + Phryll Generator v2**
