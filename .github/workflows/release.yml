@@ -52,7 +52,9 @@ jobs:
         with:
           python-version: "3.13"
       - name: Install
-        run: python -m pip install -e ".[desktop,packaging]"
+        # jsonschema/referencing ship in the dev extra but the frozen
+        # app needs them at runtime (schema validation panels)
+        run: python -m pip install -e ".[desktop,packaging]" jsonschema referencing
       - name: Build portable onedir (rgcs_desktop.spec)
         run: |
           pyinstaller tools/packaging/rgcs_desktop.spec --noconfirm `
@@ -82,7 +84,12 @@ jobs:
           (Get-FileHash $zip -Algorithm SHA256).Hash.ToLower() + "  $zip" `
             | Out-File -Encoding ascii "$zip.sha256"
       - name: Build installer onedir (RGCSWorkbench.spec)
+        # RGCSWorkbench.spec bundles _build_stamp.json (version, git
+        # commit, source hash) which the build tool normally writes —
+        # generate it via the repo's own writer.
         run: |
+          $ver = "${env:GITHUB_REF_NAME}".TrimStart("v")
+          python -c "import datetime, pathlib; from rgcs_desktop.build_meta import write_stamp; print(write_stamp(pathlib.Path('.'), '$ver', datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='seconds')))"
           pyinstaller packaging/RGCSWorkbench.spec --noconfirm `
             --workpath build/pyi-inno
       - name: Smoke check installer build
