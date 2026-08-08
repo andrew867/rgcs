@@ -25,7 +25,8 @@ from rgcs_desktop.services.phryll_v2.pdf_exports import (
 def generate_full_design(raw_crystal: dict, out_root: str | Path,
                          fit_settings: dict | None = None,
                          coil_settings: dict | None = None,
-                         coupling_settings: dict | None = None) -> dict:
+                         coupling_settings: dict | None = None,
+                         openscad_timeout_s: float = 120.0) -> dict:
     """Generate cone + coil sleeve + all exports + verified bundle.
 
     Returns a summary dict: bundle path, verification, key numbers
@@ -61,7 +62,8 @@ def generate_full_design(raw_crystal: dict, out_root: str | Path,
     sleeve_3mf = write_3mf(sleeve_tris, work / "coil_sleeve.3mf")
     sleeve_stats = mesh_stats(sleeve_tris)
     openscad_stl = export_stl_if_openscad(
-        work / "coil_sleeve.scad", work / "coil_sleeve_openscad.stl")
+        work / "coil_sleeve.scad", work / "coil_sleeve_openscad.stl",
+        timeout_s=openscad_timeout_s)
 
     # flat templates
     axial = axial_section_svg(cone, crystal.z_eye_mm,

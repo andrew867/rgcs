@@ -65,7 +65,7 @@ def test_key_numbers(result):
     assert result["coil_center_standoff_mm"] == pytest.approx(2.375)
     assert result["groove_pitch_mm"] == pytest.approx(0.99)
     assert result["openscad_status"] in ("rendered", "unavailable",
-                                         "failed")
+                                         "failed", "timeout")
 
 
 def test_build_sheet_content(result):

@@ -238,20 +238,66 @@ def write_scad(scad: str, out_path: str | Path) -> dict:
             "kind": "scad"}
 
 
-def export_stl_if_openscad(scad_path: str | Path,
-                           stl_path: str | Path) -> dict:
-    """Render via the external OpenSCAD CLI when installed; otherwise
-    report unavailable (the mesh backend covers direct STL export)."""
+#: standard Windows install locations (the installer does not add
+#: OpenSCAD to PATH). Prefer openscad.exe: the .com console wrapper
+#: spawns the .exe as a child, so killing the wrapper on timeout
+#: strands the render and hangs the pipe read.
+_OPENSCAD_CANDIDATES = (
+    r"C:\Program Files\OpenSCAD\openscad.exe",
+    r"C:\Program Files (x86)\OpenSCAD\openscad.exe",
+)
+
+
+def find_openscad() -> str | None:
+    """The OpenSCAD executable: PATH, then the RGCS_OPENSCAD env
+    override, then standard install locations."""
+    import os
     exe = shutil.which("openscad")
+    if exe:
+        return exe
+    override = os.environ.get("RGCS_OPENSCAD")
+    if override and Path(override).is_file():
+        return override
+    for candidate in _OPENSCAD_CANDIDATES:
+        if Path(candidate).is_file():
+            return candidate
+    local = os.environ.get("LOCALAPPDATA", "")
+    if local:
+        candidate = Path(local) / "Programs" / "OpenSCAD" / "openscad.exe"
+        if candidate.is_file():
+            return str(candidate)
+    return None
+
+
+def export_stl_if_openscad(scad_path: str | Path,
+                           stl_path: str | Path,
+                           timeout_s: float = 600.0) -> dict:
+    """Render via the external OpenSCAD CLI when installed; otherwise
+    report unavailable (the mesh backend covers direct STL export).
+    A render exceeding ``timeout_s`` is reported as a stated timeout,
+    never an exception — the lattice boolean is genuinely heavy."""
+    exe = find_openscad()
     scad_path, stl_path = Path(scad_path), Path(stl_path)
     if exe is None:
         return {"status": "unavailable",
-                "reason": "OpenSCAD CLI not installed; use the built-in "
-                          "mesh backend STL instead",
+                "reason": "OpenSCAD CLI not found on PATH, RGCS_OPENSCAD, "
+                          "or standard install locations; use the "
+                          "built-in mesh backend STL instead",
                 "kind": "stl"}
     stl_path.parent.mkdir(parents=True, exist_ok=True)
-    proc = subprocess.run([exe, "-o", str(stl_path), str(scad_path)],
-                          capture_output=True, text=True, timeout=600)
+    try:
+        proc = subprocess.run([exe, "-o", str(stl_path), str(scad_path)],
+                              capture_output=True, text=True,
+                              timeout=timeout_s)
+    except subprocess.TimeoutExpired:
+        stl_path.unlink(missing_ok=True)
+        return {"status": "timeout",
+                "reason": f"OpenSCAD render exceeded {timeout_s:.0f} s "
+                          f"(the crossed-lattice boolean is heavy); "
+                          f"the built-in mesh backend STL stands in — "
+                          f"render offline with: openscad -o out.stl "
+                          f"{scad_path.name}",
+                "kind": "stl"}
     if proc.returncode != 0 or not stl_path.is_file():
         return {"status": "failed", "reason": proc.stderr[-2000:],
                 "kind": "stl"}

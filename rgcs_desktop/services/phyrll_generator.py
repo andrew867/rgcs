@@ -148,8 +148,11 @@ def export_scad(design: dict, out_path: Path) -> dict:
 
 
 def openscad_available() -> str | None:
-    """Path to the OpenSCAD executable, or None."""
-    return shutil.which("openscad")
+    """Path to the OpenSCAD executable, or None (checks PATH, the
+    RGCS_OPENSCAD override, and standard install locations)."""
+    from rgcs_desktop.services.phryll_v2.openscad_export import \
+        find_openscad
+    return find_openscad()
 
 
 def export_stl_if_available(scad_path: Path, out_path: Path) -> dict:
