@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "session_id": "SES-S2D-BINAURAL-XTRA-13560",
+  "title": "Memory and Test-taking Improve \u2014 XTRA / aha halo binaural",
+  "intent": "XTRA binaural import for Frequency Key Studio",
+  "family": "binaural",
+  "duration_s": 180.0,
+  "sample_rate": 48000,
+  "segments": [
+    {
+      "kind": "intro",
+      "duration_s": 18.0,
+      "beat_start_hz": 7.83,
+      "beat_end_hz": 7.83,
+      "curve": "linear"
+    },
+    {
+      "kind": "ramp_down",
+      "duration_s": 27.0,
+      "beat_start_hz": 10.0,
+      "beat_end_hz": 7.83,
+      "curve": "cosine"
+    },
+    {
+      "kind": "hold",
+      "duration_s": 99.0,
+      "beat_start_hz": 7.83,
+      "beat_end_hz": 7.83,
+      "curve": "linear"
+    },
+    {
+      "kind": "outro",
+      "duration_s": 36.0,
+      "beat_start_hz": 7.83,
+      "beat_end_hz": 7.83,
+      "curve": "linear"
+    }
+  ],
+  "layers": [
+    {
+      "layer_id": "L1",
+      "type": "binaural",
+      "carrier_hz": 398.0,
+      "beat_hz": 7.83,
+      "gain_db": -6.0,
+      "pan": 0.0,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0
+    },
+    {
+      "layer_id": "L2",
+      "type": "binaural",
+      "carrier_hz": 200.0,
+      "beat_hz": 7.83,
+      "gain_db": -12.0,
+      "pan": 0.0,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0
+    },
+    {
+      "layer_id": "N1",
+      "type": "pink_noise",
+      "gain_db": -18.0,
+      "pan": 0.0,
+      "seed": 13571,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0
+    }
+  ],
+  "loudness": {
+    "target_rms_db": -20.0
+  },
+  "notes": "Device: aha halo. Category=XTRA. s2d line 13565. Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Taking good notes, and correctly utilizing your notes, is one of the most effective strategies for improving test performance. For those looking to improve their memory and reduce anxiety before a tes Stereo headphones recommended. Experimental; not a medical claim.",
+  "source_ids": [
+    "Spooky2-Frequencies.s2d",
+    "aha-halo",
+    "XTRA"
+  ],
+  "meta": {
+    "device_type": "aha halo",
+    "category": "XTRA",
+    "provenance": "frequencies.s2d",
+    "s2d_line": 13565,
+    "source_name": "Memory and Test-taking Improve",
+    "folded_carriers_hz": [
+      398.0
+    ]
+  }
+}

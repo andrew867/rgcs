@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0.0",
+  "session_id": "SES-S2D-BINAURAL-XTRA-07840",
+  "title": "Emotions and Sleep 2 \u2014 XTRA / aha halo binaural",
+  "intent": "XTRA binaural import for Frequency Key Studio",
+  "family": "binaural",
+  "duration_s": 720.0,
+  "sample_rate": 48000,
+  "segments": [
+    {
+      "kind": "intro",
+      "duration_s": 72.0,
+      "beat_start_hz": 7.83,
+      "beat_end_hz": 7.83,
+      "curve": "linear"
+    },
+    {
+      "kind": "ramp_down",
+      "duration_s": 108.0,
+      "beat_start_hz": 10.0,
+      "beat_end_hz": 7.83,
+      "curve": "cosine"
+    },
+    {
+      "kind": "hold",
+      "duration_s": 396.0,
+      "beat_start_hz": 7.83,
+      "beat_end_hz": 7.83,
+      "curve": "linear"
+    },
+    {
+      "kind": "outro",
+      "duration_s": 144.0,
+      "beat_start_hz": 7.83,
+      "beat_end_hz": 7.83,
+      "curve": "linear"
+    }
+  ],
+  "layers": [
+    {
+      "layer_id": "L1",
+      "type": "binaural",
+      "carrier_hz": 64.0,
+      "beat_hz": 7.83,
+      "gain_db": -6.0,
+      "pan": 0.0,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0
+    },
+    {
+      "layer_id": "L2",
+      "type": "binaural",
+      "carrier_hz": 66.0,
+      "beat_hz": 7.83,
+      "gain_db": -12.0,
+      "pan": 0.0,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0
+    },
+    {
+      "layer_id": "N1",
+      "type": "pink_noise",
+      "gain_db": -18.0,
+      "pan": 0.0,
+      "seed": 7851,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0
+    },
+    {
+      "layer_id": "L3",
+      "type": "binaural",
+      "carrier_hz": 68.0,
+      "beat_hz": 7.83,
+      "gain_db": -16.0,
+      "pan": 0.0,
+      "fade_in_s": 6.0,
+      "fade_out_s": 6.0
+    },
+    {
+      "layer_id": "L4",
+      "type": "binaural",
+      "carrier_hz": 70.0,
+      "beat_hz": 7.83,
+      "gain_db": -16.0,
+      "pan": 0.0,
+      "fade_in_s": 6.0,
+      "fade_out_s": 6.0
+    },
+    {
+      "layer_id": "L5",
+      "type": "binaural",
+      "carrier_hz": 72.0,
+      "beat_hz": 7.83,
+      "gain_db": -16.0,
+      "pan": 0.0,
+      "fade_in_s": 6.0,
+      "fade_out_s": 6.0
+    },
+    {
+      "layer_id": "L6",
+      "type": "binaural",
+      "carrier_hz": 74.0,
+      "beat_hz": 7.83,
+      "gain_db": -16.0,
+      "pan": 0.0,
+      "fade_in_s": 6.0,
+      "fade_out_s": 6.0
+    }
+  ],
+  "loudness": {
+    "target_rms_db": -20.0
+  },
+  "notes": "Device: aha halo. Category=XTRA. s2d line 7843. Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Emotions play a key role in overall mental health, and sleep plays a crucial role in maintaining the optimal homeostasis of emotional functioning. Deficient sleep, both in the form of sleep deprivatio Stereo headphones recommended. Experimental; not a medical claim.",
+  "source_ids": [
+    "Spooky2-Frequencies.s2d",
+    "aha-halo",
+    "XTRA"
+  ],
+  "meta": {
+    "device_type": "aha halo",
+    "category": "XTRA",
+    "provenance": "frequencies.s2d",
+    "s2d_line": 7843,
+    "source_name": "Emotions and Sleep 2",
+    "folded_carriers_hz": [
+      64.0,
+      66.0,
+      68.0,
+      70.0,
+      72.0,
+      74.0,
+      76.0,
+      78.0,
+      40.0,
+      41.0,
+      42.0,
+      43.0
+    ]
+  }
+}

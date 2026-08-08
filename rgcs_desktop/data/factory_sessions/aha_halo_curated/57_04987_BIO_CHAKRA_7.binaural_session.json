@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "session_id": "SES-S2D-BINAURAL-BIO-04987",
+  "title": "Chakra 7 \u2014 BIO / aha halo binaural",
+  "intent": "BIO binaural import for Frequency Key Studio",
+  "family": "binaural",
+  "duration_s": 180.0,
+  "sample_rate": 48000,
+  "segments": [
+    {
+      "kind": "intro",
+      "duration_s": 18.0,
+      "beat_start_hz": 7.83,
+      "beat_end_hz": 7.83,
+      "curve": "linear"
+    },
+    {
+      "kind": "ramp_down",
+      "duration_s": 27.0,
+      "beat_start_hz": 10.0,
+      "beat_end_hz": 7.83,
+      "curve": "cosine"
+    },
+    {
+      "kind": "hold",
+      "duration_s": 99.0,
+      "beat_start_hz": 7.83,
+      "beat_end_hz": 7.83,
+      "curve": "linear"
+    },
+    {
+      "kind": "outro",
+      "duration_s": 36.0,
+      "beat_start_hz": 7.83,
+      "beat_end_hz": 7.83,
+      "curve": "linear"
+    }
+  ],
+  "layers": [
+    {
+      "layer_id": "L1",
+      "type": "binaural",
+      "carrier_hz": 100.0,
+      "beat_hz": 7.83,
+      "gain_db": -6.0,
+      "pan": 0.0,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0
+    },
+    {
+      "layer_id": "L2",
+      "type": "binaural",
+      "carrier_hz": 200.0,
+      "beat_hz": 7.83,
+      "gain_db": -12.0,
+      "pan": 0.0,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0
+    },
+    {
+      "layer_id": "N1",
+      "type": "pink_noise",
+      "gain_db": -18.0,
+      "pan": 0.0,
+      "seed": 4998,
+      "fade_in_s": 4.0,
+      "fade_out_s": 6.0
+    }
+  ],
+  "loudness": {
+    "target_rms_db": -20.0
+  },
+  "notes": "Device: aha halo. Category=BIO. s2d line 4988. Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
+  "source_ids": [
+    "Spooky2-Frequencies.s2d",
+    "aha-halo",
+    "BIO"
+  ],
+  "meta": {
+    "device_type": "aha halo",
+    "category": "BIO",
+    "provenance": "frequencies.s2d",
+    "s2d_line": 4988,
+    "source_name": "Chakra 7",
+    "folded_carriers_hz": [
+      100.0
+    ]
+  }
+}
