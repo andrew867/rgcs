@@ -82,8 +82,10 @@ jobs:
             --workpath build/pyi-inno
       - name: Smoke check installer build
         run: |
-          & "dist\RGCSWorkbench\RGCSWorkbench.exe" --smoke-check
-          if ($LASTEXITCODE -ne 0) { throw "installer-onedir smoke failed" }
+          $p = Start-Process -Wait -PassThru -NoNewWindow `
+            -FilePath "dist\RGCSWorkbench\RGCSWorkbench.exe" `
+            -ArgumentList "--smoke-check"
+          if ($p.ExitCode -ne 0) { throw "installer-onedir smoke failed ($($p.ExitCode))" }
       - name: Compile Inno Setup installer (unsigned, per-user)
         run: |
           choco install innosetup -y --no-progress
