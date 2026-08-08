@@ -269,6 +269,21 @@ def find_openscad() -> str | None:
     return None
 
 
+_MANIFOLD_CACHE: dict[str, bool] = {}
+
+
+def _supports_manifold(exe: str) -> bool:
+    if exe not in _MANIFOLD_CACHE:
+        try:
+            probe = subprocess.run([exe, "--help"], capture_output=True,
+                                   text=True, timeout=30)
+            text = (probe.stdout or "") + (probe.stderr or "")
+            _MANIFOLD_CACHE[exe] = "--backend" in text
+        except (OSError, subprocess.TimeoutExpired):
+            _MANIFOLD_CACHE[exe] = False
+    return _MANIFOLD_CACHE[exe]
+
+
 def export_stl_if_openscad(scad_path: str | Path,
                            stl_path: str | Path,
                            timeout_s: float = 600.0) -> dict:
@@ -285,9 +300,14 @@ def export_stl_if_openscad(scad_path: str | Path,
                           "built-in mesh backend STL instead",
                 "kind": "stl"}
     stl_path.parent.mkdir(parents=True, exist_ok=True)
+    cmd = [exe, "-o", str(stl_path)]
+    if _supports_manifold(exe):
+        # 2023+ builds: the Manifold backend makes the lattice boolean
+        # orders of magnitude faster than CGAL
+        cmd += ["--backend", "Manifold"]
+    cmd.append(str(scad_path))
     try:
-        proc = subprocess.run([exe, "-o", str(stl_path), str(scad_path)],
-                              capture_output=True, text=True,
+        proc = subprocess.run(cmd, capture_output=True, text=True,
                               timeout=timeout_s)
     except subprocess.TimeoutExpired:
         stl_path.unlink(missing_ok=True)
