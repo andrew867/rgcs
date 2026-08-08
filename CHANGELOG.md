@@ -3,6 +3,46 @@
 All notable changes to RGCS / RSCS. Semantic versioning; the frozen
 v2.0.0 baseline is tag `v2.0.0` and `archive/v2.0.0/`.
 
+## [8.5.3] - 2026-08-08
+
+**Polish release: autosave, undo/redo, render control, library
+filters, export collisions, scenario smoke, neutral naming.**
+
+- **Autosave / crash recovery**: dirty sessions autosave every 30 s
+  and on teardown; File → Recover Autosaved Session restores the
+  newest copy; save/close clears it. Unsaved edits never disappear
+  silently.
+- **Undo / redo** (Ctrl+Z / Ctrl+Y) for layer, segment, title,
+  wobble, loudness, and noise edits.
+- **Shortcuts**: Ctrl+N/O/S, Ctrl+Shift+S, Ctrl+W, Ctrl+E export,
+  Ctrl+R render, Ctrl+Q quit with dirty prompt.
+- **Render control**: renders run off the UI thread with duplicate-
+  click protection, cancel (files discarded), and errors that clear
+  on the next edit.
+- **Import errors**: exact gate reasons with Copy error / Open as
+  text; malformed JSON and wrong schema majors never crash.
+- **Factory backups**: any factory update writes a tiny prior-hash
+  backup manifest first; repair restores missing factory files only.
+- **Library**: search by title/category/tags/id/frequency; Factory/
+  User/Imported/Recent/Favorite filters; Name/Last-opened/Category/
+  Duration sort; favorites.
+- **Export collisions**: overwrite or auto-increment, reveal folder,
+  receipts carry app version + git commit + input hash. Phryll v2
+  single-file export asks for its destination, shows the full path,
+  and can reveal it.
+- **Frequency Studio redesign** (screenshot-driven): scrollable form
+  column, context-disabled fields, consolidated action rows, Session
+  Summary card with recipe JSON behind a toggle; curated titles
+  cleaned (bucket tags in the category column).
+- **Neutral naming**: the curated library carries no vendor/device
+  branding in any filename, ID, or text field (guard-tested); legacy
+  factory dirs migrate to the workspace trash.
+- **Release pipeline**: a 9-step scenario smoke (create workspace →
+  open curated session → save-as → preview render → PDF export →
+  Phryll STL-only → close → reopen) runs inside the frozen build on
+  all three platforms before upload; a five-scenario first-run/
+  upgrade matrix guards installs.
+
 ## [8.5.2] - 2026-08-08
 
 **Frequency Studio session CRUD, curated session factory library,

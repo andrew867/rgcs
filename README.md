@@ -308,11 +308,11 @@ environment-dependent test in the repository.
 ## Release status
 
 ```text
-current release:   v8.5.2 — Frequency Studio CRUD, curated session library, workspace lifecycle
+current release:   v8.5.3 — polish: autosave, undo, render control, library filters, neutral naming
 workbench RCs:     workbench-v1.0.0-rc1 / -rc2 (pre-releases, shipped)
 ```
 
-Current release: [v8.5.2](https://github.com/andrew867/rgcs/releases/tag/v8.5.2).
+Current release: [v8.5.3](https://github.com/andrew867/rgcs/releases/tag/v8.5.3).
 Frozen history — v2.0.0 (`archive/v2.0.0/`), v3.0.x, v4.0.0, v4.1.x — tags and records
 are never modified. The DOI badge is the latest **minted** DOI (v3.0.1).
 
