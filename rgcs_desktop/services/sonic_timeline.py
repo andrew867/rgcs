@@ -77,16 +77,60 @@ def beat_envelope(session: dict,
     return np.concatenate(parts) if parts else np.empty(0)
 
 
+def _wobble_multiplier_env(layer: dict, n_samples: int,
+                           sample_rate: int) -> np.ndarray | None:
+    """Per-sample frequency multiplier from the layer's wobble stage
+    table (cyclic; one dwell period per stage), or None."""
+    wobble = layer.get("wobble")
+    if not wobble:
+        return None
+    from rgcs_desktop.services.sonic_recipes import wobble_by_name
+    table = wobble_by_name(wobble["name"])
+    multipliers = np.asarray(table["multipliers"], dtype=np.float64)
+    dwell_s = float(wobble.get("dwell_s", 1.0))
+    if dwell_s <= 0:
+        raise TimelineError("wobble dwell must be > 0 seconds")
+    stage_idx = (np.arange(n_samples) // int(round(dwell_s
+                                                   * sample_rate))) \
+        % len(multipliers)
+    return multipliers[stage_idx]
+
+
 def _render_beat_layer(layer: dict, beat_env: np.ndarray,
                        sample_rate: int) -> np.ndarray:
     """Render a binaural/monaural/isochronic layer following the
-    session beat envelope via phase integration (smooth ramps)."""
+    session beat envelope via phase integration (smooth ramps).
+
+    An optional layer ``wobble`` walks a cyclic stage table of
+    frequency multipliers (dwell seconds per stage), applied to the
+    carrier (default) or the beat. Phase integration keeps stage
+    boundaries click-free."""
     carrier = float(layer.get("carrier_hz", 0.0))
     if carrier <= 0:
         raise TimelineError(f"layer {layer.get('layer_id')} needs a "
                             f"carrier_hz")
     dt = 1.0 / sample_rate
     kind = layer["type"]
+
+    wobble_env = _wobble_multiplier_env(layer, len(beat_env),
+                                        sample_rate)
+    carrier_env = np.full(len(beat_env), carrier, dtype=np.float64)
+    if wobble_env is not None:
+        target = (layer.get("wobble") or {}).get("target", "carrier")
+        if target == "carrier":
+            carrier_env = carrier_env * wobble_env
+        elif target == "beat":
+            beat_env = beat_env * wobble_env
+        else:
+            raise TimelineError(f"wobble target must be 'carrier' or "
+                                f"'beat', got {target!r}")
+        peak_hz = float(np.max(carrier_env) + np.max(beat_env) / 2)
+        if peak_hz >= 0.95 * sample_rate / 2:
+            raise TimelineError(
+                f"wobbled frequency peaks at {peak_hz:.0f} Hz — too "
+                f"close to the {sample_rate // 2} Hz Nyquist limit; "
+                f"use a lower carrier or a smaller wobble table")
+    carrier = carrier_env
     if kind == "binaural":
         left_freq = carrier - beat_env / 2.0
         right_freq = carrier + beat_env / 2.0
@@ -99,7 +143,7 @@ def _render_beat_layer(layer: dict, beat_env: np.ndarray,
         mono = 0.5 * (lo + hi)
         return np.stack([mono, mono], axis=1).astype(np.float32)
     if kind == "isochronic":
-        tone = np.sin(2 * np.pi * carrier * np.arange(len(beat_env)) * dt)
+        tone = np.sin(2 * np.pi * np.cumsum(carrier) * dt)
         gate_phase = np.cumsum(beat_env) * dt % 1.0
         duty = float(layer.get("duty", 0.5))
         if not 0 < duty <= 1:

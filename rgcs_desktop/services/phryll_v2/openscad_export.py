@@ -124,14 +124,14 @@ def render_scad(cone: ConeDesign, coil: dict | None = None,
             "                       twist = twist_deg,",
             "                       scale = band_r_top_mm"
             " / band_r_bottom_mm,",
-            "                       slices = 400, convexity = 10)",
+            "                       slices = 96, convexity = 10)",
             "            rotate([0, 0, start_deg])",
             "                for (k = [0 : n_starts - 1])",
             "                    rotate([0, 0, k * 360 / n_starts])",
             "                        translate([band_r_bottom_mm"
             " - groove_depth_mm + wire_d_mm / 2, 0])",
             "                            circle(d = wire_d_mm + 0.1,"
-            " $fn = 16);",
+            " $fn = 10);",
             "}",
             "",
             "module copper_groove_path() {",
@@ -243,6 +243,8 @@ def write_scad(scad: str, out_path: str | Path) -> dict:
 #: spawns the .exe as a child, so killing the wrapper on timeout
 #: strands the render and hangs the pipe read.
 _OPENSCAD_CANDIDATES = (
+    # nightly first: Manifold backend renders the lattice boolean fast
+    r"C:\Program Files\OpenSCAD (Nightly)\openscad.exe",
     r"C:\Program Files\OpenSCAD\openscad.exe",
     r"C:\Program Files (x86)\OpenSCAD\openscad.exe",
 )

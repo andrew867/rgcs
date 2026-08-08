@@ -79,6 +79,21 @@ class NewSessionPage(QWidget):
         self.extra_carriers.setPlaceholderText(
             "extra carriers Hz, comma separated (multi-carrier)")
         form.addRow("Extra carriers", self.extra_carriers)
+        from rgcs_desktop.services.sonic_recipes import load_wobbles
+        self.wobble = QComboBox()
+        self.wobble.addItem("None (no wobble)", None)
+        for w in load_wobbles():
+            self.wobble.addItem(
+                f"{w['name']} ({w['stages']} stages)", w["name"])
+        form.addRow("Wobble", self.wobble)
+        self.wobble_dwell = QDoubleSpinBox()
+        self.wobble_dwell.setRange(0.05, 60.0)
+        self.wobble_dwell.setValue(1.0)
+        self.wobble_dwell.setSingleStep(0.1)
+        form.addRow("Wobble dwell (s/stage)", self.wobble_dwell)
+        self.wobble_target = QComboBox()
+        self.wobble_target.addItems(["carrier", "beat"])
+        form.addRow("Wobble target", self.wobble_target)
         left.addWidget(box)
 
         extras_box = QGroupBox("Voice cue and loudness (v1.1)")
@@ -201,6 +216,12 @@ class NewSessionPage(QWidget):
                 layer["beat_hz"] = beat
             if layer["type"] == "isochronic":
                 layer["duty"] = self.duty.value()
+            if self.wobble.currentData():
+                layer["wobble"] = {
+                    "name": self.wobble.currentData(),
+                    "dwell_s": self.wobble_dwell.value(),
+                    "target": self.wobble_target.currentText(),
+                }
             layers.append(layer)
             for i, extra in enumerate(self._extra_carriers()):
                 layers.append({"layer_id": f"C{i + 2}",

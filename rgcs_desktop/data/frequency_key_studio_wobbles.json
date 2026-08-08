@@ -1,0 +1,745 @@
+{
+  "schema_version": "1.0.0",
+  "note": "Wobble stage tables for Frequency Key Studio: each entry is a cyclic sequence of frequency multipliers applied stage-by-stage (one dwell period per stage) to a layer's carrier or beat. User-supplied table in the common wobble-list format; numeric sequences recorded verbatim. Wobbles are modulation recipes, not claims of outcome.",
+  "wobbles": [
+    {
+      "name": "+-.02% Feathering",
+      "family": "feathering",
+      "stages": 50,
+      "multipliers": [
+        0.999946,
+        0.9999959,
+        0.9998623,
+        0.9999898,
+        0.9999029,
+        1.000051,
+        1.000017,
+        0.9998625,
+        1.000175,
+        1.000062,
+        1.000002,
+        0.9999562,
+        0.9998429,
+        1.000114,
+        0.9999838,
+        1.000101,
+        1.000038,
+        1.000133,
+        0.9998075,
+        0.9998841,
+        0.9998296,
+        0.9998422,
+        0.9999327,
+        0.9998513,
+        0.9998001,
+        1.000015,
+        1.000063,
+        1.000018,
+        1.000131,
+        0.9998327,
+        0.9998768,
+        1.000072,
+        0.9999817,
+        0.9999428,
+        0.99986,
+        1.000082,
+        1.000172,
+        1.000012,
+        0.9998358,
+        1.000103,
+        0.9999607,
+        0.9999847,
+        0.9999968,
+        0.9998831,
+        0.9999319,
+        0.9998382,
+        1.000036,
+        0.999868,
+        1.000171,
+        0.9998392
+      ],
+      "max_multiplier": 1.000175,
+      "min_multiplier": 0.9998001
+    },
+    {
+      "name": "+-.05% Feathering",
+      "family": "feathering",
+      "stages": 50,
+      "multipliers": [
+        0.9999439,
+        0.999773,
+        1.000373,
+        1.000251,
+        0.999773,
+        1.000174,
+        0.9997566,
+        0.9995899,
+        0.999531,
+        0.9998227,
+        1.00029,
+        0.9997973,
+        0.9997353,
+        0.9999804,
+        0.9997546,
+        0.9998406,
+        0.9995449,
+        0.9999824,
+        0.999706,
+        1.000365,
+        1.000089,
+        1.000255,
+        1.000428,
+        0.999831,
+        1.000043,
+        0.9995807,
+        1.000134,
+        0.9999101,
+        1.00046,
+        0.9996146,
+        1.000423,
+        1.00012,
+        0.9998477,
+        0.9996492,
+        0.99998,
+        0.9997194,
+        1.000494,
+        0.9996304,
+        0.9995289,
+        0.9998454,
+        1.000048,
+        1.000423,
+        1.000038,
+        0.9999064,
+        1.000347,
+        1.000326,
+        1.000172,
+        1.000222,
+        1.000497,
+        0.9998398
+      ],
+      "max_multiplier": 1.000497,
+      "min_multiplier": 0.9995289
+    },
+    {
+      "name": ".02% 4 Stage Wobble",
+      "family": "staged_percent",
+      "stages": 4,
+      "multipliers": [
+        1.0,
+        1.0002,
+        1.0,
+        0.9998
+      ],
+      "max_multiplier": 1.0002,
+      "min_multiplier": 0.9998
+    },
+    {
+      "name": ".02% 8 Stage Wobble",
+      "family": "staged_percent",
+      "stages": 8,
+      "multipliers": [
+        1.0,
+        1.00001,
+        1.00002,
+        1.00001,
+        1.0,
+        0.99999,
+        0.99998,
+        0.99999
+      ],
+      "max_multiplier": 1.00002,
+      "min_multiplier": 0.99998
+    },
+    {
+      "name": ".05% 4 Stage Wobble",
+      "family": "staged_percent",
+      "stages": 4,
+      "multipliers": [
+        1.0,
+        1.0005,
+        1.0,
+        0.9995
+      ],
+      "max_multiplier": 1.0005,
+      "min_multiplier": 0.9995
+    },
+    {
+      "name": ".05% 8 Stage Wobble",
+      "family": "staged_percent",
+      "stages": 8,
+      "multipliers": [
+        1.0,
+        1.00025,
+        1.0005,
+        1.00025,
+        1.0,
+        0.99975,
+        0.9995,
+        0.99975
+      ],
+      "max_multiplier": 1.0005,
+      "min_multiplier": 0.9995
+    },
+    {
+      "name": "1% 16 Stage Wobble",
+      "family": "staged_percent",
+      "stages": 16,
+      "multipliers": [
+        1.0,
+        1.00125,
+        1.0025,
+        1.00375,
+        1.005,
+        1.00375,
+        1.0025,
+        1.00125,
+        1.0,
+        0.99875,
+        0.9975,
+        0.99625,
+        0.995,
+        0.99625,
+        0.9975,
+        0.99875
+      ],
+      "max_multiplier": 1.005,
+      "min_multiplier": 0.995
+    },
+    {
+      "name": "2% 16 Stage Wobble",
+      "family": "staged_percent",
+      "stages": 16,
+      "multipliers": [
+        1.0,
+        1.0025,
+        1.005,
+        1.0075,
+        1.01,
+        1.0075,
+        1.005,
+        1.0025,
+        1.0,
+        0.9975,
+        0.995,
+        0.9925,
+        0.99,
+        0.9925,
+        0.995,
+        0.9975
+      ],
+      "max_multiplier": 1.01,
+      "min_multiplier": 0.99
+    },
+    {
+      "name": "Octave 2 Stage Wobble",
+      "family": "octave",
+      "stages": 2,
+      "multipliers": [
+        1.0,
+        2.0
+      ],
+      "max_multiplier": 2.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Octave 4 Stage Wobble",
+      "family": "octave",
+      "stages": 4,
+      "multipliers": [
+        1.0,
+        2.0,
+        4.0,
+        2.0
+      ],
+      "max_multiplier": 4.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Octave 6 Stage Wobble",
+      "family": "octave",
+      "stages": 6,
+      "multipliers": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        4.0,
+        2.0
+      ],
+      "max_multiplier": 8.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Octave 8 Stage Wobble",
+      "family": "octave",
+      "stages": 8,
+      "multipliers": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        8.0,
+        4.0,
+        2.0
+      ],
+      "max_multiplier": 16.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Octave 10 Stage Wobble",
+      "family": "octave",
+      "stages": 10,
+      "multipliers": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0,
+        16.0,
+        8.0,
+        4.0,
+        2.0
+      ],
+      "max_multiplier": 32.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Octave 12 Stage Wobble",
+      "family": "octave",
+      "stages": 12,
+      "multipliers": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0,
+        64.0,
+        32.0,
+        16.0,
+        8.0,
+        4.0,
+        2.0
+      ],
+      "max_multiplier": 64.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Octave Odd 6 Step Ramp Down",
+      "family": "ramp_down",
+      "stages": 6,
+      "multipliers": [
+        1.0,
+        0.25,
+        0.0625,
+        0.015625,
+        0.00390625,
+        0.0009765625
+      ],
+      "max_multiplier": 1.0,
+      "min_multiplier": 0.0009765625
+    },
+    {
+      "name": "Odd 2 Stage Wobble",
+      "family": "odd",
+      "stages": 2,
+      "multipliers": [
+        1.0,
+        3.0
+      ],
+      "max_multiplier": 3.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Odd 4 Stage Wobble",
+      "family": "odd",
+      "stages": 4,
+      "multipliers": [
+        1.0,
+        3.0,
+        5.0,
+        3.0
+      ],
+      "max_multiplier": 5.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Odd 6 Stage Wobble",
+      "family": "odd",
+      "stages": 6,
+      "multipliers": [
+        1.0,
+        3.0,
+        5.0,
+        7.0,
+        5.0,
+        3.0
+      ],
+      "max_multiplier": 7.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Odd 8 Stage Wobble",
+      "family": "odd",
+      "stages": 8,
+      "multipliers": [
+        1.0,
+        3.0,
+        5.0,
+        7.0,
+        9.0,
+        7.0,
+        5.0,
+        3.0
+      ],
+      "max_multiplier": 9.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Odd 10 Stage Wobble",
+      "family": "odd",
+      "stages": 10,
+      "multipliers": [
+        1.0,
+        3.0,
+        5.0,
+        7.0,
+        9.0,
+        11.0,
+        9.0,
+        7.0,
+        5.0,
+        3.0
+      ],
+      "max_multiplier": 11.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Odd 12 Stage Wobble",
+      "family": "odd",
+      "stages": 12,
+      "multipliers": [
+        1.0,
+        3.0,
+        5.0,
+        7.0,
+        9.0,
+        11.0,
+        13.0,
+        11.0,
+        9.0,
+        7.0,
+        5.0,
+        3.0
+      ],
+      "max_multiplier": 13.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Fibonacci 2 Stage Wobble",
+      "family": "fibonacci",
+      "stages": 2,
+      "multipliers": [
+        1.0,
+        2.0
+      ],
+      "max_multiplier": 2.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Fibonacci 4 Stage Wobble",
+      "family": "fibonacci",
+      "stages": 4,
+      "multipliers": [
+        1.0,
+        2.0,
+        3.0,
+        2.0
+      ],
+      "max_multiplier": 3.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Fibonacci 6 Stage Wobble",
+      "family": "fibonacci",
+      "stages": 6,
+      "multipliers": [
+        1.0,
+        2.0,
+        3.0,
+        5.0,
+        3.0,
+        2.0
+      ],
+      "max_multiplier": 5.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Fibonacci 8 Stage Wobble",
+      "family": "fibonacci",
+      "stages": 8,
+      "multipliers": [
+        1.0,
+        2.0,
+        3.0,
+        5.0,
+        8.0,
+        5.0,
+        3.0,
+        2.0
+      ],
+      "max_multiplier": 8.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Fibonacci 10 Stage Wobble",
+      "family": "fibonacci",
+      "stages": 10,
+      "multipliers": [
+        1.0,
+        2.0,
+        3.0,
+        5.0,
+        8.0,
+        13.0,
+        8.0,
+        5.0,
+        3.0,
+        2.0
+      ],
+      "max_multiplier": 13.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Fibonacci 12 Stage Wobble",
+      "family": "fibonacci",
+      "stages": 12,
+      "multipliers": [
+        1.0,
+        2.0,
+        3.0,
+        5.0,
+        8.0,
+        13.0,
+        21.0,
+        13.0,
+        8.0,
+        5.0,
+        3.0,
+        2.0
+      ],
+      "max_multiplier": 21.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Fibonacci 14 Stage Wobble",
+      "family": "fibonacci",
+      "stages": 14,
+      "multipliers": [
+        1.0,
+        2.0,
+        3.0,
+        5.0,
+        8.0,
+        13.0,
+        21.0,
+        34.0,
+        21.0,
+        13.0,
+        8.0,
+        5.0,
+        3.0,
+        2.0
+      ],
+      "max_multiplier": 34.0,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "Octave 3 Step Ramp Down",
+      "family": "ramp_down",
+      "stages": 3,
+      "multipliers": [
+        1.0,
+        0.5,
+        0.25
+      ],
+      "max_multiplier": 1.0,
+      "min_multiplier": 0.25
+    },
+    {
+      "name": "Octave 6 Step Ramp Down",
+      "family": "ramp_down",
+      "stages": 6,
+      "multipliers": [
+        1.0,
+        0.5,
+        0.25,
+        0.125,
+        0.0625,
+        0.03125
+      ],
+      "max_multiplier": 1.0,
+      "min_multiplier": 0.03125
+    },
+    {
+      "name": "Golden Ratio 6 Step Ramp Down",
+      "family": "ramp_down",
+      "stages": 6,
+      "multipliers": [
+        1.0,
+        0.618033989,
+        0.381966011,
+        0.236067978,
+        0.145898034,
+        0.090169944
+      ],
+      "max_multiplier": 1.0,
+      "min_multiplier": 0.090169944
+    },
+    {
+      "name": "Golden Ratio 16 Step Ramp Down",
+      "family": "ramp_down",
+      "stages": 16,
+      "multipliers": [
+        1.0,
+        0.618033988749895,
+        0.381966011250105,
+        0.23606797749979,
+        0.145898033750316,
+        0.0901699437494743,
+        0.0557280900008413,
+        0.0344418537486331,
+        0.0212862362522082,
+        0.0131556174964249,
+        0.00813061875578336,
+        0.0050249987406415,
+        0.00310562001514186,
+        0.00191937872549963,
+        0.00118624128964223,
+        0.000733137435857406
+      ],
+      "max_multiplier": 1.0,
+      "min_multiplier": 0.000733137435857406
+    },
+    {
+      "name": "Golden Ratio 8 Odd Step Ramp Down",
+      "family": "ramp_down",
+      "stages": 8,
+      "multipliers": [
+        1.0,
+        0.618033988749895,
+        0.23606797749979,
+        0.0901699437494743,
+        0.0344418537486331,
+        0.0131556174964249,
+        0.0050249987406415,
+        0.00191937872549963
+      ],
+      "max_multiplier": 1.0,
+      "min_multiplier": 0.00191937872549963
+    },
+    {
+      "name": "Exponential Ln (Fibonacci) 10 Step",
+      "family": "exponential",
+      "stages": 10,
+      "multipliers": [
+        1.0,
+        2.718281828,
+        7.389056099,
+        20.0855369,
+        148.4131591,
+        2980.957987,
+        148.4131591,
+        20.0855369,
+        7.389056099,
+        2.718281828
+      ],
+      "max_multiplier": 2980.957987,
+      "min_multiplier": 1.0
+    },
+    {
+      "name": "PHI Suppression 1/exp(PHI^n)",
+      "family": "phi",
+      "stages": 12,
+      "multipliers": [
+        1.0,
+        0.913775881575662,
+        0.864245822597299,
+        0.78972698844193,
+        0.682518250753284,
+        0.539003082724045,
+        0.367879441171442,
+        0.198288152862206,
+        0.072946134865866,
+        0.01446435434099,
+        0.001055118742506,
+        1.52616113634196e-05
+      ],
+      "max_multiplier": 1.0,
+      "min_multiplier": 1.52616113634196e-05
+    },
+    {
+      "name": "PHI Expression 1/exp(PHI^n)",
+      "family": "phi",
+      "stages": 12,
+      "multipliers": [
+        1.52616113634196e-05,
+        0.001055118742506,
+        0.01446435434099,
+        0.072946134865866,
+        0.198288152862206,
+        0.367879441171442,
+        0.539003082724045,
+        0.682518250753284,
+        0.78972698844193,
+        0.864245822597299,
+        0.913775881575662,
+        1.0
+      ],
+      "max_multiplier": 1.0,
+      "min_multiplier": 1.52616113634196e-05
+    },
+    {
+      "name": "PHI Cos Suppression 1/cosh(phi^n)",
+      "family": "phi",
+      "stages": 11,
+      "multipliers": [
+        1.0,
+        0.989450468366681,
+        0.972768620256984,
+        0.931237195881964,
+        0.835324174895617,
+        0.648054273663885,
+        0.381573524780757,
+        0.145120065749418,
+        0.028922657554528,
+        0.00211023513573785,
+        3.05232227197299e-05
+      ],
+      "max_multiplier": 1.0,
+      "min_multiplier": 3.05232227197299e-05
+    },
+    {
+      "name": "PHI Cos Expression 1/cosh(phi^n)",
+      "family": "phi",
+      "stages": 11,
+      "multipliers": [
+        3.05232227197299e-05,
+        0.00211023513573785,
+        0.028922657554528,
+        0.145120065749418,
+        0.381573524780757,
+        0.648054273663885,
+        0.835324174895617,
+        0.931237195881964,
+        0.972768620256984,
+        0.989450468366681,
+        1.0
+      ],
+      "max_multiplier": 1.0,
+      "min_multiplier": 3.05232227197299e-05
+    }
+  ]
+}

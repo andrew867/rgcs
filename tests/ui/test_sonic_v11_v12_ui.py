@@ -114,3 +114,20 @@ def test_corpus_roundtrip_cluster_and_recommend(main_window):
     csv_path = corpus.export_csv()
     assert csv_path is not None and csv_path.is_file()
     assert "corpus: 2 records" in corpus.corpus_label.text()
+
+
+def test_wobble_selector_in_wizard(main_window):
+    studio = _studio(main_window)
+    page = studio.new_session
+    assert page.wobble.count() == 39            # None + 38 presets
+    idx = page.wobble.findData("Octave 2 Stage Wobble")
+    assert idx > 0
+    page.wobble.setCurrentIndex(idx)
+    page.wobble_dwell.setValue(2.0)
+    session = page.preview()
+    wob = session["layers"][0]["wobble"]
+    assert wob == {"name": "Octave 2 Stage Wobble", "dwell_s": 2.0,
+                   "target": "carrier"}
+    page.wobble.setCurrentIndex(0)              # back to None
+    session2 = page.preview()
+    assert "wobble" not in session2["layers"][0]

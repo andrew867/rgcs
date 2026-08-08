@@ -38,6 +38,17 @@
   standard shape. Invalid timelines are refused with the reason.
 - **Batch render** — from the Recipe Library ("Batch render shown") or
   headless: `rgcs-sonic batch --duration 60 --out exports/`.
+- **Wobble** — optional stage-table frequency modulation: 38 presets
+  (±0.02/0.05 % feathering, staged % wobbles, octave/odd/Fibonacci
+  stage ladders, golden-ratio and PHI ramp-downs). Pick a preset, a
+  dwell time per stage, and a target (carrier or beat); the layer's
+  frequency walks the multiplier table cyclically, phase-continuous so
+  stage boundaries never click. A Nyquist guard refuses combinations
+  whose wobbled peak frequency would alias (e.g. large octave ladders
+  on high carriers). In imported session JSON:
+  `"wobble": {"name": "Octave 8 Stage Wobble", "dwell_s": 1.0,
+  "target": "carrier"}`. Wobbles are modulation recipes, not claims of
+  outcome.
 
 ## Exports
 

@@ -240,3 +240,81 @@ def test_render_file_cli_imports_session(tmp_path):
         capture_output=True, text=True, timeout=120, cwd=ROOT)
     assert proc2.returncode == 1
     assert "invalid" in proc2.stderr
+
+
+# ------------------------------------------------------- wobbles
+
+def test_wobble_dataset_loads():
+    from rgcs_desktop.services.sonic_recipes import (load_wobbles,
+                                                     wobble_by_name)
+    wobbles = load_wobbles()
+    assert len(wobbles) == 38
+    oct8 = wobble_by_name("Octave 8 Stage Wobble")
+    assert oct8["multipliers"] == [1, 2, 4, 8, 16, 8, 4, 2]
+    fib = wobble_by_name("Fibonacci 8 Stage Wobble")
+    assert fib["multipliers"] == [1, 2, 3, 5, 8, 5, 3, 2]
+    feather = wobble_by_name("+-.02% Feathering")
+    assert feather["stages"] == 50
+    assert all(0.9997 < m < 1.0003 for m in feather["multipliers"])
+    golden = wobble_by_name("Golden Ratio 6 Step Ramp Down")
+    assert golden["multipliers"][1] == pytest.approx(0.618033989)
+    families = {w["family"] for w in wobbles}
+    assert {"feathering", "staged_percent", "octave", "odd",
+            "fibonacci", "ramp_down", "phi"} <= families
+
+
+def test_wobbled_layer_tracks_stage_table():
+    """An Octave 2-stage wobble (x1, x2) on the carrier doubles the
+    zero-crossing rate in alternate dwell windows."""
+    session = _base_session(duration=12.0, layers=[
+        {"layer_id": "L1", "type": "binaural", "carrier_hz": 200.0,
+         "gain_db": -6.0,
+         "wobble": {"name": "Octave 2 Stage Wobble", "dwell_s": 3.0,
+                    "target": "carrier"}}])
+    audio, _ = render_session(session)
+    sr = 8000
+
+    def crossings(seg):
+        return int(np.sum(np.abs(np.diff(np.signbit(seg)))))
+    # stage 0 (x1): ~200 Hz; stage 1 (x2): ~400 Hz
+    f0 = crossings(audio[int(0.5 * sr):int(2.5 * sr), 0]) / 2 / 2.0
+    f1 = crossings(audio[int(3.5 * sr):int(5.5 * sr), 0]) / 2 / 2.0
+    assert f0 == pytest.approx(200.0, abs=8.0)
+    assert f1 == pytest.approx(400.0, abs=12.0)
+
+
+def test_wobble_nyquist_guard():
+    session = _base_session(duration=12.0, layers=[
+        {"layer_id": "L1", "type": "binaural", "carrier_hz": 925.0,
+         "gain_db": -6.0,
+         "wobble": {"name": "Octave 12 Stage Wobble",
+                    "dwell_s": 1.0}}])  # 925*64 way past nyquist
+    with pytest.raises(TimelineError):
+        render_session(session)
+
+
+def test_wobble_unknown_and_bad_target_refused():
+    from rgcs_desktop.services.sonic_recipes import RecipeError
+    session = _base_session(duration=12.0, layers=[
+        {"layer_id": "L1", "type": "binaural", "carrier_hz": 200.0,
+         "gain_db": -6.0, "wobble": {"name": "Nonexistent Wobble"}}])
+    with pytest.raises(RecipeError):
+        render_session(session)
+    session2 = _base_session(duration=12.0, layers=[
+        {"layer_id": "L1", "type": "binaural", "carrier_hz": 200.0,
+         "gain_db": -6.0,
+         "wobble": {"name": "Octave 2 Stage Wobble",
+                    "target": "sideways"}}])
+    with pytest.raises(TimelineError):
+        render_session(session2)
+
+
+def test_wobble_schema_valid():
+    from rgcs_desktop.services.schemas import validate_instance
+    layer = {"layer_id": "L1", "type": "binaural", "carrier_hz": 200.0,
+             "gain_db": -6.0,
+             "wobble": {"name": "Octave 4 Stage Wobble",
+                        "dwell_s": 2.0, "target": "carrier"}}
+    assert validate_instance(layer, "audio_layer.schema.json") == []
+    bad = dict(layer, wobble={"dwell_s": 2.0})       # name missing
+    assert validate_instance(bad, "audio_layer.schema.json")

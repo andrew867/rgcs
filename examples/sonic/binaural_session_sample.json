@@ -37,6 +37,6 @@
      "pan": 0.0, "seed": 11, "fade_in_s": 6.0, "fade_out_s": 6.0}
   ],
   "loudness": {"target_rms_db": -20.0},
-  "notes": "Experimental audio recipe. Use comfortable volume. Use stereo headphones for binaural layers. Results vary. Edit any number in this file and re-render: rgcs-sonic render-file examples/sonic/binaural_session_sample.json --out exports/ (add --duration 30 for a quick preview; the standard shape is regenerated to fit). The beat ramp here runs 10 -> 7.83 -> 4 -> 7.83 Hz over 20 minutes on a 925 Hz + 200 Hz dual carrier.",
+  "notes": "Experimental audio recipe. Use comfortable volume. Use stereo headphones for binaural layers. Results vary. Edit any number in this file and re-render: rgcs-sonic render-file examples/sonic/binaural_session_sample.json --out exports/ (add --duration 30 for a quick preview; the standard shape is regenerated to fit). The beat ramp here runs 10 -> 7.83 -> 4 -> 7.83 Hz over 20 minutes on a 925 Hz + 200 Hz dual carrier. Optional per-layer wobble: add \"wobble\": {\"name\": \"+-.02% Feathering\", \"dwell_s\": 1.0, \"target\": \"carrier\"} to any tone layer — 38 stage-table presets ship (feathering, staged %, octave/odd/Fibonacci, golden-ratio and PHI ramps); list them with the Wobble dropdown in New Session.",
   "source_ids": ["RGCS"]
 }

@@ -142,3 +142,29 @@ def validate_all_seed_recipes() -> dict:
         except (RecipeError, Exception) as exc:  # noqa: BLE001
             results[recipe["recipe_id"]] = str(exc)
     return results
+
+
+# ------------------------------------------------- wobble stage tables
+
+WOBBLES_FILE = DATA_DIR / "frequency_key_studio_wobbles.json"
+
+
+@lru_cache(maxsize=1)
+def _wobbles_raw() -> dict:
+    return json.loads(WOBBLES_FILE.read_text(encoding="utf-8"))
+
+
+def load_wobbles() -> list[dict]:
+    """All wobble stage tables (cyclic frequency-multiplier sequences),
+    in file order. Wobbles are modulation recipes, not claims of
+    outcome."""
+    return list(_wobbles_raw()["wobbles"])
+
+
+def wobble_by_name(name: str) -> dict:
+    for wobble in load_wobbles():
+        if wobble["name"] == name:
+            return wobble
+    raise RecipeError(
+        f"unknown wobble {name!r} (have {len(load_wobbles())} presets; "
+        f"see load_wobbles())")

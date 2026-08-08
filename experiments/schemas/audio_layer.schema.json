@@ -21,6 +21,15 @@
     "fade_out_s": {"type": "number", "minimum": 0},
     "seed": {"type": "integer", "minimum": 0},
     "file": {"type": "string"},
-    "start_s": {"type": "number", "minimum": 0}
+    "start_s": {"type": "number", "minimum": 0},
+    "wobble": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "dwell_s": {"type": "number", "exclusiveMinimum": 0},
+        "target": {"enum": ["carrier", "beat"]}
+      }
+    }
   }
 }
