@@ -38,8 +38,15 @@
       "items": {"$ref": "audio_layer.schema.json"}
     },
     "exports": {"type": "object"},
+    "loudness": {
+      "type": "object",
+      "properties": {
+        "target_rms_db": {"type": "number", "maximum": 0}
+      }
+    },
     "notes": {"type": "string"},
     "source_ids": {"type": "array", "items": {"type": "string"}},
-    "sha256": {"type": "string"}
+    "sha256": {"type": "string"},
+    "meta": {"type": "object"}
   }
 }

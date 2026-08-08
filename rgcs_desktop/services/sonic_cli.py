@@ -77,20 +77,12 @@ def main(argv: list[str] | None = None) -> int:
         export_bundle, export_recipe_json, export_session_pdf,
         export_youtube_metadata_sheet, render_session_wav, verify_bundle)
     if args.command == "render-file":
-        import json
-        from rgcs_desktop.services.schemas import validate_instance
+        from rgcs_desktop.services.session_store import (
+            SessionStoreError, load_session_file)
         try:
-            session = json.loads(
-                args.session_file.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError) as exc:
-            print(f"cannot read session file: {exc}", file=sys.stderr)
-            return 1
-        errors = validate_instance(session,
-                                   "frequency_session.schema.json")
-        if errors:
-            print("session file invalid:", file=sys.stderr)
-            for err in errors[:8]:
-                print(f"  {err}", file=sys.stderr)
+            session = load_session_file(args.session_file)
+        except SessionStoreError as exc:
+            print(str(exc), file=sys.stderr)
             return 1
         stem = session.get("session_id", args.session_file.stem)
     else:
