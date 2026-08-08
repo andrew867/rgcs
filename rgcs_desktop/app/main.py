@@ -78,8 +78,86 @@ def export_workbook(argv: list[str]) -> int:
 #: option flags the launcher understands; never workspace paths
 KNOWN_FLAGS = frozenset({
     "--first-run", "--doctor", "--export-workbook", "--smoke-check",
-    "--build-info", "--print-startup-plan", "--private",
+    "--scenario-smoke", "--build-info", "--print-startup-plan",
+    "--private",
 })
+
+
+def scenario_smoke() -> int:
+    """`--scenario-smoke`: drive the full v8.5.3 release scenario
+    headless — create workspace, open a curated session, save as user
+    session, render a 10 s preview, export the session PDF, export a
+    Phryll STL only, close and reopen the workspace. Exit 0 only if
+    every step verifies. Runs inside the frozen build."""
+    import tempfile
+
+    from rgcs_desktop.app.context import AppContext
+    from rgcs_desktop.app.main_window import MainWindow
+
+    steps: list[str] = []
+
+    def step(name: str, ok: bool) -> bool:
+        steps.append(f"{'PASS' if ok else 'FAIL'}  {name}")
+        print(steps[-1], flush=True)
+        return ok
+
+    root = Path(tempfile.mkdtemp()) / "scenario-ws"
+    context = AppContext()
+    ok = True
+    try:
+        context.create_workspace(root, "scenario")
+        ok &= step("create workspace", context.workspace is not None)
+        window = MainWindow(context)
+        window.show()
+        studio = window.panels["Frequency Key Studio"]
+        studio.dirty_prompt = lambda: "discard"
+
+        rows = studio.session_library._rows or \
+            studio._store().list_sessions()
+        schumann = next((r for r in rows if "Schumann" in r["title"]),
+                        None)
+        ok &= step("curated Schumann session in library",
+                   schumann is not None)
+        ok &= step("open curated session",
+                   bool(schumann and studio.open_session(
+                       schumann["path"])))
+        saved = studio.save_session_as("Scenario Smoke Session")
+        ok &= step("save as user session",
+                   saved is not None and Path(saved).is_file())
+        wav, receipt = studio.new_session._render_preview_wav(10.0)
+        ok &= step("render 10 s preview",
+                   wav is not None and Path(wav).is_file()
+                   and receipt is not None)
+        from rgcs_desktop.services.sonic_export_selection import \
+            export_selected
+        session = studio.new_session.current_session()
+        pdf = export_selected(session, ["session_pdf"],
+                              Path(root) / "exports" / "scenario")
+        ok &= step("export session PDF",
+                   Path(pdf["session_pdf"]).is_file())
+
+        phryll = window.panels["Phryll Generator v2"]
+        stl = phryll.export_single(
+            out_dir=Path(root) / "exports" / "scenario")
+        ok &= step("export Phryll STL only",
+                   stl is not None and Path(stl["path"]).is_file()
+                   and Path(stl["path"]).suffix == ".stl")
+
+        window.close_workspace()
+        ok &= step("close workspace", context.workspace is None)
+        context.open_workspace(root)
+        reopened = context.workspace is not None and \
+            any("Scenario Smoke Session" in r["title"]
+                for r in studio._store().list_sessions())
+        ok &= step("reopen workspace, user session present", reopened)
+        window.close()
+    except Exception as exc:  # noqa: BLE001 — a smoke must report, not die
+        ok = step(f"unexpected error: {exc}", False)
+    finally:
+        context.shutdown()
+    print(f"scenario smoke: {'PASS' if ok else 'FAIL'} "
+          f"({len(steps)} steps)")
+    return 0 if ok else 1
 
 
 def plan_startup(argv: list[str], last_workspace: str | None,
@@ -166,6 +244,9 @@ def main(argv: list[str] | None = None) -> int:
         ok = (result["workspace_db_exists"] and result["workbook_seeded"]
               and "--first-run" not in Path(result["workspace_root"]).name)
         return 0 if ok else 1
+
+    if "--scenario-smoke" in argv:
+        return scenario_smoke()
 
     if "--smoke-check" in argv:
         # packaging smoke check: construct the full window, print versions,
