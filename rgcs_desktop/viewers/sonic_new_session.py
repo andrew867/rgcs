@@ -355,6 +355,10 @@ class NewSessionPage(QWidget):
             return False
         return self._player.play(wav)
 
+    def teardown(self) -> None:
+        """Stop preview playback (workspace close/switch, app exit)."""
+        self._player.stop()
+
     def show_spectrogram(self, *_a) -> bool:
         from rgcs_desktop.services.sonic_audio import load_wav, \
             spectrogram

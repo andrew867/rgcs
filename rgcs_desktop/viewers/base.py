@@ -30,3 +30,10 @@ class Panel(QWidget):
 
     def refresh(self) -> None:
         """Called when the workspace contents changed."""
+
+    def teardown(self) -> None:
+        """Called before the workspace closes/switches and on app exit.
+
+        Panels holding live resources (audio playback, previews)
+        override this to stop them. Must be safe to call repeatedly.
+        """

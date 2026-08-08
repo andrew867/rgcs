@@ -45,6 +45,10 @@ class FrequencyKeyStudioPanel(Panel):
         self.status_message.emit(f"sonic: {message}")
         self.inspector_changed.emit()
 
+    def teardown(self) -> None:
+        """Stop live playback when the workspace closes/switches."""
+        self.new_session.teardown()
+
     def inspector_info(self):
         session = self.new_session.current_session() or {}
         exports = self.new_session.last_exports

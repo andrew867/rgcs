@@ -131,6 +131,11 @@ class MainWindow(QMainWindow):
                 lambda t=title: self.open_panel(t))
         actions["Workspace: create…"] = self._create_workspace_dialog
         actions["Workspace: open…"] = self._open_workspace_dialog
+        actions["Workspace: switch…"] = self._open_workspace_dialog
+        actions["Workspace: close"] = self.close_workspace
+        actions["Workspace: reveal folder"] = self._reveal_workspace
+        actions["Workspace: repair factory content"] = \
+            self._repair_factory_content
         actions["Report: generate markdown"] = (
             lambda: self.panels["Report / export"].generate())
         actions["Export: reproducibility bundle"] = (
@@ -162,7 +167,44 @@ class MainWindow(QMainWindow):
             return
         name, ok = QInputDialog.getText(self, "Workspace name", "Name:")
         if ok and name:
-            self.context.create_workspace(Path(root) / name, name)
+            from rgcs_desktop.workspaces import WorkspaceError
+            try:
+                self.context.create_workspace(Path(root) / name, name)
+            except WorkspaceError as exc:
+                # a stated refusal, never an unhandled crash (v8.5.2)
+                QMessageBox.critical(self, "Workspace error", str(exc))
+
+    def close_workspace(self) -> None:
+        """Close Workspace: teardown panels (stop playback), cancel
+        jobs, release the database, and return to the home screen."""
+        for panel in self.panels.values():
+            panel.teardown()
+        self.context.close_workspace()
+        self.open_panel("Design Studio")
+        self.jobs_panel.log("workspace closed")
+
+    def _reveal_workspace(self) -> None:
+        ws = self.context.workspace
+        if ws is None:
+            self.jobs_panel.log("no workspace open")
+            return
+        from PySide6.QtCore import QUrl
+        from PySide6.QtGui import QDesktopServices
+        QDesktopServices.openUrl(QUrl.fromLocalFile(str(ws.root)))
+
+    def _repair_factory_content(self) -> None:
+        ws = self.context.workspace
+        if ws is None:
+            self.jobs_panel.log("no workspace open")
+            return
+        from rgcs_desktop.services.factory_content import \
+            repair_factory_content
+        report = repair_factory_content(ws.root)
+        self.jobs_panel.log(
+            f"factory content repair: {len(report['added'])} restored, "
+            f"{len(report['unchanged'])} intact, "
+            f"{len(report['kept_user_modified'])} user files untouched")
+        self.context.notify_workspace_changed()
 
     def _open_workspace_dialog(self) -> None:
         root = QFileDialog.getExistingDirectory(self, "Open workspace")
@@ -193,6 +235,7 @@ class MainWindow(QMainWindow):
 
     def _workspace_changed(self) -> None:
         for panel in self.panels.values():
+            panel.teardown()   # stop playback/previews from the old one
             panel.refresh()
         self._refresh_sidebar()
 
@@ -245,5 +288,7 @@ class MainWindow(QMainWindow):
         self.context.settings.save_layout(bytes(self.saveGeometry()),
                                           bytes(self.saveState()))
         self._job_timer.stop()
+        for panel in self.panels.values():
+            panel.teardown()
         self.context.shutdown()
         super().closeEvent(event)

@@ -135,6 +135,21 @@ class Workspace:
         return cls(root, conn)
 
     @classmethod
+    def open_or_create(cls, root: str | Path, name: str | None = None,
+                       backup: bool = True) -> "Workspace":
+        """Open the workspace at ``root``, creating it if absent.
+
+        An existing folder (with or without a workspace.db) is never a
+        reason to fail: a folder holding a workspace opens, an empty or
+        foreign folder gets a workspace created inside it (v8.5.2
+        lifecycle fix).
+        """
+        root = Path(root)
+        if (root / "workspace.db").exists():
+            return cls.open(root, backup=backup)
+        return cls.create(root, name or root.name)
+
+    @classmethod
     def open(cls, root: str | Path, backup: bool = True) -> "Workspace":
         root = Path(root)
         db = root / "workspace.db"
