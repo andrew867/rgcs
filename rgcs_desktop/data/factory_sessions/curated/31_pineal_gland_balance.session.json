@@ -54,9 +54,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 16808,
-    "source_name": "Pineal Gland Balance"
+    "source_name": "Pineal Gland Balance",
+    "tags": "pineal / endocrine"
   },
-  "notes": "Curated import (source line 16808). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. The pineal gland, conarium, or epiphysis cerebri, is a small endocrine gland in the brain of most vertebrates. The pineal gland produces melatonin, a serotonin-derived hormone which modulates sleep pa Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 16808). Curated import (source line 16808). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. The pineal gland, conarium, or epiphysis cerebri, is a small endocrine gland in the brain of most vertebrates. The pineal gland produces melatonin, a serotonin-derived hormone which modulates sleep pa Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -93,5 +94,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Pineal Gland Balance \u2014 curated binaural"
+  "title": "Pineal Gland Balance"
 }

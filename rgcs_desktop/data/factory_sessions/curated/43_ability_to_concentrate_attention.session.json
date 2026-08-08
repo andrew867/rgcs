@@ -43,9 +43,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 680,
-    "source_name": "Ability to concentrate attention"
+    "source_name": "Ability to concentrate attention",
+    "tags": "attention"
   },
-  "notes": "Curated import (source line 680). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 680). Curated import (source line 680). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -82,5 +83,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Ability to concentrate attention \u2014 curated binaural"
+  "title": "Ability to concentrate attention"
 }

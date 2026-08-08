@@ -54,9 +54,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 3530,
-    "source_name": "Brain delta rhythm"
+    "source_name": "Brain delta rhythm",
+    "tags": "brain rhythm / delta"
   },
-  "notes": "Curated import (source line 3530). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 3530). Curated import (source line 3530). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -93,5 +94,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Brain delta rhythm \u2014 curated binaural"
+  "title": "Brain delta rhythm"
 }

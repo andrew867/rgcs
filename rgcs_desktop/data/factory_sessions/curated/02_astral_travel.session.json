@@ -43,9 +43,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 2172,
-    "source_name": "Astral Travel"
+    "source_name": "Astral Travel",
+    "tags": "altered-state / gateway-adjacent"
   },
-  "notes": "Curated import (source line 2172). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Astral projection (or astral travel) is a spiritual interpretation of the out of body experience. Astral Projection is a very common occurrence. Five to ten percent of the worlds population has experi Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 2172). Curated import (source line 2172). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Astral projection (or astral travel) is a spiritual interpretation of the out of body experience. Astral Projection is a very common occurrence. Five to ten percent of the worlds population has experi Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -82,5 +83,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Astral Travel \u2014 curated binaural"
+  "title": "Astral Travel"
 }

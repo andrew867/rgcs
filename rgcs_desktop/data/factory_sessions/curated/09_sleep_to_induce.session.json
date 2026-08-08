@@ -54,9 +54,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 19169,
-    "source_name": "Sleep to Induce"
+    "source_name": "Sleep to Induce",
+    "tags": "sleep onset"
   },
-  "notes": "Curated import (source line 19169). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Sleep induction is the deliberate effort to bring on sleep by various techniques or medicinal means, is practiced to lengthen periods of sleep, increase the effectiveness of sleep, and to reduce or pr Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 19169). Curated import (source line 19169). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Sleep induction is the deliberate effort to bring on sleep by various techniques or medicinal means, is practiced to lengthen periods of sleep, increase the effectiveness of sleep, and to reduce or pr Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -93,5 +94,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Sleep to Induce \u2014 curated binaural"
+  "title": "Sleep to Induce"
 }

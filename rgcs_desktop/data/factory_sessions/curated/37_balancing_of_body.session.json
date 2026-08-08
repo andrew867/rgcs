@@ -54,9 +54,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 2607,
-    "source_name": "Balancing of Body"
+    "source_name": "Balancing of Body",
+    "tags": "balance"
   },
-  "notes": "Curated import (source line 2607). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Mental and emotional balance. Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 2607). Curated import (source line 2607). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Mental and emotional balance. Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -93,5 +94,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Balancing of Body \u2014 curated binaural"
+  "title": "Balancing of Body"
 }

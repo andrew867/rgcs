@@ -43,9 +43,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 6067,
-    "source_name": "Creative Visualization"
+    "source_name": "Creative Visualization",
+    "tags": "creativity / visualization"
   },
-  "notes": "Curated import (source line 6067). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Creative visualization is a type of mindfulness exercise that can be used to promote success in every area of life. Visualization is the process of putting together visual mental imagery of what you a Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 6067). Curated import (source line 6067). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Creative visualization is a type of mindfulness exercise that can be used to promote success in every area of life. Visualization is the process of putting together visual mental imagery of what you a Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -82,5 +83,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Creative Visualization \u2014 curated binaural"
+  "title": "Creative Visualization"
 }

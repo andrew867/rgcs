@@ -54,9 +54,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 3547,
-    "source_name": "Brain theta rhythm"
+    "source_name": "Brain theta rhythm",
+    "tags": "brain rhythm / theta"
   },
-  "notes": "Curated import (source line 3547). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 3547). Curated import (source line 3547). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -93,5 +94,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Brain theta rhythm \u2014 curated binaural"
+  "title": "Brain theta rhythm"
 }

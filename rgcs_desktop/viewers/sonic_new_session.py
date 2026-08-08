@@ -83,7 +83,21 @@ class NewSessionPage(QWidget):
         self._player = PreviewPlayer(status_cb)
 
         layout = QHBoxLayout(self)
-        left = QVBoxLayout()
+        # v8.5.3 layout: the form column lives in a scroll area with a
+        # fixed width, so no control is ever crammed or cut off.
+        from PySide6.QtWidgets import QScrollArea
+        left_host = QWidget()
+        left = QVBoxLayout(left_host)
+        left.setContentsMargins(4, 4, 12, 4)
+        left.setSpacing(10)
+        left_scroll = QScrollArea()
+        left_scroll.setWidgetResizable(True)
+        left_scroll.setMinimumWidth(420)
+        left_scroll.setMaximumWidth(560)
+        left_scroll.setFrameShape(QScrollArea.Shape.NoFrame)
+        left_scroll.setHorizontalScrollBarPolicy(
+            Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        left_scroll.setWidget(left_host)
 
         box = QGroupBox("Session")
         form = QFormLayout(box)
@@ -168,23 +182,41 @@ class NewSessionPage(QWidget):
             self.noise_list.addItem(item)
         self.noise_list.item(0).setCheckState(
             Qt.CheckState.Checked)   # pink on by default
+        # size to content: a 4-row list never needs a scrollbar
+        self.noise_list.setFixedHeight(
+            self.noise_list.sizeHintForRow(0) * len(NOISE_LAYERS) + 10)
         nv.addWidget(self.noise_list)
         left.addWidget(noise_box)
 
+        listen_box = QGroupBox("Preview and listen")
+        lrow = QHBoxLayout(listen_box)
         self.preview_btn = QPushButton("Preview recipe")
         self.preview_btn.clicked.connect(self.preview)
-        left.addWidget(self.preview_btn)
+        lrow.addWidget(self.preview_btn)
+        self.play_btn = QPushButton("Play 12 s")
+        self.play_btn.clicked.connect(self.play_preview)
+        lrow.addWidget(self.play_btn)
+        self.stop_btn = QPushButton("Stop")
+        self.stop_btn.clicked.connect(self._player.stop)
+        lrow.addWidget(self.stop_btn)
+        self.spectro_btn = QPushButton("Spectrogram")
+        self.spectro_btn.clicked.connect(self.show_spectrogram)
+        lrow.addWidget(self.spectro_btn)
+        left.addWidget(listen_box)
+
+        render_row = QHBoxLayout()
         self.render_btn = QPushButton("Render WAV + export "
                                       "(JSON / PDF / bundle)")
         self.render_btn.clicked.connect(self.render_clicked)
-        left.addWidget(self.render_btn)
-        self.cancel_btn = QPushButton("Cancel render")
+        render_row.addWidget(self.render_btn, stretch=1)
+        self.cancel_btn = QPushButton("Cancel")
         self.cancel_btn.setEnabled(False)
         self.cancel_btn.clicked.connect(self.cancel_render)
-        left.addWidget(self.cancel_btn)
+        render_row.addWidget(self.cancel_btn)
+        left.addLayout(render_row)
         self.render_error = QLabel("")
         self.render_error.setWordWrap(True)
-        self.render_error.setStyleSheet("color: #b00020;")
+        self.render_error.setStyleSheet("color: #e05563;")
         left.addWidget(self.render_error)
 
         export_box = QGroupBox("Export selected types only")
@@ -204,6 +236,10 @@ class NewSessionPage(QWidget):
             self.export_kinds.addItem(item)
         self.export_kinds.item(3).setCheckState(Qt.CheckState.Checked)
         self.export_kinds.itemChanged.connect(self._update_expected)
+        # size to content: all 7 types visible, no inner scrollbar
+        self.export_kinds.setFixedHeight(
+            self.export_kinds.sizeHintForRow(0)
+            * self.export_kinds.count() + 10)
         ev.addWidget(self.export_kinds)
         self.expected_label = QLabel("—")
         self.expected_label.setWordWrap(True)
@@ -223,26 +259,29 @@ class NewSessionPage(QWidget):
         self.export_selected_btn.clicked.connect(self.export_selected)
         ev.addWidget(self.export_selected_btn)
         left.addWidget(export_box)
-        play_row = QHBoxLayout()
-        self.play_btn = QPushButton("Play 12 s preview")
-        self.play_btn.clicked.connect(self.play_preview)
-        play_row.addWidget(self.play_btn)
-        self.stop_btn = QPushButton("Stop")
-        self.stop_btn.clicked.connect(self._player.stop)
-        play_row.addWidget(self.stop_btn)
-        self.spectro_btn = QPushButton("Spectrogram")
-        self.spectro_btn.clicked.connect(self.show_spectrogram)
-        play_row.addWidget(self.spectro_btn)
-        left.addLayout(play_row)
         left.addStretch(1)
-        layout.addLayout(left)
+        layout.addWidget(left_scroll, stretch=0)
 
+        # right column: session summary first, JSON on demand
         right = QVBoxLayout()
+        right.setSpacing(8)
+        summary_box = QGroupBox("Session summary")
+        summary_box.setMinimumWidth(240)
+        sv = QVBoxLayout(summary_box)
         self.pair_label = QLabel("—")
         self.pair_label.setWordWrap(True)
-        right.addWidget(self.pair_label)
+        self.pair_label.setStyleSheet(
+            "font-size: 13px; font-weight: 600; padding: 4px;")
+        sv.addWidget(self.pair_label)
+        right.addWidget(summary_box)
+
+        self.json_toggle = QPushButton("Show recipe JSON")
+        self.json_toggle.setCheckable(True)
+        self.json_toggle.toggled.connect(self._toggle_json)
+        right.addWidget(self.json_toggle)
         self.detail = QPlainTextEdit()
         self.detail.setReadOnly(True)
+        self.detail.setVisible(False)   # summary first, JSON on demand
         right.addWidget(self.detail, stretch=2)
         import pyqtgraph as pg
         self.spectro_view = pg.PlotWidget(title="spectrogram preview")
@@ -250,16 +289,24 @@ class NewSessionPage(QWidget):
         self.spectro_view.setLabel("bottom", "time", units="s")
         self.spectro_view.setVisible(False)
         right.addWidget(self.spectro_view, stretch=1)
+        right.addStretch(1)
         note = QLabel(USER_NOTE + " Use stereo headphones for binaural "
                                   "sessions.")
         note.setWordWrap(True)
-        note.setStyleSheet("color: #555; font-style: italic;")
+        note.setStyleSheet("color: #888; font-style: italic;")
         right.addWidget(note)
         layout.addLayout(right, stretch=1)
 
         for w in (self.session_type, self.carrier, self.beat):
             w.currentIndexChanged.connect(self.preview)
         self.minutes.valueChanged.connect(self.preview)
+        # context-sensitive fields: duty only for isochronic, wobble
+        # dwell/target only when a wobble preset is chosen
+        self.session_type.currentIndexChanged.connect(
+            self._update_field_states)
+        self.wobble.currentIndexChanged.connect(
+            self._update_field_states)
+        self._update_field_states()
         self.preview()
 
         # dirty tracking: any editing widget change marks the session
@@ -277,6 +324,18 @@ class NewSessionPage(QWidget):
         self._reset_history()   # baseline for undo
 
     # ------------------------------------------------------------------
+    def _toggle_json(self, checked: bool) -> None:
+        self.detail.setVisible(checked)
+        self.json_toggle.setText("Hide recipe JSON" if checked
+                                 else "Show recipe JSON")
+
+    def _update_field_states(self, *_a) -> None:
+        self.duty.setEnabled(
+            self.session_type.currentText() == "isochronic")
+        has_wobble = bool(self.wobble.currentData())
+        self.wobble_dwell.setEnabled(has_wobble)
+        self.wobble_target.setEnabled(has_wobble)
+
     def _pick_voice_file(self, *_a) -> None:
         path, _ = QFileDialog.getOpenFileName(
             self, "Voice cue WAV", "", "WAV files (*.wav)")
@@ -378,10 +437,17 @@ class NewSessionPage(QWidget):
         carrier = float(self.carrier.currentData())
         beat = float(self.beat.currentData())
         left, right = binaural_pair(carrier, beat)
+        wobble = next((la.get("wobble") for la in session["layers"]
+                       if la.get("wobble")), None)
+        wobble_line = (f"wobble {wobble['name']} -> {wobble['target']}"
+                       if wobble else "no wobble")
         self.pair_label.setText(
-            f"left {left:g} Hz / right {right:g} Hz -> beat {beat:g} Hz "
-            f"· {len(session['layers'])} layer(s) · "
-            f"{session['duration_s'] / 60:g} min")
+            f"{session['title']}\n"
+            f"left {left:g} Hz\n"
+            f"right {right:g} Hz\n"
+            f"beat {beat:g} Hz\n"
+            f"{session['family']} · {len(session['layers'])} layer(s)\n"
+            f"{session['duration_s'] / 60:g} min · {wobble_line}")
         self.detail.setPlainText(
             json_dumps(session, indent=2, sort_keys=True))
         return session

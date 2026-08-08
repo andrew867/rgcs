@@ -43,9 +43,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 2171,
-    "source_name": "Astral Projection"
+    "source_name": "Astral Projection",
+    "tags": "altered-state / theta-adjacent"
   },
-  "notes": "Curated import (source line 2171). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Astral projection (or astral travel) is a term used in esotericism to describe an intentional out-of-body experience that assumes the existence of a soul or consciousness called an astral body that is Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 2171). Curated import (source line 2171). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Astral projection (or astral travel) is a term used in esotericism to describe an intentional out-of-body experience that assumes the existence of a soul or consciousness called an astral body that is Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -82,5 +83,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Astral Projection \u2014 curated binaural"
+  "title": "Astral Projection"
 }

@@ -54,9 +54,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 8805,
-    "source_name": "Fear 1"
+    "source_name": "Fear 1",
+    "tags": "fear / calming"
   },
-  "notes": "Curated import (source line 8805). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Fear is a feeling induced by perceived danger or threat that occurs in certain types of organisms, which causes a change in metabolic and organ functions and ultimately a change in behavior, such as f Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 8805). Curated import (source line 8805). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Fear is a feeling induced by perceived danger or threat that occurs in certain types of organisms, which causes a change in metabolic and organ functions and ultimately a change in behavior, such as f Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -93,5 +94,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Fear 1 \u2014 curated binaural"
+  "title": "Fear 1"
 }

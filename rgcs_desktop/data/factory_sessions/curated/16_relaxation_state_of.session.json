@@ -42,9 +42,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 17900,
-    "source_name": "Relaxation State Of"
+    "source_name": "Relaxation State Of",
+    "tags": "relaxation"
   },
-  "notes": "Curated import (source line 17900). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Relaxation in psychology, is the emotional state of a living being, of low tension, in which there is an absence of arousal that could come from sources such as anger, anxiety, or fear. According to t Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 17900). Curated import (source line 17900). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Relaxation in psychology, is the emotional state of a living being, of low tension, in which there is an absence of arousal that could come from sources such as anger, anxiety, or fear. According to t Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -81,5 +82,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Relaxation State Of \u2014 curated binaural"
+  "title": "Relaxation State Of"
 }

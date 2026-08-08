@@ -42,9 +42,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 13500,
-    "source_name": "Meditation Induce"
+    "source_name": "Meditation Induce",
+    "tags": "meditation"
   },
-  "notes": "Curated import (source line 13500). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Other uses: relaxation, deeper sleep. Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 13500). Curated import (source line 13500). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Other uses: relaxation, deeper sleep. Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -81,5 +82,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Meditation Induce \u2014 curated binaural"
+  "title": "Meditation Induce"
 }

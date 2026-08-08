@@ -54,9 +54,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 12087,
-    "source_name": "Joy"
+    "source_name": "Joy",
+    "tags": "joy"
   },
-  "notes": "Curated import (source line 12087). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. The word joy means a feeling of great pleasure and happiness. C. S. Lewis saw clear distinction between joy, pleasure, and happiness:  Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 12087). Curated import (source line 12087). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. The word joy means a feeling of great pleasure and happiness. C. S. Lewis saw clear distinction between joy, pleasure, and happiness:  Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -93,5 +94,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Joy \u2014 curated binaural"
+  "title": "Joy"
 }

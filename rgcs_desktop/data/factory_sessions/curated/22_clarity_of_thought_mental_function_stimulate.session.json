@@ -42,9 +42,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 5429,
-    "source_name": "Clarity of Thought/Mental Function Stimulate"
+    "source_name": "Clarity of Thought/Mental Function Stimulate",
+    "tags": "clarity"
   },
-  "notes": "Curated import (source line 5429). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Clarity of thought is developed via a moment-by-moment process in the midst of thinking. For example: postulating thought on what is clarity of thought? Clarity of thought is one's ability to gather a Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 5429). Curated import (source line 5429). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Clarity of thought is developed via a moment-by-moment process in the midst of thinking. For example: postulating thought on what is clarity of thought? Clarity of thought is one's ability to gather a Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -81,5 +82,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Clarity of Thought/Mental Function Stimulate \u2014 curated binaural"
+  "title": "Clarity of Thought/Mental Function Stimulate"
 }

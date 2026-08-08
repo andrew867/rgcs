@@ -76,9 +76,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 5798,
-    "source_name": "Concentration Improve"
+    "source_name": "Concentration Improve",
+    "tags": "focus"
   },
-  "notes": "Curated import (source line 5798). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. One of the most important benefits of improving your concentration skills is that it increases your mental performance. You can have a greater enhancement in the ability of problem solving. It also ai Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 5798). Curated import (source line 5798). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. One of the most important benefits of improving your concentration skills is that it increases your mental performance. You can have a greater enhancement in the ability of problem solving. It also ai Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -115,5 +116,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Concentration Improve \u2014 curated binaural"
+  "title": "Concentration Improve"
 }

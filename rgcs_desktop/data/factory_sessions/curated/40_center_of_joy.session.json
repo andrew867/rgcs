@@ -42,9 +42,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 4823,
-    "source_name": "Center of joy"
+    "source_name": "Center of joy",
+    "tags": "joy"
   },
-  "notes": "Curated import (source line 4823). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 4823). Curated import (source line 4823). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -81,5 +82,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Center of joy \u2014 curated binaural"
+  "title": "Center of joy"
 }

@@ -42,9 +42,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 19168,
-    "source_name": "Sleep Sound"
+    "source_name": "Sleep Sound",
+    "tags": "sleep"
   },
-  "notes": "Curated import (source line 19168). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Sleep Sound helps achieve a restful, restorative and quality sleep. It allows you to wake refreshed and enjoy a greater sense of wellbeing. Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 19168). Curated import (source line 19168). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Sleep Sound helps achieve a restful, restorative and quality sleep. It allows you to wake refreshed and enjoy a greater sense of wellbeing. Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -81,5 +82,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Sleep Sound \u2014 curated binaural"
+  "title": "Sleep Sound"
 }

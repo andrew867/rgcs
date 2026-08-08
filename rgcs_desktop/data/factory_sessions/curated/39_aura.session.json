@@ -91,9 +91,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 2282,
-    "source_name": "Aura"
+    "source_name": "Aura",
+    "tags": "aura / energy field"
   },
-  "notes": "Curated import (source line 2282). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 2282). Curated import (source line 2282). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -130,5 +131,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Aura \u2014 curated binaural"
+  "title": "Aura"
 }

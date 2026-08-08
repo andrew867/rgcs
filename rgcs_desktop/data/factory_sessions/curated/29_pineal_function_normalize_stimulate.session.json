@@ -42,9 +42,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 16806,
-    "source_name": "Pineal Function Normalize Stimulate"
+    "source_name": "Pineal Function Normalize Stimulate",
+    "tags": "pineal / third-eye-adjacent"
   },
-  "notes": "Curated import (source line 16806). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Other uses: magnesium, zinc. Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 16806). Curated import (source line 16806). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Other uses: magnesium, zinc. Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -81,5 +82,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Pineal Function Normalize Stimulate \u2014 curated binaural"
+  "title": "Pineal Function Normalize Stimulate"
 }

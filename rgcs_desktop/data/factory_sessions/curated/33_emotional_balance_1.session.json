@@ -54,9 +54,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 7837,
-    "source_name": "Emotional Balance 1"
+    "source_name": "Emotional Balance 1",
+    "tags": "emotional balance"
   },
-  "notes": "Curated import (source line 7837). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Emotional balanceis the ability of the mind and body to maintain equilibrium and flexibility in the face of challenge and change.Emotional balancepromotes physical health, and is a prerequisite for pe Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 7837). Curated import (source line 7837). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Emotional balanceis the ability of the mind and body to maintain equilibrium and flexibility in the face of challenge and change.Emotional balancepromotes physical health, and is a prerequisite for pe Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -93,5 +94,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Emotional Balance 1 \u2014 curated binaural"
+  "title": "Emotional Balance 1"
 }

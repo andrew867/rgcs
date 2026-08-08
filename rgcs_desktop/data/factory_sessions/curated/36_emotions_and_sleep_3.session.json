@@ -93,9 +93,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 7844,
-    "source_name": "Emotions and Sleep 3"
+    "source_name": "Emotions and Sleep 3",
+    "tags": "emotion and sleep ladder"
   },
-  "notes": "Curated import (source line 7844). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Emotions play a key role in overall mental health, and sleep plays a crucial role in maintaining the optimal homeostasis of emotional functioning. Deficient sleep, both in the form of sleep deprivatio Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 7844). Curated import (source line 7844). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Emotions play a key role in overall mental health, and sleep plays a crucial role in maintaining the optimal homeostasis of emotional functioning. Deficient sleep, both in the form of sleep deprivatio Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -132,5 +133,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Emotions and Sleep 3 \u2014 curated binaural"
+  "title": "Emotions and Sleep 3"
 }

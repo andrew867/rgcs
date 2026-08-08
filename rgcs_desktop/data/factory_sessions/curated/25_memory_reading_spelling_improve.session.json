@@ -43,9 +43,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 13568,
-    "source_name": "Memory Reading Spelling Improve"
+    "source_name": "Memory Reading Spelling Improve",
+    "tags": "memory / language"
   },
-  "notes": "Curated import (source line 13568). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Improve your mental ability to read and spell Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 13568). Curated import (source line 13568). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Improve your mental ability to read and spell Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -82,5 +83,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Memory Reading Spelling Improve \u2014 curated binaural"
+  "title": "Memory Reading Spelling Improve"
 }

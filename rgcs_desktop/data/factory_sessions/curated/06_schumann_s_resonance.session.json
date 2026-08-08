@@ -42,9 +42,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 18726,
-    "source_name": "Schumann's resonance"
+    "source_name": "Schumann's resonance",
+    "tags": "Schumann / 7.83"
   },
-  "notes": "Curated import (source line 18726). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 18726). Curated import (source line 18726). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -81,5 +82,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Schumann's resonance \u2014 curated binaural"
+  "title": "Schumann's resonance"
 }

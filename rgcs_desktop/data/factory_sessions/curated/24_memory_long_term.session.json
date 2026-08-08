@@ -42,9 +42,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 13567,
-    "source_name": "Memory Long-term"
+    "source_name": "Memory Long-term",
+    "tags": "memory"
   },
-  "notes": "Curated import (source line 13567). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Other use: unwillingness to work. Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 13567). Curated import (source line 13567). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Other use: unwillingness to work. Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -81,5 +82,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Memory Long-term \u2014 curated binaural"
+  "title": "Memory Long-term"
 }

@@ -88,9 +88,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 613,
-    "source_name": "7 Chakras"
+    "source_name": "7 Chakras",
+    "tags": "chakra / solfeggio"
   },
-  "notes": "Curated import (source line 613). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 613). Curated import (source line 613). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -127,5 +128,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "7 Chakras \u2014 curated binaural"
+  "title": "7 Chakras"
 }

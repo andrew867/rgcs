@@ -54,9 +54,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 17901,
-    "source_name": "Relaxation to Produce"
+    "source_name": "Relaxation to Produce",
+    "tags": "relaxation"
   },
-  "notes": "Curated import (source line 17901). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Relaxation techniques|Relaxing the mind|Take slow, deep breaths. Or try other breathing exercises for relaxation.|Soak in a warm bath.|Listen to soothing music.|Practice mindful meditation. The goal o Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 17901). Curated import (source line 17901). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Relaxation techniques|Relaxing the mind|Take slow, deep breaths. Or try other breathing exercises for relaxation.|Soak in a warm bath.|Listen to soothing music.|Practice mindful meditation. The goal o Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -93,5 +94,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Relaxation to Produce \u2014 curated binaural"
+  "title": "Relaxation to Produce"
 }

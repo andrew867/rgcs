@@ -42,9 +42,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 5796,
-    "source_name": "Concentration and Creative Thinking"
+    "source_name": "Concentration and Creative Thinking",
+    "tags": "focus / creativity"
   },
-  "notes": "Curated import (source line 5796). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Creative thinking is the process of coming up with new ideas or new approaches. It can be seen a critical life skill and something worth developing in kids.|Creativity will always be in high demand as Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 5796). Curated import (source line 5796). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. Creative thinking is the process of coming up with new ideas or new approaches. It can be seen a critical life skill and something worth developing in kids.|Creativity will always be in high demand as Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -81,5 +82,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Concentration and Creative Thinking \u2014 curated binaural"
+  "title": "Concentration and Creative Thinking"
 }

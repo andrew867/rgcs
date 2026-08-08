@@ -54,9 +54,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 5797,
-    "source_name": "Concentration Centre"
+    "source_name": "Concentration Centre",
+    "tags": "focus"
   },
-  "notes": "Curated import (source line 5797). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 5797). Curated import (source line 5797). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz.  Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -93,5 +94,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Concentration Centre \u2014 curated binaural"
+  "title": "Concentration Centre"
 }

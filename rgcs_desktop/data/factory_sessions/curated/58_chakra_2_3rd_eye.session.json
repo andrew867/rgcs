@@ -42,9 +42,10 @@
     ],
     "provenance": "curated frequency-corpus import",
     "source_line": 4975,
-    "source_name": "Chakra 2 3rd Eye"
+    "source_name": "Chakra 2 3rd Eye",
+    "tags": "chakra individual"
   },
-  "notes": "Curated import (source line 4975). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. 432Hz basis. Stereo headphones recommended. Experimental; not a medical claim.",
+  "notes": "Curated import (source line 4975). Curated import (source line 4975). Carriers folded into 40\u20131500 Hz; beat=7.83 Hz. 432Hz basis. Stereo headphones recommended. Experimental; not a medical claim.",
   "sample_rate": 48000,
   "schema_version": "1.0.0",
   "segments": [
@@ -81,5 +82,5 @@
   "source_ids": [
     "curated-frequency-corpus"
   ],
-  "title": "Chakra 2 3rd Eye \u2014 curated binaural"
+  "title": "Chakra 2 3rd Eye"
 }

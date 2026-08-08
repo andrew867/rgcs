@@ -127,8 +127,9 @@ class SessionStore:
                     "session_id": sid,
                     "title": body.get("title", path.stem),
                     "family": body.get("family", ""),
-                    "category": meta.get("source_name",
-                                         body.get("family", "")),
+                    "category": (meta.get("tags")
+                                 or meta.get("source_name")
+                                 or body.get("family", "")),
                     "tags": " ".join(
                         str(t) for t in (body.get("source_ids") or [])),
                     "carrier_hz": carrier,
