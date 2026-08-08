@@ -185,10 +185,14 @@ class MainWindow(QMainWindow):
         add(file_menu, "Delete Session (to workspace trash)",
             studio.delete_session)
         add(file_menu, "Import Session…", studio.import_session)
+        add(file_menu, "Recover Autosaved Session",
+            studio.recover_autosave)
         add(file_menu, "Export Selected Types",
-            studio.new_session.export_selected)
+            studio.new_session.export_selected, "Ctrl+E")
         add(file_menu, "Render Full + Export Set",
-            studio.new_session.render_and_export)
+            studio.new_session.render_and_export, "Ctrl+R")
+        file_menu.addSeparator()
+        add(file_menu, "Quit", self.quit_with_prompt, "Ctrl+Q")
         file_menu.addSeparator()
         ws_menu = file_menu.addMenu("Workspace")
         add(ws_menu, "Open Workspace…", self._open_workspace_dialog)
@@ -197,6 +201,19 @@ class MainWindow(QMainWindow):
         add(ws_menu, "Reveal Workspace Folder", self._reveal_workspace)
         add(ws_menu, "Repair Workspace (factory content)",
             self._repair_factory_content)
+
+        edit_menu = self.menuBar().addMenu("&Edit")
+        add(edit_menu, "Undo", studio.new_session.undo, "Ctrl+Z")
+        add(edit_menu, "Redo", studio.new_session.redo, "Ctrl+Y")
+        # hold refs: menus stay alive for tests and shortcut queries
+        self.file_menu = file_menu
+        self.edit_menu = edit_menu
+
+    def quit_with_prompt(self) -> None:
+        """Ctrl+Q: quit, prompting for unsaved session edits first."""
+        if not self.panels["Frequency Key Studio"]._resolve_dirty():
+            return
+        self.close()
 
     def _fill_recent_menu(self) -> None:
         studio = self.panels["Frequency Key Studio"]

@@ -49,6 +49,16 @@ class NewSessionPage(QWidget):
         self._session_path = None
         self._dirty = False
         self._loading = False
+        # v8.5.3: snapshot undo/redo + crash-recovery autosave
+        self._undo_stack: list[dict] = []
+        self._redo_stack: list[dict] = []
+        self._restoring = False
+        self.autosave_cb = None   # panel injects; called when dirty
+        from PySide6.QtCore import QTimer
+        self._autosave_timer = QTimer(self)
+        self._autosave_timer.setInterval(30_000)
+        self._autosave_timer.timeout.connect(self._autosave_tick)
+        self._autosave_timer.start()
         from rgcs_desktop.viewers.sonic_playback import PreviewPlayer
         self._player = PreviewPlayer(status_cb)
 
@@ -225,6 +235,7 @@ class NewSessionPage(QWidget):
             edit.textChanged.connect(self._mark_dirty)
         self.loudness_on.toggled.connect(self._mark_dirty)
         self.noise_list.itemChanged.connect(self._mark_dirty)
+        self._reset_history()   # baseline for undo
 
     # ------------------------------------------------------------------
     def _pick_voice_file(self, *_a) -> None:
@@ -341,8 +352,75 @@ class NewSessionPage(QWidget):
 
     # ------------------------------------- v8.5.2 session identity/CRUD
     def _mark_dirty(self, *_a) -> None:
-        if not self._loading:
+        if self._loading or self._restoring:
+            return
+        self._dirty = True
+        self._session = None    # cached preview is stale after any edit
+        self._push_snapshot()
+
+    # ------------------------------------------------ undo/redo (v8.5.3)
+    def _snapshot(self) -> dict | None:
+        try:
+            return self.build_session()
+        except TimelineError:
+            return None
+
+    def _push_snapshot(self) -> None:
+        snap = self._snapshot()
+        if snap is None:
+            return
+        if self._undo_stack and self._undo_stack[-1] == snap:
+            return
+        self._undo_stack.append(snap)
+        del self._undo_stack[:-50]      # bound the stack
+        self._redo_stack.clear()
+
+    def _reset_history(self) -> None:
+        """New baseline (open/new/close): current state is undo floor."""
+        self._undo_stack.clear()
+        self._redo_stack.clear()
+        snap = self._snapshot()
+        if snap is not None:
+            self._undo_stack.append(snap)
+
+    def _restore(self, snap: dict) -> None:
+        self._restoring = True
+        try:
+            path = self._session_path
+            self.apply_session(snap, path)
             self._dirty = True
+        finally:
+            self._restoring = False
+
+    def undo(self, *_a) -> bool:
+        # the top of the stack is the current state; restore the one
+        # beneath it
+        current = self._snapshot()
+        while self._undo_stack and self._undo_stack[-1] == current:
+            self._redo_stack.append(self._undo_stack.pop())
+        if not self._undo_stack:
+            return False
+        if current is not None and (not self._redo_stack
+                                    or self._redo_stack[-1] != current):
+            self._redo_stack.append(current)
+        self._restore(self._undo_stack[-1])
+        return True
+
+    def redo(self, *_a) -> bool:
+        if not self._redo_stack:
+            return False
+        snap = self._redo_stack.pop()
+        self._undo_stack.append(snap)
+        self._restore(snap)
+        return True
+
+    # ------------------------------------------------ autosave (v8.5.3)
+    def _autosave_tick(self) -> None:
+        if self._dirty and self.autosave_cb is not None:
+            try:
+                self.autosave_cb()
+            except Exception:  # noqa: BLE001 — autosave must never crash
+                pass
 
     @property
     def is_dirty(self) -> bool:
@@ -364,6 +442,7 @@ class NewSessionPage(QWidget):
         self._session = None
         self._dirty = True     # a brand-new session is unsaved
         self.preview()
+        self._reset_history()
 
     def set_title(self, title: str) -> None:
         self._title_override = title
@@ -439,6 +518,8 @@ class NewSessionPage(QWidget):
             self._session = None
             self.preview()
             self._dirty = False
+            if not self._restoring:
+                self._reset_history()
         finally:
             self._loading = False
 
@@ -562,8 +643,11 @@ class NewSessionPage(QWidget):
         return self._player.play(wav)
 
     def teardown(self) -> None:
-        """Stop preview playback (workspace close/switch, app exit)."""
+        """Stop preview playback (workspace close/switch, app exit).
+        Unsaved edits get one final autosave so nothing disappears
+        silently."""
         self._player.stop()
+        self._autosave_tick()
 
     def show_spectrogram(self, *_a) -> bool:
         from rgcs_desktop.services.sonic_audio import load_wav, \

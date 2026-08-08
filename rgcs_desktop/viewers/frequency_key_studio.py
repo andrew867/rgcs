@@ -46,9 +46,64 @@ class FrequencyKeyStudioPanel(Panel):
             lambda *_: self.inspector_changed.emit())
         layout.addWidget(self.pages, stretch=1)
 
+        # v8.5.3: crash-recovery autosave + segment edits join the
+        # dirty/undo tracking
+        self.new_session.autosave_cb = self._autosave_current
+        self.timeline_editor.table.cellChanged.connect(
+            lambda *_: self.new_session._mark_dirty())
+        self.timeline_editor.enabled.toggled.connect(
+            lambda *_: self.new_session._mark_dirty())
+
     def _log(self, message: str) -> None:
         self.status_message.emit(f"sonic: {message}")
         self.inspector_changed.emit()
+
+    # ---------------------------------------- v8.5.3 autosave/recovery
+    def _autosave_current(self) -> None:
+        session = self.new_session.current_session()
+        if session is not None:
+            self._store().autosave(session,
+                                   self.new_session.session_path)
+
+    def autosave_candidates(self) -> list[dict]:
+        try:
+            return self._store().list_autosaves()
+        except Exception:  # noqa: BLE001 (no workspace)
+            return []
+
+    def recover_autosave(self, path=None) -> bool:
+        """Load the newest (or given) autosaved session into the editor
+        as an unsaved session."""
+        candidates = self.autosave_candidates()
+        if path is not None:
+            candidates = [c for c in candidates
+                          if c["path"] == str(path)]
+        if not candidates:
+            self._log("no autosaved session to recover")
+            return False
+        if not self._resolve_dirty():
+            return False
+        entry = candidates[0]
+        source = entry.get("source_path")
+        self.new_session.apply_session(entry["session"],
+                                       source if source else None)
+        if entry["session"].get("segments"):
+            self.timeline_editor.load_segments(
+                entry["session"]["segments"])
+        self.new_session._dirty = True   # recovered = still unsaved
+        self._log(f"recovered autosaved session "
+                  f"{entry['session'].get('title', '')} — save to keep")
+        self.inspector_changed.emit()
+        return True
+
+    def _clear_current_autosave(self) -> None:
+        session = self.new_session.current_session() or {}
+        sid = session.get("session_id")
+        if sid:
+            try:
+                self._store().clear_autosave(sid)
+            except Exception:  # noqa: BLE001
+                pass
 
     def refresh(self) -> None:
         """Workspace changed: re-list the session library."""
@@ -142,6 +197,7 @@ class FrequencyKeyStudioPanel(Panel):
             self._log(f"save refused: {exc}")
             return None
         self.new_session.mark_saved(path)
+        self._clear_current_autosave()
         self.context.settings.add_recent_session(str(path))
         self._log(f"saved {path.name}")
         self.inspector_changed.emit()
@@ -167,6 +223,7 @@ class FrequencyKeyStudioPanel(Panel):
             self._log(f"save-as refused: {exc}")
             return None
         self.new_session.mark_saved(path)
+        self._clear_current_autosave()
         self.context.settings.add_recent_session(str(path))
         self._log(f"saved as {path.name}")
         self.inspector_changed.emit()
@@ -175,6 +232,7 @@ class FrequencyKeyStudioPanel(Panel):
     def close_session(self) -> bool:
         if not self._resolve_dirty():
             return False
+        self._clear_current_autosave()   # saved or deliberately discarded
         self.new_session.reset_identity()
         self.new_session._dirty = False   # closed, nothing pending
         self._log("session closed")

@@ -32,6 +32,7 @@ SESSIONS_RELPATH = "library/frequency_sessions"
 USER_RELPATH = SESSIONS_RELPATH + "/user"
 FACTORY_RELPATH = SESSIONS_RELPATH + "/factory"
 TRASH_RELPATH = "library/trash"
+AUTOSAVE_RELPATH = "library/autosave"
 
 
 class SessionStoreError(RuntimeError):
@@ -190,6 +191,55 @@ class SessionStore:
             n += 1
         path.replace(target)
         return target
+
+    # ------------------------------------------------- autosave (v8.5.3)
+    @property
+    def autosave_dir(self) -> Path:
+        return self.root / AUTOSAVE_RELPATH
+
+    def autosave(self, session: dict,
+                 source_path: str | Path | None = None) -> Path:
+        """Write a crash-recovery copy of an unsaved session.
+
+        No validation gate: a mid-edit session must still be
+        recoverable. The original file path (if any) rides along so
+        recovery can offer to restore it in place.
+        """
+        sid = _safe_stem(session.get("session_id") or "session")
+        self.autosave_dir.mkdir(parents=True, exist_ok=True)
+        target = self.autosave_dir / f"{sid}.autosave.json"
+        body = {"autosave_kind": "rgcs.session_autosave/v1",
+                "source_path": str(source_path) if source_path else None,
+                "session": session}
+        tmp = target.with_suffix(".json.tmp")
+        tmp.write_text(json.dumps(body, indent=2, sort_keys=True) + "\n",
+                       encoding="utf-8")
+        tmp.replace(target)
+        return target
+
+    def list_autosaves(self) -> list[dict]:
+        """Recovery candidates, newest first: {path, session, source_path}."""
+        if not self.autosave_dir.is_dir():
+            return []
+        out = []
+        for path in sorted(self.autosave_dir.glob("*.autosave.json"),
+                           key=lambda p: p.stat().st_mtime,
+                           reverse=True):
+            try:
+                body = json.loads(path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            session = body.get("session")
+            if isinstance(session, dict):
+                out.append({"path": str(path), "session": session,
+                            "source_path": body.get("source_path")})
+        return out
+
+    def clear_autosave(self, session_id: str) -> None:
+        target = self.autosave_dir / \
+            f"{_safe_stem(session_id)}.autosave.json"
+        if target.exists():
+            target.unlink()
 
     def import_session(self, src: str | Path) -> Path:
         """Copy an external session file into the user library.
