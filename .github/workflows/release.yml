@@ -73,6 +73,10 @@ jobs:
           gh release view "$GITHUB_REF_NAME" \
             || gh release create "$GITHUB_REF_NAME" --verify-tag \
                  --title "RGCS $GITHUB_REF_NAME" --notes-from-tag
+          # Deleting a release's tag (the retag ritual) silently turns
+          # the published release into a DRAFT — always re-publish and
+          # mark latest so retagged releases never stay invisible.
+          gh release edit "$GITHUB_REF_NAME" --draft=false --latest
 
   windows:
     needs: create-release
